@@ -35,7 +35,7 @@ export default function Home() {
 
       <section className="text-center">
         <h2 className="text-3xl font-bold mb-4">Ready to transform your business?</h2>
-        <p className="text-xl mb-8">Let's discuss how LMNAs Cloud Solutions can help you achieve your goals.</p>
+        <p className="text-xl mb-8">Let&aposs discuss how LMNAs Cloud Solutions can help you achieve your goals.</p>
         <Button asChild>
           <Link href="/contact">
             Contact Us <ArrowRight className="ml-2 h-4 w-4" />
