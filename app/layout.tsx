@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
+import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 
@@ -18,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen flex flex-col`}>
+      <body className={`${GeistSans.className} `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <main className="flex-1">{children}</main>
+          <main className="">{children}</main>
         </ThemeProvider>
       </body>
     </html>
