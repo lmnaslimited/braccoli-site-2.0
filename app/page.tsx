@@ -184,20 +184,20 @@ const calloutData = [
 <div>
 <Header />
 <Hero iHero={hero as TheroProps}/>
-<div className="bg-gray-200">
+<div className="bg-grayBackground">
 <Feature iFeature={feature[0] as Tfeature}/>
 </div>
 <div className="my-16">
 <Feature iShowButton={false} layout="centered" iFeature={feature[1]as Tfeature} />
 </div>
-<div className="bg-blue-700">
+<div className="bg-dark/70">
   <Callout iCallout={calloutData[0] as TcalloutProps}/>
 </div>
 <div className="my-16">
 <Feature layout="centered" buttonPosition="bottom-center" iFeature={feature[2]as Tfeature}/>
 </div>
 <SocialProof />
-<div className="bg-blue-700">
+<div className="bg-dark/70">
   <Callout iCallout={calloutData[1] as TcalloutProps} />
 </div>
 <div className="my-16">

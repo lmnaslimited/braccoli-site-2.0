@@ -585,9 +585,8 @@ export default function Solutions() {
           alt: "quote",
         },
         avatar: {
-          src: "/placeholder2.svg",
-          alt: "User avatar",
-          fallback: "JD",
+          src: "",
+          alt: "JD",
         },
         nameAndPlace: {
           name: "John Doe",
@@ -609,9 +608,8 @@ export default function Solutions() {
           alt: "quote",
         },
         avatar: {
-          src: "/placeholder2.svg",
-          alt: "User avatar",
-          fallback: "JD",
+          src: "",
+          alt: "JD",
         },
         nameAndPlace: {
           name: "John Doe",
@@ -633,9 +631,8 @@ export default function Solutions() {
           alt: "quote",
         },
         avatar: {
-          src: "/placeholder2.svg",
-          alt: "User avatar",
-          fallback: "JD",
+          src: "",
+          alt: "JD",
         },
         nameAndPlace: {
           name: "John Doe",
@@ -896,7 +893,7 @@ export default function Solutions() {
           </div>
         </div>
       </section>
-      <div className="bg-primary">
+      <div className="bg-dark">
         <Callout iCallout={calloutData[0] as TcalloutProps} />
       </div>
       <section className="py-20">
