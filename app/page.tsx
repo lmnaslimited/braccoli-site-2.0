@@ -2,33 +2,37 @@ import Header from "@repo/ui/components/header";
 import Feature from "@repo/ui/components/feature"
 import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero"
-import * as LucideIcons from "lucide-react"
 import Callout from "@repo/ui/components/callout";
 import FAQs from "@repo/ui/components/faq";
 import SocialProof from "@repo/ui/components/imageComp";
+import {Tfeature, TcalloutProps, TheroProps} from "@repo/ui/type"
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
-type ItemType = {
-  question: string
-  answer: string
-  icon?: keyof typeof LucideIcons
-}
-type Theader={
-    textWithoutColor:string
-    badge?:string
-    text?: string;
-    subtitle?:string
-}
-type Tbutton={
-    label: string;
-    href?:string;
-    variant?: "default" | "outline" | "ghost" | "secondary" | "destructive";
-}
-type Tfeature = {
-    header: Theader;
-    button?:Tbutton
-    items:ItemType[]
-}
+
+  const hero = {
+    heading:{
+      textWithoutColor:"Reimagine Your Business.",
+      text:"Achieve the Extraordinary.",
+      subtitle:"From seamless operations to actionable insights, LMNAs empowers businesses to overcome their toughest challenges and unlock growth—no matter the industry.",
+    },
+    buttons:[
+      {
+        label: "Book Your Free Consultation",
+        href:"/",
+        variant: "default",
+        icon:<ArrowRight className="size-6" />,
+        iconPosition: "after",
+      },
+      {
+        label: "Explore Our Solution",
+        href:"/",
+        variant: "outline",
+        icon:<ArrowRight className="size-6" />,
+        iconPosition: "after",
+      },
+    ]
+  }
 const feature=[
   {
       header: {
@@ -112,17 +116,6 @@ const feature=[
 },
 ]
 
-type TcalloutProps = {
-  header: Theader
-  buttons: Tbutton[]
-  points?:{
-    title:string
-    items:string[]
-    actionText:string
-  }
-  variant?:string
-};
-
 const calloutData = [
   {
     header:{
@@ -134,7 +127,7 @@ const calloutData = [
       {
         label: "Start Solving Your Problems Today",
         href: "https://nectar.lmnas.com/book_appointment",
-        variant: "secondary",
+        variant: "default",
       }
     ],
     points:{
@@ -157,7 +150,7 @@ const calloutData = [
     {
       label: "Book a Free Consultation Now",
       href: "https://nectar.lmnas.com/book_appointment",
-      variant: "secondary",
+      variant: "default",
     },
     {
       label: "Talk to an Expert",
@@ -176,7 +169,7 @@ const calloutData = [
    {
      label: "Book Your Free Consultation",
      href: "https://nectar.lmnas.com/book_appointment",
-     variant: "secondary",
+     variant: "default",
    },
    {
      label: "Contact Us Now",
@@ -190,8 +183,8 @@ const calloutData = [
   return (
 <div>
 <Header />
-<Hero />
-<div className="bg-gray-50">
+<Hero iHero={hero as TheroProps}/>
+<div className="bg-gray-200">
 <Feature iFeature={feature[0] as Tfeature}/>
 </div>
 <div className="my-16">
