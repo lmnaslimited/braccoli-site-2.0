@@ -9,7 +9,6 @@ import {
   Play,
   PlayIcon,
   Quote,
-  Tag,
 } from "lucide-react";
 import { TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
 import { ArrowRight, Calendar } from "lucide-react";
@@ -21,12 +20,12 @@ import LogoShowcase from "@repo/ui/components/logoShowCase";
 import { Button } from "@repo/ui/components/ui/button";
 import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
+import { Input } from "@repo/ui/components/ui/input";
 
 export default function Solutions() {
   const hero = {
     heading: {
-      textWithoutColor:
-        "Your Business Deserves More Than Just Surviving.",
+      textWithoutColor: "Your Business Deserves More Than Just Surviving.",
       text: " It Deserves To Thrive.",
       subtitle:
         "Discover how businesses like yours eliminated inefficiencies, scaled faster, and gained complete control over their operations.",
@@ -199,7 +198,7 @@ export default function Solutions() {
           "Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions.",
       },
       className:
-        "items-center text-center my-4 py-4 border-none shadow-none hover:shadow-none bg-slate-50",
+        "items-center text-center my-4 py-4 border-none shadow-none hover:shadow-none bg-slate",
       button: [
         {
           label: "Book a Free Consultation Now",
@@ -246,7 +245,7 @@ export default function Solutions() {
             "Our experts will analyze your specific challenges and design a custom solution that addresses your unique needs.",
         },
         className:
-          "max-w-xl bg-slate-50 border-gray-200 text-center items-center justify-center",
+          "max-w-xl bg-slate border-gray-200 text-center items-center justify-center",
         button: [
           {
             label: "Book a Free Consultation Now",
@@ -570,7 +569,7 @@ export default function Solutions() {
           <rect width="100%" height="100%" fill="#ddd" />
         </svg>
       ),
-      alt:"rectangle"
+      alt: "rectangle",
     }),
     card: [
       {
@@ -583,7 +582,7 @@ export default function Solutions() {
         className: "max-w-md ",
         image: {
           svg: <Quote className="h-9 w-9 mx-4 mt-4" />,
-          alt:"quote"
+          alt: "quote",
         },
         avatar: {
           src: "/placeholder2.svg",
@@ -607,7 +606,7 @@ export default function Solutions() {
         className: "max-w-md",
         image: {
           svg: <Quote className="h-9 w-9 mx-4 mt-4" />,
-          alt:"quote"
+          alt: "quote",
         },
         avatar: {
           src: "/placeholder2.svg",
@@ -631,7 +630,7 @@ export default function Solutions() {
         className: "max-w-md",
         image: {
           svg: <Quote className="h-9 w-9 mx-4 mt-4" />,
-          alt:"quote"
+          alt: "quote",
         },
         avatar: {
           src: "/placeholder2.svg",
@@ -657,22 +656,22 @@ export default function Solutions() {
     <>
       <Header />
       <Hero iHero={hero as TheroProps} />
-      {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
-        <section className="w-full py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
-          <div className="container mx-auto px-4 md:px-6">
-              <TitleSubtitle iTitle={section1.header as Theader} />
-              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-                {section1.card.map((card, index) => (
-                  <CustomCard
-                    key={index}
-                    header={card.header}
-                    className={card.className}
-                    button={[...card.button]}
-                  />
-                ))}
-              </div>
-    
-          <div className="flex flex-col items-center space-y-6 bg-white p-8 rounded-lg shadow-sm">
+
+      <section className="w-full py-12 md:py-16 bg-slate">
+        <div className="container mx-auto px-4 md:px-6">
+          <TitleSubtitle iTitle={section1.header as Theader} />
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+            {section1.card.map((card, index) => (
+              <CustomCard
+                key={index}
+                header={card.header}
+                className={card.className}
+                button={[...card.button]}
+              />
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
             <h3 className="text-2xl font-bold text-center">
               Discover How We've Helped Others Like You
             </h3>
@@ -682,11 +681,15 @@ export default function Solutions() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button size="lg" className="gap-2">
-                <Link href={"https://nectar.lmnas.com/book_appointment"}><span>Book a Consultation</span></Link>
+                <Link href={"https://nectar.lmnas.com/book_appointment"}>
+                  <span>Book a Consultation</span>
+                </Link>
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <Button variant="outline" size="lg" className="gap-2">
-              <Link href={"/solutions"}><span>Explore All Case Studies</span></Link>
+                <Link href={"/solutions"}>
+                  <span>Explore All Case Studies</span>
+                </Link>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -694,90 +697,95 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
-        {/*3*/}
-        <section className="py-16 container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section3.header as Theader} />
-          <div className="grid gap-12 md:gap-16 relative">
-            {/* Vertical line for desktop */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-slate-200 -translate-x-1/2 z-0"></div>
+      {/*3*/}
+      <section className="py-16 container mx-auto px-4 md:px-6">
+        <TitleSubtitle iTitle={section3.header as Theader} />
+        <div className="grid gap-12 md:gap-16 relative">
+          {/* Vertical line for desktop */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-muted -translate-x-1/2 z-0"></div>
 
-            {section3.steps.map((step, index) => (
-              <div
-                key={index}
-                className="relative grid md:grid-cols-2 gap-8 items-center"
-              >
-                {step.cardPosition === "right" ? (
-                  <>
-                    {/* Card Section - Right */}
-                    <CustomCard
-                      header={step.header}
-                      nameAndPlace={{ name: step.footer }}
-                      namePosition="bottom"
-                      footerClassName="items-end"
-                      className="bg-slate-50 md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
-                    />
-                    {/* Icon Section - Left */}
-                    <div className="flex justify-center md:justify-start order-1 md:order-2">
-                      <div className="bg-primary/10 p-6 rounded-full relative z-10">
-                        <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                          <step.icon className="h-8 w-8" />
-                        </div>
+          {section3.steps.map((step, index) => (
+            <div
+              key={index}
+              className="relative grid md:grid-cols-2 gap-8 items-center"
+            >
+              {step.cardPosition === "right" ? (
+                <>
+                  {/* Card Section - Right */}
+                  <CustomCard
+                    header={step.header}
+                    nameAndPlace={{ name: step.footer }}
+                    namePosition="bottom"
+                    footerClassName="items-end"
+                    className="bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
+                  />
+                  {/* Icon Section - Left */}
+                  <div className="flex justify-center md:justify-start order-1 md:order-2">
+                    <div className="bg-primary/10 p-6 rounded-full relative z-10">
+                      <div className="bg-primary text-primary-foreground p-4 rounded-full">
+                        <step.icon className="h-8 w-8" />
                       </div>
                     </div>
-                  </>
-                ) : (
-                  <>
-                    {/* Icon Section - Left */}
-                    <div className="flex justify-center md:justify-end">
-                      <div className="bg-primary/10 p-6 rounded-full relative z-10">
-                        <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                          <step.icon className="h-8 w-8" />
-                        </div>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Icon Section - Left */}
+                  <div className="flex justify-center md:justify-end">
+                    <div className="bg-primary/10 p-6 rounded-full relative z-10">
+                      <div className="bg-primary text-primary-foreground p-4 rounded-full">
+                        <step.icon className="h-8 w-8" />
                       </div>
                     </div>
-                    {/* Card Section - Left */}
-                    <CustomCard
-                      header={step.header}
-                      nameAndPlace={{ name: step.footer }}
-                      namePosition="bottom"
-                      footerClassName="items-start"
-                      className="bg-slate-50 shadow-none border-none hover:shadow-none"
-                    />
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
+                  </div>
+                  {/* Card Section - Left */}
+                  <CustomCard
+                    header={step.header}
+                    nameAndPlace={{ name: step.footer }}
+                    namePosition="bottom"
+                    footerClassName="items-start"
+                    className="bg-slate shadow-none border-none hover:shadow-none"
+                  />
+                </>
+              )}
+            </div>
+          ))}
+        </div>
 
-          <div className="mt-16 bg-slate-50 p-8 md:p-10 rounded-lg shadow-sm">
-            <div className="flex flex-col items-center text-center space-y-6">
-              <h3 className="text-2xl font-bold">
-                Ready to Experience Our Approach?
-              </h3>
-              <p className="max-w-[700px] text-muted-foreground">
-                Take the first step toward a solution that's truly built for
-                your needs. Book a discovery call, schedule a free demo, or
-                explore our other successful solutions.
-              </p>
-              <div className="flex flex-wrap gap-4 justify-center">
-                <Button size="lg" className="gap-2">
-                  <Calendar className="h-4 w-4" />
-                  <Link href={"https://nectar.lmnas.com/book_appointment"}><span>Book an Appointment</span></Link>
-                </Button>
-                <Button variant="outline" size="lg" className="gap-2">
-                  <Play className="h-4 w-4" />
-                  <Link href={"https://demolens.lmnas.com/#login"}><span>Schedule a Free Demo</span></Link>
-                </Button>
-                <Button variant="secondary" size="lg" className="gap-2">
-                  <ArrowRight className="h-4 w-4" />
-                  <Link href={"/solutions"}><span>Explore Other Solutions</span></Link>
-                </Button>
-              </div>
+        <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
+          <div className="flex flex-col items-center text-center space-y-6">
+            <h3 className="text-2xl font-bold">
+              Ready to Experience Our Approach?
+            </h3>
+            <p className="max-w-[700px] text-muted-foreground">
+              Take the first step toward a solution that's truly built for your
+              needs. Book a discovery call, schedule a free demo, or explore our
+              other successful solutions.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button size="lg" className="gap-2">
+                <Calendar className="h-4 w-4" />
+                <Link href={"https://nectar.lmnas.com/book_appointment"}>
+                  <span>Book an Appointment</span>
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" className="gap-2">
+                <Play className="h-4 w-4" />
+                <Link href={"https://demolens.lmnas.com/#login"}>
+                  <span>Schedule a Free Demo</span>
+                </Link>
+              </Button>
+              <Button variant="secondary" size="lg" className="gap-2">
+                <ArrowRight className="h-4 w-4" />
+                <Link href={"/solutions"}>
+                  <span>Explore Other Solutions</span>
+                </Link>
+              </Button>
             </div>
           </div>
-        </section>
-      {/* </main> */}
+        </div>
+      </section>
+
       {/* 4 */}
       <section className="my-40 mx-auto text-center flex flex-col items-center justify-center">
         <TitleSubtitle iTitle={section4.header as Theader} />
@@ -800,9 +808,9 @@ export default function Solutions() {
           {section4.footer.icon}{" "}
         </Button>
       </section>
-      {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
-        {/* 5 */}
-        <section className="py-20 bg-muted/30">
+
+      {/* 5 */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section5.header as Theader} />
           <Tab
@@ -828,32 +836,32 @@ export default function Solutions() {
               {section5.footer.icon}
             </Button>
           </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        {/* 6 */}
-        <section className="py-20 container mx-auto px-4 md:px-6 text-center">
-          <TitleSubtitle iTitle={section6.header as Theader} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section6.card.map((card, index) => (
-              <CustomCard
-                key={index}
-                header={card.header}
-                className={card.className}
-              />
-            ))}
-          </div>
-          <p className="font-semibold mt-16 mb-6 text-xl">
-            {section6.footer.title}
-          </p>
-          <Button size={"lg"}>
-            <Link href={section6.footer.href}> {section6.footer.label} </Link>{" "}
-            {section6.footer.icon}{" "}
-          </Button>
-        </section>
+      {/* 6 */}
+      <section className="py-20 container mx-auto px-4 md:px-6 text-center">
+        <TitleSubtitle iTitle={section6.header as Theader} />
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+          {section6.card.map((card, index) => (
+            <CustomCard
+              key={index}
+              header={card.header}
+              className={card.className}
+            />
+          ))}
+        </div>
+        <p className="font-semibold mt-16 mb-6 text-xl">
+          {section6.footer.title}
+        </p>
+        <Button size={"lg"}>
+          <Link href={section6.footer.href}> {section6.footer.label} </Link>{" "}
+          {section6.footer.icon}{" "}
+        </Button>
+      </section>
 
-        {/* 7 */}
-        <section className="py-20 bg-muted/30">
+      {/* 7 */}
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section7.header as Theader} />
           <div className="flex items-center justify-center">
@@ -886,12 +894,46 @@ export default function Solutions() {
               {section7.footer.icon}{" "}
             </Button>
           </div>
-          </div>
-        </section>
-      {/* </main> */}
-      <div className="bg-gray-900">
+        </div>
+      </section>
+      <div className="bg-primary">
         <Callout iCallout={calloutData[0] as TcalloutProps} />
       </div>
+      <section className="py-20">
+        <div className="container px-4 md:px-6">
+          <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
+            <div className="text-center space-y-2 mb-6">
+              <h2 className="text-2xl font-bold">
+                Want To See Full Case Study Reports?
+              </h2>
+              <p className="text-muted-foreground">
+                Download detailed PDF reports of how we helped companies achieve
+                massive breakthroughs.
+              </p>
+            </div>
+
+            <form className="space-y-4">
+              <div className="space-y-2">
+                <Input
+                  type="email"
+                  placeholder="Enter your email"
+                  required
+                  className="w-full"
+                />
+                <p className="text-xs text-muted-foreground">
+                  We'll send the case study directly to your inbox. We respect
+                  your privacy.
+                </p>
+              </div>
+
+              <Button type="submit" className="w-full" size="lg">
+                Download Full Case Study Report
+                <Download className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
+          </div>
+        </div>
+      </section>
       <Footer />
     </>
   );
