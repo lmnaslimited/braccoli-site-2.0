@@ -6,7 +6,7 @@ import Header from "@repo/ui/components/header";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
-import { ArrowRight, BarChart, Boxes, Calendar, ClipboardList, Factory, LayoutGrid, Link, PhoneCall, Play, ShoppingCart, Truck } from "lucide-react";
+import { ArrowRight, BarChart, BarChart3, Boxes, Calendar, ClipboardList, Clock, Factory, LayoutGrid, Link, PhoneCall, Play, ShoppingCart, Truck } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
@@ -20,11 +20,25 @@ const hero = {
       text: "AI-Powered ERP",
       subtitle:
         "Eliminate inefficiencies, reduce delays, and gain real-time production insights—all with LENS ERP Suite.",
+      badge:"LENS ERP Suite",
     },
+    items:[{
+      icon: <Clock className="h-5 w-5 text-zinc-500" />,
+      item: "30% Less Downtime"
+    },
+    {
+       icon: <BarChart3 className="h-5 w-5 text-zinc-500" />,
+      item: "Real-time Analytics"
+    },
+    {
+       icon: <ArrowRight className="h-5 w-5 text-zinc-500" />,
+      item: "Streamlined Workflow"
+    }
+  ],
     buttons: [
       {
         label: "Ask for Demo",
-        href: "demolens.lmnas.com",
+        href: "https://demolens.lmnas.com/#login",
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -32,7 +46,7 @@ const hero = {
       },
       {
         label: "Book a Free Consultation",
-        href: "/",
+        href: "https://nectar.lmnas.com/book_appointment",
         variant: "outline",
         icon: <Calendar className="size-6" />,
         iconPosition: "after",
@@ -97,8 +111,6 @@ const calloutData = [
     points: {
       title:
         "Book a free consultation with our manufacturing ERP specialists",
-     
-      // actionText: "Book a free consultation with our manufacturing ERP specialists",
     },
     buttons: [
       {
@@ -136,7 +148,7 @@ const section3={
           "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
         link: [{
           label:"Read Case Study",
-          href: "#",
+          href: "/solutions",
           icon:<ArrowRight className="ml-2 h-4 w-4" />,
           iconPosition:"after"
         }],
@@ -155,7 +167,7 @@ const section3={
           "A national retail chain transformed their operations and saw immediate revenue growth with our inventory solutions.",
         link: [{
           label:"Read Case Study",
-          href: "#",
+          href: "/solutions",
           icon:<ArrowRight className="ml-2 h-4 w-4" />,
           iconPosition:"after"
         }]
@@ -174,7 +186,7 @@ const section3={
           "How a distribution company automated 95% of their manual processes in just 30 days with our supply chain solutions.",
         link: [{
           label:"Read Case Study",
-          href: "#",
+          href: "/solutions",
           icon:<ArrowRight className="ml-2 h-4 w-4" />,
           iconPosition:"after"
         }]
@@ -395,15 +407,15 @@ const section6 = {
         subtitle:
           "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "manufacturing",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -417,15 +429,15 @@ const section6 = {
         subtitle:
           "A national retail chain transformed their operations and saw immediate revenue growth.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "retail",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -439,15 +451,15 @@ const section6 = {
         subtitle:
           "How a distribution company automated 95% of their manual processes in just 30 days.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "distribution",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -461,15 +473,15 @@ const section6 = {
         subtitle:
           "A versatile solution that worked across departments to eliminate inefficiencies.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "cross-industry",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -483,15 +495,15 @@ const section6 = {
         subtitle:
           "How a manufacturing firm reduced operational costs by 35% through process optimization.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "manufacturing",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -505,15 +517,15 @@ const section6 = {
         subtitle:
           "A retail business that transformed their customer journey and increased repeat purchases.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "retail",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -527,15 +539,15 @@ const section6 = {
         subtitle:
           "How a distribution company reduced delivery times by 40% through network optimization.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "distribution",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -549,15 +561,15 @@ const section6 = {
         subtitle:
           "A solution that bridged gaps between departments and created a unified workflow.",
         descripClass: "text-sm h-16",
-        headingClass: "text-lg",
+        headingClass: "text-lg mb-2",
       },
       category: "cross-industry",
-      image: "/image.jpeg",
+      image: "/placeholder2.svg",
       alt: "image",
       button: [
         {
           label: "Read Case Study",
-          href: "https://nectar.lmnas.com/book_appointment",
+          href: "/solutions",
           variant: "outline",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "after",
@@ -627,8 +639,8 @@ const painPointsRef = useRef<HTMLDivElement>(null)
                       <Icon className="h-6 w-6 text-gray-700" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900">{point.title}</h3>
-                      <p className="mt-2 text-gray-600">{point.description}</p>
+                      <h3 className="text-xl font-semibold text-primary">{point.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{point.description}</p>
                     </div>
                   </div>
                 </div>
@@ -719,8 +731,8 @@ const painPointsRef = useRef<HTMLDivElement>(null)
           ))}
         </div>
         <div className="pt-6">
-          <Button size="lg" className="text-lg px-8 py-6">
-            Book Your Free Consultation
+        <Button size="lg" className="text-lg px-8 py-6">
+            Book Your Free Consultation 
           </Button>
           <p className="text-sm text-muted-foreground mt-4">
             No commitment required. Our experts are ready to help you succeed.
@@ -730,7 +742,8 @@ const painPointsRef = useRef<HTMLDivElement>(null)
         </section>
 
         {/* 6 */}
-        <section className="py-20 container mx-auto px-4 md:px-6">
+        <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section6.header as Theader} />
           <Tab
             data={section6.caseStudies}
@@ -753,10 +766,11 @@ const painPointsRef = useRef<HTMLDivElement>(null)
           <div className="space-y-4">
             <h3 className="text-xl font-medium">Could This Be Your Business Story Too?</h3>
             <Button size="lg" className="group">
-              Book Your Free Consultation
-              <Calendar className="ml-2 h-4 w-4" />
+               Book Your Free Consultation
+              <Calendar className="ml-2 h-4 w-4" /> 
             </Button>
           </div>
+        </div>
         </div>
         </section>
         <Footer />

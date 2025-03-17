@@ -26,8 +26,8 @@ export default function Solutions() {
   const hero = {
     heading: {
       textWithoutColor:
-        "Your Business Deserves More Than Just Surviving. It Deserves To Thrive.",
-      text: "",
+        "Your Business Deserves More Than Just Surviving.",
+      text: " It Deserves To Thrive.",
       subtitle:
         "Discover how businesses like yours eliminated inefficiencies, scaled faster, and gained complete control over their operations.",
     },
@@ -42,7 +42,7 @@ export default function Solutions() {
       },
       {
         label: "Book a Free Consultation",
-        href: "/",
+        href: "https://nectar.lmnas.com/book_appointment",
         variant: "outline",
         icon: <Calendar className="size-6" />,
         iconPosition: "after",
@@ -211,7 +211,7 @@ export default function Solutions() {
         },
         {
           label: "Schedule a Demo",
-          href: "#contact",
+          href: "https://demolens.lmnas.com/contact",
           variant: "outline",
           icon: <PlayIcon className="size-5" />,
           iconPosition: "before",
@@ -219,7 +219,7 @@ export default function Solutions() {
         },
         {
           label: "Explore Other Solutions",
-          href: "#contact",
+          href: "/solutions",
           variant: "secondary",
           icon: <ArrowRight className="size-5" />,
           iconPosition: "before",
@@ -269,7 +269,7 @@ export default function Solutions() {
         button: [
           {
             label: "Explore More Case Studies",
-            href: "/",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -304,12 +304,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -326,12 +326,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -348,12 +348,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -370,12 +370,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -392,12 +392,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -414,12 +414,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -436,12 +436,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -458,12 +458,12 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "/image.jpeg",
+        image: "/placeholder2.svg",
         alt: "image",
         button: [
           {
             label: "Read Case Study",
-            href: "https://nectar.lmnas.com/book_appointment",
+            href: "/solutions",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -547,7 +547,7 @@ export default function Solutions() {
     footer: {
       title: "Could This Be Your Business Story Too?",
       label: "Book Your Consultation",
-      href: "/",
+      href: "https://nectar.lmnas.com/book_appointment",
       icon: <Calendar className="size-6" />,
     },
   };
@@ -586,7 +586,7 @@ export default function Solutions() {
           alt:"quote"
         },
         avatar: {
-          src: "/image.jpeg",
+          src: "/placeholder2.svg",
           alt: "User avatar",
           fallback: "JD",
         },
@@ -610,7 +610,7 @@ export default function Solutions() {
           alt:"quote"
         },
         avatar: {
-          src: "/image.jpeg",
+          src: "/placeholder2.svg",
           alt: "User avatar",
           fallback: "JD",
         },
@@ -634,7 +634,7 @@ export default function Solutions() {
           alt:"quote"
         },
         avatar: {
-          src: "/image.jpeg",
+          src: "/placeholder2.svg",
           alt: "User avatar",
           fallback: "JD",
         },
@@ -658,43 +658,45 @@ export default function Solutions() {
       <Header />
       <Hero iHero={hero as TheroProps} />
       {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
-        <section className="py-20 container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section1.header as Theader} />
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section1.card.map((card, index) => (
-              <CustomCard
-                key={index}
-                header={card.header}
-                className={card.className}
-                button={[...card.button]}
-              />
-            ))}
-          </div>
+        <section className="w-full py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
+          <div className="container mx-auto px-4 md:px-6">
+              <TitleSubtitle iTitle={section1.header as Theader} />
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
+                {section1.card.map((card, index) => (
+                  <CustomCard
+                    key={index}
+                    header={card.header}
+                    className={card.className}
+                    button={[...card.button]}
+                  />
+                ))}
+              </div>
     
-        <div className="flex flex-col items-center space-y-6 bg-white rounded-lg shadow-sm">
-          <h3 className="text-2xl font-bold text-center">
-            Discover How We've Helped Others Like You
-          </h3>
-          <p className="max-w-[700px] text-center text-muted-foreground">
-            Our detailed case studies provide real-world examples of how we've
-            helped businesses overcome these exact challenges.
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="gap-2">
-              <span>Book a Consultation</span>
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-            <Button variant="outline" size="lg" className="gap-2">
-              <span>Explore All Case Studies</span>
-              <ArrowRight className="h-4 w-4" />
-            </Button>
+          <div className="flex flex-col items-center space-y-6 bg-white p-8 rounded-lg shadow-sm">
+            <h3 className="text-2xl font-bold text-center">
+              Discover How We've Helped Others Like You
+            </h3>
+            <p className="max-w-[700px] text-center text-muted-foreground">
+              Our detailed case studies provide real-world examples of how we've
+              helped businesses overcome these exact challenges.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Button size="lg" className="gap-2">
+                <Link href={"https://nectar.lmnas.com/book_appointment"}><span>Book a Consultation</span></Link>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button variant="outline" size="lg" className="gap-2">
+              <Link href={"/solutions"}><span>Explore All Case Studies</span></Link>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
       {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
         {/*3*/}
-        <section className="py-20 container mx-auto px-4 md:px-6">
+        <section className="py-16 container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section3.header as Theader} />
           <div className="grid gap-12 md:gap-16 relative">
             {/* Vertical line for desktop */}
@@ -761,15 +763,15 @@ export default function Solutions() {
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button size="lg" className="gap-2">
                   <Calendar className="h-4 w-4" />
-                  <span>Book an Appointment</span>
+                  <Link href={"https://nectar.lmnas.com/book_appointment"}><span>Book an Appointment</span></Link>
                 </Button>
                 <Button variant="outline" size="lg" className="gap-2">
                   <Play className="h-4 w-4" />
-                  <span>Schedule a Free Demo</span>
+                  <Link href={"https://demolens.lmnas.com/#login"}><span>Schedule a Free Demo</span></Link>
                 </Button>
                 <Button variant="secondary" size="lg" className="gap-2">
                   <ArrowRight className="h-4 w-4" />
-                  <span>Explore Other Solutions</span>
+                  <Link href={"/solutions"}><span>Explore Other Solutions</span></Link>
                 </Button>
               </div>
             </div>
@@ -800,7 +802,8 @@ export default function Solutions() {
       </section>
       {/* <main className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-[1396px] md:px-24 lg:px-4 "> */}
         {/* 5 */}
-        <section className="py-20 container mx-auto px-4 md:px-6">
+        <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section5.header as Theader} />
           <Tab
             data={section5.caseStudies}
@@ -824,6 +827,7 @@ export default function Solutions() {
               <Link href={section5.footer.href}> {section5.footer.label} </Link>
               {section5.footer.icon}
             </Button>
+          </div>
           </div>
         </section>
 
@@ -849,7 +853,8 @@ export default function Solutions() {
         </section>
 
         {/* 7 */}
-        <section className="py-20 container mx-auto px-4 md:px-6">
+        <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section7.header as Theader} />
           <div className="flex items-center justify-center">
             <div className="max-w-7xl ">
@@ -880,6 +885,7 @@ export default function Solutions() {
               <Link href={section7.footer.href}>{section7.footer.label} </Link>{" "}
               {section7.footer.icon}{" "}
             </Button>
+          </div>
           </div>
         </section>
       {/* </main> */}
