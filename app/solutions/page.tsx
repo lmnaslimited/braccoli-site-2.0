@@ -140,6 +140,19 @@ export default function Solutions() {
         ],
       },
     ] as const,
+    cta:{
+      title:" Discover How We've Helped Others Like You",
+      button:[{
+        label: "Book a Consultation",
+        href:"https://nectar.lmnas.com/book_appointment",
+        icon: <ArrowRight className="h-4 w-4" />
+      },
+    {
+      label: "Explore All Case Studies",
+        href:"/solutions",
+        icon: <ArrowRight className="h-4 w-4" />
+    }]
+    }
   };
 
   const section3 = {
@@ -230,6 +243,24 @@ export default function Solutions() {
         },
       ],
     } as const,
+    cta:{
+      title:"Ready to Experience Our Approach?",
+      button:[{
+        label: "Book a Consultation",
+        href:"https://nectar.lmnas.com/book_appointment",
+        icon: <Calendar className="h-4 w-4" />
+      },
+      {
+        label: "Schedule a Free Demo",
+        href:"https://demolens.lmnas.com/#login",
+        icon:<Play className="h-4 w-4" />
+      },
+    {
+      label: "Explore All Case Studies",
+        href:"/solutions",
+        icon: <ArrowRight className="h-4 w-4" />
+    }]
+    }
   };
 
   const section4 = {
@@ -674,25 +705,19 @@ export default function Solutions() {
 
           <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
             <h3 className="text-2xl font-bold text-center">
-              Discover How We've Helped Others Like You
+              {section1.cta.title}
             </h3>
             <p className="max-w-[700px] text-center text-muted-foreground">
-              Our detailed case studies provide real-world examples of how we've
-              helped businesses overcome these exact challenges.
+              {"Our detailed case studies provide real-world examples of how we've helped businesses overcome these exact challenges."}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="gap-2">
-                <Link href={"https://nectar.lmnas.com/book_appointment"}>
-                  <span>Book a Consultation</span>
+              {section1.cta.button.map((idBtn, index) => 
+              <Button key={index} size="lg" className="gap-2">
+                <Link href={idBtn.href}>
+                  <span>{idBtn.label}</span>
                 </Link>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <Link href={"/solutions"}>
-                  <span>Explore All Case Studies</span>
-                </Link>
-                <ArrowRight className="h-4 w-4" />
-              </Button>
+                {idBtn.icon}
+              </Button>)}
             </div>
           </div>
         </div>
@@ -756,32 +781,18 @@ export default function Solutions() {
         <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
           <div className="flex flex-col items-center text-center space-y-6">
             <h3 className="text-2xl font-bold">
-              Ready to Experience Our Approach?
+              {section3.cta.title}
             </h3>
             <p className="max-w-[700px] text-muted-foreground">
-              Take the first step toward a solution that's truly built for your
-              needs. Book a discovery call, schedule a free demo, or explore our
-              other successful solutions.
+              {"Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions."}
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <Button size="lg" className="gap-2">
-                <Calendar className="h-4 w-4" />
-                <Link href={"https://nectar.lmnas.com/book_appointment"}>
-                  <span>Book an Appointment</span>
+             {section3.cta.button.map((idBtn, index) => <Button key={index} size="lg" className="gap-2">
+                {idBtn.icon}
+                <Link href={idBtn.href}>
+                  <span>{idBtn.label}</span>
                 </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="gap-2">
-                <Play className="h-4 w-4" />
-                <Link href={"https://demolens.lmnas.com/#login"}>
-                  <span>Schedule a Free Demo</span>
-                </Link>
-              </Button>
-              <Button variant="secondary" size="lg" className="gap-2">
-                <ArrowRight className="h-4 w-4" />
-                <Link href={"/solutions"}>
-                  <span>Explore Other Solutions</span>
-                </Link>
-              </Button>
+              </Button>)} 
             </div>
           </div>
         </div>
@@ -922,8 +933,7 @@ export default function Solutions() {
                   className="w-full"
                 />
                 <p className="text-xs text-muted-foreground">
-                  We'll send the case study directly to your inbox. We respect
-                  your privacy.
+                  {"We'll send the case study directly to your inbox. We respect your privacy."}
                 </p>
               </div>
 
