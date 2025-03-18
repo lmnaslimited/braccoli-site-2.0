@@ -48,6 +48,10 @@ export default function Solutions() {
         size: "lg",
       },
     ],
+    image:{
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "hero-image"
+    }
   };
 
   const calloutData = [
@@ -303,7 +307,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -325,7 +329,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -347,7 +351,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -369,7 +373,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -391,7 +395,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -413,7 +417,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -435,7 +439,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -457,7 +461,7 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {

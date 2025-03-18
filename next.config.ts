@@ -18,14 +18,8 @@ const nextConfig: NextConfig = {
     ];
   },
     reactStrictMode: true,
-    swcMinify: true,
-    output: 'standalone',
-    images:{
-      formats:['image/webp'],
-      loader: 'cloudinary',
-      path: 'https://res.cloudinary.com/lmnas/image/fetch/',
-      domains: ["res.cloudinary.com"],
-
+    images: {
+      remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
     },
     i18n: {
       locales: ['en', 'de'],

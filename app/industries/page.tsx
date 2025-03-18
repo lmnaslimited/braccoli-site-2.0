@@ -68,6 +68,10 @@ export default function Industries() {
         size: "lg",
       },
     ],
+    image:{
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "hero-image"
+    }
   };
   const section2 = {
     header: {
@@ -156,7 +160,7 @@ export default function Industries() {
           subtitle:
             "Optimize your production schedules with AI-powered planning tools that adapt to changing demands and resource availability.",
         },
-        imageSrc: "/placeholder.svg?height=400&width=600",
+        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         imageAlt: "Production Planning Dashboard",
         imagePosition: "right",
         caseStudy: {
@@ -179,7 +183,7 @@ export default function Industries() {
           subtitle:
             "Gain complete visibility into your inventory with real-time tracking, automated reordering, and comprehensive reporting.",
         },
-        imageSrc: "/placeholder.svg?height=400&width=600",
+        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         imageAlt: "Inventory Management Interface",
         imagePosition: "left",
         caseStudy: {
@@ -202,7 +206,7 @@ export default function Industries() {
           subtitle:
             "Connect every aspect of your supply chain from raw materials to finished products with comprehensive tracking and analytics.",
         },
-        imageSrc: "/placeholder.svg?height=400&width=600",
+        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         imageAlt: "Supply Chain Visualization",
         imagePosition: "right",
         caseStudy: {
@@ -445,7 +449,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "manufacturing",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -467,7 +471,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "retail",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -489,7 +493,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "distribution",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -511,7 +515,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "cross-industry",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -533,7 +537,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "manufacturing",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -555,7 +559,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "retail",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -577,7 +581,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "distribution",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {
@@ -599,7 +603,7 @@ export default function Industries() {
           headingClass: "text-lg mb-2",
         },
         category: "cross-industry",
-        image: "/placeholder2.svg",
+        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
         alt: "image",
         button: [
           {

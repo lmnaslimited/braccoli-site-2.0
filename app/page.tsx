@@ -31,7 +31,11 @@ export default function Home() {
         icon:<ArrowRight className="size-6" />,
         iconPosition: "after",
       },
-    ]
+    ],
+    image:{
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "hero-image"
+    }
   }
 const feature=[
   {
