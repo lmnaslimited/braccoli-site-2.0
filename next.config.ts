@@ -17,6 +17,14 @@ const nextConfig: NextConfig = {
       // },
     ];
   },
+    reactStrictMode: true,
+    images: {
+      remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
+    },
+    i18n: {
+      locales: ['en', 'de'],
+      defaultLocale: 'en',
+    },
 
 };
 

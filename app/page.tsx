@@ -31,7 +31,11 @@ export default function Home() {
         icon:<ArrowRight className="size-6" />,
         iconPosition: "after",
       },
-    ]
+    ],
+    image:{
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "hero-image"
+    }
   }
 const feature=[
   {
@@ -184,20 +188,20 @@ const calloutData = [
 <div>
 <Header />
 <Hero iHero={hero as TheroProps}/>
-<div className="bg-gray-200">
+<div className="bg-grayBackground">
 <Feature iFeature={feature[0] as Tfeature}/>
 </div>
 <div className="my-16">
 <Feature iShowButton={false} layout="centered" iFeature={feature[1]as Tfeature} />
 </div>
-<div className="bg-blue-700">
+<div className="bg-dark/70">
   <Callout iCallout={calloutData[0] as TcalloutProps}/>
 </div>
 <div className="my-16">
 <Feature layout="centered" buttonPosition="bottom-center" iFeature={feature[2]as Tfeature}/>
 </div>
 <SocialProof />
-<div className="bg-blue-700">
+<div className="bg-dark/70">
   <Callout iCallout={calloutData[1] as TcalloutProps} />
 </div>
 <div className="my-16">

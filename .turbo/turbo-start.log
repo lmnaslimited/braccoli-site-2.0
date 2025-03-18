@@ -7,7 +7,7 @@
    - Network:      http://192.168.1.37:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 476ms
+ [32m[1m✓[22m[39m Ready in 578ms
 Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
     at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
   errno: [33m-111[39m,
