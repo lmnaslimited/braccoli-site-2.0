@@ -10,17 +10,21 @@ import {
   ArrowRight,
   BarChart,
   BarChart3,
+  BarChart4,
   Boxes,
   Calendar,
   ClipboardList,
   Clock,
+  DollarSign,
   Factory,
+  FileWarning,
   LayoutGrid,
-  Link,
   PhoneCall,
   Play,
+  Settings,
   ShoppingCart,
   Truck,
+  Users,
 } from "lucide-react";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
@@ -85,37 +89,37 @@ export default function Industries() {
     },
     painPoints: [
       {
-        icon: "Clock",
+        icon: <Clock className="h-6 w-6 text-primary/70" />,
         title: "Frequent production delays leading to missed deadlines",
         description:
           "Manual scheduling and production tracking create bottlenecks that cascade into missed delivery dates and unhappy customers.",
       },
       {
-        icon: "DollarSign",
+        icon: <DollarSign className="h-6 w-6 text-primary/70" />,
         title: "High operational costs due to inefficiencies",
         description:
           "Disconnected systems and manual processes waste valuable resources, driving up labor costs and reducing your profit margins.",
       },
       {
-        icon: "FileWarning",
+        icon: <FileWarning className="h-6 w-6 text-primary/70" />,
         title: "Manual data entry errors affecting inventory accuracy",
         description:
           "Human errors in data entry lead to inventory discrepancies, causing unexpected stockouts or excess inventory that ties up capital.",
       },
       {
-        icon: "BarChart4",
+        icon: <BarChart4 className="h-6 w-6 text-primary/70" />,
         title: "Poor demand forecasting causing overstocking or stockouts",
         description:
           "Without accurate forecasting tools, you're forced to guess future demand, leading to either excess inventory costs or missed sales opportunities.",
       },
       {
-        icon: "Users",
+        icon: <Users className="h-6 w-6 text-primary/70" />,
         title: "Siloed departments creating communication breakdowns",
         description:
           "When your teams can't share information efficiently, critical details fall through the cracks, causing costly mistakes and delays.",
       },
       {
-        icon: "Settings",
+        icon: <Settings className="h-6 w-6 text-primary/70" />,
         title: "Inability to adapt quickly to market changes",
         description:
           "Rigid, outdated systems prevent you from pivoting when market conditions change, putting you at a competitive disadvantage.",
@@ -667,7 +671,7 @@ export default function Industries() {
           <TitleSubtitle iTitle={section2.header as Theader} />
           <div ref={painPointsRef} className="space-y-12">
             {section2.painPoints.map((point, index) => {
-              const Icon = require("lucide-react")[point.icon];
+              
               return (
                 <div
                   key={index}
@@ -675,7 +679,8 @@ export default function Industries() {
                 >
                   <div className="flex items-start gap-6">
                     <div className="bg-muted p-3 rounded-full">
-                      <Icon className="h-6 w-6 text-primary/70" />
+                      {/* <Icon className="h-6 w-6 text-primary/70" /> */}
+                      {point.icon}
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-primary">

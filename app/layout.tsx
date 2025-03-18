@@ -1,11 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
 import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-
-const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "LMNAs Cloud Solutions - AI-Powered ERP Solutions",
