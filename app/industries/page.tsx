@@ -30,6 +30,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
+import Link from "next/link";
 
 export default function Industries() {
   const hero = {
@@ -414,7 +415,7 @@ export default function Industries() {
     footer: {
       title:
         "No commitment required. Our experts are ready to help you succeed.",
-      button: { label: "Book Your Free Consultation" },
+      button: { label: "Book Your Free Consultation", href:"https://nectar.lmnas.com/book_appointment" },
     },
   };
   const section6 = {
@@ -571,7 +572,7 @@ export default function Industries() {
     ],
     footer: {
       title: "Could This Be Your Business Story Too?",
-      button: { label: " Book Your Free Consultation" },
+      button: { label: " Book Your Free Consultation", href:"https://nectar.lmnas.com/book_appointment" },
     },
   };
 
@@ -630,7 +631,6 @@ export default function Industries() {
                 >
                   <div className="flex items-start gap-6">
                     <div className="bg-muted p-3 rounded-full">
-                      {/* <Icon className="h-6 w-6 text-primary/70" /> */}
                       {point.icon}
                     </div>
                     <div>
@@ -773,7 +773,7 @@ export default function Industries() {
           </div>
           <div className="pt-6">
             <Button size="lg" className="text-lg px-8 py-6">
-              {section5.footer.button.label}
+              <Link href={section5.footer.button.href}>{section5.footer.button.label}</Link>
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
               {section5.footer.title}
@@ -823,7 +823,7 @@ export default function Industries() {
             <div className="space-y-4">
               <h3 className="text-xl font-medium">{section6.footer.title}</h3>
               <Button size="lg" className="group">
-                {section6.footer.button.label}
+                <Link href={section6.footer.button.href}>{section6.footer.button.label}</Link>
                 <Calendar className="ml-2 h-4 w-4" />
               </Button>
             </div>

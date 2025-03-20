@@ -40,27 +40,17 @@ export default function Pricing() {
       textWithoutColor: "Transparent Pricing. Maximum Value. Zero Surprises.",
       subtitle:
         "AI-powered ERP solutions tailored to your business growth—without the hidden costs.",
-      className:
-        "mx-auto flex max-w-[58rem] flex-col items-center justify-center mb-4 text-center",
-      headingClass: "sm:text-4xl md:text-5xl lg:text-6xl",
-      descripClass: "max-w-[85%] md:text-xl/relaxed mx-auto",
     },
     footer: {
       text: "Empower your business with AI-driven automation, real-time insights, and scalable ERP solutions—all at a predictable cost.",
-      button: [
+      buttons: [
         {
           label: "Start Your Free Trial",
           href: "https://demolens.lmnas.com/#login",
-          icon: (
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          ),
         },
         {
           label: "Request a Demo",
           href: "https://nectar.lmnas.com/contact",
-          icon: (
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          ),
           variant: "outline",
         },
       ],
@@ -72,50 +62,45 @@ export default function Pricing() {
         "The Problem: Why Traditional ERPs Are Holding You Back",
       subtitle:
         "Most ERP solutions in the market come with hidden costs, rigid pricing structures, and inefficient processes that slow down business growth. Here's why businesses struggle with traditional ERPs:",
-      className: "mx-auto max-w-[58rem] text-center",
-      descripClass: "mx-auto",
     },
-    issues: [
+    items: [
       {
         icon: <DollarSign className="h-4 w-4 text-primary/70" />,
-        title: "High Total Cost of Ownership",
-        description: "Expensive licensing fees and hidden costs",
+        question: "High Total Cost of Ownership",
+        answer: "Expensive licensing fees and hidden costs",
       },
       {
         icon: <Clock className="h-4 w-4 text-primary/70" />,
-        title: "Slow Implementation",
-        description: "Months or years to fully deploy",
+        question: "Slow Implementation",
+        answer: "Months or years to fully deploy",
       },
       {
         icon: <FileText className="h-4 w-4 text-primary/70" />,
-        title: "Lack of AI-Driven Insights",
-        description: "Outdated analytics making decisions difficult",
+        question: "Lack of AI-Driven Insights",
+        answer: "Outdated analytics making decisions difficult",
       },
       {
         icon: <Lock className="h-4 w-4 text-primary/70" />,
-        title: "Vendor Lock-in",
-        description: "Restrictive ecosystems limiting flexibility",
+        question: "Vendor Lock-in",
+        answer: "Restrictive ecosystems limiting flexibility",
       },
       {
         icon: <Zap className="h-4 w-4 text-primary/70" />,
-        title: "Scalability Issues",
-        description: "Heavy costs for upgrades and new modules",
+        question: "Scalability Issues",
+        answer: "Heavy costs for upgrades and new modules",
       },
       {
         icon: <DollarSign className="h-4 w-4 text-primary/70" />,
-        title: "Higher Operational Costs",
-        description: "Extensive maintenance and infrastructure costs",
+        question: "Higher Operational Costs",
+        answer: "Extensive maintenance and infrastructure costs",
       },
     ],
     footer: {
       text: "LENS ERP Suite eliminates these pain points with AI-powered automation, transparent pricing, and rapid deployment.",
-      button: [
+      buttons: [
         {
           label: "See How We Solve These Problems",
           href: "https://demolens.lmnas.com/#login",
-          icon: (
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          ),
         },
         {
           label: " Book a Free Consultation",
@@ -129,11 +114,7 @@ export default function Pricing() {
     header: {
       textWithoutColor: "Find the Right Plan for Your Business",
       subtitle: "One simple comparison table—no complex pricing cards.",
-      className:
-        "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-      descripClass: "md:text-xl/relaxed ",
-      headingClass: "md:text-5xl",
-      tag: "Premium Solutions",
+      badge: "Premium Solutions",
     },
     tableHead: "Feature",
     pricingPlans: [
@@ -179,18 +160,11 @@ export default function Pricing() {
         textWithoutColor: "Get 20% Off Your First 6 Months",
         subtitle:
           "Plus, receive a free implementation package worth $2,500 when you sign up today.",
-        className:
-          "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
-        descripClass: "md:text-sm",
-        headingClass: "md:text-xl",
       },
       buttons: [
         {
           label: "Start Your Free Trial",
           href: "https://demolens.lmnas.com/#login",
-          icon: (
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          ),
         },
         {
           label: "Request a Tailored Quote",
@@ -204,9 +178,6 @@ export default function Pricing() {
   const Section4 = {
     header: {
       textWithoutColor: "What Our Customers Say",
-      className:
-        "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-      headingClass: "md:text-5xl",
     },
     cards: [
       {
@@ -214,21 +185,6 @@ export default function Pricing() {
           text: "",
           subtitle:
             "LENS ERP transformed our operations, slashing costs and boosting productivity.",
-          descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-          headingClass: "mb-0",
-        },
-        className: "max-w-md ",
-        image: {
-          svg: (
-            <div className="flex px-6 pt-4 space-x-1 text-primary">
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-            </div>
-          ),
-          alt: "5-star",
         },
         avatar: {
           src: "",
@@ -246,21 +202,6 @@ export default function Pricing() {
           text: "",
           subtitle:
             "AI-driven automation made decision-making 5x faster for us.",
-          descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-          headingClass: "mb-0",
-        },
-        className: "max-w-md",
-        image: {
-          svg: (
-            <div className="flex px-6 pt-4 space-x-1 text-primary">
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-            </div>
-          ),
-          alt: "5-star",
         },
         avatar: {
           src: "",
@@ -277,21 +218,6 @@ export default function Pricing() {
         header: {
           text: "",
           subtitle: "Seamless migration and zero downtime—it's a game-changer.",
-          descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-          headingClass: "mb-0",
-        },
-        className: "max-w-md",
-        image: {
-          svg: (
-            <div className="flex px-6 pt-4 space-x-1 text-primary">
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-              <Star size={24} fill="currentColor" strokeWidth={0} />
-            </div>
-          ),
-          alt: "5-star",
         },
         avatar: {
           src: "",
@@ -304,10 +230,10 @@ export default function Pricing() {
         namePosition: "bottom",
         footerClassName: "items-start",
       },
-    ] as const,
+    ],
     cta: {
-      label: "Explore Case Studies",
-      href: "/solutions",
+      buttons:{label: "Explore Case Studies",
+      href: "/solutions",}
     },
   };
 
@@ -315,11 +241,7 @@ export default function Pricing() {
     header: {
       textWithoutColor: "Frequently Asked Questions",
       subtitle: "Everything you need to know about LENS ERP Suite",
-      className:
-        "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-      headingClass: "md:text-5xl",
-      descripClass: "md:text-xl/relaxed",
-      tag: "Common Questions",
+      badge: "Common Questions",
     },
     items: [
       {
@@ -361,9 +283,7 @@ export default function Pricing() {
         "Still in Doubt? Let's Find the Best ERP Solution for You!",
       subtitle:
         "It's time for a smarter, faster, and more cost-effective ERP solution. With LENS ERP Suite you get AI-driven automation, real-time insights, and zero hidden fees—all designed to scale with your business.",
-      headingClass: "md:text-5xl",
-      descripClass: "md:text-xl/relaxed",
-      tag: "Limited Time Offer",
+      badge: "Limited Time Offer",
     },
     cta: {
       title:
@@ -379,9 +299,6 @@ export default function Pricing() {
           title: "Ready to experience AI-powered ERP firsthand?",
           label: "Start Your Free Trial",
           href: "https://nectar.lmnas.com/contact",
-          icon: (
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          ),
         },
       ],
     },
@@ -391,11 +308,7 @@ export default function Pricing() {
     header: {
       textWithoutColor: "How LENS ERP Stacks Up Against the Market",
       subtitle: "A direct comparison with traditional ERP solutions.",
-      className:
-        "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
-      headingClass: "md:text-5xl",
-      descripClass: "md:text-xl/relaxed text-slate",
-      tag: " Competitive Analysis",
+      badge: " Competitive Analysis",
     },
     categories: ["performance", "cost", "implementation", "security"],
     tableHeaders: ["Benefit", "LENS ERP Suite", "Other Traditional ERPs"],
@@ -462,8 +375,6 @@ export default function Pricing() {
           "Thinking of comparing LENS ERP with others in the market? ",
         subtitle:
           "Get our detailed case study—loaded with real-world insights to help you decide. Plus, unlock exclusive special offers with a coupon code when you download!",
-        headingClass: "md:text-2xl mb-2",
-        descripClass: "md:text-base text-secondary",
       },
       buttons: [
         {
@@ -479,9 +390,7 @@ export default function Pricing() {
       cta: {
         textWithoutColor: "Exclusive Offer",
         subtitle: "Download now and get 20% off your first year subscription",
-        headingClass: "md:text-lg mb-1",
-        descripClass: "md:text-sm text-secondary",
-        tag: "Limited Time Only",
+        badge: "Limited Time Only",
       },
     },
   };
@@ -491,14 +400,17 @@ export default function Pricing() {
       {/* hero section section1 */}
       <section className="relative overflow-hidden border-b border-border/40 py-20 md:py-32 bg-grayBackground">
         <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={Section1.header} />
+          <TitleSubtitle iTitle={{...Section1.header, 
+          className:"mx-auto flex max-w-[58rem] flex-col items-center justify-center mb-4 text-center",
+      headingClass: "sm:text-4xl md:text-5xl lg:text-6xl",
+      descripClass: "max-w-[85%] md:text-xl/relaxed mx-auto",}} />
           <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center">
             <p className="max-w-[85%] text-muted-foreground md:text-xl/relaxed">
               {Section1.footer.text}
             </p>
           </div>
           <div className="flex flex-col gap-2 md:flex-row mt-6 items-center justify-center">
-            {Section1.footer.button.map((idBtn, iIndex) => (
+            {Section1.footer.buttons.map((idBtn, iIndex) => (
               <Button
                 key={iIndex}
                 size="lg"
@@ -506,7 +418,7 @@ export default function Pricing() {
                 variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
               >
                 <Link href={idBtn.href}> {idBtn.label} </Link>
-                {idBtn.icon && idBtn.icon}
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             ))}
           </div>
@@ -516,19 +428,22 @@ export default function Pricing() {
       {/* section 2 */}
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={Section2.header} />
+          <TitleSubtitle iTitle={{...Section2.header, 
+             className: "mx-auto max-w-[58rem] text-center",
+             descripClass: "mx-auto",
+          }} />
           <div className="mx-auto max-w-4xl">
             <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
               <div className="grid gap-6 md:grid-cols-2">
-                {Section2.issues.map((issue, index) => (
+                {Section2.items.map((issue, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
                       {issue.icon}
                     </div>
                     <div>
-                      <p className="font-medium">{issue.title}</p>
+                      <p className="font-medium">{issue.question}</p>
                       <p className="text-sm text-muted-foreground">
-                        {issue.description}
+                        {issue.answer}
                       </p>
                     </div>
                   </div>
@@ -539,7 +454,7 @@ export default function Pricing() {
                   {Section2.footer.text}
                 </p>
                 <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                  {Section2.footer.button.map((idBtn, iIndex) => (
+                  {Section2.footer.buttons.map((idBtn, iIndex) => (
                     <Button
                       key={iIndex}
                       size="lg"
@@ -548,7 +463,7 @@ export default function Pricing() {
                       }
                     >
                       <Link href={idBtn.href}> {idBtn.label} </Link>
-                      {idBtn.icon ? idBtn.icon : ""}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   ))}
                 </div>
@@ -562,9 +477,14 @@ export default function Pricing() {
       <section className="border-b border-border/40 py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
-            <span className="font-medium">{Section3.header.tag}</span>
+            <span className="font-medium">{Section3.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={Section3.header} />
+          <TitleSubtitle iTitle={{...Section3.header, 
+            className:
+            "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+          descripClass: "md:text-xl/relaxed ",
+          headingClass: "md:text-5xl",
+          }} />
           <div className="mx-auto max-w-6xl">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-b from-grayBackground to-background rounded-xl -m-4"></div>
@@ -635,7 +555,12 @@ export default function Pricing() {
               <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
                 <span className="font-medium">{Section3.footer.text}</span>
               </div>
-              <TitleSubtitle iTitle={Section3.footer.header} />
+              <TitleSubtitle iTitle={{...Section3.footer.header,
+                className:
+                "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
+              descripClass: "md:text-sm",
+              headingClass: "md:text-xl",
+              }} />
               <div className="flex flex-col gap-2 sm:flex-row justify-center">
                 {Section3.footer.buttons.map((idBtn, iIndex) => (
                   <Button
@@ -644,7 +569,7 @@ export default function Pricing() {
                     variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
                   >
                     <Link href={idBtn.href}> {idBtn.label} </Link>
-                    {idBtn.icon ? idBtn.icon : ""}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 ))}
               </div>
@@ -657,9 +582,14 @@ export default function Pricing() {
       <section className="border-b border-border/40 py-20 bg-gradient-to-b from-primary to-primary/70 text-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
-            <span className="font-medium">{Section7.header.tag}</span>
+            <span className="font-medium">{Section7.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={Section7.header} />
+          <TitleSubtitle iTitle={{...Section7.header,
+            className:
+            "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
+          headingClass: "md:text-5xl",
+          descripClass: "md:text-xl/relaxed text-slate",
+          }} />
           <div className="mx-auto max-w-6xl">
             <Tabs defaultValue="performance" className="w-full">
               <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-primary/70 p-1 rounded-lg">
@@ -667,8 +597,8 @@ export default function Pricing() {
                   <TabsTrigger
                     key={tab}
                     value={tab}
-                    className="data-[state=active]:bg-secindary data-[state=active]:text-primary 
-                         text-grayBackground hover:text-secondary transition-all px-4 rounded-lg"
+                    className="data-[state=active]:bg-accent data-[state=active]:text-primary 
+                         text-grayBackground transition-all px-4 rounded-lg"
                   >
                     {tab.charAt(0).toUpperCase() +
                       tab.slice(1).replace("-", " ")}
@@ -686,7 +616,7 @@ export default function Pricing() {
                     <div className="overflow-x-auto">
                       <Table>
                         <TableHeader>
-                          <TableRow className="bg-primary">
+                          <TableRow className="bg-primary hover:bg-primary">
                             {Section7.tableHeaders.map((header, index) => (
                               <TableHead
                                 key={index}
@@ -701,8 +631,8 @@ export default function Pricing() {
                           {Section7.items
                             .filter((item) => item.category === tab)
                             .map((row, index) => (
-                              <TableRow key={index} className="border-b py-4">
-                                <TableCell className="font-bold bg-grayBackground text-primary">
+                              <TableRow key={index} className="border-b">
+                                <TableCell className="font-bold bg-grayBackground text-primary py-4">
                                   {row.Benefit}
                                 </TableCell>
                                 <TableCell className="text-sm bg-background text-primary">
@@ -725,8 +655,11 @@ export default function Pricing() {
             </Tabs>
             <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
               <div className="grid md:grid-cols-5 items-center">
-                <div className="md:col-span-3 p-6 md:p-8 text-secondary">
-                  <TitleSubtitle iTitle={Section7.footer.header} />
+                <div className="md:col-span-3 p-6 md:p-8 text-accent">
+                  <TitleSubtitle iTitle={{...Section7.footer.header,
+                      headingClass: "md:text-2xl mb-2",
+                      descripClass: "md:text-base text-accent",
+                  }} />
                   <div className="flex flex-col sm:flex-row gap-3">
                     {Section7.footer.buttons.map((idBtn, iIndex) => (
                       <Button key={iIndex} size="lg">
@@ -738,12 +671,15 @@ export default function Pricing() {
                 </div>
                 <div className="md:col-span-2 bg-gradient-to-br from-primary/70 to-primary/80 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
                   <div className="bg-secondary/10 rounded-full p-3 mb-3">
-                    <Download className="h-6 w-6 text-secondary" />
+                    <Download className="h-6 w-6 text-accent" />
                   </div>
-                  <TitleSubtitle iTitle={Section7.footer.cta} />
+                  <TitleSubtitle iTitle={{...Section7.footer.cta,
+                     headingClass: "md:text-lg mb-1",
+                     descripClass: "md:text-sm text-accent",
+                  }} />
                   <div className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-sm">
                     <span className="font-medium">
-                      {Section7.footer.cta.tag}
+                      {Section7.footer.cta.badge}
                     </span>
                   </div>
                 </div>
@@ -756,25 +692,39 @@ export default function Pricing() {
       {/* Testimonials Section */}
       <section className="border-b border-border/40 py-20 bg-grayBackground">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={Section4.header} />
+          <TitleSubtitle iTitle={{...Section4.header,
+             className:
+             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+           headingClass: "md:text-5xl",
+          }} />
           <div className="mx-auto max-w-5xl">
             <div className="grid gap-8 md:grid-cols-3">
               {Section4.cards.map((idCard, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                  header={idCard.header}
-                  className={idCard.className}
-                  image={idCard.image}
+                  header={{...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
+                    headingClass: "mb-0",}}
+                  className="max-w-md "
+                  image={{svg: (
+                    <div className="flex px-6 pt-4 space-x-1 text-primary">
+                      <Star size={24} fill="currentColor" strokeWidth={0} />
+                      <Star size={24} fill="currentColor" strokeWidth={0} />
+                      <Star size={24} fill="currentColor" strokeWidth={0} />
+                      <Star size={24} fill="currentColor" strokeWidth={0} />
+                      <Star size={24} fill="currentColor" strokeWidth={0} />
+                    </div>
+                  ),
+                  alt: "5-star",}}
                   avatar={idCard.avatar}
                   nameAndPlace={idCard.nameAndPlace}
-                  namePosition={idCard.namePosition}
-                  footerClassName={idCard.footerClassName}
+                  namePosition= "bottom"
+                  footerClassName= "items-start"
                 />
               ))}
             </div>
             <div className="text-center mt-12">
               <Button variant="outline" size="lg">
-                <Link href={Section4.cta.href}>{Section4.cta.label} </Link>
+                <Link href={Section4.cta.buttons.href}>{Section4.cta.buttons.label} </Link>
               </Button>
             </div>
           </div>
@@ -785,9 +735,14 @@ export default function Pricing() {
       <section className="border-b border-border/40 py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
-            <span className="font-medium">{Section5.header.tag}</span>
+            <span className="font-medium">{Section5.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={Section5.header} />
+          <TitleSubtitle iTitle={{...Section5.header,
+            className:
+            "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+          headingClass: "md:text-5xl",
+          descripClass: "md:text-xl/relaxed",
+          }} />
           <div className="mx-auto max-w-3xl space-y-4">
             <FAQs iFaq={Section5.items} />
           </div>
@@ -799,9 +754,10 @@ export default function Pricing() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto max-w-3xl text-center">
             <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
-              <span className="font-medium">{Section6.header.tag}</span>
+              <span className="font-medium">{Section6.header.badge}</span>
             </div>
-            <TitleSubtitle iTitle={Section6.header} />
+            <TitleSubtitle iTitle={{...Section6.header,  headingClass: "md:text-5xl",
+      descripClass: "md:text-xl/relaxed",}} />
             <div className="bg-background border-2 border-primary rounded-lg p-8 mb-8 shadow-xl">
               <h3 className="text-xl font-bold mb-6">{Section6.cta.title}</h3>
               <div className="grid gap-6 md:grid-cols-2">
@@ -816,7 +772,7 @@ export default function Pricing() {
                       }
                     >
                       <Link href={idBtn.href}> {idBtn.label} </Link>
-                      {idBtn.icon ? idBtn.icon : ""}
+                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </div>
                 ))}
