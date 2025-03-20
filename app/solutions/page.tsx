@@ -1,7 +1,6 @@
 "use client";
 
 import CustomCard from "@repo/ui/components/customCard";
-import Header from "@repo/ui/components/header";
 import {
   CheckCircle,
   Download,
@@ -21,6 +20,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
+import { Navbar } from "@repo/ui/components/navbar";
 
 export default function Solutions() {
   const hero = {
@@ -701,7 +701,7 @@ export default function Solutions() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero iHero={hero as TheroProps} />
 
       <section className="w-full py-12 md:py-16 bg-slate">

@@ -1,7 +1,6 @@
 import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/customCard";
 import Footer from "@repo/ui/components/footer";
-import Header from "@repo/ui/components/header";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Tbutton, TcalloutProps, TheroProps } from "@repo/ui/type";
@@ -38,13 +37,14 @@ import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import Link from "next/link";
+import { Navbar } from "@repo/ui/components/navbar";
 
 
 
 const pageSlugs = [
   {
-    id: "lens-erp-manufacturing",
-    slug: "/lens-erp-manufacturing",
+    id: "manufacturing",
+    slug: "/manufacturing",
     title: "LENS ERP for Manufacturing",
     description: "Streamline your manufacturing processes with AI-powered ERP solutions.",
     hero:{
@@ -588,8 +588,8 @@ const pageSlugs = [
   }
   },
     {
-      id: "lens-erp-retail",
-      slug: "/lens-erp-retail",
+      id: "retail",
+      slug: "/retail",
       title: "LENS ERP for Retail",
       description: "Optimize inventory, enhance customer experience, and drive higher sales with AI-powered ERP solutions.",
       hero: {
@@ -1036,8 +1036,8 @@ const pageSlugs = [
       }
     },
     {
-      id: "lens-erp-distribution",
-      slug: "/lens-erp-distribution",
+      id: "distribution",
+      slug: "/distribution",
       title: "LENS ERP for Distribution",
       description: "Enhance supply chain visibility, streamline logistics, and boost operational efficiency with AI-powered ERP.",
       hero: {
@@ -1539,13 +1539,15 @@ const pageSlugs = [
     }
 ];
 
-    export default async function Industries({ params }: { params: { slug: string } }) {
+    export default async function Industries({ params }:  {
+      params: Promise<{ slug: string }>
+    }) {
       const { slug } = await params;
       const industry = pageSlugs.find((industry) => industry.id === slug);
     
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero iHero={industry?.hero as TheroProps} />
       {/* 2 */}
       <section className="container mx-auto px-4">

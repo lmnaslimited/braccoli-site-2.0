@@ -1,7 +1,7 @@
 import CustomCard from "@repo/ui/components/customCard";
 import Footer from "@repo/ui/components/footer";
-import Header from "@repo/ui/components/header";
 import Hero from "@repo/ui/components/hero";
+import { Navbar } from "@repo/ui/components/navbar";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
@@ -29,8 +29,8 @@ import Link from "next/link";
 // export default function Products() {
 const pageSlug = [
   {
-    id: "erp",
-    slug: "/erp",
+    id: "lens-erp-suite",
+    slug: "/lens-erp-suite",
     title: "LENS ERP Suite",
     description:
       "Streamline your manufacturing processes with AI-powered ERP solutions.",
@@ -533,14 +533,14 @@ const pageSlug = [
 export default async function Products({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
   const product = pageSlug.find((product) => product.id === slug);
 
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero
         iHero={
           {
@@ -865,8 +865,8 @@ export default async function Products({
        
         <div className="mt-8 space-y-6">
         <div className="grid gap-4 md:grid-cols-2">
-          {product?.Section5.items.points.map(point => 
-            <div className="space-y-2">
+          {product?.Section5.items.points.map((point, index) => 
+            <div className="space-y-2" key={index}>
             <div className="flex items-center gap-2">
               <CheckCircle className="h-5 w-5" />
               <span className="font-medium">{point.heading.text}</span>
