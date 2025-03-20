@@ -5,7 +5,7 @@ import Footer from "@repo/ui/components/footer";
 import Header from "@repo/ui/components/header";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
+import { Tbutton, TcalloutProps, TheroProps } from "@repo/ui/type";
 import {
   ArrowRight,
   BarChart,
@@ -30,6 +30,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
+import Link from "next/link";
 
 export default function Industries() {
   const hero = {
@@ -72,10 +73,10 @@ export default function Industries() {
         size: "lg",
       },
     ],
-    image:{
+    image: {
       src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-      alt: "hero-image"
-    }
+      alt: "hero-image",
+    },
   };
   const section2 = {
     header: {
@@ -83,51 +84,46 @@ export default function Industries() {
       text: "your production and increasing costs?",
       subtitle:
         "Manufacturing businesses face unique challenges that outdated systems can't solve. Our ERP solution addresses these pain points directly.",
-      className: "lg:sticky lg:top-24 h-fit",
-      headingClass: "md:text-5xl leading-tight font-bold",
-      descripClass: "mt-6",
     },
-    painPoints: [
+    items: [
       {
         icon: <Clock className="h-6 w-6 text-primary/70" />,
-        title: "Frequent production delays leading to missed deadlines",
-        description:
+        question: "Frequent production delays leading to missed deadlines",
+        answer:
           "Manual scheduling and production tracking create bottlenecks that cascade into missed delivery dates and unhappy customers.",
       },
       {
         icon: <DollarSign className="h-6 w-6 text-primary/70" />,
-        title: "High operational costs due to inefficiencies",
-        description:
+        question: "High operational costs due to inefficiencies",
+        answer:
           "Disconnected systems and manual processes waste valuable resources, driving up labor costs and reducing your profit margins.",
       },
       {
         icon: <FileWarning className="h-6 w-6 text-primary/70" />,
-        title: "Manual data entry errors affecting inventory accuracy",
-        description:
+        question: "Manual data entry errors affecting inventory accuracy",
+        answer:
           "Human errors in data entry lead to inventory discrepancies, causing unexpected stockouts or excess inventory that ties up capital.",
       },
       {
         icon: <BarChart4 className="h-6 w-6 text-primary/70" />,
-        title: "Poor demand forecasting causing overstocking or stockouts",
-        description:
+        question: "Poor demand forecasting causing overstocking or stockouts",
+        answer:
           "Without accurate forecasting tools, you're forced to guess future demand, leading to either excess inventory costs or missed sales opportunities.",
       },
       {
         icon: <Users className="h-6 w-6 text-primary/70" />,
-        title: "Siloed departments creating communication breakdowns",
-        description:
+        question: "Siloed departments creating communication breakdowns",
+        answer:
           "When your teams can't share information efficiently, critical details fall through the cracks, causing costly mistakes and delays.",
       },
       {
         icon: <Settings className="h-6 w-6 text-primary/70" />,
-        title: "Inability to adapt quickly to market changes",
-        description:
+        question: "Inability to adapt quickly to market changes",
+        answer:
           "Rigid, outdated systems prevent you from pivoting when market conditions change, putting you at a competitive disadvantage.",
       },
     ],
-  };
-  const calloutData = [
-    {
+    footer: {
       header: {
         textWithoutColor: "Ready to solve these manufacturing challenges?",
       },
@@ -146,37 +142,36 @@ export default function Industries() {
         },
       ],
     },
-  ];
+  };
 
   const section3 = {
     header: {
       textWithoutColor: "LENS ERP Suite: Streamline Your Manufacturing",
       subtitle:
         "Discover how our comprehensive ERP solution can transform your manufacturing operations with these powerful features.",
-      className: "text-center items-center",
-      headingClass: "md:text-5xl",
-      descripClass: "mt-6",
     },
-    keyFeature: [
+    feature: [
       {
         header: {
           text: "Intelligent Production Planning",
           subtitle:
             "Optimize your production schedules with AI-powered planning tools that adapt to changing demands and resource availability.",
         },
-        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        imageAlt: "Production Planning Dashboard",
-        imagePosition: "right",
-        caseStudy: {
-          text: "Manufacturing Giant Reduces Manual Work by 72%",
-          subtitle:
-            "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
-          link: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "Production Planning Dashboard",
+          position: "right",
+        },
+        card: {
+          header: {
+            text: "Manufacturing Giant Reduces Manual Work by 72%",
+            subtitle:
+              "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
+          },
+          buttons: [
             {
               label: "Read Case Study",
               href: "/solutions",
-              icon: <ArrowRight className="ml-2 h-4 w-4" />,
-              iconPosition: "after",
             },
           ],
         },
@@ -187,19 +182,21 @@ export default function Industries() {
           subtitle:
             "Gain complete visibility into your inventory with real-time tracking, automated reordering, and comprehensive reporting.",
         },
-        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        imageAlt: "Inventory Management Interface",
-        imagePosition: "left",
-        caseStudy: {
-          text: "Retail Chain Increases Revenue by $8M",
-          subtitle:
-            "A national retail chain transformed their operations and saw immediate revenue growth with our inventory solutions.",
-          link: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "Inventory Management Interface",
+          position: "left",
+        },
+        card: {
+          header: {
+            text: "Retail Chain Increases Revenue by $8M",
+            subtitle:
+              "A national retail chain transformed their operations and saw immediate revenue growth with our inventory solutions.",
+          },
+          buttons: [
             {
               label: "Read Case Study",
               href: "/solutions",
-              icon: <ArrowRight className="ml-2 h-4 w-4" />,
-              iconPosition: "after",
             },
           ],
         },
@@ -210,33 +207,33 @@ export default function Industries() {
           subtitle:
             "Connect every aspect of your supply chain from raw materials to finished products with comprehensive tracking and analytics.",
         },
-        imageSrc: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        imageAlt: "Supply Chain Visualization",
-        imagePosition: "right",
-        caseStudy: {
-          text: "Distribution Company Achieves Full Automation",
-          subtitle:
-            "How a distribution company automated 95% of their manual processes in just 30 days with our supply chain solutions.",
-          link: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "Supply Chain Visualization",
+          position: "right",
+        },
+        card: {
+          header: {
+            text: "Distribution Company Achieves Full Automation",
+            subtitle:
+              "How a distribution company automated 95% of their manual processes in just 30 days with our supply chain solutions.",
+          },
+          buttons: [
             {
               label: "Read Case Study",
               href: "/solutions",
-              icon: <ArrowRight className="ml-2 h-4 w-4" />,
-              iconPosition: "after",
             },
           ],
         },
       },
-    ] as const,
+    ],
   };
 
   const section4 = {
     header: {
       textWithoutColor: "Explore All Features",
-      headingClass: "md:text-5xl",
-      className: "text-center",
     },
-    features: [
+    cards: [
       {
         header: {
           text: "Bill of Materials (BOM)",
@@ -247,12 +244,10 @@ export default function Industries() {
           alt: "clipboard",
         },
         category: "production",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -266,12 +261,10 @@ export default function Industries() {
           alt: "factory",
         },
         category: "production",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -285,12 +278,10 @@ export default function Industries() {
           alt: "layout-grid",
         },
         category: "inventory",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -304,12 +295,10 @@ export default function Industries() {
           alt: "barchart",
         },
         category: "reports",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -323,12 +312,10 @@ export default function Industries() {
           alt: "boxes",
         },
         category: "inventory",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -342,12 +329,10 @@ export default function Industries() {
           alt: "clipboard",
         },
         category: "assignments",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -361,12 +346,10 @@ export default function Industries() {
           alt: "shoppingcart",
         },
         category: "assignments",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -381,12 +364,10 @@ export default function Industries() {
           alt: "truck",
         },
         category: "inventory",
-        link: [
+        buttons: [
           {
             label: "Learn More",
             href: "/",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
           },
         ],
       },
@@ -398,9 +379,6 @@ export default function Industries() {
       textWithoutColor: "Ready to Transform Your Manufacturing Operations?",
       subtitle:
         "Join hundreds of manufacturing companies that have streamlined their operations, reduced costs, and increased productivity with LENS ERP Suite.",
-      className: "text-center items-center",
-      headingClass: "lighting-tight mb-4",
-      descripClass: "max-w-5xl",
     },
     cards: [
       {
@@ -434,35 +412,34 @@ export default function Industries() {
         },
       },
     ],
+    footer: {
+      title:
+        "No commitment required. Our experts are ready to help you succeed.",
+      button: { label: "Book Your Free Consultation", href:"https://nectar.lmnas.com/book_appointment" },
+    },
   };
   const section6 = {
     header: {
       textWithoutColor: "Success Stories",
       subtitle:
         "Explore how businesses across different industries achieved breakthrough results with our solutions.",
-      className: "text-center items-center",
-      headingClass: "md:text-5xl",
     },
-    caseStudies: [
+    cards: [
       {
         header: {
           text: "Manufacturing Giant Reduces Manual Work by 72%",
           subtitle:
             "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "manufacturing",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -471,20 +448,16 @@ export default function Industries() {
           text: "Retail Chain Increases Revenue by $8M",
           subtitle:
             "A national retail chain transformed their operations and saw immediate revenue growth.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "retail",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -493,20 +466,16 @@ export default function Industries() {
           text: "Distribution Company Achieves Full Automation",
           subtitle:
             "How a distribution company automated 95% of their manual processes in just 30 days.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "distribution",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -515,20 +484,16 @@ export default function Industries() {
           text: "Cross-Industry Solution Saves $2M Annually",
           subtitle:
             "A versatile solution that worked across departments to eliminate inefficiencies.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "cross-industry",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -537,20 +502,16 @@ export default function Industries() {
           text: "Manufacturing Firm Streamlines Operations",
           subtitle:
             "How a manufacturing firm reduced operational costs by 35% through process optimization.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "manufacturing",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -559,20 +520,16 @@ export default function Industries() {
           text: "Retail Business Enhances Customer Experience",
           subtitle:
             "A retail business that transformed their customer journey and increased repeat purchases.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "retail",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -581,20 +538,16 @@ export default function Industries() {
           text: "Distribution Network Optimization",
           subtitle:
             "How a distribution company reduced delivery times by 40% through network optimization.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "distribution",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
@@ -603,30 +556,23 @@ export default function Industries() {
           text: "Cross-Department Efficiency Boost",
           subtitle:
             "A solution that bridged gaps between departments and created a unified workflow.",
-          descripClass: "text-sm h-16",
-          headingClass: "text-lg mb-2",
         },
         category: "cross-industry",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
-            variant: "outline",
-            icon: <ArrowRight className="size-5" />,
-            iconPosition: "after",
-            size: "lg",
           },
         ],
       },
     ],
     footer: {
-      label: "Find Your Breakthrough ",
-      href: "/",
-      icon: (
-        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-      ),
+      title: "Could This Be Your Business Story Too?",
+      button: { label: " Book Your Free Consultation", href:"https://nectar.lmnas.com/book_appointment" },
     },
   };
 
@@ -668,10 +614,16 @@ export default function Industries() {
       {/* 2 */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-          <TitleSubtitle iTitle={section2.header as Theader} />
+          <TitleSubtitle
+            iTitle={{
+              ...section2.header,
+              className: "lg:sticky lg:top-24 h-fit",
+              headingClass: "md:text-5xl leading-tight font-bold",
+              descripClass: "mt-6",
+            }}
+          />
           <div ref={painPointsRef} className="space-y-12">
-            {section2.painPoints.map((point, index) => {
-              
+            {section2.items.map((point, index) => {
               return (
                 <div
                   key={index}
@@ -679,15 +631,14 @@ export default function Industries() {
                 >
                   <div className="flex items-start gap-6">
                     <div className="bg-muted p-3 rounded-full">
-                      {/* <Icon className="h-6 w-6 text-primary/70" /> */}
                       {point.icon}
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-primary">
-                        {point.title}
+                        {point.question}
                       </h3>
                       <p className="mt-2 text-muted-foreground">
-                        {point.description}
+                        {point.answer}
                       </p>
                     </div>
                   </div>
@@ -698,23 +649,30 @@ export default function Industries() {
         </div>
       </section>
       <div className="bg-primary">
-        <Callout iCallout={calloutData[0] as TcalloutProps} />
+        <Callout iCallout={section2.footer as TcalloutProps} />
       </div>
 
       {/* 3 */}
       <section className="container mx-auto px-4 md:px-6 py-16">
-        <TitleSubtitle iTitle={section3.header as Theader} />
+        <TitleSubtitle
+          iTitle={{
+            ...section3.header,
+            className: "text-center items-center",
+            headingClass: "md:text-5xl",
+            descripClass: "mt-6",
+          }}
+        />
         <div className="space-y-24 mb-24">
-          {section3.keyFeature.map((section, index) => (
+          {section3.feature.map((section, index) => (
             <div
               key={index}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
             >
-              {section.imagePosition === "left" && (
+              {section.image.position === "left" && (
                 <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src={section.imageSrc}
-                    alt={section.imageAlt}
+                    src={section.image.src}
+                    alt={section.image.alt}
                     fill
                     className="object-cover"
                   />
@@ -724,20 +682,23 @@ export default function Industries() {
               <div className="space-y-6">
                 <TitleSubtitle iTitle={section.header} />
                 <CustomCard
-                  header={{
-                    text: section.caseStudy.text,
-                    subtitle: section.caseStudy.subtitle,
-                  }}
-                  link={[...section.caseStudy.link]}
+                  header={section.card.header}
+                  link={
+                    section.card.buttons.map((button) => ({
+                      ...button,
+                      icon: <ArrowRight className="ml-2 h-4 w-4" />,
+                      iconPosition: "after",
+                    })) as Tbutton[]
+                  }
                   className="bg-primary/5"
                 />
               </div>
 
-              {section.imagePosition === "right" && (
+              {section.image.position === "right" && (
                 <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
                   <Image
-                    src={section.imageSrc}
-                    alt={section.imageAlt}
+                    src={section.image.src}
+                    alt={section.image.alt}
                     fill
                     className="object-cover"
                   />
@@ -750,9 +711,15 @@ export default function Industries() {
 
       {/* 4 */}
       <section className="mb-24 container mx-auto px-4 md:px-6">
-        <TitleSubtitle iTitle={section4.header as Theader} />
+        <TitleSubtitle
+          iTitle={{
+            ...section4.header,
+            headingClass: "md:text-5xl",
+            className: "text-center",
+          }}
+        />
         <Tab
-          data={section4.features}
+          data={section4.cards}
           renderItem={(study, index) => (
             <CustomCard
               key={index}
@@ -766,7 +733,11 @@ export default function Industries() {
                 svg: study.image.svg,
                 alt: study.image.alt,
               }}
-              link={[...study.link]}
+              link={study.buttons.map((button: Tbutton) => ({
+                ...button,
+                icon: <ArrowRight className="size-5" />,
+                iconPosition: "after",
+              }))}
             />
           )}
         />
@@ -775,7 +746,14 @@ export default function Industries() {
       {/* 5 */}
       <section className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center">
         <div className="max-w-3xl mx-auto space-y-6">
-          <TitleSubtitle iTitle={section5.header as Theader} />
+          <TitleSubtitle
+            iTitle={{
+              ...section5.header,
+              className: "text-center items-center",
+              headingClass: "lighting-tight mb-4",
+              descripClass: "max-w-5xl",
+            }}
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
             {section5.cards.map((card, index) => (
               <CustomCard
@@ -795,10 +773,10 @@ export default function Industries() {
           </div>
           <div className="pt-6">
             <Button size="lg" className="text-lg px-8 py-6">
-              Book Your Free Consultation
+              <Link href={section5.footer.button.href}>{section5.footer.button.label}</Link>
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              No commitment required. Our experts are ready to help you succeed.
+              {section5.footer.title}
             </p>
           </div>
         </div>
@@ -807,31 +785,45 @@ export default function Industries() {
       {/* 6 */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section6.header as Theader} />
+          <TitleSubtitle
+            iTitle={{
+              ...section6.header,
+              className: "text-center items-center",
+              headingClass: "md:text-5xl",
+            }}
+          />
           <Tab
-            data={section6.caseStudies}
+            data={section6.cards}
             renderItem={(study, index) => (
               <CustomCard
                 key={index}
-                header={study.header}
+                header={{
+                  ...study.header,
+                  descripClass: "text-sm h-16",
+                  headingClass: "text-lg mb-2",
+                }}
                 className=""
                 image={{
-                  src: study.image,
-                  alt: study.alt,
+                  src: study.image.src,
+                  alt: study.image.alt,
                   aspectRatio: "wide",
                 }}
-                button={[...study.button]}
+                button={study.buttons.map((button: Tbutton) => ({
+                  ...button,
+                  icon: <ArrowRight className="size-5" />,
+                  iconPosition: "after",
+                  size: "lg",
+                  variant: "outline",
+                }))}
                 tag={study.category}
               />
             )}
           />
           <div className="mt-12 text-center">
             <div className="space-y-4">
-              <h3 className="text-xl font-medium">
-                Could This Be Your Business Story Too?
-              </h3>
+              <h3 className="text-xl font-medium">{section6.footer.title}</h3>
               <Button size="lg" className="group">
-                Book Your Free Consultation
+                <Link href={section6.footer.button.href}>{section6.footer.button.label}</Link>
                 <Calendar className="ml-2 h-4 w-4" />
               </Button>
             </div>

@@ -10,7 +10,7 @@ import {
   PlayIcon,
   Quote,
 } from "lucide-react";
-import { TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
+import { Tbutton, TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
 import { ArrowRight, Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
@@ -141,7 +141,13 @@ export default function Solutions() {
       },
     ] as const,
     cta:{
-      title:" Discover How We've Helped Others Like You",
+      header:{
+        textWithoutColor:" Discover How We've Helped Others Like You",
+        subtitle:"Our detailed case studies provide real-world examples of how we've helped businesses overcome these exact challenges.",
+        className: "mb-0 items-center justify-center",
+        headingClass:"text-center sm:text-2xl tracking-normal",
+        descripClass:"text-center md:text-base"
+      },
       button:[{
         label: "Book a Consultation",
         href:"https://nectar.lmnas.com/book_appointment",
@@ -150,7 +156,8 @@ export default function Solutions() {
     {
       label: "Explore All Case Studies",
         href:"/solutions",
-        icon: <ArrowRight className="h-4 w-4" />
+        icon: <ArrowRight className="h-4 w-4" />,
+        variant:"outline"
     }]
     }
   };
@@ -244,7 +251,13 @@ export default function Solutions() {
       ],
     } as const,
     cta:{
-      title:"Ready to Experience Our Approach?",
+      header:{
+        textWithoutColor:"Ready to Experience Our Approach?",
+        subtitle:"Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions.",
+        className: "mb-0 items-center justify-center",
+        headingClass:"text-center sm:text-2xl mb-2 tracking-normal",
+        descripClass:"text-center md:text-base"
+    },
       button:[{
         label: "Book a Consultation",
         href:"https://nectar.lmnas.com/book_appointment",
@@ -253,12 +266,14 @@ export default function Solutions() {
       {
         label: "Schedule a Free Demo",
         href:"https://demolens.lmnas.com/#login",
-        icon:<Play className="h-4 w-4" />
+        icon:<Play className="h-4 w-4" />,
+        variant: "outline"
       },
     {
       label: "Explore All Case Studies",
         href:"/solutions",
-        icon: <ArrowRight className="h-4 w-4" />
+        icon: <ArrowRight className="h-4 w-4" />,
+        variant: "ghost"
     }]
     }
   };
@@ -704,15 +719,10 @@ export default function Solutions() {
           </div>
 
           <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
-            <h3 className="text-2xl font-bold text-center">
-              {section1.cta.title}
-            </h3>
-            <p className="max-w-[700px] text-center text-muted-foreground">
-              {"Our detailed case studies provide real-world examples of how we've helped businesses overcome these exact challenges."}
-            </p>
+            <TitleSubtitle iTitle={section1.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
               {section1.cta.button.map((idBtn, index) => 
-              <Button key={index} size="lg" className="gap-2">
+              <Button key={index} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 <Link href={idBtn.href}>
                   <span>{idBtn.label}</span>
                 </Link>
@@ -729,7 +739,6 @@ export default function Solutions() {
         <div className="grid gap-12 md:gap-16 relative">
           {/* Vertical line for desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-muted -translate-x-1/2 z-0"></div>
-
           {section3.steps.map((step, index) => (
             <div
               key={index}
@@ -780,14 +789,10 @@ export default function Solutions() {
 
         <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
           <div className="flex flex-col items-center text-center space-y-6">
-            <h3 className="text-2xl font-bold">
-              {section3.cta.title}
-            </h3>
-            <p className="max-w-[700px] text-muted-foreground">
-              {"Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions."}
-            </p>
+            <TitleSubtitle iTitle={section3.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-             {section3.cta.button.map((idBtn, index) => <Button key={index} size="lg" className="gap-2">
+             {section3.cta.button.map((idBtn, index) => 
+             <Button key={index} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 {idBtn.icon}
                 <Link href={idBtn.href}>
                   <span>{idBtn.label}</span>
