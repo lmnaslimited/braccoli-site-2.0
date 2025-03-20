@@ -40,13 +40,14 @@ import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import Link from "next/link";
+import { Navbar } from "@repo/ui/components/navbar";
 
 
 
 const pageSlugs = [
   {
-    id: "lens-erp-manufacturing",
-    slug: "/lens-erp-manufacturing",
+    id: "manufacturing",
+    slug: "manufacturing",
     title: "LENS ERP for Manufacturing",
     description: "Streamline your manufacturing processes with AI-powered ERP solutions.",
     hero:{heading: {
@@ -589,8 +590,8 @@ const pageSlugs = [
   }
   },
     {
-      id: "lens-erp-retail",
-      slug: "/lens-erp-retail",
+      id: "retail",
+      slug: "retail",
       title: "LENS ERP for Retail",
       description: "Optimize inventory, enhance customer experience, and drive higher sales with AI-powered ERP solutions.",
       hero: {
@@ -1037,8 +1038,8 @@ const pageSlugs = [
       }
     },
     {
-      id: "lens-erp-distribution",
-      slug: "/lens-erp-distribution",
+      id: "distribution",
+      slug: "/distribution",
       title: "LENS ERP for Distribution",
       description: "Enhance supply chain visibility, streamline logistics, and boost operational efficiency with AI-powered ERP.",
       hero: {
@@ -2088,72 +2089,14 @@ const pageSlugs = [
   };
 
 
-  // export default function Industries() {
     export default async function Industries({ params }: { params: { slug: string } }) {
       const { slug } = await params;
       const industry = pageSlugs.find((industry) => industry.id === slug);
     
-  
-  // const painPointsRef = useRef<HTMLDivElement>(null);
-
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           entry.target.classList.add("opacity-100", "translate-y-0");
-  //           entry.target.classList.remove("opacity-0", "translate-y-4");
-  //         }
-  //       });
-  //     },
-  //     {
-  //       root: null,
-  //       rootMargin: "0px",
-  //       threshold: 0.1,
-  //     }
-  //   );
-
-  //   const painPoints = document.querySelectorAll(".pain-point");
-  //   painPoints.forEach((point) => {
-  //     observer.observe(point);
-  //   });
-
-  //   return () => {
-  //     painPoints.forEach((point) => {
-  //       observer.unobserve(point);
-  //     });
-  //   };
-  // }, []);
-
-
-//   <div ref={painPointsRef} className="space-y-12">
-//   {section2.items.map((point, index) => {
-//     return (
-//       <div
-//         key={index}
-//         className="pain-point opacity-0 translate-y-4 transition-all duration-500 ease-out border-b border-gray-200 pb-8"
-//       >
-//         <div className="flex items-start gap-6">
-//           <div className="bg-muted p-3 rounded-full">
-//             {point.icon}
-//           </div>
-//           <div>
-//             <h3 className="text-xl font-semibold text-primary">
-//               {point.question}
-//             </h3>
-//             <p className="mt-2 text-muted-foreground">
-//               {point.answer}
-//             </p>
-//           </div>
-//         </div>
-//       </div>
-//     );
-//   })}
-// </div>
 
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero iHero={industry?.hero as TheroProps} />
       {/* 2 */}
       <section className="container mx-auto px-4">

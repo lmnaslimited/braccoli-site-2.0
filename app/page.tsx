@@ -7,6 +7,7 @@ import FAQs from "@repo/ui/components/faq";
 import SocialProof from "@repo/ui/components/imageComp";
 import {Tfeature, TcalloutProps, TheroProps} from "@repo/ui/type"
 import { ArrowRight } from "lucide-react";
+import { Navbar } from "@repo/ui/components/navbar";
 
 export default function Home() {
 
@@ -212,7 +213,7 @@ const Faq = {
 }
   return (
 <div>
-<Header />
+<Navbar />
 <Hero iHero={hero as TheroProps}/>
 <div className="bg-grayBackground">
 <Feature iFeature={feature[0] as Tfeature}/>

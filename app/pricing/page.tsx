@@ -33,6 +33,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/ui/tabs";
+import { Navbar } from "@repo/ui/components/navbar";
 
 export default function Pricing() {
   const Section1 = {
@@ -396,7 +397,7 @@ export default function Pricing() {
   };
   return (
     <>
-      <Header />
+    <Navbar />
       {/* hero section section1 */}
       <section className="relative overflow-hidden border-b border-border/40 py-20 md:py-32 bg-grayBackground">
         <div className="container relative z-10 mx-auto px-4 md:px-6">
