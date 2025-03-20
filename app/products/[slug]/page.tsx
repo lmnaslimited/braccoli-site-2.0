@@ -1,0 +1,961 @@
+import CustomCard from "@repo/ui/components/customCard";
+import Footer from "@repo/ui/components/footer";
+import Header from "@repo/ui/components/header";
+import Hero from "@repo/ui/components/hero";
+import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import { Button } from "@repo/ui/components/ui/button";
+import { Separator } from "@repo/ui/components/ui/separator";
+import { Tbutton, TheroProps } from "@repo/ui/type";
+import {
+  ArrowRight,
+  ArrowUpCircle,
+  ArrowUpRight,
+  BarChart3,
+  BrainCircuit,
+  CheckCircle,
+  ChevronRight,
+  Clock,
+  DollarSign,
+  Expand,
+  LineChart,
+  Settings,
+  Shield,
+  TrendingDown,
+  Users,
+  Zap,
+} from "lucide-react";
+import Link from "next/link";
+
+// export default function Products() {
+const pageSlug = [
+  {
+    id: "erp",
+    slug: "/erp",
+    title: "LENS ERP Suite",
+    description:
+      "Streamline your manufacturing processes with AI-powered ERP solutions.",
+
+    hero: {
+      heading: {
+        textWithoutColor:
+          "LENS ERP Suite: The Smart Choice for Growing Businesses",
+        subtitle:
+          "LENS ERP Suite: The Smart Choice for Growing Businesses. Your business is expanding, but disconnected systems and outdated tools are holding you back. Managing operations shouldn't be this complicated.",
+      },
+      buttons: [
+        {
+          label: "Book an Appointment",
+          href: "https://nectar.lmnas.com/book_appointment",
+          variant: "default",
+        },
+        {
+          label: "Learn More About LENS ERP",
+          href: "https://nectar.lmnas.com/book_appointment",
+          variant: "outline",
+        },
+      ],
+      image: {
+        src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "hero-image",
+      },
+    },
+
+    Section1: {
+      header: {
+        textWithoutColor: "Are You Struggling with Business Growth Challenges?",
+        subtitle:
+          "The right ERP solution should simplify, not complicate. LENS ERP is designed to meet your unique business needs.",
+      },
+      card: {
+        header: {
+          text: "Common Business Challenges",
+        },
+        list: [
+          {
+            text: "Disconnected Systems",
+            subtitle: "Making your operations inefficient and disjointed",
+          },
+          {
+            text: "Limited Functionality",
+            subtitle: "Slowing down your business performance",
+          },
+          {
+            text: "High Service & Operational Costs",
+            subtitle: "Draining your resources unnecessarily",
+          },
+          {
+            text: "System Complexities",
+            subtitle: "Making it difficult to scale your business",
+          },
+          {
+            text: "Expensive Internal Tech Team",
+            subtitle: "Adding unnecessary overhead to your business",
+          },
+        ],
+      },
+      footer: {
+        header: {
+          text: "Talk to an Expert & Get a Tailor-Made ERP Solution!",
+          subtitle:
+            "Our experts understand the unique challenges of growing businesses and can help you find the perfect solution.",
+        },
+        buttons: [
+          {
+            label: "Book a Demo Now",
+            href: "https://demolens.lmnas.com/",
+          },
+          {
+            label: "Read How Businesses Solved These Issues",
+            href: "/solutions",
+            variant: "outline",
+          },
+        ],
+      },
+    },
+    Section2: {
+      header: {
+        textWithoutColor:
+          "Meet LENS ERP Suite - The Solution You've Been Looking For",
+        subtitle: "A Proven Roadmap to Operational Excellence",
+      },
+      cards: [
+        {
+          header: {
+            text: "Business Assessment & Strategy",
+            subtitle:
+              "We pinpoint inefficiencies and tailor an ERP strategy that fits your unique business needs.",
+          },
+          buttons: [
+            {
+              label:
+                "Read Case Study: How a Manufacturing Firm Streamlined Operations",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Seamless Implementation & Customization",
+            subtitle:
+              "We ensure a smooth, worry-free transition so your team stays focused on growth.",
+          },
+          buttons: [
+            {
+              label:
+                "Read Case Study: How a Retail Chain Migrated to LENS ERP Without Downtime",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Training & Support for Easy Adoption",
+            subtitle:
+              "Your team will master LENS ERP with our hands-on training and 24/7 support.",
+          },
+          buttons: [
+            {
+              label:
+                "Read Case Study: How a Manufacturing Firm Streamlined Operations",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Powered Optimization & Continuous Growth",
+            subtitle:
+              "Real-time insights help you make smarter, faster decisions.",
+          },
+          buttons: [
+            {
+              label:
+                "Read Case Study: How a Logistics Company Scaled Using AI Insights",
+              href: "/solutions",
+            },
+          ],
+        },
+      ],
+      footer: {
+        buttons: [
+          {
+            label: "Get a Customized ERP Plan",
+            href: "/",
+          },
+          {
+            label: "Learn More About Our Process",
+            href: "/solutions",
+            variant: "outline",
+          },
+        ],
+      },
+    },
+    Section3: {
+      header: {
+        textWithoutColor:
+          "Transform the Way You Work—Unlock Your Full Business Potential",
+      },
+
+      features: [
+        {
+          icons: [
+            {
+              icon: <Clock className="h-5 w-5 text-primary/70" />,
+              text: "3x Faster Operations",
+            },
+            {
+              icon: <Zap className="h-5 w-5 text-primary/70" />,
+              text: "5x Faster Decision-Making",
+            },
+          ],
+          heading: {
+            text: "Break Free from Manual Work & Bottlenecks",
+            subtitle:
+              "Tired of endless spreadsheets and outdated tools? Automate workflows, eliminate human errors, and free up time to focus on what matters—growing your business.",
+          },
+          link: {
+            label:
+              "Read Case Study: How a Service Business Reduced Admin Work by 40%",
+            href: "/solutions",
+          },
+          img: (
+            <Settings className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+        {
+          icons: [
+            {
+              icon: <ArrowUpRight className="h-5 w-5 text-primary/70" />,
+              text: "4x Revenue Growth in 3 Years",
+            },
+          ],
+          heading: {
+            text: "Turn Efficiency into Profitability",
+            subtitle:
+              "Streamline operations, cut waste, and maximize your earning potential with LENS ERP.",
+          },
+          link: {
+            label:
+              "Read Case Study: How a Mid-Sized Firm Boosted Revenue by 4x",
+            href: "/solutions",
+          },
+          img: (
+            <DollarSign className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+        {
+          icons: [
+            {
+              icon: <Shield className="h-5 w-5 text-primary/70" />,
+              text: "100% Secure",
+            },
+            {
+              icon: <LineChart className="h-5 w-5 text-primary/70" />,
+              text: "Zero Downtime Operations",
+            },
+          ],
+          heading: {
+            text: " Unbreakable Security & Reliability",
+            subtitle:
+              "Your data is fully protected with enterprise-grade security and zero-downtime architecture.",
+          },
+          link: {
+            label:
+              "Read Case Study: How a Finance Company Achieved 100% System Uptime",
+            href: "/solutions",
+          },
+          img: (
+            <BarChart3 className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+        {
+          icons: [
+            {
+              icon: <Expand className="h-5 w-5 text-primary/70" />,
+              text: "Future-Proof Scalability",
+            },
+          ],
+          heading: {
+            text: "Grow Without Limits",
+            subtitle:
+              "LENS ERP scales with your business, ensuring seamless operations as you expand.",
+          },
+          link: {
+            label:
+              "Read Case Study: How a Fast-Growing Company Scaled Operations Seamlessly",
+            href: "/solutions",
+          },
+          img: (
+            <ArrowUpCircle className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+        {
+          icons: [
+            {
+              icon: <TrendingDown className="h-5 w-5 text-primary/70" />,
+              text: "75% Lower TCO",
+            },
+            {
+              icon: <DollarSign className="h-5 w-5 text-primary/70" />,
+              text: "50% Lower IT Costs",
+            },
+          ],
+          heading: {
+            text: "Cut Costs Without Compromising Growth",
+            subtitle:
+              "Reduce unnecessary expenses while maintaining high performance and efficiency.",
+          },
+          link: {
+            label: "Read Case Study: How a Business Saved 75% in ERP Costs",
+            href: "/solutions",
+          },
+          img: (
+            <BrainCircuit className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+        {
+          icons: [
+            {
+              icon: <Clock className="h-5 w-5 text-primary/70" />,
+              text: "3x Faster Implementation",
+            },
+            {
+              icon: <Shield className="h-5 w-5 text-primary/70" />,
+              text: "100% Ownership & Control",
+            },
+          ],
+          heading: {
+            text: "Your Data, Your Rules",
+            subtitle:
+              "Maintain complete control over your system, ensuring data privacy and operational independence.",
+          },
+          link: {
+            label:
+              " Read Case Study: How a Legal Firm Retained Full Data Ownership",
+            href: "/solutions",
+          },
+          img: (
+            <ArrowUpCircle className="h-24 w-24 text-muted-foreground group-hover:scale-110 transition-all duration-300" />
+          ),
+        },
+      ],
+      footer: {
+        heading: {
+          text: "Not sure where to start? Let's discuss your challenges and tailor a solution just for you.",
+        },
+        buttons: [
+          {
+            label: "Get a Free Business Assessment",
+            href: "https://nectar.lmnas.com/contact",
+          },
+          {
+            label: "Discover More Success Stories",
+            href: "/solutions",
+            variant: "outline",
+          },
+        ],
+      },
+    },
+    Section4:{
+      heading:{
+        text:"Experience Success with LENS ERP"
+      },
+      cards:[
+        {
+          heading:{
+            subtitle: "LENS ERP transformed our operations. We've seen a 40% increase in productivity and our team loves how easy it is to use."
+          },
+          avator:{
+            src:"/svg",
+            alt: "JD"
+          },
+          nameAndPlace:{
+            name: "John Doe",
+            place: "CEO, Retail Chain"
+          },
+          link:[{
+            label: "Increased Productivity by 40%",
+            href: "#"
+          }]
+        },
+        {
+          heading:{
+            subtitle: "The cost savings have been remarkable. We've reduced our operational expenses by 30% while improving our decision-making capabilities."
+          },
+          avator:{
+            src:"/svg",
+            alt: "JS"
+          },
+          nameAndPlace:{
+            name: "Jane Smith",
+            place: "COO, Manufacturing Firm"
+          },
+          link:[{
+            label: "Reduced Costs by 30%",
+            href: "#"
+          }]
+        }
+      ],
+      items:[
+        {
+          header:{
+            text:"40%",
+            subtitle:"Increased Productivity"
+          }
+        },
+        {
+          header:{
+            text:"30%",
+            subtitle:"Better Decision-Making"
+          }
+        },
+        {
+          header:{
+            text:"25%",
+            subtitle:"Cost Savings"
+          }
+        },
+        {
+          header:{
+            text:"100%",
+            subtitle:"Seamless Integration"
+          }
+        },
+      ],
+      footer:{
+        heading:{
+          text:"Want proof? Discover how LENS ERP transformed businesses like yours.",
+          subtitle:"Read Case Studies!"
+        },
+        buttons:[
+          {
+            label:"Book Your Free ERP Consultation",
+            href:"https://nectar.lmnas.com/book_appointment"
+          },
+          {
+            label:"Explore Real Business Transformations",
+            href:"/solutions",
+            variant: "outline"
+          }
+        ]
+      }
+    },
+    Section5:{
+      heading:{
+        text:"Flexible Pricing to Fit Your Business Needs",
+        subtitle: " We understand that every business is unique, and so are its needs. That's why LENS ERP offers flexible pricing models tailored to your business size, industry, and required features.",
+        badge:"Limited Time Offer"
+      },
+      items:{
+        heading:{
+          text:"Get a Customized Quote Now",
+          subtitle: "Only for the next 10 businesses that sign up this month",
+          badge:" Offer ends in: 5 days"
+        },
+        points:[
+          {
+            heading:{
+              text:"No Hidden Fees",
+              subtitle: "Transparent pricing with no unexpected costs"
+            }
+          },
+          {
+            heading:{
+              text:"Scalable Plans",
+              subtitle: "Start small and expand as your business grows"
+            }
+          },
+          {
+            heading:{
+              text:"Custom Solutions",
+              subtitle: "Get a plan that perfectly matches your business needs"
+            }
+          },
+          {
+            heading:{
+              text:"Free Migration",
+              subtitle: "We'll help you move from your current system at no cost"
+            }
+          },
+        ]
+      },
+      footer:{
+        heading:{
+          text:"Which plan suits you best? Let's discuss your business needs!",
+          subtitle:"Only 3 spots left for this month's special offer"
+        },
+        buttons:[
+          {
+            label:" Get a Customized Quote Now",
+            href:"#"
+          },
+          {
+            label:"Explore Pricing Options",
+            href:"/pricing",
+            variant: "outline"
+          }
+        ]
+      }
+    },
+    Section6:{
+      heading:{
+        text:" Don't Miss Out—Get Started Today!",
+        subtitle: "While your competitors struggle with outdated systems, you could be optimizing operations and driving growth with LENS ERP.",
+        badge:"Limited Availability"
+      },
+      item:{
+        heading:{
+          text:"Exclusive Onboarding Package",
+          subtitle: "For a limited time, get our premium onboarding package (valued at $2,500) completely FREE when you sign up.",
+        },
+      },
+      footer:{
+        heading:{
+          text:" Only 5 spots remaining</span> this month",
+          subtitle:"Join the 500+ businesses already transforming their operations with LENS ERP"
+        },
+        buttons:[
+          {
+            label:" Get a Personalized Demo Today",
+            href:"https://demolens.lmnas.com/#login"
+          },
+          {
+            label:"See How Others Succeeded with LENS ERP",
+            href:"/solutions",
+            variant: "outline"
+          }
+        ]
+      }
+    }
+  },
+];
+
+export default async function Products({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug } = await params;
+  const product = pageSlug.find((product) => product.id === slug);
+
+  return (
+    <>
+      <Header />
+      <Hero
+        iHero={
+          {
+            ...product?.hero,
+            buttons: product?.hero.buttons.map((button) => ({
+              ...button,
+              icon: (
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              ),
+              iconPosition: "after",
+              size: "lg",
+            })),
+          } as TheroProps
+        }
+      />
+
+      {/* section1 */}
+      <section className="border-b border-border/40 py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <TitleSubtitle
+            iTitle={{
+              ...product?.Section1.header,
+              className:
+                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+              headingClass: "md:text-5xl",
+              descripClass: "max-w-[85%] md:text-xl/relaxed",
+            }}
+          />
+          <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 md:gap-12">
+            <CustomCard
+              header={{ text: product?.Section1.card.header.text }}
+              list={product?.Section1.card.list.map((list) => ({
+                ...list,
+                icon: (
+                  <div className="mt-1 rounded-full bg-gray-100 p-1">
+                    <ChevronRight className="h-4 w-4" />
+                  </div>
+                ),
+              }))}
+            />
+            <div className="flex flex-col justify-center space-y-4">
+              <TitleSubtitle
+                iTitle={{
+                  ...product?.Section1.footer.header,
+                  headingClass: "md:text-2xl",
+                }}
+              />
+              <div className="flex flex-col gap-2 sm:flex-row">
+                {product?.Section1.footer.buttons.map((idBtn, iIndex) => (
+                  <Button
+                    key={iIndex}
+                    size="lg"
+                    className="gap-4"
+                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                  >
+                    <Link href={idBtn.href}>
+                      <span>{idBtn.label}</span>
+                    </Link>
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* section 2 */}
+      <section className="border-b border-border/40 py-20 bg-muted">
+        <div className="container mx-auto px-4 md:px-6">
+          <TitleSubtitle
+            iTitle={{
+              ...product?.Section2.header,
+              className:
+                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+              headingClass: "md:text-5xl",
+              descripClass: "max-w-[85%] md:text-xl/relaxed",
+            }}
+          />
+          <div className="mx-auto max-w-5xl py-12">
+            <div className="relative">
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-muted hidden md:block"></div>
+              {product?.Section2.cards.map((idCard, iIndex) => (
+                <div className="relative mb-12 md:mb-16" key={iIndex}>
+                  <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
+                    {/* Step Number */}
+                    <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
+                      <span className="text-xl font-bold">{iIndex + 1}</span>
+                    </div>
+
+                    {/* Card Component */}
+                    <CustomCard
+                      key={iIndex}
+                      header={idCard.header}
+                      link={
+                        idCard.buttons.map((button) => ({
+                          ...button,
+                          icon: <ChevronRight className="ml-1 h-3 w-3" />,
+                          iconPosition: "after",
+                        })) as Tbutton[]
+                      }
+                      footerClassName="items-start"
+                      className="relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mx-auto max-w-[58rem] text-center mt-16">
+              <div className="flex flex-col gap-2 sm:flex-row justify-center">
+                {product?.Section2.footer.buttons.map((idBtn, iIndex) => (
+                  <Button
+                    key={iIndex}
+                    size="lg"
+                    className="gap-2"
+                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                  >
+                    <Link href={idBtn.href}>
+                      <span>{idBtn.label}</span>
+                    </Link>
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* section3 */}
+      <section className="border-b border-border/40 py-20 bg-background">
+        <div className="container mx-auto px-4 md:px-6">
+          <TitleSubtitle
+            iTitle={{
+              ...product?.Section2.header,
+              className:
+                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+              headingClass: "md:text-5xl",
+            }}
+          />
+          <div className="mx-auto max-w-6xl py-12">
+            {product?.Section3.features.map((feature, index) => (
+              <div
+                key={index}
+                className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-all hover:shadow-md mb-12"
+              >
+                <div className="grid gap-8 md:grid-cols-2 items-center p-6 md:p-8">
+                  {index % 2 !== 0 ? (
+                    <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
+                      <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
+                      {feature.img}
+                    </div>
+                  ) : null}
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-4 mb-4 flex-wrap">
+                      {feature.icons.map((highlight, i) => (
+                        <div
+                          key={i}
+                          className="flex items-center gap-2 bg-grayBackground px-3 py-2 rounded-lg"
+                        >
+                          {highlight.icon}
+                          <span className="text-sm font-medium">
+                            {highlight.text}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    <TitleSubtitle
+                      iTitle={{
+                        ...feature.heading,
+                        headingClass:
+                          "md:text-2xl group-hover:underline transition-al",
+                      }}
+                    />
+                    <Link
+                      href={feature.link.href}
+                      className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors"
+                    >
+                      {feature.link.label}
+                      <ChevronRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+
+                  {index % 2 === 0 ? (
+                    <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
+                      <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
+                      {feature.img}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mx-auto max-w-[58rem] text-center mt-12 bg-grayBackground p-8 rounded-lg border border-border shadow-sm">
+            <p className="text-primary/70 font-medium mb-6">
+              {product?.Section3.footer.heading.text}
+            </p>
+            <div className="flex flex-col gap-2 sm:flex-row justify-center">
+              {product?.Section3.footer.buttons.map((idBtn, index) => (
+                <Button
+                  key={index}
+                  size="lg"
+                  className="gap-2"
+                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                >
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* section4 */}
+      <section className="border-b border-border/40 py-20 bg-muted" >
+          <div className="container mx-auto px-4 md:px-6">
+          <TitleSubtitle
+            iTitle={{
+              ...product?.Section4.heading,
+              className:"mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+              headingClass:
+                "md:text-5xl",
+            }}
+          />
+          <div className="mx-auto max-w-5xl py-12">
+            <div className="grid gap-8 md:grid-cols-2">
+              {product?.Section4.cards.map((idCard, iIndex)=>
+                <CustomCard 
+                key={iIndex}
+                 header={{
+                  subtitle: idCard.heading.subtitle,
+                  descripClass:"italic m-0",
+                  headingClass:"mb-0"
+                 }}
+                 avatar= {idCard.avator}
+                 nameAndPlace={idCard.nameAndPlace}
+                 namePosition="top"
+                 link={idCard.link.map(lnk => 
+                 ({
+                  ...lnk,
+                  icon: <CheckCircle className="h-5 w-5" />,
+                  iconPosition: "before",
+                  size: "lg"
+                 })
+                 )}
+                />
+              )}
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-4">
+              {product?.Section4.items.map((idItem, iIndex) =>
+              <CustomCard 
+                key={iIndex}
+                header={{text: idItem.header.text,
+                  subtitle: idItem.header.subtitle,
+                  headingClass:"md:text-4xl mb-0"
+                }}
+                className="text-center"
+                />
+              )}
+            </div>
+          </div>
+          <div className="mx-auto max-w-[58rem] text-center mt-8">
+          <p className="text-primary/50 mb-6">
+                {product?.Section4.footer.heading.text}
+                <br />
+                <span className="font-medium text-primary">{product?.Section4.footer.heading.subtitle}</span>
+              </p>
+              <div className="flex flex-col gap-2 sm:flex-row justify-center">
+              {product?.Section4.footer.buttons.map((idBtn, index) => (
+                <Button
+                  key={index}
+                  size="lg"
+                  className="gap-2"
+                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                >
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              ))}
+              </div>
+          </div>
+          </div>
+      </section>
+
+      {/* section5  */}
+      <section className="border-b border-border/40 py-20 bg-grayBackground">
+      <div className="container mx-auto px-4 md:px-6">
+      <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
+        <span className="font-medium">{product?.Section5.heading.badge}</span>
+      </div>
+      <TitleSubtitle iTitle={{
+          ...product?.Section5.heading,
+          className:"mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+          headingClass:
+            "md:text-5xl",
+            descripClass:"max-w-[85%] md:text-xl/relaxed"
+        }}
+      />
+      <div className="mx-auto max-w-5xl py-12">
+      <div className="relative mx-auto max-w-3xl bg-background rounded-xl border-2 border-primary p-8 shadow-lg">
+      <TitleSubtitle iTitle={{
+          ...product?.Section5.items.heading,
+          className:"text-center",
+          headingClass:
+            "md:text-2xl",
+        }}
+      />
+       <div className="flex items-center justify-center gap-2 text-sm">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-grayBackground">
+          <Clock className="h-4 w-4" />
+        </div>
+        
+          {product?.Section5.items.heading.badge}
+        
+      </div>
+      <Separator className="my-6" />
+       
+        <div className="mt-8 space-y-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          {product?.Section5.items.points.map(point => 
+            <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="h-5 w-5" />
+              <span className="font-medium">{point.heading.text}</span>
+            </div>
+            <p className="text-sm text-muted-foreground pl-7">{point.heading.subtitle}</p>
+          </div>
+          )}
+          </div>
+          <div className="text-center space-y-2 mt-8">
+                    <p className="font-medium text-lg">{product?.Section5.footer.heading.text}</p>
+                    <p className="text-sm text-gray-500">
+                      {product?.Section5.footer.heading.subtitle}
+                    </p>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row justify-center mt-6">
+                  {product?.Section5.footer.buttons.map((idBtn, index) => (
+                <Button
+                  key={index}
+                  size="lg"
+                  className="gap-2"
+                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                >
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              ))}
+                  </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        </section>
+
+      {/* section6 */}
+      <section className="py-20 bg-gradient-to-b from-background to-grayBackground">
+      <div className="container mx-auto px-4 md:px-6">
+      <div className="mx-auto max-w-3xl text-center">
+      <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
+        <span className="font-medium">{product?.Section6.heading.badge}</span>
+      </div>
+      <TitleSubtitle iTitle={{
+          ...product?.Section6.heading,
+          headingClass:
+            "md:text-5xl",
+            descripClass:"md:text-xl/relaxed"
+        }}
+      />
+      <div className="mt-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+      <TitleSubtitle iTitle={{
+          ...product?.Section6.item.heading,
+          className:"mb-4",
+          headingClass:
+            "md:text-xl mb-2",
+            descripClass:"md:text-base"
+        }}
+      />
+       <div className="flex items-center justify-center gap-2 text-sm mb-6">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-border">
+                    <Users className="h-4 w-4" />
+                  </div>
+                  <span>
+                   {product?.Section6.footer.heading.text}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2 sm:flex-row justify-center">
+                {product?.Section6.footer.buttons.map((idBtn, index) => (
+                <Button
+                  key={index}
+                  size="lg"
+                  className="gap-2"
+                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                >
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              ))}
+                </div>
+                </div>
+                <p className="mt-6 text-sm text-gray-500">
+                {product?.Section6.footer.heading.subtitle}
+              </p>
+              </div>
+        </div>
+        </section>
+      <Footer />
+    </>
+  );
+}
