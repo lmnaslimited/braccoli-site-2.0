@@ -6,7 +6,7 @@ import FAQs from "@repo/ui/components/faq";
 import SocialProof from "@repo/ui/components/imageComp";
 import {Tfeature, TcalloutProps, TheroProps} from "@repo/ui/type"
 import { ArrowRight } from "lucide-react";
-import { Navbar } from "@repo/ui/components/navbar";
+import Navbar from "@repo/ui/components/navbar";
 
 export default function Home() {
 
@@ -19,14 +19,14 @@ export default function Home() {
     buttons:[
       {
         label: "Book Your Free Consultation",
-        href:"/",
+        href:"https://nectar.lmnas.com/book_appointment",
         variant: "default",
         icon:<ArrowRight className="size-6" />,
         iconPosition: "after",
       },
       {
         label: "Explore Our Solution",
-        href:"/",
+        href:"/solutions",
         variant: "outline",
         icon:<ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -45,7 +45,7 @@ const feature=[
       },
       button:{
           label:"See How We Can Help You",
-          href:"/"
+          href:"/solutions"
       },
       items:[
           { question: "Is inefficiency slowing you down?", answer: "Our solutions streamline your processes, boosting productivity across your organization."},
@@ -75,7 +75,7 @@ const feature=[
       },
       button:{
           label:"Explore Our Solutions",
-          href:"/"
+          href:"/solutions"
       },
       items:[
           {
@@ -158,7 +158,7 @@ const calloutData = [
     },
     {
       label: "Talk to an Expert",
-      href: "#contact",
+      href: "https://nectar.lmnas.com/contact",
       variant: "outline",
     },
   ],
@@ -177,7 +177,7 @@ const calloutData = [
    },
    {
      label: "Contact Us Now",
-     href: "#contact",
+     href: "https://nectar.lmnas.com/contact",
      variant: "outline",
    },
  ],

@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui
 
 // At the top of the file, add the import for the TrendCard component
 import { TrendCard } from "@repo/ui/components/trend-card"
-import { Navbar } from "@repo/ui/components/navbar"
+import Navbar from "@repo/ui/components/navbar"
 
 export default function TrendingNowPage() {
   return (
@@ -305,7 +305,7 @@ export default function TrendingNowPage() {
                       description="Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes."
                       source="LinkedIn"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Cloud Solutions"
+                      author="By LMNAs Cloud Solutions"
                       date="2 days ago"
                     />
 
@@ -315,7 +315,7 @@ export default function TrendingNowPage() {
                       description="The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning."
                       source="LinkedIn"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Tech Blog"
+                      author="By LMNAs Tech Blog"
                       date="1 week ago"
                     />
 
@@ -325,7 +325,7 @@ export default function TrendingNowPage() {
                       description="Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive."
                       source="YouTube"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Channel"
+                      author="By LMNAs Channel"
                       date="3 days ago"
                     />
 
@@ -334,7 +334,7 @@ export default function TrendingNowPage() {
                       title="Automation isn't the future. It's the present."
                       description="See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI."
                       source="Twitter"
-                      author="@LMNAsCloud"
+                      author="By @LMNAsCloud"
                       date="1 day ago"
                     />
 
@@ -344,7 +344,7 @@ export default function TrendingNowPage() {
                       description="As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability."
                       source="LinkedIn"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Cloud Solutions"
+                      author="By LMNAs Cloud Solutions"
                       date="4 days ago"
                     />
 
@@ -353,7 +353,7 @@ export default function TrendingNowPage() {
                       title="How Data Analytics is Revolutionizing Business Decision-Making"
                       description="Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market."
                       source="LinkedIn"
-                      author="LMNAs Tech Blog"
+                      author="By LMNAs Tech Blog"
                       date="5 days ago"
                     />
                   </div>
@@ -374,7 +374,7 @@ export default function TrendingNowPage() {
                       title="AI-Powered ERP: How Businesses Are Scaling Faster"
                       description="Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes."
                       source="LinkedIn"
-                      author="LMNAs Cloud Solutions"
+                      author="By LMNAs Cloud Solutions"
                       date="2 days ago"
                     />
 
@@ -383,7 +383,7 @@ export default function TrendingNowPage() {
                       title="The Future of Cloud Solutions for Enterprises"
                       description="As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability."
                       source="LinkedIn"
-                      author="LMNAs Cloud Solutions"
+                      author="By LMNAs Cloud Solutions"
                       date="4 days ago"
                     />
 
@@ -392,7 +392,7 @@ export default function TrendingNowPage() {
                       title="Breaking Down the ROI of Intelligent ERP Systems"
                       description="Our latest analysis shows how intelligent ERP systems are delivering unprecedented ROI for businesses across various industries."
                       source="LinkedIn"
-                      author="LMNAs Cloud Solutions"
+                      author="By LMNAs Cloud Solutions"
                       date="1 week ago"
                     />
                   </div>
@@ -413,7 +413,7 @@ export default function TrendingNowPage() {
                       title="5 AI-Driven ERP Trends to Watch"
                       description="The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning."
                       source="LinkedIn"
-                      author="LMNAs Tech Blog"
+                      author="By LMNAs Tech Blog"
                       date="1 week ago"
                     />
 
@@ -422,7 +422,7 @@ export default function TrendingNowPage() {
                       title="How Data Analytics is Reshaping Business Decisions"
                       description="Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete."
                       source="LinkedIn"
-                      author="LMNAs Tech Blog"
+                      author="By LMNAs Tech Blog"
                       date="5 days ago"
                     />
 
@@ -431,7 +431,7 @@ export default function TrendingNowPage() {
                       title="Cloud Security: What Every Business Must Know"
                       description="As businesses migrate more operations to the cloud, security becomes paramount. Here's what you need to know to keep your data safe."
                       source="LinkedIn"
-                      author="LMNAs Tech Blog"
+                      author="By LMNAs Tech Blog"
                       date="2 weeks ago"
                     />
                   </div>
@@ -453,7 +453,7 @@ export default function TrendingNowPage() {
                       description="Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive."
                       source="YouTube"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Channel"
+                      author="By LMNAs Channel"
                       date="3 days ago"
                     />
 
@@ -463,7 +463,7 @@ export default function TrendingNowPage() {
                       description="Take a behind-the-scenes look at LMNAs and learn about our vision for the future of cloud solutions and enterprise technology."
                       source="YouTube"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Channel"
+                      author="By LMNAs Channel"
                       date="1 week ago"
                     />
 
@@ -473,7 +473,7 @@ export default function TrendingNowPage() {
                       description="Hear directly from our clients about how LMNAs Cloud Solutions helped transform their operations and drive growth."
                       source="YouTube"
                       imageUrl="/placeholder.svg?height=200&width=400"
-                      author="LMNAs Channel"
+                      author="By LMNAs Channel"
                       date="2 weeks ago"
                     />
                   </div>
@@ -494,7 +494,7 @@ export default function TrendingNowPage() {
                       title="Automation isn't the future. It's the present."
                       description="See how LMNAs Cloud is leading the charge."
                       source="Twitter"
-                      author="@LMNAsCloud"
+                      author="By @LMNAsCloud"
                       date="1 day ago"
                     />
 
@@ -503,7 +503,7 @@ export default function TrendingNowPage() {
                       title="AI-driven ERP systems are proving to cut costs by 50%"
                       description="How prepared is your business?"
                       source="Twitter"
-                      author="@LMNAsCloud"
+                      author="By @LMNAsCloud"
                       date="3 days ago"
                     />
 
@@ -512,7 +512,7 @@ export default function TrendingNowPage() {
                       title="The key to business scalability?"
                       description="A future-proof cloud solution. Learn more at LMNAs."
                       source="Twitter"
-                      author="@LMNAsCloud"
+                      author="By @LMNAsCloud"
                       date="5 days ago"
                     />
                   </div>
@@ -567,16 +567,16 @@ export default function TrendingNowPage() {
             <div className="flex flex-col gap-2">
               <h3 className="font-medium">Solutions</h3>
               <nav className="flex flex-col gap-2 text-sm text-gray-500">
-                <Link href="#" className="hover:underline">
+                <Link href="/products/lens-erp-suite" className="hover:underline">
                   Cloud ERP
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/solutions" className="hover:underline">
                   AI Analytics
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/solutions" className="hover:underline">
                   Business Intelligence
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/solutions" className="hover:underline">
                   Data Security
                 </Link>
               </nav>
@@ -584,16 +584,16 @@ export default function TrendingNowPage() {
             <div className="flex flex-col gap-2">
               <h3 className="font-medium">Company</h3>
               <nav className="flex flex-col gap-2 text-sm text-gray-500">
-                <Link href="#" className="hover:underline">
+                <Link href="/about-us" className="hover:underline">
                   About
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/blog" className="hover:underline">
                   Blog
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/careers" className="hover:underline">
                   Careers
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="https://nectar.lmnas.com/contact" className="hover:underline">
                   Contact
                 </Link>
               </nav>
@@ -601,16 +601,16 @@ export default function TrendingNowPage() {
             <div className="flex flex-col gap-2">
               <h3 className="font-medium">Legal</h3>
               <nav className="flex flex-col gap-2 text-sm text-gray-500">
-                <Link href="#" className="hover:underline">
+                <Link href="/" className="hover:underline">
                   Terms
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/" className="hover:underline">
                   Privacy
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/" className="hover:underline">
                   Cookies
                 </Link>
-                <Link href="#" className="hover:underline">
+                <Link href="/" className="hover:underline">
                   Licenses
                 </Link>
               </nav>
@@ -621,15 +621,15 @@ export default function TrendingNowPage() {
           <div className="container flex flex-col gap-4 px-4 md:px-6 md:flex-row md:items-center md:justify-between">
             <p className="text-sm text-gray-500">© 2025 LMNAs Cloud Solutions. All rights reserved.</p>
             <div className="flex gap-4">
-              <Link href="#" className="text-gray-500 hover:text-gray-900">
+              <Link href="https://twitter.com/lmnaslimited" className="text-gray-500 hover:text-gray-900">
                 <span className="sr-only">Twitter</span>
                 <Twitter className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-gray-500 hover:text-gray-900">
+              <Link href="https://in.linkedin.com/company/lmnaslimited" className="text-gray-500 hover:text-gray-900">
                 <span className="sr-only">LinkedIn</span>
                 <Linkedin className="h-5 w-5" />
               </Link>
-              <Link href="#" className="text-gray-500 hover:text-gray-900">
+              <Link href="https://www.youtube.com/@lmnascloudsolutions.4549" className="text-gray-500 hover:text-gray-900">
                 <span className="sr-only">YouTube</span>
                 <Youtube className="h-5 w-5" />
               </Link>

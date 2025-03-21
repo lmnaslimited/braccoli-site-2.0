@@ -1,7 +1,7 @@
 import CustomCard from "@repo/ui/components/customCard";
 import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
-import { Navbar } from "@repo/ui/components/navbar";
+import Navbar from "@repo/ui/components/navbar";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
@@ -180,7 +180,7 @@ const pageSlug = [
         buttons: [
           {
             label: "Get a Customized ERP Plan",
-            href: "/",
+            href: "/pricing",
           },
           {
             label: "Learn More About Our Process",
@@ -495,7 +495,7 @@ const pageSlug = [
         buttons: [
           {
             label: " Get a Customized Quote Now",
-            href: "#",
+            href: "https://nectar.lmnas.com/contact",
           },
           {
             label: "Explore Pricing Options",
@@ -690,7 +690,7 @@ const pageSlug = [
         buttons: [
           {
             label: "Get a Customized HRMS Plan",
-            href: "/",
+            href: "/pricing",
           },
           {
             label: "Learn More About Our Process",
@@ -1007,7 +1007,7 @@ const pageSlug = [
         buttons: [
           {
             label: "Get a Customized Quote Now",
-            href: "#",
+            href: "https://nectar.lmnas.com/contact",
           },
           {
             label: "Explore Pricing Options",
