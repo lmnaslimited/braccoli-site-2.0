@@ -3,7 +3,7 @@ import CustomCard from "@repo/ui/components/customCard";
 import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Tbutton, TcalloutProps, TheroProps } from "@repo/ui/type";
+import { Tbutton, TcalloutProps, TheroProps, Titems } from "@repo/ui/type";
 import {
   ArrowRight,
   BarChart,
@@ -37,7 +37,7 @@ import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import Link from "next/link";
-import { Navbar } from "@repo/ui/components/navbar";
+import Navbar from "@repo/ui/components/navbar";
 
 
 
@@ -259,7 +259,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -276,7 +276,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -293,7 +293,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -310,7 +310,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -327,7 +327,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -344,7 +344,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -361,7 +361,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -379,7 +379,7 @@ const pageSlugs = [
         link: [
           {
             label: "Learn More",
-            href: "/",
+            href: "/solutions",
           },
         ],
       },
@@ -789,7 +789,7 @@ const pageSlugs = [
               subtitle: "Minimize stockouts and optimize replenishment."
             },
             category: "Inventory Control",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           },
           {
             header: {
@@ -797,7 +797,7 @@ const pageSlugs = [
               subtitle: "Connect POS, e-commerce, and supply chain seamlessly."
             },
             category: "Order Management",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           },
           {
             header: {
@@ -805,7 +805,7 @@ const pageSlugs = [
               subtitle: "Personalize offers and recommendations with data-driven analytics."
             },
             category: "Customer Engagement",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           },
           {
             header: {
@@ -813,7 +813,7 @@ const pageSlugs = [
               subtitle: "Reduce errors and speed up order processing."
             },
             category: "Order Management",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           },
           {
             header: {
@@ -821,7 +821,7 @@ const pageSlugs = [
               subtitle: "Streamline vendor operations and procurement workflows."
             },
             category: "Inventory Control",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           },
           {
             header: {
@@ -829,7 +829,7 @@ const pageSlugs = [
               subtitle: "Optimize pricing strategies based on demand and competition."
             },
             category: "Sales Analytics",
-            link: [{ label: "Learn More", href: "/" }]
+            link: [{ label: "Learn More", href: "/solutions" }]
           }
         ]
       },
@@ -1243,7 +1243,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1260,7 +1260,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1277,7 +1277,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1294,7 +1294,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1311,7 +1311,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1328,7 +1328,7 @@ const pageSlugs = [
             link: [
               {
                 label: "Learn More",
-                href: "/",
+                href: "/solutions",
               },
             ],
           },
@@ -1560,7 +1560,7 @@ const pageSlugs = [
               descripClass: "mt-6",
             }}
           />
-          <PainPoints industry={industry} />
+          <PainPoints items={industry?.section2.items as Titems[]} />
         </div>
       </section>
       <div className="bg-primary">
@@ -1653,6 +1653,10 @@ const pageSlugs = [
       })) ?? [], // Ensure link is always an array
     })) ?? [] // Fallback in case industry or section4 is undefined
   }
+  tab={{
+    text:"All",
+    label:"Show MOre"
+  }}
 />
 
       </section>
@@ -1732,6 +1736,10 @@ const pageSlugs = [
                     }))
                   : [] // Fallback value
               }
+              tab={{
+                text:"All",
+                label:"Show More"
+              }}
             />
           <div className="mt-12 text-center">
             <div className="space-y-4">

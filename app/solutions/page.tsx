@@ -20,7 +20,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
-import { Navbar } from "@repo/ui/components/navbar";
+import Navbar from "@repo/ui/components/navbar";
 
 export default function Solutions() {
   const hero = {
@@ -33,7 +33,7 @@ export default function Solutions() {
     buttons: [
       {
         label: "See the Success Story",
-        href: "/",
+        href: "/solutions",
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -98,7 +98,7 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "/",
+            href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -115,7 +115,7 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "/",
+            href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -132,7 +132,7 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "/",
+            href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -331,7 +331,7 @@ export default function Solutions() {
       title:
         " What is the one thing holding your business back from scaling faster?",
       label: "See How Other Businesses Solved It",
-      href: "/",
+      href: "/solutions",
       icon: <ArrowRight className="size-6" />,
     },
   };
@@ -523,7 +523,7 @@ export default function Solutions() {
     ],
     footer: {
       label: "Find Your Breakthrough ",
-      href: "/",
+      href: "https://nectar.lmnas.com/book_appointment",
       icon: (
         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
       ),
@@ -694,7 +694,7 @@ export default function Solutions() {
     ] as const,
     footer: {
       label: "Explore Success Stories ",
-      href: "/",
+      href: "/solutions",
       icon: <ArrowRight className="size-5" />,
     },
   };
@@ -852,6 +852,10 @@ export default function Solutions() {
                      })) ?? [], // Ensure button is always an array
                      tag: card.category,
                    }))}
+            tab={{
+              text:"All",
+              label:"Show More"
+            }}
           />
           <div className="mt-3 text-center">
             <Button size="lg" className="group">

@@ -32,7 +32,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/ui/tabs";
-import { Navbar } from "@repo/ui/components/navbar";
+import Navbar from "@repo/ui/components/navbar";
 
 export default function Pricing() {
   const Section1 = {
@@ -449,7 +449,7 @@ export default function Pricing() {
                   </div>
                 ))}
               </div>
-              <div className="mt-8 pt-8 border-t border-gray-200 text-center">
+              <div className="mt-8 pt-8 border-t border-border text-center">
                 <p className="text-lg font-medium mb-6">
                   {Section2.footer.text}
                 </p>
