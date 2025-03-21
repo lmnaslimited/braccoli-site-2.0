@@ -1197,7 +1197,7 @@ export default async function Products({
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
             iTitle={{
-              ...product?.Section2.header,
+              ...product?.Section3.header,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
               headingClass: "md:text-5xl",
@@ -1448,8 +1448,9 @@ export default async function Products({
             <TitleSubtitle
               iTitle={{
                 ...product?.Section6.heading,
+                className:"items-center justify-center",
                 headingClass: "md:text-5xl",
-                descripClass: "md:text-xl/relaxed",
+                descripClass: "md:text-xl/relaxed text-center",
               }}
             />
             <div className="mt-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
