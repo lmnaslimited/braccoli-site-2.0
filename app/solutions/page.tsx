@@ -1,7 +1,6 @@
 "use client";
 
 import CustomCard from "@repo/ui/components/customCard";
-import Header from "@repo/ui/components/header";
 import {
   CheckCircle,
   Download,
@@ -21,6 +20,7 @@ import { Button } from "@repo/ui/components/ui/button";
 import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
+import { Navbar } from "@repo/ui/components/navbar";
 
 export default function Solutions() {
   const hero = {
@@ -343,7 +343,7 @@ export default function Solutions() {
       className: "text-center items-center",
       headingClass: "md:text-5xl",
     },
-    caseStudies: [
+    cards: [
       {
         header: {
           text: "Manufacturing Giant Reduces Manual Work by 72%",
@@ -353,9 +353,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image:{src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -375,9 +375,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -397,9 +397,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -419,9 +419,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "solutions",
@@ -441,9 +441,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -463,9 +463,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -485,9 +485,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -507,9 +507,9 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",
-        button: [
+        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+        alt: "image",},
+        buttons: [
           {
             label: "Read Case Study",
             href: "/solutions",
@@ -701,7 +701,7 @@ export default function Solutions() {
 
   return (
     <>
-      <Header />
+      <Navbar />
       <Hero iHero={hero as TheroProps} />
 
       <section className="w-full py-12 md:py-16 bg-slate">
@@ -831,21 +831,27 @@ export default function Solutions() {
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section5.header as Theader} />
           <Tab
-            data={section5.caseStudies}
-            renderItem={(study, index) => (
-              <CustomCard
-                key={index}
-                header={study.header}
-                className=""
-                image={{
-                  src: study.image,
-                  alt: study.alt,
-                  aspectRatio: "wide",
-                }}
-                button={[...study.button]}
-                tag={study.category}
-              />
-            )}
+            data={section5.cards.map((card) => ({
+                     ...card,
+                     header: {
+                       ...card.header,
+                       descripClass: "text-sm h-16",
+                       headingClass: "text-lg mb-2",
+                     },
+                     image: {
+                       src: card.image.src,
+                       alt: card.image.alt,
+                       aspectRatio: "wide",
+                     },
+                     button: card.buttons?.map((button) => ({
+                       ...button,
+                       icon: <ArrowRight className="size-5" />,
+                       iconPosition: "after",
+                       size: "lg",
+                       variant: "outline",
+                     })) ?? [], // Ensure button is always an array
+                     tag: card.category,
+                   }))}
           />
           <div className="mt-3 text-center">
             <Button size="lg" className="group">
