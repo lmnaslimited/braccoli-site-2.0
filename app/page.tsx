@@ -4,7 +4,7 @@ import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout";
 import FAQs from "@repo/ui/components/faq";
 import SocialProof from "@repo/ui/components/imageComp";
-import {Tfeature, TcalloutProps, TheroProps} from "@repo/ui/type"
+import {TfeatureProps, TcalloutProps, TheroProps} from "@repo/ui/type"
 import { ArrowRight } from "lucide-react";
 import Navbar from "@repo/ui/components/navbar";
 
@@ -213,25 +213,25 @@ const Faq = {
   return (
 <div>
 <Navbar />
-<Hero iHero={hero as TheroProps}/>
+<Hero idHero={hero as TheroProps}/>
 <div className="bg-grayBackground">
-<Feature iFeature={feature[0] as Tfeature}/>
+<Feature iFeature={{...feature[0], iShowButton:true, buttonPosition:"header"} as TfeatureProps}/>
 </div>
 <div className="my-16">
-<Feature iShowButton={false} layout="centered" iFeature={feature[1]as Tfeature} />
+<Feature iFeature={{...feature[1], iShowButton:false, layout:"centered"} as TfeatureProps} />
 </div>
 <div className="bg-dark/70">
   <Callout iCallout={calloutData[0] as TcalloutProps}/>
 </div>
 <div className="my-16">
-<Feature layout="centered" buttonPosition="bottom-center" iFeature={feature[2]as Tfeature}/>
+<Feature iFeature={{...feature[2], layout:"centered",iShowButton:true, buttonPosition:"bottom-center"} as TfeatureProps}/>
 </div>
 <SocialProof />
 <div className="bg-dark/70">
   <Callout iCallout={calloutData[1] as TcalloutProps} />
 </div>
 <div className="my-16">
-<Feature layout="centered" iShowButton={false} iFeature={feature[3]as Tfeature} />
+<Feature iFeature={{...feature[3], layout:"centered", iShowButton:false} as TfeatureProps} />
 </div>
 <div className="bg-grayBackground">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
@@ -240,7 +240,7 @@ const Faq = {
           {Faq.title}
         </h2>
 
-   <FAQs iFaq={Faq.items}/>
+   <FAQs idFaq={Faq.items}/>
 </div>
 </div>
 </div>

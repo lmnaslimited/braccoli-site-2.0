@@ -1065,7 +1065,7 @@ export default async function Products({
     <>
       <Navbar />
       <Hero
-        iHero={
+        idHero={
           {
             ...product?.hero,
             buttons: product?.hero.buttons.map((button) => ({
@@ -1094,15 +1094,17 @@ export default async function Products({
           />
           <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 md:gap-12">
             <CustomCard
-              header={{ text: product?.Section1.card.header.text }}
-              list={product?.Section1.card.list.map((list) => ({
+              idCardProps={{
+                header:{ text: product?.Section1.card.header.text },
+              list:product?.Section1.card.list.map((list) => ({
                 ...list,
                 icon: (
                   <div className="mt-1 rounded-full bg-gray-100 p-1">
                     <ChevronRight className="h-4 w-4" />
                   </div>
                 ),
-              }))}
+              }))
+              }}
             />
             <div className="flex flex-col justify-center space-y-4">
               <TitleSubtitle
@@ -1156,16 +1158,18 @@ export default async function Products({
                     {/* Card Component */}
                     <CustomCard
                       key={iIndex}
-                      header={idCard.header}
-                      link={
+                      idCardProps={{
+                        header:idCard.header,
+                      link:
                         idCard.buttons.map((button) => ({
                           ...button,
                           icon: <ChevronRight className="ml-1 h-3 w-3" />,
                           iconPosition: "after",
-                        })) as Tbutton[]
-                      }
-                      footerClassName="items-start"
-                      className="relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                        })) as Tbutton[],
+                      
+                      footerClassName:"items-start",
+                      className:"relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                      }}
                     />
                   </div>
                 </div>
@@ -1296,20 +1300,22 @@ export default async function Products({
               {product?.Section4.cards.map((idCard, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                  header={{
+                 idCardProps={{
+                  header:{
                     subtitle: idCard.heading.subtitle,
                     descripClass: "italic m-0",
                     headingClass: "mb-0",
-                  }}
-                  avatar={idCard.avator}
-                  nameAndPlace={idCard.nameAndPlace}
-                  namePosition="top"
-                  link={idCard.link.map((lnk) => ({
+                  },
+                  avatar:idCard.avator,
+                  nameAndPlace:idCard.nameAndPlace,
+                  namePosition:"top",
+                  link:idCard.link.map((lnk) => ({
                     ...lnk,
                     icon: <CheckCircle className="h-5 w-5" />,
                     iconPosition: "before",
                     size: "lg",
-                  }))}
+                  }))
+                 }}
                 />
               ))}
             </div>
@@ -1317,12 +1323,14 @@ export default async function Products({
               {product?.Section4.items.map((idItem, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                  header={{
+                 idCardProps={{
+                  header:{
                     text: idItem.header.text,
                     subtitle: idItem.header.subtitle,
                     headingClass: "md:text-4xl mb-0",
-                  }}
-                  className="text-center"
+                  },
+                  className:"text-center"
+                 }}
                 />
               ))}
             </div>

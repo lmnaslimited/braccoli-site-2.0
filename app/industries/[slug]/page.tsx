@@ -1548,7 +1548,7 @@ const pageSlugs = [
   return (
     <>
       <Navbar />
-      <Hero iHero={industry?.hero as TheroProps} />
+      <Hero idHero={industry?.hero as TheroProps} />
       {/* 2 */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
@@ -1560,7 +1560,7 @@ const pageSlugs = [
               descripClass: "mt-6",
             }}
           />
-          <PainPoints items={industry?.section2.items as Titems[]} />
+          <PainPoints idItems={industry?.section2.items as Titems[]} />
         </div>
       </section>
       <div className="bg-primary">
@@ -1597,15 +1597,17 @@ const pageSlugs = [
               <div className="space-y-6">
                 <TitleSubtitle iTitle={section.header} />
                 <CustomCard
-                  header={section.card.header}
-                  link={
+                  idCardProps={{
+                    header: section.card.header,
+                  link:
                     section.card.button.map((button) => ({
                       ...button,
                       icon: <ArrowRight className="ml-2 h-4 w-4" />,
                       iconPosition: "after",
-                    })) as Tbutton[]
-                  }
-                  className="bg-primary/5"
+                    })) as Tbutton[],
+                  
+                  className:"bg-primary/5"
+                  }}
                 />
               </div>
 
@@ -1633,15 +1635,16 @@ const pageSlugs = [
             className: "text-center",
           }}
         />
-        <Tab
-  data={
-    industry?.section4.cards.map((card) => ({
+<Tab
+  idTab={{
+    data: industry?.section4.cards.map((card) => ({
       ...card,
       header: {
         ...card.header,
         headingClass: "text-xl font-semibold mb-2",
       },
       className: "max-w-sm",
+      // Uncomment if needed
       // image: {
       //   svg: card.image.svg,
       //   alt: card.image.alt,
@@ -1651,13 +1654,14 @@ const pageSlugs = [
         icon: <ArrowRight className="size-5" />,
         iconPosition: "after",
       })) ?? [], // Ensure link is always an array
-    })) ?? [] // Fallback in case industry or section4 is undefined
-  }
-  tab={{
-    text:"All",
-    label:"Show MOre"
+    })) ?? [], // Fallback in case industry or section4 is undefined
+    TabDefault: {
+      text: "All",
+      label: "Show More",
+    },
   }}
 />
+
 
       </section>
 
@@ -1676,16 +1680,18 @@ const pageSlugs = [
             {industry?.section5.cards.map((card, index) => (
               <CustomCard
                 key={index}
-                header={{
+               idCardProps={{
+                header:{
                   text: card.header.text,
                   subtitle: card.header.subtitle,
                   headingClass: "mb-2 text-md",
                   descripClass: "text-sm mb-4",
-                }}
-                image={{
+                },
+                image:{
                   svg: card.image.svg,
                   alt: card.image.alt,
-                }}
+                }
+               }}
               />
             ))}
           </div>
@@ -1711,36 +1717,37 @@ const pageSlugs = [
             }}
           />
           <Tab
-              data={
-                industry?.section6.cards
-                  ? industry?.section6.cards.map((card) => ({
-                      ...card,
-                      header: {
-                        ...card.header,
-                        descripClass: "text-sm h-16",
-                        headingClass: "text-lg mb-2",
-                      },
-                      image: {
-                        src: card.image.src,
-                        alt: card.image.alt,
-                        aspectRatio: "wide",
-                      },
-                      button: card.buttons?.map((button: Tbutton) => ({
-                        ...button,
-                        icon: <ArrowRight className="size-5" />,
-                        iconPosition: "after",
-                        size: "lg",
-                        variant: "outline",
-                      })) ?? [], // Ensure button is always an array
-                      tag: card.category,
-                    }))
-                  : [] // Fallback value
-              }
-              tab={{
-                text:"All",
-                label:"Show More"
-              }}
-            />
+  idTab={{
+    data: industry?.section6.cards
+      ? industry.section6.cards.map((card) => ({
+          ...card,
+          header: {
+            ...card.header,
+            descripClass: "text-sm h-16",
+            headingClass: "text-lg mb-2",
+          },
+          image: {
+            src: card.image.src,
+            alt: card.image.alt,
+            aspectRatio: "wide",
+          },
+          button: card.buttons?.map((button: Tbutton) => ({
+            ...button,
+            icon: <ArrowRight className="size-5" />,
+            iconPosition: "after",
+            size: "lg",
+            variant: "outline",
+          })) ?? [], // Ensure button is always an array
+          tag: card.category,
+        }))
+      : [], // Fallback value
+    TabDefault: {
+      text: "All",
+      label: "Show More",
+    },
+  }}
+/>
+
           <div className="mt-12 text-center">
             <div className="space-y-4">
               <h3 className="text-xl font-medium">{industry?.section6.footer.title}</h3>
