@@ -702,23 +702,25 @@ export default function Pricing() {
               {Section4.cards.map((idCard, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                  header={{...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-                    headingClass: "mb-0",}}
-                  className="max-w-md "
-                  image={{svg: (
-                    <div className="flex px-6 pt-4 space-x-1 text-primary">
-                      <Star size={24} fill="currentColor" strokeWidth={0} />
-                      <Star size={24} fill="currentColor" strokeWidth={0} />
-                      <Star size={24} fill="currentColor" strokeWidth={0} />
-                      <Star size={24} fill="currentColor" strokeWidth={0} />
-                      <Star size={24} fill="currentColor" strokeWidth={0} />
-                    </div>
-                  ),
-                  alt: "5-star",}}
-                  avatar={idCard.avatar}
-                  nameAndPlace={idCard.nameAndPlace}
-                  namePosition= "bottom"
-                  footerClassName= "items-start"
+                  idCardProps={{
+                    header:{...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
+                      headingClass: "mb-0",},
+                    className:"max-w-md ",
+                    image:{svg: (
+                      <div className="flex px-6 pt-4 space-x-1 text-primary">
+                        <Star size={24} fill="currentColor" strokeWidth={0} />
+                        <Star size={24} fill="currentColor" strokeWidth={0} />
+                        <Star size={24} fill="currentColor" strokeWidth={0} />
+                        <Star size={24} fill="currentColor" strokeWidth={0} />
+                        <Star size={24} fill="currentColor" strokeWidth={0} />
+                      </div>
+                    ),
+                    alt: "5-star",},
+                    avatar:idCard.avatar,
+                    nameAndPlace:idCard.nameAndPlace,
+                    namePosition:"bottom",
+                    footerClassName:"items-start",
+                  }}
                 />
               ))}
             </div>
@@ -744,7 +746,7 @@ export default function Pricing() {
           descripClass: "md:text-xl/relaxed",
           }} />
           <div className="mx-auto max-w-3xl space-y-4">
-            <FAQs iFaq={Section5.items} />
+            <FAQs idFaq={Section5.items} />
           </div>
         </div>
       </section>

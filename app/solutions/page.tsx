@@ -358,7 +358,7 @@ export default function Solutions() {
         buttons: [
           {
             label: "Read Case Study",
-            href: "/solutions",
+            href: "/solutions/manufacturing-efficiency-lmnas",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -380,7 +380,7 @@ export default function Solutions() {
         buttons: [
           {
             label: "Read Case Study",
-            href: "/solutions",
+            href: "/solutions/retail-revenue-growth-lmnas",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -424,7 +424,7 @@ export default function Solutions() {
         buttons: [
           {
             label: "Read Case Study",
-            href: "solutions",
+            href: "solutions/cross-industry-insights-lmnas",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -702,7 +702,7 @@ export default function Solutions() {
   return (
     <>
       <Navbar />
-      <Hero iHero={hero as TheroProps} />
+      <Hero idHero={hero as TheroProps} />
 
       <section className="w-full py-12 md:py-16 bg-slate">
         <div className="container mx-auto px-4 md:px-6">
@@ -711,9 +711,11 @@ export default function Solutions() {
             {section1.card.map((card, index) => (
               <CustomCard
                 key={index}
-                header={card.header}
-                className={card.className}
-                button={[...card.button]}
+                idCardProps={{
+                  header:card.header,
+                className:card.className,
+                button:[...card.button]
+                }}
               />
             ))}
           </div>
@@ -748,11 +750,13 @@ export default function Solutions() {
                 <>
                   {/* Card Section - Right */}
                   <CustomCard
-                    header={step.header}
-                    nameAndPlace={{ name: step.footer }}
-                    namePosition="bottom"
-                    footerClassName="items-end"
-                    className="bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
+                    idCardProps={{
+                      header:step.header,
+                    nameAndPlace:{ name: step.footer },
+                    namePosition:"bottom",
+                    footerClassName:"items-end",
+                    className:"bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
+                    }}
                   />
                   {/* Icon Section - Left */}
                   <div className="flex justify-center md:justify-start order-1 md:order-2">
@@ -775,11 +779,13 @@ export default function Solutions() {
                   </div>
                   {/* Card Section - Left */}
                   <CustomCard
-                    header={step.header}
-                    nameAndPlace={{ name: step.footer }}
-                    namePosition="bottom"
-                    footerClassName="items-start"
-                    className="bg-slate shadow-none border-none hover:shadow-none"
+                   idCardProps={{
+                    header:step.header,
+                    nameAndPlace:{ name: step.footer },
+                    namePosition:"bottom",
+                    footerClassName:"items-start",
+                    className:"bg-slate shadow-none border-none hover:shadow-none"
+                   }}
                   />
                 </>
               )}
@@ -810,10 +816,12 @@ export default function Solutions() {
           {section4.card.map((card, index) => (
             <CustomCard
               key={index}
-              header={card.header}
-              className={card.className}
-              buttonPosition="items-center justify-center"
-              button={[...card.button]}
+              idCardProps={{
+                header:card.header,
+              className:card.className,
+              buttonPosition:"items-center justify-center",
+              button:[...card.button]
+              }}
             />
           ))}
         </div>
@@ -831,32 +839,35 @@ export default function Solutions() {
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle iTitle={section5.header as Theader} />
           <Tab
-            data={section5.cards.map((card) => ({
-                     ...card,
-                     header: {
-                       ...card.header,
-                       descripClass: "text-sm h-16",
-                       headingClass: "text-lg mb-2",
-                     },
-                     image: {
-                       src: card.image.src,
-                       alt: card.image.alt,
-                       aspectRatio: "wide",
-                     },
-                     button: card.buttons?.map((button) => ({
-                       ...button,
-                       icon: <ArrowRight className="size-5" />,
-                       iconPosition: "after",
-                       size: "lg",
-                       variant: "outline",
-                     })) ?? [], // Ensure button is always an array
-                     tag: card.category,
-                   }))}
-            tab={{
-              text:"All",
-              label:"Show More"
-            }}
-          />
+  idTab={{
+    data: section5.cards.map((card) => ({
+      ...card,
+      header: {
+        ...card.header,
+        descripClass: "text-sm h-16",
+        headingClass: "text-lg mb-2",
+      },
+      image: {
+        src: card.image.src,
+        alt: card.image.alt,
+        aspectRatio: "wide",
+      },
+      button: card.buttons?.map((button) => ({
+        ...button,
+        icon: <ArrowRight className="size-5" />,
+        iconPosition: "after",
+        size: "lg",
+        variant: "outline",
+      })) ?? [], // Ensure button is always an array
+      tag: card.category, // Ensure `tag` is correctly assigned
+    })),
+    TabDefault: {
+      text: "All",
+      label: "Show More",
+    },
+  }}
+/>
+
           <div className="mt-3 text-center">
             <Button size="lg" className="group">
               <Link href={section5.footer.href}> {section5.footer.label} </Link>
@@ -873,8 +884,9 @@ export default function Solutions() {
           {section6.card.map((card, index) => (
             <CustomCard
               key={index}
-              header={card.header}
-              className={card.className}
+              // header:card.header
+              // classNamecard:.className
+              idCardProps={card}
             />
           ))}
         </div>
@@ -894,10 +906,10 @@ export default function Solutions() {
           <div className="flex items-center justify-center">
             <div className="max-w-7xl ">
               <LogoShowcase
-                logos={section7.logo}
-                variant="grid"
-                logoSize="small"
-                logosPerRow={6}
+                idLogoProps={{logos:section7.logo,
+                variant:"grid",
+                logoSize:"small",
+                logosPerRow:6}}
               />
             </div>
           </div>
@@ -905,13 +917,15 @@ export default function Solutions() {
             {section7.card.map((card, index) => (
               <CustomCard
                 key={index}
-                header={card.header}
-                className={card.className}
-                image={card.image}
-                avatar={card.avatar}
-                nameAndPlace={card.nameAndPlace}
-                namePosition={card.namePosition}
-                footerClassName={card.footerClassName}
+                idCardProps={{
+                   header:card.header,
+                className:card.className,
+                image:card.image,
+                avatar:card.avatar,
+                nameAndPlace:card.nameAndPlace,
+                namePosition:card.namePosition,
+                footerClassName:card.footerClassName,
+                }}
               />
             ))}
           </div>
