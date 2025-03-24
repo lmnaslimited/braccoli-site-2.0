@@ -706,25 +706,25 @@ export default function Solutions() {
 
       <section className="w-full py-12 md:py-16 bg-slate">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section1.header as Theader} />
+          <TitleSubtitle idTitle={section1.header as Theader} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section1.card.map((card, index) => (
+            {section1.card.map((idCard, iIndex) => (
               <CustomCard
-                key={index}
+                key={iIndex}
                 idCardProps={{
-                  header:card.header,
-                className:card.className,
-                button:[...card.button]
+                  header:idCard.header,
+                className:idCard.className,
+                button:[...idCard.button]
                 }}
               />
             ))}
           </div>
 
           <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
-            <TitleSubtitle iTitle={section1.cta.header} />
+            <TitleSubtitle idTitle={section1.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-              {section1.cta.button.map((idBtn, index) => 
-              <Button key={index} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
+              {section1.cta.button.map((idBtn, iIndex) => 
+              <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 <Link href={idBtn.href}>
                   <span>{idBtn.label}</span>
                 </Link>
@@ -737,22 +737,22 @@ export default function Solutions() {
 
       {/*3*/}
       <section className="py-16 container mx-auto px-4 md:px-6">
-        <TitleSubtitle iTitle={section3.header as Theader} />
+        <TitleSubtitle idTitle={section3.header as Theader} />
         <div className="grid gap-12 md:gap-16 relative">
           {/* Vertical line for desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-muted -translate-x-1/2 z-0"></div>
-          {section3.steps.map((step, index) => (
+          {section3.steps.map((idStep, iIndex) => (
             <div
-              key={index}
+              key={iIndex}
               className="relative grid md:grid-cols-2 gap-8 items-center"
             >
-              {step.cardPosition === "right" ? (
+              {idStep.cardPosition === "right" ? (
                 <>
                   {/* Card Section - Right */}
                   <CustomCard
                     idCardProps={{
-                      header:step.header,
-                    nameAndPlace:{ name: step.footer },
+                      header:idStep.header,
+                    nameAndPlace:{ name: idStep.footer },
                     namePosition:"bottom",
                     footerClassName:"items-end",
                     className:"bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
@@ -762,7 +762,7 @@ export default function Solutions() {
                   <div className="flex justify-center md:justify-start order-1 md:order-2">
                     <div className="bg-primary/10 p-6 rounded-full relative z-10">
                       <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                        <step.icon className="h-8 w-8" />
+                        <idStep.icon className="h-8 w-8" />
                       </div>
                     </div>
                   </div>
@@ -773,15 +773,15 @@ export default function Solutions() {
                   <div className="flex justify-center md:justify-end">
                     <div className="bg-primary/10 p-6 rounded-full relative z-10">
                       <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                        <step.icon className="h-8 w-8" />
+                        <idStep.icon className="h-8 w-8" />
                       </div>
                     </div>
                   </div>
                   {/* Card Section - Left */}
                   <CustomCard
                    idCardProps={{
-                    header:step.header,
-                    nameAndPlace:{ name: step.footer },
+                    header:idStep.header,
+                    nameAndPlace:{ name: idStep.footer },
                     namePosition:"bottom",
                     footerClassName:"items-start",
                     className:"bg-slate shadow-none border-none hover:shadow-none"
@@ -795,10 +795,10 @@ export default function Solutions() {
 
         <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
           <div className="flex flex-col items-center text-center space-y-6">
-            <TitleSubtitle iTitle={section3.cta.header} />
+            <TitleSubtitle idTitle={section3.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-             {section3.cta.button.map((idBtn, index) => 
-             <Button key={index} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
+             {section3.cta.button.map((idBtn, iIndex) => 
+             <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 {idBtn.icon}
                 <Link href={idBtn.href}>
                   <span>{idBtn.label}</span>
@@ -811,16 +811,16 @@ export default function Solutions() {
 
       {/* 4 */}
       <section className="my-40 mx-auto text-center flex flex-col items-center justify-center">
-        <TitleSubtitle iTitle={section4.header as Theader} />
+        <TitleSubtitle idTitle={section4.header as Theader} />
         <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-4 max-w-6xl">
-          {section4.card.map((card, index) => (
+          {section4.card.map((idCard, iIndex) => (
             <CustomCard
-              key={index}
+              key={iIndex}
               idCardProps={{
-                header:card.header,
-              className:card.className,
+                header:idCard.header,
+              className:idCard.className,
               buttonPosition:"items-center justify-center",
-              button:[...card.button]
+              button:[...idCard.button]
               }}
             />
           ))}
@@ -837,29 +837,29 @@ export default function Solutions() {
       {/* 5 */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section5.header as Theader} />
+          <TitleSubtitle idTitle={section5.header as Theader} />
           <Tab
   idTab={{
-    data: section5.cards.map((card) => ({
-      ...card,
+    data: section5.cards.map((idCard) => ({
+      ...idCard,
       header: {
-        ...card.header,
+        ...idCard.header,
         descripClass: "text-sm h-16",
         headingClass: "text-lg mb-2",
       },
       image: {
-        src: card.image.src,
-        alt: card.image.alt,
+        src: idCard.image.src,
+        alt: idCard.image.alt,
         aspectRatio: "wide",
       },
-      button: card.buttons?.map((button) => ({
-        ...button,
+      button: idCard.buttons?.map((iaButton) => ({
+        ...iaButton,
         icon: <ArrowRight className="size-5" />,
         iconPosition: "after",
         size: "lg",
         variant: "outline",
       })) ?? [], // Ensure button is always an array
-      tag: card.category, // Ensure `tag` is correctly assigned
+      tag: idCard.category, // Ensure `tag` is correctly assigned
     })),
     TabDefault: {
       text: "All",
@@ -879,14 +879,14 @@ export default function Solutions() {
 
       {/* 6 */}
       <section className="py-20 container mx-auto px-4 md:px-6 text-center">
-        <TitleSubtitle iTitle={section6.header as Theader} />
+        <TitleSubtitle idTitle={section6.header as Theader} />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-          {section6.card.map((card, index) => (
+          {section6.card.map((idCard, iIndex) => (
             <CustomCard
-              key={index}
+              key={iIndex}
               // header:card.header
               // classNamecard:.className
-              idCardProps={card}
+              idCardProps={idCard}
             />
           ))}
         </div>
@@ -902,7 +902,7 @@ export default function Solutions() {
       {/* 7 */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={section7.header as Theader} />
+          <TitleSubtitle idTitle={section7.header as Theader} />
           <div className="flex items-center justify-center">
             <div className="max-w-7xl ">
               <LogoShowcase
@@ -914,17 +914,17 @@ export default function Solutions() {
             </div>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section7.card.map((card, index) => (
+            {section7.card.map((idCard, iIndex) => (
               <CustomCard
-                key={index}
+                key={iIndex}
                 idCardProps={{
-                   header:card.header,
-                className:card.className,
-                image:card.image,
-                avatar:card.avatar,
-                nameAndPlace:card.nameAndPlace,
-                namePosition:card.namePosition,
-                footerClassName:card.footerClassName,
+                   header:idCard.header,
+                className:idCard.className,
+                image:idCard.image,
+                avatar:idCard.avatar,
+                nameAndPlace:idCard.nameAndPlace,
+                namePosition:idCard.namePosition,
+                footerClassName:idCard.footerClassName,
                 }}
               />
             ))}
@@ -938,7 +938,7 @@ export default function Solutions() {
         </div>
       </section>
       <div className="bg-dark">
-        <Callout iCallout={calloutData[0] as TcalloutProps} />
+        <Callout idCallout={calloutData[0] as TcalloutProps} />
       </div>
       <section className="py-20">
         <div className="container px-4 md:px-6">

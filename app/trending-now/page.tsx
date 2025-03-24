@@ -301,60 +301,60 @@ export default function TrendingNowPage() {
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {/* LinkedIn Post 1 */}
                     <TrendCard
-                      title="AI-Powered ERP: How Businesses Are Scaling Faster"
-                      description="Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes."
-                      source="LinkedIn"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Cloud Solutions"
-                      date="2 days ago"
+                      idTrends={{title:"AI-Powered ERP: How Businesses Are Scaling Faster",
+                      description:"Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
+                      source:"LinkedIn",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Cloud Solutions",
+                      date:"2 days ago"}}
                     />
 
                     {/* Blog Post */}
                     <TrendCard
-                      title="5 AI-Driven ERP Trends That Will Transform Your Business"
-                      description="The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning."
-                      source="LinkedIn"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Tech Blog"
-                      date="1 week ago"
+                      idTrends={{title:"5 AI-Driven ERP Trends That Will Transform Your Business",
+                      description:"The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
+                      source:"LinkedIn",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Tech Blog",
+                      date:"1 week ago"}}
                     />
 
                     {/* YouTube Video */}
                     <TrendCard
-                      title="The Impact of AI on Enterprise Growth & Innovation"
-                      description="Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive."
-                      source="YouTube"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Channel"
-                      date="3 days ago"
+                      idTrends={{title:"The Impact of AI on Enterprise Growth & Innovation",
+                      description:"Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
+                      source:"YouTube",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Channel",
+                      date:"3 days ago"}}
                     />
 
                     {/* Twitter Post */}
                     <TrendCard
-                      title="Automation isn't the future. It's the present."
-                      description="See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI."
-                      source="Twitter"
-                      author="By @LMNAsCloud"
-                      date="1 day ago"
+                      idTrends={{title:"Automation isn't the future. It's the present.",
+                      description:"See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI.",
+                      source:"Twitter",
+                      author:"By @LMNAsCloud",
+                      date:"1 day ago"}}
                     />
 
                     {/* LinkedIn Post 2 */}
                     <TrendCard
-                      title="The Future of Cloud Solutions for Enterprise Transformation"
-                      description="As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability."
-                      source="LinkedIn"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Cloud Solutions"
-                      date="4 days ago"
+                      idTrends={{title:"The Future of Cloud Solutions for Enterprise Transformation",
+                      description:"As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
+                      source:"LinkedIn",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Cloud Solutions",
+                      date:"4 days ago"}}
                     />
 
                     {/* Blog Post 2 */}
                     <TrendCard
-                      title="How Data Analytics is Revolutionizing Business Decision-Making"
-                      description="Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market."
-                      source="LinkedIn"
-                      author="By LMNAs Tech Blog"
-                      date="5 days ago"
+                      idTrends={{title:"How Data Analytics is Revolutionizing Business Decision-Making",
+                      description:"Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Tech Blog",
+                      date:"5 days ago"}}
                     />
                   </div>
 
@@ -371,29 +371,29 @@ export default function TrendingNowPage() {
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {/* LinkedIn Post 1 */}
                     <TrendCard
-                      title="AI-Powered ERP: How Businesses Are Scaling Faster"
-                      description="Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes."
-                      source="LinkedIn"
-                      author="By LMNAs Cloud Solutions"
-                      date="2 days ago"
+                      idTrends={{title:"AI-Powered ERP: How Businesses Are Scaling Faster",
+                      description:"Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Cloud Solutions",
+                      date:"2 days ago"}}
                     />
 
                     {/* LinkedIn Post 2 */}
                     <TrendCard
-                      title="The Future of Cloud Solutions for Enterprises"
-                      description="As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability."
-                      source="LinkedIn"
-                      author="By LMNAs Cloud Solutions"
-                      date="4 days ago"
+                      idTrends={{title:"The Future of Cloud Solutions for Enterprises",
+                      description:"As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Cloud Solutions",
+                      date:"4 days ago"}}
                     />
 
                     {/* LinkedIn Post 3 */}
                     <TrendCard
-                      title="Breaking Down the ROI of Intelligent ERP Systems"
-                      description="Our latest analysis shows how intelligent ERP systems are delivering unprecedented ROI for businesses across various industries."
-                      source="LinkedIn"
-                      author="By LMNAs Cloud Solutions"
-                      date="1 week ago"
+                      idTrends={{title:"Breaking Down the ROI of Intelligent ERP Systems",
+                      description:"Our latest analysis shows how intelligent ERP systems are delivering unprecedented ROI for businesses across various industries.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Cloud Solutions",
+                      date:"1 week ago"}}
                     />
                   </div>
 
@@ -410,29 +410,29 @@ export default function TrendingNowPage() {
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {/* Blog Post 1 */}
                     <TrendCard
-                      title="5 AI-Driven ERP Trends to Watch"
-                      description="The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning."
-                      source="LinkedIn"
-                      author="By LMNAs Tech Blog"
-                      date="1 week ago"
+                      idTrends={{title:"5 AI-Driven ERP Trends to Watch",
+                      description:"The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Tech Blog",
+                      date:"1 week ago"}}
                     />
 
                     {/* Blog Post 2 */}
                     <TrendCard
-                      title="How Data Analytics is Reshaping Business Decisions"
-                      description="Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete."
-                      source="LinkedIn"
-                      author="By LMNAs Tech Blog"
-                      date="5 days ago"
+                      idTrends={{title:"How Data Analytics is Reshaping Business Decisions",
+                      description:"Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Tech Blog",
+                      date:"5 days ago"}}
                     />
 
                     {/* Blog Post 3 */}
                     <TrendCard
-                      title="Cloud Security: What Every Business Must Know"
-                      description="As businesses migrate more operations to the cloud, security becomes paramount. Here's what you need to know to keep your data safe."
-                      source="LinkedIn"
-                      author="By LMNAs Tech Blog"
-                      date="2 weeks ago"
+                      idTrends={{title:"Cloud Security: What Every Business Must Know",
+                      description:"As businesses migrate more operations to the cloud, security becomes paramount. Here's what you need to know to keep your data safe.",
+                      source:"LinkedIn",
+                      author:"By LMNAs Tech Blog",
+                      date:"2 weeks ago"}}
                     />
                   </div>
 
@@ -449,32 +449,32 @@ export default function TrendingNowPage() {
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {/* YouTube Video 1 */}
                     <TrendCard
-                      title="The Impact of AI on Enterprise Growth"
-                      description="Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive."
-                      source="YouTube"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Channel"
-                      date="3 days ago"
+                      idTrends={{title:"The Impact of AI on Enterprise Growth",
+                      description:"Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
+                      source:"YouTube",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Channel",
+                      date:"3 days ago"}}
                     />
 
                     {/* YouTube Video 2 */}
                     <TrendCard
-                      title="Inside LMNAs: Our Vision for the Future"
-                      description="Take a behind-the-scenes look at LMNAs and learn about our vision for the future of cloud solutions and enterprise technology."
-                      source="YouTube"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Channel"
-                      date="1 week ago"
+                      idTrends={{title:"Inside LMNAs: Our Vision for the Future",
+                      description:"Take a behind-the-scenes look at LMNAs and learn about our vision for the future of cloud solutions and enterprise technology.",
+                      source:"YouTube",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Channel",
+                      date:"1 week ago"}}
                     />
 
                     {/* YouTube Video 3 */}
                     <TrendCard
-                      title="Client Success Stories: How Businesses Transformed with LMNAs"
-                      description="Hear directly from our clients about how LMNAs Cloud Solutions helped transform their operations and drive growth."
-                      source="YouTube"
-                      imageUrl="/placeholder.svg?height=200&width=400"
-                      author="By LMNAs Channel"
-                      date="2 weeks ago"
+                      idTrends={{title:"Client Success Stories: How Businesses Transformed with LMNAs",
+                      description:"Hear directly from our clients about how LMNAs Cloud Solutions helped transform their operations and drive growth.",
+                      source:"YouTube",
+                      imageUrl:"/placeholder.svg?height=200&width=400",
+                      author:"By LMNAs Channel",
+                      date:"2 weeks ago"}}
                     />
                   </div>
 
@@ -491,29 +491,29 @@ export default function TrendingNowPage() {
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {/* Twitter Post 1 */}
                     <TrendCard
-                      title="Automation isn't the future. It's the present."
-                      description="See how LMNAs Cloud is leading the charge."
-                      source="Twitter"
-                      author="By @LMNAsCloud"
-                      date="1 day ago"
+                      idTrends={{title:"Automation isn't the future. It's the present.",
+                      description:"See how LMNAs Cloud is leading the charge.",
+                      source:"Twitter",
+                      author:"By @LMNAsCloud",
+                      date:"1 day ago"}}
                     />
 
                     {/* Twitter Post 2 */}
                     <TrendCard
-                      title="AI-driven ERP systems are proving to cut costs by 50%"
-                      description="How prepared is your business?"
-                      source="Twitter"
-                      author="By @LMNAsCloud"
-                      date="3 days ago"
+                      idTrends={{title:"AI-driven ERP systems are proving to cut costs by 50%",
+                      description:"How prepared is your business?",
+                      source:"Twitter",
+                      author:"By @LMNAsCloud",
+                      date:"3 days ago"}}
                     />
 
                     {/* Twitter Post 3 */}
                     <TrendCard
-                      title="The key to business scalability?"
-                      description="A future-proof cloud solution. Learn more at LMNAs."
-                      source="Twitter"
-                      author="By @LMNAsCloud"
-                      date="5 days ago"
+                      idTrends={{title:"The key to business scalability?",
+                      description:"A future-proof cloud solution. Learn more at LMNAs.",
+                      source:"Twitter",
+                      author:"By @LMNAsCloud",
+                      date:"5 days ago"}}
                     />
                   </div>
 

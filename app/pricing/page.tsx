@@ -400,7 +400,7 @@ export default function Pricing() {
       {/* hero section section1 */}
       <section className="relative overflow-hidden border-b border-border/40 py-20 md:py-32 bg-grayBackground">
         <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={{...Section1.header, 
+          <TitleSubtitle idTitle={{...Section1.header, 
           className:"mx-auto flex max-w-[58rem] flex-col items-center justify-center mb-4 text-center",
       headingClass: "sm:text-4xl md:text-5xl lg:text-6xl",
       descripClass: "max-w-[85%] md:text-xl/relaxed mx-auto",}} />
@@ -428,22 +428,22 @@ export default function Pricing() {
       {/* section 2 */}
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={{...Section2.header, 
+          <TitleSubtitle idTitle={{...Section2.header, 
              className: "mx-auto max-w-[58rem] text-center",
              descripClass: "mx-auto",
           }} />
           <div className="mx-auto max-w-4xl">
             <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
               <div className="grid gap-6 md:grid-cols-2">
-                {Section2.items.map((issue, index) => (
+                {Section2.items.map((idIssue, index) => (
                   <div key={index} className="flex items-start gap-3">
                     <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
-                      {issue.icon}
+                      {idIssue.icon}
                     </div>
                     <div>
-                      <p className="font-medium">{issue.question}</p>
+                      <p className="font-medium">{idIssue.question}</p>
                       <p className="text-sm text-muted-foreground">
-                        {issue.answer}
+                        {idIssue.answer}
                       </p>
                     </div>
                   </div>
@@ -479,7 +479,7 @@ export default function Pricing() {
           <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
             <span className="font-medium">{Section3.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={{...Section3.header, 
+          <TitleSubtitle idTitle={{...Section3.header, 
             className:
             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
           descripClass: "md:text-xl/relaxed ",
@@ -496,32 +496,32 @@ export default function Pricing() {
                         <TableHead className="w-[250px] text-background">
                           {Section3.tableHead}
                         </TableHead>
-                        {Section3.pricingPlans.map((plan) => (
+                        {Section3.pricingPlans.map((idPlan) => (
                           <TableHead
-                            key={plan.name}
+                            key={idPlan.name}
                             className="text-center text-background"
                           >
-                            {plan.name}
+                            {idPlan.name}
                           </TableHead>
                         ))}
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {Section3.features.map((feature, index) => (
+                      {Section3.features.map((iFeature, iIndex) => (
                         <TableRow
-                          key={index}
+                          key={iIndex}
                           className="border-b hover:bg-grayBackground"
                         >
                           <TableCell className="font-medium p-4">
-                            {feature}
+                            {iFeature}
                           </TableCell>
-                          {Section3.pricingPlans.map((plan, i) => (
+                          {Section3.pricingPlans.map((iPlan, i) => (
                             <TableCell key={i} className="text-center p-4">
                               {
-                                plan[
-                                  Object.keys(plan)[
-                                    index + 1
-                                  ] as keyof typeof plan
+                                iPlan[
+                                  Object.keys(iPlan)[
+                                    iIndex + 1
+                                  ] as keyof typeof iPlan
                                 ]
                               }
                             </TableCell>
@@ -530,18 +530,18 @@ export default function Pricing() {
                       ))}
                       <TableRow className="bg-grayBackground border-t">
                         <TableCell></TableCell>
-                        {Section3.pricingPlans.map((plan, index) => (
-                          <TableCell key={index} className="text-center">
+                        {Section3.pricingPlans.map((plan, iIndex) => (
+                          <TableCell key={iIndex} className="text-center">
                             <Button
-                              variant={index === 2 ? "default" : "outline"}
+                              variant={iIndex === 2 ? "default" : "outline"}
                               size="sm"
                               className={
-                                index === 2
+                                iIndex === 2
                                   ? "bg-primary hover:bg-primary/80"
                                   : ""
                               }
                             >
-                              {index === 2 ? "Most Popular" : "Get Started"}
+                              {iIndex === 2 ? "Most Popular" : "Get Started"}
                             </Button>
                           </TableCell>
                         ))}
@@ -555,7 +555,7 @@ export default function Pricing() {
               <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
                 <span className="font-medium">{Section3.footer.text}</span>
               </div>
-              <TitleSubtitle iTitle={{...Section3.footer.header,
+              <TitleSubtitle idTitle={{...Section3.footer.header,
                 className:
                 "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
               descripClass: "md:text-sm",
@@ -584,7 +584,7 @@ export default function Pricing() {
           <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
             <span className="font-medium">{Section7.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={{...Section7.header,
+          <TitleSubtitle idTitle={{...Section7.header,
             className:
             "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
           headingClass: "md:text-5xl",
@@ -593,56 +593,56 @@ export default function Pricing() {
           <div className="mx-auto max-w-6xl">
             <Tabs defaultValue="performance" className="w-full">
               <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-primary/70 p-1 rounded-lg">
-                {Section7.categories.map((tab) => (
+                {Section7.categories.map((iTab) => (
                   <TabsTrigger
-                    key={tab}
-                    value={tab}
+                    key={iTab}
+                    value={iTab}
                     className="data-[state=active]:bg-accent data-[state=active]:text-primary 
                          text-grayBackground transition-all px-4 rounded-lg"
                   >
-                    {tab.charAt(0).toUpperCase() +
-                      tab.slice(1).replace("-", " ")}
+                    {iTab.charAt(0).toUpperCase() +
+                      iTab.slice(1).replace("-", " ")}
                   </TabsTrigger>
                 ))}
               </TabsList>
 
               <div className="bg-background rounded-xl p-4 shadow-2xl">
-                {Section7.categories.map((tab) => (
+                {Section7.categories.map((iTab) => (
                   <TabsContent
-                    key={tab}
-                    value={tab}
+                    key={iTab}
+                    value={iTab}
                     className="space-y-4 rounded-lg overflow-hidden"
                   >
                     <div className="overflow-x-auto">
                       <Table>
                         <TableHeader>
                           <TableRow className="bg-primary hover:bg-primary">
-                            {Section7.tableHeaders.map((header, index) => (
+                            {Section7.tableHeaders.map((iHeader, iIndex) => (
                               <TableHead
-                                key={index}
+                                key={iIndex}
                                 className="text-background font-bold text-base"
                               >
-                                {header}
+                                {iHeader}
                               </TableHead>
                             ))}
                           </TableRow>
                         </TableHeader>
                         <TableBody>
                           {Section7.items
-                            .filter((item) => item.category === tab)
-                            .map((row, index) => (
-                              <TableRow key={index} className="border-b">
+                            .filter((item) => item.category === iTab)
+                            .map((idRow, iIndex) => (
+                              <TableRow key={iIndex} className="border-b">
                                 <TableCell className="font-bold bg-grayBackground text-primary py-4">
-                                  {row.Benefit}
+                                  {idRow.Benefit}
                                 </TableCell>
                                 <TableCell className="text-sm bg-background text-primary">
                                   <div className="flex items-center gap-2">
                                     <CheckCircle className="h-5 w-5 text-muted-primary" />
-                                    <span>{row.header1}</span>
+                                    <span>{idRow.header1}</span>
                                   </div>
                                 </TableCell>
                                 <TableCell className="text-sm bg-grayBackground text-primary">
-                                  {row.header2}
+                                  {idRow.header2}
                                 </TableCell>
                               </TableRow>
                             ))}
@@ -656,7 +656,7 @@ export default function Pricing() {
             <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
               <div className="grid md:grid-cols-5 items-center">
                 <div className="md:col-span-3 p-6 md:p-8 text-accent">
-                  <TitleSubtitle iTitle={{...Section7.footer.header,
+                  <TitleSubtitle idTitle={{...Section7.footer.header,
                       headingClass: "md:text-2xl mb-2",
                       descripClass: "md:text-base text-accent",
                   }} />
@@ -673,7 +673,7 @@ export default function Pricing() {
                   <div className="bg-secondary/10 rounded-full p-3 mb-3">
                     <Download className="h-6 w-6 text-accent" />
                   </div>
-                  <TitleSubtitle iTitle={{...Section7.footer.cta,
+                  <TitleSubtitle idTitle={{...Section7.footer.cta,
                      headingClass: "md:text-lg mb-1",
                      descripClass: "md:text-sm text-accent",
                   }} />
@@ -692,7 +692,7 @@ export default function Pricing() {
       {/* Testimonials Section */}
       <section className="border-b border-border/40 py-20 bg-grayBackground">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle iTitle={{...Section4.header,
+          <TitleSubtitle idTitle={{...Section4.header,
              className:
              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
            headingClass: "md:text-5xl",
@@ -739,7 +739,7 @@ export default function Pricing() {
           <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
             <span className="font-medium">{Section5.header.badge}</span>
           </div>
-          <TitleSubtitle iTitle={{...Section5.header,
+          <TitleSubtitle idTitle={{...Section5.header,
             className:
             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
           headingClass: "md:text-5xl",
@@ -758,7 +758,7 @@ export default function Pricing() {
             <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
               <span className="font-medium">{Section6.header.badge}</span>
             </div>
-            <TitleSubtitle iTitle={{...Section6.header,  headingClass: "md:text-5xl",
+            <TitleSubtitle idTitle={{...Section6.header,  headingClass: "md:text-5xl",
       descripClass: "md:text-xl/relaxed",}} />
             <div className="bg-background border-2 border-primary rounded-lg p-8 mb-8 shadow-xl">
               <h3 className="text-xl font-bold mb-6">{Section6.cta.title}</h3>
