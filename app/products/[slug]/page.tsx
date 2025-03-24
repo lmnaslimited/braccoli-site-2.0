@@ -1068,8 +1068,8 @@ export default async function Products({
         idHero={
           {
             ...product?.hero,
-            buttons: product?.hero.buttons.map((button) => ({
-              ...button,
+            buttons: product?.hero.buttons.map((idButton) => ({
+              ...idButton,
               icon: (
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               ),
@@ -1084,7 +1084,7 @@ export default async function Products({
       <section className="border-b border-border/40 py-20">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
-            iTitle={{
+            idTitle={{
               ...product?.Section1.header,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
@@ -1096,10 +1096,10 @@ export default async function Products({
             <CustomCard
               idCardProps={{
                 header:{ text: product?.Section1.card.header.text },
-              list:product?.Section1.card.list.map((list) => ({
-                ...list,
+              list:product?.Section1.card.list.map((iaList) => ({
+                ...iaList,
                 icon: (
-                  <div className="mt-1 rounded-full bg-gray-100 p-1">
+                  <div className="mt-1 rounded-full bg-grayBackground p-1">
                     <ChevronRight className="h-4 w-4" />
                   </div>
                 ),
@@ -1108,7 +1108,7 @@ export default async function Products({
             />
             <div className="flex flex-col justify-center space-y-4">
               <TitleSubtitle
-                iTitle={{
+                idTitle={{
                   ...product?.Section1.footer.header,
                   headingClass: "md:text-2xl",
                 }}
@@ -1136,7 +1136,7 @@ export default async function Products({
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
-            iTitle={{
+            idTitle={{
               ...product?.Section2.header,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
@@ -1161,8 +1161,8 @@ export default async function Products({
                       idCardProps={{
                         header:idCard.header,
                       link:
-                        idCard.buttons.map((button) => ({
-                          ...button,
+                        idCard.buttons.map((iaButton) => ({
+                          ...iaButton,
                           icon: <ChevronRight className="ml-1 h-3 w-3" />,
                           iconPosition: "after",
                         })) as Tbutton[],
@@ -1200,7 +1200,7 @@ export default async function Products({
       <section className="border-b border-border/40 py-20 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
-            iTitle={{
+            idTitle={{
               ...product?.Section3.header,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
@@ -1208,53 +1208,53 @@ export default async function Products({
             }}
           />
           <div className="mx-auto max-w-6xl py-12">
-            {product?.Section3.features.map((feature, index) => (
+            {product?.Section3.features.map((idFeature, iIndex) => (
               <div
-                key={index}
+                key={iIndex}
                 className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-all hover:shadow-md mb-12"
               >
                 <div className="grid gap-8 md:grid-cols-2 items-center p-6 md:p-8">
-                  {index % 2 !== 0 ? (
+                  {iIndex % 2 !== 0 ? (
                     <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
                       <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                      {feature.img}
+                      {idFeature.img}
                     </div>
                   ) : null}
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-4 mb-4 flex-wrap">
-                      {feature.icons.map((highlight, i) => (
+                      {idFeature.icons.map((idHighlight, iHighlightIndex) => (
                         <div
-                          key={i}
+                          key={iHighlightIndex}
                           className="flex items-center gap-2 bg-grayBackground px-3 py-2 rounded-lg"
                         >
-                          {highlight.icon}
+                          {idHighlight.icon}
                           <span className="text-sm font-medium">
-                            {highlight.text}
+                            {idHighlight.text}
                           </span>
                         </div>
                       ))}
                     </div>
                     <TitleSubtitle
-                      iTitle={{
-                        ...feature.heading,
+                      idTitle={{
+                        ...idFeature.heading,
                         headingClass:
                           "md:text-2xl group-hover:underline transition-al",
                       }}
                     />
                     <Link
-                      href={feature.link.href}
+                      href={idFeature.link.href}
                       className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors"
                     >
-                      {feature.link.label}
+                      {idFeature.link.label}
                       <ChevronRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </div>
 
-                  {index % 2 === 0 ? (
+                  {iIndex % 2 === 0 ? (
                     <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
                       <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                      {feature.img}
+                      {idFeature.img}
                     </div>
                   ) : null}
                 </div>
@@ -1266,9 +1266,9 @@ export default async function Products({
               {product?.Section3.footer.heading.text}
             </p>
             <div className="flex flex-col gap-2 sm:flex-row justify-center">
-              {product?.Section3.footer.buttons.map((idBtn, index) => (
+              {product?.Section3.footer.buttons.map((idBtn, iIndex) => (
                 <Button
-                  key={index}
+                  key={iIndex}
                   size="lg"
                   className="gap-2"
                   variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
@@ -1288,7 +1288,7 @@ export default async function Products({
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
-            iTitle={{
+            idTitle={{
               ...product?.Section4.heading,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
@@ -1309,8 +1309,8 @@ export default async function Products({
                   avatar:idCard.avator,
                   nameAndPlace:idCard.nameAndPlace,
                   namePosition:"top",
-                  link:idCard.link.map((lnk) => ({
-                    ...lnk,
+                  link:idCard.link.map((iaLnk) => ({
+                    ...iaLnk,
                     icon: <CheckCircle className="h-5 w-5" />,
                     iconPosition: "before",
                     size: "lg",
@@ -1344,9 +1344,9 @@ export default async function Products({
               </span>
             </p>
             <div className="flex flex-col gap-2 sm:flex-row justify-center">
-              {product?.Section4.footer.buttons.map((idBtn, index) => (
+              {product?.Section4.footer.buttons.map((idBtn, iIndex) => (
                 <Button
-                  key={index}
+                  key={iIndex}
                   size="lg"
                   className="gap-2"
                   variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
@@ -1371,7 +1371,7 @@ export default async function Products({
             </span>
           </div>
           <TitleSubtitle
-            iTitle={{
+            idTitle={{
               ...product?.Section5.heading,
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
@@ -1382,7 +1382,7 @@ export default async function Products({
           <div className="mx-auto max-w-5xl py-12">
             <div className="relative mx-auto max-w-3xl bg-background rounded-xl border-2 border-primary p-8 shadow-lg">
               <TitleSubtitle
-                iTitle={{
+                idTitle={{
                   ...product?.Section5.items.heading,
                   className: "text-center",
                   headingClass: "md:text-2xl",
@@ -1399,16 +1399,16 @@ export default async function Products({
 
               <div className="mt-8 space-y-6">
                 <div className="grid gap-4 md:grid-cols-2">
-                  {product?.Section5.items.points.map((point, index) => (
-                    <div className="space-y-2" key={index}>
+                  {product?.Section5.items.points.map((idpoint, iIndex) => (
+                    <div className="space-y-2" key={iIndex}>
                       <div className="flex items-center gap-2">
                         <CheckCircle className="h-5 w-5" />
                         <span className="font-medium">
-                          {point.heading.text}
+                          {idpoint.heading.text}
                         </span>
                       </div>
                       <p className="text-sm text-muted-foreground pl-7">
-                        {point.heading.subtitle}
+                        {idpoint.heading.subtitle}
                       </p>
                     </div>
                   ))}
@@ -1417,14 +1417,14 @@ export default async function Products({
                   <p className="font-medium text-lg">
                     {product?.Section5.footer.heading.text}
                   </p>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted-foreground">
                     {product?.Section5.footer.heading.subtitle}
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 sm:flex-row justify-center mt-6">
-                  {product?.Section5.footer.buttons.map((idBtn, index) => (
+                  {product?.Section5.footer.buttons.map((idBtn, iIndex) => (
                     <Button
-                      key={index}
+                      key={iIndex}
                       size="lg"
                       className="gap-2"
                       variant={
@@ -1454,16 +1454,16 @@ export default async function Products({
               </span>
             </div>
             <TitleSubtitle
-              iTitle={{
+              idTitle={{
                 ...product?.Section6.heading,
                 className:"items-center justify-center",
                 headingClass: "md:text-5xl",
                 descripClass: "md:text-xl/relaxed text-center",
               }}
             />
-            <div className="mt-8 p-6 bg-white rounded-lg border border-gray-200 shadow-sm">
+            <div className="mt-8 p-6 bg-background rounded-lg border border-border shadow-sm">
               <TitleSubtitle
-                iTitle={{
+                idTitle={{
                   ...product?.Section6.item.heading,
                   className: "mb-4",
                   headingClass: "md:text-xl mb-2",
@@ -1477,9 +1477,9 @@ export default async function Products({
                 <span>{product?.Section6.footer.heading.text}</span>
               </div>
               <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                {product?.Section6.footer.buttons.map((idBtn, index) => (
+                {product?.Section6.footer.buttons.map((idBtn, iIndex) => (
                   <Button
-                    key={index}
+                    key={iIndex}
                     size="lg"
                     className="gap-2"
                     variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
@@ -1492,7 +1492,7 @@ export default async function Products({
                 ))}
               </div>
             </div>
-            <p className="mt-6 text-sm text-gray-500">
+            <p className="mt-6 text-sm text-muted-foreground">
               {product?.Section6.footer.heading.subtitle}
             </p>
           </div>
