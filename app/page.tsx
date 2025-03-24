@@ -215,23 +215,23 @@ const Faq = {
 <Navbar />
 <Hero idHero={hero as TheroProps}/>
 <div className="bg-grayBackground">
-<Feature iFeature={{...feature[0], iShowButton:true, buttonPosition:"header"} as TfeatureProps}/>
+<Feature idFeature={{...feature[0], iShowButton:true, buttonPosition:"header"} as TfeatureProps}/>
 </div>
 <div className="my-16">
-<Feature iFeature={{...feature[1], iShowButton:false, layout:"centered"} as TfeatureProps} />
+<Feature idFeature={{...feature[1], iShowButton:false, layout:"centered"} as TfeatureProps} />
 </div>
 <div className="bg-dark/70">
-  <Callout iCallout={calloutData[0] as TcalloutProps}/>
+  <Callout idCallout={calloutData[0] as TcalloutProps}/>
 </div>
 <div className="my-16">
-<Feature iFeature={{...feature[2], layout:"centered",iShowButton:true, buttonPosition:"bottom-center"} as TfeatureProps}/>
+<Feature idFeature={{...feature[2], layout:"centered",iShowButton:true, buttonPosition:"bottom-center"} as TfeatureProps}/>
 </div>
 <SocialProof />
 <div className="bg-dark/70">
-  <Callout iCallout={calloutData[1] as TcalloutProps} />
+  <Callout idCallout={calloutData[1] as TcalloutProps} />
 </div>
 <div className="my-16">
-<Feature iFeature={{...feature[3], layout:"centered", iShowButton:false} as TfeatureProps} />
+<Feature idFeature={{...feature[3], layout:"centered", iShowButton:false} as TfeatureProps} />
 </div>
 <div className="bg-grayBackground">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
@@ -244,7 +244,7 @@ const Faq = {
 </div>
 </div>
 </div>
-<Callout iCallout={calloutData[2] as TcalloutProps} layout="simple" />
+<Callout idCallout={{...calloutData[2], layout:"simple"} as TcalloutProps} />
 <Footer />
 </div>
   )

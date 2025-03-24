@@ -1564,7 +1564,7 @@ const pageSlugs = [
         </div>
       </section>
       <div className="bg-primary">
-        <Callout iCallout={industry?.section2.footer as TcalloutProps} />
+        <Callout idCallout={industry?.section2.footer as TcalloutProps} />
       </div>
 
       {/* 3 */}
