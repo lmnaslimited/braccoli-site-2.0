@@ -1,25 +1,24 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { DynamicForm, type FormMode } from "@repo/ui/components/form"
+import { useState, useRef, useEffect } from "react"
+import { DynamicForm, contactFormConfig, bookingFormConfig, downloadFormConfig } from "@repo/ui/components/form"
 import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
-import FAQs from "@repo/ui/components/faq"
-import SocialProof from "@repo/ui/components/imageComp"
-import Footer from "@repo/ui/components/footer"
+import FAQs from "@repo/ui/components/faq";
+import SocialProof from "@repo/ui/components/imageComp";
+import Footer from "@repo/ui/components/footer";
 import { TfeatureProps, TcalloutProps, TheroProps } from "@repo/ui/type"
 import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
-import { motion, AnimatePresence } from "framer-motion"
+
+type FormMode = "contact" | "booking" | "download" | null
 
 export default function Home() {
-  // Track active section and form mode
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [formMode, setFormMode] = useState<FormMode>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
-  // Refs for sections
   const sectionRefs = {
     hero: useRef<HTMLDivElement>(null),
     callout1: useRef<HTMLDivElement>(null),
@@ -28,62 +27,68 @@ export default function Home() {
   }
 
   const handleFormButtonClick = (mode: FormMode, sectionId: string) => {
-    // If clicking the same section that's already active, close it
     if (activeSection === sectionId && formMode === mode) {
       setActiveSection(null)
       setFormMode(null)
-      return
-    }
+    } else {
+      setActiveSection(sectionId)
+      setFormMode(mode)
+      setSuccessMessage(null)
 
-    // Set the active section and form mode
-    setActiveSection(sectionId)
-    setFormMode(mode)
-    setSuccessMessage(null)
-
-    // Scroll to the section first
-    const sectionRef = sectionRefs[sectionId as keyof typeof sectionRefs]
-    if (sectionRef?.current) {
-      const yOffset = 20 // Small offset to show some of the section above
-      const y = sectionRef.current.getBoundingClientRect().top + window.pageYOffset - yOffset
-
-      window.scrollTo({
-        top: y,
-        behavior: "smooth",
-      })
+      setTimeout(() => {
+        const sectionRef = sectionRefs[sectionId as keyof typeof sectionRefs]
+        if (sectionRef?.current) {
+          sectionRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          })
+        }
+      }, 50)
     }
   }
 
-  const handleFormSuccess = (mode: FormMode, message: string) => {
+  const handleFormSuccess = (data: any, message: string) => {
     setSuccessMessage(message)
-
-    // If message is empty, it means the form was closed
-    if (!message) {
-      setActiveSection(null)
-      setFormMode(null)
-    }
+    setFormMode(null)
+    setActiveSection(null)
   }
 
-  // Render form component below the active section
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => {
+        setSuccessMessage(null)
+      }, 5000)
+      return () => clearTimeout(timer)
+    }
+  }, [successMessage])
+
   const renderFormBelowSection = (sectionId: string) => {
-    if (activeSection !== sectionId) return null
+    if (activeSection !== sectionId || !formMode) return null
+
+    let formConfig
+    switch (formMode) {
+      case "contact":
+        formConfig = contactFormConfig
+        break
+      case "booking":
+        formConfig = bookingFormConfig
+        break
+      case "download":
+        formConfig = downloadFormConfig
+        break
+      default:
+        return null
+    }
 
     return (
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0, height: 0, y: 20 }}
-          animate={{ opacity: 1, height: "auto", y: 0 }}
-          exit={{ opacity: 0, height: 0, y: 20 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.16, 1, 0.3, 1] // Custom easing for smoother animation
-          }}
-          className="relative p-6"
-        >
-          <div className="container px-4 md:px-6 relative">
-            <DynamicForm initialMode={formMode} onSuccess={handleFormSuccess} />
-          </div>
-        </motion.div>
-      </AnimatePresence>
+      <div className="w-full bg-white py-8">
+        <div className="container mx-auto px-4">
+          <DynamicForm
+            config={formConfig}
+            onSuccess={handleFormSuccess}
+          />
+        </div>
+      </div>
     )
   }
 
@@ -335,40 +340,54 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Navbar />
+
       {/* Hero Section */}
       <div ref={sectionRefs.hero}>
-        <Hero iHero={hero as TheroProps} onButtonClick={(mode) => handleFormButtonClick(mode, "hero")} />
+        <Hero
+          iHero={hero as TheroProps}
+          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "hero")}
+        />
         {renderFormBelowSection("hero")}
       </div>
+
       <div className="bg-grayBackground">
-        <Feature idFeature={{ ...feature[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
+        <Feature idFeature={{ ...feature[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps}
+        />
       </div>
+
       <div className="my-16">
         <Feature idFeature={{ ...feature[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
+
       <div className="bg-dark/70" ref={sectionRefs.callout1}>
         <Callout
           idCallout={calloutData[0] as TcalloutProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode, "callout1")}
         />
         {renderFormBelowSection("callout1")}
       </div>
+
       <div className="my-16">
-        <Feature idFeature={{ ...feature[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
+        <Feature
+          idFeature={{ ...feature[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps}
+        />
       </div>
+
       <SocialProof />
+
       <div className="bg-dark/70" ref={sectionRefs.callout2}>
         <Callout
           idCallout={calloutData[1] as TcalloutProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode, "callout2")}
+          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "callout2")}
         />
         {renderFormBelowSection("callout2")}
       </div>
+
       <div className="my-16">
         <Feature idFeature={{ ...feature[3], layout: "centered", iShowButton: false } as TfeatureProps} />
       </div>
+
       <div className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
@@ -379,15 +398,17 @@ export default function Home() {
           </div>
         </div>
       </div>
+
       <div ref={sectionRefs.callout3}>
         <Callout
           idCallout={calloutData[2] as TcalloutProps}
           layout="simple"
-          onButtonClick={(mode) => handleFormButtonClick(mode, "callout3")}
+          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "callout3")}
         />
         {renderFormBelowSection("callout3")}
       </div>
+
       <Footer />
     </div>
   )
-} 
+}
