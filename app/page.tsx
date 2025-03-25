@@ -414,8 +414,8 @@ export default function Home() {
           onButtonClick={(mode) => handleFormButtonClick(mode, "callout3")}
         />
         {renderFormBelowSection("callout3")}
-      </div>      <Footer />
+      </div>
+      <Footer />
     </div>
   )
 }
-
