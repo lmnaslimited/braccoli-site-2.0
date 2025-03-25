@@ -252,7 +252,7 @@ const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string):void => {
   }
 }
 
-const fnHandleFormSuccess = (iMessage: string) => {
+const fnHandleFormSuccess = (iMessage: string):void => {
   fnSetSuccessMessage(iMessage)
   fnSetFormMode(null)
   fnSetActiveSection(null)
