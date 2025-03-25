@@ -165,7 +165,7 @@ const pageSlugs = [
       feature: [
         {
           header: {
-            text: "Intelligent Production Planning",
+            textWithoutColor: "Intelligent Production Planning",
             subtitle:
               "Optimize your production schedules with AI-powered planning tools that adapt to changing demands and resource availability.",
           },
@@ -190,7 +190,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Real-Time Inventory Management",
+            textWithoutColor: "Real-Time Inventory Management",
             subtitle:
               "Gain complete visibility into your inventory with real-time tracking, automated reordering, and comprehensive reporting.",
           },
@@ -215,7 +215,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "End-to-End Supply Chain Visibility",
+            textWithoutColor: "End-to-End Supply Chain Visibility",
             subtitle:
               "Connect every aspect of your supply chain from raw materials to finished products with comprehensive tracking and analytics.",
           },
@@ -716,7 +716,7 @@ const pageSlugs = [
       feature: [
         {
           header: {
-            text: "AI-Driven Demand Forecasting",
+            textWithoutColor: "AI-Driven Demand Forecasting",
             subtitle:
               "Anticipate market trends and optimize stock levels with real-time predictive analytics.",
           },
@@ -741,7 +741,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Unified Omnichannel Experience",
+            textWithoutColor: "Unified Omnichannel Experience",
             subtitle:
               "Seamlessly integrate POS, e-commerce, and inventory for a smooth shopping experience across all platforms.",
           },
@@ -766,7 +766,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Automated Order Fulfillment & Logistics",
+            textWithoutColor: "Automated Order Fulfillment & Logistics",
             subtitle:
               "Accelerate order processing with automated workflows, reducing delays and increasing customer satisfaction.",
           },
@@ -1189,7 +1189,7 @@ const pageSlugs = [
       feature: [
         {
           header: {
-            text: "AI-Powered Inventory Optimization",
+            textWithoutColor: "AI-Powered Inventory Optimization",
             subtitle:
               "Ensure optimal stock levels across all warehouses with predictive analytics and automated replenishment.",
           },
@@ -1214,7 +1214,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Automated Order Processing & Fulfillment",
+            textWithoutColor: "Automated Order Processing & Fulfillment",
             subtitle:
               "Reduce errors and accelerate order turnaround with intelligent automation and workflow management.",
           },
@@ -1239,7 +1239,7 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "End-to-End Supply Chain Visibility",
+            textWithoutColor: "End-to-End Supply Chain Visibility",
             subtitle:
               "Gain complete control over your supply chain with real-time tracking and reporting tools.",
           },
@@ -1693,7 +1693,7 @@ export default async function Industries({
                 },
                 className: "max-w-sm",
                 link:
-                idCard.link?.map((iaButton) => ({
+                  idCard.link?.map((iaButton) => ({
                     ...iaButton,
                     icon: <ArrowRight className="size-5" />,
                     iconPosition: "after",
@@ -1764,27 +1764,27 @@ export default async function Industries({
             idTab={{
               data: industry?.section6.cards
                 ? industry.section6.cards.map((idCard) => ({
-                    ...idCard,
-                    header: {
-                      ...idCard.header,
-                      descripClass: "text-sm h-16",
-                      headingClass: "text-lg mb-2",
-                    },
-                    image: {
-                      src: idCard.image.src,
-                      alt: idCard.image.alt,
-                      aspectRatio: "wide",
-                    },
-                    button:
+                  ...idCard,
+                  header: {
+                    ...idCard.header,
+                    descripClass: "text-sm h-16",
+                    headingClass: "text-lg mb-2",
+                  },
+                  image: {
+                    src: idCard.image.src,
+                    alt: idCard.image.alt,
+                    aspectRatio: "wide",
+                  },
+                  button:
                     idCard.buttons?.map((iaButton) => ({
-                        ...iaButton,
-                        icon: <ArrowRight className="size-5" />,
-                        iconPosition: "after",
-                        size: "lg",
-                        variant: "outline",
-                      })) ?? [], // Ensure button is always an array
-                    tag: idCard.category,
-                  }))
+                      ...iaButton,
+                      icon: <ArrowRight className="size-5" />,
+                      iconPosition: "after",
+                      size: "lg",
+                      variant: "outline",
+                    })) ?? [], // Ensure button is always an array
+                  tag: idCard.category,
+                }))
                 : [], // Fallback value
               TabDefault: {
                 text: "All",

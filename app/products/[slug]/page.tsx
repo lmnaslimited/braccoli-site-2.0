@@ -95,7 +95,7 @@ const pageSlug = [
       },
       footer: {
         header: {
-          text: "Talk to an Expert & Get a Tailor-Made ERP Solution!",
+          textWithoutColor: "Talk to an Expert & Get a Tailor-Made ERP Solution!",
           subtitle:
             "Our experts understand the unique challenges of growing businesses and can help you find the perfect solution.",
         },
@@ -209,7 +209,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Break Free from Manual Work & Bottlenecks",
+            textWithoutColor: "Break Free from Manual Work & Bottlenecks",
             subtitle:
               "Tired of endless spreadsheets and outdated tools? Automate workflows, eliminate human errors, and free up time to focus on what matters—growing your business.",
           },
@@ -230,7 +230,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Turn Efficiency into Profitability",
+            textWithoutColor: "Turn Efficiency into Profitability",
             subtitle:
               "Streamline operations, cut waste, and maximize your earning potential with LENS ERP.",
           },
@@ -255,7 +255,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: " Unbreakable Security & Reliability",
+            textWithoutColor: " Unbreakable Security & Reliability",
             subtitle:
               "Your data is fully protected with enterprise-grade security and zero-downtime architecture.",
           },
@@ -276,7 +276,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Grow Without Limits",
+            textWithoutColor: "Grow Without Limits",
             subtitle:
               "LENS ERP scales with your business, ensuring seamless operations as you expand.",
           },
@@ -301,7 +301,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Cut Costs Without Compromising Growth",
+            textWithoutColor: "Cut Costs Without Compromising Growth",
             subtitle:
               "Reduce unnecessary expenses while maintaining high performance and efficiency.",
           },
@@ -325,7 +325,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Your Data, Your Rules",
+            textWithoutColor: "Your Data, Your Rules",
             subtitle:
               "Maintain complete control over your system, ensuring data privacy and operational independence.",
           },
@@ -358,7 +358,7 @@ const pageSlug = [
     },
     Section4: {
       heading: {
-        text: "Experience Success with LENS ERP",
+        textWithoutColor: "Experience Success with LENS ERP",
       },
       cards: [
         {
@@ -448,14 +448,14 @@ const pageSlug = [
     },
     Section5: {
       heading: {
-        text: "Flexible Pricing to Fit Your Business Needs",
+        textWithoutColor: "Flexible Pricing to Fit Your Business Needs",
         subtitle:
           " We understand that every business is unique, and so are its needs. That's why LENS ERP offers flexible pricing models tailored to your business size, industry, and required features.",
         badge: "Limited Time Offer",
       },
       items: {
         heading: {
-          text: "Get a Customized Quote Now",
+          textWithoutColor: "Get a Customized Quote Now",
           subtitle: "Only for the next 10 businesses that sign up this month",
           badge: " Offer ends in: 5 days",
         },
@@ -507,14 +507,14 @@ const pageSlug = [
     },
     Section6: {
       heading: {
-        text: " Don't Miss Out—Get Started Today!",
+        textWithoutColor: " Don't Miss Out—Get Started Today!",
         subtitle:
           "While your competitors struggle with outdated systems, you could be optimizing operations and driving growth with LENS ERP.",
         badge: "Limited Availability",
       },
       item: {
         heading: {
-          text: "Exclusive Onboarding Package",
+          textWithoutColor: "Exclusive Onboarding Package",
           subtitle:
             "For a limited time, get our premium onboarding package (valued at $2,500) completely FREE when you sign up.",
         },
@@ -605,7 +605,7 @@ const pageSlug = [
       },
       footer: {
         header: {
-          text: "Talk to an Expert & Get a Tailor-Made HRMS Solution!",
+          textWithoutColor: "Talk to an Expert & Get a Tailor-Made HRMS Solution!",
           subtitle:
             "Our experts understand the challenges of modern HR management and can help you implement the perfect solution.",
         },
@@ -719,7 +719,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Eliminate Manual HR Tasks & Boost Efficiency",
+            textWithoutColor: "Eliminate Manual HR Tasks & Boost Efficiency",
             subtitle:
               "Tired of paperwork and outdated HR systems? Automate payroll, performance tracking, and compliance management effortlessly.",
           },
@@ -740,7 +740,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Turn HR Efficiency into Employee Satisfaction",
+            textWithoutColor: "Turn HR Efficiency into Employee Satisfaction",
             subtitle:
               "Streamline HR operations, improve employee experience, and maximize workforce productivity with HRMS Cloud.",
           },
@@ -765,7 +765,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: " Unbreakable Security & Compliance",
+            textWithoutColor: " Unbreakable Security & Compliance",
             subtitle:
               "Your HR data is fully protected with enterprise-grade security and compliance-ready architecture.",
           },
@@ -786,7 +786,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Grow Your Workforce Without Limits",
+            textWithoutColor: "Grow Your Workforce Without Limits",
             subtitle:
               "HRMS Cloud scales with your business, ensuring seamless HR operations as you expand.",
           },
@@ -811,7 +811,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Reduce HR Costs Without Compromising Efficiency",
+            textWithoutColor: "Reduce HR Costs Without Compromising Efficiency",
             subtitle:
               "Cut unnecessary HR expenses while maintaining high employee satisfaction and performance.",
           },
@@ -835,7 +835,7 @@ const pageSlug = [
             },
           ],
           heading: {
-            text: "Your Workforce, Your Rules",
+            textWithoutColor: "Your Workforce, Your Rules",
             subtitle:
               "Maintain complete control over your HR system, ensuring compliance, data privacy, and operational independence.",
           },
@@ -868,7 +868,7 @@ const pageSlug = [
     },
     Section4: {
       heading: {
-        text: "Experience Success with HRMS Cloud",
+        textWithoutColor: "Experience Success with HRMS Cloud",
       },
       cards: [
         {
@@ -958,14 +958,14 @@ const pageSlug = [
     },
     Section5: {
       heading: {
-        text: "Flexible Pricing to Fit Your HR Needs",
+        textWithoutColor: "Flexible Pricing to Fit Your HR Needs",
         subtitle:
           "We understand that every organization has unique HR challenges. That's why HRMS Cloud offers flexible pricing models tailored to your company size, industry, and workforce requirements.",
         badge: "Limited Time Offer",
       },
       items: {
         heading: {
-          text: "Get a Customized Quote Now",
+          textWithoutColor: "Get a Customized Quote Now",
           subtitle:
             "Only for the next 10 organizations that sign up this month",
           badge: "Offer ends in: 5 days",
@@ -1019,14 +1019,14 @@ const pageSlug = [
     },
     Section6: {
       heading: {
-        text: "Don't Miss Out—Enhance Your HR Today!",
+        textWithoutColor: "Don't Miss Out—Enhance Your HR Today!",
         subtitle:
           "While other companies struggle with manual HR processes, you could be automating tasks and improving employee management with HRMS Cloud.",
         badge: "Limited Availability",
       },
       item: {
         heading: {
-          text: "Exclusive HR Onboarding Package",
+          textWithoutColor: "Exclusive HR Onboarding Package",
           subtitle:
             "For a limited time, get our premium HR onboarding package (valued at $2,500) completely FREE when you sign up.",
         },
