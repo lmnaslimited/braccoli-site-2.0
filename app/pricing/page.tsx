@@ -23,7 +23,7 @@ import {
 } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
-import { Tbutton } from "@repo/ui/type";
+import { Tbutton, TheroProps } from "@repo/ui/type";
 import CustomCard from "@repo/ui/components/customCard";
 import FAQs from "@repo/ui/components/faq";
 import {
@@ -33,16 +33,17 @@ import {
   TabsTrigger,
 } from "@repo/ui/components/ui/tabs";
 import Navbar from "@repo/ui/components/navbar";
+import Hero from "@repo/ui/components/hero";
 
 export default function Pricing() {
   const Section1 = {
-    header: {
+    heading: {
       textWithoutColor: "Transparent Pricing. Maximum Value. Zero Surprises.",
       subtitle:
         "AI-powered ERP solutions tailored to your business growth—without the hidden costs.",
     },
-    footer: {
-      text: "Empower your business with AI-driven automation, real-time insights, and scalable ERP solutions—all at a predictable cost.",
+    
+      description: "Empower your business with AI-driven automation, real-time insights, and scalable ERP solutions—all at a predictable cost.",
       buttons: [
         {
           label: "Start Your Free Trial",
@@ -54,7 +55,7 @@ export default function Pricing() {
           variant: "outline",
         },
       ],
-    },
+    
   };
   const Section2 = {
     header: {
@@ -397,34 +398,18 @@ export default function Pricing() {
   return (
     <>
       <Navbar />
-      {/* hero section section1 */}
-      <section className="relative overflow-hidden border-b border-border/40 py-20 md:py-32 bg-grayBackground">
-        <div className="container relative z-10 mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={{...Section1.header, 
-          className:"mx-auto flex max-w-[58rem] flex-col items-center justify-center mb-4 text-center",
-      headingClass: "sm:text-4xl md:text-5xl lg:text-6xl",
-      descripClass: "max-w-[85%] md:text-xl/relaxed mx-auto",}} />
-          <div className="mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center">
-            <p className="max-w-[85%] text-muted-foreground md:text-xl/relaxed">
-              {Section1.footer.text}
-            </p>
-          </div>
-          <div className="flex flex-col gap-2 md:flex-row mt-6 items-center justify-center">
-            {Section1.footer.buttons.map((idBtn, iIndex) => (
-              <Button
-                key={iIndex}
-                size="lg"
-                className="group"
-                variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-              >
-                <Link href={idBtn.href}> {idBtn.label} </Link>
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <div className="bg-grayBackground">
+        <Hero idHero={{...Section1, 
+              buttons: Section1.buttons.map((idButton) => ({
+                ...idButton,
+                icon: (
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                ),
+                iconPosition: "after",
+                size: "lg",
+              })),
+            } as TheroProps} />
+      </div>
       {/* section 2 */}
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
