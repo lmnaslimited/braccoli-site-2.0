@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect } from "react"
-import { DynamicForm, type FormMode } from "@repo/ui/components/form"
+import { DynamicForm, contactFormConfig, bookingFormConfig, downloadFormConfig } from "@repo/ui/components/form"
 import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
@@ -13,13 +13,13 @@ import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
 import { motion, AnimatePresence } from "framer-motion"
 
+type FormMode = "contact" | "booking" | "download" | null;
+
 export default function Home() {
-  // Track active section and form mode
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [formMode, setFormMode] = useState<FormMode>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
-  // Refs for sections
   const sectionRefs = {
     hero: useRef<HTMLDivElement>(null),
     callout1: useRef<HTMLDivElement>(null),
@@ -27,19 +27,15 @@ export default function Home() {
     callout3: useRef<HTMLDivElement>(null),
   }
 
-  // Update the handleFormButtonClick function to only accept mode and section ID
   const handleFormButtonClick = (mode: FormMode, sectionId: string) => {
-    // If clicking the same section that's already active, close it
     if (activeSection === sectionId && formMode === mode) {
       setActiveSection(null)
       setFormMode(null)
     } else {
-      // Set the active section and form mode
       setActiveSection(sectionId)
       setFormMode(mode)
       setSuccessMessage(null)
 
-      // Scroll to the section
       setTimeout(() => {
         const sectionRef = sectionRefs[sectionId as keyof typeof sectionRefs]
         if (sectionRef?.current) {
@@ -54,17 +50,14 @@ export default function Home() {
     }
   }
 
-  const handleFormSuccess = (mode: FormMode, message: string) => {
+  const handleFormSuccess = (data: any, message: string) => {
     setSuccessMessage(message)
-
-    // If message is empty, it means the form was closed
     if (!message) {
       setActiveSection(null)
       setFormMode(null)
     }
   }
 
-  // Auto-close success message after 5 seconds
   useEffect(() => {
     if (successMessage) {
       const timer = setTimeout(() => {
@@ -77,9 +70,23 @@ export default function Home() {
     }
   }, [successMessage])
 
-  // Render form component below the active section
   const renderFormBelowSection = (sectionId: string) => {
     if (activeSection !== sectionId) return null
+
+    let formConfig;
+    switch (formMode) {
+      case "contact":
+        formConfig = contactFormConfig;
+        break;
+      case "booking":
+        formConfig = bookingFormConfig;
+        break;
+      case "download":
+        formConfig = downloadFormConfig;
+        break;
+      default:
+        return null;
+    }
 
     return (
       <AnimatePresence>
@@ -91,12 +98,20 @@ export default function Home() {
           className="relative p-6"
         >
           <div className="container px-4 md:px-6 relative">
-            <DynamicForm initialMode={formMode} onSuccess={handleFormSuccess} />
+            <DynamicForm
+              config={formConfig}
+              onSuccess={handleFormSuccess}
+              onCancel={() => {
+                setActiveSection(null)
+                setFormMode(null)
+              }}
+            />
           </div>
         </motion.div>
       </AnimatePresence>
     )
   }
+
 
   // Hero section data
   const hero = {
@@ -347,9 +362,11 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      {/* Hero Section */}
       <div ref={sectionRefs.hero}>
-        <Hero iHero={hero as TheroProps} onButtonClick={(mode) => handleFormButtonClick(mode, "hero")} />
+        <Hero
+          iHero={hero as TheroProps}
+          onButtonClick={(mode) => handleFormButtonClick(mode, "hero")}
+        />
         {renderFormBelowSection("hero")}
       </div>
       <div className="bg-grayBackground">
