@@ -8,15 +8,13 @@ import Callout from "@repo/ui/components/callout"
 import FAQs from "@repo/ui/components/faq";
 import SocialProof from "@repo/ui/components/imageComp";
 import Footer from "@repo/ui/components/footer";
-import { TfeatureProps, TcalloutProps, TheroProps } from "@repo/ui/type"
+import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
 import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
 
-type FormMode = "contact" | "booking" | "download" | null
-
 export default function Home() {
   const [activeSection, setActiveSection] = useState<string | null>(null)
-  const [formMode, setFormMode] = useState<FormMode>(null)
+  const [formMode, setFormMode] = useState<TformMode>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const sectionRefs = {
@@ -26,7 +24,7 @@ export default function Home() {
     callout3: useRef<HTMLDivElement>(null),
   }
 
-  const handleFormButtonClick = (mode: FormMode, sectionId: string) => {
+  const handleFormButtonClick = (mode: TformMode, sectionId: string) => {
     if (activeSection === sectionId && formMode === mode) {
       setActiveSection(null)
       setFormMode(null)
@@ -346,8 +344,8 @@ export default function Home() {
       {/* Hero Section */}
       <div ref={sectionRefs.hero}>
         <Hero
-          iHero={hero as TheroProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "hero")}
+          idHero={hero as TheroProps}
+          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "hero")}
         />
         {renderFormBelowSection("hero")}
       </div>
@@ -364,6 +362,7 @@ export default function Home() {
       <div className="bg-dark/70" ref={sectionRefs.callout1}>
         <Callout
           idCallout={calloutData[0] as TcalloutProps}
+          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout1")}
         />
         {renderFormBelowSection("callout1")}
       </div>
@@ -379,7 +378,7 @@ export default function Home() {
       <div className="bg-dark/70" ref={sectionRefs.callout2}>
         <Callout
           idCallout={calloutData[1] as TcalloutProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "callout2")}
+          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout2")}
         />
         {renderFormBelowSection("callout2")}
       </div>
@@ -402,8 +401,8 @@ export default function Home() {
       <div ref={sectionRefs.callout3}>
         <Callout
           idCallout={calloutData[2] as TcalloutProps}
-          layout="simple"
-          onButtonClick={(mode) => handleFormButtonClick(mode as FormMode, "callout3")}
+          Layout="simple"
+          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout3")}
         />
         {renderFormBelowSection("callout3")}
       </div>
