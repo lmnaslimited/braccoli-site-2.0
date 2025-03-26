@@ -1,97 +1,113 @@
 "use client"
-
-import { useState, useRef, useEffect } from "react"
-import { DynamicForm, contactFormConfig, bookingFormConfig, downloadFormConfig } from "@repo/ui/components/form"
+import { useState, useRef, useEffect, ReactNode } from "react"
+import { DynamicForm, LDContactFormConfig, LDBookingFormConfig, LDDownloadFormConfig } from "@repo/ui/components/form"
 import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
-import FAQs from "@repo/ui/components/faq";
-import SocialProof from "@repo/ui/components/imageComp";
-import Footer from "@repo/ui/components/footer";
-import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
-import { ArrowRight } from "lucide-react"
+import FAQs from "@repo/ui/components/faq"
+import SocialProof from "@repo/ui/components/imageComp"
+import Footer from "@repo/ui/components/footer"
+import { TfeatureProps, TcalloutProps, TheroProps, TformMode, TformConfig } from "@repo/ui/type"
+import { ArrowRight, CheckCircle } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
+import { Button } from "@repo/ui/components/ui/button"
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<string | null>(null)
-  const [formMode, setFormMode] = useState<TformMode>(null)
-  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [LActiveSection, fnSetActiveSection] = useState<string | null>(null)
+  const [LFormMode, fnSetFormMode] = useState<TformMode>(null)
+  const [LSuccessMessage, fnSetSuccessMessage] = useState<string | null>(null)
 
-  const sectionRefs = {
+  const LDSectionRefs = {
     hero: useRef<HTMLDivElement>(null),
     callout1: useRef<HTMLDivElement>(null),
     callout2: useRef<HTMLDivElement>(null),
     callout3: useRef<HTMLDivElement>(null),
   }
 
-  const handleFormButtonClick = (mode: TformMode, sectionId: string) => {
-    if (activeSection === sectionId && formMode === mode) {
-      setActiveSection(null)
-      setFormMode(null)
+  const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string) => {
+    if (LActiveSection === iSectionId && LFormMode === iMode) {
+      fnSetActiveSection(null)
+      fnSetFormMode(null)
     } else {
-      setActiveSection(sectionId)
-      setFormMode(mode)
-      setSuccessMessage(null)
+      fnSetActiveSection(iSectionId)
+      fnSetFormMode(iMode)
+      fnSetSuccessMessage(null)
 
       setTimeout(() => {
-        const sectionRef = sectionRefs[sectionId as keyof typeof sectionRefs]
-        if (sectionRef?.current) {
-          sectionRef.current.scrollIntoView({
+        const currentRef = LDSectionRefs[iSectionId as keyof typeof LDSectionRefs]
+        if (currentRef?.current) {
+          currentRef.current.scrollIntoView({
             behavior: "smooth",
-            block: "center"
+            block: "center",
           })
         }
       }, 50)
     }
   }
 
-  const handleFormSuccess = (data: any, message: string) => {
-    setSuccessMessage(message)
-    setFormMode(null)
-    setActiveSection(null)
+  const fnHandleFormSuccess = (idFormData: Record<string, unknown>, iMessage: string) => {
+    fnSetSuccessMessage(iMessage)
+    fnSetFormMode(null)
   }
 
-  useEffect(() => {
-    if (successMessage) {
-      const timer = setTimeout(() => {
-        setSuccessMessage(null)
-      }, 5000)
-      return () => clearTimeout(timer)
-    }
-  }, [successMessage])
+  const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
+    if (LActiveSection !== iSectionId && !LSuccessMessage) return null
 
-  const renderFormBelowSection = (sectionId: string) => {
-    if (activeSection !== sectionId || !formMode) return null
-
-    let formConfig
-    switch (formMode) {
+    let LDFormConfig = undefined
+    switch (LFormMode) {
       case "contact":
-        formConfig = contactFormConfig
+        LDFormConfig = LDContactFormConfig
         break
       case "booking":
-        formConfig = bookingFormConfig
+        LDFormConfig = LDBookingFormConfig
         break
       case "download":
-        formConfig = downloadFormConfig
+        LDFormConfig = LDDownloadFormConfig
         break
       default:
-        return null
+        if (!LSuccessMessage) return null
     }
 
     return (
       <div className="w-full bg-white py-8">
         <div className="container mx-auto px-4">
-          <DynamicForm
-            config={formConfig}
-            onSuccess={handleFormSuccess}
-          />
+          {LSuccessMessage ? (
+            <div className="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 text-center">
+              <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-2">Success!</h3>
+              <p className="mb-6">{LSuccessMessage}</p>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  fnSetSuccessMessage(null)
+                  fnSetActiveSection(null)
+                  setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }, 300)
+                }}
+              >
+                Close
+              </Button>
+            </div>
+          ) : LDFormConfig ? (
+            <DynamicForm
+              config={LDFormConfig}
+              onSuccess={fnHandleFormSuccess}
+              onCancel={() => {
+                fnSetActiveSection(null)
+                setTimeout(() => {
+                  window.scrollTo({ top: 0, behavior: "smooth" })
+                }, 300)
+              }}
+            />
+          ) : null}
         </div>
       </div>
     )
   }
 
-  // Hero section data
-  const hero = {
+  const LDHero = {
     heading: {
       textWithoutColor: "Reimagine Your Business.",
       text: "Achieve the Extraordinary.",
@@ -120,8 +136,7 @@ export default function Home() {
     },
   }
 
-  // Feature sections data
-  const feature = [
+  const LAFeatures = [
     {
       header: {
         textWithoutColor: "Why Choose LMNAs?",
@@ -246,8 +261,7 @@ export default function Home() {
     },
   ]
 
-  // Callout sections data
-  const calloutData = [
+  const LACalloutData = [
     {
       header: {
         textWithoutColor: "Does This Sound Like Your Business?",
@@ -258,7 +272,7 @@ export default function Home() {
           label: "Start Solving Your Problems Today",
           variant: "default",
           formMode: "booking",
-        },
+        }
       ],
       points: {
         title: "We understand the challenges you face:",
@@ -266,9 +280,9 @@ export default function Home() {
           "Your Sales Manager struggles with manual pricing and lost leads.",
           "Your Procurement team misses deadlines due to poor coordination.",
           "Your Operations Manager is tired of firefighting inefficiencies.",
-          "Your Finance Manager can't trust the numbers during quarterly reviews.",
+          "Your Finance Manager can't trust the numbers during quarterly reviews."
         ],
-        actionText: "We get it. And we're here to fix it—for good.",
+        actionText: "We get it. And we're here to fix it—for good."
       },
     },
     {
@@ -292,8 +306,7 @@ export default function Home() {
     {
       header: {
         textWithoutColor: "Ready to Eliminate Your Enterprise Challenges?",
-        subtitle:
-          "Let's work together to build a future where your business operates at its best—every single day. The first step to solving your enterprise problems is just a conversation away.",
+        subtitle: "Let's work together to build a future where your business operates at its best—every single day. The first step to solving your enterprise problems is just a conversation away.",
       },
       buttons: [
         {
@@ -307,11 +320,11 @@ export default function Home() {
           formMode: "contact",
         },
       ],
-      variant: "text-black",
-    },
+      variant: "text-black"
+    }
   ]
 
-  const Faq = {
+  const LDFaq = {
     title: "Got Questions? We've Got Answers!",
     items: [
       {
@@ -334,79 +347,63 @@ export default function Home() {
         answer:
           "At LMNAs, we take data security very seriously. We employ industry-leading security measures, including end-to-end encryption, regular security audits, and compliance with international data protection standards to ensure your data is always safe and secure.",
       },
-    ],
+    ]
   }
 
   return (
-    <div className="overflow-x-hidden">
+    <div>
       <Navbar />
-
-      {/* Hero Section */}
-      <div ref={sectionRefs.hero}>
+      <div ref={LDSectionRefs.hero}>
         <Hero
-          idHero={hero as TheroProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "hero")}
+          idHero={LDHero as TheroProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "hero")}
         />
-        {renderFormBelowSection("hero")}
+        {fnRenderFormBelowSection("hero")}
       </div>
-
       <div className="bg-grayBackground">
-        <Feature idFeature={{ ...feature[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps}
-        />
+        <Feature idFeature={{ ...LAFeatures[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
       </div>
-
       <div className="my-16">
-        <Feature idFeature={{ ...feature[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
+        <Feature idFeature={{ ...LAFeatures[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-
-      <div className="bg-dark/70" ref={sectionRefs.callout1}>
+      <div className="bg-dark/70" ref={LDSectionRefs.callout1}>
         <Callout
-          idCallout={calloutData[0] as TcalloutProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout1")}
+          idCallout={LACalloutData[0] as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout1")}
         />
-        {renderFormBelowSection("callout1")}
+        {fnRenderFormBelowSection("callout1")}
       </div>
-
       <div className="my-16">
-        <Feature
-          idFeature={{ ...feature[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps}
-        />
+        <Feature idFeature={{ ...LAFeatures[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
-
       <SocialProof />
-
-      <div className="bg-dark/70" ref={sectionRefs.callout2}>
+      <div className="bg-dark/70" ref={LDSectionRefs.callout2}>
         <Callout
-          idCallout={calloutData[1] as TcalloutProps}
-          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout2")}
+          idCallout={LACalloutData[1] as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout2")}
         />
-        {renderFormBelowSection("callout2")}
+        {fnRenderFormBelowSection("callout2")}
       </div>
-
       <div className="my-16">
-        <Feature idFeature={{ ...feature[3], layout: "centered", iShowButton: false } as TfeatureProps} />
+        <Feature idFeature={{ ...LAFeatures[3], layout: "centered", iShowButton: false } as TfeatureProps} />
       </div>
-
       <div className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
-              {Faq.title}
+              {LDFaq.title}
             </h2>
-            <FAQs idFaq={Faq.items} />
+            <FAQs idFaq={LDFaq.items} />
           </div>
         </div>
       </div>
-
-      <div ref={sectionRefs.callout3}>
+      <div ref={LDSectionRefs.callout3}>
         <Callout
-          idCallout={calloutData[2] as TcalloutProps}
-          Layout="simple"
-          onButtonClick={(mode) => handleFormButtonClick(mode as TformMode, "callout3")}
+          idCallout={{ ...LACalloutData[2], layout: "simple" } as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout3")}
         />
-        {renderFormBelowSection("callout3")}
+        {fnRenderFormBelowSection("callout3")}
       </div>
-
       <Footer />
     </div>
   )
