@@ -582,7 +582,7 @@ export default function Career() {
                 </Button>
               </Link>
             </div>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {career?.section2.items.map((idItem, iIndex) => {
                 const IconComponent =
                   (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
@@ -596,8 +596,8 @@ export default function Career() {
                         idTitle={{
                           ...idItem.header,
                           className: "space-y-1",
-                          headingClass: "sm:text-base tracking-normal",
-                          descripClass: "md:text-sm",
+                          headingClass: "sm:text-base text-base tracking-normal",
+                          descripClass: "md:text-sm text-sm",
                         }}
                       />
                     </div>
@@ -843,13 +843,13 @@ export default function Career() {
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="md:w-2/3 space-y-6">
                     <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
                         <Building className="h-5 w-5 text-primary" />
                       </div>
                     </div>
                     <TitleSubtitle idTitle={{ ...career?.section4.header,
-                        className: "m-0 items-center justify-center",
-                        headingClass:"md:text-base tracking-tight leading-tight",
+                        className: "m-0",
+                        headingClass:"md:text-xl tracking-tight leading-tight",
                         descripClass: "md:text-sm",
                       }}
                     />
@@ -859,8 +859,8 @@ export default function Career() {
                           <TitleSubtitle idTitle={{ ...idTitle.header,
                               className: "m-0",
                               headingClass:
-                                "md:text-2xl tracking-tight leading-tight",
-                              descripClass: "md:text-lg",
+                                "md:text-2xl text-2xl tracking-tight leading-tight",
+                              descripClass: "md:text-lg text-lg",
                             }}
                           />
                         </div>
@@ -882,7 +882,7 @@ export default function Career() {
                       })}
                     </div>
                   </div>
-                  <div className="md:w-1/3 flex justify-center md:block">
+                  <div className="md:w-1/3 md:flex justify-center hidden">
                     <div className="relative w-full max-w-xs aspect-square">
                       <div className="absolute -inset-0.5 rounded-xl bg-primary/10 opacity-75 blur-xl"></div>
                       <div className="relative h-full w-full rounded-xl bg-background flex items-center justify-center p-6">

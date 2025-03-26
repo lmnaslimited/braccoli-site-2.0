@@ -151,7 +151,7 @@ export default function Home() {
       },
       button: {
         label: "See How We Can Help You",
-        formMode: "contact",
+        href: "/solutions"
       },
       items: [
         {
@@ -211,7 +211,7 @@ export default function Home() {
       },
       button: {
         label: "Explore Our Solutions",
-        formMode: "booking",
+        href:"/solutions"
       },
       items: [
         {
