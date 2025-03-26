@@ -15,7 +15,7 @@ import { Button } from "@repo/ui/components/ui/button"
 export default function Home() {
   const [LActiveSection, fnSetActiveSection] = useState<string | null>(null)
   const [LFormMode, fnSetFormMode] = useState<TformMode>(null)
-  const [LSuccessMessage, fnSetSuccessMessage] = useState<string | null>(null)
+  const [LSuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
 
   const LDSectionRefs = {
     hero: useRef<HTMLDivElement>(null),
@@ -28,6 +28,7 @@ export default function Home() {
     if (LActiveSection === iSectionId && LFormMode === iMode) {
       fnSetActiveSection(null)
       fnSetFormMode(null)
+      fnSetSuccessMessage(null)
     } else {
       fnSetActiveSection(iSectionId)
       fnSetFormMode(iMode)
@@ -46,12 +47,18 @@ export default function Home() {
   }
 
   const fnHandleFormSuccess = (idFormData: Record<string, unknown>, iMessage: string) => {
-    fnSetSuccessMessage(iMessage)
+    if (LActiveSection) {
+      fnSetSuccessMessage({ message: iMessage, section: LActiveSection })
+    }
     fnSetFormMode(null)
   }
 
   const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
-    if (LActiveSection !== iSectionId && !LSuccessMessage) return null
+    // Only show if this is the active section or has a success message for this section
+    const shouldShowForm = LActiveSection === iSectionId && LFormMode !== null
+    const shouldShowSuccess = LSuccessMessage?.section === iSectionId
+
+    if (!shouldShowForm && !shouldShowSuccess) return null
 
     let LDFormConfig = undefined
     switch (LFormMode) {
@@ -65,17 +72,17 @@ export default function Home() {
         LDFormConfig = LDDownloadFormConfig
         break
       default:
-        if (!LSuccessMessage) return null
+        if (!shouldShowSuccess) return null
     }
 
     return (
       <div className="w-full bg-white py-8">
         <div className="container mx-auto px-4">
-          {LSuccessMessage ? (
-            <div className="max-w-xl mx-auto bg-white rounded-lg shadow-md p-6 text-center">
-              <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          {shouldShowSuccess ? (
+            <div className="max-w-lg mx-auto bg-white rounded-lg shadow-md p-4 text-center">
+              <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
               <h3 className="text-xl font-bold mb-2">Success!</h3>
-              <p className="mb-6">{LSuccessMessage}</p>
+              <p className="mb-6">{LSuccessMessage?.message}</p>
               <Button
                 type="button"
                 variant="outline"
