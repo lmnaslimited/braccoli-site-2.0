@@ -1693,7 +1693,7 @@ export default async function Industries({
                 },
                 className: "max-w-sm",
                 link:
-                idCard.link?.map((iaButton) => ({
+                  idCard.link?.map((iaButton) => ({
                     ...iaButton,
                     icon: <ArrowRight className="size-5" />,
                     iconPosition: "after",
@@ -1764,27 +1764,27 @@ export default async function Industries({
             idTab={{
               data: industry?.section6.cards
                 ? industry.section6.cards.map((idCard) => ({
-                    ...idCard,
-                    header: {
-                      ...idCard.header,
-                      descripClass: "text-sm h-16",
-                      headingClass: "text-lg mb-2",
-                    },
-                    image: {
-                      src: idCard.image.src,
-                      alt: idCard.image.alt,
-                      aspectRatio: "wide",
-                    },
-                    button:
+                  ...idCard,
+                  header: {
+                    ...idCard.header,
+                    descripClass: "text-sm h-16",
+                    headingClass: "text-lg mb-2",
+                  },
+                  image: {
+                    src: idCard.image.src,
+                    alt: idCard.image.alt,
+                    aspectRatio: "wide",
+                  },
+                  button:
                     idCard.buttons?.map((iaButton) => ({
-                        ...iaButton,
-                        icon: <ArrowRight className="size-5" />,
-                        iconPosition: "after",
-                        size: "lg",
-                        variant: "outline",
-                      })) ?? [], // Ensure button is always an array
-                    tag: idCard.category,
-                  }))
+                      ...iaButton,
+                      icon: <ArrowRight className="size-5" />,
+                      iconPosition: "after",
+                      size: "lg",
+                      variant: "outline",
+                    })) ?? [], // Ensure button is always an array
+                  tag: idCard.category,
+                }))
                 : [], // Fallback value
               TabDefault: {
                 text: "All",

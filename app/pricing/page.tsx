@@ -42,20 +42,20 @@ export default function Pricing() {
       subtitle:
         "AI-powered ERP solutions tailored to your business growth—without the hidden costs.",
     },
-    
-      description: "Empower your business with AI-driven automation, real-time insights, and scalable ERP solutions—all at a predictable cost.",
-      buttons: [
-        {
-          label: "Start Your Free Trial",
-          href: "https://demolens.lmnas.com/#login",
-        },
-        {
-          label: "Request a Demo",
-          href: "https://nectar.lmnas.com/contact",
-          variant: "outline",
-        },
-      ],
-    
+
+    description: "Empower your business with AI-driven automation, real-time insights, and scalable ERP solutions—all at a predictable cost.",
+    buttons: [
+      {
+        label: "Start Your Free Trial",
+        href: "https://demolens.lmnas.com/#login",
+      },
+      {
+        label: "Request a Demo",
+        href: "https://nectar.lmnas.com/contact",
+        variant: "outline",
+      },
+    ],
+
   };
   const Section2 = {
     header: {
@@ -233,8 +233,10 @@ export default function Pricing() {
       },
     ],
     cta: {
-      buttons:{label: "Explore Case Studies",
-      href: "/solutions",}
+      buttons: {
+        label: "Explore Case Studies",
+        href: "/solutions",
+      }
     },
   };
 
@@ -399,23 +401,25 @@ export default function Pricing() {
     <>
       <Navbar />
       <div className="bg-grayBackground">
-        <Hero idHero={{...Section1, 
-              buttons: Section1.buttons.map((idButton) => ({
-                ...idButton,
-                icon: (
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                ),
-                iconPosition: "after",
-                size: "lg",
-              })),
-            } as TheroProps} />
+        <Hero idHero={{
+          ...Section1,
+          buttons: Section1.buttons.map((idButton) => ({
+            ...idButton,
+            icon: (
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            ),
+            iconPosition: "after",
+            size: "lg",
+          })),
+        } as TheroProps} />
       </div>
       {/* section 2 */}
       <section className="border-b border-border/40 py-20 bg-muted">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={{...Section2.header, 
-             className: "mx-auto max-w-[58rem] text-center",
-             descripClass: "mx-auto",
+          <TitleSubtitle idTitle={{
+            ...Section2.header,
+            className: "mx-auto max-w-[58rem] text-center",
+            descripClass: "mx-auto",
           }} />
           <div className="mx-auto max-w-4xl">
             <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
@@ -464,11 +468,12 @@ export default function Pricing() {
           <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
             <span className="font-medium">{Section3.header.badge}</span>
           </div>
-          <TitleSubtitle idTitle={{...Section3.header, 
+          <TitleSubtitle idTitle={{
+            ...Section3.header,
             className:
-            "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-          descripClass: "md:text-xl/relaxed ",
-          headingClass: "md:text-5xl",
+              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+            descripClass: "md:text-xl/relaxed ",
+            headingClass: "md:text-5xl",
           }} />
           <div className="mx-auto max-w-6xl">
             <div className="relative">
@@ -504,9 +509,9 @@ export default function Pricing() {
                             <TableCell key={i} className="text-center p-4">
                               {
                                 iPlan[
-                                  Object.keys(iPlan)[
-                                    iIndex + 1
-                                  ] as keyof typeof iPlan
+                                Object.keys(iPlan)[
+                                iIndex + 1
+                                ] as keyof typeof iPlan
                                 ]
                               }
                             </TableCell>
@@ -540,11 +545,12 @@ export default function Pricing() {
               <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
                 <span className="font-medium">{Section3.footer.text}</span>
               </div>
-              <TitleSubtitle idTitle={{...Section3.footer.header,
+              <TitleSubtitle idTitle={{
+                ...Section3.footer.header,
                 className:
-                "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
-              descripClass: "md:text-sm",
-              headingClass: "md:text-xl",
+                  "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
+                descripClass: "md:text-sm",
+                headingClass: "md:text-xl",
               }} />
               <div className="flex flex-col gap-2 sm:flex-row justify-center">
                 {Section3.footer.buttons.map((idBtn, iIndex) => (
@@ -569,11 +575,12 @@ export default function Pricing() {
           <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
             <span className="font-medium">{Section7.header.badge}</span>
           </div>
-          <TitleSubtitle idTitle={{...Section7.header,
+          <TitleSubtitle idTitle={{
+            ...Section7.header,
             className:
-            "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
-          headingClass: "md:text-5xl",
-          descripClass: "md:text-xl/relaxed text-slate",
+              "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
+            headingClass: "md:text-5xl",
+            descripClass: "md:text-xl/relaxed text-slate",
           }} />
           <div className="mx-auto max-w-6xl">
             <Tabs defaultValue="performance" className="w-full">
@@ -641,9 +648,10 @@ export default function Pricing() {
             <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
               <div className="grid md:grid-cols-5 items-center">
                 <div className="md:col-span-3 p-6 md:p-8 text-accent">
-                  <TitleSubtitle idTitle={{...Section7.footer.header,
-                      headingClass: "md:text-2xl mb-2",
-                      descripClass: "md:text-base text-accent",
+                  <TitleSubtitle idTitle={{
+                    ...Section7.footer.header,
+                    headingClass: "md:text-2xl mb-2",
+                    descripClass: "md:text-base text-accent",
                   }} />
                   <div className="flex flex-col sm:flex-row gap-3">
                     {Section7.footer.buttons.map((idBtn, iIndex) => (
@@ -658,9 +666,10 @@ export default function Pricing() {
                   <div className="bg-secondary/10 rounded-full p-3 mb-3">
                     <Download className="h-6 w-6 text-accent" />
                   </div>
-                  <TitleSubtitle idTitle={{...Section7.footer.cta,
-                     headingClass: "md:text-lg mb-1",
-                     descripClass: "md:text-sm text-accent",
+                  <TitleSubtitle idTitle={{
+                    ...Section7.footer.cta,
+                    headingClass: "md:text-lg mb-1",
+                    descripClass: "md:text-sm text-accent",
                   }} />
                   <div className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-sm">
                     <span className="font-medium">
@@ -677,10 +686,11 @@ export default function Pricing() {
       {/* Testimonials Section */}
       <section className="border-b border-border/40 py-20 bg-grayBackground">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={{...Section4.header,
-             className:
-             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-           headingClass: "md:text-5xl",
+          <TitleSubtitle idTitle={{
+            ...Section4.header,
+            className:
+              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+            headingClass: "md:text-5xl",
           }} />
           <div className="mx-auto max-w-5xl">
             <div className="grid gap-8 md:grid-cols-3">
@@ -688,23 +698,27 @@ export default function Pricing() {
                 <CustomCard
                   key={iIndex}
                   idCardProps={{
-                    header:{...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-                      headingClass: "mb-0",},
-                    className:"max-w-md ",
-                    image:{svg: (
-                      <div className="flex px-6 pt-4 space-x-1 text-primary">
-                        <Star size={24} fill="currentColor" strokeWidth={0} />
-                        <Star size={24} fill="currentColor" strokeWidth={0} />
-                        <Star size={24} fill="currentColor" strokeWidth={0} />
-                        <Star size={24} fill="currentColor" strokeWidth={0} />
-                        <Star size={24} fill="currentColor" strokeWidth={0} />
-                      </div>
-                    ),
-                    alt: "5-star",},
-                    avatar:idCard.avatar,
-                    nameAndPlace:idCard.nameAndPlace,
-                    namePosition:"bottom",
-                    footerClassName:"items-start",
+                    header: {
+                      ...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
+                      headingClass: "mb-0",
+                    },
+                    className: "max-w-md ",
+                    image: {
+                      svg: (
+                        <div className="flex px-6 pt-4 space-x-1 text-primary">
+                          <Star size={24} fill="currentColor" strokeWidth={0} />
+                          <Star size={24} fill="currentColor" strokeWidth={0} />
+                          <Star size={24} fill="currentColor" strokeWidth={0} />
+                          <Star size={24} fill="currentColor" strokeWidth={0} />
+                          <Star size={24} fill="currentColor" strokeWidth={0} />
+                        </div>
+                      ),
+                      alt: "5-star",
+                    },
+                    avatar: idCard.avatar,
+                    nameAndPlace: idCard.nameAndPlace,
+                    namePosition: "bottom",
+                    footerClassName: "items-start",
                   }}
                 />
               ))}
@@ -724,11 +738,12 @@ export default function Pricing() {
           <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
             <span className="font-medium">{Section5.header.badge}</span>
           </div>
-          <TitleSubtitle idTitle={{...Section5.header,
+          <TitleSubtitle idTitle={{
+            ...Section5.header,
             className:
-            "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-          headingClass: "md:text-5xl",
-          descripClass: "md:text-xl/relaxed",
+              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+            headingClass: "md:text-5xl",
+            descripClass: "md:text-xl/relaxed",
           }} />
           <div className="mx-auto max-w-3xl space-y-4">
             <FAQs idFaq={Section5.items} />
@@ -743,8 +758,10 @@ export default function Pricing() {
             <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
               <span className="font-medium">{Section6.header.badge}</span>
             </div>
-            <TitleSubtitle idTitle={{...Section6.header,  headingClass: "md:text-5xl",
-      descripClass: "md:text-xl/relaxed",}} />
+            <TitleSubtitle idTitle={{
+              ...Section6.header, headingClass: "md:text-5xl",
+              descripClass: "md:text-xl/relaxed",
+            }} />
             <div className="bg-background border-2 border-primary rounded-lg p-8 mb-8 shadow-xl">
               <h3 className="text-xl font-bold mb-6">{Section6.cta.title}</h3>
               <div className="grid gap-6 md:grid-cols-2">
