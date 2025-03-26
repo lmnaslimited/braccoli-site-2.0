@@ -20,9 +20,7 @@ import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import {
   TcalloutProps,
-  Theader,
   TheroProps,
-  TtrendCardProps,
 } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
