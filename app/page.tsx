@@ -1,16 +1,15 @@
 "use client"
-import { useState, useRef, ReactNode } from "react"
-import { DynamicForm, LDContactFormConfig, LDBookingFormConfig, LDDownloadFormConfig } from "@repo/ui/components/form"
+import { useState, useRef, useEffect, ReactNode } from "react"
+import { DynamicForm, contactFormConfig, bookingFormConfig, downloadFormConfig } from "@repo/ui/components/form"
 import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
-import FAQs from "@repo/ui/components/faq"
-import SocialProof from "@repo/ui/components/imageComp"
-import Footer from "@repo/ui/components/footer"
+import FAQs from "@repo/ui/components/faq";
+import SocialProof from "@repo/ui/components/imageComp";
+import Footer from "@repo/ui/components/footer";
 import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
-import { Button } from "@repo/ui/components/ui/button"
 
 export default function Home() {
   const [LActiveSection, fnSetActiveSection] = useState<string | null>(null)
@@ -124,6 +123,7 @@ export default function Home() {
     buttons: [
       {
         label: "Book Your Free Consultation",
+        // href:"https://nectar.lmnas.com/book_appointment",
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -268,43 +268,47 @@ export default function Home() {
     },
   ]
 
-  const LACalloutData = [
+  const calloutData = [
     {
       header: {
         textWithoutColor: "Does This Sound Like Your Business?",
-        subtitle: "If so, you're in the right place.",
+        subtitle:
+          "If so, you're in the right place.",
       },
       buttons: [
         {
           label: "Start Solving Your Problems Today",
+          // href: "https://nectar.lmnas.com/book_appointment",
           variant: "default",
           formMode: "booking",
         }
       ],
       points: {
         title: "We understand the challenges you face:",
-        items: [
-          "Your Sales Manager struggles with manual pricing and lost leads.",
-          "Your Procurement team misses deadlines due to poor coordination.",
-          "Your Operations Manager is tired of firefighting inefficiencies.",
-          "Your Finance Manager can't trust the numbers during quarterly reviews."
-        ],
+        items:
+          ["Your Sales Manager struggles with manual pricing and lost leads.",
+            "Your Procurement team misses deadlines due to poor coordination.",
+            "Your Operations Manager is tired of firefighting inefficiencies.",
+            "Your Finance Manager can't trust the numbers during quarterly reviews."],
         actionText: "We get it. And we're here to fix it—for good."
       },
     },
     {
       header: {
         textWithoutColor: "Your Transformation Starts Here.",
-        subtitle: "The first step to solving your enterprise problems is just a conversation away.",
+        subtitle:
+          "The first step to solving your enterprise problems is just a conversation away.",
       },
       buttons: [
         {
           label: "Book a Free Consultation Now",
+          // href: "https://nectar.lmnas.com/book_appointment",
           variant: "default",
           formMode: "booking",
         },
         {
           label: "Talk to an Expert",
+          // href: "https://nectar.lmnas.com/contact",
           variant: "outline",
           formMode: "contact",
         },
@@ -313,16 +317,19 @@ export default function Home() {
     {
       header: {
         textWithoutColor: "Ready to Eliminate Your Enterprise Challenges?",
-        subtitle: "Let's work together to build a future where your business operates at its best—every single day. The first step to solving your enterprise problems is just a conversation away.",
+        subtitle:
+          " Let's work together to build a future where your business operates at its best—every single day.The first step to solving your enterprise problems is just a conversation away.",
       },
       buttons: [
         {
           label: "Book Your Free Consultation",
+          //  href: "https://nectar.lmnas.com/book_appointment",
           variant: "default",
           formMode: "booking",
         },
         {
           label: "Contact Us Now",
+          //  href: "https://nectar.lmnas.com/contact",
           variant: "outline",
           formMode: "contact",
         },
@@ -331,7 +338,7 @@ export default function Home() {
     }
   ]
 
-  const LDFaq = {
+  const Faq = {
     title: "Got Questions? We've Got Answers!",
     items: [
       {
@@ -357,60 +364,139 @@ export default function Home() {
     ]
   }
 
+  const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
+  const [FormMode, fnSetFormMode] = useState<TformMode>(null)
+  const [SuccessMessage, fnSetSuccessMessage] = useState<string | null>(null)
+
+  const SectionRefs = {
+    hero: useRef<HTMLDivElement>(null),
+    callout1: useRef<HTMLDivElement>(null),
+    callout2: useRef<HTMLDivElement>(null),
+    callout3: useRef<HTMLDivElement>(null),
+  }
+
+  const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string): void => {
+    if (ActiveSection === iSectionId && FormMode === iMode) {
+      fnSetActiveSection(null)
+      fnSetFormMode(null)
+    } else {
+      fnSetActiveSection(iSectionId)
+      fnSetFormMode(iMode)
+      fnSetSuccessMessage(null)
+
+      setTimeout(() => {
+        const SectionRef = SectionRefs[iSectionId as keyof typeof SectionRefs]
+        if (SectionRef?.current) {
+          SectionRef.current.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+          })
+        }
+      }, 50)
+    }
+  }
+
+  const fnHandleFormSuccess = (iMessage: string): void => {
+    fnSetSuccessMessage(iMessage)
+    fnSetFormMode(null)
+    fnSetActiveSection(null)
+  }
+
+  useEffect(() => {
+    if (SuccessMessage) {
+      const Timer = setTimeout(() => {
+        fnSetSuccessMessage(null)
+      }, 5000)
+      return () => clearTimeout(Timer)
+    }
+  }, [SuccessMessage])
+
+  const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
+    if (ActiveSection !== iSectionId || !FormMode) return null
+
+    let formConfig
+    switch (FormMode) {
+      case "contact":
+        formConfig = contactFormConfig
+        break
+      case "booking":
+        formConfig = bookingFormConfig
+        break
+      case "download":
+        formConfig = downloadFormConfig
+        break
+      default:
+        return null
+    }
+
+    return (
+      <div className="w-full bg-background py-8">
+        <div className="container mx-auto px-4">
+          <DynamicForm
+            config={formConfig}
+            onSuccess={fnHandleFormSuccess}
+          />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Navbar />
-      <div ref={LDSectionRefs.hero}>
+      <div ref={SectionRefs.hero}>
         <Hero
-          idHero={LDHero as TheroProps}
+          idHero={hero as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "hero")}
         />
         {fnRenderFormBelowSection("hero")}
       </div>
       <div className="bg-grayBackground">
-        <Feature idFeature={{ ...LAFeatures[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
+        <Feature idFeature={{ ...feature[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
+        <Feature idFeature={{ ...feature[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-      <div className="bg-dark/70" ref={LDSectionRefs.callout1}>
+      <div className="bg-dark/70" ref={SectionRefs.callout1}>
         <Callout
-          idCallout={LACalloutData[0] as TcalloutProps}
+          idCallout={calloutData[0] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout1")}
         />
         {fnRenderFormBelowSection("callout1")}
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
+        <Feature idFeature={{ ...feature[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
       <SocialProof />
-      <div className="bg-dark/70" ref={LDSectionRefs.callout2}>
+      <div className="bg-dark/70" ref={SectionRefs.callout2}>
         <Callout
-          idCallout={LACalloutData[1] as TcalloutProps}
+          idCallout={calloutData[1] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout2")}
         />
         {fnRenderFormBelowSection("callout2")}
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[3], layout: "centered", iShowButton: false } as TfeatureProps} />
+        <Feature idFeature={{ ...feature[3], layout: "centered", iShowButton: false } as TfeatureProps} />
       </div>
       <div className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
-              {LDFaq.title}
+              {Faq.title}
             </h2>
-            <FAQs idFaq={LDFaq.items} />
+
+            <FAQs idFaq={Faq.items} />
           </div>
         </div>
       </div>
-      <div ref={LDSectionRefs.callout3}>
+      <div ref={SectionRefs.callout3}>
         <Callout
-          idCallout={{ ...LACalloutData[2], layout: "simple" } as TcalloutProps}
+          idCallout={{ ...calloutData[2], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout3")}
         />
         {fnRenderFormBelowSection("callout3")}
       </div>
+
       <Footer />
     </div>
   )
