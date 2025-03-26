@@ -399,56 +399,6 @@ const career = {
 };
 
 export default function Career() {
-  //section 1
- const SectionContent = (idData) => ( <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <div className="relative mx-auto md:ml-0 w-full space-y-4">
-             {idData.title &&(<div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
-                  <Lightbulb className="h-4 w-4 text-primary" />
-                </div>
-                <h4 className="font-semibold text-lg">
-                  {idData.title}
-                </h4>
-              </div>)}
-              <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
-                <div className="aspect-[4/3] relative">
-                  <Image
-                    src={idData.image.src}
-                    alt={idData.image.alt}
-                    fill
-                    className="object-cover rounded-lg"
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
-                <span className="block sm:inline">
-                  {idData.header.badge}
-                </span>
-              </div>
-              <p className="text-lg text-muted-foreground">
-                {idData.subtitle}
-              </p>
-              <TitleSubtitle
-                idTitle={{
-                  ...idData.header,
-                  className: "m-0",
-                  headingClass: "md:text-5xl tracking-normal",
-                  descripClass: "mt-6 md:text-lg",
-                }}
-              />
-              <div className="flex flex-wrap gap-4 pt-2">
-                <Link href={idData.buttons.href}>
-                  <Button size={"lg"}>
-                    {idData.buttons.label}
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>)
-
   //section 3 usestate
   const [, fnSetActiveTab] = useState("students");
   const [SearchTerm, fnSetSearchTerm] = useState("");
