@@ -6,25 +6,20 @@ import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tbutton, TheroProps } from "@repo/ui/type";
 import {
-  ArrowLeft,
   ArrowRight,
   Briefcase,
   Building,
   ChevronRight,
-  FileText,
   Lightbulb,
-  Linkedin,
   Search,
-  Twitter,
   X,
-  Youtube,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   Tabs,
   TabsContent,
