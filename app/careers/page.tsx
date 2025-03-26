@@ -10,6 +10,7 @@ import {
   ArrowRight,
   Briefcase,
   Building,
+  ChevronRight,
   FileText,
   Lightbulb,
   Linkedin,
@@ -48,6 +49,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/components/ui/card";
+import TrendCard from "@repo/ui/components/trend-card";
 
 const career = {
   hero: {
@@ -204,6 +206,74 @@ const career = {
         label: "View All Opportunities",
       },
     },
+    studentJobs: [
+      {
+        id: "JD-0142",
+        title: "Junior Software Developer",
+        location: "Bangalore, India (Hybrid)",
+        type: "Full-time",
+        level: "Entry",
+        role: "Development",
+        skills: ["JavaScript", "React", "Node.js"],
+        description:
+          "Join our development team to build innovative solutions using modern technologies.",
+      },
+      {
+        id: "JD-0156",
+        title: "Associate Data Analyst",
+        location: "Chennai, India (Remote)",
+        type: "Full-time",
+        level: "Entry",
+        role: "Data",
+        skills: ["SQL", "Excel", "Python"],
+        description:
+          "Help transform data into actionable insights. Looking for analytical minds.",
+      },
+      {
+        id: "JD-0163",
+        title: "UI/UX Design Intern",
+        location: "Mumbai, India (On-site)",
+        type: "Internship",
+        level: "Entry",
+        role: "Design",
+        skills: ["Figma", "Adobe XD", "UI/UX"],
+        description: "Create beautiful, intuitive interfaces for our products.",
+      },
+      {
+        id: "JD-0178",
+        title: "Technical Support Engineer",
+        location: "Delhi, India (Hybrid)",
+        type: "Full-time",
+        level: "Mid",
+        role: "Support",
+        skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
+        description:
+          "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
+      },
+      {
+        id: "JD-0185",
+        title: "Senior Frontend Developer",
+        location: "Bangalore, India (Hybrid)",
+        type: "Full-time",
+        level: "Senior",
+        role: "Development",
+        skills: ["React", "TypeScript", "Next.js"],
+        description:
+          "Lead our frontend development efforts and mentor junior developers.",
+      },
+      {
+        id: "JD-0192",
+        title: "Data Science Lead",
+        location: "Chennai, India (Hybrid)",
+        type: "Full-time",
+        level: "Senior",
+        role: "Data",
+        skills: ["Machine Learning", "Python", "TensorFlow"],
+        description:
+          "Drive our data science initiatives and develop predictive models.",
+      },
+    ],
+    
     buttons: [
       {
         label: " On-Campus Recruitment",
@@ -261,11 +331,124 @@ const career = {
         label: "View All Stories",
         href:"/solutions"
       }
-    }
+    },
+    latestTrendsHeader: {
+      textWithoutColor: "Latest Trends from",
+      text: "LMNAs Cloud Solutions",
+      subtitle:
+        "Stay updated with the latest innovations, industry insights, and AI-driven solutions from LMNAs Cloud Solutions.",
+    },
+    trendsData:  [
+      {
+        title: "AI-Powered ERP: How Businesses Are Scaling Faster",
+        description:
+          "Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Cloud Solutions",
+        date: "2 days ago",
+      },
+      {
+        title: "5 AI-Driven ERP Trends That Will Transform Your Business",
+        description:
+          "The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Tech Blog",
+        date: "1 week ago",
+      },
+      {
+        title: "The Impact of AI on Enterprise Growth & Innovation",
+        description:
+          "Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
+        source: "YouTube",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Channel",
+        date: "3 days ago",
+      },
+      {
+        title: "Automation isn't the future. It's the present.",
+        description:
+          "See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI.",
+        source: "Twitter",
+        author: "By @LMNAsCloud",
+        date: "1 day ago",
+      },
+      {
+        title: "The Future of Cloud Solutions for Enterprise Transformation",
+        description:
+          "As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Cloud Solutions",
+        date: "4 days ago",
+      },
+      {
+        title: "How Data Analytics is Revolutionizing Business Decision-Making",
+        description:
+          "Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market.",
+        source: "LinkedIn",
+        author: "By LMNAs Tech Blog",
+        date: "5 days ago",
+      },
+    ],
+    trendSection : {
+      footer: "Show All Trends",
+    },
   }
 };
 
 export default function Career() {
+  //section 1
+ const SectionContent = (idData) => ( <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div className="relative mx-auto md:ml-0 w-full space-y-4">
+             {idData.title &&(<div className="flex items-center gap-3">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
+                  <Lightbulb className="h-4 w-4 text-primary" />
+                </div>
+                <h4 className="font-semibold text-lg">
+                  {idData.title}
+                </h4>
+              </div>)}
+              <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
+                <div className="aspect-[4/3] relative">
+                  <Image
+                    src={idData.image.src}
+                    alt={idData.image.alt}
+                    fill
+                    className="object-cover rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className="space-y-6">
+              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
+                <span className="block sm:inline">
+                  {idData.header.badge}
+                </span>
+              </div>
+              <p className="text-lg text-muted-foreground">
+                {idData.subtitle}
+              </p>
+              <TitleSubtitle
+                idTitle={{
+                  ...idData.header,
+                  className: "m-0",
+                  headingClass: "md:text-5xl tracking-normal",
+                  descripClass: "mt-6 md:text-lg",
+                }}
+              />
+              <div className="flex flex-wrap gap-4 pt-2">
+                <Link href={idData.buttons.href}>
+                  <Button size={"lg"}>
+                    {idData.buttons.label}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>)
+
   //section 3 usestate
   const [, fnSetActiveTab] = useState("students");
   const [SearchTerm, fnSetSearchTerm] = useState("");
@@ -282,7 +465,7 @@ export default function Career() {
   });
 
   // Filter jobs based on search and filters
-  const LaFilteredJobs = studentJobs.filter((idJob) => {
+  const LaFilteredJobs = career.section3.studentJobs.filter((idJob) => {
     const MatchesSearch =
       SearchTerm === "" ||
       idJob.title.toLowerCase().includes(SearchTerm.toLowerCase()) ||
@@ -344,66 +527,19 @@ export default function Career() {
     );
   };
 
-  // section4 socialCard
-  const [CurrentIndex, fnSetCurrentIndex] = useState(0)
-  const [SlideWidth, fnSetSlideWidth] = useState(0)
-  const CarouselRef = useRef<HTMLDivElement | null>(null);
-  const SlidesPerView = { mobile: 1, tablet: 2, desktop: 3 }
-
-  useEffect(() => {
-    const fnUpdateSlideWidth = ():void => {
-      if (CarouselRef.current) {
-        const containerWidth = CarouselRef.current.offsetWidth
-        let slidesShown = SlidesPerView.mobile
-
-        if (window.innerWidth >= 768) {
-          slidesShown = SlidesPerView.tablet
-        }
-        if (window.innerWidth >= 1024) {
-          slidesShown = SlidesPerView.desktop
-        }
-
-        fnSetSlideWidth(containerWidth / slidesShown)
-      }
-    }
-
-    fnUpdateSlideWidth()
-    window.addEventListener("resize", fnUpdateSlideWidth)
-
-    return () => {
-      window.removeEventListener("resize", fnUpdateSlideWidth)
-    }
-  }, [SlidesPerView.desktop, SlidesPerView.mobile, SlidesPerView.tablet])
-
-  const fnNextSlide = ():void => {
-    let slidesShown = 1
-    if (window.innerWidth >= 768) slidesShown = 2
-    if (window.innerWidth >= 1024) slidesShown = 3
-
-    fnSetCurrentIndex((prevIndex) => (prevIndex + 1 >= successStories.length - slidesShown + 1 ? 0 : prevIndex + 1))
-  }
-
-  const fnPrevSlide = ():void => {
-    let slidesShown = 1
-    if (window.innerWidth >= 768) slidesShown = 2
-    if (window.innerWidth >= 1024) slidesShown = 3
-
-    fnSetCurrentIndex((prevIndex) => (prevIndex - 1 < 0 ? successStories.length - slidesShown : prevIndex - 1))
-  }
-
-  // Helper function to get the appropriate icon based on the source
-  function fnGetIcon(iSource: string):ReactElement {
-    switch (iSource) {
-      case "YouTube":
-        return <Youtube className="h-3 w-3 mr-1" />
-      case "LinkedIn":
-        return <Linkedin className="h-3 w-3 mr-1" />
-      case "Twitter":
-        return <Twitter className="h-3 w-3 mr-1" />
-      default:
-        return <FileText className="h-3 w-3 mr-1" />
-    }
-  }
+  //Section 5 social page
+  const [SelectedTab, fnSetSelectedTab] = useState("all");
+    const UniqueSources = [
+      "all",
+      ...new Set(career.section5.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
+    ];
+  
+    const FilteredTrends =
+      SelectedTab === "all"
+        ? career.section5.trendsData
+        : career.section5.trendsData.filter(
+            (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+          );
 
   return (
     <>
@@ -488,9 +624,7 @@ export default function Career() {
                   {career?.section2.header.badge}
                 </span>
               </div>
-              <TitleSubtitle
-                idTitle={{
-                  ...career?.section2.header,
+              <TitleSubtitle idTitle={{ ...career?.section2.header,
                   className: "m-0",
                   headingClass: "md:text-5xl tracking-normal",
                   descripClass: "mt-6 md:text-lg",
@@ -506,9 +640,7 @@ export default function Career() {
             <div className="grid grid-cols-2 gap-6">
               {career?.section2.items.map((idItem, iIndex) => {
                 const IconComponent =
-                  (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) ||
-                  Icons.Users; // Ensure TypeScript recognizes it as a valid component
-
+                  (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
                 return (
                   <div className="flex items-start gap-3" key={iIndex}>
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 shrink-0">
@@ -755,10 +887,7 @@ export default function Career() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <Button
-                  variant="outline"
-                  className="group border-primary/20 hover:bg-primary/5"
-                >
+                <Button variant="outline" className="group border-primary/20 hover:bg-primary/5">
                   {career.section3.tab.button.label}
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -773,21 +902,16 @@ export default function Career() {
                         <Building className="h-5 w-5 text-primary" />
                       </div>
                     </div>
-                    <TitleSubtitle
-                      idTitle={{
-                        ...career?.section4.header,
+                    <TitleSubtitle idTitle={{ ...career?.section4.header,
                         className: "m-0 items-center justify-center",
-                        headingClass:
-                          "md:text-base tracking-tight leading-tight",
+                        headingClass:"md:text-base tracking-tight leading-tight",
                         descripClass: "md:text-sm",
                       }}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                       {career.section3.points.map((idTitle, iIndex) => (
                         <div className="border rounded-lg p-4" key={iIndex}>
-                          <TitleSubtitle
-                            idTitle={{
-                              ...idTitle.header,
+                          <TitleSubtitle idTitle={{ ...idTitle.header,
                               className: "m-0",
                               headingClass:
                                 "md:text-2xl tracking-tight leading-tight",
@@ -800,19 +924,12 @@ export default function Career() {
                     <div className="flex flex-wrap gap-4 pt-4">
                       {career.section3.buttons.map((idBtn, iIndex) => {
                         const BtnIconComponent =
-                          (Icons[
-                            idBtn.icon as keyof typeof Icons
-                          ] as LucideIcon) || Icons.Users;
-
+                          (Icons[ idBtn.icon as keyof typeof Icons ] as LucideIcon) || Icons.Users;
                         return (
-                          <Button
-                            key={iIndex}
-                            size="lg"
-                            className="group"
+                          <Button key={iIndex} size="lg" className="group"
                             variant={
                               (idBtn.variant as Tbutton["variant"]) ?? "default"
-                            }
-                          >
+                            }>
                             <BtnIconComponent className="h-4 w-4" />
                             <Link href={idBtn.href}>{idBtn.label}</Link>
                           </Button>
@@ -882,9 +999,7 @@ export default function Career() {
                   {career.section4.header.badge}
                 </span>
               </div>
-              <TitleSubtitle
-                idTitle={{
-                  ...career?.section4.header,
+              <TitleSubtitle idTitle={{ ...career?.section4.header,
                   className: "m-0 items-center justify-center",
                   headingClass: "md:text-5xl tracking-tight leading-tight",
                   descripClass: "md:text-lg",
@@ -894,9 +1009,7 @@ export default function Career() {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 mt-1">
                   <Lightbulb className="h-4 w-4 text-primary" />
                 </div>
-                <TitleSubtitle
-                  idTitle={{
-                    ...career?.section4.points,
+                <TitleSubtitle idTitle={{ ...career?.section4.points,
                     className: "space-y-2 m-0",
                     headingClass:
                       "font-semibold md:text-lg tracking-tight leading-tight",
@@ -907,9 +1020,7 @@ export default function Career() {
               <div className="flex flex-wrap gap-4 pt-2">
                 {career.section4.buttons.map((idBtn, iIndex) => (
                   <Button
-                    key={iIndex}
-                    size="lg"
-                    className="group"
+                    key={iIndex} size="lg" className="group"
                     variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
                   >
                     <Link href={idBtn.href}> {idBtn.label} </Link>
@@ -923,240 +1034,52 @@ export default function Career() {
       </section>
 
       {/* section 5 */}
-      <section className="py-24 bg-background">
-      <div className="container px-4 sm:px-6 mx-auto">
-        <motion.div
-          className="text-center mb-16 max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <TitleSubtitle idTitle={{...career.section5.header,
-             className: "m-0 items-center justify center",
-             headingClass: "md:text-5xl tracking-normal",
-             descripClass: "mt-6 md:text-lg",
-          }} />
-        </motion.div>
-
-        <div className="relative">
-      <div className="carousel" ref={CarouselRef}>
-        <div
- className="carousel-inner flex px-2 gap-4 transition-transform duration-300 ease-in-out"
-           style={{
-            transform: `translateX(-${CurrentIndex * SlideWidth}px)`,
-            paddingLeft: "0.5rem",
-            paddingRight: "0.5rem",
-          }}
-        >
-          {successStories.map((story, index) => (
-            <div key={index} className="carousel-item flex-shrink-0 px-2" style={{ width: SlideWidth ? `${SlideWidth}px` : "100%" }}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (index * 0.1) % 0.3 }}
-                whileHover={{ y: -5 }}
+        <section className="border-b border-border/40 py-20">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="mx-auto max-w-[85rem]">
+              <TitleSubtitle idTitle={{ ...career.section5.latestTrendsHeader,
+                  className: "text-center md:text-left",
+                  headingClass: "",
+                  descripClass: "",
+                }}
+              />
+              <Tabs
+                defaultValue="all"
+                className="w-full"
+                onValueChange={fnSetSelectedTab}
               >
-                <Card className="overflow-hidden h-full">
-                  <CardHeader className="p-4">
-                    <div className="flex items-center justify-between">
-                      <Badge variant="outline" className="flex items-center gap-1 mb-3">
-                        {fnGetIcon(story.platform)}
-                        {story.platform}
-                      </Badge>
-                      <CardDescription className="mb-3">{story.date}</CardDescription>
-                    </div>
-                    <CardTitle className="line-clamp-1">{story.title}</CardTitle>
-                  </CardHeader>
-                  <div className="relative h-48 w-full">
-                    <Image
-                      src={story.image || "/placeholder.svg?height=300&width=600"}
-                      alt={story.title}
-                      fill
-                      className="object-cover"
-                    />
+                <div className="border-b mb-8">
+                  <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                    {UniqueSources.map((idTab) => (
+                      <TabsTrigger
+                        key={idTab}
+                        value={idTab}
+                        className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                      >
+                        {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                </div>
+
+                <TabsContent value={SelectedTab} className="mt-0">
+                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {FilteredTrends.map((idTrend, idIndex) => (
+                      <TrendCard key={idIndex} idTrends={idTrend} />
+                    ))}
                   </div>
-                  <CardContent className="p-4">
-                    <CardDescription className="line-clamp-3">{story.description}</CardDescription>
-                    {story.author && <p className="mt-2 text-sm font-medium">By {story.author}</p>}
-                  </CardContent>
-                </Card>
-              </motion.div>
+                  <div className="mt-12 text-center">
+                    <Button variant="outline" size="lg" className="group">
+                      {career.section5.trendSection.footer}
+                      <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
-          ))}
-        </div>
-      </div>
-
-      <button
-        onClick={fnPrevSlide}
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-background hover:bg-grayBackground text-primary rounded-full p-3 z-10 border shadow-sm"
-        aria-label="Previous slide"
-      >
-        <ArrowLeft className="h-5 w-5" />
-      </button>
-
-      <button
-        onClick={fnNextSlide}
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-background hover:bg-grayBackground text-primary rounded-full p-3 z-10 border shadow-sm"
-        aria-label="Next slide"
-      >
-        <ArrowRight className="h-5 w-5" />
-      </button>
-    </div>
-
-        <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-         <TitleSubtitle idTitle={{...career.section5.footer.header,
-             className: "m-0 mb-4 items-center justify center",
-             headingClass: "md:text-lg tracking-normal",
-             descripClass: "mt-2 md:text-sm",
-          }} /> 
-          <Link href={career.section5.footer.button.href}><Button variant="outline" className="group border-primary/20 hover:bg-primary/5 h-12 px-6 text-base">
-            {career.section5.footer.button.label}
-            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </Button></Link>
-          </motion.div>
-        </div>
+          </div>
         </section>
       <Footer />
     </>
   );
 }
-
-const studentJobs = [
-  {
-    id: "JD-0142",
-    title: "Junior Software Developer",
-    location: "Bangalore, India (Hybrid)",
-    type: "Full-time",
-    level: "Entry",
-    role: "Development",
-    skills: ["JavaScript", "React", "Node.js"],
-    description:
-      "Join our development team to build innovative solutions using modern technologies.",
-  },
-  {
-    id: "JD-0156",
-    title: "Associate Data Analyst",
-    location: "Chennai, India (Remote)",
-    type: "Full-time",
-    level: "Entry",
-    role: "Data",
-    skills: ["SQL", "Excel", "Python"],
-    description:
-      "Help transform data into actionable insights. Looking for analytical minds.",
-  },
-  {
-    id: "JD-0163",
-    title: "UI/UX Design Intern",
-    location: "Mumbai, India (On-site)",
-    type: "Internship",
-    level: "Entry",
-    role: "Design",
-    skills: ["Figma", "Adobe XD", "UI/UX"],
-    description: "Create beautiful, intuitive interfaces for our products.",
-  },
-  {
-    id: "JD-0178",
-    title: "Technical Support Engineer",
-    location: "Delhi, India (Hybrid)",
-    type: "Full-time",
-    level: "Mid",
-    role: "Support",
-    skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
-    description:
-      "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
-  },
-  {
-    id: "JD-0185",
-    title: "Senior Frontend Developer",
-    location: "Bangalore, India (Hybrid)",
-    type: "Full-time",
-    level: "Senior",
-    role: "Development",
-    skills: ["React", "TypeScript", "Next.js"],
-    description:
-      "Lead our frontend development efforts and mentor junior developers.",
-  },
-  {
-    id: "JD-0192",
-    title: "Data Science Lead",
-    location: "Chennai, India (Hybrid)",
-    type: "Full-time",
-    level: "Senior",
-    role: "Data",
-    skills: ["Machine Learning", "Python", "TensorFlow"],
-    description:
-      "Drive our data science initiatives and develop predictive models.",
-  },
-];
-
-// Sample data for success stories
-const successStories = [
-  {
-    title: "From Fresher to Team Lead",
-    description: "How Priya navigated her career journey at LMNAS",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "video",
-    platform: "YouTube",
-    views: "12K",
-    date: "2 months ago",
-    author: "By  Priya Sharma",
-  },
-  {
-    title: "Switching Careers Successfully",
-    description: "Rahul's transition from finance to technology",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "video",
-    platform: "YouTube",
-    views: "8.5K",
-    date: "3 months ago",
-    author: "By  Rahul Mehta",
-  },
-  {
-    title: "Breaking Barriers in Tech",
-    description: "Meera's return to work after a 3-year break",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "video",
-    platform: "YouTube",
-    views: "15K",
-    date: "1 month ago",
-    author: "By  Meera Patel",
-  },
-  {
-    title: "Campus to Corporate Journey",
-    description: "How LMNAS helped Arjun bridge the gap",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "article",
-    platform: "LinkedIn",
-    views: "5.2K",
-    date: "2 weeks ago",
-    author: "By Arjun Singh",
-  },
-  {
-    title: "Leadership Development",
-    description: "Vikram's growth from developer to engineering manager",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "article",
-    platform: "LinkedIn",
-    views: "7.8K",
-    date: "1 month ago",
-    author: "By Vikram Desai",
-  },
-  {
-    title: "International Opportunities",
-    description: "Ananya's experience working with global teams",
-    image: "/placeholder.svg?height=300&width=600",
-    type: "video",
-    platform: "YouTube",
-    views: "10.3K",
-    date: "3 weeks ago",
-    author: "By Ananya Gupta",
-  },
-]
