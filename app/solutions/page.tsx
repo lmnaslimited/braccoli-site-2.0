@@ -535,8 +535,6 @@ export default function Solutions() {
       textWithoutColor: "This Is What Transformation Feels Like",
       subtitle:
         "These aren't just numbers. They represent real businesses that broke through their limitations.",
-      className: "text-center items-center",
-      headingClass: "md:text-5xl",
     },
     card: [
       {
@@ -544,53 +542,41 @@ export default function Solutions() {
           text: "Reduced manual work by 72%",
           subtitle:
             "Automation replaced tedious manual processes, freeing up staff for strategic work.",
-          headingClass: "md:text-2xl",
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
       {
         header: {
           text: "Increased revenue by $8M in 12 months",
           subtitle:
             "New efficiencies and insights led to significant revenue growth.",
-          headingClass: "md:text-2xl",
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
       {
         header: {
           text: "Achieved full process automation in 30 days",
           subtitle: "Rapid implementation led to quick wins and immediate ROI.",
-          headingClass: "md:text-2xl",
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
       {
         header: {
           text: "Unified data across 12 departments",
           subtitle:
             "Breaking down silos created unprecedented visibility and collaboration.",
-          headingClass: "md:text-2xl",
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
       {
         header: {
           text: "Reduced operational costs by 35%",
           subtitle:
-            "Streamlined processes eliminated waste and reduced overhead.",
-          headingClass: "md:text-2xl",
+            "Streamlined processes eliminated waste and reduced overhead."
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
       {
         header: {
           text: "Improved customer satisfaction by 48%",
           subtitle:
             "Better internal processes translated to superior customer experiences.",
-          headingClass: "md:text-2xl",
         },
-        className: "max-w-md bg-primary/5 border-gray-400 text-left",
       },
     ],
     footer: {
@@ -696,6 +682,14 @@ export default function Solutions() {
       label: "Explore Success Stories ",
       href: "/solutions",
       icon: <ArrowRight className="size-5" />,
+      header:{
+        textWithoutColor: " Want To See Full Case Study Reports?",
+        subtitle:"Download detailed PDF reports of how we helped companies achieve massive breakthroughs."
+      },
+      title: "We'll send the case study directly to your inbox. We respect your privacy.",
+      button:{
+        label:" Download Full Case Study Report"
+      }
     },
   };
 
@@ -852,8 +846,8 @@ export default function Solutions() {
         alt: idCard.image.alt,
         aspectRatio: "wide",
       },
-      button: idCard.buttons?.map((iaButton) => ({
-        ...iaButton,
+      button: idCard.buttons?.map((idButton) => ({
+        ...idButton,
         icon: <ArrowRight className="size-5" />,
         iconPosition: "after",
         size: "lg",
@@ -879,14 +873,18 @@ export default function Solutions() {
 
       {/* 6 */}
       <section className="py-20 container mx-auto px-4 md:px-6 text-center">
-        <TitleSubtitle idTitle={section6.header as Theader} />
+        <TitleSubtitle idTitle={{...section6.header, 
+          className: "text-center items-center",
+          headingClass: "md:text-5xl",
+        } as Theader} />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
           {section6.card.map((idCard, iIndex) => (
             <CustomCard
               key={iIndex}
-              // header:card.header
-              // classNamecard:.className
-              idCardProps={idCard}
+              idCardProps={{...idCard, 
+                header:{...idCard.header, headingClass: "md:text-2xl",},
+                className: "max-w-md bg-primary/5 border-gray-400 text-left",
+              }}
             />
           ))}
         </div>
@@ -944,13 +942,11 @@ export default function Solutions() {
         <div className="container px-4 md:px-6">
           <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
             <div className="text-center space-y-2 mb-6">
-              <h2 className="text-2xl font-bold">
-                Want To See Full Case Study Reports?
-              </h2>
-              <p className="text-muted-foreground">
-                Download detailed PDF reports of how we helped companies achieve
-                massive breakthroughs.
-              </p>
+              <TitleSubtitle idTitle={{...section7.footer.header,
+                className:"m-0 items-center justify-center",
+                headingClass:"md:text-2xl text-2xl mb-2 leading-normal semi-bold",
+                descripClass:"md:text-base text-base"
+              }} />
             </div>
 
             <form className="space-y-4">
@@ -962,12 +958,12 @@ export default function Solutions() {
                   className="w-full"
                 />
                 <p className="text-xs text-muted-foreground">
-                  {"We'll send the case study directly to your inbox. We respect your privacy."}
+                 {section7.footer.title}
                 </p>
               </div>
 
               <Button type="submit" className="w-full" size="lg">
-                Download Full Case Study Report
+                {section7.footer.button.label}
                 <Download className="ml-2 h-4 w-4" />
               </Button>
             </form>
