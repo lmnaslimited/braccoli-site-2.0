@@ -44,7 +44,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@repo/ui/components/ui/card";
-import TrendCard from "@repo/ui/components/trend-card";
+import TrendCard from "@repo/ui/components/trendCard";
 
 const career = {
   hero: {
@@ -388,7 +388,12 @@ const career = {
       },
     ],
     trendSection : {
-      footer: "Show All Trends",
+      footer: {
+        button:{
+          label:"Show All Trends",
+          href:"/trending-now"
+        }
+      }
     },
   }
 };
@@ -1014,10 +1019,10 @@ export default function Career() {
                     ))}
                   </div>
                   <div className="mt-12 text-center">
-                    <Button variant="outline" size="lg" className="group">
-                      {career.section5.trendSection.footer}
+                    <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
+                      {career.section5.trendSection.footer.button.label}
                       <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
+                    </Button></Link>
                   </div>
                 </TabsContent>
               </Tabs>
