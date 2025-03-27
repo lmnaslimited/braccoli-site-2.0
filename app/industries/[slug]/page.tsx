@@ -1647,8 +1647,8 @@ export default async function Industries({
                 <CustomCard
                   idCardProps={{
                     header: idSection.card.header,
-                    link: idSection.card.button.map((iaButton) => ({
-                      ...iaButton,
+                    link: idSection.card.button.map((idButton) => ({
+                      ...idButton,
                       icon: <ArrowRight className="ml-2 h-4 w-4" />,
                       iconPosition: "after",
                     })) as Tbutton[],
@@ -1693,8 +1693,8 @@ export default async function Industries({
                 },
                 className: "max-w-sm",
                 link:
-                  idCard.link?.map((iaButton) => ({
-                    ...iaButton,
+                  idCard.link?.map((idButton) => ({
+                    ...idButton,
                     icon: <ArrowRight className="size-5" />,
                     iconPosition: "after",
                   })) ?? [],
@@ -1776,8 +1776,8 @@ export default async function Industries({
                     aspectRatio: "wide",
                   },
                   button:
-                    idCard.buttons?.map((iaButton) => ({
-                      ...iaButton,
+                    idCard.buttons?.map((idButton) => ({
+                      ...idButton,
                       icon: <ArrowRight className="size-5" />,
                       iconPosition: "after",
                       size: "lg",

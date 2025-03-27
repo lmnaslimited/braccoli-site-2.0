@@ -271,7 +271,7 @@ export default function TrendingNowPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps} />;
+        <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps} />
         {/* The Problem Section - Redesigned to show social media frustration */}
         <section className="border-b border-border/40 py-20 bg-gradient-to-br from-grayBackground to-background overflow-hidden">
           <div className="container mx-auto px-4 md:px-6">

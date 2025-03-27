@@ -424,8 +424,8 @@ export default function Pricing() {
           <div className="mx-auto max-w-4xl">
             <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
               <div className="grid gap-6 md:grid-cols-2">
-                {Section2.items.map((idIssue, index) => (
-                  <div key={index} className="flex items-start gap-3">
+                {Section2.items.map((idIssue, iIndex) => (
+                  <div key={iIndex} className="flex items-start gap-3">
                     <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
                       {idIssue.icon}
                     </div>
@@ -505,8 +505,8 @@ export default function Pricing() {
                           <TableCell className="font-medium p-4">
                             {iFeature}
                           </TableCell>
-                          {Section3.pricingPlans.map((iPlan, i) => (
-                            <TableCell key={i} className="text-center p-4">
+                          {Section3.pricingPlans.map((iPlan, iPlanIndex) => (
+                            <TableCell key={iPlanIndex} className="text-center p-4">
                               {
                                 iPlan[
                                 Object.keys(iPlan)[
@@ -520,7 +520,7 @@ export default function Pricing() {
                       ))}
                       <TableRow className="bg-grayBackground border-t">
                         <TableCell></TableCell>
-                        {Section3.pricingPlans.map((plan, iIndex) => (
+                        {Section3.pricingPlans.map((iPlan, iIndex) => (
                           <TableCell key={iIndex} className="text-center">
                             <Button
                               variant={iIndex === 2 ? "default" : "outline"}
