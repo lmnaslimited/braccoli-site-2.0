@@ -31,6 +31,25 @@ import {
   UserCheck,
   Users,
   Map,
+  Cpu,
+  RefreshCw,
+  Home,
+  Activity,
+  CheckCircle,
+  Clipboard,
+  PackageSearch,
+  Warehouse,
+  CalendarCheck,
+  Barcode,
+  ClipboardCheck,
+  Ruler,
+  Gift,
+  LineChart,
+  RotateCcw,
+  Globe,
+  MapPin,
+  Navigation,
+  User,
 } from "lucide-react";
 import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
@@ -39,7 +58,7 @@ import PainPoints from "@repo/ui/components/painPoint";
 import Link from "next/link";
 import Navbar from "@repo/ui/components/navbar";
 
-const pageSlugs = [
+const PageSlugs = [
   {
     id: "manufacturing",
     slug: "/manufacturing",
@@ -61,11 +80,11 @@ const pageSlugs = [
         },
         {
           icon: <BarChart3 className="h-5 w-5 text-primary/80" />,
-          item: "Real-time Analytics",
+          item: "50% Faster Reporting",
         },
         {
           icon: <ArrowRight className="h-5 w-5 text-primary/80" />,
-          item: "Streamlined Workflow",
+          item: "90% Defect Reduction",
         },
       ],
       buttons: [
@@ -162,12 +181,13 @@ const pageSlugs = [
         subtitle:
           "Discover how our comprehensive ERP solution can transform your manufacturing operations with these powerful features.",
       },
+
       feature: [
         {
           header: {
-            textWithoutColor: "Intelligent Production Planning",
+            textWithoutColor: "Master Production with AI-Driven Planning",
             subtitle:
-              "Optimize your production schedules with AI-powered planning tools that adapt to changing demands and resource availability.",
+              "Slash material waste and optimize resource flow with predictive scheduling and intelligent allocation.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
@@ -176,9 +196,9 @@ const pageSlugs = [
           },
           card: {
             header: {
-              text: "Manufacturing Giant Reduces Manual Work by 72%",
+              text: "Global Manufacturer Slashes Waste by 40% with AI-Powered Scheduling",
               subtitle:
-                "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
+                "A top manufacturer revolutionized production by leveraging AI to cut raw material waste, boost efficiency, and drive cost savings.",
             },
             button: [
               {
@@ -190,9 +210,10 @@ const pageSlugs = [
         },
         {
           header: {
-            textWithoutColor: "Real-Time Inventory Management",
+            textWithoutColor:
+              "Take Full Control of Your Inventory – in Real Time",
             subtitle:
-              "Gain complete visibility into your inventory with real-time tracking, automated reordering, and comprehensive reporting.",
+              "Eliminate stockouts and overages with automated tracking, instant visibility, and proactive replenishment.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
@@ -201,9 +222,9 @@ const pageSlugs = [
           },
           card: {
             header: {
-              text: "Retail Chain Increases Revenue by $8M",
+              text: "Reduces Inventory Losses by 50% with Smart Tracking",
               subtitle:
-                "A national retail chain transformed their operations and saw immediate revenue growth with our inventory solutions.",
+                "A leading automotive company overhauled its inventory process, cutting losses in half and ensuring seamless production flow.",
             },
             button: [
               {
@@ -215,20 +236,98 @@ const pageSlugs = [
         },
         {
           header: {
-            textWithoutColor: "End-to-End Supply Chain Visibility",
+            textWithoutColor:
+              "Unlock Maximum Uptime with Smart Production Execution",
             subtitle:
-              "Connect every aspect of your supply chain from raw materials to finished products with comprehensive tracking and analytics.",
+              "Prevent costly delays with real-time workflow tracking, automated bottleneck detection, and intelligent downtime analysis.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "Supply Chain Visualization",
+            alt: "Production Execution Dashboard",
             position: "right",
           },
           card: {
             header: {
-              text: "Distribution Company Achieves Full Automation",
+              text: "Electronics Giant Increases Uptime by 35% with AI-Driven Monitoring",
               subtitle:
-                "How a distribution company automated 95% of their manual processes in just 30 days with our supply chain solutions.",
+                "A major electronics firm improved efficiency by tracking downtime causes, optimizing workflows, and cutting production delays.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Revolutionize Quality Control with Smart Inspections",
+            subtitle:
+              "Detect defects before they happen with automated inspections, AI-driven anomaly detection, and predictive maintenance.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Quality Control Inspection",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Auto Supplier Achieves 99.5% Quality Compliance with AI-Powered Inspection",
+              subtitle:
+                "A top-tier auto parts manufacturer slashed defects by 90%, cut rework costs, and exceeded Industry compliance standards.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Supercharge Deliveries with AI-Optimized Logistics",
+            subtitle:
+              "Improve delivery times, optimize routes, and reduce costs with intelligent fleet and demand-based scheduling.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Delivery Optimization",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Logistics Leader Boosts On-Time Deliveries by 40% with AI Routing",
+              subtitle:
+                "A global distributor streamlined fleet operations, slashed fuel costs, and dramatically improved service reliability.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor: "End-to-End Project Management",
+            subtitle:
+              "Seamlessly connect production, inventory, quality, and logistics in one powerful platform for total control.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Project Management Dashboard",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Industrial Manufacturer Boosts Efficiency by 45% with Connected Workflows",
+              subtitle:
+                "A leading manufacturer integrated all operations, reducing complexity, boosting productivity, and accelerating delivery.",
             },
             button: [
               {
@@ -244,143 +343,207 @@ const pageSlugs = [
       header: {
         textWithoutColor: "Explore All Features",
       },
+
       cards: [
         {
           header: {
             text: "Bill of Materials (BOM)",
-            subtitle: "Track and manage multi-level BOMs seamlessly.",
+            subtitle:
+              "Reduce errors in assembly by 60% with structured BOM tracking.",
           },
           image: {
             svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
             alt: "clipboard",
           },
           category: "production",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Material Resource Planning (MRP)",
-            subtitle: "Automate procurement and production schedules.",
+            subtitle: "Cut procurement delays by 40% with automated planning.",
           },
           image: {
             svg: <Factory className="h-10 w-10 mx-6 mt-4" />,
             alt: "factory",
           },
           category: "production",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Work Order Management",
+            subtitle: "Increase efficiency by 30% with automated work orders.",
+          },
+          image: {
+            svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
+            alt: "clipboard",
+          },
+          category: "production",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Shop Floor Control",
+            subtitle: "Minimize downtime by 35% with real-time monitoring.",
+          },
+          image: {
+            svg: <Cpu className="h-10 w-10 mx-6 mt-4" />,
+            alt: "cpu",
+          },
+          category: "production",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Production Scheduling",
+            subtitle:
+              "Improve on-time delivery by 45% with dynamic scheduling.",
+          },
+          image: {
+            svg: <Calendar className="h-10 w-10 mx-6 mt-4" />,
+            alt: "calendar",
+          },
+          category: "production",
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Item Variants",
-            subtitle: "Manage product variations efficiently.",
+            subtitle:
+              "Reduce stock mismatches by 50% with centralized tracking.",
           },
           image: {
             svg: <LayoutGrid className="h-10 w-10 mx-6 mt-4" />,
             alt: "layout-grid",
           },
           category: "inventory",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Production Planning Report",
-            subtitle: "Gain real-time insights for better decision-making.",
-          },
-          image: {
-            svg: <BarChart className="h-10 w-10 mx-6 mt-4" />,
-            alt: "barchart",
-          },
-          category: "reports",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Inventory Tracking",
-            subtitle: "Real-time visibility into stock levels and movements.",
+            subtitle:
+              "Lower lost inventory cases by 65% with real-time tracking.",
           },
           image: {
             svg: <Boxes className="h-10 w-10 mx-6 mt-4" />,
             alt: "boxes",
           },
           category: "inventory",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
-            text: "Work Order Management",
-            subtitle: "Create, track, and manage production work orders.",
+            text: "Automated Reordering",
+            subtitle:
+              "Reduce emergency procurement costs by 40% with automation.",
           },
           image: {
-            svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
-            alt: "clipboard",
+            svg: <RefreshCw className="h-10 w-10 mx-6 mt-4" />,
+            alt: "refresh",
           },
-          category: "assignments",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          category: "inventory",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Warehouse Optimization",
+            subtitle:
+              "Increase picking speed by 50% with AI-driven automation.",
+          },
+          image: {
+            svg: <Home className="h-10 w-10 mx-6 mt-4" />,
+            alt: "home",
+          },
+          category: "inventory",
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Procurement Management",
-            subtitle: "Streamline purchasing processes and vendor management.",
+            subtitle: "Reduce purchasing cycle time by 50% with automation.",
           },
           image: {
             svg: <ShoppingCart className="h-10 w-10 mx-6 mt-4" />,
             alt: "shoppingcart",
           },
-          category: "assignments",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          category: "order/delivery",
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Logistics Management",
-            subtitle:
-              "Optimize shipping, receiving, and distribution operations.",
+            subtitle: "Cut shipping costs by 20% with optimized logistics.",
           },
           image: {
             svg: <Truck className="h-10 w-10 mx-6 mt-4" />,
             alt: "truck",
           },
-          category: "inventory",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
+          category: "order/delivery",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Demand Forecasting",
+            subtitle:
+              "Improve stock availability by 30% with predictive analytics.",
+          },
+          image: {
+            svg: <Activity className="h-10 w-10 mx-6 mt-4" />,
+            alt: "activity",
+          },
+          category: "order/delivery",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Production Planning Report",
+            subtitle: "Reduce idle time by 30% with real-time insights.",
+          },
+          image: {
+            svg: <BarChart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "barchart",
+          },
+          category: "reports",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Work Order Summary",
+            subtitle:
+              "Increase work order completion by 30% with live tracking.",
+          },
+          image: {
+            svg: <FileText className="h-10 w-10 mx-6 mt-4" />,
+            alt: "file",
+          },
+          category: "reports",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Job Card Summary",
+            subtitle: "Improve workforce productivity by 25% with tracking.",
+          },
+          image: {
+            svg: <Clipboard className="h-10 w-10 mx-6 mt-4" />,
+            alt: "clipboard",
+          },
+          category: "reports",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Quality Inspection Summary",
+            subtitle: "Reduce defect rates by 50% with automated reports.",
+          },
+          image: {
+            svg: <CheckCircle className="h-10 w-10 mx-6 mt-4" />,
+            alt: "check-circle",
+          },
+          category: "reports",
+          link: [{ label: "Learn More", href: "/solutions" }],
         },
       ],
     },
@@ -440,11 +603,11 @@ const pageSlugs = [
       cards: [
         {
           header: {
-            text: "Manufacturing Giant Reduces Manual Work by 72%",
+            text: "Manufacturing Giant Cuts Manual Work 72%",
             subtitle:
-              "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
+              "Automated planning boosts efficiency, eliminating thousands of wasted work hours annually.",
           },
-          category: "manufacturing",
+          category: "production planning",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -458,11 +621,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Chain Increases Revenue by $8M",
+            text: "Optimized Scheduling Reduces Lead Time 50%",
             subtitle:
-              "A national retail chain transformed their operations and saw immediate revenue growth.",
+              "Faster workflows eliminate bottlenecks, ensuring production stays on track without delays.",
           },
-          category: "retail",
+          category: "production planning",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -476,11 +639,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Company Achieves Full Automation",
+            text: "Factory Prevents Stockouts, Cuts Costs 40%",
             subtitle:
-              "How a distribution company automated 95% of their manual processes in just 30 days.",
+              "Real-time inventory tracking minimizes excess stock, optimizing warehouse space effectively.",
           },
-          category: "distribution",
+          category: "inventory management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -494,11 +657,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Industry Solution Saves $2M Annually",
+            text: "Smart Inventory Management Reduces Waste 30%",
             subtitle:
-              "A versatile solution that worked across departments to eliminate inefficiencies.",
+              "Better material tracking prevents losses, improving cost efficiency across manufacturing processes.",
           },
-          category: "cross-industry",
+          category: "inventory management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -512,11 +675,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Manufacturing Firm Streamlines Operations",
+            text: "Quality Control Lowers Defects by 60%",
             subtitle:
-              "How a manufacturing firm reduced operational costs by 35% through process optimization.",
+              "Automated inspections reduce rework, ensuring higher product quality and lower failure rates.",
           },
-          category: "manufacturing",
+          category: "quality control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -530,11 +693,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Business Enhances Customer Experience",
+            text: "Precision Checks Reduce Recalls by 45%",
             subtitle:
-              "A retail business that transformed their customer journey and increased repeat purchases.",
+              "Consistent quality assurance processes improve compliance, minimizing costly product returns.",
           },
-          category: "retail",
+          category: "quality control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -548,11 +711,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Network Optimization",
+            text: "Live Reports Improve Efficiency by 35%",
             subtitle:
-              "How a distribution company reduced delivery times by 40% through network optimization.",
+              "Real-time analytics provide key insights, streamlining production workflows for better output.",
           },
-          category: "distribution",
+          category: "reports",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -566,11 +729,11 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Department Efficiency Boost",
+            text: "Work Order Insights Boost Output 25%",
             subtitle:
-              "A solution that bridged gaps between departments and created a unified workflow.",
+              "Data-driven analysis enhances scheduling, ensuring resources are utilized at peak performance.",
           },
-          category: "cross-industry",
+          category: "reports",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
@@ -583,6 +746,7 @@ const pageSlugs = [
           ],
         },
       ],
+
       footer: {
         title: "Could This Be Your Business Story Too?",
         button: {
@@ -600,7 +764,7 @@ const pageSlugs = [
       "Optimize inventory, enhance customer experience, and drive higher sales with AI-powered ERP solutions.",
     hero: {
       heading: {
-        textWithoutColor: "LENS ERP Suite: Transform Your Retail Business with",
+        textWithoutColor: "Transform Your Retail Business with",
         text: "AI-Powered ERP",
         subtitle:
           "Optimize inventory, enhance customer experience, and drive higher sales—all with LENS ERP Suite.",
@@ -609,15 +773,15 @@ const pageSlugs = [
       items: [
         {
           icon: <ShoppingCart className="h-5 w-5 text-primary/80" />,
-          item: "30% Reduction in Stockouts",
+          item: "60% Faster Checkout Speeds",
         },
         {
           icon: <BarChart3 className="h-5 w-5 text-primary/80" />,
-          item: "Real-time Sales & Inventory Analytics",
+          item: "25% Increase in Repeat Customers",
         },
         {
           icon: <ArrowRight className="h-5 w-5 text-primary/80" />,
-          item: "Streamlined Workflow",
+          item: "50% Reduction in Stockouts",
         },
       ],
       buttons: [
@@ -713,41 +877,17 @@ const pageSlugs = [
         subtitle:
           "Discover how our advanced ERP solution can revolutionize your retail operations with these key features.",
       },
+
       feature: [
         {
           header: {
-            textWithoutColor: "AI-Driven Demand Forecasting",
-            subtitle:
-              "Anticipate market trends and optimize stock levels with real-time predictive analytics.",
-          },
-          image: {
-            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "Demand Forecasting Dashboard",
-            position: "right",
-          },
-          card: {
-            header: {
-              text: "Fashion Retailer Cuts Overstock by 40%",
-              subtitle:
-                "How a leading fashion brand leveraged AI forecasting to optimize inventory and reduce losses.",
-            },
-            button: [
-              {
-                label: "Read Case Study",
-                href: "/solutions",
-              },
-            ],
-          },
-        },
-        {
-          header: {
-            textWithoutColor: "Unified Omnichannel Experience",
+            textWithoutColor: "Unlock a Seamless Omnichannel Retail Revolution",
             subtitle:
               "Seamlessly integrate POS, e-commerce, and inventory for a smooth shopping experience across all platforms.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "Omnichannel Integration Dashboard",
+            alt: "Omnichannel Experience",
             position: "left",
           },
           card: {
@@ -759,20 +899,47 @@ const pageSlugs = [
             button: [
               {
                 label: "Read Case Study",
-                href: "/solutions",
+                href: "/case-studies/omnichannel-retail",
               },
             ],
           },
         },
         {
           header: {
-            textWithoutColor: "Automated Order Fulfillment & Logistics",
+            textWithoutColor:
+              "The All-in-One POS Powerhouse: Sell Smarter, Faster, Anywhere",
+            subtitle:
+              "A powerful POS with billing, inventory sync, customer management, analytics, and offline mode—seamless in-store & online transactions.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Automated Fulfillment",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Cuts Checkout Time by 60% & Boosts Customer Loyalty",
+              subtitle:
+                "A nationwide retailer adopted a unified POS, reducing wait times and enhancing customer engagement with personalized promotions.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/order-fulfillment",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Supercharge Fulfillment with AI-Driven Automation",
             subtitle:
               "Accelerate order processing with automated workflows, reducing delays and increasing customer satisfaction.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "Order Fulfillment Automation",
+            alt: "Automated Fulfillment",
             position: "right",
           },
           card: {
@@ -784,7 +951,186 @@ const pageSlugs = [
             button: [
               {
                 label: "Read Case Study",
-                href: "/solutions",
+                href: "/case-studies/order-fulfillment",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor: "Retail Without Boundaries: Unify & Grow Faster",
+            subtitle:
+              "Eliminate disconnected systems by unifying sales, inventory, finance, and operations into a single platform.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Retail Integration",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Retail Chain Reduces Operational Complexity by 60%",
+              subtitle:
+                "A nationwide retailer integrated all processes, reducing inefficiencies and boosting business performance.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/retail-integration",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Stop Losing Sales to Inventory Errors – Fix It Now!",
+            subtitle:
+              "Ensure accurate stock tracking with real-time updates. Minimize stockouts, overstocking, and errors with automated controls.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Inventory Management",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Supermarket Reduces Inventory Errors by 45%",
+              subtitle:
+                "A leading grocery chain automated stock management, reducing losses and improving replenishment accuracy.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/inventory-management",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor: "Never Lose Another Product to Expire Again!",
+            subtitle:
+              "Track batch numbers, expiration dates, and product lifecycles to prevent losses and compliance issues.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Expiry Management",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Retail Distributor Eliminates 98% of Expired Stock Losses",
+              subtitle:
+                "Business automated expiry tracking, preventing financial losses and ensuring product safety.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/expiry-management",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Maximize Profits with Smarter Cash & Finance Management",
+            subtitle:
+              "Link sales, promotions, inventory, and incentives to a centralized finance system, simplifying complex financial operations.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Finance Management",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Retailer Increases Profit Margins by 30% with Automated Cash Flow Management",
+              subtitle:
+                "An enterprise retail chain streamlined financial processes, reducing discrepancies and boosting profits.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/finance-management",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Empower Your Workforce with Smart HR & Productivity Tools",
+            subtitle:
+              "Measure human effort, track work hours, and optimize labor allocation with integrated HRMS.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "HR & Workforce Management",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Apparel Manufacturer Improves Workforce Efficiency by 35%",
+              subtitle:
+                "A clothing brand optimized workforce planning, reducing labor costs and improving productivity.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/workforce-management",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Eliminate Manual Errors with Automated Unit Conversions",
+            subtitle:
+              "Seamlessly convert units across suppliers, warehouses, and sales channels to ensure consistency and accuracy.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Unit Conversion",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Food Manufacturer Reduces Conversion Errors by 80%",
+              subtitle:
+                "A food production company standardized UoM conversion, minimizing errors in procurement and distribution.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/unit-conversion",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor: "Master Batch Processing with Real-Time Tracking",
+            subtitle:
+              "Streamline batch management with real-time tracking, automated labeling, and regulatory compliance monitoring.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Batch Processing",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Beverage Company Reduces Batch Processing Time by 50%",
+              subtitle:
+                "An FMCG company automated batch tracking, enhancing traceability and production efficiency.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/case-studies/batch-processing",
               },
             ],
           },
@@ -802,11 +1148,82 @@ const pageSlugs = [
         "Order Management",
         "Customer Engagement",
       ],
+
       cards: [
         {
           header: {
             text: "Real-Time Inventory Tracking",
-            subtitle: "Minimize stockouts and optimize replenishment.",
+            subtitle:
+              "Reduce stockouts by 45% and improve replenishment accuracy with automated updates.",
+          },
+          image: {
+            svg: <PackageSearch className="h-10 w-10 mx-6 mt-4" />,
+            alt: "inventory tracking",
+          },
+          category: "Inventory Control",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Supplier & Procurement Management",
+            subtitle:
+              "Cut procurement cycle time by 30% and enhance vendor efficiency.",
+          },
+          image: {
+            svg: <Truck className="h-10 w-10 mx-6 mt-4" />,
+            alt: "supplier procurement",
+          },
+          category: "Inventory Control",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Smart Inventory & Stock Maintenance",
+            subtitle:
+              "Decrease inventory errors by 40% and improve stock accuracy with real-time monitoring.",
+          },
+          image: {
+            svg: <Warehouse className="h-10 w-10 mx-6 mt-4" />,
+            alt: "stock maintenance",
+          },
+          category: "Inventory Control",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Automated Batch & Expiry Management",
+            subtitle:
+              "Eliminate 98% of expired stock losses through automated tracking and alerts.",
+          },
+          image: {
+            svg: <CalendarCheck className="h-10 w-10 mx-6 mt-4" />,
+            alt: "batch expiry",
+          },
+          category: "Inventory Control",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "End-to-End Serial Number Tracking",
+            subtitle:
+              "Reduce warranty fraud by 65% and enhance product traceability.",
+          },
+          image: {
+            svg: <Barcode className="h-10 w-10 mx-6 mt-4" />,
+            alt: "serial tracking",
+          },
+          category: "Inventory Control",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Automated Unit of Measure (UoM) Conversion",
+            subtitle:
+              "Reduce conversion errors by 80% with intelligent unit mapping.",
+          },
+          image: {
+            svg: <Ruler className="h-10 w-10 mx-6 mt-4" />,
+            alt: "unit conversion",
           },
           category: "Inventory Control",
           link: [{ label: "Learn More", href: "/solutions" }],
@@ -814,43 +1231,170 @@ const pageSlugs = [
         {
           header: {
             text: "Omnichannel Integration",
-            subtitle: "Connect POS, e-commerce, and supply chain seamlessly.",
+            subtitle:
+              "Increase online sales by 65% by unifying POS, e-commerce, and supply chain data.",
+          },
+          image: {
+            svg: <ShoppingCart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "omnichannel integration",
           },
           category: "Order Management",
-          link: [{ label: "Learn More", href: "/solutions" }],
-        },
-        {
-          header: {
-            text: "AI-Powered Customer Insights",
-            subtitle:
-              "Personalize offers and recommendations with data-driven analytics.",
-          },
-          category: "Customer Engagement",
           link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Order & Fulfillment Automation",
-            subtitle: "Reduce errors and speed up order processing.",
+            subtitle:
+              "Accelerate order processing by 50% and reduce fulfillment errors.",
+          },
+          image: {
+            svg: <ClipboardCheck className="h-10 w-10 mx-6 mt-4" />,
+            alt: "order automation",
           },
           category: "Order Management",
           link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
-            text: "Supplier & Procurement Management",
-            subtitle: "Streamline vendor operations and procurement workflows.",
+            text: "AI-Powered Demand Forecasting",
+            subtitle:
+              "Improve stock planning accuracy by 75% with predictive analytics.",
           },
-          category: "Inventory Control",
+          image: {
+            svg: <LineChart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "demand forecasting",
+          },
+          category: "Order Management",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Automated Returns & Refund Processing",
+            subtitle:
+              "Reduce return handling time by 60% and improve customer satisfaction.",
+          },
+          image: {
+            svg: <RotateCcw className="h-10 w-10 mx-6 mt-4" />,
+            alt: "returns processing",
+          },
+          category: "Order Management",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Intelligent Backorder Management",
+            subtitle:
+              "Reduce fulfillment delays by 40% with real-time order visibility.",
+          },
+          image: {
+            svg: <Clock className="h-10 w-10 mx-6 mt-4" />,
+            alt: "backorder management",
+          },
+          category: "Order Management",
           link: [{ label: "Learn More", href: "/solutions" }],
         },
         {
           header: {
             text: "Dynamic Pricing & Promotions",
             subtitle:
-              "Optimize pricing strategies based on demand and competition.",
+              "Boost revenue by 20% with AI-driven pricing optimization.",
+          },
+          image: {
+            svg: <Tag className="h-10 w-10 mx-6 mt-4" />,
+            alt: "pricing promotions",
           },
           category: "Sales Analytics",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Customer Loyalty & Rewards Management",
+            subtitle:
+              "Increase customer retention by 30% with personalized rewards.",
+          },
+          image: {
+            svg: <Gift className="h-10 w-10 mx-6 mt-4" />,
+            alt: "loyalty management",
+          },
+          category: "Sales Analytics",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "AI-Driven Customer Insights",
+            subtitle:
+              "Understand buying patterns and increase sales conversions by 25%.",
+          },
+          image: {
+            svg: <UserCheck className="h-10 w-10 mx-6 mt-4" />,
+            alt: "customer insights",
+          },
+          category: "Sales Analytics",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Sales Forecasting & Trend Analysis",
+            subtitle:
+              "Improve quarterly sales projections by 40% with AI-powered trend insights.",
+          },
+          image: {
+            svg: <TrendingUp className="h-10 w-10 mx-6 mt-4" />,
+            alt: "sales forecasting",
+          },
+          category: "Sales Analytics",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Workforce Productivity & HR Management",
+            subtitle:
+              "Increase labor efficiency by 35% with automated HR tools.",
+          },
+          image: {
+            svg: <Users className="h-10 w-10 mx-6 mt-4" />,
+            alt: "hr management",
+          },
+          category: "HR & Workforce",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Payroll & Compliance Automation",
+            subtitle:
+              "Eliminate 90% of payroll errors and ensure tax compliance.",
+          },
+          image: {
+            svg: <FileText className="h-10 w-10 mx-6 mt-4" />,
+            alt: "payroll compliance",
+          },
+          category: "HR & Workforce",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Employee Performance Analytics",
+            subtitle:
+              "Optimize workforce performance and reduce turnover by 20%.",
+          },
+          image: {
+            svg: <Activity className="h-10 w-10 mx-6 mt-4" />,
+            alt: "performance analytics",
+          },
+          category: "HR & Workforce",
+          link: [{ label: "Learn More", href: "/solutions" }],
+        },
+        {
+          header: {
+            text: "Automated Shift & Attendance Management",
+            subtitle:
+              "Reduce scheduling conflicts and improve workforce efficiency.",
+          },
+          image: {
+            svg: <Clock className="h-10 w-10 mx-6 mt-4" />,
+            alt: "shift management",
+          },
+          category: "HR & Workforce",
           link: [{ label: "Learn More", href: "/solutions" }],
         },
       ],
@@ -911,14 +1455,14 @@ const pageSlugs = [
       cards: [
         {
           header: {
-            text: "Manufacturing Giant Reduces Manual Work by 72%",
+            text: "AI-Driven Stock Management Boosts Availability by 30%",
             subtitle:
-              "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
+              "A leading retailer used AI demand forecasting to prevent stockouts and optimize replenishment, improving product availability by 30%.",
           },
-          category: "manufacturing",
+          category: "inventory Control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "inventory tracking",
           },
           buttons: [
             {
@@ -929,14 +1473,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Chain Increases Revenue by $8M",
+            text: "Automated Replenishment Reduces Overstock by 45%",
             subtitle:
-              "A national retail chain transformed their operations and saw immediate revenue growth.",
+              "A grocery chain reduced excess inventory and holding costs by automating replenishment, cutting overstock by 45%.",
           },
-          category: "retail",
+          category: "inventory Control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "automated replenishment",
           },
           buttons: [
             {
@@ -947,14 +1491,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Company Achieves Full Automation",
+            text: "RFID Tracking Eliminates 90% of Inventory Shrinkage",
             subtitle:
-              "How a distribution company automated 95% of their manual processes in just 30 days.",
+              "A fashion retailer used RFID tracking for real-time stock visibility, reducing inventory shrinkage by 90%.",
           },
-          category: "distribution",
+          category: "inventory Control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "RFID tracking",
           },
           buttons: [
             {
@@ -965,14 +1509,33 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Industry Solution Saves $2M Annually",
+            text: "Smart Shelf Monitoring Improves On-Shelf Availability by 28%",
             subtitle:
-              "A versatile solution that worked across departments to eliminate inefficiencies.",
+              "An electronics retailer used IoT-based shelf monitoring to maintain optimal stock levels, increasing availability by 28%.",
           },
-          category: "cross-industry",
+          category: "inventory Control",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "smart shelf",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+
+        {
+          header: {
+            text: "Intelligent Fulfillment Cuts Delivery Time by 50%",
+            subtitle:
+              "An online retailer used AI order routing to optimize fulfillment centers, reducing delivery times by 50%.",
+          },
+          category: "order Management",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "order fulfillment",
           },
           buttons: [
             {
@@ -983,14 +1546,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Manufacturing Firm Streamlines Operations",
+            text: "Automated Order Processing Increases Efficiency by 60%",
             subtitle:
-              "How a manufacturing firm reduced operational costs by 35% through process optimization.",
+              "A retail brand automated order processing, reducing manual effort and increasing fulfillment speed by 60%.",
           },
-          category: "manufacturing",
+          category: "order Management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "automated order processing",
           },
           buttons: [
             {
@@ -1001,14 +1564,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Business Enhances Customer Experience",
+            text: "AI-Powered Returns Processing Cuts Costs by 35%",
             subtitle:
-              "A retail business that transformed their customer journey and increased repeat purchases.",
+              "A major retailer automated return approvals, cutting processing costs by 35%.",
           },
-          category: "retail",
+          category: "order Management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "returns management",
           },
           buttons: [
             {
@@ -1019,14 +1582,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Network Optimization",
+            text: "AI-Powered Insights Increase Conversion Rates by 40%",
             subtitle:
-              "How a distribution company reduced delivery times by 40% through network optimization.",
+              "A retail chain personalized promotions using AI, increasing online and in-store conversion rates by 40%.",
           },
-          category: "distribution",
+          category: "sales Analytics",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "sales insights",
           },
           buttons: [
             {
@@ -1037,14 +1600,104 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Department Efficiency Boost",
+            text: "Dynamic Pricing Model Lifts Profit Margins by 22%",
             subtitle:
-              "A solution that bridged gaps between departments and created a unified workflow.",
+              "A retailer implemented real-time price adjustments, improving profit margins by 22%.",
           },
-          category: "cross-industry",
+          category: "sales Analytics",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "dynamic pricing",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Customer Segmentation Boosts Average Order Value by 18%",
+            subtitle:
+              "A department store used AI-driven segmentation to tailor promotions, increasing order value by 18%.",
+          },
+          category: "sales Analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "customer segmentation",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Real-Time Sales Dashboards Improve Decision-Making by 50%",
+            subtitle:
+              "A luxury fashion brand implemented real-time analytics, enhancing sales forecasting and decision-making by 50%.",
+          },
+          category: "sales Analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "real-time sales dashboard",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Driven Scheduling Cuts Overtime Costs by 25%",
+            subtitle:
+              "A retail chain optimized workforce scheduling using AI, reducing overtime expenses by 25%.",
+          },
+          category: "HR & Workforce",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "workforce scheduling",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Automated Payroll Processing Reduces Errors by 90%",
+            subtitle:
+              "A fashion retailer implemented an AI-driven payroll system, eliminating manual errors and improving payout efficiency by 90%.",
+          },
+          category: "HR & Workforce",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "payroll automation",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Employee Productivity Tracking Boosts Efficiency by 40%",
+            subtitle:
+              "A supermarket chain introduced AI-driven workforce analytics, increasing employee productivity by 40%.",
+          },
+          category: "HR & Workforce",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "employee tracking",
           },
           buttons: [
             {
@@ -1054,6 +1707,7 @@ const pageSlugs = [
           ],
         },
       ],
+
       footer: {
         title: "Could This Be Your Business Story Too?",
         button: {
@@ -1071,8 +1725,7 @@ const pageSlugs = [
       "Enhance supply chain visibility, streamline logistics, and boost operational efficiency with AI-powered ERP.",
     hero: {
       heading: {
-        textWithoutColor:
-          "LENS ERP Suite: Optimize Your Distribution Network with",
+        textWithoutColor: "Optimize Your Distribution Network with",
         text: "AI-Powered ERP",
         subtitle:
           "Enhance supply chain visibility, streamline logistics, and boost operational efficiency with LENS ERP Suite.",
@@ -1081,17 +1734,18 @@ const pageSlugs = [
       items: [
         {
           icon: <Truck className="h-5 w-5 text-primary/80" />,
-          item: "20% Faster Order Fulfillment",
+          item: "99% On-Time Deliveries",
         },
         {
           icon: <BarChart3 className="h-5 w-5 text-primary/80" />,
-          item: "Real-time Supply Chain Insights",
+          item: "40% Faster Route Optimization",
         },
         {
           icon: <Package className="h-5 w-5 text-primary/80" />,
-          item: "Seamless Warehouse & Logistics Management",
+          item: "0% Reduced Inventory Waste",
         },
       ],
+
       buttons: [
         {
           label: "Ask for Demo",
@@ -1186,12 +1840,14 @@ const pageSlugs = [
         subtitle:
           "Discover how our ERP solution can transform your distribution operations with AI-powered features.",
       },
+
       feature: [
         {
           header: {
-            textWithoutColor: "AI-Powered Inventory Optimization",
+            textWithoutColor:
+              "Eliminate Stockouts with AI-Driven Inventory Mastery",
             subtitle:
-              "Ensure optimal stock levels across all warehouses with predictive analytics and automated replenishment.",
+              "Predict demand, optimize storage, and automate restocking to cut waste and prevent inventory shortages.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
@@ -1200,9 +1856,9 @@ const pageSlugs = [
           },
           card: {
             header: {
-              text: "Wholesale Distributor Reduces Excess Inventory by 35%",
+              text: "Wholesale Distributor Cuts Excess Inventory by 35%",
               subtitle:
-                "How a leading distributor improved inventory turnover and freed up working capital.",
+                "A leading distributor used AI forecasting to maintain the perfect balance of stock, reducing storage costs and improving working capital.",
             },
             button: [
               {
@@ -1214,9 +1870,10 @@ const pageSlugs = [
         },
         {
           header: {
-            textWithoutColor: "Automated Order Processing & Fulfillment",
+            textWithoutColor:
+              "Slash Order Delays with Smart Procurement & Fulfillment",
             subtitle:
-              "Reduce errors and accelerate order turnaround with intelligent automation and workflow management.",
+              "Automate orders, streamline procurement, and speed up fulfillment to reduce errors and ensure deliveries.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
@@ -1225,9 +1882,9 @@ const pageSlugs = [
           },
           card: {
             header: {
-              text: "Logistics Provider Cuts Order Processing Time by 50%",
+              text: "Electronics Supplier Cuts Order Processing Time by 50%",
               subtitle:
-                "How automation helped a logistics company improve accuracy and efficiency.",
+                "A major electronics distributor automated procurement planning, significantly reducing manual effort and improving order accuracy.",
             },
             button: [
               {
@@ -1239,20 +1896,151 @@ const pageSlugs = [
         },
         {
           header: {
-            textWithoutColor: "End-to-End Supply Chain Visibility",
+            textWithoutColor:
+              "Maximize Deliveries with Optimized Route Planning",
             subtitle:
-              "Gain complete control over your supply chain with real-time tracking and reporting tools.",
+              "Save time and fuel with AI-powered routing, optimizing delivery schedules based on demand and traffic.",
           },
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "Supply Chain Visibility Dashboard",
+            alt: "Route Optimization Dashboard",
             position: "right",
           },
           card: {
             header: {
-              text: "National Distributor Achieves 99% On-Time Deliveries",
+              text: "Retailer Saves 25% on Logistics Costs with AI-Powered Routing",
               subtitle:
-                "How a distribution company improved reliability and customer satisfaction with AI-powered insights.",
+                "A national distributor optimized delivery schedules, cutting transportation costs and ensuring on-time shipments.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Say Goodbye to Expired Stock – Automate Batch & Expiry Tracking",
+            subtitle:
+              "Monitor batch numbers, expiration dates, and product cycles to avoid losses and ensure compliance.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Batch Expiry Management Dashboard",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Eliminate 98% of Expired Stock Losses—Boosts Profitability",
+              subtitle:
+                "A pharmaceutical distributor automated expiry tracking, preventing financial losses and ensuring product safety.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Master Price Management with AI-Driven Dynamic Pricing",
+            subtitle:
+              "Adjust pricing based on demand, competition, and trends to maximize revenue and stay competitive.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Dynamic Pricing Dashboard",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "Retailer Increases Revenue by 20% with AI-Optimized Pricing",
+              subtitle:
+                "A leading retailer implemented AI-based pricing strategies, boosting profits without losing competitiveness.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Gain 360° Visibility into Your Entire Supply Chain",
+            subtitle:
+              "Track products in real-time, optimize inventory, and improve logistics efficiency with AI-powered insights.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Supply Chain Visibility Dashboard",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "99% On-Time Deliveries with Real-Time Supply Chain Insights",
+              subtitle:
+                "A national distributor improved logistics efficiency and customer satisfaction with AI-powered tracking and analytics.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Supercharge Your Workforce with AI-Powered Productivity Tools",
+            subtitle:
+              "Enhance workforce efficiency with AI-driven scheduling, task allocation, and real-time productivity tracking.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Workforce Management Dashboard",
+            position: "right",
+          },
+          card: {
+            header: {
+              text: "FMCG Leader Boosts Workforce Efficiency by 35%",
+              subtitle:
+                "An FMCG distributor leveraged AI-driven HR tools to streamline workforce operations and reduce downtime.",
+            },
+            button: [
+              {
+                label: "Read Case Study",
+                href: "/solutions",
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            textWithoutColor:
+              "Automate Reorder & Return Management for Zero Stock Disruptions",
+            subtitle:
+              "AI-powered predictions ensure smooth reorders and return handling, keeping inventory balanced and efficient.",
+          },
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "Reorder & Return Management Dashboard",
+            position: "left",
+          },
+          card: {
+            header: {
+              text: "Global Retailer Cuts Return Processing Time by 60%",
+              subtitle:
+                "A major retail chain automated return workflows, improving stock efficiency and reducing losses.",
             },
             button: [
               {
@@ -1268,17 +2056,19 @@ const pageSlugs = [
       header: {
         textWithoutColor: "Explore All Features",
       },
+
       cards: [
         {
           header: {
             text: "Real-Time Inventory Tracking",
-            subtitle: "Minimize stockouts and optimize replenishment.",
+            subtitle:
+              "Reduce stockouts by 40% with automated tracking and instant stock updates.",
           },
           image: {
             svg: <Boxes className="h-10 w-10 mx-6 mt-4" />,
             alt: "boxes",
           },
-          category: "inventory",
+          category: "Warehouse Management",
           link: [
             {
               label: "Learn More",
@@ -1288,14 +2078,123 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Omnichannel Integration",
-            subtitle: "Connect POS, e-commerce, and supply chain seamlessly.",
+            text: "Supplier & Procurement Management",
+            subtitle:
+              "Streamline vendor operations and cut procurement time by 30%.",
           },
           image: {
-            svg: <ShoppingCart className="h-10 w-10 mx-6 mt-4" />,
-            alt: "shoppingcart",
+            svg: <Factory className="h-10 w-10 mx-6 mt-4" />,
+            alt: "factory",
           },
-          category: "sales",
+          category: "Warehouse Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Batch & Expiry Tracking",
+            subtitle:
+              "Reduce expired stock losses by 98% with real-time monitoring.",
+          },
+          image: {
+            svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
+            alt: "clipboard",
+          },
+          category: "Warehouse Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Automated Warehouse Optimization",
+            subtitle:
+              "Increase warehouse efficiency by 25% with AI-powered space and stock placement optimization.",
+          },
+          image: {
+            svg: <BarChart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "barchart",
+          },
+          category: "Warehouse Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Order & Fulfillment Automation",
+            subtitle:
+              "Reduce order processing errors by 60% and speed up fulfillment by 50%.",
+          },
+          image: {
+            svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
+            alt: "clipboard",
+          },
+          category: "Order Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Reorder & Returns Management",
+            subtitle:
+              "Automate reordering and cut return processing time by 40%.",
+          },
+          image: {
+            svg: <RefreshCw className="h-10 w-10 mx-6 mt-4" />,
+            alt: "refresh",
+          },
+          category: "Order Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Contract & Price Compliance",
+            subtitle:
+              "Ensure 100% compliance with supplier contracts and automated price adjustments.",
+          },
+          image: {
+            svg: <Tag className="h-10 w-10 mx-6 mt-4" />,
+            alt: "tag",
+          },
+          category: "Order Management",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Powered Demand Forecasting",
+            subtitle:
+              "Improve order accuracy by 35% with predictive analytics.",
+          },
+          image: {
+            svg: <TrendingUp className="h-10 w-10 mx-6 mt-4" />,
+            alt: "trendingup",
+          },
+          category: "Order Management",
           link: [
             {
               label: "Learn More",
@@ -1307,47 +2206,13 @@ const pageSlugs = [
           header: {
             text: "AI-Powered Customer Insights",
             subtitle:
-              "Personalize offers and recommendations with data-driven analytics.",
+              "Boost customer retention by 20% through personalized recommendations.",
           },
           image: {
-            svg: <BarChart className="h-10 w-10 mx-6 mt-4" />,
-            alt: "barchart",
+            svg: <User className="h-10 w-10 mx-6 mt-4" />,
+            alt: "user",
           },
-          category: "analytics",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Order & Fulfillment Automation",
-            subtitle: "Reduce errors and speed up order processing.",
-          },
-          image: {
-            svg: <ClipboardList className="h-10 w-10 mx-6 mt-4" />,
-            alt: "clipboard",
-          },
-          category: "order management",
-          link: [
-            {
-              label: "Learn More",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Supplier & Procurement Management",
-            subtitle: "Streamline vendor operations and procurement workflows.",
-          },
-          image: {
-            svg: <Factory className="h-10 w-10 mx-6 mt-4" />,
-            alt: "factory",
-          },
-          category: "inventory",
+          category: "Sales Analytics",
           link: [
             {
               label: "Learn More",
@@ -1359,13 +2224,121 @@ const pageSlugs = [
           header: {
             text: "Dynamic Pricing & Promotions",
             subtitle:
-              "Optimize pricing strategies based on demand and competition.",
+              "Increase sales by 18% with automated, demand-driven pricing adjustments.",
           },
           image: {
-            svg: <Tag className="h-10 w-10 mx-6 mt-4" />,
-            alt: "tag",
+            svg: <DollarSign className="h-10 w-10 mx-6 mt-4" />,
+            alt: "dollarsign",
           },
-          category: "sales",
+          category: "Sales Analytics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Territory & Sales Performance Tracking",
+            subtitle:
+              "Improve sales coverage by 30% with real-time tracking of territories and reps.",
+          },
+          image: {
+            svg: <Globe className="h-10 w-10 mx-6 mt-4" />,
+            alt: "globe",
+          },
+          category: "Sales Analytics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Driven Sales Forecasting",
+            subtitle:
+              "Enhance revenue prediction accuracy by 25% with machine learning insights.",
+          },
+          image: {
+            svg: <LineChart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "linechart",
+          },
+          category: "Sales Analytics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Omnichannel Integration",
+            subtitle:
+              "Improve sales synchronization across channels, reducing order mismatches by 40%.",
+          },
+          image: {
+            svg: <ShoppingCart className="h-10 w-10 mx-6 mt-4" />,
+            alt: "shoppingcart",
+          },
+          category: "Logistics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Optimized Route Planning",
+            subtitle:
+              "Cut delivery costs by 25% and improve on-time deliveries by 99%.",
+          },
+          image: {
+            svg: <MapPin className="h-10 w-10 mx-6 mt-4" />,
+            alt: "mappin",
+          },
+          category: "Logistics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Automated Freight & Carrier Selection",
+            subtitle:
+              "Lower shipping costs by 15% through AI-driven carrier recommendations.",
+          },
+          image: {
+            svg: <Truck className="h-10 w-10 mx-6 mt-4" />,
+            alt: "truck",
+          },
+          category: "Logistics",
+          link: [
+            {
+              label: "Learn More",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Real-Time Delivery & Fleet Tracking",
+            subtitle:
+              "Reduce delivery delays by 30% with live tracking and route optimization.",
+          },
+          image: {
+            svg: <Navigation className="h-10 w-10 mx-6 mt-4" />,
+            alt: "navigation",
+          },
+          category: "Logistics",
           link: [
             {
               label: "Learn More",
@@ -1428,17 +2401,18 @@ const pageSlugs = [
         subtitle:
           "Explore how businesses across different industries achieved breakthrough results with our solutions.",
       },
+
       cards: [
         {
           header: {
-            text: "Manufacturing Giant Reduces Manual Work by 72%",
+            text: "AI-Powered Forecasting Slashes Overstock by 35%",
             subtitle:
-              "How a leading manufacturer automated their processes and saved thousands of work hours annually.",
+              "A leading distributor optimized stock levels, reducing excess inventory and storage costs.",
           },
-          category: "manufacturing",
+          category: "warehouse management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "warehouse optimization",
           },
           buttons: [
             {
@@ -1449,14 +2423,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Chain Increases Revenue by $8M",
+            text: "Smart Warehousing Increases Picking Speed by 40%",
             subtitle:
-              "A national retail chain transformed their operations and saw immediate revenue growth.",
+              "Automated tracking and robotics improved efficiency, reducing errors and accelerating order fulfillment.",
           },
-          category: "retail",
+          category: "warehouse management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "warehouse automation",
           },
           buttons: [
             {
@@ -1467,14 +2441,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Company Achieves Full Automation",
+            text: "Predictive Reordering Reduces Stockouts by 50%",
             subtitle:
-              "How a distribution company automated 95% of their manual processes in just 30 days.",
+              "A global supplier leveraged AI-driven demand planning, ensuring shelves were always stocked.",
           },
-          category: "distribution",
+          category: "warehouse management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "inventory management",
           },
           buttons: [
             {
@@ -1485,14 +2459,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Industry Solution Saves $2M Annually",
+            text: "Cold Storage Optimization Cuts Energy Costs by 25%",
             subtitle:
-              "A versatile solution that worked across departments to eliminate inefficiencies.",
+              "A food distributor reduced energy consumption with smart temperature monitoring and automation.",
           },
-          category: "cross-industry",
+          category: "warehouse management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "cold storage efficiency",
           },
           buttons: [
             {
@@ -1503,14 +2477,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Manufacturing Firm Streamlines Operations",
+            text: "Automated Order Fulfillment Speeds Up Delivery by 45%",
             subtitle:
-              "How a manufacturing firm reduced operational costs by 35% through process optimization.",
+              "An e-commerce giant used AI-powered logistics to cut processing delays and boost customer satisfaction.",
           },
-          category: "manufacturing",
+          category: "order management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "order automation",
           },
           buttons: [
             {
@@ -1521,14 +2495,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Retail Business Enhances Customer Experience",
+            text: "AI-Driven Returns Processing Cuts Costs by 30%",
             subtitle:
-              "A retail business that transformed their customer journey and increased repeat purchases.",
+              "A fashion retailer optimized reverse logistics, reducing manual workload and refund times.",
           },
-          category: "retail",
+          category: "order management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "returns automation",
           },
           buttons: [
             {
@@ -1539,14 +2513,14 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Distribution Network Optimization",
+            text: "Seamless Multi-Warehouse Fulfillment Lowers Costs 20%",
             subtitle:
-              "How a distribution company reduced delivery times by 40% through network optimization.",
+              "A wholesaler automated order routing across warehouses, minimizing transportation expenses.",
           },
-          category: "distribution",
+          category: "order management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "warehouse fulfillment",
           },
           buttons: [
             {
@@ -1557,14 +2531,158 @@ const pageSlugs = [
         },
         {
           header: {
-            text: "Cross-Department Efficiency Boost",
+            text: "Real-Time Order Tracking Improves Accuracy by 35%",
             subtitle:
-              "A solution that bridged gaps between departments and created a unified workflow.",
+              "A B2B distributor integrated live tracking, eliminating lost orders and enhancing customer trust.",
           },
-          category: "cross-industry",
+          category: "order management",
           image: {
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-            alt: "image",
+            alt: "real-time tracking",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "AI-Powered Sales Forecasting Reduces Stockouts by 50%",
+            subtitle:
+              "A consumer goods company used predictive analytics to anticipate demand and optimize inventory.",
+          },
+          category: "sales analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "sales forecasting",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Dynamic Pricing Strategy Boosts Revenue by 22%",
+            subtitle:
+              "A wholesale distributor implemented AI-driven pricing adjustments, increasing margins.",
+          },
+          category: "sales analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "pricing optimization",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Customer Insights Drive Repeat Sales Up by 28%",
+            subtitle:
+              "Personalized recommendations and targeted promotions improved customer retention.",
+          },
+          category: "sales analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "customer analytics",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Predictive Demand Analytics Reduces Wastage by 40%",
+            subtitle:
+              "A food supplier adjusted production levels based on real-time data, minimizing spoilage.",
+          },
+          category: "sales analytics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "demand prediction",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Route Optimization Lowers Fuel Costs by 20%",
+            subtitle:
+              "A transportation company leveraged AI-driven logistics planning to cut fuel expenses and reduce emissions.",
+          },
+          category: "logistics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "route optimization",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Live Shipment Tracking Improves On-Time Delivery by 35%",
+            subtitle:
+              "A retailer introduced real-time tracking, reducing delivery delays and improving customer satisfaction.",
+          },
+          category: "logistics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "shipment tracking",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Fleet Management AI Cuts Maintenance Costs by 25%",
+            subtitle:
+              "A logistics provider optimized vehicle maintenance schedules, preventing costly breakdowns.",
+          },
+          category: "logistics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "fleet management",
+          },
+          buttons: [
+            {
+              label: "Read Case Study",
+              href: "/solutions",
+            },
+          ],
+        },
+        {
+          header: {
+            text: "Last-Mile Delivery Optimization Reduces Delays by 30%",
+            subtitle:
+              "A courier service improved delivery efficiency using dynamic AI-based routing.",
+          },
+          category: "logistics",
+          image: {
+            src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+            alt: "last-mile delivery",
           },
           buttons: [
             {
@@ -1591,42 +2709,42 @@ export default async function Industries({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const industry = pageSlugs.find((industry) => industry.id === slug);
+  const Industry = PageSlugs.find((idIndustry) => idIndustry.id === slug);
 
   return (
     <>
       <Navbar />
-      <Hero idHero={industry?.hero as TheroProps} />
+      <Hero idHero={Industry?.hero as TheroProps} />
       {/* 2 */}
       <section className="container mx-auto px-4">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <TitleSubtitle
             idTitle={{
-              ...industry?.section2.header,
+              ...Industry?.section2.header,
               className: "lg:sticky lg:top-24 h-fit",
               headingClass: "md:text-5xl leading-tight font-bold",
               descripClass: "mt-6",
             }}
           />
-          <PainPoints idItems={industry?.section2.items as Titems[]} />
+          <PainPoints idItems={Industry?.section2.items as Titems[]} />
         </div>
       </section>
       <div className="bg-primary">
-        <Callout idCallout={industry?.section2.footer as TcalloutProps} />
+        <Callout idCallout={Industry?.section2.footer as TcalloutProps} />
       </div>
 
       {/* 3 */}
       <section className="container mx-auto px-4 md:px-6 py-16">
         <TitleSubtitle
           idTitle={{
-            ...industry?.section3.header,
+            ...Industry?.section3.header,
             className: "text-center items-center",
             headingClass: "md:text-5xl",
             descripClass: "mt-6",
           }}
         />
         <div className="space-y-24 mb-24">
-          {industry?.section3.feature.map((idSection, iIndex) => (
+          {Industry?.section3?.feature?.map((idSection, iIndex) => (
             <div
               key={iIndex}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
@@ -1677,7 +2795,7 @@ export default async function Industries({
       <section className="mb-24 container mx-auto px-4 md:px-6">
         <TitleSubtitle
           idTitle={{
-            ...industry?.section4.header,
+            ...Industry?.section4.header,
             headingClass: "md:text-5xl",
             className: "text-center",
           }}
@@ -1685,7 +2803,7 @@ export default async function Industries({
         <Tab
           idTab={{
             data:
-              industry?.section4.cards.map((idCard) => ({
+              Industry?.section4.cards.map((idCard) => ({
                 ...idCard,
                 header: {
                   ...idCard.header,
@@ -1712,14 +2830,14 @@ export default async function Industries({
         <div className="max-w-3xl mx-auto space-y-6">
           <TitleSubtitle
             idTitle={{
-              ...industry?.section5.header,
+              ...Industry?.section5.header,
               className: "text-center items-center",
               headingClass: "lighting-tight mb-4",
               descripClass: "max-w-5xl",
             }}
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
-            {industry?.section5.cards.map((idCard, iIndex) => (
+            {Industry?.section5.cards.map((idCard, iIndex) => (
               <CustomCard
                 key={iIndex}
                 idCardProps={{
@@ -1739,12 +2857,12 @@ export default async function Industries({
           </div>
           <div className="pt-6">
             <Button size="lg" className="text-lg px-8 py-6">
-              <Link href={industry?.section5.footer.button?.href ?? "/"}>
-                {industry?.section5.footer.button.label}
+              <Link href={Industry?.section5.footer.button?.href ?? "/"}>
+                {Industry?.section5.footer.button.label}
               </Link>
             </Button>
             <p className="text-sm text-muted-foreground mt-4">
-              {industry?.section5.footer.title}
+              {Industry?.section5.footer.title}
             </p>
           </div>
         </div>
@@ -1755,36 +2873,36 @@ export default async function Industries({
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
             idTitle={{
-              ...industry?.section6.header,
+              ...Industry?.section6.header,
               className: "text-center items-center",
               headingClass: "md:text-5xl",
             }}
           />
           <Tab
             idTab={{
-              data: industry?.section6.cards
-                ? industry.section6.cards.map((idCard) => ({
-                  ...idCard,
-                  header: {
-                    ...idCard.header,
-                    descripClass: "text-sm h-16",
-                    headingClass: "text-lg mb-2",
-                  },
-                  image: {
-                    src: idCard.image.src,
-                    alt: idCard.image.alt,
-                    aspectRatio: "wide",
-                  },
-                  button:
-                    idCard.buttons?.map((idButton) => ({
-                      ...idButton,
-                      icon: <ArrowRight className="size-5" />,
-                      iconPosition: "after",
-                      size: "lg",
-                      variant: "outline",
-                    })) ?? [], // Ensure button is always an array
-                  tag: idCard.category,
-                }))
+              data: Industry?.section6.cards
+                ? Industry.section6.cards.map((idCard) => ({
+                    ...idCard,
+                    header: {
+                      ...idCard.header,
+                      descripClass: "text-sm h-16",
+                      headingClass: "text-lg mb-2",
+                    },
+                    image: {
+                      src: idCard.image.src,
+                      alt: idCard.image.alt,
+                      aspectRatio: "wide",
+                    },
+                    button:
+                      idCard.buttons?.map((idButton) => ({
+                        ...idButton,
+                        icon: <ArrowRight className="size-5" />,
+                        iconPosition: "after",
+                        size: "lg",
+                        variant: "outline",
+                      })) ?? [], // Ensure button is always an array
+                    tag: idCard.category,
+                  }))
                 : [], // Fallback value
               TabDefault: {
                 text: "All",
@@ -1796,11 +2914,11 @@ export default async function Industries({
           <div className="mt-12 text-center">
             <div className="space-y-4">
               <h3 className="text-xl font-medium">
-                {industry?.section6.footer.title}
+                {Industry?.section6.footer.title}
               </h3>
               <Button size="lg" className="group">
-                <Link href={industry?.section6.footer.button?.href ?? "/"}>
-                  {industry?.section6.footer.button.label}
+                <Link href={Industry?.section6.footer.button?.href ?? "/"}>
+                  {Industry?.section6.footer.button.label}
                 </Link>
                 <Calendar className="ml-2 h-4 w-4" />
               </Button>
