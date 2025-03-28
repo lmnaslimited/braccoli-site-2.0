@@ -23,7 +23,7 @@ import { Input } from "@repo/ui/components/ui/input";
 import Navbar from "@repo/ui/components/navbar";
 
 export default function Solutions() {
-  const hero = {
+  const HeroData = {
     heading: {
       textWithoutColor: "Your Business Deserves More Than Just Surviving.",
       text: " It Deserves To Thrive.",
@@ -54,7 +54,7 @@ export default function Solutions() {
     }
   };
 
-  const calloutData = [
+  const CalloutData = [
     {
       header: {
         textWithoutColor: "Could This Be Your Story Too?",
@@ -80,7 +80,7 @@ export default function Solutions() {
     },
   ];
 
-  const section1 = {
+  const Section1 = {
     header: {
       textWithoutColor: "Finding The Right Solution Shouldn't Be Difficult",
       subtitle:
@@ -162,7 +162,7 @@ export default function Solutions() {
     }
   };
 
-  const section3 = {
+  const Section3 = {
     header: {
       textWithoutColor: "Our Proven Approach to Your Success",
       subtitle:
@@ -278,7 +278,7 @@ export default function Solutions() {
     }
   };
 
-  const section4 = {
+  const Section4 = {
     header: {
       textWithoutColor:
         "We've Been The Guide To Hundreds of Businesses Like Yours",
@@ -335,7 +335,7 @@ export default function Solutions() {
       icon: <ArrowRight className="size-6" />,
     },
   };
-  const section5 = {
+  const Section5 = {
     header: {
       textWithoutColor: "Success Stories",
       subtitle:
@@ -530,7 +530,7 @@ export default function Solutions() {
     },
   };
 
-  const section6 = {
+  const Section6 = {
     header: {
       textWithoutColor: "This Is What Transformation Feels Like",
       subtitle:
@@ -587,7 +587,7 @@ export default function Solutions() {
     },
   };
 
-  const section7 = {
+  const Section7 = {
     header: {
       textWithoutColor: "Trusted By Leading Businesses Across Industries",
       subtitle:
@@ -696,13 +696,13 @@ export default function Solutions() {
   return (
     <>
       <Navbar />
-      <Hero idHero={hero as TheroProps} />
+      <Hero idHero={HeroData as TheroProps} />
 
       <section className="w-full py-12 md:py-16 bg-slate">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={section1.header as Theader} />
+          <TitleSubtitle idTitle={Section1.header as Theader} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section1.card.map((idCard, iIndex) => (
+            {Section1.card.map((idCard, iIndex) => (
               <CustomCard
                 key={iIndex}
                 idCardProps={{
@@ -715,9 +715,9 @@ export default function Solutions() {
           </div>
 
           <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
-            <TitleSubtitle idTitle={section1.cta.header} />
+            <TitleSubtitle idTitle={Section1.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-              {section1.cta.button.map((idBtn, iIndex) => 
+              {Section1.cta.button.map((idBtn, iIndex) => 
               <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 <Link href={idBtn.href}>
                   <span>{idBtn.label}</span>
@@ -731,11 +731,11 @@ export default function Solutions() {
 
       {/*3*/}
       <section className="py-16 container mx-auto px-4 md:px-6">
-        <TitleSubtitle idTitle={section3.header as Theader} />
+        <TitleSubtitle idTitle={Section3.header as Theader} />
         <div className="grid gap-12 md:gap-16 relative">
           {/* Vertical line for desktop */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-muted -translate-x-1/2 z-0"></div>
-          {section3.steps.map((idStep, iIndex) => (
+          {Section3.steps.map((idStep, iIndex) => (
             <div
               key={iIndex}
               className="relative grid md:grid-cols-2 gap-8 items-center"
@@ -789,9 +789,9 @@ export default function Solutions() {
 
         <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
           <div className="flex flex-col items-center text-center space-y-6">
-            <TitleSubtitle idTitle={section3.cta.header} />
+            <TitleSubtitle idTitle={Section3.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-             {section3.cta.button.map((idBtn, iIndex) => 
+             {Section3.cta.button.map((idBtn, iIndex) => 
              <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
                 {idBtn.icon}
                 <Link href={idBtn.href}>
@@ -805,9 +805,9 @@ export default function Solutions() {
 
       {/* 4 */}
       <section className="my-40 mx-auto text-center flex flex-col items-center justify-center">
-        <TitleSubtitle idTitle={section4.header as Theader} />
+        <TitleSubtitle idTitle={Section4.header as Theader} />
         <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-4 max-w-6xl">
-          {section4.card.map((idCard, iIndex) => (
+          {Section4.card.map((idCard, iIndex) => (
             <CustomCard
               key={iIndex}
               idCardProps={{
@@ -820,21 +820,21 @@ export default function Solutions() {
           ))}
         </div>
         <p className="font-semibold mt-16 mb-6 text-xl">
-          {section4.footer.title}
+          {Section4.footer.title}
         </p>
         <Button size={"lg"}>
-          <Link href={section4.footer.href}> {section4.footer.label} </Link>{" "}
-          {section4.footer.icon}{" "}
+          <Link href={Section4.footer.href}> {Section4.footer.label} </Link>{" "}
+          {Section4.footer.icon}{" "}
         </Button>
       </section>
 
       {/* 5 */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={section5.header as Theader} />
+          <TitleSubtitle idTitle={Section5.header as Theader} />
           <Tab
   idTab={{
-    data: section5.cards.map((idCard) => ({
+    data: Section5.cards.map((idCard) => ({
       ...idCard,
       header: {
         ...idCard.header,
@@ -864,8 +864,8 @@ export default function Solutions() {
 
           <div className="mt-3 text-center">
             <Button size="lg" className="group">
-              <Link href={section5.footer.href}> {section5.footer.label} </Link>
-              {section5.footer.icon}
+              <Link href={Section5.footer.href}> {Section5.footer.label} </Link>
+              {Section5.footer.icon}
             </Button>
           </div>
         </div>
@@ -873,12 +873,12 @@ export default function Solutions() {
 
       {/* 6 */}
       <section className="py-20 container mx-auto px-4 md:px-6 text-center">
-        <TitleSubtitle idTitle={{...section6.header, 
+        <TitleSubtitle idTitle={{...Section6.header, 
           className: "text-center items-center",
           headingClass: "md:text-5xl",
         } as Theader} />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-          {section6.card.map((idCard, iIndex) => (
+          {Section6.card.map((idCard, iIndex) => (
             <CustomCard
               key={iIndex}
               idCardProps={{...idCard, 
@@ -889,22 +889,22 @@ export default function Solutions() {
           ))}
         </div>
         <p className="font-semibold mt-16 mb-6 text-xl">
-          {section6.footer.title}
+          {Section6.footer.title}
         </p>
         <Button size={"lg"}>
-          <Link href={section6.footer.href}> {section6.footer.label} </Link>{" "}
-          {section6.footer.icon}{" "}
+          <Link href={Section6.footer.href}> {Section6.footer.label} </Link>{" "}
+          {Section6.footer.icon}{" "}
         </Button>
       </section>
 
       {/* 7 */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle idTitle={section7.header as Theader} />
+          <TitleSubtitle idTitle={Section7.header as Theader} />
           <div className="flex items-center justify-center">
             <div className="max-w-7xl ">
               <LogoShowcase
-                idLogoProps={{logos:section7.logo,
+                idLogoProps={{logos:Section7.logo,
                 variant:"grid",
                 logoSize:"small",
                 logosPerRow:6}}
@@ -912,7 +912,7 @@ export default function Solutions() {
             </div>
           </div>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
-            {section7.card.map((idCard, iIndex) => (
+            {Section7.card.map((idCard, iIndex) => (
               <CustomCard
                 key={iIndex}
                 idCardProps={{
@@ -929,20 +929,20 @@ export default function Solutions() {
           </div>
           <div className="flex items-center justify-center my-8">
             <Button size={"lg"}>
-              <Link href={section7.footer.href}>{section7.footer.label} </Link>{" "}
-              {section7.footer.icon}{" "}
+              <Link href={Section7.footer.href}>{Section7.footer.label} </Link>{" "}
+              {Section7.footer.icon}{" "}
             </Button>
           </div>
         </div>
       </section>
       <div className="bg-dark">
-        <Callout idCallout={calloutData[0] as TcalloutProps} />
+        <Callout idCallout={CalloutData[0] as TcalloutProps} />
       </div>
       <section className="py-20">
         <div className="container px-4 md:px-6">
           <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
             <div className="text-center space-y-2 mb-6">
-              <TitleSubtitle idTitle={{...section7.footer.header,
+              <TitleSubtitle idTitle={{...Section7.footer.header,
                 className:"m-0 items-center justify-center",
                 headingClass:"md:text-2xl text-2xl mb-2 leading-normal semi-bold",
                 descripClass:"md:text-base text-base"
@@ -958,12 +958,12 @@ export default function Solutions() {
                   className="w-full"
                 />
                 <p className="text-xs text-muted-foreground">
-                 {section7.footer.title}
+                 {Section7.footer.title}
                 </p>
               </div>
 
               <Button type="submit" className="w-full" size="lg">
-                {section7.footer.button.label}
+                {Section7.footer.button.label}
                 <Download className="ml-2 h-4 w-4" />
               </Button>
             </form>
