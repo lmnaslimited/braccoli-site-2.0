@@ -621,7 +621,7 @@ export default function Pricing() {
                         </TableHeader>
                         <TableBody>
                           {Section7.items
-                            .filter((item) => item.category === iTab)
+                            .filter((idItem) => idItem.category === iTab)
                             .map((idRow, iIndex) => (
                               <TableRow key={iIndex} className="border-b">
                                 <TableCell className="font-bold bg-grayBackground text-primary py-4">
