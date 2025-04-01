@@ -13,10 +13,14 @@ import Navbar from "@repo/ui/components/navbar"
 import { Button } from "@repo/ui/components/ui/button"
 
 export default function Home() {
+  // Tracks which section of the page is currently showing a form
   const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
+  // Tracks which type of form (contact, booking, download) is being displayed
   const [FormMode, fnSetFormMode] = useState<TformMode>(null)
+  // Stores success message information after a form is submitted
   const [SuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
 
+  // References to page sections for scrolling functionality
   const LdSectionRefs = {
     hero: useRef<HTMLDivElement>(null),
     callout1: useRef<HTMLDivElement>(null),
@@ -24,16 +28,24 @@ export default function Home() {
     callout3: useRef<HTMLDivElement>(null),
   }
 
+  /**
+ * Handles clicks on form buttons throughout the page.
+ * This function toggles forms on and off and scrolls to the appropriate section.
+ * If the same button is clicked twice, it closes the form.
+ */
   const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string) => {
+    // If clicking the same button again, close the form
     if (ActiveSection === iSectionId && FormMode === iMode) {
       fnSetActiveSection(null)
       fnSetFormMode(null)
       fnSetSuccessMessage(null)
     } else {
+      // Otherwise, show the form in the specified section
       fnSetActiveSection(iSectionId)
       fnSetFormMode(iMode)
       fnSetSuccessMessage(null)
 
+      // Scroll to the section after a short delay to ensure the form is rendered
       setTimeout(() => {
         const currentRef = LdSectionRefs[iSectionId as keyof typeof LdSectionRefs]
         if (currentRef?.current) {
@@ -46,13 +58,23 @@ export default function Home() {
     }
   }
 
-  const fnHandleFormSuccess = (idFormData: Record<string, unknown>, iMessage: string) => {
+  /**
+ * Handles successful form submissions.
+ * This function displays a success message in place of the form
+ * and keeps track of which section the message belongs to.
+ */
+  const fnHandleFormSuccess = (iMessage: string) => {
     if (ActiveSection) {
       fnSetSuccessMessage({ message: iMessage, section: ActiveSection })
     }
     fnSetFormMode(null)
   }
 
+  /**
+ * Renders a form or success message below a specific section.
+ * This function determines whether to show a form, success message, or nothing
+ * based on the current state and section ID.
+ */
   const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
     // Only show if this is the active section or has a success message for this section
     const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
@@ -60,6 +82,7 @@ export default function Home() {
 
     if (!shouldShowForm && !shouldShowSuccess) return null
 
+    // Select the appropriate form configuration based on the form mode
     let LdFormConfig = undefined
     switch (FormMode) {
       case "contact":
@@ -79,6 +102,7 @@ export default function Home() {
       <div className="w-full bg-background py-8">
         <div className="container mx-auto px-4">
           {shouldShowSuccess ? (
+            // Show success message if form was submitted successfully
             <div className="max-w-lg mx-auto bg-background rounded-lg shadow-md p-4 text-center">
               <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
               <h3 className="text-xl font-bold mb-2">Success!</h3>
@@ -98,6 +122,7 @@ export default function Home() {
               </Button>
             </div>
           ) : LdFormConfig ? (
+            // Show the dynamic form with the selected configuration
             <DynamicForm
               config={LdFormConfig}
               onSuccess={fnHandleFormSuccess}
