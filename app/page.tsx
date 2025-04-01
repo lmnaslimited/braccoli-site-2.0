@@ -17,7 +17,7 @@ export default function Home() {
   const [FormMode, fnSetFormMode] = useState<TformMode>(null)
   const [SuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
 
-  const LDSectionRefs = {
+  const LdSectionRefs = {
     hero: useRef<HTMLDivElement>(null),
     callout1: useRef<HTMLDivElement>(null),
     callout2: useRef<HTMLDivElement>(null),
@@ -35,7 +35,7 @@ export default function Home() {
       fnSetSuccessMessage(null)
 
       setTimeout(() => {
-        const currentRef = LDSectionRefs[iSectionId as keyof typeof LDSectionRefs]
+        const currentRef = LdSectionRefs[iSectionId as keyof typeof LdSectionRefs]
         if (currentRef?.current) {
           currentRef.current.scrollIntoView({
             behavior: "smooth",
@@ -360,7 +360,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div ref={LDSectionRefs.hero}>
+      <div ref={LdSectionRefs.hero}>
         <Hero
           idHero={HeroData as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "hero")}
@@ -373,7 +373,7 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-      <div className="bg-dark/70" ref={LDSectionRefs.callout1}>
+      <div className="bg-dark/70" ref={LdSectionRefs.callout1}>
         <Callout
           idCallout={CalloutData[0] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout1")}
@@ -384,7 +384,7 @@ export default function Home() {
         <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
       <SocialProof />
-      <div className="bg-dark/70" ref={LDSectionRefs.callout2}>
+      <div className="bg-dark/70" ref={LdSectionRefs.callout2}>
         <Callout
           idCallout={CalloutData[1] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout2")}
@@ -404,7 +404,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div ref={LDSectionRefs.callout3}>
+      <div ref={LdSectionRefs.callout3}>
         <Callout
           idCallout={{ ...CalloutData[2], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout3")}
