@@ -15,7 +15,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/ui/tabs";
-import TrendCard from "@repo/ui/components/trend-card";
+import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import {
