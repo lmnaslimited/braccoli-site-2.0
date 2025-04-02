@@ -1,4 +1,3 @@
-// hooks/useFormManager.ts
 import { useState, useRef, ReactNode } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@repo/ui/components/ui/button';
