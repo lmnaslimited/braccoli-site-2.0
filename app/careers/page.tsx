@@ -268,7 +268,7 @@ const career = {
           "Drive our data science initiatives and develop predictive models.",
       },
     ],
-    
+
     buttons: [
       {
         label: " On-Campus Recruitment",
@@ -312,19 +312,19 @@ const career = {
       },
     ],
   },
-  section5:{
-    header:{
-      textWithoutColor:"Success Stories",
+  section5: {
+    header: {
+      textWithoutColor: "Success Stories",
       subtitle: "Hear from our people and see how LMNAS has transformed careers."
     },
-    footer:{
-      header:{
-        textWithoutColor:"Your story could be next.",
-        subtitle:"Join us and be part of something bigger!"
+    footer: {
+      header: {
+        textWithoutColor: "Your story could be next.",
+        subtitle: "Join us and be part of something bigger!"
       },
-      button:{
+      button: {
         label: "View All Stories",
-        href:"/solutions"
+        href: "/solutions"
       }
     },
     latestTrendsHeader: {
@@ -333,7 +333,7 @@ const career = {
       subtitle:
         "Stay updated with the latest innovations, industry insights, and AI-driven solutions from LMNAs Cloud Solutions.",
     },
-    trendsData:  [
+    trendsData: [
       {
         title: "AI-Powered ERP: How Businesses Are Scaling Faster",
         description:
@@ -387,11 +387,11 @@ const career = {
         date: "5 days ago",
       },
     ],
-    trendSection : {
+    trendSection: {
       footer: {
-        button:{
-          label:"Show All Trends",
-          href:"/trending-now"
+        button: {
+          label: "Show All Trends",
+          href: "/trending-now"
         }
       }
     },
@@ -479,17 +479,17 @@ export default function Career() {
 
   //Section 5 social page
   const [SelectedTab, fnSetSelectedTab] = useState("all");
-    const UniqueSources = [
-      "all",
-      ...new Set(career.section5.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
-    ];
-  
-    const FilteredTrends =
-      SelectedTab === "all"
-        ? career.section5.trendsData
-        : career.section5.trendsData.filter(
-            (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-          );
+  const UniqueSources = [
+    "all",
+    ...new Set(career.section5.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
+  ];
+
+  const FilteredTrends =
+    SelectedTab === "all"
+      ? career.section5.trendsData
+      : career.section5.trendsData.filter(
+        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+      );
 
   return (
     <>
@@ -574,11 +574,12 @@ export default function Career() {
                   {career?.section2.header.badge}
                 </span>
               </div>
-              <TitleSubtitle idTitle={{ ...career?.section2.header,
-                  className: "m-0",
-                  headingClass: "md:text-5xl tracking-normal",
-                  descripClass: "mt-6 md:text-lg",
-                }}
+              <TitleSubtitle idTitle={{
+                ...career?.section2.header,
+                className: "m-0",
+                headingClass: "md:text-5xl tracking-normal",
+                descripClass: "mt-6 md:text-lg",
+              }}
               />
               <Link href={career.section2.buttons.href}>
                 <Button className="mt-2">
@@ -587,12 +588,12 @@ export default function Career() {
                 </Button>
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {career?.section2.items.map((idItem, iIndex) => {
                 const IconComponent =
                   (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
                 return (
-                  <div className="flex items-start gap-3" key={iIndex}>
+                  <div className="flex items-start gap-2" key={iIndex}>
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 shrink-0">
                       <IconComponent className="h-5 w-5 text-primary" />
                     </div>
@@ -600,9 +601,9 @@ export default function Career() {
                       <TitleSubtitle
                         idTitle={{
                           ...idItem.header,
-                          className: "space-y-1",
-                          headingClass: "sm:text-base text-base tracking-normal",
-                          descripClass: "md:text-sm text-sm",
+                          className: "space-y-1 mb-0 md:mb-8",
+                          headingClass: "sm:text-base text-base tracking-normal", //changed text-sze
+                          descripClass: "md:text-base text-base", //changed text-sze
                         }}
                       />
                     </div>
@@ -680,14 +681,14 @@ export default function Career() {
                             {SelectedFilters[
                               iCategory as keyof typeof SelectedFilters
                             ].length > 0 && (
-                              <Badge className="ml-2 bg-primary text-background">
-                                {
-                                  SelectedFilters[
-                                    iCategory as keyof typeof SelectedFilters
-                                  ].length
-                                }
-                              </Badge>
-                            )}
+                                <Badge className="ml-2 bg-primary text-background">
+                                  {
+                                    SelectedFilters[
+                                      iCategory as keyof typeof SelectedFilters
+                                    ].length
+                                  }
+                                </Badge>
+                              )}
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="start" className="w-56">
@@ -710,18 +711,17 @@ export default function Career() {
                                 checked={SelectedFilters[
                                   iCategory as keyof typeof SelectedFilters
                                 ].includes(iOption)}
-                                onCheckedChange={() => {}}
+                                onCheckedChange={() => { }}
                                 className="rounded-sm"
                               />
                               <Label
                                 htmlFor={`${iCategory}-${iOption}`}
-                                className={`text-sm flex-1 cursor-pointer ${
-                                  SelectedFilters[
-                                    iCategory as keyof typeof SelectedFilters
-                                  ].includes(iOption)
-                                    ? "font-medium"
-                                    : ""
-                                }`}
+                                className={`text-sm flex-1 cursor-pointer ${SelectedFilters[
+                                  iCategory as keyof typeof SelectedFilters
+                                ].includes(iOption)
+                                  ? "font-medium"
+                                  : ""
+                                  }`}
                               >
                                 {iOption}
                               </Label>
@@ -847,26 +847,28 @@ export default function Career() {
               <div className="bg-background rounded-xl p-8 shadow-sm border">
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="md:w-2/3 space-y-6">
-                    <div className="flex items-center gap-3">
+                    {/* <div className="flex items-center gap-3">
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
                         <Building className="h-5 w-5 text-primary" />
                       </div>
-                    </div>
-                    <TitleSubtitle idTitle={{ ...career?.section4.header,
-                        className: "m-0",
-                        headingClass:"md:text-xl tracking-tight leading-tight",
-                        descripClass: "md:text-sm",
-                      }}
+                    </div> */}
+                    <TitleSubtitle idTitle={{
+                      ...career?.section4.header,
+                      className: "m-0",
+                      headingClass: "md:text-xl tracking-tight leading-tight",
+                      descripClass: "md:text-sm",
+                    }}
                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                       {career.section3.points.map((idTitle, iIndex) => (
                         <div className="border rounded-lg p-4" key={iIndex}>
-                          <TitleSubtitle idTitle={{ ...idTitle.header,
-                              className: "m-0",
-                              headingClass:
-                                "md:text-2xl text-2xl tracking-tight leading-tight",
-                              descripClass: "md:text-lg text-lg",
-                            }}
+                          <TitleSubtitle idTitle={{
+                            ...idTitle.header,
+                            className: "m-0",
+                            headingClass:
+                              "md:text-lg text-lg tracking-tight leading-tight", //changed text-size
+                            descripClass: "md:text-base text-base", //changed text-size
+                          }}
                           />
                         </div>
                       ))}
@@ -874,7 +876,7 @@ export default function Career() {
                     <div className="flex flex-wrap gap-4 pt-4">
                       {career.section3.buttons.map((idBtn, iIndex) => {
                         const BtnIconComponent =
-                          (Icons[ idBtn.icon as keyof typeof Icons ] as LucideIcon) || Icons.Users;
+                          (Icons[idBtn.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
                         return (
                           <Button key={iIndex} size="lg" className="group"
                             variant={
@@ -949,22 +951,24 @@ export default function Career() {
                   {career.section4.header.badge}
                 </span>
               </div>
-              <TitleSubtitle idTitle={{ ...career?.section4.header,
-                  className: "m-0 items-center justify-center",
-                  headingClass: "md:text-5xl tracking-tight leading-tight",
-                  descripClass: "md:text-lg",
-                }}
+              <TitleSubtitle idTitle={{
+                ...career?.section4.header,
+                className: "m-0 items-center justify-center",
+                headingClass: "md:text-5xl tracking-tight leading-tight",
+                descripClass: "md:text-lg",
+              }}
               />
               <div className="flex items-start gap-3">
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 mt-1">
                   <Lightbulb className="h-4 w-4 text-primary" />
                 </div>
-                <TitleSubtitle idTitle={{ ...career?.section4.points,
-                    className: "space-y-2 m-0",
-                    headingClass:
-                      "font-semibold md:text-lg tracking-tight leading-tight",
-                    descripClass: "md:text-base",
-                  }}
+                <TitleSubtitle idTitle={{
+                  ...career?.section4.points,
+                  className: "space-y-2 m-0",
+                  headingClass:
+                    "font-semibold md:text-lg tracking-tight leading-tight",
+                  descripClass: "md:text-base",
+                }}
                 />
               </div>
               <div className="flex flex-wrap gap-4 pt-2">
@@ -984,51 +988,52 @@ export default function Career() {
       </section>
 
       {/* section 5 */}
-        <section className="border-b border-border/40 py-20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="mx-auto max-w-[85rem]">
-              <TitleSubtitle idTitle={{ ...career.section5.latestTrendsHeader,
-                  className: "text-center md:text-left",
-                  headingClass: "",
-                  descripClass: "",
-                }}
-              />
-              <Tabs
-                defaultValue="all"
-                className="w-full"
-                onValueChange={fnSetSelectedTab}
-              >
-                <div className="border-b mb-8">
-                  <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                    {UniqueSources.map((idTab) => (
-                      <TabsTrigger
-                        key={idTab}
-                        value={idTab}
-                        className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
-                      >
-                        {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
-                </div>
+      <section className="border-b border-border/40 py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-[85rem]">
+            <TitleSubtitle idTitle={{
+              ...career.section5.latestTrendsHeader,
+              className: "text-center md:text-left",
+              headingClass: "",
+              descripClass: "",
+            }}
+            />
+            <Tabs
+              defaultValue="all"
+              className="w-full"
+              onValueChange={fnSetSelectedTab}
+            >
+              <div className="border-b mb-8">
+                <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                  {UniqueSources.map((idTab) => (
+                    <TabsTrigger
+                      key={idTab}
+                      value={idTab}
+                      className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                    >
+                      {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
 
-                <TabsContent value={SelectedTab} className="mt-0">
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {FilteredTrends.map((idTrend, idIndex) => (
-                      <TrendCard key={idIndex} idTrends={idTrend} />
-                    ))}
-                  </div>
-                  <div className="mt-12 text-center">
-                    <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
-                      {career.section5.trendSection.footer.button.label}
-                      <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button></Link>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </div>
+              <TabsContent value={SelectedTab} className="mt-0">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {FilteredTrends.map((idTrend, idIndex) => (
+                    <TrendCard key={idIndex} idTrends={idTrend} />
+                  ))}
+                </div>
+                <div className="mt-12 text-center">
+                  <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
+                    {career.section5.trendSection.footer.button.label}
+                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button></Link>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
-        </section>
+        </div>
+      </section>
       <Footer />
     </>
   );
