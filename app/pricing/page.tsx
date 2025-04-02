@@ -410,7 +410,7 @@ export default function Pricing() {
   return (
     <>
       <Navbar />
-      <div ref={LdSectionRefs.containerOne}>
+      <div ref={LdSectionRefs("containerOne")}>
         <div className="bg-grayBackground">
           <Hero idHero={{
             ...Section1,
@@ -430,7 +430,7 @@ export default function Pricing() {
       </div>
 
       {/* section 2 */}
-      <div ref={LdSectionRefs.containerTwo}>
+      <div ref={LdSectionRefs("containerTwo")}>
         <section className="border-b border-border/40 py-20 bg-muted">
           <div className="container mx-auto px-4 md:px-6">
             <TitleSubtitle idTitle={{
@@ -483,7 +483,7 @@ export default function Pricing() {
       </div>
 
       {/* Plans & Pricing Tiers  section3*/}
-      <div ref={LdSectionRefs.containerThree}>
+      <div ref={LdSectionRefs("containerThree")}>
         <section className="border-b border-border/40 py-20 bg-background">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
@@ -594,7 +594,7 @@ export default function Pricing() {
       </div>
 
       {/* LENS ERP vs. The Competition section7 */}
-      <div ref={LdSectionRefs.containerFour}>
+      <div ref={LdSectionRefs("containerFour")}>
         <section className="border-b border-border/40 py-20 bg-gradient-to-b from-primary to-primary/70 text-background">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
@@ -780,7 +780,7 @@ export default function Pricing() {
       </section >
 
       {/* final cta section6 */}
-      < div ref={LdSectionRefs.containerFive} >
+      < div ref={LdSectionRefs("containerFive")} >
         <section className="py-20 bg-grayBackground">
           <div className="container mx-auto px-4 md:px-6">
             <div className="mx-auto max-w-3xl text-center">

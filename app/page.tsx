@@ -259,7 +259,7 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <div ref={LdSectionRefs.containerOne}>
+      <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={HeroData as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
@@ -272,7 +272,7 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-      <div className="bg-dark/70" ref={LdSectionRefs.containerTwo}>
+      <div className="bg-dark/70" ref={LdSectionRefs("containerTwo")}>
         <Callout
           idCallout={CalloutData[0] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}
@@ -283,7 +283,7 @@ export default function Home() {
         <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
       <SocialProof />
-      <div className="bg-dark/70" ref={LdSectionRefs.containerThree}>
+      <div className="bg-dark/70" ref={LdSectionRefs("containerThree")}>
         <Callout
           idCallout={CalloutData[1] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerThree")}
@@ -303,7 +303,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div ref={LdSectionRefs.containerFour}>
+      <div ref={LdSectionRefs("containerFour")}>
         <Callout
           idCallout={{ ...CalloutData[2], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerFour")}
