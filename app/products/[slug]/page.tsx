@@ -49,8 +49,8 @@ const PageSlug = [
           variant: "default",
         },
         {
-          label: "Learn More About LENS ERP",
-          href: "https://nectar.lmnas.com/book_appointment",
+          label: "Find the Right Plan",
+          href: "/pricing",
           variant: "outline",
         },
       ],
@@ -102,7 +102,7 @@ const PageSlug = [
         buttons: [
           {
             label: "Book a Demo Now",
-            href: "https://demolens.lmnas.com/",
+            href: "https://nectar.lmnas.com/contact",
           },
           {
             label: "Read How Businesses Solved These Issues",
@@ -128,7 +128,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Manufacturing Firm Streamlined Operations",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -142,7 +142,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Retail Chain Migrated to LENS ERP Without Downtime",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -156,7 +156,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Manufacturing Firm Streamlined Operations",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -170,7 +170,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Logistics Company Scaled Using AI Insights",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -377,7 +377,6 @@ const PageSlug = [
           link: [
             {
               label: "Increased Productivity by 40%",
-              href: "#",
             },
           ],
         },
@@ -397,7 +396,6 @@ const PageSlug = [
           link: [
             {
               label: "Reduced Costs by 30%",
-              href: "#",
             },
           ],
         },
@@ -528,7 +526,7 @@ const PageSlug = [
         buttons: [
           {
             label: " Get a Personalized Demo Today",
-            href: "https://demolens.lmnas.com/#login",
+            href: "https://nectar.lmnas.com/contact",
           },
           {
             label: "See How Others Succeeded with LENS ERP",
@@ -559,8 +557,8 @@ const PageSlug = [
           variant: "default",
         },
         {
-          label: "Learn More About HRMS Cloud",
-          href: "https://nectar.lmnas.com/book_appointment",
+          label: "Find the Right Plan",
+          href: "/pricing",
           variant: "outline",
         },
       ],
@@ -638,7 +636,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Corporation Optimized HR Processes",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -652,7 +650,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Global Company Integrated HRMS Without Downtime",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -666,7 +664,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How an Enterprise Enhanced Employee Engagement",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -680,7 +678,7 @@ const PageSlug = [
           buttons: [
             {
               label:
-                "Read Case Study: How a Corporation Used AI to Improve Retention",
+                "Read Case Study",
               href: "/solutions",
             },
           ],
@@ -887,7 +885,6 @@ const PageSlug = [
           link: [
             {
               label: "Reduced HR Admin Work by 50%",
-              href: "#",
             },
           ],
         },
@@ -907,7 +904,6 @@ const PageSlug = [
           link: [
             {
               label: "Increased Employee Engagement by 35%",
-              href: "#",
             },
           ],
         },
@@ -1040,7 +1036,7 @@ const PageSlug = [
         buttons: [
           {
             label: "Get a Personalized Demo Today",
-            href: "https://demolens.lmnas.com/#login",
+            href: "https://nectar.lmnas.com/contact",
           },
           {
             label: "See How Others Optimized HR with HRMS Cloud",
@@ -1087,12 +1083,12 @@ export default async function Products({
             idTitle={{
               ...Product?.Section1.header,
               className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center mb-0", //changed
               headingClass: "md:text-5xl",
               descripClass: "max-w-[85%] md:text-xl/relaxed",
             }}
           />
-          <div className="mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 md:gap-12">
+          <div className="mx-auto grid max-w-5xl py-12 md:grid-cols-2 gap-12">  {/*changed*/}
             <CustomCard
               idCardProps={{
                 header:{ text: Product?.Section1.card.header.text },
@@ -1111,9 +1107,10 @@ export default async function Products({
                 idTitle={{
                   ...Product?.Section1.footer.header,
                   headingClass: "md:text-2xl",
+                  className:"md:text-left text-center mb-2"
                 }}
               />
-              <div className="flex flex-col gap-2 sm:flex-row">
+              <div className="flex flex-col gap-4 sm:flex-row"> {/*changed */}
                 {Product?.Section1.footer.buttons.map((idBtn, iIndex) => (
                   <Button
                     key={iIndex}
@@ -1144,14 +1141,14 @@ export default async function Products({
               descripClass: "max-w-[85%] md:text-xl/relaxed",
             }}
           />
-          <div className="mx-auto max-w-5xl py-12">
+          <div className="mx-auto max-w-5xl md:py-12 py-6"> {/*changed */}
             <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-muted hidden md:block"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
               {Product?.Section2.cards.map((idCard, iIndex) => (
                 <div className="relative mb-12 md:mb-16" key={iIndex}>
                   <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
-                    {/* Step Number */}
-                    <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
+                    {/* Step Number hiden on mobile */}
+                    <div className="relative z-10 hidden md:flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
                       <span className="text-xl font-bold">{iIndex + 1}</span>
                     </div>
 
@@ -1176,7 +1173,7 @@ export default async function Products({
               ))}
             </div>
             <div className="mx-auto max-w-[58rem] text-center mt-16">
-              <div className="flex flex-col gap-2 sm:flex-row justify-center">
+              <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
                 {Product?.Section2.footer.buttons.map((idBtn, iIndex) => (
                   <Button
                     key={iIndex}
@@ -1207,7 +1204,7 @@ export default async function Products({
               headingClass: "md:text-5xl",
             }}
           />
-          <div className="mx-auto max-w-6xl py-12">
+          <div className="mx-auto max-w-6xl md:py-12 "> {/*changed */}
             {Product?.Section3.features.map((idFeature, iIndex) => (
               <div
                 key={iIndex}
@@ -1239,15 +1236,15 @@ export default async function Products({
                       idTitle={{
                         ...idFeature.heading,
                         headingClass:
-                          "md:text-2xl group-hover:underline transition-al",
+                          "md:text-2xl transition-al",
                       }}
                     />
                     <Link
                       href={idFeature.link.href}
-                      className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors"
+                      className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors underline-offset-4 hover:underline"
                     >
                       {idFeature.link.label}
-                      <ChevronRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
+                      <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" /> {/*changed */}
                     </Link>
                   </div>
 
@@ -1265,7 +1262,7 @@ export default async function Products({
             <p className="text-primary/70 font-medium mb-6">
               {Product?.Section3.footer.heading.text}
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row justify-center">
+            <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
               {Product?.Section3.footer.buttons.map((idBtn, iIndex) => (
                 <Button
                   key={iIndex}
@@ -1295,7 +1292,7 @@ export default async function Products({
               headingClass: "md:text-5xl",
             }}
           />
-          <div className="mx-auto max-w-5xl py-12">
+          <div className="mx-auto max-w-5xl md:py-12"> {/*changed */}
             <div className="grid gap-8 md:grid-cols-2">
               {Product?.Section4.cards.map((idCard, iIndex) => (
                 <CustomCard
@@ -1343,7 +1340,7 @@ export default async function Products({
                 {Product?.Section4.footer.heading.subtitle}
               </span>
             </p>
-            <div className="flex flex-col gap-2 sm:flex-row justify-center">
+            <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
               {Product?.Section4.footer.buttons.map((idBtn, iIndex) => (
                 <Button
                   key={iIndex}
@@ -1421,7 +1418,7 @@ export default async function Products({
                     {Product?.Section5.footer.heading.subtitle}
                   </p>
                 </div>
-                <div className="flex flex-col gap-2 sm:flex-row justify-center mt-6">
+                <div className="flex flex-col gap-4 sm:flex-row justify-center mt-6"> {/*changed */}
                   {Product?.Section5.footer.buttons.map((idBtn, iIndex) => (
                     <Button
                       key={iIndex}
@@ -1476,7 +1473,7 @@ export default async function Products({
                 </div>
                 <span>{Product?.Section6.footer.heading.text}</span>
               </div>
-              <div className="flex flex-col gap-2 sm:flex-row justify-center">
+              <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
                 {Product?.Section6.footer.buttons.map((idBtn, iIndex) => (
                   <Button
                     key={iIndex}

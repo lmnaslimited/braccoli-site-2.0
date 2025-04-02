@@ -33,7 +33,7 @@ export default function Solutions() {
     buttons: [
       {
         label: "See the Success Story",
-        href: "/solutions",
+        href: "#success-story",
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -98,7 +98,7 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -115,7 +115,7 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -132,14 +132,14 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
           },
         ],
       },
-    ] as const,
+    ] ,
     cta:{
       header:{
         textWithoutColor:" Discover How We've Helped Others Like You",
@@ -234,7 +234,7 @@ export default function Solutions() {
         },
         {
           label: "Schedule a Demo",
-          href: "https://demolens.lmnas.com/contact",
+          href: "https://nectar.lmnas.com/contact",
           variant: "outline",
           icon: <PlayIcon className="size-5" />,
           iconPosition: "before",
@@ -249,7 +249,7 @@ export default function Solutions() {
           size: "lg",
         },
       ],
-    } as const,
+    } ,
     cta:{
       header:{
         textWithoutColor:"Ready to Experience Our Approach?",
@@ -265,7 +265,7 @@ export default function Solutions() {
       },
       {
         label: "Schedule a Free Demo",
-        href:"https://demolens.lmnas.com/#login",
+        href:"https://nectar.lmnas.com/contact",
         icon:<Play className="h-4 w-4" />,
         variant: "outline"
       },
@@ -326,7 +326,7 @@ export default function Solutions() {
           },
         ],
       },
-    ] as const,
+    ],
     footer: {
       title:
         " What is the one thing holding your business back from scaling faster?",
@@ -522,8 +522,8 @@ export default function Solutions() {
       },
     ],
     footer: {
-      label: "Find Your Breakthrough ",
-      href: "https://nectar.lmnas.com/book_appointment",
+      label: "Talk to an Expert",
+      href: "https://nectar.lmnas.com/contact",
       icon: (
         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
       ),
@@ -610,7 +610,6 @@ export default function Solutions() {
     card: [
       {
         header: {
-          text: "",
           subtitle:
             "We were skeptical at first, but the results speak for themselves. Revenue is up, costs are down, and our team is more productive than ever. This was the breakthrough we needed.",
           descripClass: "italic",
@@ -633,7 +632,6 @@ export default function Solutions() {
       },
       {
         header: {
-          text: "",
           subtitle:
             "The transformation was beyond what we expected. Our team now has complete visibility into our operations, and we've eliminated the inefficiencies that were holding us back.",
           descripClass: "italic",
@@ -656,7 +654,6 @@ export default function Solutions() {
       },
       {
         header: {
-          text: "",
           subtitle:
             "The implementation was smooth, and the team was incredibly supportive. We saw immediate improvements in our processes, and the long-term impact has been substantial.",
           descripClass: "italic",
@@ -708,7 +705,7 @@ export default function Solutions() {
                 idCardProps={{
                   header:idCard.header,
                 className:idCard.className,
-                button:[...idCard.button]
+                button:[...idCard.button] as Tbutton[]
                 }}
               />
             ))}
@@ -814,7 +811,7 @@ export default function Solutions() {
                 header:idCard.header,
               className:idCard.className,
               buttonPosition:"items-center justify-center",
-              button:[...idCard.button]
+              button:[...idCard.button] as Tbutton[]
               }}
             />
           ))}
@@ -829,7 +826,7 @@ export default function Solutions() {
       </section>
 
       {/* 5 */}
-      <section className="py-20 bg-muted/30">
+      <section className="py-20 bg-muted/30" id="success-story">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle idTitle={Section5.header as Theader} />
           <Tab
