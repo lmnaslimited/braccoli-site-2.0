@@ -1077,8 +1077,8 @@ export default async function Products({
       />
 
       {/* section1 */}
-      <section className="border-b border-border/40 py-20">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...Product?.Section1.header,
@@ -1091,15 +1091,15 @@ export default async function Products({
           <div className="mx-auto grid max-w-5xl py-12 md:grid-cols-2 gap-12">  {/*changed*/}
             <CustomCard
               idCardProps={{
-                header:{ text: Product?.Section1.card.header.text },
-              list:Product?.Section1.card.list.map((iaList) => ({
-                ...iaList,
-                icon: (
-                  <div className="mt-1 rounded-full bg-grayBackground p-1">
-                    <ChevronRight className="h-4 w-4" />
-                  </div>
-                ),
-              }))
+                header: { text: Product?.Section1.card.header.text },
+                list: Product?.Section1.card.list.map((iaList) => ({
+                  ...iaList,
+                  icon: (
+                    <div className="mt-1 rounded-full bg-grayBackground p-1">
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
+                  ),
+                }))
               }}
             />
             <div className="flex flex-col justify-center space-y-4">
@@ -1107,7 +1107,7 @@ export default async function Products({
                 idTitle={{
                   ...Product?.Section1.footer.header,
                   headingClass: "md:text-2xl",
-                  className:"md:text-left text-center mb-2"
+                  className: "md:text-left text-center mb-2"
                 }}
               />
               <div className="flex flex-col gap-4 sm:flex-row"> {/*changed */}
@@ -1130,8 +1130,8 @@ export default async function Products({
       </section>
 
       {/* section 2 */}
-      <section className="border-b border-border/40 py-20 bg-muted">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...Product?.Section2.header,
@@ -1156,16 +1156,16 @@ export default async function Products({
                     <CustomCard
                       key={iIndex}
                       idCardProps={{
-                        header:idCard.header,
-                      link:
-                        idCard.buttons.map((iaButton) => ({
-                          ...iaButton,
-                          icon: <ChevronRight className="ml-1 h-3 w-3" />,
-                          iconPosition: "after",
-                        })) as Tbutton[],
-                      
-                      footerClassName:"items-start",
-                      className:"relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                        header: idCard.header,
+                        link:
+                          idCard.buttons.map((iaButton) => ({
+                            ...iaButton,
+                            icon: <ChevronRight className="ml-1 h-3 w-3" />,
+                            iconPosition: "after",
+                          })) as Tbutton[],
+
+                        footerClassName: "items-start",
+                        className: "relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
                       }}
                     />
                   </div>
@@ -1194,8 +1194,8 @@ export default async function Products({
       </section>
 
       {/* section3 */}
-      <section className="border-b border-border/40 py-20 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...Product?.Section3.header,
@@ -1282,8 +1282,8 @@ export default async function Products({
       </section>
 
       {/* section4 */}
-      <section className="border-b border-border/40 py-20 bg-muted">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...Product?.Section4.heading,
@@ -1297,22 +1297,22 @@ export default async function Products({
               {Product?.Section4.cards.map((idCard, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                 idCardProps={{
-                  header:{
-                    subtitle: idCard.heading.subtitle,
-                    descripClass: "italic m-0",
-                    headingClass: "mb-0",
-                  },
-                  avatar:idCard.avator,
-                  nameAndPlace:idCard.nameAndPlace,
-                  namePosition:"top",
-                  link:idCard.link.map((iaLnk) => ({
-                    ...iaLnk,
-                    icon: <CheckCircle className="h-5 w-5" />,
-                    iconPosition: "before",
-                    size: "lg",
-                  }))
-                 }}
+                  idCardProps={{
+                    header: {
+                      subtitle: idCard.heading.subtitle,
+                      descripClass: "italic m-0",
+                      headingClass: "mb-0",
+                    },
+                    avatar: idCard.avator,
+                    nameAndPlace: idCard.nameAndPlace,
+                    namePosition: "top",
+                    link: idCard.link.map((iaLnk) => ({
+                      ...iaLnk,
+                      icon: <CheckCircle className="h-5 w-5" />,
+                      iconPosition: "before",
+                      size: "lg",
+                    }))
+                  }}
                 />
               ))}
             </div>
@@ -1320,14 +1320,14 @@ export default async function Products({
               {Product?.Section4.items.map((idItem, iIndex) => (
                 <CustomCard
                   key={iIndex}
-                 idCardProps={{
-                  header:{
-                    text: idItem.header.text,
-                    subtitle: idItem.header.subtitle,
-                    headingClass: "md:text-4xl mb-0",
-                  },
-                  className:"text-center"
-                 }}
+                  idCardProps={{
+                    header: {
+                      text: idItem.header.text,
+                      subtitle: idItem.header.subtitle,
+                      headingClass: "md:text-4xl mb-0",
+                    },
+                    className: "text-center"
+                  }}
                 />
               ))}
             </div>
@@ -1360,8 +1360,8 @@ export default async function Products({
       </section>
 
       {/* section5  */}
-      <section className="border-b border-border/40 py-20 bg-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
             <span className="font-medium">
               {Product?.Section5.heading.badge}
@@ -1442,8 +1442,8 @@ export default async function Products({
       </section>
 
       {/* section6 */}
-      <section className="py-20 bg-gradient-to-b from-background to-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 lg:py-24 bg-gradient-to-b from-background to-grayBackground">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="mx-auto max-w-3xl text-center">
             <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
               <span className="font-medium">
@@ -1453,7 +1453,7 @@ export default async function Products({
             <TitleSubtitle
               idTitle={{
                 ...Product?.Section6.heading,
-                className:"items-center justify-center",
+                className: "items-center justify-center",
                 headingClass: "md:text-5xl",
                 descripClass: "md:text-xl/relaxed text-center",
               }}

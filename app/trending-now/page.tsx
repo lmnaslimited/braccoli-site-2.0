@@ -272,7 +272,7 @@ export default function TrendingNowPage() {
       {/* Problem Section*/}
       <section ref={LdSectionRefs.containerTwo}>
         <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
-          <div className="px-4 py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
             <div className="mx-auto max-w-[58rem]">
               <TitleSubtitle
                 idTitle={{
@@ -351,58 +351,56 @@ export default function TrendingNowPage() {
       </section>
 
       {/* Latest Trends Section */}
-      <section className="py-24 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mx-auto max-w-[85rem]">
-            <TitleSubtitle
-              idTitle={{
-                ...TrendingPage.latestTrendsHeader,
-                className: "text-center md:text-left",
-                headingClass: "",
-                descripClass: "",
-              }}
-            />
-            <Tabs
-              defaultValue="all"
-              className="w-full"
-              onValueChange={setSelectedTab}
-            >
-              <div className="border-b mb-8">
-                <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                  {UniqueSources.map((idTab) => (
-                    <TabsTrigger
-                      key={idTab}
-                      value={idTab}
-                      className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
-                    >
-                      {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+      <section className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+        <div className="mx-auto max-w-[85rem]">
+          <TitleSubtitle
+            idTitle={{
+              ...TrendingPage.latestTrendsHeader,
+              className: "text-center md:text-left",
+              headingClass: "",
+              descripClass: "",
+            }}
+          />
+          <Tabs
+            defaultValue="all"
+            className="w-full"
+            onValueChange={setSelectedTab}
+          >
+            <div className="border-b mb-8">
+              <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                {UniqueSources.map((idTab) => (
+                  <TabsTrigger
+                    key={idTab}
+                    value={idTab}
+                    className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                  >
+                    {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
+
+            <TabsContent value={SelectedTab} className="mt-0">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {FilteredTrends.map((idTrend, idIndex) => (
+                  <TrendCard key={idIndex} idTrends={idTrend} />
+                ))}
               </div>
 
-              <TabsContent value={SelectedTab} className="mt-0">
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {FilteredTrends.map((idTrend, idIndex) => (
-                    <TrendCard key={idIndex} idTrends={idTrend} />
-                  ))}
-                </div>
-
-                <div className="mt-12 text-center">
-                  <Button variant="outline" size="lg" className="group">
-                    {TrendingPage.trendSection.footer}
-                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
+              <div className="mt-12 text-center">
+                <Button variant="outline" size="lg" className="group">
+                  {TrendingPage.trendSection.footer}
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
 
       {/* Subscribe Section */}
       <section className="bg-primary">
-        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <Callout idCallout={TrendingPage.Finalcallout as TcalloutProps} />
         </div>
       </section>

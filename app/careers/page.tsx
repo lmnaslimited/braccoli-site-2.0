@@ -511,8 +511,8 @@ export default function Career() {
       />
 
       {/* section 1 */}
-      <section id="problem" className="py-24 bg-grayBackground">
-        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
+        <div className="px-4 md:px-24 lg:px-8mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative mx-auto md:ml-0 w-full space-y-4">
               <div className="flex items-center gap-3">
@@ -565,8 +565,8 @@ export default function Career() {
       </section>
 
       {/* section 2 */}
-      <section id="plan" className="py-24 bg-background">
-        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <section id="plan" className="lg:py-24 md:py-24 py-16 bg-background">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
@@ -616,8 +616,8 @@ export default function Career() {
       </section>
 
       {/* section 3 */}
-      <section id="cta" className="py-24 bg-grayBackground">
-        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl md:px-24 lg:px-8">
+      <section id="cta" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
           <TitleSubtitle
             idTitle={{
               ...career?.section3.header,
@@ -905,7 +905,7 @@ export default function Career() {
       </section>
 
       {/* section 4 */}
-      <section id="learning" className="py-24 bg-background">
+      <section id="learning" className="lg:py-24 md:py-24 py-16 bg-background">
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* (hidden on mobile) */}
@@ -988,7 +988,7 @@ export default function Career() {
       </section>
 
       {/* section 5 */}
-      <section className="border-b border-border/40 py-24 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <section className="border-b border-border/40 lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle idTitle={{
             ...career.section5.latestTrendsHeader,

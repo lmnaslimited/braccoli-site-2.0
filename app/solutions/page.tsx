@@ -48,7 +48,7 @@ export default function Solutions() {
         size: "lg",
       },
     ],
-    image:{
+    image: {
       src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
       alt: "hero-image"
     }
@@ -139,26 +139,26 @@ export default function Solutions() {
           },
         ],
       },
-    ] ,
-    cta:{
-      header:{
-        textWithoutColor:" Discover How We've Helped Others Like You",
-        subtitle:"Our detailed case studies provide real-world examples of how we've helped businesses overcome these exact challenges.",
+    ],
+    cta: {
+      header: {
+        textWithoutColor: " Discover How We've Helped Others Like You",
+        subtitle: "Our detailed case studies provide real-world examples of how we've helped businesses overcome these exact challenges.",
         className: "mb-0 items-center justify-center",
-        headingClass:"text-center sm:text-2xl tracking-normal",
-        descripClass:"text-center md:text-base"
+        headingClass: "text-center sm:text-2xl tracking-normal",
+        descripClass: "text-center md:text-base"
       },
-      button:[{
+      button: [{
         label: "Book a Consultation",
-        href:"https://nectar.lmnas.com/book_appointment",
+        href: "https://nectar.lmnas.com/book_appointment",
         icon: <ArrowRight className="h-4 w-4" />
       },
-    {
-      label: "Explore All Case Studies",
-        href:"/solutions",
+      {
+        label: "Explore All Case Studies",
+        href: "/solutions",
         icon: <ArrowRight className="h-4 w-4" />,
-        variant:"outline"
-    }]
+        variant: "outline"
+      }]
     }
   };
 
@@ -249,32 +249,32 @@ export default function Solutions() {
           size: "lg",
         },
       ],
-    } ,
-    cta:{
-      header:{
-        textWithoutColor:"Ready to Experience Our Approach?",
-        subtitle:"Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions.",
-        className: "mb-0 items-center justify-center",
-        headingClass:"text-center sm:text-2xl mb-2 tracking-normal",
-        descripClass:"text-center md:text-base"
     },
-      button:[{
+    cta: {
+      header: {
+        textWithoutColor: "Ready to Experience Our Approach?",
+        subtitle: "Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions.",
+        className: "mb-0 items-center justify-center",
+        headingClass: "text-center sm:text-2xl mb-2 tracking-normal",
+        descripClass: "text-center md:text-base"
+      },
+      button: [{
         label: "Book a Consultation",
-        href:"https://nectar.lmnas.com/book_appointment",
+        href: "https://nectar.lmnas.com/book_appointment",
         icon: <Calendar className="h-4 w-4" />
       },
       {
         label: "Schedule a Free Demo",
-        href:"https://nectar.lmnas.com/contact",
-        icon:<Play className="h-4 w-4" />,
+        href: "https://nectar.lmnas.com/contact",
+        icon: <Play className="h-4 w-4" />,
         variant: "outline"
       },
-    {
-      label: "Explore All Case Studies",
-        href:"/solutions",
+      {
+        label: "Explore All Case Studies",
+        href: "/solutions",
         icon: <ArrowRight className="h-4 w-4" />,
         variant: "ghost"
-    }]
+      }]
     }
   };
 
@@ -353,8 +353,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image:{src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -375,8 +377,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -397,8 +401,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -419,8 +425,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -441,8 +449,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "manufacturing",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -463,8 +473,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "retail",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -485,8 +497,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "distribution",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -507,8 +521,10 @@ export default function Solutions() {
           headingClass: "text-lg",
         },
         category: "cross-industry",
-        image: {src:"https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "image",},
+        image: {
+          src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+          alt: "image",
+        },
         buttons: [
           {
             label: "Read Case Study",
@@ -679,13 +695,13 @@ export default function Solutions() {
       label: "Explore Success Stories ",
       href: "/solutions",
       icon: <ArrowRight className="size-5" />,
-      header:{
+      header: {
         textWithoutColor: " Want To See Full Case Study Reports?",
-        subtitle:"Download detailed PDF reports of how we helped companies achieve massive breakthroughs."
+        subtitle: "Download detailed PDF reports of how we helped companies achieve massive breakthroughs."
       },
       title: "We'll send the case study directly to your inbox. We respect your privacy.",
-      button:{
-        label:" Download Full Case Study Report"
+      button: {
+        label: " Download Full Case Study Report"
       }
     },
   };
@@ -693,41 +709,42 @@ export default function Solutions() {
   return (
     <>
       <Navbar />
+
       <Hero idHero={HeroData as TheroProps} />
 
-      <section className="w-full py-12 md:py-16 bg-slate">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* SectionOne */}
+      <section className="w-full py-16 md:py-24 lg:py-24 bg-slate">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle idTitle={Section1.header as Theader} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
             {Section1.card.map((idCard, iIndex) => (
               <CustomCard
                 key={iIndex}
                 idCardProps={{
-                  header:idCard.header,
-                className:idCard.className,
-                button:[...idCard.button] as Tbutton[]
+                  header: idCard.header,
+                  className: idCard.className,
+                  button: [...idCard.button] as Tbutton[]
                 }}
               />
             ))}
           </div>
-
           <div className="flex flex-col items-center space-y-6 bg-background p-8 rounded-lg shadow-sm">
             <TitleSubtitle idTitle={Section1.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-              {Section1.cta.button.map((idBtn, iIndex) => 
-              <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
-                <Link href={idBtn.href}>
-                  <span>{idBtn.label}</span>
-                </Link>
-                {idBtn.icon}
-              </Button>)}
+              {Section1.cta.button.map((idBtn, iIndex) =>
+                <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                  {idBtn.icon}
+                </Button>)}
             </div>
           </div>
         </div>
       </section>
 
-      {/*3*/}
-      <section className="py-16 container mx-auto px-4 md:px-6">
+      {/* SectionTwo */}
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle idTitle={Section3.header as Theader} />
         <div className="grid gap-12 md:gap-16 relative">
           {/* Vertical line for desktop */}
@@ -742,11 +759,11 @@ export default function Solutions() {
                   {/* Card Section - Right */}
                   <CustomCard
                     idCardProps={{
-                      header:idStep.header,
-                    nameAndPlace:{ name: idStep.footer },
-                    namePosition:"bottom",
-                    footerClassName:"items-end",
-                    className:"bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
+                      header: idStep.header,
+                      nameAndPlace: { name: idStep.footer },
+                      namePosition: "bottom",
+                      footerClassName: "items-end",
+                      className: "bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
                     }}
                   />
                   {/* Icon Section - Left */}
@@ -770,48 +787,47 @@ export default function Solutions() {
                   </div>
                   {/* Card Section - Left */}
                   <CustomCard
-                   idCardProps={{
-                    header:idStep.header,
-                    nameAndPlace:{ name: idStep.footer },
-                    namePosition:"bottom",
-                    footerClassName:"items-start",
-                    className:"bg-slate shadow-none border-none hover:shadow-none"
-                   }}
+                    idCardProps={{
+                      header: idStep.header,
+                      nameAndPlace: { name: idStep.footer },
+                      namePosition: "bottom",
+                      footerClassName: "items-start",
+                      className: "bg-slate shadow-none border-none hover:shadow-none"
+                    }}
                   />
                 </>
               )}
             </div>
           ))}
         </div>
-
         <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
           <div className="flex flex-col items-center text-center space-y-6">
             <TitleSubtitle idTitle={Section3.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
-             {Section3.cta.button.map((idBtn, iIndex) => 
-             <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
-                {idBtn.icon}
-                <Link href={idBtn.href}>
-                  <span>{idBtn.label}</span>
-                </Link>
-              </Button>)} 
+              {Section3.cta.button.map((idBtn, iIndex) =>
+                <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
+                  {idBtn.icon}
+                  <Link href={idBtn.href}>
+                    <span>{idBtn.label}</span>
+                  </Link>
+                </Button>)}
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4 */}
-      <section className="my-40 mx-auto text-center flex flex-col items-center justify-center">
+      {/* SectionFour */}
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center flex flex-col items-center justify-center">
         <TitleSubtitle idTitle={Section4.header as Theader} />
         <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-4 max-w-6xl">
           {Section4.card.map((idCard, iIndex) => (
             <CustomCard
               key={iIndex}
               idCardProps={{
-                header:idCard.header,
-              className:idCard.className,
-              buttonPosition:"items-center justify-center",
-              button:[...idCard.button] as Tbutton[]
+                header: idCard.header,
+                className: idCard.className,
+                buttonPosition: "items-center justify-center",
+                button: [...idCard.button] as Tbutton[]
               }}
             />
           ))}
@@ -825,40 +841,39 @@ export default function Solutions() {
         </Button>
       </section>
 
-      {/* 5 */}
-      <section className="py-20 bg-muted/30" id="success-story">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* SectionFive */}
+      <section className="py-16 md:py-24 lg:py-24 bg-muted/30" id="success-story">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle idTitle={Section5.header as Theader} />
           <Tab
-  idTab={{
-    data: Section5.cards.map((idCard) => ({
-      ...idCard,
-      header: {
-        ...idCard.header,
-        descripClass: "text-sm h-16",
-        headingClass: "text-lg mb-2",
-      },
-      image: {
-        src: idCard.image.src,
-        alt: idCard.image.alt,
-        aspectRatio: "wide",
-      },
-      button: idCard.buttons?.map((idButton) => ({
-        ...idButton,
-        icon: <ArrowRight className="size-5" />,
-        iconPosition: "after",
-        size: "lg",
-        variant: "outline",
-      })) ?? [], // Ensure button is always an array
-      tag: idCard.category, // Ensure `tag` is correctly assigned
-    })),
-    TabDefault: {
-      text: "All",
-      label: "Show More",
-    },
-  }}
-/>
-
+            idTab={{
+              data: Section5.cards.map((idCard) => ({
+                ...idCard,
+                header: {
+                  ...idCard.header,
+                  descripClass: "text-sm h-16",
+                  headingClass: "text-lg mb-2",
+                },
+                image: {
+                  src: idCard.image.src,
+                  alt: idCard.image.alt,
+                  aspectRatio: "wide",
+                },
+                button: idCard.buttons?.map((idButton) => ({
+                  ...idButton,
+                  icon: <ArrowRight className="size-5" />,
+                  iconPosition: "after",
+                  size: "lg",
+                  variant: "outline",
+                })) ?? [], // Ensure button is always an array
+                tag: idCard.category, // Ensure `tag` is correctly assigned
+              })),
+              TabDefault: {
+                text: "All",
+                label: "Show More",
+              },
+            }}
+          />
           <div className="mt-3 text-center">
             <Button size="lg" className="group">
               <Link href={Section5.footer.href}> {Section5.footer.label} </Link>
@@ -868,9 +883,10 @@ export default function Solutions() {
         </div>
       </section>
 
-      {/* 6 */}
-      <section className="py-20 container mx-auto px-4 md:px-6 text-center">
-        <TitleSubtitle idTitle={{...Section6.header, 
+      {/* SectionSix */}
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center">
+        <TitleSubtitle idTitle={{
+          ...Section6.header,
           className: "text-center items-center",
           headingClass: "md:text-5xl",
         } as Theader} />
@@ -878,8 +894,9 @@ export default function Solutions() {
           {Section6.card.map((idCard, iIndex) => (
             <CustomCard
               key={iIndex}
-              idCardProps={{...idCard, 
-                header:{...idCard.header, headingClass: "md:text-2xl",},
+              idCardProps={{
+                ...idCard,
+                header: { ...idCard.header, headingClass: "md:text-2xl", },
                 className: "max-w-md bg-primary/5 border-gray-400 text-left",
               }}
             />
@@ -894,17 +911,19 @@ export default function Solutions() {
         </Button>
       </section>
 
-      {/* 7 */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* SectionSeven */}
+      <section className="py-16 md:py-24 lg:py-24 bg-muted/30">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle idTitle={Section7.header as Theader} />
           <div className="flex items-center justify-center">
             <div className="max-w-7xl ">
               <LogoShowcase
-                idLogoProps={{logos:Section7.logo,
-                variant:"grid",
-                logoSize:"small",
-                logosPerRow:6}}
+                idLogoProps={{
+                  logos: Section7.logo,
+                  variant: "grid",
+                  logoSize: "small",
+                  logosPerRow: 6
+                }}
               />
             </div>
           </div>
@@ -913,13 +932,13 @@ export default function Solutions() {
               <CustomCard
                 key={iIndex}
                 idCardProps={{
-                   header:idCard.header,
-                className:idCard.className,
-                image:idCard.image,
-                avatar:idCard.avatar,
-                nameAndPlace:idCard.nameAndPlace,
-                namePosition:idCard.namePosition,
-                footerClassName:idCard.footerClassName,
+                  header: idCard.header,
+                  className: idCard.className,
+                  image: idCard.image,
+                  avatar: idCard.avatar,
+                  nameAndPlace: idCard.nameAndPlace,
+                  namePosition: idCard.namePosition,
+                  footerClassName: idCard.footerClassName,
                 }}
               />
             ))}
@@ -932,39 +951,43 @@ export default function Solutions() {
           </div>
         </div>
       </section>
-      <div className="bg-dark">
-        <Callout idCallout={CalloutData[0] as TcalloutProps} />
-      </div>
-      <section className="py-20">
-        <div className="container px-4 md:px-6">
-          <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
-            <div className="text-center space-y-2 mb-6">
-              <TitleSubtitle idTitle={{...Section7.footer.header,
-                className:"m-0 items-center justify-center",
-                headingClass:"md:text-2xl text-2xl mb-2 leading-normal semi-bold",
-                descripClass:"md:text-base text-base"
-              }} />
-            </div>
 
-            <form className="space-y-4">
-              <div className="space-y-2">
-                <Input
-                  type="email"
-                  placeholder="Enter your email"
-                  required
-                  className="w-full"
-                />
-                <p className="text-xs text-muted-foreground">
-                 {Section7.footer.title}
-                </p>
-              </div>
+      {/* SectionEight */}
+      <section className="bg-dark">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+          <Callout idCallout={CalloutData[0] as TcalloutProps} />
+        </div>
+      </section>
 
-              <Button type="submit" className="w-full" size="lg">
-                {Section7.footer.button.label}
-                <Download className="ml-2 h-4 w-4" />
-              </Button>
-            </form>
+
+      {/* SectionNine */}
+      <section className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+        <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
+          <div className="text-center space-y-2 mb-6">
+            <TitleSubtitle idTitle={{
+              ...Section7.footer.header,
+              className: "m-0 items-center justify-center",
+              headingClass: "md:text-2xl text-2xl mb-2 leading-normal semi-bold",
+              descripClass: "md:text-base text-base"
+            }} />
           </div>
+          <form className="space-y-4">
+            <div className="space-y-2">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                required
+                className="w-full"
+              />
+              <p className="text-xs text-muted-foreground">
+                {Section7.footer.title}
+              </p>
+            </div>
+            <Button type="submit" className="w-full" size="lg">
+              {Section7.footer.button.label}
+              <Download className="ml-2 h-4 w-4" />
+            </Button>
+          </form>
         </div>
       </section>
       <Footer />
