@@ -1,120 +1,22 @@
 "use client"
-import { useState, useRef, ReactNode } from "react"
-import { DynamicForm, LDContactFormConfig, LDBookingFormConfig, LDDownloadFormConfig } from "@repo/ui/components/form"
 import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
 import FAQs from "@repo/ui/components/faq"
-import SocialProof from "@repo/ui/components/imageComp"
+import Image from "next/image"
 import Footer from "@repo/ui/components/footer"
 import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
+import { useFormHandler } from "./hooks/useFormHandler"
+import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { Button } from "@repo/ui/components/ui/button"
+import Link from "next/link"
 
 export default function Home() {
-  const [LActiveSection, fnSetActiveSection] = useState<string | null>(null)
-  const [LFormMode, fnSetFormMode] = useState<TformMode>(null)
-  const [LSuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
+  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
-  const LDSectionRefs = {
-    hero: useRef<HTMLDivElement>(null),
-    callout1: useRef<HTMLDivElement>(null),
-    callout2: useRef<HTMLDivElement>(null),
-    callout3: useRef<HTMLDivElement>(null),
-  }
-
-  const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string) => {
-    if (LActiveSection === iSectionId && LFormMode === iMode) {
-      fnSetActiveSection(null)
-      fnSetFormMode(null)
-      fnSetSuccessMessage(null)
-    } else {
-      fnSetActiveSection(iSectionId)
-      fnSetFormMode(iMode)
-      fnSetSuccessMessage(null)
-
-      setTimeout(() => {
-        const currentRef = LDSectionRefs[iSectionId as keyof typeof LDSectionRefs]
-        if (currentRef?.current) {
-          currentRef.current.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          })
-        }
-      }, 50)
-    }
-  }
-
-  const fnHandleFormSuccess = (idFormData: Record<string, unknown>, iMessage: string) => {
-    if (LActiveSection) {
-      fnSetSuccessMessage({ message: iMessage, section: LActiveSection })
-    }
-    fnSetFormMode(null)
-  }
-
-  const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
-    // Only show if this is the active section or has a success message for this section
-    const shouldShowForm = LActiveSection === iSectionId && LFormMode !== null
-    const shouldShowSuccess = LSuccessMessage?.section === iSectionId
-
-    if (!shouldShowForm && !shouldShowSuccess) return null
-
-    let LDFormConfig = undefined
-    switch (LFormMode) {
-      case "contact":
-        LDFormConfig = LDContactFormConfig
-        break
-      case "booking":
-        LDFormConfig = LDBookingFormConfig
-        break
-      case "download":
-        LDFormConfig = LDDownloadFormConfig
-        break
-      default:
-        if (!shouldShowSuccess) return null
-    }
-
-    return (
-      <div className="w-full bg-white py-8">
-        <div className="container mx-auto px-4">
-          {shouldShowSuccess ? (
-            <div className="max-w-lg mx-auto bg-white rounded-lg shadow-md p-4 text-center">
-              <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
-              <h3 className="text-xl font-bold mb-2">Success!</h3>
-              <p className="mb-6">{LSuccessMessage?.message}</p>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => {
-                  fnSetSuccessMessage(null)
-                  fnSetActiveSection(null)
-                  setTimeout(() => {
-                    window.scrollTo({ top: 0, behavior: "smooth" })
-                  }, 300)
-                }}
-              >
-                Close
-              </Button>
-            </div>
-          ) : LDFormConfig ? (
-            <DynamicForm
-              config={LDFormConfig}
-              onSuccess={fnHandleFormSuccess}
-              onCancel={() => {
-                fnSetActiveSection(null)
-                setTimeout(() => {
-                  window.scrollTo({ top: 0, behavior: "smooth" })
-                }, 300)
-              }}
-            />
-          ) : null}
-        </div>
-      </div>
-    )
-  }
-
-  const LDHero = {
+  const HeroData = {
     heading: {
       textWithoutColor: "Reimagine Your Business.",
       text: "Achieve the Extraordinary.",
@@ -143,7 +45,7 @@ export default function Home() {
     },
   }
 
-  const LAFeatures = [
+  const Features = [
     {
       header: {
         textWithoutColor: "Why Choose LMNAs?",
@@ -211,7 +113,7 @@ export default function Home() {
       },
       button: {
         label: "Explore Our Solutions",
-        href:"/solutions"
+        href: "/solutions"
       },
       items: [
         {
@@ -268,7 +170,7 @@ export default function Home() {
     },
   ]
 
-  const LACalloutData = [
+  const CalloutData = [
     {
       header: {
         textWithoutColor: "Does This Sound Like Your Business?",
@@ -331,7 +233,7 @@ export default function Home() {
     }
   ]
 
-  const LDFaq = {
+  const Faq = {
     title: "Got Questions? We've Got Answers!",
     items: [
       {
@@ -357,59 +259,118 @@ export default function Home() {
     ]
   }
 
+  const SocialProof = {
+    header:{
+      text:"Testimonials",
+      subtitle: "Trusted by Leading Businesses Across Industries"
+    },
+    stats:{
+      title: "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      items:[
+        { name: "Efficiency Increase", stat: "40%" },
+        { name: "Cost Reduction", stat: "25%" },
+        { name: "Revenue Growth", stat: "30%" },
+      ],
+      button:{
+        label:"Read Our Case Studies",
+        href:"/solutions"
+      }
+    }
+  }
+
   return (
     <div>
       <Navbar />
-      <div ref={LDSectionRefs.hero}>
+      <div ref={LdSectionRefs("containerOne")}>
         <Hero
-          idHero={LDHero as TheroProps}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "hero")}
+          idHero={HeroData as TheroProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
         />
-        {fnRenderFormBelowSection("hero")}
+        {fnRenderFormBelowSection("containerOne")}
       </div>
       <div className="bg-grayBackground">
-        <Feature idFeature={{ ...LAFeatures[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
+        <Feature idFeature={{ ...Features[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
+        <Feature idFeature={{ ...Features[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-      <div className="bg-dark/70" ref={LDSectionRefs.callout1}>
+      <div className="bg-dark/70" ref={LdSectionRefs("containerTwo")}>
         <Callout
-          idCallout={LACalloutData[0] as TcalloutProps}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout1")}
+          idCallout={CalloutData[0] as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}
         />
-        {fnRenderFormBelowSection("callout1")}
+        {fnRenderFormBelowSection("containerTwo")}
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
+        <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
-      <SocialProof />
-      <div className="bg-dark/70" ref={LDSectionRefs.callout2}>
+    
+      <div className="max-w-7xl mx-auto pt-16 pb-20 px-4 md:px-6">
+        <TitleSubtitle idTitle={{
+          ...SocialProof.header,
+          className:"lg:text-center items-center m-0",
+          headingClass:"text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
+          descripClass:"text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
+        }} />
+        <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="col-span-1 flex justify-center py-8 px-8 bg-grayBackground">
+              <Image
+                className="max-h-12"
+                src={`/placeholder.svg?text=Logo ${i}`}
+                width={120}
+                height={48}
+                alt={`Client ${i}`}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 lg:text-center">
+          <p className="text-base text-muted-foreground">
+            {SocialProof.stats.title}
+          </p>
+          <div className="mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 text-center">
+            {SocialProof.stats.items.map((item) => (
+              <div key={item.name} className="px-4 py-5 bg-background shadow rounded-lg overflow-hidden sm:p-6">
+                <div className="text-sm font-medium text-muted-foreground truncate">{item.name}</div>
+                <div className="mt-1 text-3xl font-semibold text-primary">{item.stat}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild size="lg">
+              <Link href={SocialProof.stats.button.href}>{SocialProof.stats.button.label}</Link>
+            </Button>
+          </div>
+          </div>
+      </div>
+
+      <div className="bg-dark/70" ref={LdSectionRefs("containerThree")}>
         <Callout
-          idCallout={LACalloutData[1] as TcalloutProps}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout2")}
+          idCallout={CalloutData[1] as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerThree")}
         />
-        {fnRenderFormBelowSection("callout2")}
+        {fnRenderFormBelowSection("containerThree")}
       </div>
       <div className="my-16">
-        <Feature idFeature={{ ...LAFeatures[3], layout: "centered", iShowButton: false } as TfeatureProps} />
+        <Feature idFeature={{ ...Features[3], layout: "centered", iShowButton: false } as TfeatureProps} />
       </div>
       <div className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
-              {LDFaq.title}
+              {Faq.title}
             </h2>
-            <FAQs idFaq={LDFaq.items} />
+            <FAQs idFaq={Faq.items} />
           </div>
         </div>
       </div>
-      <div ref={LDSectionRefs.callout3}>
+      <div ref={LdSectionRefs("containerFour")}>
         <Callout
-          idCallout={{ ...LACalloutData[2], layout: "simple" } as TcalloutProps}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "callout3")}
+          idCallout={{ ...CalloutData[2], layout: "simple" } as TcalloutProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerFour")}
         />
-        {fnRenderFormBelowSection("callout3")}
+        {fnRenderFormBelowSection("containerFour")}
       </div>
       <Footer />
     </div>

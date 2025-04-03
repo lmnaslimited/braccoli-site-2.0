@@ -2716,7 +2716,7 @@ export default async function Industries({
       <Navbar />
       <Hero idHero={Industry?.hero as TheroProps} />
       {/* 2 */}
-      <section className="container mx-auto px-4">
+      <section className="container mx-auto px-4 md:px-6 py-20">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <TitleSubtitle
             idTitle={{
@@ -2734,7 +2734,7 @@ export default async function Industries({
       </div>
 
       {/* 3 */}
-      <section className="container mx-auto px-4 md:px-6 py-16">
+      <section className="container mx-auto px-4 md:px-6 py-20">
         <TitleSubtitle
           idTitle={{
             ...Industry?.section3.header,
@@ -2743,14 +2743,14 @@ export default async function Industries({
             descripClass: "mt-6",
           }}
         />
-        <div className="space-y-24 mb-24">
+        <div className="space-y-24">
           {Industry?.section3?.feature?.map((idSection, iIndex) => (
             <div
               key={iIndex}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
             >
               {idSection.image.position === "left" && (
-                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
+                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-first">
                   <Image
                     src={idSection.image.src}
                     alt={idSection.image.alt}
@@ -2777,7 +2777,7 @@ export default async function Industries({
               </div>
 
               {idSection.image.position === "right" && (
-                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg">
+                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-none">
                   <Image
                     src={idSection.image.src}
                     alt={idSection.image.alt}
@@ -2792,12 +2792,12 @@ export default async function Industries({
       </section>
 
       {/* 4 */}
-      <section className="mb-24 container mx-auto px-4 md:px-6">
+      <section className="container mx-auto px-4 md:px-6 py-20">
         <TitleSubtitle
           idTitle={{
             ...Industry?.section4.header,
             headingClass: "md:text-5xl",
-            className: "text-center",
+            className: "text-center mb-4",
           }}
         />
         <Tab
@@ -2826,7 +2826,7 @@ export default async function Industries({
       </section>
 
       {/* 5 */}
-      <section className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center">
+      <section className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center py-20">
         <div className="max-w-3xl mx-auto space-y-6">
           <TitleSubtitle
             idTitle={{
@@ -2856,7 +2856,7 @@ export default async function Industries({
             ))}
           </div>
           <div className="pt-6">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button size="lg" className="text-md px-8 py-6">
               <Link href={Industry?.section5.footer.button?.href ?? "/"}>
                 {Industry?.section5.footer.button.label}
               </Link>

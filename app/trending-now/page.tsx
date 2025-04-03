@@ -1,35 +1,21 @@
 "use client";
 
-import {
-  ArrowRight,
-  ChevronRight,
-  Linkedin,
-  Mail,
-  Twitter,
-  Youtube,
-} from "lucide-react";
+import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@repo/ui/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
-import {
-  TcalloutProps,
-  TheroProps,
-} from "@repo/ui/type";
+import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
+import { useFormHandler } from "../hooks/useFormHandler";
 
 
-const TrendingPage={
-  heroDataWithoutImage : {
+const TrendingPage = {
+  heroDataWithoutImage: {
     heading: {
       textWithoutColor: "Cut Through the Noise.",
       text: "Stay Ahead of the Curve.",
@@ -49,18 +35,19 @@ const TrendingPage={
       },
       {
         label: "Talk to an Expert",
-        href: "https://nectar.lmnas.com/contact",
+        // href: "https://nectar.lmnas.com/contact",
         size: "lg",
         icon: (
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         ),
         iconPosition: "after",
         variant: "outline",
+        formMode: "contact",
       },
     ],
   },
 
-  trendsData:  [
+  trendsData: [
     {
       title: "AI-Powered ERP: How Businesses Are Scaling Faster",
       description:
@@ -120,11 +107,11 @@ const TrendingPage={
     subtitle:
       "Stay updated with the latest innovations, industry insights, and AI-driven solutions from LMNAs Cloud Solutions.",
   },
-  trendSection : {
+  trendSection: {
     footer: "Show All Trends",
   },
 
-  noiseData : [
+  noiseData: [
     {
       title: "Information Overload",
       subtitle: "Too much content, too little value",
@@ -206,7 +193,8 @@ const TrendingPage={
       ],
     },
   ],
-  frustrationData : {
+
+  frustrationData: {
     header: { textWithoutColor: "The Information Overload Problem" },
     title: "Why Business Leaders Are Frustrated",
     description:
@@ -218,15 +206,17 @@ const TrendingPage={
       },
       buttons: {
         label: "Discover How LMNAs Can Help",
-        href: "https://nectar.lmnas.com/book_appointment",
+        // href: "https://nectar.lmnas.com/book_appointment",
         variant: "outline",
         icon: <Mail className="size-5" />,
         iconPosition: "before",
         size: "lg",
+        formMode: "booking",
       },
     },
   },
-  Finalcallout : {
+
+  Finalcallout: {
     header: {
       textWithoutColor: "Stay Ahead: Subscribe for Insights",
     },
@@ -248,9 +238,9 @@ const TrendingPage={
 }
 
 
-
-
 export default function TrendingNowPage() {
+  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
+
   const [SelectedTab, setSelectedTab] = useState("all");
   const UniqueSources = [
     "all",
@@ -261,20 +251,28 @@ export default function TrendingNowPage() {
     SelectedTab === "all"
       ? TrendingPage.trendsData
       : TrendingPage.trendsData.filter(
-          (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-        );
+        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+      );
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* Navigation */}
+      {/* Navbar Component */}
       <Navbar />
 
-      <main className="flex-1">
-        {/* Hero Section */}
-        <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps} />
-        {/* The Problem Section - Redesigned to show social media frustration */}
-        <section className="border-b border-border/40 py-20 bg-gradient-to-br from-grayBackground to-background overflow-hidden">
-          <div className="container mx-auto px-4 md:px-6">
+      {/* Hero Component */}
+      <section
+        ref={LdSectionRefs("containerOne")}
+        className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
+      >
+        <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+        {fnRenderFormBelowSection("containerOne")}
+      </section>
+
+      {/* Problem Section*/}
+      <section ref={LdSectionRefs("containerTwo")}>
+        <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
+          <div className="px-4 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="mx-auto max-w-[58rem]">
               <TitleSubtitle
                 idTitle={{
@@ -301,7 +299,6 @@ export default function TrendingNowPage() {
                     {TrendingPage.frustrationData.description}
                   </p>
                 </div>
-
                 <div className="grid gap-6 md:grid-cols-3">
                   {TrendingPage.noiseData.map((idSection, idIndex) => (
                     <div key={idIndex} className="relative overflow-hidden">
@@ -333,7 +330,6 @@ export default function TrendingNowPage() {
                   ))}
                 </div>
               </div>
-
               <div className="mt-16 text-center bg-gradient-to-r from-grayBackground to-muted p-8 rounded-xl border border-border">
                 <p className="text-lg font-medium mb-6">
                   <span className="font-bold">
@@ -343,69 +339,76 @@ export default function TrendingNowPage() {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/80 text-background"
+                  onClick={() => TrendingPage.frustrationData.callout.buttons.formMode && fnHandleFormButtonClick(TrendingPage.frustrationData.callout.buttons.formMode as TformMode, "containerTwo")}
                 >
                   {TrendingPage.frustrationData.callout.buttons.label}
                 </Button>
               </div>
             </div>
           </div>
-        </section>
-        {/* Latest Trends Section */}
-        <section className="border-b border-border/40 py-20">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="mx-auto max-w-[85rem]">
-              <TitleSubtitle
-                idTitle={{
-                  ...TrendingPage.latestTrendsHeader,
-                  className: "text-center md:text-left",
-                  headingClass: "",
-                  descripClass: "",
-                }}
-              />
-              <Tabs
-                defaultValue="all"
-                className="w-full"
-                onValueChange={setSelectedTab}
-              >
-                <div className="border-b mb-8">
-                  <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                    {UniqueSources.map((idTab) => (
-                      <TabsTrigger
-                        key={idTab}
-                        value={idTab}
-                        className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
-                      >
-                        {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
-                      </TabsTrigger>
-                    ))}
-                  </TabsList>
+        </div>
+        {fnRenderFormBelowSection("containerTwo")}
+      </section>
+
+      {/* Latest Trends Section */}
+      <section className="py-20 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="mx-auto max-w-[85rem]">
+            <TitleSubtitle
+              idTitle={{
+                ...TrendingPage.latestTrendsHeader,
+                className: "text-center md:text-left",
+                headingClass: "",
+                descripClass: "",
+              }}
+            />
+            <Tabs
+              defaultValue="all"
+              className="w-full"
+              onValueChange={setSelectedTab}
+            >
+              <div className="border-b mb-8">
+                <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                  {UniqueSources.map((idTab) => (
+                    <TabsTrigger
+                      key={idTab}
+                      value={idTab}
+                      className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                    >
+                      {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+              </div>
+
+              <TabsContent value={SelectedTab} className="mt-0">
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {FilteredTrends.map((idTrend, idIndex) => (
+                    <TrendCard key={idIndex} idTrends={idTrend} />
+                  ))}
                 </div>
 
-                <TabsContent value={SelectedTab} className="mt-0">
-                  <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {FilteredTrends.map((idTrend, idIndex) => (
-                      <TrendCard key={idIndex} idTrends={idTrend} />
-                    ))}
-                  </div>
-
-                  <div className="mt-12 text-center">
-                    <Button variant="outline" size="lg" className="group">
-                      {TrendingPage.trendSection.footer}
-                      <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </div>
-                </TabsContent>
-              </Tabs>
-            </div>
+                <div className="mt-12 text-center">
+                  <Button variant="outline" size="lg" className="group">
+                    {TrendingPage.trendSection.footer}
+                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              </TabsContent>
+            </Tabs>
           </div>
-        </section>
-        {/* Subscribe Section */}
-        <div className="bg-primary">
+        </div>
+      </section>
+
+      {/* Subscribe Section */}
+      <section className="bg-primary">
+        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <Callout idCallout={TrendingPage.Finalcallout as TcalloutProps} />
         </div>
-      </main>
+      </section>
 
+      {/* Footer Component */}
       <Footer />
-    </div>
+    </div >
   );
 }

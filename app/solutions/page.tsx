@@ -6,10 +6,9 @@ import {
   Download,
   Lightbulb,
   Play,
-  PlayIcon,
   Quote,
 } from "lucide-react";
-import { Tbutton, TcalloutProps, Theader, TheroProps } from "@repo/ui/type";
+import { Tbutton, TcalloutProps, TformMode, Theader, TheroProps } from "@repo/ui/type";
 import { ArrowRight, Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
@@ -21,8 +20,10 @@ import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
 import Navbar from "@repo/ui/components/navbar";
+import { useFormHandler } from "../hooks/useFormHandler";
 
 export default function Solutions() {
+   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
   const HeroData = {
     heading: {
       textWithoutColor: "Your Business Deserves More Than Just Surviving.",
@@ -33,7 +34,7 @@ export default function Solutions() {
     buttons: [
       {
         label: "See the Success Story",
-        href: "/solutions",
+        href: "#success-story",
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
@@ -41,7 +42,8 @@ export default function Solutions() {
       },
       {
         label: "Book a Free Consultation",
-        href: "https://nectar.lmnas.com/book_appointment",
+        // href: "https://nectar.lmnas.com/book_appointment",
+        formMode: "booking",
         variant: "outline",
         icon: <Calendar className="size-6" />,
         iconPosition: "after",
@@ -71,7 +73,8 @@ export default function Solutions() {
       buttons: [
         {
           label: "Book a Free Consultation Now",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode: "booking",
           variant: "outline",
           icon: <Calendar className="size-5" />,
           iconPosition: "before",
@@ -98,7 +101,8 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
+            formMode:"download",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -115,7 +119,8 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
+            formMode:"download",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
@@ -132,14 +137,15 @@ export default function Solutions() {
         button: [
           {
             label: "Download Case Study",
-            href: "#",
+            // href: "#",
+            formMode:"download",
             variant: "outline",
             icon: <Download className="size-5" />,
             iconPosition: "before",
           },
         ],
       },
-    ] as const,
+    ] ,
     cta:{
       header:{
         textWithoutColor:" Discover How We've Helped Others Like You",
@@ -150,7 +156,8 @@ export default function Solutions() {
       },
       button:[{
         label: "Book a Consultation",
-        href:"https://nectar.lmnas.com/book_appointment",
+        // href:"https://nectar.lmnas.com/book_appointment",
+        formMode: "booking",
         icon: <ArrowRight className="h-4 w-4" />
       },
     {
@@ -215,41 +222,6 @@ export default function Solutions() {
         iconPosition: "right",
       },
     ],
-    card: {
-      header: {
-        text: "Ready to Experience Our Approach?",
-        subtitle:
-          "Take the first step toward a solution that's truly built for your needs. Book a discovery call, schedule a free demo, or explore our other successful solutions.",
-      },
-      className:
-        "items-center text-center my-4 py-4 border-none shadow-none hover:shadow-none bg-slate",
-      button: [
-        {
-          label: "Book a Free Consultation Now",
-          href: "https://nectar.lmnas.com/book_appointment",
-          variant: "default",
-          icon: <Calendar className="size-5" />,
-          iconPosition: "before",
-          size: "lg",
-        },
-        {
-          label: "Schedule a Demo",
-          href: "https://demolens.lmnas.com/contact",
-          variant: "outline",
-          icon: <PlayIcon className="size-5" />,
-          iconPosition: "before",
-          size: "lg",
-        },
-        {
-          label: "Explore Other Solutions",
-          href: "/solutions",
-          variant: "secondary",
-          icon: <ArrowRight className="size-5" />,
-          iconPosition: "before",
-          size: "lg",
-        },
-      ],
-    } as const,
     cta:{
       header:{
         textWithoutColor:"Ready to Experience Our Approach?",
@@ -260,18 +232,20 @@ export default function Solutions() {
     },
       button:[{
         label: "Book a Consultation",
-        href:"https://nectar.lmnas.com/book_appointment",
+        // href:"https://nectar.lmnas.com/book_appointment",
+        formMode: "booking",
         icon: <Calendar className="h-4 w-4" />
       },
       {
         label: "Schedule a Free Demo",
-        href:"https://demolens.lmnas.com/#login",
+        // href:"https://nectar.lmnas.com/contact",
+        formMode: "contact",
         icon:<Play className="h-4 w-4" />,
         variant: "outline"
       },
     {
       label: "Explore All Case Studies",
-        href:"/solutions",
+        href:"#success-story",
         icon: <ArrowRight className="h-4 w-4" />,
         variant: "ghost"
     }]
@@ -299,7 +273,8 @@ export default function Solutions() {
         button: [
           {
             label: "Book a Free Consultation Now",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode: "booking",
             variant: "default",
             icon: <Calendar className="size-5" />,
             iconPosition: "after",
@@ -318,7 +293,7 @@ export default function Solutions() {
         button: [
           {
             label: "Explore More Case Studies",
-            href: "/solutions",
+            href: "#success-story",
             variant: "outline",
             icon: <ArrowRight className="size-5" />,
             iconPosition: "after",
@@ -326,13 +301,14 @@ export default function Solutions() {
           },
         ],
       },
-    ] as const,
+    ],
     footer: {
       title:
         " What is the one thing holding your business back from scaling faster?",
-      label: "See How Other Businesses Solved It",
-      href: "/solutions",
-      icon: <ArrowRight className="size-6" />,
+      button:{label: "Talk to an Expert",
+      // href: "/solutions",
+      formMode:"contact",
+      icon: <ArrowRight className="size-6" />,}
     },
   };
   const Section5 = {
@@ -522,8 +498,9 @@ export default function Solutions() {
       },
     ],
     footer: {
-      label: "Find Your Breakthrough ",
-      href: "https://nectar.lmnas.com/book_appointment",
+      label: "Talk to an Expert",
+      // href: "https://nectar.lmnas.com/contact",
+      formMode:"contact",
       icon: (
         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
       ),
@@ -582,7 +559,8 @@ export default function Solutions() {
     footer: {
       title: "Could This Be Your Business Story Too?",
       label: "Book Your Consultation",
-      href: "https://nectar.lmnas.com/book_appointment",
+      // href: "https://nectar.lmnas.com/book_appointment",
+      formMode:"booking",
       icon: <Calendar className="size-6" />,
     },
   };
@@ -610,7 +588,6 @@ export default function Solutions() {
     card: [
       {
         header: {
-          text: "",
           subtitle:
             "We were skeptical at first, but the results speak for themselves. Revenue is up, costs are down, and our team is more productive than ever. This was the breakthrough we needed.",
           descripClass: "italic",
@@ -633,7 +610,6 @@ export default function Solutions() {
       },
       {
         header: {
-          text: "",
           subtitle:
             "The transformation was beyond what we expected. Our team now has complete visibility into our operations, and we've eliminated the inefficiencies that were holding us back.",
           descripClass: "italic",
@@ -656,7 +632,6 @@ export default function Solutions() {
       },
       {
         header: {
-          text: "",
           subtitle:
             "The implementation was smooth, and the team was incredibly supportive. We saw immediate improvements in our processes, and the long-term impact has been substantial.",
           descripClass: "italic",
@@ -680,7 +655,7 @@ export default function Solutions() {
     ] as const,
     footer: {
       label: "Explore Success Stories ",
-      href: "/solutions",
+      href: "#success-story",
       icon: <ArrowRight className="size-5" />,
       header:{
         textWithoutColor: " Want To See Full Case Study Reports?",
@@ -688,7 +663,7 @@ export default function Solutions() {
       },
       title: "We'll send the case study directly to your inbox. We respect your privacy.",
       button:{
-        label:" Download Full Case Study Report"
+        label:" Download Full Case Study Report",
       }
     },
   };
@@ -696,9 +671,13 @@ export default function Solutions() {
   return (
     <>
       <Navbar />
-      <Hero idHero={HeroData as TheroProps} />
+      <div ref={LdSectionRefs("containerOne")}>
+      <Hero idHero={HeroData as TheroProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+      {fnRenderFormBelowSection("containerOne")}
+      </div>
 
-      <section className="w-full py-12 md:py-16 bg-slate">
+      <div ref={LdSectionRefs("containerTwo")}>
+      <section className="py-20 bg-slate">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle idTitle={Section1.header as Theader} />
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
@@ -708,7 +687,12 @@ export default function Solutions() {
                 idCardProps={{
                   header:idCard.header,
                 className:idCard.className,
-                button:[...idCard.button]
+                button:[...idCard.button] as Tbutton[],
+                onButtonClick: idCard.button.find(btn => "formMode" in btn) &&
+              (() => fnHandleFormButtonClick(
+                idCard.button.find(btn => "formMode" in btn)?.formMode as TformMode, 
+                "containerTwo"
+              )),
                 }}
               />
             ))}
@@ -718,19 +702,25 @@ export default function Solutions() {
             <TitleSubtitle idTitle={Section1.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
               {Section1.cta.button.map((idBtn, iIndex) => 
-              <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
-                <Link href={idBtn.href}>
-                  <span>{idBtn.label}</span>
-                </Link>
+              <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}
+              onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+              >
+                {idBtn.href ? <Link href={idBtn.href}>
+                  {idBtn.label}
+                </Link> : idBtn.label}
                 {idBtn.icon}
               </Button>)}
             </div>
           </div>
         </div>
       </section>
+      {fnRenderFormBelowSection("containerTwo")}
+      </div>
 
       {/*3*/}
-      <section className="py-16 container mx-auto px-4 md:px-6">
+
+      <div ref={LdSectionRefs("containerThree")}>
+      <section className="py-20 container mx-auto px-4 md:px-6">
         <TitleSubtitle idTitle={Section3.header as Theader} />
         <div className="grid gap-12 md:gap-16 relative">
           {/* Vertical line for desktop */}
@@ -792,19 +782,24 @@ export default function Solutions() {
             <TitleSubtitle idTitle={Section3.cta.header} />
             <div className="flex flex-wrap gap-4 justify-center">
              {Section3.cta.button.map((idBtn, iIndex) => 
-             <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}>
+             <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}
+             onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+             >
                 {idBtn.icon}
-                <Link href={idBtn.href}>
-                  <span>{idBtn.label}</span>
-                </Link>
+                {idBtn.href ? <Link href={idBtn.href}>
+                  {idBtn.label}
+                </Link> : idBtn.label}
               </Button>)} 
             </div>
           </div>
         </div>
       </section>
+      {fnRenderFormBelowSection("containerThree")}
+      </div>
 
       {/* 4 */}
-      <section className="my-40 mx-auto text-center flex flex-col items-center justify-center">
+      <div ref={LdSectionRefs("containerFour")}>
+      <section className="py-20 mx-auto text-center flex flex-col items-center justify-center">
         <TitleSubtitle idTitle={Section4.header as Theader} />
         <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-4 max-w-6xl">
           {Section4.card.map((idCard, iIndex) => (
@@ -814,7 +809,12 @@ export default function Solutions() {
                 header:idCard.header,
               className:idCard.className,
               buttonPosition:"items-center justify-center",
-              button:[...idCard.button]
+              button:[...idCard.button] as Tbutton[],
+              onButtonClick: idCard.button.find(btn => "formMode" in btn) &&
+              (() => fnHandleFormButtonClick(
+                idCard.button.find(btn => "formMode" in btn)?.formMode as TformMode, 
+                "containerFour"
+              )),
               }}
             />
           ))}
@@ -822,56 +822,62 @@ export default function Solutions() {
         <p className="font-semibold mt-16 mb-6 text-xl">
           {Section4.footer.title}
         </p>
-        <Button size={"lg"}>
-          <Link href={Section4.footer.href}> {Section4.footer.label} </Link>{" "}
-          {Section4.footer.icon}{" "}
+        <Button size={"lg"} onClick={() => Section4.footer.button.formMode && fnHandleFormButtonClick(Section4.footer.button.formMode as TformMode, "containerFour")}>
+         {Section4.footer.button.label}{" "}
+          {Section4.footer.button.icon}
         </Button>
       </section>
+      {fnRenderFormBelowSection("containerFour")}
+      </div>
 
       {/* 5 */}
-      <section className="py-20 bg-muted/30">
+      < div ref={LdSectionRefs("containerFive")} >
+      <section className="py-20 bg-muted/30" id="success-story">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle idTitle={Section5.header as Theader} />
           <Tab
-  idTab={{
-    data: Section5.cards.map((idCard) => ({
-      ...idCard,
-      header: {
-        ...idCard.header,
-        descripClass: "text-sm h-16",
-        headingClass: "text-lg mb-2",
-      },
-      image: {
-        src: idCard.image.src,
-        alt: idCard.image.alt,
-        aspectRatio: "wide",
-      },
-      button: idCard.buttons?.map((idButton) => ({
-        ...idButton,
-        icon: <ArrowRight className="size-5" />,
-        iconPosition: "after",
-        size: "lg",
-        variant: "outline",
-      })) ?? [], // Ensure button is always an array
-      tag: idCard.category, // Ensure `tag` is correctly assigned
-    })),
-    TabDefault: {
-      text: "All",
-      label: "Show More",
-    },
-  }}
-/>
+            idTab={{
+              data: Section5.cards.map((idCard) => ({
+                ...idCard,
+                header: {
+                  ...idCard.header,
+                  descripClass: "text-sm h-16",
+                  headingClass: "text-lg mb-2",
+                },
+                image: {
+                  src: idCard.image.src,
+                  alt: idCard.image.alt,
+                  aspectRatio: "wide",
+                },
+                button: idCard.buttons?.map((idButton) => ({
+                  ...idButton,
+                  icon: <ArrowRight className="size-5" />,
+                  iconPosition: "after",
+                  size: "lg",
+                  variant: "outline",
+                })) ?? [], // Ensure button is always an array
+                tag: idCard.category, // Ensure `tag` is correctly assigned
+              })),
+              TabDefault: {
+                text: "All",
+                label: "Show More",
+              },
+            }}
+          />
 
           <div className="mt-3 text-center">
-            <Button size="lg" className="group">
-              <Link href={Section5.footer.href}> {Section5.footer.label} </Link>
+            <Button size="lg" className="group" onClick={() => Section5.footer.formMode && fnHandleFormButtonClick(Section5.footer.formMode as TformMode, "containerFive")}>
+              {Section5.footer.label}
               {Section5.footer.icon}
             </Button>
           </div>
         </div>
       </section>
+      {fnRenderFormBelowSection("containerFive")}
+      </div >
 
       {/* 6 */}
+      < div ref={LdSectionRefs("containerSix")} >
       <section className="py-20 container mx-auto px-4 md:px-6 text-center">
         <TitleSubtitle idTitle={{...Section6.header, 
           className: "text-center items-center",
@@ -891,11 +897,13 @@ export default function Solutions() {
         <p className="font-semibold mt-16 mb-6 text-xl">
           {Section6.footer.title}
         </p>
-        <Button size={"lg"}>
-          <Link href={Section6.footer.href}> {Section6.footer.label} </Link>{" "}
-          {Section6.footer.icon}{" "}
+        <Button size={"lg"} onClick={() => Section5.footer.formMode && fnHandleFormButtonClick(Section6.footer.formMode as TformMode, "containerSix")}>
+          {Section6.footer.label}{" "}
+          {Section6.footer.icon}
         </Button>
       </section>
+      {fnRenderFormBelowSection("containerSix")}
+      </div >
 
       {/* 7 */}
       <section className="py-20 bg-muted/30">
@@ -935,9 +943,14 @@ export default function Solutions() {
           </div>
         </div>
       </section>
+
+      < div ref={LdSectionRefs("containerSeven")} >
       <div className="bg-dark">
-        <Callout idCallout={CalloutData[0] as TcalloutProps} />
+        <Callout idCallout={CalloutData[0] as TcalloutProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerSeven")}/>
       </div>
+      {fnRenderFormBelowSection("containerSeven")}
+      </div >
+
       <section className="py-20">
         <div className="container px-4 md:px-6">
           <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
