@@ -260,10 +260,7 @@ export default function TrendingNowPage() {
       <Navbar />
 
       {/* Hero Component */}
-      <section
-        ref={LdSectionRefs.containerOne}
-        className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
-      >
+      <section ref={LdSectionRefs.containerOne} >
         <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
         {fnRenderFormBelowSection("containerOne")}
