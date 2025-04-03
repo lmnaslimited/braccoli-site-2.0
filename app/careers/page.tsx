@@ -52,7 +52,7 @@ const career = {
       textWithoutColor: "Empowering Careers",
       text: "Enabling Growth",
       subtitle:
-        "Shape Your Future with LMNAS - Where Talent Meets Opportunity and Growth.Enhance supply chain visibility, streamline logistics, and boost operational efficiency with LENS ERP Suite.",
+        "Shape Your Future with LMNAS - Where Talent Meets Opportunity and Growth.",
       badge: "Redefining Career Journeys",
     },
     buttons: [
@@ -512,7 +512,7 @@ export default function Career() {
 
       {/* section 1 */}
       <section id="problem" className="py-24 bg-grayBackground">
-        <div className="container max-w-7xl">
+        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative mx-auto md:ml-0 w-full space-y-4">
               <div className="flex items-center gap-3">
@@ -565,8 +565,8 @@ export default function Career() {
       </section>
 
       {/* section 2 */}
-      <section id="plan" className="py-28 bg-background">
-        <div className="container max-w-6xl">
+      <section id="plan" className="py-24 bg-background">
+        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
               <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
@@ -616,8 +616,8 @@ export default function Career() {
       </section>
 
       {/* section 3 */}
-      <section id="cta" className="py-20 bg-grayBackground">
-        <div className="container max-w-5xl px-4 sm:px-6 mx-auto">
+      <section id="cta" className="py-24 bg-grayBackground">
+        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl md:px-24 lg:px-8">
           <TitleSubtitle
             idTitle={{
               ...career?.section3.header,
@@ -905,9 +905,9 @@ export default function Career() {
       </section>
 
       {/* section 4 */}
-      <section id="learning" className="py-28 bg-background">
-        <div className="container max-w-6xl px-4 sm:px-6 mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section id="learning" className="py-24 bg-background">
+        <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* (hidden on mobile) */}
             <motion.div
               className="relative mx-auto lg:ml-0 w-full max-w-lg hidden lg:block"
@@ -988,50 +988,48 @@ export default function Career() {
       </section>
 
       {/* section 5 */}
-      <section className="border-b border-border/40 py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mx-auto max-w-[85rem]">
-            <TitleSubtitle idTitle={{
-              ...career.section5.latestTrendsHeader,
-              className: "text-center md:text-left",
-              headingClass: "",
-              descripClass: "",
-            }}
-            />
-            <Tabs
-              defaultValue="all"
-              className="w-full"
-              onValueChange={fnSetSelectedTab}
-            >
-              <div className="border-b mb-8">
-                <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                  {UniqueSources.map((idTab) => (
-                    <TabsTrigger
-                      key={idTab}
-                      value={idTab}
-                      className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
-                    >
-                      {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
-              </div>
+      <section className="border-b border-border/40 py-24 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+        <div className="mx-auto max-w-[85rem]">
+          <TitleSubtitle idTitle={{
+            ...career.section5.latestTrendsHeader,
+            className: "text-center md:text-left",
+            headingClass: "",
+            descripClass: "",
+          }}
+          />
+          <Tabs
+            defaultValue="all"
+            className="w-full"
+            onValueChange={fnSetSelectedTab}
+          >
+            <div className="border-b mb-8">
+              <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                {UniqueSources.map((idTab) => (
+                  <TabsTrigger
+                    key={idTab}
+                    value={idTab}
+                    className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                  >
+                    {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
 
-              <TabsContent value={SelectedTab} className="mt-0">
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {FilteredTrends.map((idTrend, idIndex) => (
-                    <TrendCard key={idIndex} idTrends={idTrend} />
-                  ))}
-                </div>
-                <div className="mt-12 text-center">
-                  <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
-                    {career.section5.trendSection.footer.button.label}
-                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button></Link>
-                </div>
-              </TabsContent>
-            </Tabs>
-          </div>
+            <TabsContent value={SelectedTab} className="mt-0">
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {FilteredTrends.map((idTrend, idIndex) => (
+                  <TrendCard key={idIndex} idTrends={idTrend} />
+                ))}
+              </div>
+              <div className="mt-12 text-center">
+                <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
+                  {career.section5.trendSection.footer.button.label}
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button></Link>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
       </section>
       <Footer />

@@ -272,7 +272,7 @@ export default function TrendingNowPage() {
       {/* Problem Section*/}
       <section ref={LdSectionRefs.containerTwo}>
         <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
-          <div className="px-4 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+          <div className="px-4 py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="mx-auto max-w-[58rem]">
               <TitleSubtitle
                 idTitle={{
@@ -351,7 +351,7 @@ export default function TrendingNowPage() {
       </section>
 
       {/* Latest Trends Section */}
-      <section className="py-20 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
+      <section className="py-24 px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="container mx-auto px-4 md:px-6">
           <div className="mx-auto max-w-[85rem]">
             <TitleSubtitle
