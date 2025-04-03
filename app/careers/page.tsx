@@ -512,7 +512,7 @@ export default function Career() {
 
       {/* section 1 */}
       <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
-        <div className="px-4 md:px-24 lg:px-8mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative mx-auto md:ml-0 w-full space-y-4">
               <div className="flex items-center gap-3">

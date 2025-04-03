@@ -695,8 +695,8 @@ export default function Solutions() {
       </div>
 
       <div ref={LdSectionRefs("containerTwo")}>
-        <section className="py-20 bg-slate">
-          <div className="container mx-auto px-4 md:px-6">
+        <section className="w-full py-16 md:py-24 lg:py-24 bg-slate">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle idTitle={Section1.header as Theader} />
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12">
               {Section1.card.map((idCard, iIndex) => (
@@ -737,7 +737,7 @@ export default function Solutions() {
       {/*3*/}
 
       <div ref={LdSectionRefs("containerThree")}>
-        <section className="py-20 container mx-auto px-4 md:px-6">
+        <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle idTitle={Section3.header as Theader} />
           <div className="grid gap-12 md:gap-16 relative">
             {/* Vertical line for desktop */}
@@ -815,7 +815,7 @@ export default function Solutions() {
 
       {/* 4 */}
       <div ref={LdSectionRefs("containerFour")}>
-        <section className="py-20 mx-auto text-center flex flex-col items-center justify-center">
+        <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center flex flex-col items-center justify-center">
           <TitleSubtitle idTitle={Section4.header as Theader} />
           <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 mb-4 max-w-6xl">
             {Section4.card.map((idCard, iIndex) => (
@@ -848,8 +848,8 @@ export default function Solutions() {
 
       {/* 5 */}
       < div ref={LdSectionRefs("containerFive")} >
-        <section className="py-20 bg-muted/30" id="success-story">
-          <div className="container mx-auto px-4 md:px-6">
+        <section className="py-16 md:py-24 lg:py-24 bg-muted/30" id="success-story">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle idTitle={Section5.header as Theader} />
             <Tab
               idTab={{
@@ -894,7 +894,7 @@ export default function Solutions() {
 
       {/* 6 */}
       < div ref={LdSectionRefs("containerSix")} >
-        <section className="py-20 container mx-auto px-4 md:px-6 text-center">
+        <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center">
           <TitleSubtitle idTitle={{
             ...Section6.header,
             className: "text-center items-center",
@@ -965,9 +965,11 @@ export default function Solutions() {
       </section>
 
       < div ref={LdSectionRefs("containerSeven")} >
-        <div className="bg-dark">
-          <Callout idCallout={CalloutData[0] as TcalloutProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerSeven")} />
-        </div>
+        <section className="bg-dark">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+            <Callout idCallout={CalloutData[0] as TcalloutProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerSeven")} />
+          </div>
+        </section>
         {fnRenderFormBelowSection("containerSeven")}
       </div >
 
