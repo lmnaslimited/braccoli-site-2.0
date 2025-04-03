@@ -1130,7 +1130,7 @@ export default async function Products({
       </section>
 
       {/* section 2 */}
-      <section className="border-b border-border/40 py-20 bg-muted">
+      <section className="border-b border-border/40 py-20 bg-grayBackground">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
             idTitle={{
@@ -1138,7 +1138,7 @@ export default async function Products({
               className:
                 "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
               headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed",
+              descripClass: "max-w-[85%] md:text-xl/relaxed text-primary/70",
             }}
           />
           <div className="mx-auto max-w-5xl md:py-12 py-6"> {/*changed */}
@@ -1282,7 +1282,7 @@ export default async function Products({
       </section>
 
       {/* section4 */}
-      <section className="border-b border-border/40 py-20 bg-muted">
+      <section className="border-b border-border/40 py-20 bg-grayBackground">
         <div className="container mx-auto px-4 md:px-6">
           <TitleSubtitle
             idTitle={{
@@ -1333,7 +1333,7 @@ export default async function Products({
             </div>
           </div>
           <div className="mx-auto max-w-[58rem] text-center mt-8">
-            <p className="text-primary/50 mb-6">
+            <p className="text-primary/70 mb-6">
               {Product?.Section4.footer.heading.text}
               <br />
               <span className="font-medium text-primary">

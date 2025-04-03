@@ -8,24 +8,17 @@ export const useFormHandler = () => {
     const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
     const [FormMode, fnSetFormMode] = useState<TformMode>(null)
     const [SuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
-    // const LdSectionRefs = {
-    //     containerOne: useRef<HTMLDivElement>(null),
-    //     containerTwo: useRef<HTMLDivElement>(null),
-    //     containerThree: useRef<HTMLDivElement>(null),
-    //     containerFour: useRef<HTMLDivElement>(null),
-    //     containerFive: useRef<HTMLDivElement>(null),
-    // }
+
      // 🔹 Store refs dynamically
-     // 🔹 Store refs dynamically
-     const refStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
+     const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
 
      const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
          // Ensure the ref exists
-         if (!refStore.current[key]) {
-             refStore.current[key] = { current: null } as unknown as React.RefObject<HTMLDivElement>;
+         if (!RefStore.current[key]) {
+            RefStore.current[key] = { current: null } as unknown as React.RefObject<HTMLDivElement>;
          }
  
-         return refStore.current[key];
+         return RefStore.current[key];
      };
 
     /**

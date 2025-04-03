@@ -261,7 +261,7 @@ export default function TrendingNowPage() {
 
       {/* Hero Component */}
       <section
-        ref={LdSectionRefs.containerOne}
+        ref={LdSectionRefs("containerOne")}
         className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
       >
         <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps}
@@ -270,7 +270,7 @@ export default function TrendingNowPage() {
       </section>
 
       {/* Problem Section*/}
-      <section ref={LdSectionRefs.containerTwo}>
+      <section ref={LdSectionRefs("containerTwo")}>
         <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
           <div className="px-4 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
             <div className="mx-auto max-w-[58rem]">
