@@ -3,12 +3,15 @@ import Feature from "@repo/ui/components/feature"
 import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
 import FAQs from "@repo/ui/components/faq"
-import SocialProof from "@repo/ui/components/imageComp"
+import Image from "next/image"
 import Footer from "@repo/ui/components/footer"
 import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
 import { ArrowRight } from "lucide-react"
 import Navbar from "@repo/ui/components/navbar"
 import { useFormHandler } from "./hooks/useFormHandler"
+import TitleSubtitle from "@repo/ui/components/titleSubtitle"
+import { Button } from "@repo/ui/components/ui/button"
+import Link from "next/link"
 
 export default function Home() {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -256,10 +259,29 @@ export default function Home() {
     ]
   }
 
+  const SocialProof = {
+    header:{
+      text:"Testimonials",
+      subtitle: "Trusted by Leading Businesses Across Industries"
+    },
+    stats:{
+      title: "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      items:[
+        { name: "Efficiency Increase", stat: "40%" },
+        { name: "Cost Reduction", stat: "25%" },
+        { name: "Revenue Growth", stat: "30%" },
+      ],
+      button:{
+        label:"Read Our Case Studies",
+        href:"/solutions"
+      }
+    }
+  }
+
   return (
     <div>
       <Navbar />
-      <div ref={LdSectionRefs.containerOne}>
+      <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={HeroData as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
@@ -272,7 +294,7 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[1], iShowButton: false, layout: "centered" } as TfeatureProps} />
       </div>
-      <div className="bg-dark/70" ref={LdSectionRefs.containerTwo}>
+      <div className="bg-dark/70" ref={LdSectionRefs("containerTwo")}>
         <Callout
           idCallout={CalloutData[0] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}
@@ -282,8 +304,48 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
-      <SocialProof />
-      <div className="bg-dark/70" ref={LdSectionRefs.containerThree}>
+    
+      <div className="max-w-7xl mx-auto pt-16 pb-20 px-4 md:px-6">
+        <TitleSubtitle idTitle={{
+          ...SocialProof.header,
+          className:"lg:text-center items-center m-0",
+          headingClass:"text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
+          descripClass:"text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
+        }} />
+        <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
+          {[1, 2, 3, 4, 5, 6].map((i) => (
+            <div key={i} className="col-span-1 flex justify-center py-8 px-8 bg-grayBackground">
+              <Image
+                className="max-h-12"
+                src={`/placeholder.svg?text=Logo ${i}`}
+                width={120}
+                height={48}
+                alt={`Client ${i}`}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 lg:text-center">
+          <p className="text-base text-muted-foreground">
+            {SocialProof.stats.title}
+          </p>
+          <div className="mt-5 grid grid-cols-2 gap-5 sm:grid-cols-3 text-center">
+            {SocialProof.stats.items.map((item) => (
+              <div key={item.name} className="px-4 py-5 bg-background shadow rounded-lg overflow-hidden sm:p-6">
+                <div className="text-sm font-medium text-muted-foreground truncate">{item.name}</div>
+                <div className="mt-1 text-3xl font-semibold text-primary">{item.stat}</div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild size="lg">
+              <Link href={SocialProof.stats.button.href}>{SocialProof.stats.button.label}</Link>
+            </Button>
+          </div>
+          </div>
+      </div>
+
+      <div className="bg-dark/70" ref={LdSectionRefs("containerThree")}>
         <Callout
           idCallout={CalloutData[1] as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerThree")}
@@ -303,7 +365,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div ref={LdSectionRefs.containerFour}>
+      <div ref={LdSectionRefs("containerFour")}>
         <Callout
           idCallout={{ ...CalloutData[2], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerFour")}

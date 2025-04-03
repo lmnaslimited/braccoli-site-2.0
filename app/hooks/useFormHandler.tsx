@@ -8,13 +8,18 @@ export const useFormHandler = () => {
     const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
     const [FormMode, fnSetFormMode] = useState<TformMode>(null)
     const [SuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
-    const LdSectionRefs = {
-        containerOne: useRef<HTMLDivElement>(null),
-        containerTwo: useRef<HTMLDivElement>(null),
-        containerThree: useRef<HTMLDivElement>(null),
-        containerFour: useRef<HTMLDivElement>(null),
-        containerFive: useRef<HTMLDivElement>(null),
-    }
+
+     // 🔹 Store refs dynamically
+     const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
+
+     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
+         // Ensure the ref exists
+         if (!RefStore.current[key]) {
+            RefStore.current[key] = { current: null } as unknown as React.RefObject<HTMLDivElement>;
+         }
+ 
+         return RefStore.current[key];
+     };
 
     /**
    * Handles clicks on form buttons throughout the page.
@@ -32,7 +37,7 @@ export const useFormHandler = () => {
             fnSetSuccessMessage(null)
 
             setTimeout(() => {
-                const currentRef = LdSectionRefs[iSectionId as keyof typeof LdSectionRefs]
+                const currentRef = LdSectionRefs(iSectionId)
                 if (currentRef?.current) {
                     currentRef.current.scrollIntoView({
                         behavior: "smooth",

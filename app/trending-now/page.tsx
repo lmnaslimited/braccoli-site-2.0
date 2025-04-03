@@ -260,14 +260,16 @@ export default function TrendingNowPage() {
       <Navbar />
 
       {/* Hero Component */}
-      <section ref={LdSectionRefs.containerOne} >
+      <section
+        ref={LdSectionRefs("containerOne")}
+      >
         <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
         {fnRenderFormBelowSection("containerOne")}
       </section>
 
       {/* Problem Section*/}
-      <section ref={LdSectionRefs.containerTwo}>
+      <section ref={LdSectionRefs("containerTwo")}>
         <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
           <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
             <div className="mx-auto max-w-[58rem]">
