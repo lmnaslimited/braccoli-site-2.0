@@ -2716,7 +2716,7 @@ export default async function Industries({
       <Navbar />
       <Hero idHero={Industry?.hero as TheroProps} />
       {/* 2 */}
-      <section className="container mx-auto px-4 md:px-6 py-20">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
           <TitleSubtitle
             idTitle={{
@@ -2734,7 +2734,7 @@ export default async function Industries({
       </div>
 
       {/* 3 */}
-      <section className="container mx-auto px-4 md:px-6 py-20">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
             ...Industry?.section3.header,
@@ -2792,7 +2792,7 @@ export default async function Industries({
       </section>
 
       {/* 4 */}
-      <section className="container mx-auto px-4 md:px-6 py-20">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
             ...Industry?.section4.header,
@@ -2826,8 +2826,8 @@ export default async function Industries({
       </section>
 
       {/* 5 */}
-      <section className="bg-primary/5 rounded-2xl p-8 md:p-12 text-center py-20">
-        <div className="max-w-3xl mx-auto space-y-6">
+      <section className="bg-primary/5 rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
+        <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
           <TitleSubtitle
             idTitle={{
               ...Industry?.section5.header,
@@ -2869,8 +2869,8 @@ export default async function Industries({
       </section>
 
       {/* 6 */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 lg:py-24 bg-muted/30">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...Industry?.section6.header,
@@ -2882,27 +2882,27 @@ export default async function Industries({
             idTab={{
               data: Industry?.section6.cards
                 ? Industry.section6.cards.map((idCard) => ({
-                    ...idCard,
-                    header: {
-                      ...idCard.header,
-                      descripClass: "text-sm h-16",
-                      headingClass: "text-lg mb-2",
-                    },
-                    image: {
-                      src: idCard.image.src,
-                      alt: idCard.image.alt,
-                      aspectRatio: "wide",
-                    },
-                    button:
-                      idCard.buttons?.map((idButton) => ({
-                        ...idButton,
-                        icon: <ArrowRight className="size-5" />,
-                        iconPosition: "after",
-                        size: "lg",
-                        variant: "outline",
-                      })) ?? [], // Ensure button is always an array
-                    tag: idCard.category,
-                  }))
+                  ...idCard,
+                  header: {
+                    ...idCard.header,
+                    descripClass: "text-sm h-16",
+                    headingClass: "text-lg mb-2",
+                  },
+                  image: {
+                    src: idCard.image.src,
+                    alt: idCard.image.alt,
+                    aspectRatio: "wide",
+                  },
+                  button:
+                    idCard.buttons?.map((idButton) => ({
+                      ...idButton,
+                      icon: <ArrowRight className="size-5" />,
+                      iconPosition: "after",
+                      size: "lg",
+                      variant: "outline",
+                    })) ?? [], // Ensure button is always an array
+                  tag: idCard.category,
+                }))
                 : [], // Fallback value
               TabDefault: {
                 text: "All",
@@ -2910,7 +2910,6 @@ export default async function Industries({
               },
             }}
           />
-
           <div className="mt-12 text-center">
             <div className="space-y-4">
               <h3 className="text-xl font-medium">

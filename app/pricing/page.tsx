@@ -431,8 +431,8 @@ export default function Pricing() {
 
       {/* section 2 */}
       <div ref={LdSectionRefs("containerTwo")}>
-        <section className="border-b border-border/40 py-20 bg-muted">
-          <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
+      <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle idTitle={{
               ...Section2.header,
               className: "mx-auto max-w-[58rem] text-center",
@@ -484,8 +484,8 @@ export default function Pricing() {
 
       {/* Plans & Pricing Tiers  section3*/}
       <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-20 bg-background">
-          <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+      <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
               <span className="font-medium">{Section3.header.badge}</span>
             </div>
@@ -595,8 +595,8 @@ export default function Pricing() {
 
       {/* LENS ERP vs. The Competition section7 */}
       <div ref={LdSectionRefs("containerFour")}>
-        <section className="border-b border-border/40 py-20 bg-gradient-to-b from-primary to-primary/70 text-background">
-          <div className="container mx-auto px-4 md:px-6">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-gradient-to-b from-primary to-primary/70 text-background">
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
               <span className="font-medium">{Section7.header.badge}</span>
             </div>
@@ -712,8 +712,8 @@ export default function Pricing() {
       </div>
 
       {/* Testimonials Section section-4*/}
-      < section className="border-b border-border/40 py-20 bg-grayBackground" >
-        <div className="container mx-auto px-4 md:px-6">
+      < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle idTitle={{
             ...Section4.header,
             className:
@@ -761,8 +761,8 @@ export default function Pricing() {
       </section >
 
       {/* FAQ Section Section5 */}
-      < section className="border-b border-border/40 py-20 bg-background" >
-        <div className="container mx-auto px-4 md:px-6">
+      < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background" >
+        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
             <span className="font-medium">{Section5.header.badge}</span>
           </div>
@@ -781,8 +781,8 @@ export default function Pricing() {
 
       {/* final cta section6 */}
       < div ref={LdSectionRefs("containerFive")} >
-        <section className="py-20 bg-grayBackground">
-          <div className="container mx-auto px-4 md:px-6">
+      <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
               <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
                 <span className="font-medium">{Section6.header.badge}</span>
