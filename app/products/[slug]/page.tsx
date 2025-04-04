@@ -1,19 +1,8 @@
-import CustomCard from "@repo/ui/components/customCard";
-import Footer from "@repo/ui/components/footer";
-import Hero from "@repo/ui/components/hero";
-import Navbar from "@repo/ui/components/navbar";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Button } from "@repo/ui/components/ui/button";
-import { Separator } from "@repo/ui/components/ui/separator";
-import { Tbutton, TheroProps } from "@repo/ui/type";
 import {
-  ArrowRight,
   ArrowUpCircle,
   ArrowUpRight,
   BarChart3,
   BrainCircuit,
-  CheckCircle,
-  ChevronRight,
   Clock,
   DollarSign,
   Expand,
@@ -21,10 +10,10 @@ import {
   Settings,
   Shield,
   TrendingDown,
-  Users,
   Zap,
 } from "lucide-react";
-import Link from "next/link";
+import ProductsComp from "../product";
+import { Tproduct } from "@repo/ui/type";
 
 // export default function Products() {
 const PageSlug = [
@@ -45,7 +34,8 @@ const PageSlug = [
       buttons: [
         {
           label: "Book an Appointment",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking",
           variant: "default",
         },
         {
@@ -60,7 +50,7 @@ const PageSlug = [
       },
     },
 
-    Section1: {
+    problems: {
       header: {
         textWithoutColor: "Are You Struggling with Business Growth Challenges?",
         subtitle:
@@ -99,10 +89,11 @@ const PageSlug = [
           subtitle:
             "Our experts understand the unique challenges of growing businesses and can help you find the perfect solution.",
         },
-        buttons: [
+        button: [
           {
             label: "Book a Demo Now",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "Read How Businesses Solved These Issues",
@@ -112,7 +103,7 @@ const PageSlug = [
         ],
       },
     },
-    Section2: {
+    solutions: {
       header: {
         textWithoutColor:
           "Meet LENS ERP Suite - The Solution You've Been Looking For",
@@ -125,7 +116,7 @@ const PageSlug = [
             subtitle:
               "We pinpoint inefficiencies and tailor an ERP strategy that fits your unique business needs.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -139,7 +130,7 @@ const PageSlug = [
             subtitle:
               "We ensure a smooth, worry-free transition so your team stays focused on growth.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -153,7 +144,7 @@ const PageSlug = [
             subtitle:
               "Your team will master LENS ERP with our hands-on training and 24/7 support.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -167,7 +158,7 @@ const PageSlug = [
             subtitle:
               "Real-time insights help you make smarter, faster decisions.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -177,7 +168,7 @@ const PageSlug = [
         },
       ],
       footer: {
-        buttons: [
+        button: [
           {
             label: "Get a Customized ERP Plan",
             href: "/pricing",
@@ -190,7 +181,7 @@ const PageSlug = [
         ],
       },
     },
-    Section3: {
+    guide: {
       header: {
         textWithoutColor:
           "Transform the Way You Work—Unlock Your Full Business Potential",
@@ -208,7 +199,7 @@ const PageSlug = [
               text: "5x Faster Decision-Making",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Break Free from Manual Work & Bottlenecks",
             subtitle:
               "Tired of endless spreadsheets and outdated tools? Automate workflows, eliminate human errors, and free up time to focus on what matters—growing your business.",
@@ -229,7 +220,7 @@ const PageSlug = [
               text: "4x Revenue Growth in 3 Years",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Turn Efficiency into Profitability",
             subtitle:
               "Streamline operations, cut waste, and maximize your earning potential with LENS ERP.",
@@ -254,7 +245,7 @@ const PageSlug = [
               text: "Zero Downtime Operations",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: " Unbreakable Security & Reliability",
             subtitle:
               "Your data is fully protected with enterprise-grade security and zero-downtime architecture.",
@@ -275,7 +266,7 @@ const PageSlug = [
               text: "Future-Proof Scalability",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Grow Without Limits",
             subtitle:
               "LENS ERP scales with your business, ensuring seamless operations as you expand.",
@@ -300,7 +291,7 @@ const PageSlug = [
               text: "50% Lower IT Costs",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Cut Costs Without Compromising Growth",
             subtitle:
               "Reduce unnecessary expenses while maintaining high performance and efficiency.",
@@ -324,7 +315,7 @@ const PageSlug = [
               text: "100% Ownership & Control",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Your Data, Your Rules",
             subtitle:
               "Maintain complete control over your system, ensuring data privacy and operational independence.",
@@ -340,13 +331,14 @@ const PageSlug = [
         },
       ],
       footer: {
-        heading: {
+        header: {
           text: "Not sure where to start? Let's discuss your challenges and tailor a solution just for you.",
         },
-        buttons: [
+        button: [
           {
             label: "Get a Free Business Assessment",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"booking"
           },
           {
             label: "Discover More Success Stories",
@@ -356,17 +348,17 @@ const PageSlug = [
         ],
       },
     },
-    Section4: {
-      heading: {
+    successStory: {
+      header: {
         textWithoutColor: "Experience Success with LENS ERP",
       },
       cards: [
         {
-          heading: {
+          header: {
             subtitle:
               "LENS ERP transformed our operations. We've seen a 40% increase in productivity and our team loves how easy it is to use.",
           },
-          avator: {
+          avatar: {
             src: "/svg",
             alt: "JD",
           },
@@ -381,11 +373,11 @@ const PageSlug = [
           ],
         },
         {
-          heading: {
+          header: {
             subtitle:
               "The cost savings have been remarkable. We've reduced our operational expenses by 30% while improving our decision-making capabilities.",
           },
-          avator: {
+          avatar: {
             src: "/svg",
             alt: "JS",
           },
@@ -427,14 +419,15 @@ const PageSlug = [
         },
       ],
       footer: {
-        heading: {
+        header: {
           text: "Want proof? Discover how LENS ERP transformed businesses like yours.",
           subtitle: "Read Case Studies!",
         },
-        buttons: [
+        button: [
           {
             label: "Book Your Free ERP Consultation",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode:"booking"
           },
           {
             label: "Explore Real Business Transformations",
@@ -444,40 +437,40 @@ const PageSlug = [
         ],
       },
     },
-    Section5: {
-      heading: {
+    pricing: {
+      header: {
         textWithoutColor: "Flexible Pricing to Fit Your Business Needs",
         subtitle:
           " We understand that every business is unique, and so are its needs. That's why LENS ERP offers flexible pricing models tailored to your business size, industry, and required features.",
         badge: "Limited Time Offer",
       },
       items: {
-        heading: {
+        header: {
           textWithoutColor: "Get a Customized Quote Now",
           subtitle: "Only for the next 10 businesses that sign up this month",
           badge: " Offer ends in: 5 days",
         },
         points: [
           {
-            heading: {
+            header: {
               text: "No Hidden Fees",
               subtitle: "Transparent pricing with no unexpected costs",
             },
           },
           {
-            heading: {
+            header: {
               text: "Scalable Plans",
               subtitle: "Start small and expand as your business grows",
             },
           },
           {
-            heading: {
+            header: {
               text: "Custom Solutions",
               subtitle: "Get a plan that perfectly matches your business needs",
             },
           },
           {
-            heading: {
+            header: {
               text: "Free Migration",
               subtitle:
                 "We'll help you move from your current system at no cost",
@@ -486,14 +479,15 @@ const PageSlug = [
         ],
       },
       footer: {
-        heading: {
+        header: {
           text: "Which plan suits you best? Let's discuss your business needs!",
           subtitle: "Only 3 spots left for this month's special offer",
         },
-        buttons: [
+        button: [
           {
             label: " Get a Customized Quote Now",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "Explore Pricing Options",
@@ -503,30 +497,31 @@ const PageSlug = [
         ],
       },
     },
-    Section6: {
-      heading: {
+    cta: {
+      header: {
         textWithoutColor: " Don't Miss Out—Get Started Today!",
         subtitle:
           "While your competitors struggle with outdated systems, you could be optimizing operations and driving growth with LENS ERP.",
         badge: "Limited Availability",
       },
       item: {
-        heading: {
+        header: {
           textWithoutColor: "Exclusive Onboarding Package",
           subtitle:
             "For a limited time, get our premium onboarding package (valued at $2,500) completely FREE when you sign up.",
         },
       },
       footer: {
-        heading: {
+        header: {
           text: " Only 5 spots remaining this month",
           subtitle:
             "Join the 500+ businesses already transforming their operations with LENS ERP",
         },
-        buttons: [
+        button: [
           {
             label: " Get a Personalized Demo Today",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "See How Others Succeeded with LENS ERP",
@@ -553,7 +548,8 @@ const PageSlug = [
       buttons: [
         {
           label: "Book an Appointment",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking",
           variant: "default",
         },
         {
@@ -567,7 +563,7 @@ const PageSlug = [
         alt: "hero-image",
       },
     },
-    Section1: {
+    problems: {
       header: {
         textWithoutColor:
           "Are You Struggling with Workforce Management Challenges?",
@@ -607,10 +603,11 @@ const PageSlug = [
           subtitle:
             "Our experts understand the challenges of modern HR management and can help you implement the perfect solution.",
         },
-        buttons: [
+        button: [
           {
             label: "Book a Demo Now",
-            href: "https://demolens.lmnas.com/",
+            // href: "https://demolens.lmnas.com/",
+            formMode:"contact"
           },
           {
             label: "Read How Companies Transformed HR Processes",
@@ -620,7 +617,7 @@ const PageSlug = [
         ],
       },
     },
-    Section2: {
+    solutions: {
       header: {
         textWithoutColor:
           "Meet HRMS Cloud - The Solution You've Been Looking For",
@@ -633,7 +630,7 @@ const PageSlug = [
             subtitle:
               "We analyze workforce inefficiencies and customize an HRMS strategy tailored to your business needs.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -647,7 +644,7 @@ const PageSlug = [
             subtitle:
               "We ensure a smooth, worry-free transition so your HR team can focus on talent and performance management.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -661,7 +658,7 @@ const PageSlug = [
             subtitle:
               "Your HR team will master HRMS Cloud with our hands-on training and 24/7 support.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -675,7 +672,7 @@ const PageSlug = [
             subtitle:
               "Leverage real-time HR analytics to make smarter, data-driven decisions.",
           },
-          buttons: [
+          button: [
             {
               label:
                 "Read Case Study",
@@ -685,7 +682,7 @@ const PageSlug = [
         },
       ],
       footer: {
-        buttons: [
+        button: [
           {
             label: "Get a Customized HRMS Plan",
             href: "/pricing",
@@ -698,7 +695,7 @@ const PageSlug = [
         ],
       },
     },
-    Section3: {
+    guide: {
       header: {
         textWithoutColor:
           "Revolutionize Workforce Management—Unlock Your HR Potential",
@@ -716,7 +713,7 @@ const PageSlug = [
               text: "5x Faster Employee Onboarding",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Eliminate Manual HR Tasks & Boost Efficiency",
             subtitle:
               "Tired of paperwork and outdated HR systems? Automate payroll, performance tracking, and compliance management effortlessly.",
@@ -737,7 +734,7 @@ const PageSlug = [
               text: "4x Improvement in Employee Engagement",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Turn HR Efficiency into Employee Satisfaction",
             subtitle:
               "Streamline HR operations, improve employee experience, and maximize workforce productivity with HRMS Cloud.",
@@ -762,7 +759,7 @@ const PageSlug = [
               text: "Zero Downtime HR Operations",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: " Unbreakable Security & Compliance",
             subtitle:
               "Your HR data is fully protected with enterprise-grade security and compliance-ready architecture.",
@@ -783,7 +780,7 @@ const PageSlug = [
               text: "Scalable HR Operations",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Grow Your Workforce Without Limits",
             subtitle:
               "HRMS Cloud scales with your business, ensuring seamless HR operations as you expand.",
@@ -808,7 +805,7 @@ const PageSlug = [
               text: "50% Lower HR Software Expenses",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Reduce HR Costs Without Compromising Efficiency",
             subtitle:
               "Cut unnecessary HR expenses while maintaining high employee satisfaction and performance.",
@@ -832,7 +829,7 @@ const PageSlug = [
               text: "100% Control Over HR Data",
             },
           ],
-          heading: {
+          header: {
             textWithoutColor: "Your Workforce, Your Rules",
             subtitle:
               "Maintain complete control over your HR system, ensuring compliance, data privacy, and operational independence.",
@@ -848,13 +845,14 @@ const PageSlug = [
         },
       ],
       footer: {
-        heading: {
+        header: {
           text: "Not sure where to start? Let's discuss your HR challenges and tailor a solution just for you.",
         },
-        buttons: [
+        button: [
           {
             label: "Get a Free HRMS Assessment",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "Discover More HR Success Stories",
@@ -864,17 +862,17 @@ const PageSlug = [
         ],
       },
     },
-    Section4: {
-      heading: {
+    successStory: {
+      header: {
         textWithoutColor: "Experience Success with HRMS Cloud",
       },
       cards: [
         {
-          heading: {
+          header: {
             subtitle:
               "HRMS Cloud revolutionized our HR processes. We've seen a 50% reduction in administrative workload, making HR management seamless.",
           },
-          avator: {
+          avatar: {
             src: "/svg",
             alt: "AR",
           },
@@ -889,11 +887,11 @@ const PageSlug = [
           ],
         },
         {
-          heading: {
+          header: {
             subtitle:
               "With HRMS Cloud, employee engagement has improved significantly. We've seen a 35% increase in workforce satisfaction.",
           },
-          avator: {
+          avatar: {
             src: "/svg",
             alt: "BK",
           },
@@ -935,14 +933,15 @@ const PageSlug = [
         },
       ],
       footer: {
-        heading: {
+        header: {
           text: "Want proof? Discover how HRMS Cloud transformed businesses like yours.",
           subtitle: "Read Case Studies!",
         },
-        buttons: [
+        button: [
           {
             label: "Book Your Free HRMS Consultation",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode: "booking"
           },
           {
             label: "Explore Real HR Success Stories",
@@ -952,15 +951,15 @@ const PageSlug = [
         ],
       },
     },
-    Section5: {
-      heading: {
+    pricing: {
+      header: {
         textWithoutColor: "Flexible Pricing to Fit Your HR Needs",
         subtitle:
           "We understand that every organization has unique HR challenges. That's why HRMS Cloud offers flexible pricing models tailored to your company size, industry, and workforce requirements.",
         badge: "Limited Time Offer",
       },
       items: {
-        heading: {
+        header: {
           textWithoutColor: "Get a Customized Quote Now",
           subtitle:
             "Only for the next 10 organizations that sign up this month",
@@ -968,26 +967,26 @@ const PageSlug = [
         },
         points: [
           {
-            heading: {
+            header: {
               text: "No Hidden Fees",
               subtitle: "Transparent pricing with no unexpected costs",
             },
           },
           {
-            heading: {
+            header: {
               text: "Scalable Plans",
               subtitle:
                 "Start with core HR features and scale as your workforce grows",
             },
           },
           {
-            heading: {
+            header: {
               text: "Custom Solutions",
               subtitle: "Get a package tailored to your HR management needs",
             },
           },
           {
-            heading: {
+            header: {
               text: "Free Implementation",
               subtitle:
                 "Seamless transition from your current HR system at no cost",
@@ -996,14 +995,15 @@ const PageSlug = [
         ],
       },
       footer: {
-        heading: {
+        header: {
           text: "Which HR plan suits your organization best? Let's discuss your workforce needs!",
           subtitle: "Only 3 spots left for this month's special offer",
         },
-        buttons: [
+        button: [
           {
             label: "Get a Customized Quote Now",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "Explore Pricing Options",
@@ -1013,30 +1013,31 @@ const PageSlug = [
         ],
       },
     },
-    Section6: {
-      heading: {
+    cta: {
+      header: {
         textWithoutColor: "Don't Miss Out—Enhance Your HR Today!",
         subtitle:
           "While other companies struggle with manual HR processes, you could be automating tasks and improving employee management with HRMS Cloud.",
         badge: "Limited Availability",
       },
       item: {
-        heading: {
+        header: {
           textWithoutColor: "Exclusive HR Onboarding Package",
           subtitle:
             "For a limited time, get our premium HR onboarding package (valued at $2,500) completely FREE when you sign up.",
         },
       },
       footer: {
-        heading: {
+        header: {
           text: "Only 5 spots remaining this month",
           subtitle:
             "Join the 500+ organizations already transforming their workforce with HRMS Cloud",
         },
-        buttons: [
+        button: [
           {
             label: "Get a Personalized Demo Today",
-            href: "https://nectar.lmnas.com/contact",
+            // href: "https://nectar.lmnas.com/contact",
+            formMode:"contact"
           },
           {
             label: "See How Others Optimized HR with HRMS Cloud",
@@ -1057,445 +1058,5 @@ export default async function Products({
   const { slug } = await params;
   const Product = PageSlug.find((idProduct) => idProduct.id === slug);
 
-  return (
-    <>
-      <Navbar />
-      <Hero
-        idHero={
-          {
-            ...Product?.hero,
-            buttons: Product?.hero.buttons.map((idButton) => ({
-              ...idButton,
-              icon: (
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              ),
-              iconPosition: "after",
-              size: "lg",
-            })),
-          } as TheroProps
-        }
-      />
-
-      {/* section1 */}
-      <section className="border-b border-border/40 py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle
-            idTitle={{
-              ...Product?.Section1.header,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center mb-0", //changed
-              headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed",
-            }}
-          />
-          <div className="mx-auto grid max-w-5xl py-12 md:grid-cols-2 gap-12">  {/*changed*/}
-            <CustomCard
-              idCardProps={{
-                header:{ text: Product?.Section1.card.header.text },
-              list:Product?.Section1.card.list.map((iaList) => ({
-                ...iaList,
-                icon: (
-                  <div className="mt-1 rounded-full bg-grayBackground p-1">
-                    <ChevronRight className="h-4 w-4" />
-                  </div>
-                ),
-              }))
-              }}
-            />
-            <div className="flex flex-col justify-center space-y-4">
-              <TitleSubtitle
-                idTitle={{
-                  ...Product?.Section1.footer.header,
-                  headingClass: "md:text-2xl",
-                  className:"md:text-left text-center mb-2"
-                }}
-              />
-              <div className="flex flex-col gap-4 sm:flex-row"> {/*changed */}
-                {Product?.Section1.footer.buttons.map((idBtn, iIndex) => (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-4"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    <Link href={idBtn.href}>
-                      <span>{idBtn.label}</span>
-                    </Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* section 2 */}
-      <section className="border-b border-border/40 py-20 bg-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle
-            idTitle={{
-              ...Product?.Section2.header,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
-              headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed text-primary/70",
-            }}
-          />
-          <div className="mx-auto max-w-5xl md:py-12 py-6"> {/*changed */}
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
-              {Product?.Section2.cards.map((idCard, iIndex) => (
-                <div className="relative mb-12 md:mb-16" key={iIndex}>
-                  <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
-                    {/* Step Number hiden on mobile */}
-                    <div className="relative z-10 hidden md:flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
-                      <span className="text-xl font-bold">{iIndex + 1}</span>
-                    </div>
-
-                    {/* Card Component */}
-                    <CustomCard
-                      key={iIndex}
-                      idCardProps={{
-                        header:idCard.header,
-                      link:
-                        idCard.buttons.map((iaButton) => ({
-                          ...iaButton,
-                          icon: <ChevronRight className="ml-1 h-3 w-3" />,
-                          iconPosition: "after",
-                        })) as Tbutton[],
-                      
-                      footerClassName:"items-start",
-                      className:"relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="mx-auto max-w-[58rem] text-center mt-16">
-              <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
-                {Product?.Section2.footer.buttons.map((idBtn, iIndex) => (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-2"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    <Link href={idBtn.href}>
-                      <span>{idBtn.label}</span>
-                    </Link>
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* section3 */}
-      <section className="border-b border-border/40 py-20 bg-background">
-        <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle
-            idTitle={{
-              ...Product?.Section3.header,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
-              headingClass: "md:text-5xl",
-            }}
-          />
-          <div className="mx-auto max-w-6xl md:py-12 "> {/*changed */}
-            {Product?.Section3.features.map((idFeature, iIndex) => (
-              <div
-                key={iIndex}
-                className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-all hover:shadow-md mb-12"
-              >
-                <div className="grid gap-8 md:grid-cols-2 items-center p-6 md:p-8">
-                  {iIndex % 2 !== 0 ? (
-                    <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
-                      <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                      {idFeature.img}
-                    </div>
-                  ) : null}
-
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4 mb-4 flex-wrap">
-                      {idFeature.icons.map((idHighlight, iHighlightIndex) => (
-                        <div
-                          key={iHighlightIndex}
-                          className="flex items-center gap-2 bg-grayBackground px-3 py-2 rounded-lg"
-                        >
-                          {idHighlight.icon}
-                          <span className="text-sm font-medium">
-                            {idHighlight.text}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                    <TitleSubtitle
-                      idTitle={{
-                        ...idFeature.heading,
-                        headingClass:
-                          "md:text-2xl transition-al",
-                      }}
-                    />
-                    <Link
-                      href={idFeature.link.href}
-                      className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors underline-offset-4 hover:underline"
-                    >
-                      {idFeature.link.label}
-                      <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" /> {/*changed */}
-                    </Link>
-                  </div>
-
-                  {iIndex % 2 === 0 ? (
-                    <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
-                      <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                      {idFeature.img}
-                    </div>
-                  ) : null}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mx-auto max-w-[58rem] text-center mt-12 bg-grayBackground p-8 rounded-lg border border-border shadow-sm">
-            <p className="text-primary/70 font-medium mb-6">
-              {Product?.Section3.footer.heading.text}
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
-              {Product?.Section3.footer.buttons.map((idBtn, iIndex) => (
-                <Button
-                  key={iIndex}
-                  size="lg"
-                  className="gap-2"
-                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                >
-                  <Link href={idBtn.href}>
-                    <span>{idBtn.label}</span>
-                  </Link>
-                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* section4 */}
-      <section className="border-b border-border/40 py-20 bg-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
-          <TitleSubtitle
-            idTitle={{
-              ...Product?.Section4.heading,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
-              headingClass: "md:text-5xl",
-            }}
-          />
-          <div className="mx-auto max-w-5xl md:py-12"> {/*changed */}
-            <div className="grid gap-8 md:grid-cols-2">
-              {Product?.Section4.cards.map((idCard, iIndex) => (
-                <CustomCard
-                  key={iIndex}
-                 idCardProps={{
-                  header:{
-                    subtitle: idCard.heading.subtitle,
-                    descripClass: "italic m-0",
-                    headingClass: "mb-0",
-                  },
-                  avatar:idCard.avator,
-                  nameAndPlace:idCard.nameAndPlace,
-                  namePosition:"top",
-                  link:idCard.link.map((iaLnk) => ({
-                    ...iaLnk,
-                    icon: <CheckCircle className="h-5 w-5" />,
-                    iconPosition: "before",
-                    size: "lg",
-                  }))
-                 }}
-                />
-              ))}
-            </div>
-            <div className="mt-12 grid gap-6 md:grid-cols-4">
-              {Product?.Section4.items.map((idItem, iIndex) => (
-                <CustomCard
-                  key={iIndex}
-                 idCardProps={{
-                  header:{
-                    text: idItem.header.text,
-                    subtitle: idItem.header.subtitle,
-                    headingClass: "md:text-4xl mb-0",
-                  },
-                  className:"text-center"
-                 }}
-                />
-              ))}
-            </div>
-          </div>
-          <div className="mx-auto max-w-[58rem] text-center mt-8">
-            <p className="text-primary/70 mb-6">
-              {Product?.Section4.footer.heading.text}
-              <br />
-              <span className="font-medium text-primary">
-                {Product?.Section4.footer.heading.subtitle}
-              </span>
-            </p>
-            <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
-              {Product?.Section4.footer.buttons.map((idBtn, iIndex) => (
-                <Button
-                  key={iIndex}
-                  size="lg"
-                  className="gap-2"
-                  variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                >
-                  <Link href={idBtn.href}>
-                    <span>{idBtn.label}</span>
-                  </Link>
-                  <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* section5  */}
-      <section className="border-b border-border/40 py-20 bg-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
-            <span className="font-medium">
-              {Product?.Section5.heading.badge}
-            </span>
-          </div>
-          <TitleSubtitle
-            idTitle={{
-              ...Product?.Section5.heading,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
-              headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed",
-            }}
-          />
-          <div className="mx-auto max-w-5xl py-12">
-            <div className="relative mx-auto max-w-3xl bg-background rounded-xl border-2 border-primary p-8 shadow-lg">
-              <TitleSubtitle
-                idTitle={{
-                  ...Product?.Section5.items.heading,
-                  className: "text-center",
-                  headingClass: "md:text-2xl",
-                }}
-              />
-              <div className="flex items-center justify-center gap-2 text-sm">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-grayBackground">
-                  <Clock className="h-4 w-4" />
-                </div>
-
-                {Product?.Section5.items.heading.badge}
-              </div>
-              <Separator className="my-6" />
-
-              <div className="mt-8 space-y-6">
-                <div className="grid gap-4 md:grid-cols-2">
-                  {Product?.Section5.items.points.map((idpoint, iIndex) => (
-                    <div className="space-y-2" key={iIndex}>
-                      <div className="flex items-center gap-2">
-                        <CheckCircle className="h-5 w-5" />
-                        <span className="font-medium">
-                          {idpoint.heading.text}
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground pl-7">
-                        {idpoint.heading.subtitle}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div className="text-center space-y-2 mt-8">
-                  <p className="font-medium text-lg">
-                    {Product?.Section5.footer.heading.text}
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    {Product?.Section5.footer.heading.subtitle}
-                  </p>
-                </div>
-                <div className="flex flex-col gap-4 sm:flex-row justify-center mt-6"> {/*changed */}
-                  {Product?.Section5.footer.buttons.map((idBtn, iIndex) => (
-                    <Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-2"
-                      variant={
-                        (idBtn.variant as Tbutton["variant"]) ?? "default"
-                      }
-                    >
-                      <Link href={idBtn.href}>
-                        <span>{idBtn.label}</span>
-                      </Link>
-                      <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* section6 */}
-      <section className="py-20 bg-gradient-to-b from-background to-grayBackground">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center">
-            <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
-              <span className="font-medium">
-                {Product?.Section6.heading.badge}
-              </span>
-            </div>
-            <TitleSubtitle
-              idTitle={{
-                ...Product?.Section6.heading,
-                className:"items-center justify-center",
-                headingClass: "md:text-5xl",
-                descripClass: "md:text-xl/relaxed text-center",
-              }}
-            />
-            <div className="mt-8 p-6 bg-background rounded-lg border border-border shadow-sm">
-              <TitleSubtitle
-                idTitle={{
-                  ...Product?.Section6.item.heading,
-                  className: "mb-4",
-                  headingClass: "md:text-xl mb-2",
-                  descripClass: "md:text-base",
-                }}
-              />
-              <div className="flex items-center justify-center gap-2 text-sm mb-6">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-border">
-                  <Users className="h-4 w-4" />
-                </div>
-                <span>{Product?.Section6.footer.heading.text}</span>
-              </div>
-              <div className="flex flex-col gap-4 sm:flex-row justify-center"> {/*changed */}
-                {Product?.Section6.footer.buttons.map((idBtn, iIndex) => (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-2"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    <Link href={idBtn.href}>
-                      <span> {idBtn.label}</span>
-                    </Link>
-                    <ArrowRight className=" h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                ))}
-              </div>
-            </div>
-            <p className="mt-6 text-sm text-muted-foreground">
-              {Product?.Section6.footer.heading.subtitle}
-            </p>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
-  );
+  return <ProductsComp idProduct={Product as Tproduct}/>
 }
