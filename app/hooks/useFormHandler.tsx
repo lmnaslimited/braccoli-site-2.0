@@ -1,7 +1,7 @@
 import { useState, useRef, ReactNode } from 'react';
 import { CheckCircle } from 'lucide-react';
 import { Button } from '@repo/ui/components/ui/button';
-import { DynamicForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig } from "@repo/ui/components/form"
+import { SectionForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig } from "@repo/ui/components/form"
 import { TformMode } from '@repo/ui/type';
 
 export const useFormHandler = () => {
@@ -9,17 +9,17 @@ export const useFormHandler = () => {
     const [FormMode, fnSetFormMode] = useState<TformMode>(null)
     const [SuccessMessage, fnSetSuccessMessage] = useState<{ message: string, section: string } | null>(null)
 
-     // 🔹 Store refs dynamically
-     const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
+    // 🔹 Store refs dynamically
+    const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({});
 
-     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
-         // Ensure the ref exists
-         if (!RefStore.current[key]) {
+    const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
+        // Ensure the ref exists
+        if (!RefStore.current[key]) {
             RefStore.current[key] = { current: null } as unknown as React.RefObject<HTMLDivElement>;
-         }
- 
-         return RefStore.current[key];
-     };
+        }
+
+        return RefStore.current[key];
+    };
 
     /**
    * Handles clicks on form buttons throughout the page.
@@ -110,7 +110,7 @@ export const useFormHandler = () => {
                             </Button>
                         </div>
                     ) : LdFormConfig ? (
-                        <DynamicForm
+                        <SectionForm
                             config={LdFormConfig}
                             onSuccess={fnHandleFormSuccess}
                             onCancel={() => {
