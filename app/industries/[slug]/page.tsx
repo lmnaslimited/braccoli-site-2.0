@@ -1,9 +1,4 @@
-import Callout from "@repo/ui/components/callout";
-import CustomCard from "@repo/ui/components/customCard";
-import Footer from "@repo/ui/components/footer";
-import Hero from "@repo/ui/components/hero";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Tbutton, TcalloutProps, TheroProps, Titems } from "@repo/ui/type";
+import { Tindustry } from "@repo/ui/type";
 import {
   ArrowRight,
   BarChart,
@@ -51,12 +46,7 @@ import {
   Navigation,
   User,
 } from "lucide-react";
-import Image from "next/image";
-import Tab from "@repo/ui/components/tab";
-import { Button } from "@repo/ui/components/ui/button";
-import PainPoints from "@repo/ui/components/painPoint";
-import Link from "next/link";
-import Navbar from "@repo/ui/components/navbar";
+import IndustryComp from "../industry";
 
 const PageSlugs = [
   {
@@ -90,7 +80,8 @@ const PageSlugs = [
       buttons: [
         {
           label: "Ask for Demo",
-          href: "https://demolens.lmnas.com/#login",
+          // href: "https://demolens.lmnas.com/#login",
+          formMode:"contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -98,7 +89,8 @@ const PageSlugs = [
         },
         {
           label: "Book a Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -110,7 +102,7 @@ const PageSlugs = [
         alt: "hero-image",
       },
     },
-    section2: {
+    problems: {
       header: {
         textWithoutColor: "Are manual processes slowing down",
         text: "your production and increasing costs?",
@@ -166,7 +158,8 @@ const PageSlugs = [
         buttons: [
           {
             label: "Book a Free Consultation Now",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode:"booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -175,7 +168,7 @@ const PageSlugs = [
         ],
       },
     },
-    section3: {
+    features: {
       header: {
         textWithoutColor: "LENS ERP Suite: Streamline Your Manufacturing",
         subtitle:
@@ -339,7 +332,7 @@ const PageSlugs = [
         },
       ],
     },
-    section4: {
+    allFeature: {
       header: {
         textWithoutColor: "Explore All Features",
       },
@@ -547,7 +540,7 @@ const PageSlugs = [
         },
       ],
     },
-    section5: {
+    cta: {
       header: {
         textWithoutColor: "Ready to Transform Your Manufacturing Operations?",
         subtitle:
@@ -590,11 +583,12 @@ const PageSlugs = [
           "No commitment required. Our experts are ready to help you succeed.",
         button: {
           label: "Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
-    section6: {
+    successStory: {
       header: {
         textWithoutColor: "Success Stories",
         subtitle:
@@ -612,7 +606,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -630,7 +624,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -648,7 +642,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -666,7 +660,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -684,7 +678,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -702,7 +696,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -720,7 +714,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -738,7 +732,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "image",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -751,7 +745,8 @@ const PageSlugs = [
         title: "Could This Be Your Business Story Too?",
         button: {
           label: " Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
@@ -787,7 +782,8 @@ const PageSlugs = [
       buttons: [
         {
           label: "Ask for Demo",
-          href: "https://demolens.lmnas.com/#login",
+          // href: "https://demolens.lmnas.com/#login",
+          formMode:"contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -795,7 +791,8 @@ const PageSlugs = [
         },
         {
           label: "Book a Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -807,7 +804,7 @@ const PageSlugs = [
         alt: "hero-image",
       },
     },
-    section2: {
+    problems: {
       header: {
         textWithoutColor: "Are Manual Processes Hurting Your",
         text: "Retail Business and Profitability?",
@@ -862,7 +859,8 @@ const PageSlugs = [
         buttons: [
           {
             label: "Book a Free Consultation Now",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode:"booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -871,7 +869,7 @@ const PageSlugs = [
         ],
       },
     },
-    section3: {
+    features: {
       header: {
         textWithoutColor: "LENS ERP Suite: Transform Your Retail Business",
         subtitle:
@@ -1137,18 +1135,10 @@ const PageSlugs = [
         },
       ],
     },
-    section4: {
+    allFeature: {
       header: {
         textWithoutColor: "Explore All Features",
       },
-      filters: [
-        "All",
-        "Sales Analytics",
-        "Inventory Control",
-        "Order Management",
-        "Customer Engagement",
-      ],
-
       cards: [
         {
           header: {
@@ -1399,7 +1389,7 @@ const PageSlugs = [
         },
       ],
     },
-    section5: {
+    cta: {
       header: {
         textWithoutColor: "Ready to Transform Your Manufacturing Operations?",
         subtitle:
@@ -1442,11 +1432,12 @@ const PageSlugs = [
           "No commitment required. Our experts are ready to help you succeed.",
         button: {
           label: "Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
-    section6: {
+    successStory: {
       header: {
         textWithoutColor: "Success Stories",
         subtitle:
@@ -1464,7 +1455,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "inventory tracking",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1482,7 +1473,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "automated replenishment",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1500,7 +1491,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "RFID tracking",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1518,7 +1509,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "smart shelf",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1537,7 +1528,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "order fulfillment",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1555,7 +1546,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "automated order processing",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1573,7 +1564,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "returns management",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1591,7 +1582,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "sales insights",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1609,7 +1600,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "dynamic pricing",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1627,7 +1618,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "customer segmentation",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1645,7 +1636,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "real-time sales dashboard",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1663,7 +1654,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "workforce scheduling",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1681,7 +1672,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "payroll automation",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1699,7 +1690,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "employee tracking",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -1712,7 +1703,8 @@ const PageSlugs = [
         title: "Could This Be Your Business Story Too?",
         button: {
           label: " Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
@@ -1749,7 +1741,8 @@ const PageSlugs = [
       buttons: [
         {
           label: "Ask for Demo",
-          href: "https://demolens.lmnas.com/#login",
+          // href: "https://demolens.lmnas.com/#login",
+          formMode:"contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -1757,7 +1750,8 @@ const PageSlugs = [
         },
         {
           label: "Book a Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -1769,7 +1763,7 @@ const PageSlugs = [
         alt: "hero-image",
       },
     },
-    section2: {
+    problems: {
       header: {
         textWithoutColor: "Are Inefficiencies Slowing Down Your",
         text: "Distribution Operations and Increasing Costs?",
@@ -1825,7 +1819,8 @@ const PageSlugs = [
         buttons: [
           {
             label: "Book a Free Consultation Now",
-            href: "https://nectar.lmnas.com/book_appointment",
+            // href: "https://nectar.lmnas.com/book_appointment",
+            formMode:"booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -1834,7 +1829,7 @@ const PageSlugs = [
         ],
       },
     },
-    section3: {
+    features: {
       header: {
         textWithoutColor: "LENS ERP Suite: Optimize Your Distribution Network",
         subtitle:
@@ -2052,7 +2047,7 @@ const PageSlugs = [
         },
       ],
     },
-    section4: {
+    allFeature: {
       header: {
         textWithoutColor: "Explore All Features",
       },
@@ -2348,7 +2343,7 @@ const PageSlugs = [
         },
       ],
     },
-    section5: {
+    cta: {
       header: {
         textWithoutColor: "Ready to Transform Your Manufacturing Operations?",
         subtitle:
@@ -2391,11 +2386,12 @@ const PageSlugs = [
           "No commitment required. Our experts are ready to help you succeed.",
         button: {
           label: "Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
-    section6: {
+    successStory: {
       header: {
         textWithoutColor: "Success Stories",
         subtitle:
@@ -2414,7 +2410,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "warehouse optimization",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2432,7 +2428,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "warehouse automation",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2450,7 +2446,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "inventory management",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2468,7 +2464,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "cold storage efficiency",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2486,7 +2482,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "order automation",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2504,7 +2500,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "returns automation",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2522,7 +2518,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "warehouse fulfillment",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2540,7 +2536,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "real-time tracking",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2558,7 +2554,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "sales forecasting",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2576,7 +2572,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "pricing optimization",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2594,7 +2590,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "customer analytics",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2612,7 +2608,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "demand prediction",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2630,7 +2626,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "route optimization",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2648,7 +2644,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "shipment tracking",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2666,7 +2662,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "fleet management",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2684,7 +2680,7 @@ const PageSlugs = [
             src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
             alt: "last-mile delivery",
           },
-          buttons: [
+          button: [
             {
               label: "Read Case Study",
               href: "/solutions",
@@ -2696,7 +2692,8 @@ const PageSlugs = [
         title: "Could This Be Your Business Story Too?",
         button: {
           label: " Book Your Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
+          // href: "https://nectar.lmnas.com/book_appointment",
+          formMode:"booking"
         },
       },
     },
@@ -2711,221 +2708,5 @@ export default async function Industries({
   const { slug } = await params;
   const Industry = PageSlugs.find((idIndustry) => idIndustry.id === slug);
 
-  return (
-    <>
-      <Navbar />
-      <Hero idHero={Industry?.hero as TheroProps} />
-      {/* 2 */}
-      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
-          <TitleSubtitle
-            idTitle={{
-              ...Industry?.section2.header,
-              className: "lg:sticky lg:top-24 h-fit",
-              headingClass: "md:text-5xl leading-tight font-bold",
-              descripClass: "mt-6",
-            }}
-          />
-          <PainPoints idItems={Industry?.section2.items as Titems[]} />
-        </div>
-      </section>
-      <div className="bg-primary">
-        <Callout idCallout={Industry?.section2.footer as TcalloutProps} />
-      </div>
-
-      {/* 3 */}
-      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-        <TitleSubtitle
-          idTitle={{
-            ...Industry?.section3.header,
-            className: "text-center items-center",
-            headingClass: "md:text-5xl",
-            descripClass: "mt-6",
-          }}
-        />
-        <div className="space-y-24">
-          {Industry?.section3?.feature?.map((idSection, iIndex) => (
-            <div
-              key={iIndex}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
-            >
-              {idSection.image.position === "left" && (
-                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-first">
-                  <Image
-                    src={idSection.image.src}
-                    alt={idSection.image.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-
-              <div className="space-y-6">
-                <TitleSubtitle idTitle={idSection.header} />
-                <CustomCard
-                  idCardProps={{
-                    header: idSection.card.header,
-                    link: idSection.card.button.map((idButton) => ({
-                      ...idButton,
-                      icon: <ArrowRight className="ml-2 h-4 w-4" />,
-                      iconPosition: "after",
-                    })) as Tbutton[],
-
-                    className: "bg-primary/5",
-                  }}
-                />
-              </div>
-
-              {idSection.image.position === "right" && (
-                <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-none">
-                  <Image
-                    src={idSection.image.src}
-                    alt={idSection.image.alt}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4 */}
-      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-        <TitleSubtitle
-          idTitle={{
-            ...Industry?.section4.header,
-            headingClass: "md:text-5xl",
-            className: "text-center mb-4",
-          }}
-        />
-        <Tab
-          idTab={{
-            data:
-              Industry?.section4.cards.map((idCard) => ({
-                ...idCard,
-                header: {
-                  ...idCard.header,
-                  headingClass: "text-xl font-semibold mb-2",
-                },
-                className: "max-w-sm",
-                link:
-                  idCard.link?.map((idButton) => ({
-                    ...idButton,
-                    icon: <ArrowRight className="size-5" />,
-                    iconPosition: "after",
-                  })) ?? [],
-              })) ?? [],
-            TabDefault: {
-              text: "All",
-              label: "Show More",
-            },
-          }}
-        />
-      </section>
-
-      {/* 5 */}
-      <section className="bg-primary/5 rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
-        <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
-          <TitleSubtitle
-            idTitle={{
-              ...Industry?.section5.header,
-              className: "text-center items-center",
-              headingClass: "lighting-tight mb-4",
-              descripClass: "max-w-5xl",
-            }}
-          />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
-            {Industry?.section5.cards.map((idCard, iIndex) => (
-              <CustomCard
-                key={iIndex}
-                idCardProps={{
-                  header: {
-                    text: idCard.header.text,
-                    subtitle: idCard.header.subtitle,
-                    headingClass: "mb-2 text-md",
-                    descripClass: "text-sm mb-4",
-                  },
-                  image: {
-                    svg: idCard.image.svg,
-                    alt: idCard.image.alt,
-                  },
-                }}
-              />
-            ))}
-          </div>
-          <div className="pt-6">
-            <Button size="lg" className="text-md px-8 py-6">
-              <Link href={Industry?.section5.footer.button?.href ?? "/"}>
-                {Industry?.section5.footer.button.label}
-              </Link>
-            </Button>
-            <p className="text-sm text-muted-foreground mt-4">
-              {Industry?.section5.footer.title}
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* 6 */}
-      <section className="py-16 md:py-24 lg:py-24 bg-muted/30">
-        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <TitleSubtitle
-            idTitle={{
-              ...Industry?.section6.header,
-              className: "text-center items-center",
-              headingClass: "md:text-5xl",
-            }}
-          />
-          <Tab
-            idTab={{
-              data: Industry?.section6.cards
-                ? Industry.section6.cards.map((idCard) => ({
-                  ...idCard,
-                  header: {
-                    ...idCard.header,
-                    descripClass: "text-sm h-16",
-                    headingClass: "text-lg mb-2",
-                  },
-                  image: {
-                    src: idCard.image.src,
-                    alt: idCard.image.alt,
-                    aspectRatio: "wide",
-                  },
-                  button:
-                    idCard.buttons?.map((idButton) => ({
-                      ...idButton,
-                      icon: <ArrowRight className="size-5" />,
-                      iconPosition: "after",
-                      size: "lg",
-                      variant: "outline",
-                    })) ?? [], // Ensure button is always an array
-                  tag: idCard.category,
-                }))
-                : [], // Fallback value
-              TabDefault: {
-                text: "All",
-                label: "Show More",
-              },
-            }}
-          />
-          <div className="mt-12 text-center">
-            <div className="space-y-4">
-              <h3 className="text-xl font-medium">
-                {Industry?.section6.footer.title}
-              </h3>
-              <Button size="lg" className="group">
-                <Link href={Industry?.section6.footer.button?.href ?? "/"}>
-                  {Industry?.section6.footer.button.label}
-                </Link>
-                <Calendar className="ml-2 h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </>
-  );
+  return <IndustryComp idIndustry={Industry as Tindustry} />
 }
