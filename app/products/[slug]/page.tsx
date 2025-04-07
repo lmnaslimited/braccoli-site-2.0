@@ -1,17 +1,13 @@
 import {
-  ArrowUpCircle,
   ArrowUpRight,
   Banknote,
   BarChart,
-  BarChart3,
-  BrainCircuit,
   Calculator,
   ClipboardCheck,
   ClipboardList,
   Clock,
   Cloud,
   DollarSign,
-  Expand,
   EyeOff,
   Flag,
   Key,
@@ -773,9 +769,9 @@ const PageSlug = [
       cards: [
         {
           header: {
-            text: "Unified HR Operations",
+            text: "Start with Unified HR Operations",
             subtitle:
-              "Leave approvals, payroll, attendance, and employee data—all in one place. No more spreadsheets or scattered tools.",
+              "Bring payroll, attendance, leave, and employee data into one place—no more spreadsheets or silos.",
           },
           button: [
             {
@@ -786,9 +782,9 @@ const PageSlug = [
         },
         {
           header: {
-            text: "Smart Onboarding & Offboarding",
+            text: "Deliver Seamless Employee Experiences",
             subtitle:
-              "Deliver consistent, seamless onboarding experiences and compliant offboarding processes without the paperwork mess.",
+              "From onboarding to self-service, empower your workforce with tools that reduce manual effort and confusion.",
           },
           button: [
             {
@@ -799,9 +795,9 @@ const PageSlug = [
         },
         {
           header: {
-            text: "Real-Time HR Analytics",
+            text: "Gain Visibility & Control",
             subtitle:
-              "Track attrition, payroll trends, performance, and engagement with dashboards that update as your workforce does.",
+              "Track real-time metrics like attrition, performance, and engagement. Stay compliant and agile as you scale.",
           },
           button: [
             {
@@ -812,61 +808,9 @@ const PageSlug = [
         },
         {
           header: {
-            text: "Automated Policy Enforcement",
+            text: "Drive Smarter People Decisions",
             subtitle:
-              "Configure policies once and let the system do the rest—from attendance rules to reimbursement approvals.",
-          },
-          button: [
-            {
-              label: "Read Case Study",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Employee Self-Service Portal",
-            subtitle:
-              "Put power into your employees’ hands. Leave requests, payslips, documents—accessible anytime, anywhere.",
-          },
-          button: [
-            {
-              label: "Read Case Study",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Multi-Level Approval Workflows",
-            subtitle:
-              "Speed up approvals without losing control. Customizable flows that work across teams and reporting structures.",
-          },
-          button: [
-            {
-              label: "Read Case Study",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Performance & Goal Tracking",
-            subtitle:
-              "Track employee growth, align goals with business strategy, and run continuous performance cycles effortlessly.",
-          },
-          button: [
-            {
-              label: "Read Case Study",
-              href: "/solutions",
-            },
-          ],
-        },
-        {
-          header: {
-            text: "Easy Integrations with Finance & Payroll",
-            subtitle:
-              "Connect with your finance systems for error-free payroll runs and streamlined reimbursement processing.",
+              "Use analytics and automation to align HR with business strategy—from talent development to cost optimization.",
           },
           button: [
             {
