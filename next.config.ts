@@ -17,19 +17,19 @@ const nextConfig: NextConfig = {
       // },
     ];
   },
-    reactStrictMode: true,
-    images: {
-      remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
-    },
-    i18n: {
-      locales: ['en', 'de'],
-      defaultLocale: 'en',
-    },
-    env: {
-      RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
-          ? ""
-          : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
-      },
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
+  },
+  i18n: {
+    locales: ['en', 'de'],
+    defaultLocale: 'en',
+  },
+  env: {
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
+      ? "6LeBgwwrAAAAAAVcQPxVn8hiU4CUBY5nB2hfpFFp"
+      : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
+  },
 };
 
 export default nextConfig;
