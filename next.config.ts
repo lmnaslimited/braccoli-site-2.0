@@ -25,7 +25,11 @@ const nextConfig: NextConfig = {
       locales: ['en', 'de'],
       defaultLocale: 'en',
     },
-
+    env: {
+      RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
+          ? ""
+          : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
+      },
 };
 
 export default nextConfig;

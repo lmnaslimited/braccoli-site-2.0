@@ -7,8 +7,7 @@ import { LdBookingPageFormConfig, LdContactPageFormConfig, SectionForm } from "@
 import Navbar from "@repo/ui/components/navbar"
 import Footer from "@repo/ui/components/footer"
 
-// Content data for the contact page (only the parts that aren't in the form config)
-const contactPageData = {
+const LdContactPageData = {
     title: {
         text1: "Get in ",
         text2: "Touch",
@@ -17,8 +16,7 @@ const contactPageData = {
         "We're here to help with any questions you might have. Fill out the form below and we'll get back to you as soon as possible.",
 }
 
-// Content data for the booking page (only the parts that aren't in the form config)
-const bookingPageData = {
+const LdBookingPageData = {
     title: {
         text1: "Reserve Your ",
         text2: "Spot",
@@ -35,13 +33,13 @@ export default function ContactPage({ id }: ContactPageProps) {
     const [contactMessage, setContactMessage] = useState("")
     const [bookingMessage, setBookingMessage] = useState("")
 
-    // Handle form submission success
-    const handleContactSuccess = (data: any, message: string) => {
-        setContactMessage(message)
+    // Handlers to update state with success messages after contact 
+    const fnHandleContactSuccess = (iMessage: string) => {
+        fnSetContactMessage(iMessage)
     }
-
-    const handleBookingSuccess = (data: any, message: string) => {
-        setBookingMessage(message)
+    // Handlers to update state with success messages after booking actions
+    const fnHandleBookingSuccess = (iMessage: string) => {
+        fnsetBookingMessage(iMessage)
     }
 
     return (
@@ -71,53 +69,55 @@ export default function ContactPage({ id }: ContactPageProps) {
                             <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-neutral-900 md:text-4xl">
                                 {LdContactPageFormConfig.title}
                             </h2>
-                            {contactMessage ? (
-                                <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md">{contactMessage}</div>
-                            ) : (
-                                <SectionForm
-                                    config={LdContactPageFormConfig}
-                                    onSuccess={handleContactSuccess}
-                                    className="shadow-none bg-transparent p-0"
-                                    hideCardHeader={true}
-                                />
+                            {ContactMessage && (
+                                <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md">{ContactMessage}</div>
                             )}
+                            <SectionForm
+                                config={LdContactPageFormConfig}
+                                onSuccess={handleContactSuccess}
+                                className="shadow-none bg-transparent p-0"
+                                hideCardHeader={true}
+                            />
+
                         </div>
                     </div>
                 </div>
 
                 {/* Booking Section */}
-                <div className="grid grid-cols-1 lg:grid-cols-8 gap-12 items-stretch mt-16">
-                    {/* Booking Content - Right on desktop, Top on mobile */}
-                    <div className="lg:col-span-4 flex items-center justify-center lg:order-last order-3">
-                        <div className="text-center px-6">
-                            <h2 className={cn("font-bold text-3xl md:text-5xl tracking-normal text-center")}>
-                                <span>{bookingPageData.title.text1}</span>
-                                <span className="bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
-                                    {bookingPageData.title.text2}
-                                </span>
-                            </h2>
-                            <p className={cn("text-muted-foreground md:text-xl max-w-lg mx-auto text-center mt-4")}>
-                                {bookingPageData.subtitle}
-                            </p>
+                <div id="booking">
+                    <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 items-stretch mt-20">
+                        {/* Booking Content - Right on desktop, Top on mobile */}
+                        <div className="lg:col-span-4 flex items-center justify-center lg:order-last order-3">
+                            <div className="text-center px-6">
+                                <h2 className={cn("font-bold text-3xl md:text-5xl tracking-normal text-center")}>
+                                    <span>{bookingPageData.title.text1}</span>
+                                    <span className="bg-gradient-to-r from-primary to-muted-foreground bg-clip-text text-transparent">
+                                        {bookingPageData.title.text2}
+                                    </span>
+                                </h2>
+                                <p className={cn("text-muted-foreground md:text-xl max-w-lg mx-auto text-center mt-4")}>
+                                    {bookingPageData.subtitle}
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Booking Form - Left on desktop, Below booking content on mobile */}
-                    <div className="lg:col-span-4 order-4">
-                        <div className={cn("bg-white rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
-                            <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-neutral-900 md:text-4xl">
-                                {LdBookingPageFormConfig.title}
-                            </h2>
-                            {bookingMessage ? (
-                                <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md">{bookingMessage}</div>
-                            ) : (
+                        {/* Booking Form - Left on desktop, Below booking content on mobile */}
+                        <div className="lg:col-span-4 order-4">
+                            <div className={cn("bg-white rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
+                                <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-neutral-900 md:text-4xl">
+                                    {LdBookingPageFormConfig.title}
+                                </h2>
+                                {BookingMessage && (
+                                    <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md">{BookingMessage}</div>
+                                )}
                                 <SectionForm
                                     config={LdBookingPageFormConfig}
                                     onSuccess={handleBookingSuccess}
                                     className="shadow-none bg-transparent p-0"
                                     hideCardHeader={true}
                                 />
-                            )}
+
+                            </div>
                         </div>
                     </div>
                 </div>
