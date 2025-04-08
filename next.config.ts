@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   async rewrites() {
     return [
       {
         source: "/blog",
-        destination: `http://localhost:3001/`,
+        destination: `http://localhost:3001/blog`,
       },
       {
         source: "/blog/:path+",
-        destination: `http://localhost:3001/:path+`,
+        destination: `http://localhost:3001/blog/:path+`,
       },
       // {
       //   source: "/site",
@@ -27,8 +28,8 @@ const nextConfig: NextConfig = {
   },
   env: {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
-      ? "6LeBgwwrAAAAAAVcQPxVn8hiU4CUBY5nB2hfpFFp"
-      : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
+      ? "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
+      : "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
   },
 };
 
