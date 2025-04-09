@@ -15,7 +15,7 @@ export const useFormHandler = () => {
         null,
     )
     const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({})
-    const formRef = useRef<HTMLDivElement>(null)
+    const FormRef = useRef<HTMLDivElement>(null)
 
     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
         if (!RefStore.current[key]) {
@@ -41,8 +41,8 @@ export const useFormHandler = () => {
             fnSetSuccessMessage(null)
 
             setTimeout(() => {
-                if (formRef.current) {
-                    formRef.current.scrollIntoView({
+                if (FormRef.current) {
+                    FormRef.current.scrollIntoView({
                         behavior: "smooth",
                         block: "center",
                     })
@@ -61,8 +61,8 @@ export const useFormHandler = () => {
             fnSetSuccessMessage({ message: iMessage, title: ititle, section: ActiveSection })
 
             setTimeout(() => {
-                if (formRef.current) {
-                    formRef.current.scrollIntoView({
+                if (FormRef.current) {
+                    FormRef.current.scrollIntoView({
                         behavior: "smooth",
                         block: "center",
                     })
@@ -100,7 +100,7 @@ export const useFormHandler = () => {
         }
 
         return (
-            <div className="w-full bg-background py-8" ref={formRef}>
+            <div className="w-full bg-background py-8" ref={FormRef}>
                 <div className="container mx-auto px-4">
                     {shouldShowSuccess ? (
                         <div className="max-w-lg mx-auto bg-background rounded-lg shadow-md p-4 text-center">
@@ -135,6 +135,6 @@ export const useFormHandler = () => {
         )
     }
 
-    return { fnHandleFormButtonClick, fnHandleFormSuccess, fnRenderFormBelowSection, LdSectionRefs, formRef }
+    return { fnHandleFormButtonClick, fnHandleFormSuccess, fnRenderFormBelowSection, LdSectionRefs, FormRef }
 }
 
