@@ -29,7 +29,7 @@ const nextConfig: NextConfig = {
   env: {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
       ? ""
-      : "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
+      : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
   },
 };
 
