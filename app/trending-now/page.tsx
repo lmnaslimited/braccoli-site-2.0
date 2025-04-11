@@ -7,12 +7,14 @@ import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-
+import {youTubeApi} from "@repo/ui/api/youTube"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@repo/ui/components/ui/card";
+import { Badge } from "@repo/ui/components/ui/badge";
 
 const TrendingPage = {
   heroDataWithoutImage: {
@@ -246,13 +248,27 @@ export default function TrendingNowPage() {
     "all",
     ...new Set(TrendingPage.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
   ];
-
+const [video, fnSetVideo] = useState([])
   const FilteredTrends =
     SelectedTab === "all"
-      ? TrendingPage.trendsData
-      : TrendingPage.trendsData.filter(
-        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-      );
+      ? video
+      : video
+      // .filter(
+      //   (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+      // );
+
+  useEffect(() => {
+    const fnYoutube = async () => {
+        try {
+            const LdResult = await youTubeApi()
+            console.log(LdResult)
+            fnSetVideo(LdResult.data.items)
+        } catch (error) {
+            console.error("Failed to load timezones:", error)
+        } 
+    }
+    fnYoutube()
+  }, [])
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -381,8 +397,34 @@ export default function TrendingNowPage() {
 
             <TabsContent value={SelectedTab} className="mt-0">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {FilteredTrends.map((idTrend, idIndex) => (
-                  <TrendCard key={idIndex} idTrends={idTrend} />
+                {FilteredTrends.map((video:any, idIndex) => (
+                  // <TrendCard key={idIndex} idTrends={idTrend} />
+                  <Card className="overflow-hidden" key={video.id.videoId}>
+                  <CardHeader className="p-4">
+                    <div className="flex items-center justify-between">
+                      <Badge variant="outline" className="flex items-center gap-1">
+                        🎥 YouTube
+                      </Badge>
+                      <CardDescription>{new Date(video.snippet.publishedAt).toLocaleDateString()}</CardDescription>
+                    </div>
+                    <CardTitle className="line-clamp-2">{video.snippet.title}</CardTitle>
+                  </CardHeader>
+            
+                  <div className="relative w-full aspect-video">
+                    <iframe
+                      className="absolute top-0 left-0 w-full h-full"
+                      src={`https://www.youtube.com/embed/${video.id.videoId}`}
+                      title={video.snippettitle}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+            
+                  <CardContent className="p-4">
+                    <CardDescription className="line-clamp-3">{video.snippet.description}</CardDescription>
+                    <p className="mt-2 text-sm font-medium">{video.snippet.channelTitle}</p>
+                  </CardContent>
+                </Card>
                 ))}
               </div>
 

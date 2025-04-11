@@ -77,7 +77,7 @@ export const useFormHandler = () => {
      * This function determines whether to show a form, success message, or nothing
      * based on the current state and section ID.
      */
-    const fnRenderFormBelowSection = (iSectionId: string): ReactNode => {
+    const fnRenderFormBelowSection = (iSectionId: string, idPdfData?:any): ReactNode => {
         const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
@@ -128,6 +128,7 @@ export const useFormHandler = () => {
                             onCancel={() => {
                                 fnSetActiveSection(null)
                             }}
+                            {...(FormMode === "download" ? { pdfData: idPdfData } : {})}
                         />
                     ) : null}
                 </div>

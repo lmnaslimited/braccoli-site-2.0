@@ -12,6 +12,13 @@ import { useFormHandler } from "./hooks/useFormHandler"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { Button } from "@repo/ui/components/ui/button"
 import Link from "next/link"
+// import {PdfButton} from "@repo/ui/components/pdfButton"
+
+import dynamic from 'next/dynamic';
+
+const PdfButton = dynamic(() => import('@repo/ui/components/pdfButton'), {
+  ssr: false,
+});
 
 export default function Home() {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -29,7 +36,7 @@ export default function Home() {
         variant: "default",
         icon: <ArrowRight className="size-6" />,
         iconPosition: "after",
-        formMode: "booking",
+        formMode: "download",
       },
       {
         label: "Explore Our Solution",
@@ -40,7 +47,7 @@ export default function Home() {
       },
     ],
     image: {
-      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      src: "https://res.cloudinary.com/lmnas/image/upload/f_png/v1742273824/Website/placeholder/placeholder.svg",
       alt: "hero-image",
     },
   }
@@ -286,7 +293,7 @@ export default function Home() {
           idHero={HeroData as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
         />
-        {fnRenderFormBelowSection("containerOne")}
+        {fnRenderFormBelowSection("containerOne", HeroData)}
       </div>
       <div className="bg-grayBackground">
         <Feature idFeature={{ ...Features[0], iShowButton: true, buttonPosition: "header" } as TfeatureProps} />
@@ -372,6 +379,7 @@ export default function Home() {
         />
         {fnRenderFormBelowSection("containerFour")}
       </div>
+      <PdfButton title="My PDF" content="This content is dynamically passed!" />
       <Footer />
     </div>
   )
