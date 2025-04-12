@@ -2,7 +2,6 @@
 import CustomCard from "@repo/ui/components/customCard";
 import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
-import Navbar from "@repo/ui/components/navbar";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
@@ -16,7 +15,6 @@ export default function ProductsComp({idProduct}: {idProduct: Tproduct;}) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
     return (
       <>
-        <Navbar />
         <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={

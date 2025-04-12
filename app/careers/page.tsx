@@ -1,7 +1,6 @@
 "use client";
 import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
-import Navbar from "@repo/ui/components/navbar";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tbutton, TheroProps } from "@repo/ui/type";
@@ -493,7 +492,6 @@ export default function Career() {
 
   return (
     <>
-      <Navbar />
       <Hero
         idHero={
           {

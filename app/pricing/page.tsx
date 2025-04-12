@@ -32,7 +32,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@repo/ui/components/ui/tabs";
-import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import { useFormHandler } from "../hooks/useFormHandler";
 
@@ -409,7 +408,6 @@ export default function Pricing() {
   };
   return (
     <>
-      <Navbar />
       <div ref={LdSectionRefs("containerOne")}>
         <div className="bg-grayBackground">
           <Hero idHero={{

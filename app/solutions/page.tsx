@@ -19,7 +19,6 @@ import { Button } from "@repo/ui/components/ui/button";
 import Tab from "@repo/ui/components/tab";
 import Link from "next/link";
 import { Input } from "@repo/ui/components/ui/input";
-import Navbar from "@repo/ui/components/navbar";
 import { useFormHandler } from "../hooks/useFormHandler";
 
 export default function Solutions() {
@@ -688,7 +687,6 @@ export default function Solutions() {
 
   return (
     <>
-      <Navbar />
       <div ref={LdSectionRefs("containerOne")}>
         <Hero idHero={HeroData as TheroProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
         {fnRenderFormBelowSection("containerOne")}

@@ -1,10 +1,131 @@
 
-> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/meharaj/Documents/sodhanai/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.46:3000
+   - Network:      http://192.168.50.100:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 551ms
+ [32m[1m✓[22m[39m Ready in 784ms
+from nav {
+  __typename: [32m'Navbar'[39m,
+  locale: [32m'en'[39m,
+  Product: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'ERP  product'[39m,
+      description: [1mnull[22m,
+      href: [32m'/products/lens-erp-suite'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  Industry: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'Manufacturing'[39m,
+      description: [1mnull[22m,
+      href: [32m'lik=nk'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  More: [
+    { __typename: [32m'ComponentCoreButton'[39m, label: [32m'blog'[39m, href: [32m'/blog'[39m },
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'trend'[39m,
+      href: [32m'trend'[39m
+    }
+  ]
+}
+from nav {
+  __typename: [32m'Navbar'[39m,
+  locale: [32m'en'[39m,
+  Product: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'ERP  product'[39m,
+      description: [1mnull[22m,
+      href: [32m'/products/lens-erp-suite'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  Industry: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'Manufacturing'[39m,
+      description: [1mnull[22m,
+      href: [32m'lik=nk'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  More: [
+    { __typename: [32m'ComponentCoreButton'[39m, label: [32m'blog'[39m, href: [32m'/blog'[39m },
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'trend'[39m,
+      href: [32m'trend'[39m
+    }
+  ]
+}
+from nav {
+  __typename: [32m'Navbar'[39m,
+  locale: [32m'en'[39m,
+  Product: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'ERP  product'[39m,
+      description: [1mnull[22m,
+      href: [32m'/products/lens-erp-suite'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  Industry: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'Manufacturing'[39m,
+      description: [1mnull[22m,
+      href: [32m'lik=nk'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  More: [
+    { __typename: [32m'ComponentCoreButton'[39m, label: [32m'blog'[39m, href: [32m'/blog'[39m },
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'trend'[39m,
+      href: [32m'trend'[39m
+    }
+  ]
+}
+from nav {
+  __typename: [32m'Navbar'[39m,
+  locale: [32m'en'[39m,
+  Product: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'ERP  product'[39m,
+      description: [1mnull[22m,
+      href: [32m'/products/lens-erp-suite'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  Industry: [
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'Manufacturing'[39m,
+      description: [1mnull[22m,
+      href: [32m'lik=nk'[39m,
+      icon: [1mnull[22m
+    }
+  ],
+  More: [
+    { __typename: [32m'ComponentCoreButton'[39m, label: [32m'blog'[39m, href: [32m'/blog'[39m },
+    {
+      __typename: [32m'ComponentCoreButton'[39m,
+      label: [32m'trend'[39m,
+      href: [32m'trend'[39m
+    }
+  ]
+}
+

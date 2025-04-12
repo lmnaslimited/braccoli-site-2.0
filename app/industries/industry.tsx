@@ -10,14 +10,12 @@ import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
-import Navbar from "@repo/ui/components/navbar";
 import { useFormHandler } from "../hooks/useFormHandler";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustry }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
     return (
       <>
-        <Navbar />
         <div ref={LdSectionRefs("containerOne")}>
         <Hero idHero={idIndustry?.hero as TheroProps}  onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}/>
         {fnRenderFormBelowSection("containerOne")}

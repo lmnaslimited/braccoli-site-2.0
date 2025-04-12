@@ -7,7 +7,6 @@ import Image from "next/image"
 import Footer from "@repo/ui/components/footer"
 import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
 import { ArrowRight } from "lucide-react"
-import Navbar from "@repo/ui/components/navbar"
 import { useFormHandler } from "./hooks/useFormHandler"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { Button } from "@repo/ui/components/ui/button"
@@ -280,7 +279,6 @@ export default function Home() {
 
   return (
     <div>
-      <Navbar />
       <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={HeroData as TheroProps}
