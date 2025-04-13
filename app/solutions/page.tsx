@@ -1004,7 +1004,6 @@ export default function Solutions() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

@@ -815,7 +815,6 @@ export default function Pricing() {
         </section>
         {fnRenderFormBelowSection("containerFive")}
       </div >
-      <Footer />
     </>
   );
 }

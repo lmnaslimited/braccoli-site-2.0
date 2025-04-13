@@ -3,8 +3,9 @@ import type { Metadata } from "next"
 import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import Navbar from "@repo/ui/components/navbar";
-import { Tnavbar } from "@repo/ui/type";
+// import Navbar from "@repo/ui/components/navbar";
+import Footer from "@repo/ui/components/footer";
+import { Tfooter, Tnavbar } from "@repo/ui/type";
 import { getData } from "./api/getData";
 
 export const metadata: Metadata = {
@@ -18,14 +19,16 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
 
-  const Data = await getData<Tnavbar>("navbar")
+  // const NavData = await getData<Tnavbar>("navbar")
+  const FooterData = await getData<Tfooter>("footer")
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className} `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-        <Navbar NavData={Data}/>
+          {/* <Navbar idNavbar={NavData} /> */}
           <main className="">{children}</main>
-
+          <Footer idFooter={FooterData} />
         </ThemeProvider>
       </body>
     </html>

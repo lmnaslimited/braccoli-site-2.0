@@ -9,7 +9,7 @@ export async function getData<T>(queryName: QueryName): Promise<T> {
     const fetcher = unstable_cache(
       async () => {
         const data = await fetchFromStrapi<T>({ query: queryName })
-        return data
+        return data;
       },
       [queryName],
       { revalidate: 120, tags: [queryName] }
@@ -18,4 +18,5 @@ export async function getData<T>(queryName: QueryName): Promise<T> {
   }
 
   return await cacheMap.get(queryName)!()
+
 }

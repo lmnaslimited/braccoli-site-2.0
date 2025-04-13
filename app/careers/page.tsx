@@ -1,5 +1,4 @@
 "use client";
-import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
@@ -1030,7 +1029,6 @@ export default function Career() {
           </Tabs>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

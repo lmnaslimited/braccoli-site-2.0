@@ -5,12 +5,13 @@ import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import TrendCard from "@repo/ui/components/trendCard";
 import Hero from "@repo/ui/components/hero";
-import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
+import { TcalloutProps, TformMode, TheroProps, Ttrend } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
+import { getData } from "../api/getData";
 
 
 const TrendingPage = {
@@ -237,7 +238,7 @@ const TrendingPage = {
 }
 
 
-export default function TrendingNowPage() {
+export default function TrendingNowPage({ idTrend }: { idTrend: Ttrend }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   const [SelectedTab, setSelectedTab] = useState("all");
@@ -401,9 +402,6 @@ export default function TrendingNowPage() {
           <Callout idCallout={TrendingPage.Finalcallout as TcalloutProps} />
         </div>
       </section>
-
-      {/* Footer Component */}
-      <Footer />
     </div >
   );
 }

@@ -4,7 +4,6 @@ import Hero from "@repo/ui/components/hero"
 import Callout from "@repo/ui/components/callout"
 import FAQs from "@repo/ui/components/faq"
 import Image from "next/image"
-import Footer from "@repo/ui/components/footer"
 import { TfeatureProps, TcalloutProps, TheroProps, TformMode } from "@repo/ui/type"
 import { ArrowRight } from "lucide-react"
 import { useFormHandler } from "./hooks/useFormHandler"
@@ -259,20 +258,20 @@ export default function Home() {
   }
 
   const SocialProof = {
-    header:{
-      text:"Testimonials",
+    header: {
+      text: "Testimonials",
       subtitle: "Trusted by Leading Businesses Across Industries"
     },
-    stats:{
+    stats: {
       title: "Our clients have experienced remarkable transformations. Here are some key metrics:",
-      items:[
+      items: [
         { name: "Efficiency Increase", stat: "40%" },
         { name: "Cost Reduction", stat: "25%" },
         { name: "Revenue Growth", stat: "30%" },
       ],
-      button:{
-        label:"Read Our Case Studies",
-        href:"/solutions"
+      button: {
+        label: "Read Our Case Studies",
+        href: "/solutions"
       }
     }
   }
@@ -302,13 +301,13 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
-    
+
       <div className="max-w-7xl mx-auto pt-16 pb-20 px-4 md:px-6">
         <TitleSubtitle idTitle={{
           ...SocialProof.header,
-          className:"lg:text-center items-center m-0",
-          headingClass:"text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
-          descripClass:"text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
+          className: "lg:text-center items-center m-0",
+          headingClass: "text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
+          descripClass: "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
         }} />
         <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
           {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -340,7 +339,7 @@ export default function Home() {
               <Link href={SocialProof.stats.button.href}>{SocialProof.stats.button.label}</Link>
             </Button>
           </div>
-          </div>
+        </div>
       </div>
 
       <div className="bg-dark/70" ref={LdSectionRefs("containerThree")}>
@@ -370,7 +369,6 @@ export default function Home() {
         />
         {fnRenderFormBelowSection("containerFour")}
       </div>
-      <Footer />
     </div>
   )
 }
