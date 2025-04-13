@@ -8,11 +8,11 @@ import Hero from "@repo/ui/components/hero";
 import { TcalloutProps, TformMode, TheroProps, Ttrend } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { getData } from "../api/getData";
+import { TrendData } from "../layout";
 
+console.log(TrendData)
 
 const TrendingPage = {
   heroDataWithoutImage: {
@@ -239,6 +239,7 @@ const TrendingPage = {
 
 
 export default function TrendingNowPage({ idTrend }: { idTrend: Ttrend }) {
+  console.log(idTrend)
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   const [SelectedTab, setSelectedTab] = useState("all");
@@ -256,13 +257,10 @@ export default function TrendingNowPage({ idTrend }: { idTrend: Ttrend }) {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* Navbar Component */}
-
-      {/* Hero Component */}
       <section
         ref={LdSectionRefs("containerOne")}
       >
-        <Hero idHero={TrendingPage.heroDataWithoutImage as TheroProps}
+        <Hero idHero={idTrend.heroSection as TheroProps}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
         {fnRenderFormBelowSection("containerOne")}
       </section>

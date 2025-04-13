@@ -9,6 +9,7 @@ export async function getData<T>(queryName: QueryName): Promise<T> {
     const fetcher = unstable_cache(
       async () => {
         const data = await fetchFromStrapi<T>({ query: queryName })
+        console.log(queryName)
         return data;
       },
       [queryName],
