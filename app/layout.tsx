@@ -13,8 +13,8 @@ import { getData } from "./api/getData";
 //   description: "Enterprise-grade cloud solutions with AI integration for modern businesses",
 // }
 
-export const TrendData = await getData<Ttrend>("trend");
-console.log(TrendData)
+// export const TrendData = await getData<Ttrend>("trend");
+// console.log(TrendData)
 
 export default async function RootLayout({
   children,
@@ -28,9 +28,9 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className} `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar idNavbar={NavData} />
+          {/* <Navbar idNavbar={NavData} /> */}
           <main className="">{children}</main>
-          <Footer idFooter={FooterData} />
+          {/* <Footer idFooter={FooterData} /> */}
         </ThemeProvider>
       </body>
     </html>
