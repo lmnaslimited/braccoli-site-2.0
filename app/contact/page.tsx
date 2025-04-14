@@ -4,7 +4,6 @@ import type React from "react"
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
 import { LdBookingPageFormConfig, LdContactPageFormConfig, SectionForm } from "@repo/ui/components/form"
-import Footer from "@repo/ui/components/footer"
 
 const LdContactPageData = {
     title: {
