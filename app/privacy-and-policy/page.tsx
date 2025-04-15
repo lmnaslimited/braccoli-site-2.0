@@ -1,17 +1,13 @@
 import Link from "next/link"
 import FAQs from "@repo/ui/components/faq"
-import Navbar from "@repo/ui/components/navbar"
-import Footer from "@repo/ui/components/footer"
 import type { Theader, Titems } from "@repo/ui/type"
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react"
-
-export const privacyHeader: Theader = {
+const privacyHeader: Theader = {
   textWithoutColor: "Privacy",
   text: "& Policy",
   subtitle: "Our Privacy Policy was last updated on 14-Apr 2023.",
 }
-
-export const contentSections = [
+const contentSections = [
   {
     paragraphs: [
       `LMNAs Cloud Solutions ("us", "we", or "our") operates https://lmnas.com or any of its subdomain sites. This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users through forms such as job applications, contact requests, etc.`,
@@ -19,8 +15,7 @@ export const contentSections = [
     ],
   },
 ]
-
-export const faqItems: Titems[] = [
+const faqItems: Titems[] = [
   {
     question: "What does this Privacy Policy cover?",
     answer:
@@ -67,17 +62,14 @@ export const faqItems: Titems[] = [
       "This Privacy Policy is governed by the laws of India. Any disputes related to privacy are subject to this policy and the Terms of Use of our website, under the jurisdiction of Chennai, Tamil Nadu.",
   },
 ]
-
-export const contactDetails = {
+const contactDetails = {
   paragraph: "If you have any questions about this Privacy Policy, You can contact us:",
   websiteLink: "https://www.lmnas.com",
   email: "hello@lmnas.com",
 }
-
-export default function PrivacyPolicy() {
+export default async function PrivacyPolicy() {
   return (
     <>
-      <Navbar />
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -96,7 +88,6 @@ export default function PrivacyPolicy() {
             </div>
           </div>
         </div>
-
         {/* Content Section */}
         <div className="container mx-auto px-4 py-12 max-w-4xl">
           <div className="p-8 mb-12">
@@ -112,7 +103,6 @@ export default function PrivacyPolicy() {
               ))}
             </div>
           </div>
-
           {/* FAQ Section */}
           <div className="mb-12">
             <div className="flex items-center mb-8">
@@ -124,7 +114,6 @@ export default function PrivacyPolicy() {
               <FAQs idFaq={faqItems} />
             </div>
           </div>
-
           {/* Contact Section */}
           <div className="bg-card rounded-xl shadow-sm border border-border p-8 mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
@@ -134,7 +123,6 @@ export default function PrivacyPolicy() {
               Contact Us
             </h2>
             <p className="text-card-foreground mb-6">{contactDetails.paragraph}</p>
-
             <div className="space-y-4">
               <div className="flex items-start md:items-center flex-col md:flex-row md:space-x-2 p-4 bg-muted rounded-lg">
                 <Globe className="w-5 h-5 text-muted-foreground mb-2 md:mb-0" />
@@ -147,7 +135,6 @@ export default function PrivacyPolicy() {
                   <ChevronRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </div>
-
               <div className="flex items-start md:items-center flex-col md:flex-row md:space-x-2 p-4 bg-muted rounded-lg">
                 <Mail className="w-5 h-5 text-muted-foreground mb-2 md:mb-0" />
                 <span className="text-muted-foreground md:mr-2">Email:</span>
@@ -163,7 +150,6 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }

@@ -4,8 +4,7 @@ import type React from "react"
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
 import { LdBookingPageFormConfig, LdContactPageFormConfig, SectionForm } from "@repo/ui/components/form"
-import Navbar from "@repo/ui/components/navbar"
-import Footer from "@repo/ui/components/footer"
+
 
 const LdContactPageData = {
     title: {
@@ -40,7 +39,6 @@ export default function ContactPage() {
 
     return (
         <section>
-            <Navbar />
             <div className="container mx-auto max-w-7xl py-10">
                 <div className="grid grid-cols-1 lg:grid-cols-8 gap-8 items-stretch mb-24">
                     <div className="lg:col-span-4 lg:sticky lg:top-8 flex items-center justify-center min-h-[300px] lg:min-h-[600px] order-1">
@@ -132,7 +130,6 @@ export default function ContactPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </section>
     )
 }

@@ -1,19 +1,14 @@
 import Link from "next/link"
 import FAQs from "@repo/ui/components/faq"
-import Navbar from "@repo/ui/components/navbar"
-import Footer from "@repo/ui/components/footer"
 import type { Theader, Titems } from "@repo/ui/type"
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
-
-export const termsHeader: Theader = {
+const termsHeader: Theader = {
   textWithoutColor: "Terms &",
   text: "Conditions",
   subtitle: "Our Terms and Conditions were last updated on 14-Apr 2023.",
 }
-
-export const introParagraph = "Please read these terms and conditions carefully before using Our Service."
-
-export const contentSections = [
+const introParagraph = "Please read these terms and conditions carefully before using Our Service."
+const contentSections = [
   {
     heading: "Acknowledgment",
     paragraphs: [
@@ -23,13 +18,11 @@ export const contentSections = [
     ],
   },
 ]
-
-export const faqsHeader: Theader = {
+const faqsHeader: Theader = {
   textWithoutColor: "",
   text: "Key User Responsibilities & Clarifications",
 }
-
-export const faqItems: Titems[] = [
+const faqItems: Titems[] = [
   {
     question: "What details are required when registering an account?",
     answer:
@@ -80,17 +73,14 @@ export const faqItems: Titems[] = [
       "You can unsubscribe by emailing hello@lmnas.com. Processing takes up to 5 working days. Transactional messages may still be sent.",
   },
 ]
-
-export const contactDetails = {
+const contactDetails = {
   paragraph: "If you have any questions about these Terms and Conditions, You can contact us:",
   websiteLink: "https://www.lmnas.com",
   email: "hello@lmnas.com",
 }
-
-export default function TermsAndConditions() {
+export default async function TermsAndConditions() {
   return (
     <>
-      <Navbar />
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -109,12 +99,10 @@ export default function TermsAndConditions() {
             </div>
           </div>
         </div>
-
         {/* Content Section */}
         <div className="container mx-auto px-4 py-12 max-w-4xl">
           <div className="p-8 mb-12">
             <p className="font-medium text-foreground mb-6 text-center">{introParagraph}</p>
-
             <div className="prose prose-gray max-w-none">
               {contentSections.map((section, i) => (
                 <section className="mb-8" key={i}>
@@ -133,7 +121,6 @@ export default function TermsAndConditions() {
               ))}
             </div>
           </div>
-
           {/* FAQ Section */}
           <div className="mb-12">
             <div className="flex items-center mb-8">
@@ -145,7 +132,6 @@ export default function TermsAndConditions() {
               <FAQs idFaq={faqItems} />
             </div>
           </div>
-
           {/* Contact Section */}
           <div className="bg-card rounded-xl shadow-sm border border-border p-8 mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
@@ -155,7 +141,6 @@ export default function TermsAndConditions() {
               Contact Us
             </h2>
             <p className="text-card-foreground mb-6">{contactDetails.paragraph}</p>
-
             <div className="space-y-4">
               <div className="flex items-start md:items-center flex-col md:flex-row md:space-x-2 p-4 bg-muted rounded-lg">
                 <Globe className="w-5 h-5 text-muted-foreground mb-2 md:mb-0" />
@@ -168,7 +153,6 @@ export default function TermsAndConditions() {
                   <ChevronRight className="w-4 h-4 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </div>
-
               <div className="flex items-start md:items-center flex-col md:flex-row md:space-x-2 p-4 bg-muted rounded-lg">
                 <Mail className="w-5 h-5 text-muted-foreground mb-2 md:mb-0" />
                 <span className="text-muted-foreground md:mr-2">Email:</span>
@@ -184,7 +168,6 @@ export default function TermsAndConditions() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   )
 }
