@@ -1,6 +1,5 @@
 "use client"
 import CustomCard from "@repo/ui/components/customCard";
-import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";

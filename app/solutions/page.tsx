@@ -12,7 +12,6 @@ import { Tbutton, TcalloutProps, TformMode, Theader, TheroProps } from "@repo/ui
 import { ArrowRight, Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import LogoShowcase from "@repo/ui/components/logoShowCase";
 import { Button } from "@repo/ui/components/ui/button";

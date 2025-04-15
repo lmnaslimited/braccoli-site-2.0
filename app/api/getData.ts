@@ -1,22 +1,30 @@
-import { unstable_cache } from 'next/cache'
-import { fetchFromStrapi } from "@repo/ui/utils/fetchGrapgql";
-import type { QueryName } from '@repo/ui/api/query'
+import { unstable_cache } from 'next/cache';
+import type { QueryName } from '@repo/ui/utils/query';
+import { fnFetchFromStrapi } from '@repo/ui/api/fetchGraphql';
 
-const cacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
+const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
 
-export async function getData<T>(queryName: QueryName): Promise<T> {
-  if (!cacheMap.has(queryName)) {
-    const fetcher = unstable_cache(
+export async function fnGetData<T>(iQueryName: QueryName, iLocale: string): Promise<T> {
+  const LCacheKey = `${iQueryName}-${iLocale}`;
+
+  if (!LdCacheMap.has(LCacheKey)) {
+    const fnCachedFetcher = unstable_cache(
       async () => {
-        const data = await fetchFromStrapi<T>({ query: queryName })
-        return data;
+        const LData = await fnFetchFromStrapi<T>({
+          query: iQueryName,
+          locale: iLocale,
+        });
+        return LData;
       },
-      [queryName],
-      { revalidate: 120, tags: [queryName] }
-    )
-    cacheMap.set(queryName, fetcher)
+      [LCacheKey],
+      {
+        revalidate: 120,
+        tags: [iQueryName, iLocale],
+      }
+    );
+
+    LdCacheMap.set(LCacheKey, fnCachedFetcher);
   }
 
-  return await cacheMap.get(queryName)!()
-
+  return await LdCacheMap.get(LCacheKey)!();
 }

@@ -1,7 +1,6 @@
 "use client"
 import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/customCard";
-import Footer from "@repo/ui/components/footer";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Tbutton, TcalloutProps, TformMode, TheroProps, Titems, Tindustry } from "@repo/ui/type";
