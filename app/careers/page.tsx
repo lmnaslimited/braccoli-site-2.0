@@ -19,7 +19,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Tabs,
   TabsContent,
@@ -45,6 +45,7 @@ import {
   CardTitle,
 } from "@repo/ui/components/ui/card";
 import TrendCard from "@repo/ui/components/trendCard";
+import { JobApi } from "@repo/ui/api/jobApi";
 
 const career = {
   hero: {
@@ -156,7 +157,7 @@ const career = {
       textWithoutColor: "Take Your Next Step",
       subtitle: " Find the perfect pathway for your professional journey",
     },
-    points: [
+    points: [ //insitute data
       {
         header: {
           textWithoutColor: "Training & Workshops",
@@ -172,7 +173,7 @@ const career = {
         },
       },
     ],
-    tab: {
+    tab: { //student job details along with filters
       tabTitle: [
         {
           label: "For Students",
@@ -184,18 +185,17 @@ const career = {
         },
       ],
       filterOptions: {
-        text: "Clear filters",
-        levels: ["Entry", "Mid", "Senior"],
-        roles: ["Development", "Design", "Data", "Support"],
-        cities: ["Bangalore", "Chennai", "Mumbai", "Delhi"],
-        types: ["Full-time", "Part-time", "Internship", "Contract"],
+        // levels: ["Entry", "Mid", "Senior"],
+        role: ["Development", "Design", "Data", "Support"],
+        location: ["Bangalore", "Chennai", "Mumbai", "Delhi"],
+        // types: ["Full-time", "Part-time", "Internship", "Contract"],
       },
-      filterLabels: {
-        levels: "Experience Level",
-        roles: "Role",
-        cities: "Location",
-        types: "Job Type",
-      },
+      // filterLabels: {
+      //   // levels: "Experience Level",
+      //   roles: "Role",
+      //   cities: "Location",
+      //   // types: "Job Type",
+      // },
       error: "No matching opportunities found. Try adjusting your filters.",
       button: {
         label: "View All Opportunities",
@@ -206,10 +206,9 @@ const career = {
         id: "JD-0142",
         title: "Junior Software Developer",
         location: "Bangalore, India (Hybrid)",
-        type: "Full-time",
-        level: "Entry",
+        // type: "Full-time",
+        // level: "Entry",
         role: "Development",
-        skills: ["JavaScript", "React", "Node.js"],
         description:
           "Join our development team to build innovative solutions using modern technologies.",
       },
@@ -217,10 +216,9 @@ const career = {
         id: "JD-0156",
         title: "Associate Data Analyst",
         location: "Chennai, India (Remote)",
-        type: "Full-time",
-        level: "Entry",
+        // type: "Full-time",
+        // level: "Entry",
         role: "Data",
-        skills: ["SQL", "Excel", "Python"],
         description:
           "Help transform data into actionable insights. Looking for analytical minds.",
       },
@@ -228,20 +226,18 @@ const career = {
         id: "JD-0163",
         title: "UI/UX Design Intern",
         location: "Mumbai, India (On-site)",
-        type: "Internship",
-        level: "Entry",
+        // type: "Internship",
+        // level: "Entry",
         role: "Design",
-        skills: ["Figma", "Adobe XD", "UI/UX"],
         description: "Create beautiful, intuitive interfaces for our products.",
       },
       {
         id: "JD-0178",
         title: "Technical Support Engineer",
         location: "Delhi, India (Hybrid)",
-        type: "Full-time",
-        level: "Mid",
+        // type: "Full-time",
+        // level: "Mid",
         role: "Support",
-        skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
         description:
           "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
       },
@@ -249,10 +245,9 @@ const career = {
         id: "JD-0185",
         title: "Senior Frontend Developer",
         location: "Bangalore, India (Hybrid)",
-        type: "Full-time",
-        level: "Senior",
+        // type: "Full-time",
+        // level: "Senior",
         role: "Development",
-        skills: ["React", "TypeScript", "Next.js"],
         description:
           "Lead our frontend development efforts and mentor junior developers.",
       },
@@ -260,10 +255,9 @@ const career = {
         id: "JD-0192",
         title: "Data Science Lead",
         location: "Chennai, India (Hybrid)",
-        type: "Full-time",
-        level: "Senior",
+        // type: "Full-time",
+        // level: "Senior",
         role: "Data",
-        skills: ["Machine Learning", "Python", "TensorFlow"],
         description:
           "Drive our data science initiatives and develop predictive models.",
       },
@@ -403,15 +397,15 @@ export default function Career() {
   const [, fnSetActiveTab] = useState("students");
   const [SearchTerm, fnSetSearchTerm] = useState("");
   const [SelectedFilters, fnSetSelectedFilters] = useState<{
-    levels: string[];
-    roles: string[];
-    cities: string[];
-    types: string[];
+    // levels: string[];
+    role: string[];
+    location: string[];
+    // types: string[];
   }>({
-    levels: [],
-    roles: [],
-    cities: [],
-    types: [],
+    // levels: [],
+    role: [],
+    location: [],
+    // types: [],
   });
 
   // Filter jobs based on search and filters
@@ -421,25 +415,26 @@ export default function Career() {
       idJob.title.toLowerCase().includes(SearchTerm.toLowerCase()) ||
       idJob.description.toLowerCase().includes(SearchTerm.toLowerCase());
 
-    const MatchesLevels =
-      SelectedFilters.levels.length === 0 ||
-      SelectedFilters.levels.includes(idJob.level);
+    // const MatchesLevels =
+    //   SelectedFilters.levels.length === 0 ||
+    //   SelectedFilters.levels.includes(idJob.level);
     const MatchesRoles =
-      SelectedFilters.roles.length === 0 ||
-      SelectedFilters.roles.includes(idJob.role);
+      SelectedFilters.role.length === 0 ||
+      SelectedFilters.role.includes(idJob.role);
     const MatchesCities =
-      SelectedFilters.cities.length === 0 ||
-      SelectedFilters.cities.some((city) => idJob.location.includes(city));
-    const MatchesTypes =
-      SelectedFilters.types.length === 0 ||
-      SelectedFilters.types.includes(idJob.type);
+      SelectedFilters.location.length === 0 ||
+      SelectedFilters.location.some((city) => idJob.location.includes(city));
+    // const MatchesTypes =
+    //   SelectedFilters.types.length === 0 ||
+    //   SelectedFilters.types.includes(idJob.type);
 
     return (
       MatchesSearch &&
-      MatchesLevels &&
+      // MatchesLevels &&
       MatchesRoles &&
-      MatchesCities &&
-      MatchesTypes
+      MatchesCities 
+      // &&
+      // MatchesTypes
     );
   });
 
@@ -462,10 +457,10 @@ export default function Career() {
 
   const fnClearFilters = (): void => {
     fnSetSelectedFilters({
-      levels: [],
-      roles: [],
-      cities: [],
-      types: [],
+      // levels: [],
+      role: [],
+      location: [],
+      // types: [],
     });
     fnSetSearchTerm("");
   };
@@ -490,7 +485,17 @@ export default function Career() {
       : career.section5.trendsData.filter(
         (idTrend) => idTrend.source.toLowerCase() === SelectedTab
       );
-
+useEffect(()=>{
+      const fnLinkedIn = async() => {
+      try {
+        const LdLinkedIn = await JobApi()
+        console.log(LdLinkedIn)
+    } catch (error) {
+        console.error("Failed :", error)
+    } 
+  }
+  fnLinkedIn()
+}, [])
   return (
     <>
       <Navbar />
@@ -628,6 +633,7 @@ export default function Career() {
           />
 
           <Tabs defaultValue="students" className="mb-10">
+            {/* student and industry tab */}
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
                 <TabsTrigger
@@ -661,15 +667,12 @@ export default function Career() {
                       className="h-10 w-10 shrink-0"
                     >
                       <X className="h-4 w-4" />
-                      <span className="sr-only">
-                        {career.section3.tab.filterOptions.text}
-                      </span>
                     </Button>
                   )}
                 </div>
                 {/* Simplified horizontal filter bar */}
                 <div className="flex flex-wrap gap-3 mb-4">
-                  {Object.entries(career.section3.tab.filterLabels).map(
+                  {Object.entries(career.section3.tab.filterOptions).map(
                     ([iCategory, iLabel]) => (
                       <DropdownMenu key={iCategory}>
                         <DropdownMenuTrigger asChild>
@@ -677,7 +680,7 @@ export default function Career() {
                             variant="outline"
                             className="border-primary/20 hover:bg-primary/5"
                           >
-                            {iLabel}
+                            {iCategory}
                             {SelectedFilters[
                               iCategory as keyof typeof SelectedFilters
                             ].length > 0 && (
@@ -776,13 +779,13 @@ export default function Career() {
                               variant="outline"
                               className="w-fit bg-primary/5 text-primary border-primary/20"
                             >
-                              {idJob.type}
+                              {idJob.role}
                             </Badge>
                             <Badge
                               variant="outline"
                               className="w-fit bg-primary/5 text-primary border-primary/20"
                             >
-                              {idJob.level} Level
+                              {idJob.location}
                             </Badge>
                           </div>
                           <CardTitle className="text-lg mt-2">
@@ -797,7 +800,7 @@ export default function Career() {
                           <p className="text-sm text-muted-foreground line-clamp-2">
                             {idJob.description}
                           </p>
-                          <div className="mt-2 flex flex-wrap gap-1">
+                          {/* <div className="mt-2 flex flex-wrap gap-1">
                             {idJob.skills.map((skill, index) => (
                               <span
                                 key={index}
@@ -806,7 +809,7 @@ export default function Career() {
                                 {skill}
                               </span>
                             ))}
-                          </div>
+                          </div> */}
                         </CardContent>
                         <CardFooter>
                           <Link href={`/jobs/${idJob.id}`} className="w-full">

@@ -6,13 +6,17 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui
 import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
-import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
-import { useState } from "react";
+import { TcalloutProps, TformMode, TheroProps, TtrendCardProps } from "@repo/ui/type";
+import { useEffect, useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-
+import {youTubeApi} from "@repo/ui/api/youTubeApi"
+import {JobApi} from "@repo/ui/api/jobApi"
+import { LinkedInApi } from "@repo/ui/api/linkedInApi";
+import { TweeterApi } from "@repo/ui/api/twitterApi";
+import { getSocialData } from "../api/social/socialHandle";
 
 const TrendingPage = {
   heroDataWithoutImage: {
@@ -242,17 +246,39 @@ export default function TrendingNowPage() {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   const [SelectedTab, setSelectedTab] = useState("all");
+  const [expandedTab, setExpandedTab] = useState("");
   const UniqueSources = [
     "all",
     ...new Set(TrendingPage.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
   ];
+  useEffect(() => {
+    setExpandedTab(""); // reset expanded tab when tab is switched
+  }, [SelectedTab]);
+const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
 
-  const FilteredTrends =
-    SelectedTab === "all"
-      ? TrendingPage.trendsData
-      : TrendingPage.trendsData.filter(
-        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-      );
+  const filteredByTab = SelectedTab === "all"
+  ? video
+  : video.filter(
+      (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+    );
+
+// Show all if showMore clicked on this tab
+const FilteredTrends =
+  expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/social');
+        const json = await res.json();
+        fnSetVideo(json.data);
+      } catch (err) {
+        console.error("Failed to fetch social data:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -381,17 +407,25 @@ export default function TrendingNowPage() {
 
             <TabsContent value={SelectedTab} className="mt-0">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {FilteredTrends.map((idTrend, idIndex) => (
-                  <TrendCard key={idIndex} idTrends={idTrend} />
+                {FilteredTrends.map((video:any, idIndex) => (
+                  <TrendCard key={idIndex} idTrends={video} />
                 ))}
               </div>
 
-              <div className="mt-12 text-center">
-                <Button variant="outline" size="lg" className="group">
-                  {TrendingPage.trendSection.footer}
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </div>
+              {filteredByTab.length > 9 && expandedTab !== SelectedTab && (
+                <div className="mt-12 text-center">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="group"
+                    onClick={() => setExpandedTab(SelectedTab)}
+                  >
+                    {TrendingPage.trendSection.footer}
+                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              )}
+
             </TabsContent>
           </Tabs>
         </div>
