@@ -22,10 +22,10 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [{ protocol: "https", hostname: "res.cloudinary.com" }],
   },
-  i18n: {
-    locales: ['en', 'de'],
-    defaultLocale: 'en',
-  },
+  // i18n: {
+  //   locales: ['en', 'de'],
+  //   defaultLocale: 'en',
+  // },
   env: {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
       ? ""

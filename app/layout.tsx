@@ -22,8 +22,8 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
 
-  const NavData = await getData<Tnavbar>("navbar")
-  const FooterData = await getData<Tfooter>("footer")
+  // const NavData = await getData<Tnavbar>("navbar")
+  // const FooterData = await getData<Tfooter>("footer")
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className} `}>
