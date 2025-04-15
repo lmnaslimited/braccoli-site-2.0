@@ -4,6 +4,8 @@ import type { Theader, Titems, TtermPrivacy } from "@repo/ui/type";
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { fnGetData } from "../api/getData";
 import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 
 const privacyHeader: Theader = {
   textWithoutColor: "Privacy",
@@ -112,11 +114,16 @@ export default async function PrivacyPolicy() {
               ))}
             </div>
           </div> */}
-          <div className="p-8 mb-12">
-            <div className="prose prose-gray max-w-none">
-              <ReactMarkdown>{idPrivacy.acknowledgement}</ReactMarkdown>
-            </div>
-          </div>
+<div className="p-8 mb-12">
+  <div className="prose prose-gray max-w-none text-card-foreground leading-relaxed text-justify">
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+    >
+      {idPrivacy.acknowledgment}
+    </ReactMarkdown>
+  </div>
+</div>
           {/* FAQ Section */}
           <div className="mb-12">
             <div className="flex items-center mb-8">
