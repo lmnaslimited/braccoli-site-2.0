@@ -13,20 +13,21 @@ export const metadata: Metadata = {
   description: "Enterprise-grade cloud solutions with AI integration for modern businesses",
 }
 
-export default async function RootLayout({
+const LdNavbarData = await fnGetData<Tnavbar>("navbar", "en")
+const LdFooterData = await fnGetData<Tfooter>("footer", "en")
+
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const NavData = await fnGetData<Tnavbar>("navbar", "en")
-  const FooterData = await fnGetData<Tfooter>("footer", "en")
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className} `}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar idNavbar={NavData} />
+          <Navbar idNavbar={LdNavbarData} />
           <main className="">{children}</main>
-          <Footer idFooter={FooterData} />
+          <Footer idFooter={LdFooterData} />
         </ThemeProvider>
       </body>
     </html>

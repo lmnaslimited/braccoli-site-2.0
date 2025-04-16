@@ -18,7 +18,7 @@ export async function fnGetData<T>(iQueryName: QueryName, iLocale: string): Prom
       },
       [LCacheKey],
       {
-        revalidate: 120,
+        revalidate: 1,
         tags: [iQueryName, iLocale],
       }
     );
