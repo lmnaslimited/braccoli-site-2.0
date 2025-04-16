@@ -4,12 +4,10 @@ import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "luci
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import TrendCard from "@repo/ui/components/trendCard";
-import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
 
@@ -256,9 +254,6 @@ export default function TrendingNowPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      {/* Navbar Component */}
-      <Navbar />
-
       {/* Hero Component */}
       <section
         ref={LdSectionRefs("containerOne")}
@@ -403,9 +398,6 @@ export default function TrendingNowPage() {
           <Callout idCallout={TrendingPage.Finalcallout as TcalloutProps} />
         </div>
       </section>
-
-      {/* Footer Component */}
-      <Footer />
     </div >
   );
 }

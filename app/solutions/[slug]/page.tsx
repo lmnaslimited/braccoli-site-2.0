@@ -4,8 +4,6 @@ import { Badge } from "@repo/ui/components/ui/badge";
 import { ProblemSection } from "@repo/ui/components/problemSection";
 import { SolutionSection } from "@repo/ui/components/solutionSection";
 import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
-import Navbar from "@repo/ui/components/navbar";
-import Footer from "@repo/ui/components/footer";
 import CustomCard from "@repo/ui/components/customCard";
 import * as Icons from "lucide-react";
 import Callout from "@repo/ui/components/callout";
@@ -100,8 +98,8 @@ const caseStudies = [
         },
       },
     },
-    solution:{
-      header:{
+    solution: {
+      header: {
         textWithoutColor: "The Breakthrough Moment: How We Transformed TechManufacture Inc.",
         subtitle: "LMNAs implemented a comprehensive LENS ERP solution integrated with Analytics Cloud to provide real-time insights and automation across the manufacturing process."
       },
@@ -112,7 +110,7 @@ const caseStudies = [
         "Predictive maintenance to prevent costly downtime",
         "Integrated inventory management with automated reordering",
       ],
-      title:"The Results",
+      title: "The Results",
       results: [
         { textWithoutColor: "Production efficiency", subtitle: "Increased by 45%" },
         { textWithoutColor: "Operational costs", subtitle: "Reduced by $1.2M annually" },
@@ -121,16 +119,16 @@ const caseStudies = [
       ],
       testimonial: {
         quote:
-        "LMNAs transformed our manufacturing operations. We've seen dramatic improvements in efficiency and significant cost savings.",
-      author: "Sarah Johnson",
-      title: "COO, TechManufacture Inc.",
-        verify:"Verified Client"
+          "LMNAs transformed our manufacturing operations. We've seen dramatic improvements in efficiency and significant cost savings.",
+        author: "Sarah Johnson",
+        title: "COO, TechManufacture Inc.",
+        verify: "Verified Client"
       },
-      footer:{
+      footer: {
         title: "Share this case study",
-        handles:[
+        handles: [
           {
-            label:"Share on LinkedIn",
+            label: "Share on LinkedIn",
             icon: "LinkedIn"
           },
           {
@@ -142,12 +140,12 @@ const caseStudies = [
             icon: "Mail"
           }
         ],
-        button:{
+        button: {
           label: " Download Case Study PDF"
         }
       }
     },
-    RelatedCaseStudies:[
+    RelatedCaseStudies: [
       {
         header: {
           text: "Omni Solutions Group",
@@ -175,7 +173,7 @@ const caseStudies = [
         ],
       },
     ],
-    sidebarData : [
+    sidebarData: [
       {
         title: "Ready to Transform Your Business?",
         content: "Let's discuss how LMNAs can help you achieve similar results for your organization.",
@@ -291,10 +289,10 @@ const caseStudies = [
         },
       },
     },
-    solution:{
-      header:{
+    solution: {
+      header: {
         textWithoutColor: "The Breakthrough Moment: How We Transformed Global Retail Co.",
-        subtitle:  "LMNAs deployed an integrated CRM & CPQ solution with AI-powered tools to unify customer data and optimize the retail experience across all channels."
+        subtitle: "LMNAs deployed an integrated CRM & CPQ solution with AI-powered tools to unify customer data and optimize the retail experience across all channels."
       },
       products: ["CRM & CPQ", "AI-Powered Tools"],
       details: [
@@ -303,25 +301,25 @@ const caseStudies = [
         "Automated order processing and fulfillment",
         "Personalized customer recommendations and marketing",
       ],
-      title:"The Results",
+      title: "The Results",
       results: [
         { textWithoutColor: "Revenue", subtitle: "Increased by 27% in 6 months" },
-      { textWithoutColor: "Customer satisfaction", subtitle: "Improved by 35%" },
-      { textWithoutColor: "Order processing time", subtitle: "Reduced by 60%" },
-      { textWithoutColor: "Inventory turnover", subtitle: "Increased by 40%" },
+        { textWithoutColor: "Customer satisfaction", subtitle: "Improved by 35%" },
+        { textWithoutColor: "Order processing time", subtitle: "Reduced by 60%" },
+        { textWithoutColor: "Inventory turnover", subtitle: "Increased by 40%" },
       ],
       testimonial: {
         quote:
-        "The LMNAs solution has revolutionized how we understand and serve our customers. The revenue growth we've experienced has been remarkable.",
-      author: "Michael Chen",
-      title: "CEO, Global Retail Co.",
-        verify:"Verified Client"
+          "The LMNAs solution has revolutionized how we understand and serve our customers. The revenue growth we've experienced has been remarkable.",
+        author: "Michael Chen",
+        title: "CEO, Global Retail Co.",
+        verify: "Verified Client"
       },
-      footer:{
+      footer: {
         title: "Share this case study",
-        handles:[
+        handles: [
           {
-            label:"Share on LinkedIn",
+            label: "Share on LinkedIn",
             icon: "LinkedIn"
           },
           {
@@ -333,12 +331,12 @@ const caseStudies = [
             icon: "Mail"
           }
         ],
-        button:{
+        button: {
           label: " Download Case Study PDF"
         }
       }
     },
-    RelatedCaseStudies:[
+    RelatedCaseStudies: [
       {
         header: {
           text: "COO, TechManufacture Inc.",
@@ -366,7 +364,7 @@ const caseStudies = [
         ],
       },
     ],
-    sidebarData : [
+    sidebarData: [
       {
         title: "Ready to Transform Your Business?",
         content: "Let's discuss how LMNAs can help you achieve similar results for your organization.",
@@ -482,8 +480,8 @@ const caseStudies = [
         },
       },
     },
-    solution:{
-      header:{
+    solution: {
+      header: {
         textWithoutColor: "The Breakthrough Moment: How We Transformed Omni Solutions Group",
         subtitle: "LMNAs implemented Analytics Cloud with AI-Powered Tools to unify data sources and provide real-time insights across all business units.",
       },
@@ -494,7 +492,7 @@ const caseStudies = [
         "Automated data processing and visualization",
         "Predictive analytics for strategic decision-making",
       ],
-      title:"The Results",
+      title: "The Results",
       results: [
         { textWithoutColor: "Decision-making time", subtitle: "Reduced by 60%" },
         { textWithoutColor: "Data processing speed", subtitle: "Improved by 85%" },
@@ -503,16 +501,16 @@ const caseStudies = [
       ],
       testimonial: {
         quote:
-        "LMNAs has transformed how we leverage data across our organization. We now make faster, more informed decisions that drive real business results.",
-      author: "Jennifer Lee",
-      title: "CIO, Omni Solutions Group",
-        verify:"Verified Client"
+          "LMNAs has transformed how we leverage data across our organization. We now make faster, more informed decisions that drive real business results.",
+        author: "Jennifer Lee",
+        title: "CIO, Omni Solutions Group",
+        verify: "Verified Client"
       },
-      footer:{
+      footer: {
         title: "Share this case study",
-        handles:[
+        handles: [
           {
-            label:"Share on LinkedIn",
+            label: "Share on LinkedIn",
             icon: "LinkedIn"
           },
           {
@@ -524,12 +522,12 @@ const caseStudies = [
             icon: "Mail"
           }
         ],
-        button:{
+        button: {
           label: " Download Case Study PDF"
         }
       }
     },
-    RelatedCaseStudies:[
+    RelatedCaseStudies: [
       {
         header: {
           text: "COO, TechManufacture Inc.",
@@ -557,7 +555,7 @@ const caseStudies = [
         ],
       },
     ],
-    sidebarData : [
+    sidebarData: [
       {
         title: "Ready to Transform Your Business?",
         content: "Let's discuss how LMNAs can help you achieve similar results for your organization.",
@@ -602,10 +600,9 @@ export default async function CaseStudyPage({
   if (!caseStudy) {
     notFound();
   }
-  
+
   return (
     <>
-      <Navbar />
       <main className="min-h-screen bg-background pb-20">
         <section className="relative h-[400px] md:h-[500px]">
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/40" />
@@ -680,41 +677,41 @@ export default async function CaseStudyPage({
         {/* Related Case Studies Section */}
         {/* <RelatedCaseStudies idCaseStudies={relatedCaseStudies} /> */}
         <section className="border-t bg-muted/30 py-20">
-        <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
-        <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
-        </div>
-        <Tab
-          idTab={{
-            data:
-              caseStudy.RelatedCaseStudies.map((idCard) => ({
-                ...idCard,
-                header: {
-                  ...idCard.header,
-                  headingClass: "text-xl font-semibold mb-2",
-                  descripClass:"text-base"
-                },
-                tag:idCard.category,
-                // className: "max-w-sm",
-                link:
-                  idCard.link?.map((iaButton) => ({
-                    ...iaButton,
-                    icon: <ArrowRight className="size-5" />,
-                    iconPosition: "after",
-                    size:"lg"
-                  })) ?? [],
-              })) ?? [],
-            TabDefault: {
-              text: "All Industry",
-              label: "View All Solution",
-            },
-          }}
-        />
-        <div className="text-center">
-       <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
-       {caseStudy.hero.link.label}
-       <ArrowRight className="h-4 w-4" />
-        </Button></Link>
-        </div>
+          <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
+            <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
+          </div>
+          <Tab
+            idTab={{
+              data:
+                caseStudy.RelatedCaseStudies.map((idCard) => ({
+                  ...idCard,
+                  header: {
+                    ...idCard.header,
+                    headingClass: "text-xl font-semibold mb-2",
+                    descripClass: "text-base"
+                  },
+                  tag: idCard.category,
+                  // className: "max-w-sm",
+                  link:
+                    idCard.link?.map((iaButton) => ({
+                      ...iaButton,
+                      icon: <ArrowRight className="size-5" />,
+                      iconPosition: "after",
+                      size: "lg"
+                    })) ?? [],
+                })) ?? [],
+              TabDefault: {
+                text: "All Industry",
+                label: "View All Solution",
+              },
+            }}
+          />
+          <div className="text-center">
+            <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
+              {caseStudy.hero.link.label}
+              <ArrowRight className="h-4 w-4" />
+            </Button></Link>
+          </div>
         </section>
         <section className="bg-dark/70 py-12">
           <div className="container mx-auto px-4 text-center">
@@ -722,7 +719,6 @@ export default async function CaseStudyPage({
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }
