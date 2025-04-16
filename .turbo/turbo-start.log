@@ -7,4 +7,36 @@
    - Network:      http://192.168.1.46:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 551ms
+ [32m[1m✓[22m[39m Ready in 533ms
+Error fetching image URL for urn:li:image:D5622AQGFnKA4oHnw7A: TypeError: fetch failed
+    at async o (.next/server/app/api/social/route.js:1:2106)
+    at async (.next/server/app/api/social/route.js:1:2800)
+    at async n (.next/server/app/api/social/route.js:1:3012)
+    at async c.revalidate (.next/server/app/api/social/route.js:1:776) {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}
+Error fetching image URL for urn:li:image:D5622AQFnD-UIw9qghg: TypeError: fetch failed
+    at async o (.next/server/app/api/social/route.js:1:2106)
+    at async (.next/server/app/api/social/route.js:1:2800)
+    at async n (.next/server/app/api/social/route.js:1:3012) {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}
+Error fetching image URL for urn:li:image:D5622AQEp9aFT7MagUg: TypeError: fetch failed
+    at async o (.next/server/app/api/social/route.js:1:2106)
+    at async (.next/server/app/api/social/route.js:1:2800)
+    at async n (.next/server/app/api/social/route.js:1:3012) {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}
+Error fetching image URL for urn:li:image:D5622AQHp8Y4G2ObKlg: TypeError: fetch failed
+    at async o (.next/server/app/api/social/route.js:1:2106)
+    at async (.next/server/app/api/social/route.js:1:2800)
+    at async n (.next/server/app/api/social/route.js:1:3012) {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}
+Error fetching image URL for urn:li:image:D5622AQEkbtBwYP0VIg: TypeError: fetch failed
+    at async o (.next/server/app/api/social/route.js:1:2106)
+    at async (.next/server/app/api/social/route.js:1:2800)
+    at async n (.next/server/app/api/social/route.js:1:3012)
+    at async c.revalidate (.next/server/app/api/social/route.js:1:776) {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}

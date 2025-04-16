@@ -2,7 +2,7 @@
 import { unstable_cache } from 'next/cache';
 import {youTubeApi} from "@repo/ui/api/youTubeApi"
 import { LinkedInApi } from "@repo/ui/api/linkedInApi";
-import { TweeterApi } from "@repo/ui/api/twitterApi";
+import { TweeterApi } from "@repo/ui/api/tweeterApi";
 
 export const getSocialData = unstable_cache(
   async () => {
@@ -19,5 +19,5 @@ export const getSocialData = unstable_cache(
     ];
   },
   ['socialData'],
-  { revalidate: 10 } // ♾️ Infinite cache
+  { revalidate: 120 }
 );
