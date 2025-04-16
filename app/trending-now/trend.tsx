@@ -68,6 +68,7 @@ const trendsData = [
 ]
 
 export default function TrendingChildPage({ idTrend }: { idTrend: Ttrend }) {
+  console.log(idTrend)
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   // State for tab filtering
