@@ -19,7 +19,7 @@ export async function fnGetData<T>(iQueryName: TQueryName): Promise<T> {
       [iQueryName],
 
       // - Caches query result with revalidation every 7200 seconds.
-      { revalidate: 60, tags: [iQueryName] }
+      { revalidate: 7200, tags: [iQueryName] }
     )
     cacheMap.set(iQueryName, fetcher)
   }
