@@ -4,7 +4,7 @@ import Hero from "@repo/ui/components/hero";
 import Navbar from "@repo/ui/components/navbar";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
-import { Tbutton, TheroProps } from "@repo/ui/type";
+import { JobData, JobFilters, Tbutton, TheroProps, TtrendCardProps } from "@repo/ui/type";
 import {
   ArrowRight,
   Briefcase,
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
 import { LucideIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Tabs,
   TabsContent,
@@ -156,7 +156,7 @@ const career = {
       textWithoutColor: "Take Your Next Step",
       subtitle: " Find the perfect pathway for your professional journey",
     },
-    points: [
+    points: [ //insitute data
       {
         header: {
           textWithoutColor: "Training & Workshops",
@@ -172,7 +172,7 @@ const career = {
         },
       },
     ],
-    tab: {
+    tab: { //student job details along with filters
       tabTitle: [
         {
           label: "For Students",
@@ -183,91 +183,17 @@ const career = {
           value: "institutions",
         },
       ],
-      filterOptions: {
-        text: "Clear filters",
-        levels: ["Entry", "Mid", "Senior"],
-        roles: ["Development", "Design", "Data", "Support"],
-        cities: ["Bangalore", "Chennai", "Mumbai", "Delhi"],
-        types: ["Full-time", "Part-time", "Internship", "Contract"],
-      },
-      filterLabels: {
-        levels: "Experience Level",
-        roles: "Role",
-        cities: "Location",
-        types: "Job Type",
-      },
+      // filterLabels: {
+      //   // levels: "Experience Level",
+      //   roles: "Role",
+      //   cities: "Location",
+      //   // types: "Job Type",
+      // },
       error: "No matching opportunities found. Try adjusting your filters.",
       button: {
         label: "View All Opportunities",
       },
     },
-    studentJobs: [
-      {
-        id: "JD-0142",
-        title: "Junior Software Developer",
-        location: "Bangalore, India (Hybrid)",
-        type: "Full-time",
-        level: "Entry",
-        role: "Development",
-        skills: ["JavaScript", "React", "Node.js"],
-        description:
-          "Join our development team to build innovative solutions using modern technologies.",
-      },
-      {
-        id: "JD-0156",
-        title: "Associate Data Analyst",
-        location: "Chennai, India (Remote)",
-        type: "Full-time",
-        level: "Entry",
-        role: "Data",
-        skills: ["SQL", "Excel", "Python"],
-        description:
-          "Help transform data into actionable insights. Looking for analytical minds.",
-      },
-      {
-        id: "JD-0163",
-        title: "UI/UX Design Intern",
-        location: "Mumbai, India (On-site)",
-        type: "Internship",
-        level: "Entry",
-        role: "Design",
-        skills: ["Figma", "Adobe XD", "UI/UX"],
-        description: "Create beautiful, intuitive interfaces for our products.",
-      },
-      {
-        id: "JD-0178",
-        title: "Technical Support Engineer",
-        location: "Delhi, India (Hybrid)",
-        type: "Full-time",
-        level: "Mid",
-        role: "Support",
-        skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
-        description:
-          "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
-      },
-      {
-        id: "JD-0185",
-        title: "Senior Frontend Developer",
-        location: "Bangalore, India (Hybrid)",
-        type: "Full-time",
-        level: "Senior",
-        role: "Development",
-        skills: ["React", "TypeScript", "Next.js"],
-        description:
-          "Lead our frontend development efforts and mentor junior developers.",
-      },
-      {
-        id: "JD-0192",
-        title: "Data Science Lead",
-        location: "Chennai, India (Hybrid)",
-        type: "Full-time",
-        level: "Senior",
-        role: "Data",
-        skills: ["Machine Learning", "Python", "TensorFlow"],
-        description:
-          "Drive our data science initiatives and develop predictive models.",
-      },
-    ],
 
     buttons: [
       {
@@ -339,7 +265,7 @@ const career = {
         description:
           "Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
         source: "LinkedIn",
-        imageUrl: "/placeholder.svg?height=200&width=400",
+        media: "/placeholder.svg?height=200&width=400",
         author: "By LMNAs Cloud Solutions",
         date: "2 days ago",
       },
@@ -400,76 +326,114 @@ const career = {
 
 export default function Career() {
   //section 3 usestate
+  // Set the initial active tab
   const [, fnSetActiveTab] = useState("students");
+  // Search term for filtering jobs
   const [SearchTerm, fnSetSearchTerm] = useState("");
+  // Selected filter values for job role and location
   const [SelectedFilters, fnSetSelectedFilters] = useState<{
-    levels: string[];
-    roles: string[];
-    cities: string[];
-    types: string[];
+    // levels: string[];
+    role: string[];
+    location: string[];
+    // types: string[];
   }>({
-    levels: [],
-    roles: [],
-    cities: [],
-    types: [],
+    // levels: [],
+    role: [],
+    location: [],
+    // types: [],
   });
 
-  // Filter jobs based on search and filters
-  const LaFilteredJobs = career.section3.studentJobs.filter((idJob) => {
+  // State to hold all student job listings fetched from the API
+  const [StudentJobs, fnSetStudentJobs] = useState<JobData[]>([]);
+  // State to store all available filter options (roles, locations) from the API
+  const [FilterOptions, fnSetFilterOptions] = useState<JobFilters>({
+    role: [],
+    location: [],
+  });
+
+// Fetch jobs and available filter options from the API on component mount
+useEffect(() => {
+  const fnFetchJobs = async ():Promise<void> => {
+    try {
+      const LdResult = await fetch('/api/job');
+      const LdJobs = await LdResult.json();
+      console.log(LdJobs)
+      fnSetStudentJobs(LdJobs.data.data);
+      fnSetFilterOptions(LdJobs.data.filters);
+    } catch (error) {
+      console.error("Failed :", error);
+    }
+  };
+
+  fnFetchJobs();
+}, []);
+
+  // Apply filtering logic to the list of jobs based on search input and selected filters
+  const LaFilteredJobs = StudentJobs.filter((idJob) => {
+    // Check if job matches search term in title or description
     const MatchesSearch =
       SearchTerm === "" ||
       idJob.title.toLowerCase().includes(SearchTerm.toLowerCase()) ||
       idJob.description.toLowerCase().includes(SearchTerm.toLowerCase());
 
-    const MatchesLevels =
-      SelectedFilters.levels.length === 0 ||
-      SelectedFilters.levels.includes(idJob.level);
+    // const MatchesLevels =
+    //   SelectedFilters.levels.length === 0 ||
+    //   SelectedFilters.levels.includes(idJob.level);
+
+    // Check if job matches selected roles
     const MatchesRoles =
-      SelectedFilters.roles.length === 0 ||
-      SelectedFilters.roles.includes(idJob.role);
+      SelectedFilters.role.length === 0 ||
+      SelectedFilters.role.includes(idJob.role);
+
+     // Check if job matches selected locations
     const MatchesCities =
-      SelectedFilters.cities.length === 0 ||
-      SelectedFilters.cities.some((city) => idJob.location.includes(city));
-    const MatchesTypes =
-      SelectedFilters.types.length === 0 ||
-      SelectedFilters.types.includes(idJob.type);
+      SelectedFilters.location.length === 0 ||
+      SelectedFilters.location.some((city) => idJob.location.includes(city));
+    // const MatchesTypes =
+    //   SelectedFilters.types.length === 0 ||
+    //   SelectedFilters.types.includes(idJob.type);
 
     return (
       MatchesSearch &&
-      MatchesLevels &&
+      // MatchesLevels &&
       MatchesRoles &&
-      MatchesCities &&
-      MatchesTypes
+      MatchesCities 
+      // &&
+      // MatchesTypes
     );
   });
 
+  // Toggle a filter value for a given category (role or location)
   const fnHandleFilterChange = (
-    category: keyof typeof SelectedFilters,
-    value: string
+    iCategory: keyof typeof SelectedFilters,
+    iValue: string
   ): void => {
     fnSetSelectedFilters((idPrev) => {
       const NewFilters = { ...idPrev };
-      if (NewFilters[category].includes(value)) {
-        NewFilters[category] = NewFilters[category].filter(
-          (item) => item !== value
+      // If value is already selected, remove it; otherwise, add it
+      if (NewFilters[iCategory].includes(iValue)) {
+        NewFilters[iCategory] = NewFilters[iCategory].filter(
+          (item) => item !== iValue
         );
       } else {
-        NewFilters[category] = [...NewFilters[category], value];
+        NewFilters[iCategory] = [...NewFilters[iCategory], iValue];
       }
       return NewFilters;
     });
   };
 
+  // Clear all active filters and reset the search term
   const fnClearFilters = (): void => {
     fnSetSelectedFilters({
-      levels: [],
-      roles: [],
-      cities: [],
-      types: [],
+      // levels: [],
+      role: [],
+      location: [],
+      // types: [],
     });
     fnSetSearchTerm("");
   };
 
+  // Count the total number of active filters applied
   const fnGetActiveFilterCount = (): number => {
     return Object.values(SelectedFilters).reduce(
       (count, filters) => count + filters.length,
@@ -477,19 +441,77 @@ export default function Career() {
     );
   };
 
-  //Section 5 social page
-  const [SelectedTab, fnSetSelectedTab] = useState("all");
-  const UniqueSources = [
-    "all",
-    ...new Set(career.section5.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
-  ];
+  // Clean up markdown or HTML tags from input strings for display
+  const fnStripMarkdownOrHtml = (iInput: string): string => {
+    if (!iInput) return "";
+  
+    // First, remove any HTML tags
+    const LHtmlStripped = iInput.replace(/<\/?[^>]+(>|$)/g, "");
+  
+    // Then, remove common markdown symbols
+    const LMarkdownStripped = LHtmlStripped
+      .replace(/[*_~`>#\-+=[\]{}()]/g, "")
+      .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"); // [text](link) => text
+  
+    // Split by \n, trim each line, and join with commas
+    const LCommaSeparated = LMarkdownStripped
+    .split("\n")
+    .map(line => line.trim())
+    .filter(line => line !== "")
+    .join(", ");
 
-  const FilteredTrends =
-    SelectedTab === "all"
-      ? career.section5.trendsData
-      : career.section5.trendsData.filter(
+  return LCommaSeparated;
+  };
+  
+
+  //Section 5 social page
+
+  // Track the currently selected tab (e.g., "all", "linkedin", etc.)
+  const [SelectedTab, setSelectedTab] = useState("all");
+  // Track which tab is currently expanded (used for "show more" logic)
+    const [expandedTab, setExpandedTab] = useState("");
+    // Define the available source types
+    const UniqueSources = [
+      "all","linkedin", "youtube", "tweeter"
+    ];
+
+    // When the selected tab changes, reset the expanded state
+    useEffect(() => {
+      setExpandedTab(""); // reset expanded tab when tab is switched
+    }, [SelectedTab]);
+
+  // State to hold the fetched video/trend data
+  const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
+  
+  // Filter videos based on the selected tab.
+// If "all" is selected, show everything.
+// Otherwise, filter by the matching source.
+    const filteredByTab = SelectedTab === "all"
+    ? video
+    : video.filter(
         (idTrend) => idTrend.source.toLowerCase() === SelectedTab
       );
+  
+ // If the current tab is expanded, show all items in that tab.
+// Otherwise, only show the first 9 items.
+  const FilteredTrends =
+    expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
+  
+    // Fetch data from the API once when the component mounts
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const LdResult = await fetch('/api/social');
+          const LdSocialData = await LdResult.json();
+          fnSetVideo(LdSocialData.data);
+        } catch (error) {
+          console.error("Failed to fetch social data:", error);
+        }
+      };
+  
+      fetchData();
+    }, []);
+  
 
   return (
     <>
@@ -628,6 +650,7 @@ export default function Career() {
           />
 
           <Tabs defaultValue="students" className="mb-10">
+            {/* student and industry tab */}
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
                 <TabsTrigger
@@ -661,23 +684,20 @@ export default function Career() {
                       className="h-10 w-10 shrink-0"
                     >
                       <X className="h-4 w-4" />
-                      <span className="sr-only">
-                        {career.section3.tab.filterOptions.text}
-                      </span>
                     </Button>
                   )}
                 </div>
                 {/* Simplified horizontal filter bar */}
                 <div className="flex flex-wrap gap-3 mb-4">
-                  {Object.entries(career.section3.tab.filterLabels).map(
-                    ([iCategory, iLabel]) => (
+                  {Object.entries(FilterOptions).map(
+                    ([iCategory]) => (
                       <DropdownMenu key={iCategory}>
                         <DropdownMenuTrigger asChild>
                           <Button
                             variant="outline"
                             className="border-primary/20 hover:bg-primary/5"
                           >
-                            {iLabel}
+                            {iCategory}
                             {SelectedFilters[
                               iCategory as keyof typeof SelectedFilters
                             ].length > 0 && (
@@ -692,7 +712,7 @@ export default function Career() {
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="start" className="w-56">
-                          {career.section3.tab.filterOptions[
+                          {FilterOptions[
                             iCategory as keyof typeof SelectedFilters
                           ].map((iOption) => (
                             <DropdownMenuItem
@@ -776,13 +796,13 @@ export default function Career() {
                               variant="outline"
                               className="w-fit bg-primary/5 text-primary border-primary/20"
                             >
-                              {idJob.type}
+                              {idJob.role}
                             </Badge>
                             <Badge
                               variant="outline"
                               className="w-fit bg-primary/5 text-primary border-primary/20"
                             >
-                              {idJob.level} Level
+                              {idJob.location}
                             </Badge>
                           </div>
                           <CardTitle className="text-lg mt-2">
@@ -795,9 +815,9 @@ export default function Career() {
                         </CardHeader>
                         <CardContent className="pb-2">
                           <p className="text-sm text-muted-foreground line-clamp-2">
-                            {idJob.description}
+                            {fnStripMarkdownOrHtml(idJob.description)}
                           </p>
-                          <div className="mt-2 flex flex-wrap gap-1">
+                          {/* <div className="mt-2 flex flex-wrap gap-1">
                             {idJob.skills.map((skill, index) => (
                               <span
                                 key={index}
@@ -806,7 +826,7 @@ export default function Career() {
                                 {skill}
                               </span>
                             ))}
-                          </div>
+                          </div> */}
                         </CardContent>
                         <CardFooter>
                           <Link href={`/jobs/${idJob.id}`} className="w-full">
@@ -997,39 +1017,48 @@ export default function Career() {
             descripClass: "",
           }}
           />
-          <Tabs
-            defaultValue="all"
-            className="w-full"
-            onValueChange={fnSetSelectedTab}
-          >
-            <div className="border-b mb-8">
-              <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                {UniqueSources.map((idTab) => (
-                  <TabsTrigger
-                    key={idTab}
-                    value={idTab}
-                    className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
-                  >
-                    {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
-
-            <TabsContent value={SelectedTab} className="mt-0">
-              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {FilteredTrends.map((idTrend, idIndex) => (
-                  <TrendCard key={idIndex} idTrends={idTrend} />
-                ))}
-              </div>
-              <div className="mt-12 text-center">
-                <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
-                  {career.section5.trendSection.footer.button.label}
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button></Link>
-              </div>
-            </TabsContent>
-          </Tabs>
+           <Tabs
+                     defaultValue="all"
+                     className="w-full"
+                     onValueChange={setSelectedTab}
+                   >
+                     <div className="border-b mb-8">
+                       <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
+                         {UniqueSources.map((idTab) => (
+                           <TabsTrigger
+                             key={idTab}
+                             value={idTab}
+                             className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:shadow-none rounded-none px-4 py-3 bg-transparent"
+                           >
+                             {idTab.charAt(0).toUpperCase() + idTab.slice(1)}
+                           </TabsTrigger>
+                         ))}
+                       </TabsList>
+                     </div>
+         
+                     <TabsContent value={SelectedTab} className="mt-0">
+                       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                         {FilteredTrends.map((video, idIndex) => (
+                           <TrendCard key={idIndex} idTrends={video} />
+                         ))}
+                       </div>
+         
+                       {filteredByTab.length > 9 && expandedTab !== SelectedTab && (
+                         <div className="mt-12 text-center">
+                           <Button
+                             variant="outline"
+                             size="lg"
+                             className="group"
+                             onClick={() => setExpandedTab(SelectedTab)}
+                           >
+                              {career.section5.trendSection.footer.button.label}
+                             <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                           </Button>
+                         </div>
+                       )}
+         
+                     </TabsContent>
+                   </Tabs>
         </div>
       </section>
       <Footer />

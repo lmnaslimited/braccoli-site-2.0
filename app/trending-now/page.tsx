@@ -6,13 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui
 import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
-import { TcalloutProps, TformMode, TheroProps } from "@repo/ui/type";
-import { useState } from "react";
+import { TcalloutProps, TformMode, TheroProps, TtrendCardProps } from "@repo/ui/type";
+import { useEffect, useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-
 
 const TrendingPage = {
   heroDataWithoutImage: {
@@ -241,18 +240,52 @@ const TrendingPage = {
 export default function TrendingNowPage() {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
+  // Tracks the currently selected tab (e.g., "all", "linkedin", etc.)
   const [SelectedTab, setSelectedTab] = useState("all");
+  // Tracks the tab where "Show More" has been triggered
+  const [expandedTab, setExpandedTab] = useState("");
+  // Define available content sources for tabs
   const UniqueSources = [
-    "all",
-    ...new Set(TrendingPage.trendsData.map((idTrend) => idTrend.source.toLowerCase())),
+    "all","linkedin", "youtube", "tweeter"
   ];
 
-  const FilteredTrends =
-    SelectedTab === "all"
-      ? TrendingPage.trendsData
-      : TrendingPage.trendsData.filter(
-        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-      );
+  // When user switches tabs, reset the expanded state
+  useEffect(() => {
+    setExpandedTab(""); // reset expanded tab when tab is switched
+  }, [SelectedTab]);
+
+  // Stores the video/trend data fetched from the backend
+const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
+
+// Filter video data based on selected tab
+// If "all" is selected, return all videos
+// Otherwise, return videos matching the selected source
+  const filteredByTab = SelectedTab === "all"
+  ? video
+  : video.filter(
+      (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+    );
+
+// Control the number of items shown in the UI
+// If the tab is expanded (via "Show More"), show all filtered videos
+// Otherwise, show only the first 9 items
+const FilteredTrends =
+  expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
+
+  // Fetch video data from the API when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const LdResult = await fetch('/api/social');
+        const LdSocialData = await LdResult.json();
+        fnSetVideo(LdSocialData.data);
+      } catch (error) {
+        console.error("Failed to fetch social data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -381,17 +414,25 @@ export default function TrendingNowPage() {
 
             <TabsContent value={SelectedTab} className="mt-0">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {FilteredTrends.map((idTrend, idIndex) => (
-                  <TrendCard key={idIndex} idTrends={idTrend} />
+                {FilteredTrends.map((video, idIndex) => (
+                  <TrendCard key={idIndex} idTrends={video} />
                 ))}
               </div>
 
-              <div className="mt-12 text-center">
-                <Button variant="outline" size="lg" className="group">
-                  {TrendingPage.trendSection.footer}
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </div>
+              {filteredByTab.length > 9 && expandedTab !== SelectedTab && (
+                <div className="mt-12 text-center">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="group"
+                    onClick={() => setExpandedTab(SelectedTab)}
+                  >
+                    {TrendingPage.trendSection.footer}
+                    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              )}
+
             </TabsContent>
           </Tabs>
         </div>
