@@ -408,416 +408,417 @@ export default function Pricing() {
     },
   };
   return (
-    <>
-      <Navbar />
-      <div ref={LdSectionRefs("containerOne")}>
-        <div className="bg-grayBackground">
-          <Hero idHero={{
-            ...Section1,
-            buttons: Section1.buttons.map((idButton) => ({
-              ...idButton,
-              icon: (
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              ),
-              iconPosition: "after",
-              size: "lg",
-            })),
-          } as TheroProps}
-            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
-          />
-        </div>
-        {fnRenderFormBelowSection("containerOne")}
-      </div>
+    <></>
+    // <>
+    //   <Navbar />
+    //   <div ref={LdSectionRefs("containerOne")}>
+    //     <div className="bg-grayBackground">
+    //       <Hero idHero={{
+    //         ...Section1,
+    //         buttons: Section1.buttons.map((idButton) => ({
+    //           ...idButton,
+    //           icon: (
+    //             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    //           ),
+    //           iconPosition: "after",
+    //           size: "lg",
+    //         })),
+    //       } as TheroProps}
+    //         onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
+    //       />
+    //     </div>
+    //     {fnRenderFormBelowSection("containerOne")}
+    //   </div>
 
-      {/* section 2 */}
-      <div ref={LdSectionRefs("containerTwo")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
-          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <TitleSubtitle idTitle={{
-              ...Section2.header,
-              className: "mx-auto max-w-[58rem] text-center",
-              descripClass: "mx-auto",
-            }} />
-            <div className="mx-auto max-w-4xl">
-              <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
-                <div className="grid gap-6 md:grid-cols-2">
-                  {Section2.items.map((idIssue, iIndex) => (
-                    <div key={iIndex} className="flex items-start gap-3">
-                      <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
-                        {idIssue.icon}
-                      </div>
-                      <div>
-                        <p className="font-medium">{idIssue.question}</p>
-                        <p className="text-sm text-muted-foreground">
-                          {idIssue.answer}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-8 pt-8 border-t border-border text-center">
-                  <p className="text-lg font-medium mb-6">
-                    {Section2.footer.text}
-                  </p>
-                  <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                    {Section2.footer.buttons.map((idBtn, iIndex) => (
-                      <Button
-                        key={iIndex}
-                        size="lg"
-                        variant={
-                          (idBtn.variant as Tbutton["variant"]) ?? "default"
-                        }
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
-                      >
-                        {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {fnRenderFormBelowSection("containerTwo")}
-      </div>
+    //   {/* section 2 */}
+    //   <div ref={LdSectionRefs("containerTwo")}>
+    //     <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
+    //       <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //         <TitleSubtitle idTitle={{
+    //           ...Section2.header,
+    //           className: "mx-auto max-w-[58rem] text-center",
+    //           descripClass: "mx-auto",
+    //         }} />
+    //         <div className="mx-auto max-w-4xl">
+    //           <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
+    //             <div className="grid gap-6 md:grid-cols-2">
+    //               {Section2.items.map((idIssue, iIndex) => (
+    //                 <div key={iIndex} className="flex items-start gap-3">
+    //                   <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
+    //                     {idIssue.icon}
+    //                   </div>
+    //                   <div>
+    //                     <p className="font-medium">{idIssue.question}</p>
+    //                     <p className="text-sm text-muted-foreground">
+    //                       {idIssue.answer}
+    //                     </p>
+    //                   </div>
+    //                 </div>
+    //               ))}
+    //             </div>
+    //             <div className="mt-8 pt-8 border-t border-border text-center">
+    //               <p className="text-lg font-medium mb-6">
+    //                 {Section2.footer.text}
+    //               </p>
+    //               <div className="flex flex-col gap-2 sm:flex-row justify-center">
+    //                 {Section2.footer.buttons.map((idBtn, iIndex) => (
+    //                   <Button
+    //                     key={iIndex}
+    //                     size="lg"
+    //                     variant={
+    //                       (idBtn.variant as Tbutton["variant"]) ?? "default"
+    //                     }
+    //                     onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+    //                   >
+    //                     {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
+    //                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    //                   </Button>
+    //                 ))}
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </section>
+    //     {fnRenderFormBelowSection("containerTwo")}
+    //   </div>
 
-      {/* Plans & Pricing Tiers  section3*/}
-      <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
-          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
-              <span className="font-medium">{Section3.header.badge}</span>
-            </div>
-            <TitleSubtitle idTitle={{
-              ...Section3.header,
-              className:
-                "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-              descripClass: "md:text-xl/relaxed ",
-              headingClass: "md:text-5xl",
-            }} />
-            <div className="mx-auto max-w-6xl">
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-b from-grayBackground to-background rounded-xl -m-4"></div>
-                <div className="relative z-10 overflow-hidden border-2 border-primary rounded-xl shadow-2xl">
-                  <div className="overflow-x-auto">
-                    <Table>
-                      <TableHeader>
-                        <TableRow className="bg-primary text-background hover:bg-primary">
-                          <TableHead className="w-[250px] text-background">
-                            {Section3.tableHead}
-                          </TableHead>
-                          {Section3.pricingPlans.map((idPlan) => (
-                            <TableHead
-                              key={idPlan.name}
-                              className="text-center text-background"
-                            >
-                              {idPlan.name}
-                            </TableHead>
-                          ))}
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {Section3.features.map((iFeature, iIndex) => (
-                          <TableRow
-                            key={iIndex}
-                            className="border-b hover:bg-grayBackground"
-                          >
-                            <TableCell className="font-medium p-4">
-                              {iFeature}
-                            </TableCell>
-                            {Section3.pricingPlans.map((iPlan, iPlanIndex) => (
-                              <TableCell key={iPlanIndex} className="text-center p-4">
-                                {
-                                  iPlan[
-                                  Object.keys(iPlan)[
-                                  iIndex + 1
-                                  ] as keyof typeof iPlan
-                                  ]
-                                }
-                              </TableCell>
-                            ))}
-                          </TableRow>
-                        ))}
-                        <TableRow className="bg-grayBackground border-t">
-                          <TableCell></TableCell>
-                          {Section3.pricingPlans.map((iPlan, iIndex) => (
-                            <TableCell key={iIndex} className="text-center">
-                              <Button
-                                variant={iIndex === 2 ? "default" : "outline"}
-                                size="sm"
-                                className={
-                                  iIndex === 2
-                                    ? "bg-primary hover:bg-primary/80"
-                                    : ""
-                                }
-                              >
-                                {iIndex === 2 ? "Most Popular" : "Get Started"}
-                              </Button>
-                            </TableCell>
-                          ))}
-                        </TableRow>
-                      </TableBody>
-                    </Table>
-                  </div>
-                </div>
-              </div>
-              <div className="mx-auto max-w-[58rem] text-center mt-16 bg-grayBackground p-8 rounded-xl border-2 border-muted shadow-lg">
-                <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
-                  <span className="font-medium">{Section3.footer.text}</span>
-                </div>
-                <TitleSubtitle idTitle={{
-                  ...Section3.footer.header,
-                  className:
-                    "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
-                  descripClass: "md:text-sm",
-                  headingClass: "md:text-xl",
-                }} />
-                <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                  {Section3.footer.buttons.map((idBtn, iIndex) => (
-                    <Button
-                      key={iIndex}
-                      size="lg"
-                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
-                    >
-                      {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {fnRenderFormBelowSection("containerThree")}
-      </div>
+    //   {/* Plans & Pricing Tiers  section3*/}
+    //   <div ref={LdSectionRefs("containerThree")}>
+    //     <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+    //       <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //         <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
+    //           <span className="font-medium">{Section3.header.badge}</span>
+    //         </div>
+    //         <TitleSubtitle idTitle={{
+    //           ...Section3.header,
+    //           className:
+    //             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+    //           descripClass: "md:text-xl/relaxed ",
+    //           headingClass: "md:text-5xl",
+    //         }} />
+    //         <div className="mx-auto max-w-6xl">
+    //           <div className="relative">
+    //             <div className="absolute inset-0 bg-gradient-to-b from-grayBackground to-background rounded-xl -m-4"></div>
+    //             <div className="relative z-10 overflow-hidden border-2 border-primary rounded-xl shadow-2xl">
+    //               <div className="overflow-x-auto">
+    //                 <Table>
+    //                   <TableHeader>
+    //                     <TableRow className="bg-primary text-background hover:bg-primary">
+    //                       <TableHead className="w-[250px] text-background">
+    //                         {Section3.tableHead}
+    //                       </TableHead>
+    //                       {Section3.pricingPlans.map((idPlan) => (
+    //                         <TableHead
+    //                           key={idPlan.name}
+    //                           className="text-center text-background"
+    //                         >
+    //                           {idPlan.name}
+    //                         </TableHead>
+    //                       ))}
+    //                     </TableRow>
+    //                   </TableHeader>
+    //                   <TableBody>
+    //                     {Section3.features.map((iFeature, iIndex) => (
+    //                       <TableRow
+    //                         key={iIndex}
+    //                         className="border-b hover:bg-grayBackground"
+    //                       >
+    //                         <TableCell className="font-medium p-4">
+    //                           {iFeature}
+    //                         </TableCell>
+    //                         {Section3.pricingPlans.map((iPlan, iPlanIndex) => (
+    //                           <TableCell key={iPlanIndex} className="text-center p-4">
+    //                             {
+    //                               iPlan[
+    //                               Object.keys(iPlan)[
+    //                               iIndex + 1
+    //                               ] as keyof typeof iPlan
+    //                               ]
+    //                             }
+    //                           </TableCell>
+    //                         ))}
+    //                       </TableRow>
+    //                     ))}
+    //                     <TableRow className="bg-grayBackground border-t">
+    //                       <TableCell></TableCell>
+    //                       {Section3.pricingPlans.map((iPlan, iIndex) => (
+    //                         <TableCell key={iIndex} className="text-center">
+    //                           <Button
+    //                             variant={iIndex === 2 ? "default" : "outline"}
+    //                             size="sm"
+    //                             className={
+    //                               iIndex === 2
+    //                                 ? "bg-primary hover:bg-primary/80"
+    //                                 : ""
+    //                             }
+    //                           >
+    //                             {iIndex === 2 ? "Most Popular" : "Get Started"}
+    //                           </Button>
+    //                         </TableCell>
+    //                       ))}
+    //                     </TableRow>
+    //                   </TableBody>
+    //                 </Table>
+    //               </div>
+    //             </div>
+    //           </div>
+    //           <div className="mx-auto max-w-[58rem] text-center mt-16 bg-grayBackground p-8 rounded-xl border-2 border-muted shadow-lg">
+    //             <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
+    //               <span className="font-medium">{Section3.footer.text}</span>
+    //             </div>
+    //             <TitleSubtitle idTitle={{
+    //               ...Section3.footer.header,
+    //               className:
+    //                 "mx-auto flex max-w-[58rem] flex-col items-center justify-center text-center mb-6",
+    //               descripClass: "md:text-sm",
+    //               headingClass: "md:text-xl",
+    //             }} />
+    //             <div className="flex flex-col gap-2 sm:flex-row justify-center">
+    //               {Section3.footer.buttons.map((idBtn, iIndex) => (
+    //                 <Button
+    //                   key={iIndex}
+    //                   size="lg"
+    //                   variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+    //                   onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+    //                 >
+    //                   {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
+    //                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    //                 </Button>
+    //               ))}
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </section>
+    //     {fnRenderFormBelowSection("containerThree")}
+    //   </div>
 
-      {/* LENS ERP vs. The Competition section7 */}
-      <div ref={LdSectionRefs("containerFour")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-gradient-to-b from-primary to-primary/70 text-background">
-          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
-              <span className="font-medium">{Section7.header.badge}</span>
-            </div>
-            <TitleSubtitle idTitle={{
-              ...Section7.header,
-              className:
-                "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
-              headingClass: "md:text-5xl",
-              descripClass: "md:text-xl/relaxed text-slate",
-            }} />
-            <div className="mx-auto max-w-6xl">
-              <Tabs defaultValue="performance" className="w-full">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-primary/70 p-1 rounded-lg">
-                  {Section7.categories.map((iTab) => (
-                    <TabsTrigger
-                      key={iTab}
-                      value={iTab}
-                      className="data-[state=active]:bg-accent data-[state=active]:text-primary 
-                         text-grayBackground transition-all px-4 rounded-lg"
-                    >
-                      {iTab.charAt(0).toUpperCase() +
-                        iTab.slice(1).replace("-", " ")}
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+    //   {/* LENS ERP vs. The Competition section7 */}
+    //   <div ref={LdSectionRefs("containerFour")}>
+    //     <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-gradient-to-b from-primary to-primary/70 text-background">
+    //       <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //         <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
+    //           <span className="font-medium">{Section7.header.badge}</span>
+    //         </div>
+    //         <TitleSubtitle idTitle={{
+    //           ...Section7.header,
+    //           className:
+    //             "mx-auto max-w-[58rem] text-center items-center justify-cenetr",
+    //           headingClass: "md:text-5xl",
+    //           descripClass: "md:text-xl/relaxed text-slate",
+    //         }} />
+    //         <div className="mx-auto max-w-6xl">
+    //           <Tabs defaultValue="performance" className="w-full">
+    //             <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-primary/70 p-1 rounded-lg">
+    //               {Section7.categories.map((iTab) => (
+    //                 <TabsTrigger
+    //                   key={iTab}
+    //                   value={iTab}
+    //                   className="data-[state=active]:bg-accent data-[state=active]:text-primary 
+    //                      text-grayBackground transition-all px-4 rounded-lg"
+    //                 >
+    //                   {iTab.charAt(0).toUpperCase() +
+    //                     iTab.slice(1).replace("-", " ")}
+    //                 </TabsTrigger>
+    //               ))}
+    //             </TabsList>
 
-                <div className="bg-background rounded-xl p-4 shadow-2xl">
-                  {Section7.categories.map((iTab) => (
-                    <TabsContent
-                      key={iTab}
-                      value={iTab}
-                      className="space-y-4 rounded-lg overflow-hidden"
-                    >
-                      <div className="overflow-x-auto">
-                        <Table>
-                          <TableHeader>
-                            <TableRow className="bg-primary hover:bg-primary">
-                              {Section7.tableHeaders.map((iHeader, iIndex) => (
-                                <TableHead
-                                  key={iIndex}
-                                  className="text-background font-bold text-base"
-                                >
-                                  {iHeader}
-                                </TableHead>
-                              ))}
-                            </TableRow>
-                          </TableHeader>
-                          <TableBody>
-                            {Section7.items
-                              .filter((item) => item.category === iTab)
-                              .map((idRow, iIndex) => (
-                                <TableRow key={iIndex} className="border-b">
-                                  <TableCell className="font-bold bg-grayBackground text-primary py-4">
-                                    {idRow.Benefit}
-                                  </TableCell>
-                                  <TableCell className="text-sm bg-background text-primary">
-                                    <div className="flex items-center gap-2">
-                                      <CheckCircle className="h-5 w-5 text-muted-primary" />
-                                      <span>{idRow.header1}</span>
-                                    </div>
-                                  </TableCell>
-                                  <TableCell className="text-sm bg-grayBackground text-primary">
-                                    {idRow.header2}
-                                  </TableCell>
-                                </TableRow>
-                              ))}
-                          </TableBody>
-                        </Table>
-                      </div>
-                    </TabsContent>
-                  ))}
-                </div>
-              </Tabs>
-              <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
-                <div className="grid md:grid-cols-5 items-center">
-                  <div className="md:col-span-3 p-6 md:p-8 text-accent">
-                    <TitleSubtitle idTitle={{
-                      ...Section7.footer.header,
-                      headingClass: "md:text-2xl mb-2",
-                      descripClass: "md:text-base text-accent",
-                    }} />
-                    <div className="flex flex-col sm:flex-row gap-3">
-                      {Section7.footer.buttons.map((idBtn, iIndex) => (
-                        <Button key={iIndex} size="lg" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
-                        >
-                          {idBtn.icon ? idBtn.icon : ""}
-                          {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="md:col-span-2 bg-gradient-to-br from-primary/70 to-primary/80 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
-                    <div className="bg-secondary/10 rounded-full p-3 mb-3">
-                      <Download className="h-6 w-6 text-accent" />
-                    </div>
-                    <TitleSubtitle idTitle={{
-                      ...Section7.footer.cta,
-                      headingClass: "md:text-lg mb-1",
-                      descripClass: "md:text-sm text-accent",
-                    }} />
-                    <div className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-sm">
-                      <span className="font-medium">
-                        {Section7.footer.cta.badge}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {fnRenderFormBelowSection("containerFour")}
-      </div>
+    //             <div className="bg-background rounded-xl p-4 shadow-2xl">
+    //               {Section7.categories.map((iTab) => (
+    //                 <TabsContent
+    //                   key={iTab}
+    //                   value={iTab}
+    //                   className="space-y-4 rounded-lg overflow-hidden"
+    //                 >
+    //                   <div className="overflow-x-auto">
+    //                     <Table>
+    //                       <TableHeader>
+    //                         <TableRow className="bg-primary hover:bg-primary">
+    //                           {Section7.tableHeaders.map((iHeader, iIndex) => (
+    //                             <TableHead
+    //                               key={iIndex}
+    //                               className="text-background font-bold text-base"
+    //                             >
+    //                               {iHeader}
+    //                             </TableHead>
+    //                           ))}
+    //                         </TableRow>
+    //                       </TableHeader>
+    //                       <TableBody>
+    //                         {Section7.items
+    //                           .filter((item) => item.category === iTab)
+    //                           .map((idRow, iIndex) => (
+    //                             <TableRow key={iIndex} className="border-b">
+    //                               <TableCell className="font-bold bg-grayBackground text-primary py-4">
+    //                                 {idRow.Benefit}
+    //                               </TableCell>
+    //                               <TableCell className="text-sm bg-background text-primary">
+    //                                 <div className="flex items-center gap-2">
+    //                                   <CheckCircle className="h-5 w-5 text-muted-primary" />
+    //                                   <span>{idRow.header1}</span>
+    //                                 </div>
+    //                               </TableCell>
+    //                               <TableCell className="text-sm bg-grayBackground text-primary">
+    //                                 {idRow.header2}
+    //                               </TableCell>
+    //                             </TableRow>
+    //                           ))}
+    //                       </TableBody>
+    //                     </Table>
+    //                   </div>
+    //                 </TabsContent>
+    //               ))}
+    //             </div>
+    //           </Tabs>
+    //           <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
+    //             <div className="grid md:grid-cols-5 items-center">
+    //               <div className="md:col-span-3 p-6 md:p-8 text-accent">
+    //                 <TitleSubtitle idTitle={{
+    //                   ...Section7.footer.header,
+    //                   headingClass: "md:text-2xl mb-2",
+    //                   descripClass: "md:text-base text-accent",
+    //                 }} />
+    //                 <div className="flex flex-col sm:flex-row gap-3">
+    //                   {Section7.footer.buttons.map((idBtn, iIndex) => (
+    //                     <Button key={iIndex} size="lg" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
+    //                     >
+    //                       {idBtn.icon ? idBtn.icon : ""}
+    //                       {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
+    //                     </Button>
+    //                   ))}
+    //                 </div>
+    //               </div>
+    //               <div className="md:col-span-2 bg-gradient-to-br from-primary/70 to-primary/80 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
+    //                 <div className="bg-secondary/10 rounded-full p-3 mb-3">
+    //                   <Download className="h-6 w-6 text-accent" />
+    //                 </div>
+    //                 <TitleSubtitle idTitle={{
+    //                   ...Section7.footer.cta,
+    //                   headingClass: "md:text-lg mb-1",
+    //                   descripClass: "md:text-sm text-accent",
+    //                 }} />
+    //                 <div className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-sm">
+    //                   <span className="font-medium">
+    //                     {Section7.footer.cta.badge}
+    //                   </span>
+    //                 </div>
+    //               </div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </section>
+    //     {fnRenderFormBelowSection("containerFour")}
+    //   </div>
 
-      {/* Testimonials Section section-4*/}
-      < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
-        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <TitleSubtitle idTitle={{
-            ...Section4.header,
-            className:
-              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-            headingClass: "md:text-5xl",
-          }} />
-          <div className="mx-auto max-w-5xl">
-            <div className="grid gap-8 md:grid-cols-3">
-              {Section4.cards.map((idCard, iIndex) => (
-                <CustomCard
-                  key={iIndex}
-                  idCardProps={{
-                    header: {
-                      ...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
-                      headingClass: "mb-0",
-                    },
-                    className: "max-w-md ",
-                    image: {
-                      svg: (
-                        <div className="flex px-6 pt-4 space-x-1 text-primary">
-                          <Star size={24} fill="currentColor" strokeWidth={0} />
-                          <Star size={24} fill="currentColor" strokeWidth={0} />
-                          <Star size={24} fill="currentColor" strokeWidth={0} />
-                          <Star size={24} fill="currentColor" strokeWidth={0} />
-                          <Star size={24} fill="currentColor" strokeWidth={0} />
-                        </div>
-                      ),
-                      alt: "5-star",
-                    },
-                    avatar: idCard.avatar,
-                    nameAndPlace: idCard.nameAndPlace,
-                    namePosition: "bottom",
-                    footerClassName: "items-start",
-                  }}
-                />
-              ))}
-            </div>
-            <div className="text-center mt-12">
-              <Button variant="outline" size="lg">
-                <Link href={Section4.cta.buttons.href}>{Section4.cta.buttons.label} </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section >
+    //   {/* Testimonials Section section-4*/}
+    //   < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
+    //     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //       <TitleSubtitle idTitle={{
+    //         ...Section4.header,
+    //         className:
+    //           "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+    //         headingClass: "md:text-5xl",
+    //       }} />
+    //       <div className="mx-auto max-w-5xl">
+    //         <div className="grid gap-8 md:grid-cols-3">
+    //           {Section4.cards.map((idCard, iIndex) => (
+    //             <CustomCard
+    //               key={iIndex}
+    //               idCardProps={{
+    //                 header: {
+    //                   ...idCard.header, descripClass: "italic border-l-4 border-primary/70 px-2 pb-2",
+    //                   headingClass: "mb-0",
+    //                 },
+    //                 className: "max-w-md ",
+    //                 image: {
+    //                   svg: (
+    //                     <div className="flex px-6 pt-4 space-x-1 text-primary">
+    //                       <Star size={24} fill="currentColor" strokeWidth={0} />
+    //                       <Star size={24} fill="currentColor" strokeWidth={0} />
+    //                       <Star size={24} fill="currentColor" strokeWidth={0} />
+    //                       <Star size={24} fill="currentColor" strokeWidth={0} />
+    //                       <Star size={24} fill="currentColor" strokeWidth={0} />
+    //                     </div>
+    //                   ),
+    //                   alt: "5-star",
+    //                 },
+    //                 avatar: idCard.avatar,
+    //                 nameAndPlace: idCard.nameAndPlace,
+    //                 namePosition: "bottom",
+    //                 footerClassName: "items-start",
+    //               }}
+    //             />
+    //           ))}
+    //         </div>
+    //         <div className="text-center mt-12">
+    //           <Button variant="outline" size="lg">
+    //             <Link href={Section4.cta.buttons.href}>{Section4.cta.buttons.label} </Link>
+    //           </Button>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </section >
 
-      {/* FAQ Section Section5 */}
-      < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background" >
-        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
-            <span className="font-medium">{Section5.header.badge}</span>
-          </div>
-          <TitleSubtitle idTitle={{
-            ...Section5.header,
-            className:
-              "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-            headingClass: "md:text-5xl",
-            descripClass: "md:text-xl/relaxed",
-          }} />
-          <div className="mx-auto max-w-3xl space-y-4">
-            <FAQs idFaq={Section5.items} />
-          </div>
-        </div>
-      </section >
+    //   {/* FAQ Section Section5 */}
+    //   < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background" >
+    //     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //       <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
+    //         <span className="font-medium">{Section5.header.badge}</span>
+    //       </div>
+    //       <TitleSubtitle idTitle={{
+    //         ...Section5.header,
+    //         className:
+    //           "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
+    //         headingClass: "md:text-5xl",
+    //         descripClass: "md:text-xl/relaxed",
+    //       }} />
+    //       <div className="mx-auto max-w-3xl space-y-4">
+    //         <FAQs idFaq={Section5.items} />
+    //       </div>
+    //     </div>
+    //   </section >
 
-      {/* final cta section6 */}
-      < div ref={LdSectionRefs("containerFive")} >
-        <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
-          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <div className="mx-auto max-w-3xl text-center">
-              <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
-                <span className="font-medium">{Section6.header.badge}</span>
-              </div>
-              <TitleSubtitle idTitle={{
-                ...Section6.header, headingClass: "md:text-5xl",
-                descripClass: "md:text-xl/relaxed",
-              }} />
-              <div className="bg-background border-2 border-primary rounded-lg p-8 mb-8 shadow-xl">
-                <h3 className="text-xl font-bold mb-6">{Section6.cta.title}</h3>
-                <div className="grid gap-6 md:grid-cols-2">
-                  {Section6.cta.buttons.map((idBtn, iIndex) => (
-                    <div className="space-y-4" key={iIndex}>
-                      <p className="font-medium">{idBtn.title}</p>
-                      <Button
-                        key={iIndex}
-                        size="lg"
-                        variant={
-                          (idBtn.variant as Tbutton["variant"]) ?? "default"
-                        }
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive")}
-                      >
-                        {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {fnRenderFormBelowSection("containerFive")}
-      </div >
-      <Footer />
-    </>
+    //   {/* final cta section6 */}
+    //   < div ref={LdSectionRefs("containerFive")} >
+    //     <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
+    //       <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+    //         <div className="mx-auto max-w-3xl text-center">
+    //           <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
+    //             <span className="font-medium">{Section6.header.badge}</span>
+    //           </div>
+    //           <TitleSubtitle idTitle={{
+    //             ...Section6.header, headingClass: "md:text-5xl",
+    //             descripClass: "md:text-xl/relaxed",
+    //           }} />
+    //           <div className="bg-background border-2 border-primary rounded-lg p-8 mb-8 shadow-xl">
+    //             <h3 className="text-xl font-bold mb-6">{Section6.cta.title}</h3>
+    //             <div className="grid gap-6 md:grid-cols-2">
+    //               {Section6.cta.buttons.map((idBtn, iIndex) => (
+    //                 <div className="space-y-4" key={iIndex}>
+    //                   <p className="font-medium">{idBtn.title}</p>
+    //                   <Button
+    //                     key={iIndex}
+    //                     size="lg"
+    //                     variant={
+    //                       (idBtn.variant as Tbutton["variant"]) ?? "default"
+    //                     }
+    //                     onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive")}
+    //                   >
+    //                     {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
+    //                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+    //                   </Button>
+    //                 </div>
+    //               ))}
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //     </section>
+    //     {fnRenderFormBelowSection("containerFive")}
+    //   </div >
+    //   <Footer />
+    // </>
   );
 }

@@ -2399,5 +2399,8 @@ export default async function Products({
 }) {
   const { slug } = await params;
   const Product = PageSlug.find((idProduct) => idProduct.id === slug);
-  return <ProductsComp idProduct={Product as Tproduct} />;
+  return (
+    <></>
+    // <ProductsComp idProduct={Product as Tproduct} />
+  );
 }

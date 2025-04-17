@@ -81,7 +81,7 @@ const PageSlugs = [
         {
           label: "Ask for Demo",
           // href: "https://demolens.lmnas.com/#login",
-          formMode:"contact",
+          formMode: "contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -90,7 +90,7 @@ const PageSlugs = [
         {
           label: "Book a Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking",
+          formMode: "booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -159,7 +159,7 @@ const PageSlugs = [
           {
             label: "Book a Free Consultation Now",
             // href: "https://nectar.lmnas.com/book_appointment",
-            formMode:"booking",
+            formMode: "booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -584,7 +584,7 @@ const PageSlugs = [
         button: {
           label: "Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -746,7 +746,7 @@ const PageSlugs = [
         button: {
           label: " Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -783,7 +783,7 @@ const PageSlugs = [
         {
           label: "Ask for Demo",
           // href: "https://demolens.lmnas.com/#login",
-          formMode:"contact",
+          formMode: "contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -792,7 +792,7 @@ const PageSlugs = [
         {
           label: "Book a Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking",
+          formMode: "booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -860,7 +860,7 @@ const PageSlugs = [
           {
             label: "Book a Free Consultation Now",
             // href: "https://nectar.lmnas.com/book_appointment",
-            formMode:"booking",
+            formMode: "booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -1433,7 +1433,7 @@ const PageSlugs = [
         button: {
           label: "Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -1704,7 +1704,7 @@ const PageSlugs = [
         button: {
           label: " Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -1742,7 +1742,7 @@ const PageSlugs = [
         {
           label: "Ask for Demo",
           // href: "https://demolens.lmnas.com/#login",
-          formMode:"contact",
+          formMode: "contact",
           variant: "default",
           icon: <ArrowRight className="size-6" />,
           iconPosition: "after",
@@ -1751,7 +1751,7 @@ const PageSlugs = [
         {
           label: "Book a Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking",
+          formMode: "booking",
           variant: "outline",
           icon: <Calendar className="size-6" />,
           iconPosition: "after",
@@ -1820,7 +1820,7 @@ const PageSlugs = [
           {
             label: "Book a Free Consultation Now",
             // href: "https://nectar.lmnas.com/book_appointment",
-            formMode:"booking",
+            formMode: "booking",
             variant: "outline",
             icon: <Calendar className="size-5" />,
             iconPosition: "before",
@@ -2387,7 +2387,7 @@ const PageSlugs = [
         button: {
           label: "Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -2693,7 +2693,7 @@ const PageSlugs = [
         button: {
           label: " Book Your Free Consultation",
           // href: "https://nectar.lmnas.com/book_appointment",
-          formMode:"booking"
+          formMode: "booking"
         },
       },
     },
@@ -2708,5 +2708,9 @@ export default async function Industries({
   const { slug } = await params;
   const Industry = PageSlugs.find((idIndustry) => idIndustry.id === slug);
 
-  return <IndustryComp idIndustry={Industry as Tindustry} />
+  return (
+    <></>
+
+    // <IndustryComp idIndustry={Industry as Tindustry} />
+  )
 }
