@@ -61,15 +61,17 @@ export default function Solutions() {
       header: {
         textWithoutColor: "Could This Be Your Story Too?",
       },
-      points: {
-        title:
-          "You've seen how businesses like yours transformed. Now it's your turn.",
-        items: [
-          "You don't have to stay stuck. The challenges you're facing today can become yesterday's problems.",
-          "Your breakthrough is one call away.",
-        ],
-        actionText: "What's stopping you from transforming your business?",
-      },
+      title:
+        "You've seen how businesses like yours transformed. Now it's your turn.",
+      points: [
+        {
+          label: "You don't have to stay stuck. The challenges you're facing today can become yesterday's problems.",
+        },
+        {
+          label: "Your breakthrough is one call away.",
+        }
+      ],
+      subtitle: "What's stopping you from transforming your business?",
       buttons: [
         {
           label: "Book a Free Consultation Now",

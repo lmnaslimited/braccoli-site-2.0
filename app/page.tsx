@@ -183,16 +183,16 @@ export default function Home() {
           formMode: "booking",
         }
       ],
-      points: {
-        title: "We understand the challenges you face:",
-        items: [
-          "Your Sales Manager struggles with manual pricing and lost leads.",
-          "Your Procurement team misses deadlines due to poor coordination.",
-          "Your Operations Manager is tired of firefighting inefficiencies.",
-          "Your Finance Manager can't trust the numbers during quarterly reviews."
-        ],
-        actionText: "We get it. And we're here to fix it—for good."
-      },
+
+      title: "We understand the challenges you face:",
+      points: [
+        { label: "Your Sales Manager struggles with manual pricing and lost leads." },
+        { label: "Your Procurement team misses deadlines due to poor coordination." },
+        { label: "Your Operations Manager is tired of firefighting inefficiencies." },
+        { label: "Your Finance Manager can't trust the numbers during quarterly reviews." }
+      ],
+      subtitle: "We get it. And we're here to fix it—for good."
+
     },
     {
       header: {
@@ -260,20 +260,20 @@ export default function Home() {
   }
 
   const SocialProof = {
-    header:{
-      text:"Testimonials",
+    header: {
+      text: "Testimonials",
       subtitle: "Trusted by Leading Businesses Across Industries"
     },
-    stats:{
+    stats: {
       title: "Our clients have experienced remarkable transformations. Here are some key metrics:",
-      items:[
+      items: [
         { name: "Efficiency Increase", stat: "40%" },
         { name: "Cost Reduction", stat: "25%" },
         { name: "Revenue Growth", stat: "30%" },
       ],
-      button:{
-        label:"Read Our Case Studies",
-        href:"/solutions"
+      button: {
+        label: "Read Our Case Studies",
+        href: "/solutions"
       }
     }
   }
@@ -304,13 +304,13 @@ export default function Home() {
       <div className="my-16">
         <Feature idFeature={{ ...Features[2], layout: "centered", iShowButton: true, buttonPosition: "bottom-center" } as TfeatureProps} />
       </div>
-    
+
       <div className="max-w-7xl mx-auto pt-16 pb-20 px-4 md:px-6">
         <TitleSubtitle idTitle={{
           ...SocialProof.header,
-          className:"lg:text-center items-center m-0",
-          headingClass:"text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
-          descripClass:"text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
+          className: "lg:text-center items-center m-0",
+          headingClass: "text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
+          descripClass: "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full"
         }} />
         <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-3 lg:mt-8">
           {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -342,7 +342,7 @@ export default function Home() {
               <Link href={SocialProof.stats.button.href}>{SocialProof.stats.button.label}</Link>
             </Button>
           </div>
-          </div>
+        </div>
       </div>
 
       <div className="bg-dark/70" ref={LdSectionRefs("containerThree")}>

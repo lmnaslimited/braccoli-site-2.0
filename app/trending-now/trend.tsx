@@ -1,8 +1,8 @@
-
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
+import { ChevronRight, Linkedin, Twitter, Youtube } from "lucide-react";
+// import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import TrendCard from "@repo/ui/components/trendCard";
@@ -11,9 +11,6 @@ import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Callout from "@repo/ui/components/callout";
 import { TcalloutProps, TformMode, TheroProps, Ttrend } from "@repo/ui/type";
 import { useFormHandler } from "../hooks/useFormHandler";
-
-
-
 
 // const TrendingPage = {
 //   heroDataWithoutImage: {
@@ -241,56 +238,64 @@ import { useFormHandler } from "../hooks/useFormHandler";
 
 const trendsData = [
     {
+        id: "AI-Powered ERP: How Businesses Are Scaling Faster",
         title: "AI-Powered ERP: How Businesses Are Scaling Faster",
         description:
             "Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
         source: "LinkedIn",
-        imageUrl: "/placeholder.svg?height=200&width=400",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         author: "By LMNAs Cloud Solutions",
-        date: "2 days ago",
+        publishedAt: "2 days ago",
     },
     {
+        id: "5 AI-Driven ERP Trends That Will Transform Your Business",
         title: "5 AI-Driven ERP Trends That Will Transform Your Business",
         description:
             "The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
         source: "LinkedIn",
-        imageUrl: "/placeholder.svg?height=200&width=400",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         author: "By LMNAs Tech Blog",
-        date: "1 week ago",
+        publishedAt: "1 week ago",
     },
     {
+        id: "The Impact of AI on Enterprise Growth & Innovation",
         title: "The Impact of AI on Enterprise Growth & Innovation",
         description:
             "Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
         source: "YouTube",
-        imageUrl: "/placeholder.svg?height=200&width=400",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         author: "By LMNAs Channel",
-        date: "3 days ago",
+        publishedAt: "3 days ago",
     },
     {
+        id: "Automation isn't the future. It's the present.",
         title: "Automation isn't the future. It's the present.",
         description:
             "See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI.",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         source: "Twitter",
         author: "By @LMNAsCloud",
-        date: "1 day ago",
+        publishedAt: "1 day ago",
     },
     {
+        id: "The Future of Cloud Solutions for Enterprise Transformation",
         title: "The Future of Cloud Solutions for Enterprise Transformation",
         description:
             "As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
         source: "LinkedIn",
-        imageUrl: "/placeholder.svg?height=200&width=400",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         author: "By LMNAs Cloud Solutions",
-        date: "4 days ago",
+        publishedAt: "4 days ago",
     },
     {
+        id: "How Data Analytics is Revolutionizing Business Decision-Making",
         title: "How Data Analytics is Revolutionizing Business Decision-Making",
         description:
             "Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market.",
+        media: { url: "/placeholder.svg?height=200&width=400", alt: "placeholder" },
         source: "LinkedIn",
         author: "By LMNAs Tech Blog",
-        date: "5 days ago",
+        publishedAt: "5 days ago",
     },
 ]
 
@@ -320,8 +325,13 @@ export default function TrendingChildPage({ idTrend }: { idTrend: Ttrend }) {
             <section ref={LdSectionRefs("containerOne")}>
                 <Hero
                     idHero={{
-                        ...idTrend.heroSection as Thero
-                    }}
+                        ...idTrend.heroSection,
+                        buttons: idTrend.heroSection.buttons?.map((iaButton) => ({
+                            ...iaButton,
+                            iconPosition: "after",
+                            size: "lg",
+                        })),
+                    } as TheroProps}
                     onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
                 />
                 {fnRenderFormBelowSection("containerOne")}
@@ -401,15 +411,15 @@ export default function TrendingChildPage({ idTrend }: { idTrend: Ttrend }) {
                                     size="lg"
                                     className="bg-primary hover:bg-primary/80 text-background"
                                     onClick={() => {
-                                        if (idTrend.frustrationSection[1]?.button?.formMode) {
+                                        if (idTrend.frustrationSection[1]?.buttons?.formMode) {
                                             fnHandleFormButtonClick(
-                                                idTrend.frustrationSection[1]?.button?.formMode as TformMode,
+                                                idTrend.frustrationSection[1]?.buttons?.formMode as TformMode,
                                                 "containerTwo"
                                             );
                                         }
                                     }}
                                 >
-                                    {idTrend.frustrationSection[1]?.button?.label}
+                                    {idTrend.frustrationSection[1]?.buttons?.label}
                                 </Button>
                             </div>
                         </div>
@@ -469,7 +479,17 @@ export default function TrendingChildPage({ idTrend }: { idTrend: Ttrend }) {
             {/* Subscribe Section */}
             <section className="bg-primary">
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-                    <Callout idCallout={idTrend.calloutSection as Tcallout} />
+                    <Callout
+                        idCallout={{
+                            ...idTrend.calloutSection,
+                            buttons: idTrend.calloutSection.buttons?.map((idBtn) => ({
+                                ...idBtn,
+                                variant: "outline",
+                                iconPosition: "before",
+                                size: "lg",
+                            })),
+                        } as TcalloutProps}
+                    />
                 </div>
             </section>
         </div >

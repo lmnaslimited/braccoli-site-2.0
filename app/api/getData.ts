@@ -9,7 +9,7 @@ import { fnFetchFromStrapi } from '@repo/ui/utils/fetchGraphgl'
 const cacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
 
 export async function fnGetData<T>(iQueryName: TQueryName): Promise<T> {
-    
+
   if (!cacheMap.has(iQueryName)) {
     const fetcher = unstable_cache(
       async () => {
@@ -19,7 +19,7 @@ export async function fnGetData<T>(iQueryName: TQueryName): Promise<T> {
       [iQueryName],
 
       // - Caches query result with revalidation every 7200 seconds.
-      { revalidate: 7200, tags: [iQueryName] }
+      { revalidate: 2, tags: [iQueryName] }
     )
     cacheMap.set(iQueryName, fetcher)
   }
