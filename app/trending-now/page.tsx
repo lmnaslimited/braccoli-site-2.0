@@ -246,7 +246,7 @@ export default function TrendingNowPage() {
   const [expandedTab, setExpandedTab] = useState("");
   // Define available content sources for tabs
   const UniqueSources = [
-    "all","linkedin", "youtube", "tweeter"
+    "all","linkedin", "youtube", "x"
   ];
 
   // When user switches tabs, reset the expanded state

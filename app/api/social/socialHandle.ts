@@ -2,14 +2,18 @@
 import { unstable_cache } from 'next/cache';
 import {youTubeApi} from "@repo/ui/api/youTubeApi"
 import { LinkedInApi } from "@repo/ui/api/linkedInApi";
-import { TweeterApi } from "@repo/ui/api/tweeterApi";
+import { TwitterApi } from "@repo/ui/api/twitterApi";
 
 export const getSocialData = unstable_cache(
   async () => {
-    const [LdYouTubeResult, LdLinkedInResult, LdTweeterResult] = await Promise.allSettled([
-      youTubeApi(),
+    const [
+      LdYouTubeResult, 
+      LdLinkedInResult, 
+      LdTweeterResult
+    ] = await Promise.allSettled([
       LinkedInApi(),
-      TweeterApi(),
+      youTubeApi(),
+      TwitterApi(),
     ]);
 
     return [
