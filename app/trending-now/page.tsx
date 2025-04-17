@@ -206,7 +206,7 @@ const TrendingPage = {
       buttons: {
         label: "Discover How LMNAs Can Help",
         // href: "https://nectar.lmnas.com/book_appointment",
-        variant: "outline",
+        variant: "outline",     
         icon: <Mail className="size-5" />,
         iconPosition: "before",
         size: "lg",
