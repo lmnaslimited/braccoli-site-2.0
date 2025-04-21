@@ -13,6 +13,7 @@ import Hero from "@repo/ui/components/hero";
 import { useFormHandler } from "../hooks/useFormHandler";
 import Footer from "@repo/ui/components/footer";
 import { TformMode, TpricingPageTarget } from "@repo/middleware";
+import Navbar from "@repo/ui/components/navbar";
 
 export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -387,6 +388,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
     };
     return (
         <>
+            <Navbar />
             <div ref={LdSectionRefs("containerOne")}>
                 <div className="bg-grayBackground">
                     <Hero idHero={{
