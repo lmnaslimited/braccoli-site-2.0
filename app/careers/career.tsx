@@ -24,7 +24,7 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@repo/ui/components/ui/tabs";TcareersPageTarget
+} from "@repo/ui/components/ui/tabs";
 import { Input } from "@repo/ui/components/ui/input";
 import {
   DropdownMenu,
@@ -44,7 +44,7 @@ import {
   CardTitle,
 } from "@repo/ui/components/ui/card";
 import TrendCard from "@repo/ui/components/trendCard";
-import { TcareersPageSource } from "@repo/middleware";
+import { TcareersPageSource, TcareersPageTarget, TheroSection } from "@repo/middleware";
 
 
 
@@ -493,15 +493,15 @@ export default function Career({idCareer}:{idCareer:TcareersPageTarget} ) {
       : career.section5.trendsData.filter(
         (idTrend) => idTrend.source.toLowerCase() === SelectedTab
       );
-
+      console.log(idCareer)
   return (
     <>
       <Navbar />
       <Hero
         idHero={
           {
-            ...career?.hero,
-            buttons: career?.hero.buttons.map((iaButton) => ({
+            ...idCareer?.career?.heroSection,
+            buttons: idCareer?.career?.heroSection.buttons.map((iaButton) => ({
               ...iaButton,
               icon: (
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -509,7 +509,7 @@ export default function Career({idCareer}:{idCareer:TcareersPageTarget} ) {
               iconPosition: "after",
               size: "lg",
             })),
-          } as TheroProps
+          }
         }
       />
       </>
