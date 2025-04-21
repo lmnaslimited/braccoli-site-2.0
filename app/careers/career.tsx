@@ -50,358 +50,358 @@ import { TcareersPageSource, TcareersPageTarget, TheroSection } from "@repo/midd
 
 
 const career = {
-    hero: {
-      heading: {
-        textWithoutColor: "Empowering Careers",
-        text: "Enabling Growth",
-        subtitle:
-          "Shape Your Future with LMNAS - Where Talent Meets Opportunity and Growth.",
-        badge: "Redefining Career Journeys",
-      },
-      buttons: [
-        {
-          label: "Explore Opportunities",
-          href: "https://demolens.lmnas.com/#login",
-          variant: "default",
-        },
-        {
-          label: "Book a Free Consultation",
-          href: "https://nectar.lmnas.com/book_appointment",
-          variant: "outline",
-        },
-      ],
-      image: {
-        src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "hero-image",
-      },
-    },
-    section1: {
-      title: "What We Discovered…",
-      image: {
-        src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "What we discovered",
-      },
-      header: {
-        textWithoutColor: "Where Does Growth Truly Happen?",
-        subtitle:
-          "Real success isn't just about where you come from, but about having the right platform to grow, learn, and thrive.",
-        badge: "Career Challenges",
-      },
+  hero: {
+    heading: {
+      textWithoutColor: "Empowering Careers",
+      text: "Enabling Growth",
       subtitle:
-        "Curious about what truly shapes a successful career, we conducted a study at LMNAS to understand the real challenges professionals face.",
-      buttons: {
-        label: "Discover How We Help",
-        href: "https://nectar.lmnas.com/contact",
-      },
+        "Shape Your Future with LMNAS - Where Talent Meets Opportunity and Growth.",
+      badge: "Redefining Career Journeys",
     },
-    section2: {
-      header: {
-        textWithoutColor: "Life at LMNAS is extraordinary",
-        subtitle:
-          "Experience a fulfilling career where your skills are valued, your confidence grows, and your potential is unlocked.",
-        badge: "Join Our Community",
+    buttons: [
+      {
+        label: "Explore Opportunities",
+        href: "https://demolens.lmnas.com/#login",
+        variant: "default",
       },
-      buttons: {
-        label: "Join Our Team",
-        href: "#career",
+      {
+        label: "Book a Free Consultation",
+        href: "https://nectar.lmnas.com/book_appointment",
+        variant: "outline",
       },
-      items: [
-        {
-          header: {
-            textWithoutColor: "Collaborative Culture",
-            subtitle:
-              "Work alongside talented professionals in a supportive atmosphere",
-          },
-          icon: "User",
-        },
-        {
-          header: {
-            textWithoutColor: "Career Growth",
-            subtitle:
-              "Clear progression paths with continuous learning opportunities",
-          },
-          icon: "Award",
-        },
-        {
-          header: {
-            textWithoutColor: "Work-Life Balance",
-            subtitle: "Flexible policies that respect your wellbeing",
-          },
-          icon: "Clock",
-        },
-        {
-          header: {
-            textWithoutColor: "Global Opportunities",
-            subtitle: "Flexible policies that respect your wellbeing",
-          },
-          icon: "Globe",
-        },
-        {
-          header: {
-            textWithoutColor: "Health & Wellness",
-            subtitle:
-              "Comprehensive programs to support your physical and mental health",
-          },
-          icon: "Heart",
-        },
-        {
-          header: {
-            textWithoutColor: "Innovation Focus",
-            subtitle:
-              "Freedom to explore new ideas and contribute to cutting-edge solutions",
-          },
-          icon: "Lightbulb",
-        },
-      ],
+    ],
+    image: {
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "hero-image",
     },
-    section3: {
-      header: {
-        textWithoutColor: "Take Your Next Step",
-        subtitle: " Find the perfect pathway for your professional journey",
-      },
-      points: [
-        {
-          header: {
-            textWithoutColor: "Training & Workshops",
-            subtitle:
-              "Industry-relevant skill development sessions conducted by our experts",
-          },
-        },
-        {
-          header: {
-            textWithoutColor: "Internship & On-Campus Recruitment",
-            subtitle:
-              "Structured internships with real-world project experience and dedicated on-campus hiring drives for your students",
-          },
-        },
-      ],
-      tab: {
-        tabTitle: [
-          {
-            label: "For Students",
-            value: "students",
-          },
-          {
-            label: "For Institutions",
-            value: "institutions",
-          },
-        ],
-        filterOptions: {
-          text: "Clear filters",
-          levels: ["Entry", "Mid", "Senior"],
-          roles: ["Development", "Design", "Data", "Support"],
-          cities: ["Bangalore", "Chennai", "Mumbai", "Delhi"],
-          types: ["Full-time", "Part-time", "Internship", "Contract"],
-        },
-        filterLabels: {
-          levels: "Experience Level",
-          roles: "Role",
-          cities: "Location",
-          types: "Job Type",
-        },
-        error: "No matching opportunities found. Try adjusting your filters.",
-        button: {
-          label: "View All Opportunities",
-        },
-      },
-      studentJobs: [
-        {
-          id: "JD-0142",
-          title: "Junior Software Developer",
-          location: "Bangalore, India (Hybrid)",
-          type: "Full-time",
-          level: "Entry",
-          role: "Development",
-          skills: ["JavaScript", "React", "Node.js"],
-          description:
-            "Join our development team to build innovative solutions using modern technologies.",
-        },
-        {
-          id: "JD-0156",
-          title: "Associate Data Analyst",
-          location: "Chennai, India (Remote)",
-          type: "Full-time",
-          level: "Entry",
-          role: "Data",
-          skills: ["SQL", "Excel", "Python"],
-          description:
-            "Help transform data into actionable insights. Looking for analytical minds.",
-        },
-        {
-          id: "JD-0163",
-          title: "UI/UX Design Intern",
-          location: "Mumbai, India (On-site)",
-          type: "Internship",
-          level: "Entry",
-          role: "Design",
-          skills: ["Figma", "Adobe XD", "UI/UX"],
-          description: "Create beautiful, intuitive interfaces for our products.",
-        },
-        {
-          id: "JD-0178",
-          title: "Technical Support Engineer",
-          location: "Delhi, India (Hybrid)",
-          type: "Full-time",
-          level: "Mid",
-          role: "Support",
-          skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
-          description:
-            "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
-        },
-        {
-          id: "JD-0185",
-          title: "Senior Frontend Developer",
-          location: "Bangalore, India (Hybrid)",
-          type: "Full-time",
-          level: "Senior",
-          role: "Development",
-          skills: ["React", "TypeScript", "Next.js"],
-          description:
-            "Lead our frontend development efforts and mentor junior developers.",
-        },
-        {
-          id: "JD-0192",
-          title: "Data Science Lead",
-          location: "Chennai, India (Hybrid)",
-          type: "Full-time",
-          level: "Senior",
-          role: "Data",
-          skills: ["Machine Learning", "Python", "TensorFlow"],
-          description:
-            "Drive our data science initiatives and develop predictive models.",
-        },
-      ],
-  
-      buttons: [
-        {
-          label: " On-Campus Recruitment",
-          href: "#",
-          icon: "Calendar",
-        },
-        {
-          label: " Contact Our Team",
-          href: "#",
-          icon: "Phone",
-          variant: "outline",
-        },
-      ],
+  },
+  section1: {
+    title: "What We Discovered…",
+    image: {
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "What we discovered",
     },
-    section4: {
-      image: {
-        src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
-        alt: "LMNAS-learning",
-      },
-      header: {
-        textWithoutColor: "Grow your skills with ",
-        text: "LMNAS",
-        subtitle:
-          "Even if you haven't joined us yet, you can still learn and grow with LMNAS through our expert-led courses and webinars.",
-        badge: "Continuous Learning",
-      },
-      points: {
-        textWithoutColor: "Looking for industry insights?",
-        subtitle:
-          "Join our webinars featuring experts discussing the latest trends and technologies.",
-      },
-      buttons: [
-        {
-          label: "Explore Courses",
-          href: "https://nectar.lmnas.com/index",
-        },
-        {
-          label: "Register for Webinars",
-          href: "#",
-          variant: "outline",
-        },
-      ],
+    header: {
+      textWithoutColor: "Where Does Growth Truly Happen?",
+      subtitle:
+        "Real success isn't just about where you come from, but about having the right platform to grow, learn, and thrive.",
+      badge: "Career Challenges",
     },
-    section5: {
-      header: {
-        textWithoutColor: "Success Stories",
-        subtitle: "Hear from our people and see how LMNAS has transformed careers."
-      },
-      footer: {
+    subtitle:
+      "Curious about what truly shapes a successful career, we conducted a study at LMNAS to understand the real challenges professionals face.",
+    buttons: {
+      label: "Discover How We Help",
+      href: "https://nectar.lmnas.com/contact",
+    },
+  },
+  section2: {
+    header: {
+      textWithoutColor: "Life at LMNAS is extraordinary",
+      subtitle:
+        "Experience a fulfilling career where your skills are valued, your confidence grows, and your potential is unlocked.",
+      badge: "Join Our Community",
+    },
+    buttons: {
+      label: "Join Our Team",
+      href: "#career",
+    },
+    items: [
+      {
         header: {
-          textWithoutColor: "Your story could be next.",
-          subtitle: "Join us and be part of something bigger!"
+          textWithoutColor: "Collaborative Culture",
+          subtitle:
+            "Work alongside talented professionals in a supportive atmosphere",
         },
-        button: {
-          label: "View All Stories",
-          href: "/solutions"
-        }
+        icon: "User",
       },
-      latestTrendsHeader: {
-        textWithoutColor: "Latest Trends from",
-        text: "LMNAs Cloud Solutions",
-        subtitle:
-          "Stay updated with the latest innovations, industry insights, and AI-driven solutions from LMNAs Cloud Solutions.",
+      {
+        header: {
+          textWithoutColor: "Career Growth",
+          subtitle:
+            "Clear progression paths with continuous learning opportunities",
+        },
+        icon: "Award",
       },
-      trendsData: [
+      {
+        header: {
+          textWithoutColor: "Work-Life Balance",
+          subtitle: "Flexible policies that respect your wellbeing",
+        },
+        icon: "Clock",
+      },
+      {
+        header: {
+          textWithoutColor: "Global Opportunities",
+          subtitle: "Flexible policies that respect your wellbeing",
+        },
+        icon: "Globe",
+      },
+      {
+        header: {
+          textWithoutColor: "Health & Wellness",
+          subtitle:
+            "Comprehensive programs to support your physical and mental health",
+        },
+        icon: "Heart",
+      },
+      {
+        header: {
+          textWithoutColor: "Innovation Focus",
+          subtitle:
+            "Freedom to explore new ideas and contribute to cutting-edge solutions",
+        },
+        icon: "Lightbulb",
+      },
+    ],
+  },
+  section3: {
+    header: {
+      textWithoutColor: "Take Your Next Step",
+      subtitle: " Find the perfect pathway for your professional journey",
+    },
+    points: [
+      {
+        header: {
+          textWithoutColor: "Training & Workshops",
+          subtitle:
+            "Industry-relevant skill development sessions conducted by our experts",
+        },
+      },
+      {
+        header: {
+          textWithoutColor: "Internship & On-Campus Recruitment",
+          subtitle:
+            "Structured internships with real-world project experience and dedicated on-campus hiring drives for your students",
+        },
+      },
+    ],
+    tab: {
+      tabTitle: [
         {
-          title: "AI-Powered ERP: How Businesses Are Scaling Faster",
-          description:
-            "Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
-          source: "LinkedIn",
-          imageUrl: "/placeholder.svg?height=200&width=400",
-          author: "By LMNAs Cloud Solutions",
-          date: "2 days ago",
+          label: "For Students",
+          value: "students",
         },
         {
-          title: "5 AI-Driven ERP Trends That Will Transform Your Business",
-          description:
-            "The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
-          source: "LinkedIn",
-          imageUrl: "/placeholder.svg?height=200&width=400",
-          author: "By LMNAs Tech Blog",
-          date: "1 week ago",
-        },
-        {
-          title: "The Impact of AI on Enterprise Growth & Innovation",
-          description:
-            "Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
-          source: "YouTube",
-          imageUrl: "/placeholder.svg?height=200&width=400",
-          author: "By LMNAs Channel",
-          date: "3 days ago",
-        },
-        {
-          title: "Automation isn't the future. It's the present.",
-          description:
-            "See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI.",
-          source: "Twitter",
-          author: "By @LMNAsCloud",
-          date: "1 day ago",
-        },
-        {
-          title: "The Future of Cloud Solutions for Enterprise Transformation",
-          description:
-            "As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
-          source: "LinkedIn",
-          imageUrl: "/placeholder.svg?height=200&width=400",
-          author: "By LMNAs Cloud Solutions",
-          date: "4 days ago",
-        },
-        {
-          title: "How Data Analytics is Revolutionizing Business Decision-Making",
-          description:
-            "Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market.",
-          source: "LinkedIn",
-          author: "By LMNAs Tech Blog",
-          date: "5 days ago",
+          label: "For Institutions",
+          value: "institutions",
         },
       ],
-      trendSection: {
-        footer: {
-          button: {
-            label: "Show All Trends",
-            href: "/trending-now"
-          }
-        }
+      filterOptions: {
+        text: "Clear filters",
+        levels: ["Entry", "Mid", "Senior"],
+        roles: ["Development", "Design", "Data", "Support"],
+        cities: ["Bangalore", "Chennai", "Mumbai", "Delhi"],
+        types: ["Full-time", "Part-time", "Internship", "Contract"],
       },
-    }
-  };
+      filterLabels: {
+        levels: "Experience Level",
+        roles: "Role",
+        cities: "Location",
+        types: "Job Type",
+      },
+      error: "No matching opportunities found. Try adjusting your filters.",
+      button: {
+        label: "View All Opportunities",
+      },
+    },
+    studentJobs: [
+      {
+        id: "JD-0142",
+        title: "Junior Software Developer",
+        location: "Bangalore, India (Hybrid)",
+        type: "Full-time",
+        level: "Entry",
+        role: "Development",
+        skills: ["JavaScript", "React", "Node.js"],
+        description:
+          "Join our development team to build innovative solutions using modern technologies.",
+      },
+      {
+        id: "JD-0156",
+        title: "Associate Data Analyst",
+        location: "Chennai, India (Remote)",
+        type: "Full-time",
+        level: "Entry",
+        role: "Data",
+        skills: ["SQL", "Excel", "Python"],
+        description:
+          "Help transform data into actionable insights. Looking for analytical minds.",
+      },
+      {
+        id: "JD-0163",
+        title: "UI/UX Design Intern",
+        location: "Mumbai, India (On-site)",
+        type: "Internship",
+        level: "Entry",
+        role: "Design",
+        skills: ["Figma", "Adobe XD", "UI/UX"],
+        description: "Create beautiful, intuitive interfaces for our products.",
+      },
+      {
+        id: "JD-0178",
+        title: "Technical Support Engineer",
+        location: "Delhi, India (Hybrid)",
+        type: "Full-time",
+        level: "Mid",
+        role: "Support",
+        skills: ["Troubleshooting", "Customer Service", "Technical Knowledge"],
+        description:
+          "Provide technical assistance to our clients. Ideal for graduates with good communication skills.",
+      },
+      {
+        id: "JD-0185",
+        title: "Senior Frontend Developer",
+        location: "Bangalore, India (Hybrid)",
+        type: "Full-time",
+        level: "Senior",
+        role: "Development",
+        skills: ["React", "TypeScript", "Next.js"],
+        description:
+          "Lead our frontend development efforts and mentor junior developers.",
+      },
+      {
+        id: "JD-0192",
+        title: "Data Science Lead",
+        location: "Chennai, India (Hybrid)",
+        type: "Full-time",
+        level: "Senior",
+        role: "Data",
+        skills: ["Machine Learning", "Python", "TensorFlow"],
+        description:
+          "Drive our data science initiatives and develop predictive models.",
+      },
+    ],
 
-export default function Career({idCareer}:{idCareer:TcareersPageTarget} ) {
+    buttons: [
+      {
+        label: " On-Campus Recruitment",
+        href: "#",
+        icon: "Calendar",
+      },
+      {
+        label: " Contact Our Team",
+        href: "#",
+        icon: "Phone",
+        variant: "outline",
+      },
+    ],
+  },
+  section4: {
+    image: {
+      src: "https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg",
+      alt: "LMNAS-learning",
+    },
+    header: {
+      textWithoutColor: "Grow your skills with ",
+      text: "LMNAS",
+      subtitle:
+        "Even if you haven't joined us yet, you can still learn and grow with LMNAS through our expert-led courses and webinars.",
+      badge: "Continuous Learning",
+    },
+    points: {
+      textWithoutColor: "Looking for industry insights?",
+      subtitle:
+        "Join our webinars featuring experts discussing the latest trends and technologies.",
+    },
+    buttons: [
+      {
+        label: "Explore Courses",
+        href: "https://nectar.lmnas.com/index",
+      },
+      {
+        label: "Register for Webinars",
+        href: "#",
+        variant: "outline",
+      },
+    ],
+  },
+  section5: {
+    header: {
+      textWithoutColor: "Success Stories",
+      subtitle: "Hear from our people and see how LMNAS has transformed careers."
+    },
+    footer: {
+      header: {
+        textWithoutColor: "Your story could be next.",
+        subtitle: "Join us and be part of something bigger!"
+      },
+      button: {
+        label: "View All Stories",
+        href: "/solutions"
+      }
+    },
+    latestTrendsHeader: {
+      textWithoutColor: "Latest Trends from",
+      text: "LMNAs Cloud Solutions",
+      subtitle:
+        "Stay updated with the latest innovations, industry insights, and AI-driven solutions from LMNAs Cloud Solutions.",
+    },
+    trendsData: [
+      {
+        title: "AI-Powered ERP: How Businesses Are Scaling Faster",
+        description:
+          "Discover how AI-powered ERP solutions are transforming business operations and enabling unprecedented growth rates for enterprises of all sizes.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Cloud Solutions",
+        date: "2 days ago",
+      },
+      {
+        title: "5 AI-Driven ERP Trends That Will Transform Your Business",
+        description:
+          "The ERP landscape is evolving rapidly with AI at the forefront. Here are five key trends that will shape the future of enterprise resource planning.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Tech Blog",
+        date: "1 week ago",
+      },
+      {
+        title: "The Impact of AI on Enterprise Growth & Innovation",
+        description:
+          "Our CEO discusses how artificial intelligence is revolutionizing enterprise growth strategies and what businesses should do to stay competitive.",
+        source: "YouTube",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Channel",
+        date: "3 days ago",
+      },
+      {
+        title: "Automation isn't the future. It's the present.",
+        description:
+          "See how LMNAs Cloud is leading the charge with real-world solutions that deliver immediate ROI.",
+        source: "Twitter",
+        author: "By @LMNAsCloud",
+        date: "1 day ago",
+      },
+      {
+        title: "The Future of Cloud Solutions for Enterprise Transformation",
+        description:
+          "As cloud technology evolves, enterprises are finding new ways to leverage these solutions for greater efficiency, security, and scalability.",
+        source: "LinkedIn",
+        imageUrl: "/placeholder.svg?height=200&width=400",
+        author: "By LMNAs Cloud Solutions",
+        date: "4 days ago",
+      },
+      {
+        title: "How Data Analytics is Revolutionizing Business Decision-Making",
+        description:
+          "Data-driven decision making is no longer optional. Learn how advanced analytics is transforming how businesses operate and compete in today's market.",
+        source: "LinkedIn",
+        author: "By LMNAs Tech Blog",
+        date: "5 days ago",
+      },
+    ],
+    trendSection: {
+      footer: {
+        button: {
+          label: "Show All Trends",
+          href: "/trending-now"
+        }
+      }
+    },
+  }
+};
+
+export default function Career({ idCareer }: { idCareer: TcareersPageTarget }) {
   //section 3 usestate
   const [, fnSetActiveTab] = useState("students");
   const [SearchTerm, fnSetSearchTerm] = useState("");
@@ -493,26 +493,24 @@ export default function Career({idCareer}:{idCareer:TcareersPageTarget} ) {
       : career.section5.trendsData.filter(
         (idTrend) => idTrend.source.toLowerCase() === SelectedTab
       );
-      console.log(idCareer)
+  console.log(idCareer)
   return (
     <>
       <Navbar />
+
       <Hero
         idHero={
           {
             ...idCareer?.career?.heroSection,
             buttons: idCareer?.career?.heroSection.buttons.map((iaButton) => ({
               ...iaButton,
-              icon: (
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              ),
               iconPosition: "after",
               size: "lg",
             })),
           }
         }
       />
-      </>
+    </>
     // <>
     //   <Navbar />
     //   <Hero

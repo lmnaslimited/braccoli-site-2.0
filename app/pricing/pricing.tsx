@@ -395,9 +395,6 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
             ...idPricing.pricing.heroSection,
             buttons: idPricing.pricing.heroSection.buttons.map((idButton) => ({
               ...idButton,
-              icon: (
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              ),
               iconPosition: "after",
               size: "lg",
             })),

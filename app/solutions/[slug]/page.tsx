@@ -9,7 +9,6 @@ import Footer from "@repo/ui/components/footer";
 import CustomCard from "@repo/ui/components/customCard";
 import * as Icons from "lucide-react";
 import Callout from "@repo/ui/components/callout";
-import { TcalloutProps } from "@repo/ui/type";
 import { ArrowLeft, ArrowRight, Download, LucideIcon } from "lucide-react";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
