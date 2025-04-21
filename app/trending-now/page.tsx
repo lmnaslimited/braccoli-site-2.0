@@ -1,17 +1,10 @@
-import { TtrendsPageSource } from "@repo/middleware/src/types/typesSource";
+import { TtrendsPageSource, Iquery, clTransformerFactory, Itransformer, TtrendsPageTarget } from '@repo/middleware'
 import TrendingNowPage from "./trending-now";
-import { clQueryTrends } from  "@repo/middleware/src/api/trends"
-
-
 export default async function TrendingPage() {
-  // const trends = await clQueryTrends.getInstance().executeQuery();
-  // const { trend } = trends;
-  // const { heroSection } = trend;
-  // const { heading, description, buttons } = heroSection;
-
-  const queryInstance = new clQueryTrends();
-  const pageData = await queryInstance.executeQuery();
+  const ioTransformer: Itransformer<TtrendsPageSource, TtrendsPageTarget> = clTransformerFactory.createTransformer("Trends");
+  const pageData: TtrendsPageTarget = await ioTransformer.execute({ locale: 'de-DE' });
+  console.log('Trends Page Data', pageData.trend.heroSection)
   return (
-    <TrendingNowPage idTrend={pageData as TtrendsPageSource}/>
+    <TrendingNowPage idTrend={pageData} />
   );
 }
