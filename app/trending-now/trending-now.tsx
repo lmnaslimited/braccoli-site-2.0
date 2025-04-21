@@ -6,13 +6,12 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui
 import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
-import { TcalloutProps, TformMode } from "@repo/ui/type";
 import { useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { TtrendsPageSource } from "@repo/middleware"
+import { TformMode, TtrendsPageSource } from "@repo/middleware"
 
 
 const TrendingPage = {
