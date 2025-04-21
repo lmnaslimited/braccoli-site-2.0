@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, type ReactNode } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
