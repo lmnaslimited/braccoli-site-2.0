@@ -17,7 +17,6 @@ import { TformMode, TindustriesPageTarget } from "@repo/middleware";
 export default function IndustryComp({ idIndustry }: { idIndustry: TindustriesPageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
-  console.log(idIndustry.heroSection.buttons, "idIndustry");
   return (
     <>
       <Navbar />

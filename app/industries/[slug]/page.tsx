@@ -2706,8 +2706,7 @@ export default async function Industries({
 }) {
   const { slug } = await params;
   const ioTransformer: ITransformer<TindustriesPageSource, TindustriesPageTarget> = clTransformerFactory.createTransformer('Industries');
-  const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: 'de-DE' });
-  console.log(pageData);
+  const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: 'en' });
   const Industry = pageData.industries.find((idIndustry) => idIndustry.slug === slug);
 
   return (

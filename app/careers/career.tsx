@@ -493,7 +493,6 @@ export default function Career({ idCareer }: { idCareer: TcareersPageTarget }) {
       : career.section5.trendsData.filter(
         (idTrend) => idTrend.source.toLowerCase() === SelectedTab
       );
-  console.log(idCareer)
   return (
     <>
       <Navbar />
