@@ -1,4 +1,3 @@
-import { Tindustry } from "@repo/ui/type";
 import {
   ArrowRight,
   BarChart,
@@ -47,7 +46,7 @@ import {
   User,
 } from "lucide-react";
 import IndustryComp from "../industry";
-
+import { clTransformerFactory, ITransformer, TindustriesPageSource, TindustriesPageTarget } from "@repo/middleware";
 const PageSlugs = [
   {
     id: "manufacturing",
@@ -2706,11 +2705,13 @@ export default async function Industries({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const Industry = PageSlugs.find((idIndustry) => idIndustry.id === slug);
+  const ioTransformer: ITransformer<TindustriesPageSource, TindustriesPageTarget> = clTransformerFactory.createTransformer('Industries');
+  const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: 'de-DE' });
+  console.log(pageData);
+  const Industry = pageData.industries.find((idIndustry) => idIndustry.slug === slug);
 
   return (
-    <></>
 
-    // <IndustryComp idIndustry={Industry as Tindustry} />
+    <IndustryComp idIndustry={Industry} />
   )
 }
