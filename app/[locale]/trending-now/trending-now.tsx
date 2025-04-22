@@ -1,16 +1,17 @@
 "use client";
 
-import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
-import { Button } from "@repo/ui/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
-import TrendCard from "@repo/ui/components/trendCard";
+// import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
+import { ArrowRight, Mail, } from "lucide-react";
+// import { Button } from "@repo/ui/components/ui/button";
+// import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
+// import TrendCard from "@repo/ui/components/trendCard";
 import Navbar from "@repo/ui/components/navbar";
 import Hero from "@repo/ui/components/hero";
 import { useState } from "react";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+// import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Footer from "@repo/ui/components/footer";
-import Callout from "@repo/ui/components/callout";
-import { useFormHandler } from "../hooks/useFormHandler";
+// import Callout from "@repo/ui/components/callout";
+import { useFormHandler } from "../../hooks/useFormHandler";
 import { TformMode, TtrendsPageSource } from "@repo/middleware"
 
 
@@ -277,7 +278,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
           ]
         }}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
-        {fnRenderFormBelowSection("containerOne")}
+        {fnRenderFormBelowSection("containerOne",idTrend.trend.heroSection)}
       </section>
       <Footer />
     </>

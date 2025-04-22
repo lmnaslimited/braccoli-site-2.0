@@ -1,27 +1,28 @@
-// Caching utility to fetch and memoize GraphQL data from Strapi using Next.js' `unstable_cache`.
-// This function wraps the `fetchFromStrapi` call and caches the response per query name.
+import { ITransformer } from '@repo/middleware';
+import { unstable_cache } from 'next/cache';
 
 
-import { unstable_cache } from 'next/cache'
-import type { TQueryName } from '@repo/ui/api/query'
-import { fnFetchFromStrapi } from '@repo/ui/utils/fetchGraphgl'
+const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
+console.log("LdCacheMap", LdCacheMap);
 
-const cacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
-
-export async function fnGetData<T>(iQueryName: TQueryName): Promise<T> {
-    
-  if (!cacheMap.has(iQueryName)) {
+export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
+  ilocale: string,
+  transformer: ITransformer<DynamicSourceType, DynamicTargetType>
+) {
+  const LCacheKey = `${transformer.contentType}-${ilocale}`;
+  if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
-        const data = await fnFetchFromStrapi<T>({ iQuery: iQueryName })
-        return data
+        const pageData: DynamicTargetType = await transformer.execute({
+          locale: ilocale,
+        });
+        return pageData;
       },
-      [iQueryName],
-
-      // - Caches query result with revalidation every 7200 seconds.
-      { revalidate: 7200, tags: [iQueryName] }
-    )
-    cacheMap.set(iQueryName, fetcher)
+      [ilocale],
+      { revalidate: 20, tags: ["posts"] }
+    );
+    LdCacheMap.set(LCacheKey, fetcher);
   }
-  return await cacheMap.get(iQueryName)!()
+  
+  return await LdCacheMap.get(LCacheKey)!();
 }
