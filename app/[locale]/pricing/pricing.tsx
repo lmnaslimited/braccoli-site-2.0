@@ -10,7 +10,7 @@ import CustomCard from "@repo/ui/components/customCard";
 import FAQs from "@repo/ui/components/faq";
 import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@repo/ui/components/ui/tabs";
 import Hero from "@repo/ui/components/hero";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/useFormHandler";
 import Footer from "@repo/ui/components/footer";
 import { TformMode, TpricingPageTarget } from "@repo/middleware";
 import Navbar from "@repo/ui/components/navbar";

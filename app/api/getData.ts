@@ -3,7 +3,6 @@ import { unstable_cache } from 'next/cache';
 
 
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
-console.log("LdCacheMap", LdCacheMap);
 
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   ilocale: string,
@@ -18,7 +17,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
         });
         return pageData;
       },
-      [ilocale],
+      [LCacheKey],
       { revalidate: 20, tags: ["posts"] }
     );
     LdCacheMap.set(LCacheKey, fetcher);
