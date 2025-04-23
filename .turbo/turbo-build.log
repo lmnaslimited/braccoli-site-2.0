@@ -1,9 +1,24 @@
 
 
-> braccoli@0.1.0 build /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 build /home/meharaj/Documents/sodhanai/lmnas-turbo/apps/braccoli-site-2.0
 > next build
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Environments: .env
 
  [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39mFailed to compile.
+
+../../packages/ui/src/components/hero.tsx:103:17
+Type error: Property 'items' does not exist on type 'TheroSection'.
+
+[0m [90m 101 |[39m           descripClass[33m:[39m [32m"max-w-xl md:text-2xl"[39m[0m
+[0m [90m 102 |[39m         }} [33m/[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 103 |[39m         {idHero[33m.[39mitems [33m&&[39m [33m<[39m[33mFeatureList[39m iaItems[33m=[39m{idHero[33m.[39mitems} [33m/[39m[33m>[39m}[0m
+[0m [90m     |[39m                 [31m[1m^[22m[39m[0m
+[0m [90m 104 |[39m         [33m<[39m[33mCTAButtons[39m iaButtons[33m=[39m{idHero[33m.[39mbuttons} [33m/[39m[33m>[39m[0m
+[0m [90m 105 |[39m       [33m<[39m[33m/[39m[33mdiv[39m[33m>[39m[0m
+[0m [90m 106 |[39m       {[90m/* Image part */[39m}[0m
+[2K[1G[?25hStatic worker exited with code: 1 and signal: null
+[?25l [36m.[39m [?25h[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

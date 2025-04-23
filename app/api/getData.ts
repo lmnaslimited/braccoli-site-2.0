@@ -1,9 +1,7 @@
 import { ITransformer } from '@repo/middleware';
 import { unstable_cache } from 'next/cache';
 
-
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
-console.log("LdCacheMap", LdCacheMap);
 
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   ilocale: string,
@@ -13,16 +11,18 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
+        console.log("Calling transformer.execute — not cached for ",LCacheKey);
         const pageData: DynamicTargetType = await transformer.execute({
           locale: ilocale,
         });
         return pageData;
       },
-      [ilocale],
-      { revalidate: 20, tags: ["posts"] }
+      [LCacheKey],
+      { revalidate: 60, tags: ["posts"] }
     );
     LdCacheMap.set(LCacheKey, fetcher);
   }
-  
+
+
   return await LdCacheMap.get(LCacheKey)!();
 }
