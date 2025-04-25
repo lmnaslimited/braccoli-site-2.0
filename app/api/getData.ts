@@ -18,7 +18,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
         return pageData;
       },
       [LCacheKey],
-      { revalidate: 20, tags: ["posts"] }
+      { revalidate: 120, tags: [LCacheKey,ilocale] }
     );
     LdCacheMap.set(LCacheKey, fetcher);
   }

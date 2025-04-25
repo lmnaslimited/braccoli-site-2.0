@@ -8,7 +8,7 @@ import Navbar from "@repo/ui/components/navbar";
 import Footer from "@repo/ui/components/footer";
 import CustomCard from "@repo/ui/components/customCard";
 import * as Icons from "lucide-react";
-import Callout from "@repo/ui/components/callout";
+// import Callout from "@repo/ui/components/callout";
 import { ArrowLeft, ArrowRight, Download, LucideIcon } from "lucide-react";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
@@ -603,126 +603,125 @@ export default async function CaseStudyPage({
   }
 
   return (
-    // <>
-    //   <Navbar />
-    //   <main className="min-h-screen bg-background pb-20">
-    //     <section className="relative h-[400px] md:h-[500px]">
-    //       <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/40" />
-    //       {/* Download Component - Positioned on the right side */}
-    //       <CustomCard
-    //         idCardProps={{
-    //           header: {
-    //             ...caseStudy.hero.card.header,
-    //             headingClass: "text-lg mb-2 text-background",
-    //             descripClass: "text-sm text-background/80",
-    //           },
-    //           className:
-    //             "absolute right-4 top-4 z-20 hidden md:block md:right-8 md:top-8 lg:right-12 lg:top-12 w-64 backdrop-blur-md bg-background/10 border border-background/20",
-    //           button: [
-    //             {
-    //               ...caseStudy.hero.card.button,
-    //               icon: <Download className="h-4 w-4" />,
-    //               iconPosition: "before",
-    //               variant: "outline",
-    //               size: "lg",
-    //             },
-    //           ],
-    //         }}
-    //       />
-    //       <div className="container relative z-10 mx-auto flex h-full flex-col items-start justify-end px-4 pb-12">
-    //         <Link
-    //           href={caseStudy.hero.link.href}
-    //           className="mb-4 flex items-center gap-2 text-background hover:underline"
-    //         >
-    //           <ArrowLeft className="h-4 w-4" />
-    //           {caseStudy.hero.link.label}
-    //         </Link>
-    //         <Badge className="mb-2">{caseStudy.hero.badge}</Badge>
-    //         <h1 className="mb-2 text-4xl font-bold text-background md:text-5xl">
-    //           {caseStudy.title}
-    //         </h1>
-    //         <div className="flex flex-wrap items-center gap-4 text-background">
-    //           {caseStudy.hero.industry.map((idItem, iIndex) => {
-    //             const IconComponent =
-    //               (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) ||
-    //               Icons.Users;
-    //             return (
-    //               <div className="flex items-center gap-1" key={iIndex}>
-    //                 <IconComponent className="h-4 w-4" />
-    //                 <span className="text-sm">{idItem.label}</span>
-    //               </div>
-    //             );
-    //           })}
-    //         </div>
-    //       </div>
-    //     </section>
+    <>
+      <Navbar />
+      <main className="min-h-screen bg-background pb-20">
+        <section className="relative h-[400px] md:h-[500px]">
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/40" />
+          {/* Download Component - Positioned on the right side */}
+          <CustomCard
+            idCardProps={{
+              header: {
+                ...caseStudy.hero.card.header,
+                headingClass: "text-lg mb-2 text-background",
+                descripClass: "text-sm text-background/80",
+              },
+              className:
+                "absolute right-4 top-4 z-20 hidden md:block md:right-8 md:top-8 lg:right-12 lg:top-12 w-64 backdrop-blur-md bg-background/10 border border-background/20",
+              button: [
+                {
+                  ...caseStudy.hero.card.button,
+                  icon: <Download className="h-4 w-4" />,
+                  iconPosition: "before",
+                  variant: "outline",
+                  size: "lg",
+                },
+              ],
+            }}
+          />
+          <div className="container relative z-10 mx-auto flex h-full flex-col items-start justify-end px-4 pb-12">
+            <Link
+              href={caseStudy.hero.link.href}
+              className="mb-4 flex items-center gap-2 text-background hover:underline"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              {caseStudy.hero.link.label}
+            </Link>
+            <Badge className="mb-2">{caseStudy.hero.badge}</Badge>
+            <h1 className="mb-2 text-4xl font-bold text-background md:text-5xl">
+              {caseStudy.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-4 text-background">
+              {caseStudy.hero.industry.map((idItem, iIndex) => {
+                const IconComponent =
+                  (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) ||
+                  Icons.Users;
+                return (
+                  <div className="flex items-center gap-1" key={iIndex}>
+                    <IconComponent className="h-4 w-4" />
+                    <span className="text-sm">{idItem.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
 
-    //     {/* Main Content with Dynamic Sidebar */}
-    //     <section className="container mx-auto px-4 py-16">
-    //       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
-    //         {/* Main Content Column */}
-    //         <div className="lg:col-span-8">
-    //           {/* Problem Section */}
-    //           <ProblemSection idCaseStudy={caseStudy.problem} />
+        {/* Main Content with Dynamic Sidebar */}
+        <section className="container mx-auto px-4 py-16">
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
+            {/* Main Content Column */}
+            <div className="lg:col-span-8">
+              {/* Problem Section */}
+              <ProblemSection idCaseStudy={caseStudy.problem} />
 
-    //           {/* Solution Section */}
-    //           <SolutionSection idCaseStudy={caseStudy.solution} />
-    //         </div>
+              {/* Solution Section */}
+              <SolutionSection idCaseStudy={caseStudy.solution} />
+            </div>
 
-    //         {/* Dynamic Sidebar - Hidden on smaller screens */}
-    //         <div className="hidden lg:block lg:col-span-4">
-    //           <DynamicSidebar idCaseStudy={caseStudy.sidebarData} />
-    //         </div>
-    //       </div>
-    //     </section>
+            {/* Dynamic Sidebar - Hidden on smaller screens */}
+            <div className="hidden lg:block lg:col-span-4">
+              <DynamicSidebar idCaseStudy={caseStudy.sidebarData} />
+            </div>
+          </div>
+        </section>
 
-    //     {/* Related Case Studies Section */}
-    //     {/* <RelatedCaseStudies idCaseStudies={relatedCaseStudies} /> */}
-    //     <section className="border-t bg-muted/30 py-20">
-    //     <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
-    //     <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
-    //     </div>
-    //     <Tab
-    //       idTab={{
-    //         data:
-    //           caseStudy.RelatedCaseStudies.map((idCard) => ({
-    //             ...idCard,
-    //             header: {
-    //               ...idCard.header,
-    //               headingClass: "text-xl font-semibold mb-2",
-    //               descripClass:"text-base"
-    //             },
-    //             tag:idCard.category,
-    //             // className: "max-w-sm",
-    //             link:
-    //               idCard.link?.map((iaButton) => ({
-    //                 ...iaButton,
-    //                 icon: <ArrowRight className="size-5" />,
-    //                 iconPosition: "after",
-    //                 size:"lg"
-    //               })) ?? [],
-    //           })) ?? [],
-    //         TabDefault: {
-    //           text: "All Industry",
-    //           label: "View All Solution",
-    //         },
-    //       }}
-    //     />
-    //     <div className="text-center">
-    //    <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
-    //    {caseStudy.hero.link.label}
-    //    <ArrowRight className="h-4 w-4" />
-    //     </Button></Link>
-    //     </div>
-    //     </section>
-    //     <section className="bg-dark/70 py-12">
-    //       <div className="container mx-auto px-4 text-center">
-    //         <Callout idCallout={caseStudy.footer as TcalloutProps} />
-    //       </div>
-    //     </section>
-    //   </main>
-    //   <Footer />
-    // </>
-    <></>
+        {/* Related Case Studies Section */}
+        {/* <RelatedCaseStudies idCaseStudies={relatedCaseStudies} /> */}
+        <section className="border-t bg-muted/30 py-20">
+        <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
+        <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
+        </div>
+        <Tab
+          idTab={{
+            data:
+              caseStudy.RelatedCaseStudies.map((idCard) => ({
+                ...idCard,
+                header: {
+                  ...idCard.header,
+                  headingClass: "text-xl font-semibold mb-2",
+                  descripClass:"text-base"
+                },
+                tag:idCard.category,
+                // className: "max-w-sm",
+                link:
+                  idCard.link?.map((iaButton) => ({
+                    ...iaButton,
+                    icon: <ArrowRight className="size-5" />,
+                    iconPosition: "after",
+                    size:"lg"
+                  })) ?? [],
+              })) ?? [],
+            TabDefault: {
+              text: "All Industry",
+              label: "View All Solution",
+            },
+          }}
+        />
+        <div className="text-center">
+       <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
+       {caseStudy.hero.link.label}
+       <ArrowRight className="h-4 w-4" />
+        </Button></Link>
+        </div>
+        </section>
+        <section className="bg-dark/70 py-12">
+          <div className="container mx-auto px-4 text-center">
+            {/* <Callout idCallout={caseStudy.footer as TcalloutProps} /> */}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
   );
 }

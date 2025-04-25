@@ -64,7 +64,7 @@ import {
   Target,
   UserCircle,
 } from "lucide-react";
-import ProductsComp from "../product";
+import ProductsComp from "../products";
 import { Tproduct } from "@repo/ui/type";
 
 const PageSlug = [
@@ -2400,7 +2400,7 @@ export default async function Products({
   const { slug } = await params;
   const Product = PageSlug.find((idProduct) => idProduct.id === slug);
   return (
-    <></>
-    // <ProductsComp idProduct={Product as Tproduct} />
+    
+    <ProductsComp idProduct={Product as Tproduct} />
   );
 }

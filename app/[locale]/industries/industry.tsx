@@ -1,20 +1,20 @@
 "use client"
-import Callout from "@repo/ui/components/callout";
-import CustomCard from "@repo/ui/components/customCard";
-import Footer from "@repo/ui/components/footer";
+// import Callout from "@repo/ui/components/callout";
+// import CustomCard from "@repo/ui/components/customCard";
+// import Footer from "@repo/ui/components/footer";
+// import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+// import { ArrowRight, Calendar } from "lucide-react";
+// import Image from "next/image";
+// import Tab from "@repo/ui/components/tab";
+// import { Button } from "@repo/ui/components/ui/button";
+// import PainPoints from "@repo/ui/components/painPoint";
 import Hero from "@repo/ui/components/hero";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { ArrowRight, Calendar } from "lucide-react";
-import Image from "next/image";
-import Tab from "@repo/ui/components/tab";
-import { Button } from "@repo/ui/components/ui/button";
-import PainPoints from "@repo/ui/components/painPoint";
 import Navbar from "@repo/ui/components/navbar";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { TformMode, TindustriesPageTarget } from "@repo/middleware";
+import { TformMode, Tindustries } from "@repo/middleware";
 
 
-export default function IndustryComp({ idIndustry }: { idIndustry: TindustriesPageTarget }) {
+export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   return (

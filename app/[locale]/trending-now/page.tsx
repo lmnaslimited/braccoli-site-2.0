@@ -5,13 +5,14 @@ import {
 import TrendingNowPage from "./trending-now";
 import { fnGetCacheData } from "../../api/getData";
 
-type Props = {
-  params: {
-    locale: string;
-  };
-};
 
-export default async function TrendingPage({ params }: Props) {
+export default async function TrendingPage({
+  params,
+}: {
+  params: Promise<{
+    locale: string;
+  }>;
+}) {
   const { locale } = await params;
   const pageData: TtrendsPageTarget = await fnGetCacheData(
     locale,

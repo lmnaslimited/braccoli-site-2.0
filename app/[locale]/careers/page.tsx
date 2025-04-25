@@ -1,14 +1,14 @@
-import { TcareersPageSource, IQuery, clTransformerFactory, ITransformer, TcareersPageTarget } from '@repo/middleware'
+import {  clTransformerFactory, TcareersPageTarget } from '@repo/middleware'
 import Career from "./career";
 import { fnGetCacheData } from '../../api/getData';
 
-type Props = {
-  params: {
+export default async function CareerPage({
+  params,
+}: {
+  params: Promise<{
     locale: string;
-  };
-};
-
-export default async function CareerPage({ params }: Props) {
+  }>;
+}) {
   const { locale } = await params;
 
   const pageData:TcareersPageTarget = await fnGetCacheData(
