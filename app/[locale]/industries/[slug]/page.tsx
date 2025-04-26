@@ -45,8 +45,11 @@
 //   Navigation,
 //   User,
 // } from "lucide-react";
+import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
+import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
+import { fnGetCacheData } from "../../../api/getData";
 import IndustryComp from "../industry";
-import { clTransformerFactory, ITransformer, Tindustries, TindustriesPageSource, TindustriesPageTarget } from "@repo/middleware";
+import { clTransformerFactory, IQuery, ITransformer, Tindustries, TindustriesPageSource, TindustriesPageTarget, TslugsSource, TslugsTarget } from "@repo/middleware";
 
 // import { clTransformerFactory, IQuery, ITransformer, Tindustries, TindustriesPageSource, TindustriesPageTarget, TslugsSource, TslugsTarget } from "@repo/middleware";
 // import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
@@ -2704,81 +2707,46 @@ import { clTransformerFactory, ITransformer, Tindustries, TindustriesPageSource,
 //   },
 // ];
 
+export async function generateStaticParams({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  const ioQuery: IQuery<TslugsSource> = new clQuerySlug('industries');
+  const ioTransformer: ITransformer<TslugsSource, TslugsTarget> = new clSlugsTransformer('industries', ioQuery);
+  const slugs: TslugsTarget = await ioTransformer.execute({ locale: locale });
+
+  return slugs.map((islug) => ({
+    slug: islug.slug,
+  }))
+}
+
 export default async function Industries({
   params,
 }: {
-  params: Promise<{ slug: string, locale: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug,locale } = await params;
-  
-  const ioTransformer: ITransformer<TindustriesPageSource, TindustriesPageTarget> = clTransformerFactory.createTransformer('Industries');
-  const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: locale });
-  const Industry  = pageData.industries.find((idIndustry) => idIndustry.slug === slug);
-  console.log(Industry?.heroSection?.buttons);
+  const { slug, locale } = await params;
 
-  // const ioQuery:IQuery<TslugsSource> = new clQuerySlug('industries');
-  // const ioTransformer: ITransformer<TslugsSource, TslugsTarget> = new clSlugsTransformer('industries', ioQuery);
-  // const ASlugs: TslugsTarget = await ioTransformer.execute({ locale: 'en' });
-  const industry:Tindustries ={
-       slug: 'manufacturing',
-       heroSection: {
-         heading: {
-           title: 'AI-Powered ERP',
-           subtitle: 'Eliminate inefficiencies, reduce delays, and gain real-time production insights—all with LENS ERP Suite.',
-           highlight: 'Revolutionize Your Manufacturing with',
-           badge: 'LENS ERP Suite'
-         },
-         highlight: [
-             {
-               label: '30% Less Downtime',
-               icon: 'Clock',
-               question: "",
-               answer: "",
-               title: "",
-               subtitle: ""
-             },
-             {
-               label: '50% Faster Reporting',
-               icon: 'BarChart3',
-               question: "",
-               answer: "",
-               title: "",
-               subtitle: ""
-             },
-             {
-               label: '90% Defect Reduction',
-               icon: 'ArrowRight',
-               question: "",
-               answer: "",
-               title: "",
-               subtitle: ""
-             }
-           ],
-         image: {
-           alternate: 'hero-image',
-           source: 'https://res.cloudinary.com/lmnas/image/upload/v1742273824/Website/placeholder/placeholder.svg'
-         },
-         buttons: [
-             {
-               formMode: 'contact',
-               href: "null",
-               icon: 'ArrowRight',
-               label: 'Ask for Demo',
-               variant: 'default'
-             },
-             {
-               formMode: 'booking',
-               href: "null",
-               icon: 'Calendar',
-               label: 'Book a Free Consultation',
-               variant: 'outline'
-             }
-           ]
-       }
-     }
+  const context: Record<string, any> = {
+    locale: locale,
+    filters: {
+      slug: {
+        eq: slug,
+      },
+    },
+  };
+  // const ioTransformer: ITransformer<TindustriesPageSource, TindustriesPageTarget> = clTransformerFactory.createTransformer('industries');
+  // const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: locale });
+  // const Industry = pageData.industries.find((idIndustry) => idIndustry.slug === slug);
 
+  const pageData: TindustriesPageTarget = await fnGetCacheData(
+    context,
+    clTransformerFactory.createTransformer('industries')
+  );
   return (
-    
-    <IndustryComp idIndustry={Industry ?? industry} />
-  )
+    <IndustryComp idIndustry={pageData.industries[0]} />
+  );
 }

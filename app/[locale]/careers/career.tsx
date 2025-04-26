@@ -427,22 +427,21 @@ export default function Career({ idCareer }: { idCareer: TcareersPageTarget }) {
     location: [],
   });
 
-// Fetch jobs and available filter options from the API on component mount
-useEffect(() => {
-  const fnFetchJobs = async ():Promise<void> => {
-    try {
-      const LdResult = await fetch('/api/job');
-      const LdJobs = await LdResult.json();
-      console.log(LdJobs)
-      fnSetStudentJobs(LdJobs.data.data);
-      fnSetFilterOptions(LdJobs.data.filters);
-    } catch (error) {
-      console.error("Failed :", error);
-    }
-  };
+  // Fetch jobs and available filter options from the API on component mount
+  useEffect(() => {
+    const fnFetchJobs = async (): Promise<void> => {
+      try {
+        const LdResult = await fetch('/api/job');
+        const LdJobs = await LdResult.json();
+        fnSetStudentJobs(LdJobs.data.data);
+        fnSetFilterOptions(LdJobs.data.filters);
+      } catch (error) {
+        console.error("Failed :", error);
+      }
+    };
 
-  fnFetchJobs();
-}, []);
+    fnFetchJobs();
+  }, []);
 
   // Apply filtering logic to the list of jobs based on search input and selected filters
   const LaFilteredJobs = StudentJobs.filter((idJob) => {
@@ -461,7 +460,7 @@ useEffect(() => {
       SelectedFilters.role.length === 0 ||
       SelectedFilters.role.includes(idJob.role);
 
-     // Check if job matches selected locations
+    // Check if job matches selected locations
     const MatchesCities =
       SelectedFilters.location.length === 0 ||
       SelectedFilters.location.some((city) => idJob.location.includes(city));
@@ -473,7 +472,7 @@ useEffect(() => {
       MatchesSearch &&
       // MatchesLevels &&
       MatchesRoles &&
-      MatchesCities 
+      MatchesCities
       // &&
       // MatchesTypes
     );
@@ -520,78 +519,77 @@ useEffect(() => {
   // Clean up markdown or HTML tags from input strings for display
   const fnStripMarkdownOrHtml = (iInput: string): string => {
     if (!iInput) return "";
-  
+
     // First, remove any HTML tags
     const LHtmlStripped = iInput.replace(/<\/?[^>]+(>|$)/g, "");
-  
+
     // Then, remove common markdown symbols
     const LMarkdownStripped = LHtmlStripped
       .replace(/[*_~`>#\-+=[\]{}()]/g, "")
       .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1"); // [text](link) => text
-  
+
     // Split by \n, trim each line, and join with commas
     const LCommaSeparated = LMarkdownStripped
-    .split("\n")
-    .map(line => line.trim())
-    .filter(line => line !== "")
-    .join(", ");
+      .split("\n")
+      .map(line => line.trim())
+      .filter(line => line !== "")
+      .join(", ");
 
-  return LCommaSeparated;
+    return LCommaSeparated;
   };
-  
+
 
   //Section 5 social page
 
   // Track the currently selected tab (e.g., "all", "linkedin", etc.)
   const [SelectedTab, setSelectedTab] = useState("all");
   // Track which tab is currently expanded (used for "show more" logic)
-    const [expandedTab, setExpandedTab] = useState("");
-    // Define the available source types
-    const UniqueSources = [
-      "all","linkedin", "youtube", "tweeter"
-    ];
+  const [expandedTab, setExpandedTab] = useState("");
+  // Define the available source types
+  const UniqueSources = [
+    "all", "linkedin", "youtube", "tweeter"
+  ];
 
-    // When the selected tab changes, reset the expanded state
-    useEffect(() => {
-      setExpandedTab(""); // reset expanded tab when tab is switched
-    }, [SelectedTab]);
+  // When the selected tab changes, reset the expanded state
+  useEffect(() => {
+    setExpandedTab(""); // reset expanded tab when tab is switched
+  }, [SelectedTab]);
 
   // State to hold the fetched video/trend data
   const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
-  
+
   // Filter videos based on the selected tab.
-// If "all" is selected, show everything.
-// Otherwise, filter by the matching source.
-    const filteredByTab = SelectedTab === "all"
+  // If "all" is selected, show everything.
+  // Otherwise, filter by the matching source.
+  const filteredByTab = SelectedTab === "all"
     ? video
     : video.filter(
-        (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-      );
-  
- // If the current tab is expanded, show all items in that tab.
-// Otherwise, only show the first 9 items.
+      (idTrend) => idTrend.source.toLowerCase() === SelectedTab
+    );
+
+  // If the current tab is expanded, show all items in that tab.
+  // Otherwise, only show the first 9 items.
   const FilteredTrends =
     expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
-  
-    // Fetch data from the API once when the component mounts
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const LdResult = await fetch('/api/social');
-          const LdSocialData = await LdResult.json();
-          fnSetVideo(LdSocialData.data);
-        } catch (error) {
-          console.error("Failed to fetch social data:", error);
-        }
-      };
-  
-      fetchData();
-    }, []);
-  
+
+  // Fetch data from the API once when the component mounts
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const LdResult = await fetch('/api/social');
+        const LdSocialData = await LdResult.json();
+        fnSetVideo(LdSocialData.data);
+      } catch (error) {
+        console.error("Failed to fetch social data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <>
       <Navbar />
-
       <Hero
         idHero={
           {
@@ -604,7 +602,7 @@ useEffect(() => {
           }
         }
       />
-           <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
+      <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative mx-auto md:ml-0 w-full space-y-4">
@@ -614,7 +612,7 @@ useEffect(() => {
                 </div>
                 <h4 className="font-semibold text-lg">
                   {idCareer.career.challengeSection.heading.title}
-                  
+
                 </h4>
               </div>
               <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
@@ -635,7 +633,7 @@ useEffect(() => {
                 </span>
               </div>
               <p className="text-lg text-muted-foreground">
-                {idCareer.career?.challengeSection?.highlight?.[0]?.description }
+                {idCareer.career?.challengeSection?.highlight?.[0]?.description}
               </p>
               <TitleSubtitle
                 idTitle={{
@@ -657,8 +655,6 @@ useEffect(() => {
           </div>
         </div>
       </section>
-
-
 
       {/* section 2 */}
       <section id="plan" className="lg:py-24 md:py-24 py-16 bg-background">
@@ -713,7 +709,6 @@ useEffect(() => {
 
 
       {/* section 3 */}
-
       <section id="cta" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
           <TitleSubtitle
@@ -724,13 +719,12 @@ useEffect(() => {
               descripClass: "max-w-lg mx-auto",
             }}
           />
-
           <Tabs defaultValue="students" className="mb-10">
             {/* student and industry tab */}
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-              {idCareer.career.jobsSection.list.slice(0,2).map((idTitle, iIndex) => (
+              {idCareer.career.jobsSection.list.slice(0, 2).map((idTitle, iIndex) => (
                 <TabsTrigger
-                  value={idTitle.subtitle}  
+                  value={idTitle.subtitle}
                   onClick={() => fnSetActiveTab(idTitle.subtitle)}
                   key={iIndex}
                 >
@@ -739,7 +733,7 @@ useEffect(() => {
                 </TabsTrigger>
               ))}
             </TabsList>
-             {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+            {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
               {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
                 <TabsTrigger
                   value={idTitle.value}
@@ -938,7 +932,6 @@ useEffect(() => {
                   </p>
                 </div>
               )}
-
               <motion.div
                 className="mt-10 text-center"
                 initial={{ opacity: 0 }}
@@ -982,7 +975,7 @@ useEffect(() => {
                       ))}
                     </div>
                     <div className="flex flex-wrap gap-4 pt-4">
-                      {idCareer.career.jobsSection.buttons.slice(1,3).map((idBtn, iIndex) => {
+                      {idCareer.career.jobsSection.buttons.slice(1, 3).map((idBtn, iIndex) => {
                         const BtnIconComponent =
                           (Icons[idBtn.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
                         return (
@@ -1011,7 +1004,6 @@ useEffect(() => {
           </Tabs>
         </div>
       </section>
-
 
       {/* section 4 */}
       <section id="learning" className="lg:py-24 md:py-24 py-16 bg-background">
@@ -1162,10 +1154,10 @@ useEffect(() => {
     //   />
 
     //   {/* section 1 */}
- 
+
 
     //   {/* section 2 */}
-      
+
 
     //   {/* section 3 */}
     //   <section id="cta" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
@@ -1457,7 +1449,7 @@ useEffect(() => {
     //   </section>
 
     //   {/* section 4 */}
-    
+
     //   {/* section 5 */}
     //   <section className="border-b border-border/40 lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
     //     <div className="mx-auto max-w-[85rem]">

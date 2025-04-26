@@ -1,7 +1,7 @@
 "use client";
 
 // import { ArrowRight, ChevronRight, Linkedin, Mail, Twitter, Youtube } from "lucide-react";
-import {  ChevronRight, Linkedin, Twitter, Youtube } from "lucide-react";
+import { ChevronRight, Linkedin, Twitter, Youtube } from "lucide-react";
 
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
@@ -249,7 +249,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   const [expandedTab, setExpandedTab] = useState("");
   // Define available content sources for tabs
   const UniqueSources = [
-    "all","linkedin", "youtube", "x"
+    "all", "linkedin", "youtube", "x"
   ];
 
   // When user switches tabs, reset the expanded state
@@ -258,22 +258,22 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   }, [SelectedTab]);
 
   // Stores the video/trend data fetched from the backend
-const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
+  const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
 
-// Filter video data based on selected tab
-// If "all" is selected, return all videos
-// Otherwise, return videos matching the selected source
+  // Filter video data based on selected tab
+  // If "all" is selected, return all videos
+  // Otherwise, return videos matching the selected source
   const filteredByTab = SelectedTab === "all"
-  ? video
-  : video.filter(
+    ? video
+    : video.filter(
       (idTrend) => idTrend.source.toLowerCase() === SelectedTab
     );
 
-// Control the number of items shown in the UI
-// If the tab is expanded (via "Show More"), show all filtered videos
-// Otherwise, show only the first 9 items
-const FilteredTrends =
-  expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
+  // Control the number of items shown in the UI
+  // If the tab is expanded (via "Show More"), show all filtered videos
+  // Otherwise, show only the first 9 items
+  const FilteredTrends =
+    expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
 
   // Fetch video data from the API when the component mounts
   useEffect(() => {
@@ -282,7 +282,6 @@ const FilteredTrends =
         const LdResult = await fetch('/api/social');
         const LdSocialData = await LdResult.json();
         fnSetVideo(LdSocialData.data);
-        console.log("Fetched social data:", LdSocialData.data);
       } catch (error) {
         console.error("Failed to fetch social data:", error);
       }
@@ -292,8 +291,8 @@ const FilteredTrends =
   }, []);
 
   return (
-    
-        <div className="flex min-h-screen flex-col bg-background">
+
+    <div className="flex min-h-screen flex-col bg-background">
       <Navbar />
       {/* Hero Section */}
       <section
@@ -317,8 +316,8 @@ const FilteredTrends =
           ]
         }}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
-        {fnRenderFormBelowSection("containerOne",idTrend.trend.heroSection)}
-      </section>      
+        {fnRenderFormBelowSection("containerOne", idTrend.trend.heroSection)}
+      </section>
 
       {/* Problem Section*/}
       <section ref={LdSectionRefs("containerTwo")}>
@@ -347,7 +346,7 @@ const FilteredTrends =
                     {idTrend.trend.frustrationSection[1].title}
                   </h3>
                   <p className="text-muted-foreground max-w-2xl mx-auto">
-                  {idTrend.trend.frustrationSection[1].subtitle}
+                    {idTrend.trend.frustrationSection[1].subtitle}
                   </p>
                 </div>
                 <div className="grid gap-6 md:grid-cols-3">
@@ -390,14 +389,14 @@ const FilteredTrends =
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/80 text-background"
-                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode  && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode , "containerTwo")}
+                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode, "containerTwo")}
                 >
-                    {idTrend.trend.frustrationSection[1].buttons[0]?.label}
-                    </Button>
+                  {idTrend.trend.frustrationSection[1].buttons[0]?.label}
+                </Button>
               </div>
             </div>
           </div>
-         
+
         </div>
         {fnRenderFormBelowSection("containerTwo")}
       </section>
@@ -407,7 +406,7 @@ const FilteredTrends =
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle
             idTitle={{
-              ... idTrend.trend.trendingSection,
+              ...idTrend.trend.trendingSection,
               className: "text-center md:text-left",
               headingClass: "",
               descripClass: "",
@@ -459,6 +458,6 @@ const FilteredTrends =
 
       {/* Footer Component */}
       <Footer />
-     </div >
+    </div >
   );
 }

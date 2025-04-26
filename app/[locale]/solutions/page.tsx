@@ -10,12 +10,11 @@ export default async function SolutionPage({
   }>;
 }) {
   const { locale } = await params;
-  console.log(locale)
   // const pageData: TsolutionsPageTarget = await fnGetCacheData(
   //   locale,
   //   clTransformerFactory.createTransformer("Solutions")
   // );
 
 
-  return <Solutions  />
+  return <Solutions />
 }

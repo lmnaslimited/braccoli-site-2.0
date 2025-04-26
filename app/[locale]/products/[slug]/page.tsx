@@ -66,6 +66,11 @@ import {
 } from "lucide-react";
 import ProductsComp from "../products";
 import { Tproduct } from "@repo/ui/type";
+import { clTransformerFactory, IQuery, ITransformer, TindustriesPageTarget, TproductsPageTarget, TslugsSource, TslugsTarget } from "@repo/middleware";
+import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
+import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
+import { fnGetCacheData } from "../../../api/getData";
+import IndustryComp from "../../industries/industry";
 
 const PageSlug = [
   {
@@ -2392,15 +2397,62 @@ const PageSlug = [
   },
 ];
 
+
+
+export async function generateStaticParams({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  const ioQuery: IQuery<TslugsSource> = new clQuerySlug('products');
+  const ioTransformer: ITransformer<TslugsSource, TslugsTarget> = new clSlugsTransformer('products', ioQuery);
+  const slugs: TslugsTarget = await ioTransformer.execute({ locale: locale });
+
+  return slugs.map((islug) => ({
+    slug: islug.slug,
+  }))
+}
+
 export default async function Products({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string; locale: string }>;
 }) {
-  const { slug } = await params;
-  const Product = PageSlug.find((idProduct) => idProduct.id === slug);
+  const { slug, locale } = await params;
+
+  const context: Record<string, any> = {
+    locale: locale,
+    filters: {
+      slug: {
+        eq: slug,
+      },
+    },
+  };
+  // const ioTransformer: ITransformer<TindustriesPageSource, TindustriesPageTarget> = clTransformerFactory.createTransformer('industries');
+  // const pageData: TindustriesPageTarget = await ioTransformer.execute({ locale: locale });
+  // const Industry = pageData.industries.find((idIndustry) => idIndustry.slug === slug);
+
+  const pageData: TproductsPageTarget = await fnGetCacheData(
+    context,
+    clTransformerFactory.createTransformer('products')
+  );
   return (
-    
-    <ProductsComp idProduct={Product as Tproduct} />
+    <ProductsComp idProduct={pageData.products[0]} />
   );
 }
+
+
+// export default async function Products({
+//   params,
+// }: {
+//   params: Promise<{ slug: string }>;
+// }) {
+//   const { slug } = await params;
+//   const Product = PageSlug.find((idProduct) => idProduct.id === slug);
+//   return (
+
+//     <ProductsComp idProduct={Product as Tproduct} />
+//   );
+// }
