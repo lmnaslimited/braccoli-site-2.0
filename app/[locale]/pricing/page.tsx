@@ -1,5 +1,4 @@
-// import { clTransformerFactory, ITransformer, TpricingPageSource, TpricingPageTarget } from "@repo/middleware";
-import { clTransformerFactory, TpricingPageTarget } from "@repo/middleware";
+import { clTransformerFactory, Tcontext, TpricingPageTarget } from "@repo/middleware";
 
 import Pricing from "./pricing";
 import { fnGetCacheData } from "../../api/getData";
@@ -12,8 +11,9 @@ export default async function PricingPage({
   }>;
 }) {
   const { locale } = await params;
+  const context: Tcontext = { locale: locale }
   const pageData: TpricingPageTarget = await fnGetCacheData(
-    locale,
+    context,
     clTransformerFactory.createTransformer("pricing")
   );
   return <Pricing idPricing={pageData} />

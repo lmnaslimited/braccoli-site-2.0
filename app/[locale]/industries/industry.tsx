@@ -1,23 +1,21 @@
 "use client"
+import { ArrowRight, Calendar } from "lucide-react";
 import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/customCard";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries } from "@repo/middleware";
-import { ArrowRight, Calendar } from "lucide-react";
 import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
-import Navbar from "@repo/ui/components/navbar";
+import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries } from "@repo/middleware";
+
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
   return (
     <>
-      <Navbar />
-
       {/* hero */}
       <div ref={LdSectionRefs("containerOne")}>
         <Hero idHero={idIndustry?.heroSection as TheroSection} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
@@ -46,7 +44,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </div>
 
       {/* features */}
-      {/* <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
             ...idIndustry?.featuresSectionHeader,
@@ -104,10 +102,10 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             );
           })}
         </div>
-      </section> */}
+      </section>
 
       {/* allFeature */}
-      {/* <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
             ...idIndustry?.allFeatureHeader,
@@ -138,7 +136,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             },
           }}
         />
-      </section> */}
+      </section>
 
       {/* cta */}
       <div ref={LdSectionRefs("containerThree")}>

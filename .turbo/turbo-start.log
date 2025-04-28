@@ -1,129 +1,91 @@
 
-> braccoli@0.1.0 start /home/meharaj/Documents/sodhanai/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.16.100:3000
+   - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 735ms
- [31m[1m⨯[22m[39m Error [ApolloError]: Response not successful: Received status code 401
-    at new t (.next/server/chunks/615.js:13:110994)
-    at <unknown> (.next/server/chunks/615.js:13:91385)
-    at o (.next/server/chunks/615.js:13:58433)
-    at <unknown> (.next/server/chunks/615.js:13:58348)
-    at new Promise (<anonymous>)
-    at Object.then (.next/server/chunks/615.js:13:58315)
-    at Object.error (.next/server/chunks/615.js:13:58443)
-    at b (.next/server/chunks/615.js:13:174674)
-    at g (.next/server/chunks/615.js:13:175175)
-    at t.error (.next/server/chunks/615.js:13:175728) {
-  graphQLErrors: [],
-  protocolErrors: [],
-  clientErrors: [],
-  networkError: Error [ServerError]: Response not successful: Received status code 401
-      at f (.next/server/chunks/615.js:13:113770)
-      at v (.next/server/chunks/615.js:13:113942)
-      at <unknown> (.next/server/chunks/615.js:13:121541) {
-    response: Response {
-      status: [33m401[39m,
-      statusText: [32m'Unauthorized'[39m,
-      headers: Headers {
-        [32m'access-control-allow-credentials'[39m: [32m'true'[39m,
-        [32m'access-control-allow-origin'[39m: [32m'*'[39m,
-        [32m'content-length'[39m: [32m'119'[39m,
-        [32m'content-security-policy'[39m: [32m"connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"[39m,
-        [32m'content-type'[39m: [32m'application/json; charset=utf-8'[39m,
-        date: [32m'Thu, 24 Apr 2025 17:56:37 GMT'[39m,
-        [32m'referrer-policy'[39m: [32m'no-referrer'[39m,
-        [32m'strict-transport-security'[39m: [32m'max-age=31536000; includeSubDomains'[39m,
-        vary: [32m'Origin'[39m,
-        [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
-        [32m'x-dns-prefetch-control'[39m: [32m'off'[39m,
-        [32m'x-download-options'[39m: [32m'noopen'[39m,
-        [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
-        [32m'x-permitted-cross-domain-policies'[39m: [32m'none'[39m,
-        [32m'x-powered-by'[39m: [32m'Strapi <strapi.io>'[39m
-      },
-      body: ReadableStream { locked: [33mtrue[39m, state: [32m'closed'[39m, supportsBYOB: [33mtrue[39m },
-      bodyUsed: [33mtrue[39m,
-      ok: [33mfalse[39m,
-      redirected: [33mfalse[39m,
-      type: [32m'basic'[39m,
-      url: [32m'https://dumps-240005.lmnaslens.com/graphql'[39m
-    },
-    statusCode: [33m401[39m,
-    result: { data: [1mnull[22m, error: [36m[Object][39m }
-  },
-  extraInfo: [90mundefined[39m,
-  digest: [32m'2991075119'[39m,
-  constructor: [36m[Function: t][39m,
-  [cause]: Error [ServerError]: Response not successful: Received status code 401
-      at f (.next/server/chunks/615.js:13:113770)
-      at v (.next/server/chunks/615.js:13:113942)
-      at <unknown> (.next/server/chunks/615.js:13:121541) {
-    response: Response {
-      status: [33m401[39m,
-      statusText: [32m'Unauthorized'[39m,
-      headers: Headers {
-        [32m'access-control-allow-credentials'[39m: [32m'true'[39m,
-        [32m'access-control-allow-origin'[39m: [32m'*'[39m,
-        [32m'content-length'[39m: [32m'119'[39m,
-        [32m'content-security-policy'[39m: [32m"connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"[39m,
-        [32m'content-type'[39m: [32m'application/json; charset=utf-8'[39m,
-        date: [32m'Thu, 24 Apr 2025 17:56:37 GMT'[39m,
-        [32m'referrer-policy'[39m: [32m'no-referrer'[39m,
-        [32m'strict-transport-security'[39m: [32m'max-age=31536000; includeSubDomains'[39m,
-        vary: [32m'Origin'[39m,
-        [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
-        [32m'x-dns-prefetch-control'[39m: [32m'off'[39m,
-        [32m'x-download-options'[39m: [32m'noopen'[39m,
-        [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
-        [32m'x-permitted-cross-domain-policies'[39m: [32m'none'[39m,
-        [32m'x-powered-by'[39m: [32m'Strapi <strapi.io>'[39m
-      },
-      body: ReadableStream { locked: [33mtrue[39m, state: [32m'closed'[39m, supportsBYOB: [33mtrue[39m },
-      bodyUsed: [33mtrue[39m,
-      ok: [33mfalse[39m,
-      redirected: [33mfalse[39m,
-      type: [32m'basic'[39m,
-      url: [32m'https://dumps-240005.lmnaslens.com/graphql'[39m
-    },
-    statusCode: [33m401[39m,
-    result: { data: [1mnull[22m, error: [36m[Object][39m }
-  }
+ [32m[1m✓[22m[39m Ready in 323ms
+https://dumps-240005.lmnaslens.com/graphql
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
 }
- [31m[1m⨯[22m[39m Error [ApolloError]: Response not successful: Received status code 401
-    at new t (.next/server/chunks/615.js:13:110994)
-    at <unknown> (.next/server/chunks/615.js:13:91385)
-    at o (.next/server/chunks/615.js:13:58433)
-    at <unknown> (.next/server/chunks/615.js:13:58348)
-    at new Promise (<anonymous>)
-    at Object.then (.next/server/chunks/615.js:13:58315)
-    at Object.error (.next/server/chunks/615.js:13:58443)
-    at b (.next/server/chunks/615.js:13:174674)
-    at g (.next/server/chunks/615.js:13:175175)
-    at t.error (.next/server/chunks/615.js:13:175728) {
-  graphQLErrors: [],
-  protocolErrors: [],
-  clientErrors: [],
-  networkError: Error [ServerError]: Response not successful: Received status code 401
-      at f (.next/server/chunks/615.js:13:113770)
-      at v (.next/server/chunks/615.js:13:113942)
-      at <unknown> (.next/server/chunks/615.js:13:121541) {
-    response: Response {
-      status: [33m401[39m,
-      statusText: [32m'Unauthorized'[39m,
-      headers: Headers {
-        [32m'access-control-allow-credentials'[39m: [32m'true'[39m,
-        [32m'access-control-allow-origin'[39m: [32m'*'[39m,
-        [32m'content-length'[39m: [32m'119'[39m,
-        [32m'content-security-policy'[39m: [32m"connect-src 'self' https:;img-src 'self' data: blob: https://market-assets.strapi.io;media-src 'self' data: blob:;default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline'"[39m,
-        [32m'content-type'[39m: [32m'application/json; charset=utf-8'[39m,
-        date: [32m'Thu, 24 Apr 2025 17:56:50 GMT'[39m,
-        [32m'referrer-policy'[39m: [32m'no-referrer'[39m,
-        [32m'strict-transport-security'[39m: [32m'max-age=31536000; includeSubDomains'[39m,
-        vary: [32m'Origin'[39m,
-        [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
-        [32m'x-dns-
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
+    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
+  digest: [32m'1597549624'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
+  digest: [32m'1314401344'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
+  digest: [32m'3221610477'[39m
+}

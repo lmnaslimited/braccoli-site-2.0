@@ -1,14 +1,11 @@
 import Link from "next/link"
 import FAQs from "@repo/ui/components/faq"
-// import type { TtermPrivacy } from "@repo/ui/type"
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
 import { fnGetCacheData } from "../../api/getData"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
-import Navbar from "@repo/ui/components/navbar"
-import Footer from "@repo/ui/components/footer"
-import { clTransformerFactory, TtermsAndConditionsPageTarget } from "@repo/middleware"
+import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from "@repo/middleware"
 
 export default async function TermsAndConditions({
   params,
@@ -19,13 +16,13 @@ export default async function TermsAndConditions({
 }) {
 
   const { locale } = await params;
+  const context: Tcontext = { locale: locale }
   const idTerms: TtermsAndConditionsPageTarget = await fnGetCacheData(
-    locale,
+    context,
     clTransformerFactory.createTransformer("termsAndCondition")
   )
   return (
     <>
-      <Navbar />
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -45,10 +42,7 @@ export default async function TermsAndConditions({
           </div>
         </div>
         {/* Content Section */}
-
-
         <div className="container mx-auto px-4 py-12 max-w-4xl">
-
           <div className="p-8 mb-12">
             <div className="prose prose-gray max-w-none text-card-foreground leading-relaxed text-justify">
               <ReactMarkdown
@@ -105,9 +99,7 @@ export default async function TermsAndConditions({
             </div>
           </div>
         </div>
-
       </div>
-      <Footer />
     </>
   )
 }

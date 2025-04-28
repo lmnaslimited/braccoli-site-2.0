@@ -5,7 +5,7 @@ import { ProblemSection } from "@repo/ui/components/problemSection";
 import { SolutionSection } from "@repo/ui/components/solutionSection";
 import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
 import Navbar from "@repo/ui/components/navbar";
-import Footer from "@repo/ui/components/footer";
+// import Footer from "@repo/ui/components/footer";
 import CustomCard from "@repo/ui/components/customCard";
 import * as Icons from "lucide-react";
 // import Callout from "@repo/ui/components/callout";
@@ -618,7 +618,7 @@ export default async function CaseStudyPage({
               },
               className:
                 "absolute right-4 top-4 z-20 hidden md:block md:right-8 md:top-8 lg:right-12 lg:top-12 w-64 backdrop-blur-md bg-background/10 border border-background/20",
-              button: [
+              buttons: [
                 {
                   ...caseStudy.hero.card.button,
                   icon: <Download className="h-4 w-4" />,
@@ -679,41 +679,41 @@ export default async function CaseStudyPage({
         {/* Related Case Studies Section */}
         {/* <RelatedCaseStudies idCaseStudies={relatedCaseStudies} /> */}
         <section className="border-t bg-muted/30 py-20">
-        <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
-        <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
-        </div>
-        <Tab
-          idTab={{
-            data:
-              caseStudy.RelatedCaseStudies.map((idCard) => ({
-                ...idCard,
-                header: {
-                  ...idCard.header,
-                  headingClass: "text-xl font-semibold mb-2",
-                  descripClass:"text-base"
-                },
-                tag:idCard.category,
-                // className: "max-w-sm",
-                link:
-                  idCard.link?.map((iaButton) => ({
-                    ...iaButton,
-                    icon: <ArrowRight className="size-5" />,
-                    iconPosition: "after",
-                    size:"lg"
-                  })) ?? [],
-              })) ?? [],
-            TabDefault: {
-              text: "All Industry",
-              label: "View All Solution",
-            },
-          }}
-        />
-        <div className="text-center">
-       <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
-       {caseStudy.hero.link.label}
-       <ArrowRight className="h-4 w-4" />
-        </Button></Link>
-        </div>
+          <div className=" flex flex-col items-center justify-between gap-6 sm:flex-row container mx-auto">
+            <h2 className="text-3xl font-bold">Explore More Case Studies</h2>
+          </div>
+          <Tab
+            idTab={{
+              data:
+                caseStudy.RelatedCaseStudies.map((idCard) => ({
+                  ...idCard,
+                  header: {
+                    ...idCard.header,
+                    headingClass: "text-xl font-semibold mb-2",
+                    descripClass: "text-base"
+                  },
+                  tag: idCard.category,
+                  // className: "max-w-sm",
+                  link:
+                    idCard.link?.map((iaButton) => ({
+                      ...iaButton,
+                      icon: <ArrowRight className="size-5" />,
+                      iconPosition: "after",
+                      size: "lg"
+                    })) ?? [],
+                })) ?? [],
+              TabDefault: {
+                text: "All Industry",
+                label: "View All Solution",
+              },
+            }}
+          />
+          <div className="text-center">
+            <Link href={caseStudy.hero.link.href}> <Button size={"lg"}>
+              {caseStudy.hero.link.label}
+              <ArrowRight className="h-4 w-4" />
+            </Button></Link>
+          </div>
         </section>
         <section className="bg-dark/70 py-12">
           <div className="container mx-auto px-4 text-center">
@@ -721,7 +721,6 @@ export default async function CaseStudyPage({
           </div>
         </section>
       </main>
-      <Footer />
     </>
   );
 }

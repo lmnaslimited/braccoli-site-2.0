@@ -1,4 +1,4 @@
-import { clTransformerFactory, TcareersPageTarget } from '@repo/middleware'
+import { clTransformerFactory, TcareerPageTarget, Tcontext } from '@repo/middleware'
 import Career from "./career";
 import { fnGetCacheData } from '../../api/getData';
 
@@ -10,9 +10,9 @@ export default async function CareerPage({
   }>;
 }) {
   const { locale } = await params;
-  const context: Record<string, any> = { locale: locale }
+  const context: Tcontext = { locale: locale }
 
-  const pageData: TcareersPageTarget = await fnGetCacheData(
+  const pageData: TcareerPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('career')
   );

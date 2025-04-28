@@ -4,10 +4,8 @@ import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import Footer from "@repo/ui/components/footer";
 import { fnGetCacheData } from "../../api/getData";
-import { clTransformerFactory, TprivacyPolicyPageSource } from "@repo/middleware";
-import Navbar from "@repo/ui/components/navbar";
+import { clTransformerFactory, Tcontext, TprivacyPolicyPageSource } from "@repo/middleware";
 
 
 export default async function PrivacyPolicy({ params,
@@ -18,13 +16,13 @@ export default async function PrivacyPolicy({ params,
 }) {
 
   const { locale } = await params;
+  const context: Tcontext = { locale: locale }
   const idPrivacy: TprivacyPolicyPageSource = await fnGetCacheData(
-    locale,
+    context,
     clTransformerFactory.createTransformer("privacyPolicy")
   )
   return (
     <>
-      <Navbar />
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -110,7 +108,6 @@ export default async function PrivacyPolicy({ params,
         </div>
 
       </div>
-      <Footer />
     </>
   );
 }

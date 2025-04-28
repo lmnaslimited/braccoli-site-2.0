@@ -1,20 +1,19 @@
 "use client"
 import Link from "next/link";
 import { ArrowRight, CheckCircle, ChevronRight, Clock, Users, } from "lucide-react";
-import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
-import CustomCard from "@repo/ui/components/customCard";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import CustomCard from "@repo/ui/components/customCard";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
+import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
 
 export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
   return (
     <>
-      <div>{idProduct.heroSection.heading.title}</div>
-      {/* <div ref={LdSectionRefs("containerOne")}>
+      <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={
             {
@@ -32,10 +31,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
         />
         {fnRenderFormBelowSection("containerOne")}
-      </div> */}
+      </div>
 
       {/* problems */}
-      {/* <div ref={LdSectionRefs("containerTwo")}>
+      <div ref={LdSectionRefs("containerTwo")}>
         <section className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -47,7 +46,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 descripClass: "max-w-[85%] md:text-xl/relaxed",
               }}
             />
-            <div className="mx-auto grid max-w-5xl py-12 md:grid-cols-2 gap-12">  
+            <div className="mx-auto grid max-w-5xl py-12 md:grid-cols-2 gap-12">
               <CustomCard
                 idCardProps={{
                   header: { title: idProduct?.problemsSection.title },
@@ -69,7 +68,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     className: "md:text-left text-center mb-2"
                   }}
                 />
-                <div className="flex flex-col gap-4 sm:flex-row"> 
+                <div className="flex flex-col gap-4 sm:flex-row">
                   {idProduct?.problemsSection.buttons.map((idBtn, iIndex) => (
                     idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
                       key={iIndex}
@@ -95,10 +94,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           </div>
         </section>
         {fnRenderFormBelowSection("containerTwo")}
-      </div> */}
+      </div>
 
       {/* solutions */}
-      {/* <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
@@ -109,7 +108,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               descripClass: "max-w-[85%] md:text-xl/relaxed text-primary/70",
             }}
           />
-          <div className="mx-auto max-w-5xl md:py-12 py-6"> 
+          <div className="mx-auto max-w-5xl md:py-12 py-6">
             <div className="relative">
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
               {idProduct?.solutionsCard.map((idCard, iIndex) => (
@@ -156,10 +155,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* guide */}
-      {/* <div ref={LdSectionRefs("containerThree")}>
+      <div ref={LdSectionRefs("containerThree")}>
         <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -170,7 +169,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 headingClass: "md:text-5xl",
               }}
             />
-            <div className="mx-auto max-w-6xl md:py-12 "> 
+            <div className="mx-auto max-w-6xl md:py-12 ">
               {idProduct?.guideFeature.map((idFeature, iIndex) => (
                 <div
                   key={iIndex}
@@ -180,7 +179,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 !== 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image.svg}
+                        {idFeature.image?.svg}
                       </div>
                     ) : null}
 
@@ -221,7 +220,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 === 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image.svg}
+                        {idFeature.image?.svg}
                       </div>
                     ) : null}
                   </div>
@@ -232,7 +231,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               <p className="text-primary/70 font-medium mb-6">
                 {idProduct?.guideSectionHeaderFooter.title}
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row justify-center"> 
+              <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 {idProduct?.guideSectionHeaderFooter.buttons?.map((idBtn, iIndex) => (
                   idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
                     key={iIndex}
@@ -257,10 +256,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           </div>
         </section>
         {fnRenderFormBelowSection("containerThree")}
-      </div> */}
+      </div>
 
       {/* successStory */}
-      {/* <div ref={LdSectionRefs("containerFour")}>
+      <div ref={LdSectionRefs("containerFour")}>
         <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -271,7 +270,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 headingClass: "md:text-5xl",
               }}
             />
-            <div className="mx-auto max-w-5xl md:py-12"> 
+            <div className="mx-auto max-w-5xl md:py-12">
               <div className="grid gap-8 md:grid-cols-2">
                 {idProduct?.successStoryCard.map((idCard, iIndex) => (
                   <CustomCard
@@ -319,7 +318,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   {idProduct?.successStoryHeaderFooter.subtitle}
                 </span>
               </p>
-              <div className="flex flex-col gap-4 sm:flex-row justify-center"> 
+              <div className="flex flex-col gap-4 sm:flex-row justify-center">
                 {idProduct?.successStoryHeaderFooter.buttons?.map((idBtn, iIndex) => (
                   idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
                     key={iIndex}
@@ -344,10 +343,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           </div>
         </section>
         {fnRenderFormBelowSection("containerFour")}
-      </div> */}
+      </div>
 
       {/* pricing  */}
-      {/* <div ref={LdSectionRefs("containerFive")}>
+      <div ref={LdSectionRefs("containerFive")}>
         <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
@@ -406,7 +405,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       {idProduct?.pricingSectionHeaderFooter.subtitle}
                     </p>
                   </div>
-                  <div className="flex flex-col gap-4 sm:flex-row justify-center mt-6"> 
+                  <div className="flex flex-col gap-4 sm:flex-row justify-center mt-6">
                     {idProduct?.pricingSectionHeaderFooter.buttons.map((idBtn, iIndex) => (
                       idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
                         key={iIndex}
@@ -433,10 +432,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           </div>
         </section>
         {fnRenderFormBelowSection("containerFive")}
-      </div> */}
+      </div>
 
       {/* cta */}
-      {/* <div ref={LdSectionRefs("containerSix")}>
+      <div ref={LdSectionRefs("containerSix")}>
         <section className="py-16 md:py-24 lg:py-24 bg-gradient-to-b from-background to-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
@@ -468,7 +467,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   </div>
                   <span>{idProduct?.ctaSection.title}</span>
                 </div>
-                <div className="flex flex-col gap-4 sm:flex-row justify-center"> 
+                <div className="flex flex-col gap-4 sm:flex-row justify-center">
                   {idProduct?.ctaSection.buttons?.map((idBtn, iIndex) => (
                     idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
                       key={iIndex}
@@ -497,7 +496,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
           </div>
         </section>
         {fnRenderFormBelowSection("containerSix")}
-      </div> */}
+      </div>
     </>
   );
 }
