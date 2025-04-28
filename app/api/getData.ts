@@ -1,27 +1,40 @@
-// Caching utility to fetch and memoize GraphQL data from Strapi using Next.js' `unstable_cache`.
-// This function wraps the `fetchFromStrapi` call and caches the response per query name.
+import { ITransformer } from '@repo/middleware';
+import { unstable_cache } from 'next/cache';
 
+export type Tcontext = {
+  locale: string
+  filters?: {
+    slug: {
+      eq: string
+    }
+  }
+}
+const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
 
-import { unstable_cache } from 'next/cache'
-import type { TQueryName } from '@repo/ui/api/query'
-import { fnFetchFromStrapi } from '@repo/ui/utils/fetchGraphgl'
+export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
+  iContext: Tcontext,
+  transformer: ITransformer<DynamicSourceType, DynamicTargetType>
+) {
+  const locale = iContext?.locale ?? 'en';
 
-const cacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
+  let slug;
+  if (iContext?.filters?.slug?.eq) {
+    slug = iContext.filters.slug.eq;
+  }
 
-export async function fnGetData<T>(iQueryName: TQueryName): Promise<T> {
-    
-  if (!cacheMap.has(iQueryName)) {
+  // const LCacheKey = `${transformer.contentType}-${locale}-${slug}`;
+  const LCacheKey = slug ? `${transformer.contentType}-${locale}-${slug}` : `${transformer.contentType}-${locale}`;
+  if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
-        const data = await fnFetchFromStrapi<T>({ iQuery: iQueryName })
-        return data
+        const pageData: DynamicTargetType = await transformer.execute(iContext);
+        return pageData;
       },
-      [iQueryName],
-
-      // - Caches query result with revalidation every 7200 seconds.
-      { revalidate: 60, tags: [iQueryName] }
-    )
-    cacheMap.set(iQueryName, fetcher)
+      [LCacheKey],
+      { revalidate: 2, tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale] }
+    );
+    LdCacheMap.set(LCacheKey, fetcher);
   }
-  return await cacheMap.get(iQueryName)!()
+
+  return await LdCacheMap.get(LCacheKey)!();
 }
