@@ -16,9 +16,8 @@ import { Badge } from "@repo/ui/components/ui/badge";
 import { Checkbox } from "@repo/ui/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@repo/ui/components/ui/card";
 import TrendCard from "@repo/ui/components/trendCard";
-import { JobData, JobFilters, TtrendCardProps } from "@repo/ui/type";
 import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, } from "lucide-react";
-import { Tbutton, TcareerPageTarget } from "@repo/middleware";
+import { JobData, JobFilters, Tbutton, TcareerPageTarget, TtrendCardProps } from "@repo/middleware";
 
 export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   const [, fnSetActiveTab] = useState("students");
@@ -165,7 +164,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   const [expandedTab, setExpandedTab] = useState("");
   // Define the available source types
   const UniqueSources = [
-    "all", "linkedin", "youtube", "tweeter"
+    "all", "linkedin", "youtube", "X"
   ];
 
   // When the selected tab changes, reset the expanded state
@@ -204,7 +203,6 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
     fetchData();
   }, []);
-
   return (
     <>
       <Hero
@@ -219,6 +217,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
           }
         }
       />
+
+      {/* Section One */}
       <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -228,8 +228,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   <Lightbulb className="h-4 w-4 text-primary" />
                 </div>
                 <h4 className="font-semibold text-lg">
-                  {idCareer.career.challengeSection.heading.title}
-
+                  {idCareer.career.challengeSection.highlight && idCareer.career.challengeSection.highlight[0]?.label}
                 </h4>
               </div>
               <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
@@ -353,17 +352,17 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               ))}
             </TabsList>
             {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
-              {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
-                <TabsTrigger
-                  value={idTitle.value}
-                  onClick={() => fnSetActiveTab(idTitle.value)}
-                  key={iIndex}
-                >
-                  <Icons.GraduationCap className="h-4 w-4 mr-2" />
-                  {idTitle.label}
-                </TabsTrigger>
-              ))}
-            </TabsList> */}
+      {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
+        <TabsTrigger
+          value={idTitle.value}
+          onClick={() => fnSetActiveTab(idTitle.value)}
+          key={iIndex}
+        >
+          <Icons.GraduationCap className="h-4 w-4 mr-2" />
+          {idTitle.label}
+        </TabsTrigger>
+      ))}
+    </TabsList> */}
             <TabsContent value="students" className="mt-6">
               {/* Simplified search and filters */}
               <div className="mb-8">
@@ -519,15 +518,15 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                             {fnStripMarkdownOrHtml(idJob.description)}
                           </p>
                           {/* <div className="mt-2 flex flex-wrap gap-1">
-                            {idJob.skills.map((skill, index) => (
-                              <span
-                                key={index}
-                                className="inline-block px-2 py-1 text-xs bg-border rounded-md"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div> */}
+                    {idJob.skills.map((skill, index) => (
+                      <span
+                        key={index}
+                        className="inline-block px-2 py-1 text-xs bg-border rounded-md"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div> */}
                         </CardContent>
                         <CardFooter>
                           <Link href={`/jobs/${idJob.id}`} className="w-full">
@@ -568,10 +567,10 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 <div className="flex flex-col md:flex-row gap-8 items-center">
                   <div className="md:w-2/3 space-y-6">
                     {/* <div className="flex items-center gap-3">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
-                        <Building className="h-5 w-5 text-primary" />
-                      </div>
-                    </div> */}
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
+                <Building className="h-5 w-5 text-primary" />
+              </div>
+            </div> */}
                     <TitleSubtitle idTitle={{
                       ...idCareer.career.planSection.heading,
                       className: "m-0",
@@ -745,11 +744,11 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 ))}
               </div>
               {/* <div className="mt-12 text-center">
-                <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
-                  {career.section5.trendSection.footer.button.label}
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button></Link>
-              </div> */}
+        <Link href={career.section5.trendSection.footer.button.href}><Button variant="outline" size="lg" className="group">
+          {career.section5.trendSection.footer.button.label}
+          <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+        </Button></Link>
+      </div> */}
             </TabsContent>
           </Tabs>
         </div>
@@ -757,3 +756,4 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
     </>
   );
 }
+

@@ -4,8 +4,6 @@ import { Badge } from "@repo/ui/components/ui/badge";
 import { ProblemSection } from "@repo/ui/components/problemSection";
 import { SolutionSection } from "@repo/ui/components/solutionSection";
 import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
-import Navbar from "@repo/ui/components/navbar";
-// import Footer from "@repo/ui/components/footer";
 import CustomCard from "@repo/ui/components/customCard";
 import * as Icons from "lucide-react";
 // import Callout from "@repo/ui/components/callout";
@@ -604,7 +602,6 @@ export default async function CaseStudyPage({
 
   return (
     <>
-      <Navbar />
       <main className="min-h-screen bg-background pb-20">
         <section className="relative h-[400px] md:h-[500px]">
           <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-primary/40" />

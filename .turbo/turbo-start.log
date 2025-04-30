@@ -7,85 +7,28 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 323ms
-https://dumps-240005.lmnaslens.com/graphql
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'header')
-    at g (.next/server/app/[locale]/industries/[slug]/page.js:1:5771) {
-  digest: [32m'1597549624'[39m
+ [32m[1m✓[22m[39m Ready in 914ms
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at p (.next/server/app/[locale]/career/page.js:1:17818) {
+  digest: [32m'3299020680'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
+    at p (.next/server/app/[locale]/career/page.js:1:17818) {
+  digest: [32m'3299020680'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
+    at p (.next/server/app/[locale]/career/page.js:1:17818) {
+  digest: [32m'3299020680'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
+    at p (.next/server/app/[locale]/career/page.js:1:17818) {
+  digest: [32m'3299020680'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17224) {
+  digest: [32m'2345698649'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/careers/page.js:1:17182) {
-  digest: [32m'1314401344'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'image')
-    at u (.next/server/app/[locale]/careers/page.js:1:17776) {
-  digest: [32m'3221610477'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17224) {
+  digest: [32m'2345698649'[39m
 }

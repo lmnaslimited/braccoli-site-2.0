@@ -13,7 +13,6 @@ import { useFormHandler } from "../hooks/useFormHandler"
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
-
     return (
         <div>
             <div ref={LdSectionRefs("containerOne")}>
