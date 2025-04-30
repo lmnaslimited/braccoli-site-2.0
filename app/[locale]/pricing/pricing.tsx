@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
-import { ArrowRight, Star, CheckCircle, Download } from "lucide-react";
+import * as Icons from 'lucide-react';
+import { getIconComponent } from "@repo/ui/lib/icon";
 import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
@@ -10,6 +11,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@repo/ui/components/u
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@repo/ui/components/ui/table";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TformMode, TpricingPageTarget } from "@repo/middleware";
+import { ArrowRight } from "lucide-react";
+
 
 export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -43,20 +46,23 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                         <div className="mx-auto max-w-4xl">
                             <div className="relative p-8 bg-background rounded-xl border-2 border-muted shadow-lg">
                                 <div className="grid gap-6 md:grid-cols-2">
-                                    {idPricing.pricing.problemSection.list.map((idIssue, iIndex) => (
-                                        <div key={iIndex} className="flex items-start gap-3">
-                                            <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
-                                                {/* {renderIconElement(idIssue.icon)} */}
-                                                {idIssue.icon}
+                                    {idPricing.pricing.problemSection.list.map((idIssue, iIndex) => {
+                                        const iconName = typeof idIssue.icon === "string" ? idIssue.icon : "HelpCircle";
+                                        const IconComponent = getIconComponent(iconName);
+                                        return (
+                                            <div key={iIndex} className="flex items-start gap-3">
+                                                <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
+                                                    <IconComponent className="w-5 h-5 text-muted-foreground" />
+                                                </div>
+                                                <div>
+                                                    <p className="font-medium">{idIssue.label}</p>
+                                                    <p className="text-sm text-muted-foreground">
+                                                        {idIssue.description}
+                                                    </p>
+                                                </div>
                                             </div>
-                                            <div>
-                                                <p className="font-medium">{idIssue.label}</p>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {idIssue.description}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    ))}
+                                        );
+                                    })}
                                 </div>
                                 <div className="mt-8 pt-8 border-t border-border text-center">
                                     <p className="text-lg font-medium mb-6">
@@ -104,7 +110,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                 <div className="absolute inset-0 bg-gradient-to-b from-grayBackground to-background rounded-xl -m-4"></div>
                                 <div className="relative z-10 overflow-hidden border-2 border-primary rounded-xl shadow-2xl">
                                     <div className="overflow-x-auto">
-                                        {/* <Table>
+                                        <Table>
                                             <TableHeader>
                                                 <TableRow className="bg-primary text-background hover:bg-primary">
                                                     <TableHead className="w-[250px] text-background">
@@ -161,7 +167,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                                     ))}
                                                 </TableRow>
                                             </TableBody>
-                                        </Table> */}
+                                        </Table>
                                     </div>
                                 </div>
                             </div>
@@ -249,20 +255,20 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                                     </TableHeader>
                                                     <TableBody>
                                                         {idPricing.pricing.guideSection
-                                                            .filter((item) => item.heading.badge === iTab.label)
+                                                            .filter((item) => item.badge === iTab.label)
                                                             .map((idRow, iIndex) => (
                                                                 <TableRow key={iIndex} className="border-b">
                                                                     <TableCell className="font-bold bg-grayBackground text-primary py-4">
-                                                                        {idRow.heading.highlight}
+                                                                        {idRow.highlight}
                                                                     </TableCell>
                                                                     <TableCell className="text-sm bg-background text-primary">
                                                                         <div className="flex items-center gap-2">
-                                                                            <CheckCircle className="h-5 w-5 text-muted-primary" />
-                                                                            <span>{idRow.heading.title}</span>
+                                                                            <Icons.CheckCircle className="h-5 w-5 text-muted-primary" />
+                                                                            <span>{idRow.title}</span>
                                                                         </div>
                                                                     </TableCell>
                                                                     <TableCell className="text-sm bg-grayBackground text-primary">
-                                                                        {idRow.heading.subtitle}
+                                                                        {idRow.subtitle}
                                                                     </TableCell>
                                                                 </TableRow>
                                                             ))}
@@ -285,15 +291,23 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                             {idPricing.pricing.guideFooter.buttons.map((idBtn, iIndex) => (
                                                 <Button key={iIndex} size="lg" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
                                                 >
-                                                    {idBtn.icon ? idBtn.icon : ""}
-                                                    {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
+                                                    {idBtn.icon && (() => {
+                                                        const iconName = typeof idBtn.icon === "string" ? idBtn.icon : "HelpCircle";
+                                                        const IconComponent = getIconComponent(iconName);
+                                                        return <IconComponent />;
+                                                    })()}
+                                                    {idBtn.href ? (
+                                                        <Link href={idBtn.href}> {idBtn.label} </Link>
+                                                    ) : (
+                                                        idBtn.label
+                                                    )}
                                                 </Button>
                                             ))}
                                         </div>
                                     </div>
                                     <div className="md:col-span-2 bg-gradient-to-br from-primary/70 to-primary/80 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
                                         <div className="bg-secondary/10 rounded-full p-3 mb-3">
-                                            <Download className="h-6 w-6 text-accent" />
+                                            <Icons.Download className="h-6 w-6 text-accent" />
                                         </div>
                                         <TitleSubtitle idTitle={{
                                             ...idPricing.pricing.guideCallout,
@@ -319,7 +333,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
             < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                     <TitleSubtitle idTitle={{
-                        ...idPricing.pricing.testimonialHeader,
+                        ...idPricing.pricing.testimonialHeader.header,
                         className:
                             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
                         headingClass: "md:text-5xl",
@@ -338,11 +352,11 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                         image: {
                                             svg: (
                                                 <div className="flex px-6 pt-4 space-x-1 text-primary">
-                                                    <Star size={24} fill="currentColor" strokeWidth={0} />
-                                                    <Star size={24} fill="currentColor" strokeWidth={0} />
-                                                    <Star size={24} fill="currentColor" strokeWidth={0} />
-                                                    <Star size={24} fill="currentColor" strokeWidth={0} />
-                                                    <Star size={24} fill="currentColor" strokeWidth={0} />
+                                                    <Icons.Star size={24} fill="currentColor" strokeWidth={0} />
+                                                    <Icons.Star size={24} fill="currentColor" strokeWidth={0} />
+                                                    <Icons.Star size={24} fill="currentColor" strokeWidth={0} />
+                                                    <Icons.Star size={24} fill="currentColor" strokeWidth={0} />
+                                                    <Icons.Star size={24} fill="currentColor" strokeWidth={0} />
                                                 </div>
                                             ),
                                             alternate: "5-star",
@@ -363,7 +377,6 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                     </div>
                 </div>
             </section >
-
 
             {/* FAQ Section */}
             < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background" >

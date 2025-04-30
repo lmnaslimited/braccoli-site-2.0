@@ -11,7 +11,6 @@ import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries } from "@repo/middleware";
 
-
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
   return (

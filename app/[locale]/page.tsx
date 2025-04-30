@@ -1,6 +1,6 @@
 import { clTransformerFactory, Tcontext, ThomePageTarget } from '@repo/middleware'
-import Home from './home/home';
 import { fnGetCacheData } from '../api/getData';
+import Home from './home/home';
 
 export default async function HomePage({
   params,

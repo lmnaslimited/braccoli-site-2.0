@@ -1,6 +1,6 @@
 import { clTransformerFactory, TcareerPageTarget, Tcontext } from '@repo/middleware'
-import Career from "./career";
 import { fnGetCacheData } from '../../api/getData';
+import Career from './career';
 
 export default async function CareerPage({
   params,
