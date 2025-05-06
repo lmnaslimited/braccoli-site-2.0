@@ -328,7 +328,6 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                 {fnRenderFormBelowSection("containerFour")}
             </div>
 
-
             {/* Testimonials Section*/}
             < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">

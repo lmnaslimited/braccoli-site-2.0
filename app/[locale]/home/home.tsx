@@ -17,7 +17,13 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         <div>
             <div ref={LdSectionRefs("containerOne")}>
                 <Hero
-                    idHero={idHome.home.heroSection as TheroSection}
+                    idHero={{
+                        ...idHome.home.heroSection,
+                        buttons: idHome.home.heroSection.buttons.map((btn) => ({
+                            ...btn,
+                            iconPosition: "after",
+                        })),
+                    } as TheroSection}
                     onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
                 />
                 {fnRenderFormBelowSection("containerOne")}

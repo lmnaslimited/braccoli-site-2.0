@@ -218,7 +218,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         }
       />
 
-      {/* Section One */}
+      {/* challengeSection */}
       <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -274,7 +274,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* section 2 */}
+      {/* guideSection */}
       <section id="plan" className="lg:py-24 md:py-24 py-16 bg-background">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -326,7 +326,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
       </section>
 
 
-      {/* section 3 */}
+      {/* jobsSection */}
       <section id="cta" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
           <TitleSubtitle
@@ -571,13 +571,13 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 <Building className="h-5 w-5 text-primary" />
               </div>
             </div> */}
-                    <TitleSubtitle idTitle={{
+                    {/* <TitleSubtitle idTitle={{
                       ...idCareer.career.planSection.heading,
                       className: "m-0",
                       headingClass: "md:text-xl tracking-tight leading-tight",
                       descripClass: "md:text-sm",
                     }}
-                    />
+                    /> */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
                       {idCareer.career.jobsSection.list.slice(2, 4).map((idTitle, iIndex) => (
                         <div className="border rounded-lg p-4" key={iIndex}>
@@ -585,8 +585,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                             ...idTitle,
                             className: "m-0",
                             headingClass:
-                              "md:text-lg text-lg tracking-tight leading-tight", //changed text-size
-                            descripClass: "md:text-base text-base", //changed text-size
+                              "md:text-lg text-lg tracking-tight leading-tight",
+                            descripClass: "md:text-base text-base",
                           }}
                           />
                         </div>
@@ -623,7 +623,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* section 4 */}
+      {/* planSection */}
       <section id="learning" className="lg:py-24 md:py-24 py-16 bg-background">
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
@@ -708,7 +708,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* section 5 */}
+      {/* trendingSection */}
       <section className="border-b border-border/40 lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle idTitle={{

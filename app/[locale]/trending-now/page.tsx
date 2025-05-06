@@ -2,7 +2,7 @@ import { clTransformerFactory, Tcontext, TtrendsPageTarget, } from "@repo/middle
 import TrendingNowPage from "./trending-now";
 import { fnGetCacheData } from "../../api/getData";
 
-export default async function TrendingPage({
+export default async function TrendingNow({
   params,
 }: {
   params: Promise<{

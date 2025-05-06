@@ -1,5 +1,4 @@
 "use client";
-
 import { ChevronRight, Linkedin, Twitter, Youtube } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
@@ -11,7 +10,6 @@ import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { TformMode, TtrendsPageSource } from "@repo/middleware"
 import { TtrendCardProps } from "@repo/ui/type";
-
 
 export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSource }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -64,7 +62,6 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   }, []);
 
   return (
-
     <div className="flex min-h-screen flex-col bg-background">
       {/* Hero Section */}
       <section
@@ -91,7 +88,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
         {fnRenderFormBelowSection("containerOne", idTrend.trend.heroSection)}
       </section>
 
-      {/* Problem Section*/}
+      {/* Frustration Section*/}
       <section ref={LdSectionRefs("containerTwo")}>
         <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
           <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
@@ -115,7 +112,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
 
                 <div className="text-center mb-8">
                   <h3 className="text-xl font-bold mb-4">
-                    {idTrend.trend.frustrationSection[1].title}
+                    {idTrend.trend.frustrationSection[1].header.title}
                   </h3>
                   <p className="text-muted-foreground max-w-2xl mx-auto">
                     {idTrend.trend.frustrationSection[1].subtitle}
@@ -155,7 +152,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
               <div className="mt-16 text-center bg-gradient-to-r from-grayBackground to-muted p-8 rounded-xl border border-border">
                 <p className="text-lg font-medium mb-6">
                   <span className="font-bold">
-                    {idTrend.trend.frustrationSection[1].header.title}
+                    {idTrend.trend.frustrationSection[1].title}
                   </span>
                 </p>
                 <Button
@@ -224,7 +221,16 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
       {/* Subscribe Section */}
       <section className="bg-primary">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <Callout idCallout={idTrend.trend.calloutSection} />
+          <Callout
+            idCallout={{
+              ...idTrend.trend.calloutSection,
+              buttons: idTrend.trend.calloutSection.buttons.map(btn => ({
+                ...btn,
+                iconPosition: "before",
+                size: "lg",
+              })),
+            }}
+          />
         </div>
       </section>
     </div >
