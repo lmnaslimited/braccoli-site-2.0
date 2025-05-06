@@ -1,13 +1,11 @@
 "use client"
 
 import type React from "react"
-
 import { useState, useRef, type ReactNode } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
-import { SectionForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig } from "@repo/ui/components/form"
-import type { TformMode } from "@repo/ui/type"
-import { TheroSection } from "@repo/middleware"
+import { SectionForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig, LdWebinarFormConfig } from "@repo/ui/components/form"
+import type { TformMode } from "@repo/middleware"
 
 export const useFormHandler = () => {
     const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
@@ -78,7 +76,7 @@ export const useFormHandler = () => {
      * This function determines whether to show a form, success message, or nothing
      * based on the current state and section ID.
      */
-    const fnRenderFormBelowSection = (iSectionId: string, idPdfData?: TheroSection): ReactNode => {
+    const fnRenderFormBelowSection = (iSectionId: string, idData?: any, idPdfData?: any): ReactNode => {
         const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
@@ -95,6 +93,9 @@ export const useFormHandler = () => {
                 break
             case "download":
                 LdFormConfig = LdDownloadFormConfig
+                break
+            case "webinar":
+                LdFormConfig = LdWebinarFormConfig
                 break
             default:
                 if (!shouldShowSuccess) return null
@@ -129,6 +130,7 @@ export const useFormHandler = () => {
                             onCancel={() => {
                                 fnSetActiveSection(null)
                             }}
+                            data={idData || null}
                             {...(FormMode === "download" ? { pdfData: idPdfData } : {})}
                         />
                     ) : null}
