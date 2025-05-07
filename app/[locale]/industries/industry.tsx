@@ -51,9 +51,13 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 title: idIndustry?.problemSection.title,
               },
               subtitle: idIndustry?.problemSection.subtitle,
-              buttons: idIndustry?.problemSection.buttons,
+              buttons: idIndustry?.problemSection.buttons?.map((btn) => ({
+                ...btn,
+                iconPosition: "before",
+              })),
             } as TcalloutProps}
-            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")} />
+            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}
+          />
         </div>
         {fnRenderFormBelowSection("containerTwo")}
       </div>
