@@ -1,10 +1,10 @@
 "use client"
+import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
+import Hero from "@repo/ui/components/hero";
 import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/customCard";
-import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Image from "next/image";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
@@ -17,7 +17,15 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
     <>
       {/* hero */}
       <div ref={LdSectionRefs("containerOne")}>
-        <Hero idHero={idIndustry?.heroSection as TheroSection} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+        <Hero
+          idHero={{
+            ...idIndustry.heroSection,
+            buttons: idIndustry.heroSection.buttons.map((btn) => ({
+              ...btn,
+              iconPosition: "after",
+            })),
+          } as TheroSection}
+          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
         {fnRenderFormBelowSection("containerOne")}
       </div>
 
@@ -37,7 +45,15 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           </div>
         </section>
         <div className="bg-primary">
-          <Callout idCallout={{ title: idIndustry?.problemSection.title, subtitle: idIndustry?.problemSection.subtitle, buttons: idIndustry?.problemSection.buttons } as TcalloutProps} onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")} />
+          <Callout
+            idCallout={{
+              header: {
+                title: idIndustry?.problemSection.title,
+              },
+              subtitle: idIndustry?.problemSection.subtitle,
+              buttons: idIndustry?.problemSection.buttons,
+            } as TcalloutProps}
+            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")} />
         </div>
         {fnRenderFormBelowSection("containerTwo")}
       </div>
@@ -79,7 +95,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                       header: idSection.card!.header,
                       link: idSection.card?.buttons?.map((idButton) => ({
                         ...idButton,
-                        icon: <ArrowRight className="ml-2 h-4 w-4" />,
+                        icon: "ArrowRight",
                         iconPosition: "after",
                       })) as Tbutton[],
                       className: "bg-primary/5",
@@ -125,9 +141,16 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 link:
                   idCard.link?.map((idButton) => ({
                     ...idButton,
-                    icon: <ArrowRight className="size-5" />,
+                    icon: "ArrowRight",
                     iconPosition: "after",
                   })) ?? [],
+                image: idCard.image
+                  ? {
+                    ...idCard.image,
+                    svg: idCard.image.svg,
+                    className: "h-10 w-10 mx-6 mt-4",
+                  }
+                  : idCard.image,
               })) ?? [],
             TabDefault: {
               text: "All",
@@ -135,6 +158,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             },
           }}
         />
+
       </section>
 
       {/* cta */}
@@ -160,7 +184,11 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                       headingClass: "mb-2 text-md",
                       descripClass: "text-sm mb-4",
                     },
-                    image: { svg: idCard.icon, alternate: idCard.label || "" }
+                    image: {
+                      svg: idCard.icon,
+                      className: "h-10 w-10 text-primary mx-auto mt-6",
+                      alternate: idCard.label || ""
+                    }
                   }}
                 />
               ))}
@@ -209,17 +237,17 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   },
                   image: {
                     source: idCard.image?.source,
-                    alternate: idCard.image!.alternate, // ! -> to always there
+                    alternate: idCard.image!.alternate,
                     aspectRatio: "wide",
                   },
                   button:
                     idCard.buttons?.map((idButton: Tbutton) => ({
                       ...idButton,
-                      icon: <ArrowRight className="size-5" />,
                       iconPosition: "after",
+                      icon: "ArrowRight",
                       size: "lg",
                       variant: "outline",
-                    })) ?? [], // Ensure button is always an array
+                    })) ?? [],
                   tag: idCard.category,
                 })),
                 TabDefault: {
