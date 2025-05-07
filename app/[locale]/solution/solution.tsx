@@ -127,12 +127,31 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 key={iIndex}
                                 className="relative grid md:grid-cols-2 gap-8 items-center"
                             >
-                                {idStep.cardPosition === "right" ? (
+                                {iIndex % 2 === 1 ? (
+                                    <>
+                                        <div className="flex justify-center md:justify-end">
+                                            <div className="bg-primary/10 p-6 rounded-full relative z-10">
+                                                <div className="bg-primary text-primary-foreground p-4 rounded-full">
+                                                    {renderIcon(idStep.image?.svg)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <CustomCard
+                                            idCardProps={{
+                                                header: idStep.header,
+                                                avatarDetails: { label: idStep.header.badge ?? "" },
+                                                namePosition: "bottom",
+                                                footerClassName: "items-start",
+                                                className: "bg-slate shadow-none border-none hover:shadow-none"
+                                            }}
+                                        />
+                                    </>
+                                ) : (
                                     <>
                                         <CustomCard
                                             idCardProps={{
                                                 header: idStep.header,
-                                                // avatarDetails: { avatar: idStep.tag },
+                                                avatarDetails: { label: idStep.header.badge ?? "" },
                                                 namePosition: "bottom",
                                                 footerClassName: "items-end",
                                                 className: "bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
@@ -141,33 +160,15 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         <div className="flex justify-center md:justify-start order-1 md:order-2">
                                             <div className="bg-primary/10 p-6 rounded-full relative z-10">
                                                 <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                                                    {/* <idStep.avatar className="h-8 w-8" /> */}
+                                                    {renderIcon(idStep.image?.svg)}
                                                 </div>
                                             </div>
                                         </div>
-                                    </>
-                                ) : (
-                                    <>
-                                        <div className="flex justify-center md:justify-end">
-                                            <div className="bg-primary/10 p-6 rounded-full relative z-10">
-                                                <div className="bg-primary text-primary-foreground p-4 rounded-full">
-                                                    {/* <idStep.avatar className="h-8 w-8" /> */}
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <CustomCard
-                                            idCardProps={{
-                                                header: idStep.header,
-                                                // avatarDetails: { avatar: idStep.tag },
-                                                namePosition: "bottom",
-                                                footerClassName: "items-start",
-                                                className: "bg-slate shadow-none border-none hover:shadow-none"
-                                            }}
-                                        />
                                     </>
                                 )}
                             </div>
                         ))}
+
                     </div>
                     <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
                         <div className="flex flex-col items-center text-center space-y-6">
