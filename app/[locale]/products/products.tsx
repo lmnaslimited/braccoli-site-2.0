@@ -8,6 +8,13 @@ import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
+import { getIconComponent } from "@repo/ui/lib/icon";
+
+const renderIcon = (icon: Tbutton['icon']) => {
+  const iconName = typeof icon === "string" ? icon : "HelpCircle";
+  const IconComponent = getIconComponent(iconName);
+  return <IconComponent className="w-5 h-5" />;
+};
 
 export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -20,9 +27,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               ...idProduct?.heroSection,
               buttons: idProduct?.heroSection.buttons.map((idButton) => ({
                 ...idButton,
-                icon: (
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                ),
+                icon: "ArrowRight",
                 iconPosition: "after",
                 size: "lg",
               })),
@@ -52,11 +57,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   header: { title: idProduct?.problemsSection.title },
                   list: idProduct?.problemsSection.list?.map((idList) => ({
                     ...idList,
-                    icon: (
-                      <div className="mt-1 rounded-full bg-grayBackground p-1">
-                        <ChevronRight className="h-4 w-4" />
-                      </div>
-                    ),
+                    icon: idList.icon
+                    ,
                   }))
                 }}
               />
@@ -124,7 +126,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         link:
                           idCard.buttons?.map((iaButton) => ({
                             ...iaButton,
-                            icon: <ChevronRight className="ml-1 h-3 w-3" />,
+                            icon: "ChevronRight",
+                            className: "ml-1 h-3 w-3",
                             iconPosition: "after",
                           })) as Tbutton[],
 
@@ -179,7 +182,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 !== 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image?.svg}
+                        {renderIcon(idFeature.image?.svg)}
                       </div>
                     ) : null}
 
@@ -190,7 +193,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                             key={iHighlightIndex}
                             className="flex items-center gap-2 bg-grayBackground px-3 py-2 rounded-lg"
                           >
-                            {idHighlight.icon}
+                            {renderIcon(idHighlight.icon)}
                             <span className="text-sm font-medium">
                               {idHighlight.label}
                             </span>
@@ -220,7 +223,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 === 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image?.svg}
+                        {renderIcon(idFeature.image?.svg)}
                       </div>
                     ) : null}
                   </div>
@@ -286,7 +289,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       namePosition: "top",
                       link: idCard.link?.map((iaLnk) => ({
                         ...iaLnk,
-                        icon: <CheckCircle className="h-5 w-5" />,
+                        icon: "CheckCircle",
+                        className: "h-5 w-5",
                         iconPosition: "before",
                         size: "lg",
                       }))
