@@ -55,7 +55,6 @@ export default function Event() {
                 const LdResult = await fetch('/api/event');
                 const LdSocialData = await LdResult.json();
                 fnSetEvent(LdSocialData)
-                console.log("data", LdSocialData)
             } catch (error) {
                 console.error("Failed to fetch social data:", error);
             }
@@ -120,7 +119,7 @@ export default function Event() {
                         </Tabs>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerOne", SelectedCard != null ? event[SelectedCard] : null)}
+                {fnRenderFormBelowSection("containerOne", SelectedCard != null ? event[SelectedCard] : undefined)}
             </div>
         </>
     )

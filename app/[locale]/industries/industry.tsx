@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image";
-import { ArrowRight, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/customCard";
