@@ -97,7 +97,7 @@ export default function Event() {
                             <TabsContent value={SelectedTab} className="mt-0">
                                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                                     {FilteredTrends.map((video, iIndex) => (
-                                        <TrendCard key={iIndex} idTrends={{ ...video, btnLabel: idEvent.title }} onButtonClick={(mode) => { fnHandleFormButtonClick(mode as TformMode, "containerOne"), fnSetSelectedCard(iIndex) }} />
+                                        <TrendCard key={iIndex} idTrends={{ ...video, btnLabel: idEvent.title }} onButtonClick={(mode) => { fnHandleFormButtonClick(mode as TformMode, "containerOne"); fnSetSelectedCard(iIndex); }} />
                                     ))}
                                 </div>
 

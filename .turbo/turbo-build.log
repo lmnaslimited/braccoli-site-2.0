@@ -1,9 +1,25 @@
 
 
-> braccoli@0.1.0 build /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 build /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
 > next build
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Environments: .env
 
  [37m[1m [22m[39m Creating an optimized production build ...
+ [32m[1m✓[22m[39m Compiled successfully
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39mFailed to compile.
+
+./app/[locale]/trending-now/trending-now.tsx:88:51
+Type error: Argument of type 'TheroSection' is not assignable to parameter of type 'TtrendCardProps'.
+  Type 'TheroSection' is missing the following properties from type 'TtrendCardProps': id, title, source, author, publishedAt
+
+[0m [90m 86 |[39m         }}[0m
+[0m [90m 87 |[39m           onButtonClick[33m=[39m{(mode) [33m=>[39m fnHandleFormButtonClick(mode [36mas[39m [33mTformMode[39m[33m,[39m [32m"containerOne"[39m)} [33m/[39m[33m>[39m[0m
+[0m[31m[1m>[22m[39m[90m 88 |[39m         {fnRenderFormBelowSection([32m"containerOne"[39m[33m,[39m idTrend[33m.[39mtrend[33m.[39mheroSection)}[0m
+[0m [90m    |[39m                                                   [31m[1m^[22m[39m[0m
+[0m [90m 89 |[39m       [33m<[39m[33m/[39m[33msection[39m[33m>[39m[0m
+[0m [90m 90 |[39m[0m
+[0m [90m 91 |[39m       {[90m/* Frustration Section*/[39m}[0m
+[2K[1G[?25hStatic worker exited with code: 1 and signal: null
+[?25l [36m.[39m [?25h[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

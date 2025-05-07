@@ -85,7 +85,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
           ]
         }}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
-        {fnRenderFormBelowSection("containerOne", idTrend.trend.heroSection)}
+        {fnRenderFormBelowSection("containerOne")}
       </section>
 
       {/* Frustration Section*/}
