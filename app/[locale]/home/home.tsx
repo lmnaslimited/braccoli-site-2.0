@@ -10,7 +10,6 @@ import { Button } from "@repo/ui/components/ui/button"
 import { TcalloutProps, TfeatureProps, TformMode, TheroSection, ThomePageTarget } from "@repo/middleware"
 import { useFormHandler } from "../hooks/useFormHandler"
 
-
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
     return (
