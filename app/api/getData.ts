@@ -8,22 +8,40 @@ export type Tcontext = {
       eq: string
     }
   }
+  caseStudiesFilters2?: {
+    heroSection: {
+      tag: {
+        eq: string
+      }
+    }
+  }
 }
-const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
 
+const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>
 ) {
   const locale = iContext?.locale ?? 'en';
 
-  let slug;
+  let slug: string | undefined;
   if (iContext?.filters?.slug?.eq) {
     slug = iContext.filters.slug.eq;
   }
 
-  // const LCacheKey = `${transformer.contentType}-${locale}-${slug}`;
+  // Add the new filter conditionally
+  if (slug && ['manufacturing', 'retail', 'distribution'].includes(slug)) {
+    (iContext as Tcontext)['caseStudiesFilters2'] = {
+      heroSection: {
+        tag: {
+          eq: slug,
+        },
+      },
+    };
+  }
+
   const LCacheKey = slug ? `${transformer.contentType}-${locale}-${slug}` : `${transformer.contentType}-${locale}`;
+
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
