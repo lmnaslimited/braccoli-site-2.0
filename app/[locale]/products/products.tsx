@@ -280,7 +280,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     key={iIndex}
                     idCardProps={{
                       header: {
-                        subtitle: idCard.header.subtitle,
+                        subtitle: idCard.header?.subtitle,
                         descripClass: "italic m-0",
                         headingClass: "mb-0",
                       },

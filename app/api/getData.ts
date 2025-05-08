@@ -31,7 +31,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
         return pageData;
       },
       [LCacheKey],
-      { revalidate: 2, tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale] }
+      { revalidate: 10, tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale] }
     );
     LdCacheMap.set(LCacheKey, fetcher);
   }

@@ -139,7 +139,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         <CustomCard
                                             idCardProps={{
                                                 header: idStep.header,
-                                                avatarDetails: { label: idStep.header.badge ?? "" },
+                                                avatarDetails: { label: idStep.header?.badge ?? "" },
                                                 namePosition: "bottom",
                                                 footerClassName: "items-start",
                                                 className: "bg-slate shadow-none border-none hover:shadow-none"
@@ -151,7 +151,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         <CustomCard
                                             idCardProps={{
                                                 header: idStep.header,
-                                                avatarDetails: { label: idStep.header.badge ?? "" },
+                                                avatarDetails: { label: idStep.header?.badge ?? "" },
                                                 namePosition: "bottom",
                                                 footerClassName: "items-end",
                                                 className: "bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
