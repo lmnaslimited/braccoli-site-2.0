@@ -27,11 +27,19 @@ export default async function Industries({
 }) {
   const { slug, locale } = await params;
 
+
   const context: Tcontext = {
     locale: locale,
     filters: {
       slug: {
         eq: slug,
+      },
+    },
+    caseStudiesFilters2: {
+      heroSection: {
+        tag: {
+          eq: slug,
+        },
       },
     },
   };
@@ -41,6 +49,6 @@ export default async function Industries({
     clTransformerFactory.createTransformer('industries')
   );
   return (
-    <IndustryComp idIndustry={pageData.industries[0]!} />
+    <IndustryComp idIndustry={pageData} />
   );
 }

@@ -9,18 +9,27 @@ import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries } from "@repo/middleware";
+import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
+
+
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
+
+  const allSuccessCards: TcardProps[] =
+    idIndustry?.caseStudies
+      ?.map((caseStudy) => caseStudy.solutionSection?.successCard)
+      .filter(Boolean)
+      .flat() ?? [];
+
   return (
     <>
       {/* hero */}
       <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={{
-            ...idIndustry.heroSection,
-            buttons: idIndustry.heroSection.buttons.map((btn) => ({
+            ...idIndustry.industries[0]?.heroSection,
+            buttons: idIndustry.industries[0]?.heroSection.buttons.map((btn) => ({
               ...btn,
               iconPosition: "after",
             })),
@@ -35,23 +44,23 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <TitleSubtitle
               idTitle={{
-                ...idIndustry?.problemSection.header,
+                ...idIndustry?.industries[0]?.problemSection.header,
                 className: "lg:sticky lg:top-24 h-fit",
                 headingClass: "md:text-5xl leading-tight font-bold",
                 descripClass: "mt-6",
               }}
             />
-            <PainPoints idItems={idIndustry?.problemSection.list as Titems[]} />
+            <PainPoints idItems={idIndustry?.industries[0]?.problemSection.list as Titems[]} />
           </div>
         </section>
         <div className="bg-primary">
           <Callout
             idCallout={{
               header: {
-                title: idIndustry?.problemSection.title,
+                title: idIndustry?.industries[0]?.problemSection.title,
               },
-              subtitle: idIndustry?.problemSection.subtitle,
-              buttons: idIndustry?.problemSection.buttons?.map((btn) => ({
+              subtitle: idIndustry?.industries[0]?.problemSection.subtitle,
+              buttons: idIndustry?.industries[0]?.problemSection.buttons?.map((btn) => ({
                 ...btn,
                 iconPosition: "before",
               })),
@@ -66,14 +75,14 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
-            ...idIndustry?.featuresSectionHeader,
+            ...idIndustry?.industries[0]?.featuresSectionHeader,
             className: "text-center items-center",
             headingClass: "md:text-5xl",
             descripClass: "mt-6",
           }}
         />
         <div className="space-y-24">
-          {idIndustry?.feature?.map((idSection, iIndex) => {
+          {idIndustry?.industries[0]?.feature?.map((idSection, iIndex) => {
             const isEven = iIndex % 2 === 0;
 
             return (
@@ -127,7 +136,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
-            ...idIndustry?.allFeatureHeader,
+            ...idIndustry?.industries[0]?.allFeatureHeader,
             headingClass: "md:text-5xl",
             className: "text-center mb-4",
           }}
@@ -135,7 +144,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
         <Tab
           idTab={{
             data:
-              idIndustry?.allFeatureCard.map((idCard) => ({
+              idIndustry?.industries[0]?.allFeatureCard.map((idCard) => ({
                 ...idCard,
                 header: {
                   ...idCard.header,
@@ -171,14 +180,14 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
               idTitle={{
-                ...idIndustry?.cta.header,
+                ...idIndustry?.industries[0]?.cta.header,
                 className: "text-center items-center",
                 headingClass: "lighting-tight mb-4",
                 descripClass: "max-w-5xl",
               }}
             />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
-              {idIndustry?.cta.list?.map((idCard, iIndex) => (
+              {idIndustry?.industries[0]?.cta.list?.map((idCard, iIndex) => (
                 <CustomCard
                   key={iIndex}
                   idCardProps={{
@@ -198,7 +207,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
               ))}
             </div>
             <div className="pt-6">
-              {idIndustry?.cta.buttons.map((idBtn, iIndex) => (
+              {idIndustry?.industries[0]?.cta.buttons.map((idBtn, iIndex) => (
                 <Button
                   key={iIndex}
                   size="lg"
@@ -211,7 +220,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 </Button>
               ))}
               <p className="text-sm text-muted-foreground mt-4">
-                {idIndustry?.cta.title}
+                {idIndustry?.industries[0]?.cta.title}
               </p>
             </div>
           </div>
@@ -225,14 +234,14 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
-                ...idIndustry?.successStoryHeaderFooter.header,
+                ...idIndustry?.industries[0]?.successStoryHeaderFooter.header,
                 className: "text-center items-center",
                 headingClass: "md:text-5xl",
               }}
             />
             <Tab
               idTab={{
-                data: idIndustry?.successStoryCard.map((idCard) => ({
+                data: allSuccessCards.map((idCard) => ({
                   ...idCard,
                   header: {
                     ...idCard.header,
@@ -240,18 +249,17 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     headingClass: "text-lg mb-2",
                   },
                   image: {
-                    source: idCard.image?.source,
-                    alternate: idCard.image!.alternate,
+                    source: idCard.image?.source ?? '',
+                    alternate: idCard.image?.alternate ?? '',
                     aspectRatio: "wide",
                   },
-                  button:
-                    idCard.buttons?.map((idButton: Tbutton) => ({
-                      ...idButton,
-                      iconPosition: "after",
-                      icon: "ArrowRight",
-                      size: "lg",
-                      variant: "outline",
-                    })) ?? [],
+                  button: idCard.buttons?.map((idButton: Tbutton) => ({
+                    ...idButton,
+                    iconPosition: "after",
+                    icon: "ArrowRight",
+                    size: "lg",
+                    variant: "outline",
+                  })) ?? [],
                   tag: idCard.category,
                 })),
                 TabDefault: {
@@ -260,12 +268,13 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 },
               }}
             />
+
             <div className="mt-12 text-center">
               <div className="space-y-4">
                 <h3 className="text-xl font-medium">
-                  {idIndustry?.successStoryHeaderFooter.title}
+                  {idIndustry?.industries[0]?.successStoryHeaderFooter.title}
                 </h3>
-                {idIndustry?.successStoryHeaderFooter?.buttons.map((idBtn, iIndex) => (
+                {idIndustry?.industries[0]?.successStoryHeaderFooter?.buttons.map((idBtn, iIndex) => (
                   <Button
                     key={iIndex}
                     size="lg"
@@ -280,7 +289,6 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     <Calendar className="ml-2 h-4 w-4" />
                   </Button>
                 ))}
-
               </div>
             </div>
           </div>

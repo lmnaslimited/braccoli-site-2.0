@@ -125,6 +125,7 @@ export default async function CaseStudyPage({ idcaseStudies }: { idcaseStudies: 
                         )}
                     </div>
                 </section>
+
                 <section className="bg-dark/70 py-12">
                     <div className="container mx-auto px-4 text-center">
                         {/* <Callout idCallout={caseStudy.footer as TcalloutProps} /> */}
