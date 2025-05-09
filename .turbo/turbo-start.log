@@ -1,69 +1,28 @@
 
-> braccoli@0.1.0 start /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.57:3000
+   - Network:      http://192.168.1.46:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 607ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
-}
-TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
-}
+ [32m[1m✓[22m[39m Ready in 299ms
 Error fetching LinkedIn posts: Error: Failed to fetch images
     at a (.next/server/app/api/social/route.js:2:6167)
     at async d.revalidate (.next/server/app/api/social/route.js:1:776)
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+[TypeError: fetch failed] {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'2590617455'[39m
+    at r (.next/server/chunks/697.js:1:3449) {
+  digest: [32m'1551234719'[39m
 }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at r (.next/server/chunks/697.js:1:3449) {
+  digest: [32m'1551234719'[39m
 }
-TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
-}
-TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solution/[slug]/page.js:1:7776) {
-  digest: [32m'2573434086'[39m
-}
+(node:241407) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
