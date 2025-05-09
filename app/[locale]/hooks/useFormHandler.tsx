@@ -95,7 +95,10 @@ export const useFormHandler = () => {
                 LdFormConfig = LdDownloadFormConfig
                 break
             case "webinar":
-                LdFormConfig = LdWebinarFormConfig
+                LdFormConfig = {
+                    ...LdWebinarFormConfig,
+                    title: idData?.title ?? "Join Our Webinar – Register Now"
+                };
                 break
             default:
                 if (!shouldShowSuccess) return null
