@@ -81,8 +81,8 @@ export const useFormHandler = () => {
      * This function determines whether to show a form, success message, or nothing
      * based on the current state and section ID.
      */
-    const fnRenderFormBelowSection = (iSectionId: string, options: OptionalRenderParams = {}): ReactNode => {
-        const { idData, idPdfData } = options;
+    const fnRenderFormBelowSection = (iSectionId: string, idOptions: OptionalRenderParams = {}): ReactNode => {
+        const { idData, idPdfData } = idOptions;
         const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
