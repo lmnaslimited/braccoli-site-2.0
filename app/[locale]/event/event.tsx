@@ -109,7 +109,7 @@ export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {
                         </Tabs>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerOne", SelectedCard != null ? event[SelectedCard] : undefined)}
+                {fnRenderFormBelowSection("containerOne", {idData:SelectedCard != null ? event[SelectedCard] : undefined})}
             </div>
         </>
     )
