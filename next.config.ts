@@ -5,11 +5,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/blog",
+        source: "/en/blog",
         destination: `http://localhost:3001/`,
       },
       {
-        source: "/blog/:path+",
+        source: "/en/blog/:path+",
         destination: `http://localhost:3001/:path+`,
       },
     ];
