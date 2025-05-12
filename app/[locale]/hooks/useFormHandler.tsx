@@ -5,11 +5,11 @@ import { useState, useRef, type ReactNode } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig, LdWebinarFormConfig } from "@repo/ui/components/form"
-import type { TformMode, TheroSection, TtrendCardProps } from "@repo/middleware"
+import type { TformMode, TcaseStudies, TtrendCardProps } from "@repo/middleware"
 
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
-    idPdfData?: TheroSection;
+    idPdfData?: TcaseStudies;
   };
 
 export const useFormHandler = () => {

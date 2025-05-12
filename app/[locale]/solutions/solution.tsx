@@ -13,6 +13,135 @@ import { Download } from "lucide-react";
 import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
+// const caseStudyData = {
+//     heroSection:{
+//         image:{
+//             source: 'https://res.cloudinary.com/lmnas/image/upload/f_png/v1742273824/Website/placeholder/placeholder.svg'
+//         },
+//     },
+//     problemSection:{
+//         header:{
+//             title: "How TechManufacture Inc. Eliminated Production Bottlenecks with AI-Powered Predictive Maintenance",
+//             subtitle: "Before partnering with LMNAs, TechManufacture Inc. faced several critical challenges that were impacting their business growth and operational efficiency."
+//         },
+//         list:[
+//             {
+//                 label: "Legacy systems causing production delays and inefficiencies"
+//             },
+//             {
+//                 label: "Lack of real-time visibility into manufacturing processes"
+//             },
+//             {
+//                 label: "High operational costs due to manual inventory management"
+//             },
+//             {
+//                 label: "Difficulty scaling production to meet growing demand"
+//             }
+//         ],
+//          title: "The Bottom Line",
+//          subtitle: "These challenges were costing TechManufacture Inc. an estimated $2.5M annually in lost revenue and operational inefficiencies."
+//     },
+//     solutionSection:{
+//         header:{
+//             title: "The Breakthrough Moment: How We Transformed TechManufacture Inc.",
+//             subtitle: "LMNAs implemented a comprehensive LENS ERP solution integrated with Analytics Cloud to provide real-time insights and automation across the manufacturing process."
+//         },
+//         products:[
+//             {
+//                 label: "Automated production scheduling and resource allocation"
+//             },
+//             {
+//                 label: "Real-time monitoring of manufacturing processes and equipment"
+//             },
+//             {
+//                 label: "Predictive maintenance to prevent costly downtime"
+//             },
+//             {
+//                 label: "Integrated inventory management with automated reordering"
+//             }
+//         ],
+//         results:[
+//             {
+//                 title: "Production efficiency",
+//                 subtitle: "Increased by 45%"
+//             },
+//             {
+//                 title: "Operational costs",
+//                 subtitle: "Reduced by $1.2M annually"
+//             },
+//             {
+//                 title: "Inventory accuracy",
+//                 subtitle: "Improved to 99.8%",
+//             },
+//             {
+//                 title: "Manufacturing cycle time",
+//                 subtitle: "Reduced by 35%"
+//             }
+//         ]
+//     },
+//     conclusion:{
+//         title: "Sarah Johnson, COO of TechManufacture Inc., shares, 'LMNAs transformed our manufacturing operations. We've seen dramatic improvements in efficiency and significant cost savings.' The successful integration of LENS ERP and Analytics Cloud has equipped TechManufacture Inc. with the tools to scale and optimize their production operations, driving future growth."
+//     },
+//     ctaSection: [
+//         {
+//           header:{
+//             title: "Facing similar challenges in your business?",
+//             subtitle: "Use code {badge} to get a 10% discount on your first consultation.",
+//             badge: "LMNAS10"
+//           },
+//           title: "Interested in achieving similar results?",
+//           buttons: [{
+//             label: "Book a consultation",
+            
+//             href: "https://beta.lmnas.com/en/contact#booking",
+//           }]
+//         },
+//         {
+//             header:{
+//                 title:  "Want help identifying and refining your project goals?",
+//             },
+//             title: "Get tailored insights from industry professionals",
+//           buttons: [{
+//             label: "Talk to our Expert",
+//             href: "https://beta.lmnas.com/en/contact",
+//           }]
+//         },
+//     ],
+//     contact: {
+//         connect:[
+//             {
+//         label: "+91 98840 44470",
+//         href: "tel:+91 98840 44470"
+//       },
+//       {
+//         label: "https://beta.lmnas.com/",
+//         href:"https://beta.lmnas.com/"
+//       },
+//       {
+//       label: "#B206 Radiance Royal, Poonthalmalle, CH-56.",
+//       href:"#B206 Radiance Royal, Poonthalmalle, CH-56."
+//       },
+//       {
+//         label: "hello@lmnas.com",
+//         href:"mailto:hello@lmnas.com"
+//       },
+//     ],
+//     social:[
+//         {
+//             label: "https://in.linkedin.com/company/lmnaslimited",
+//             icon: "LinkedIn"
+//           },
+//           {
+//             label: "https://www.youtube.com/@lmnascloudsolutions.4549",
+//             icon: "Youtube"
+//           },
+//           {
+//             label: "https://x.com/lmnaslimited",
+//             icon: "X"
+//             }
+//     ]
+// }
+// }
 
 const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -105,7 +234,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         </div>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerTwo", {idPdfData:idSolution.solution.heroSection})}
+                {/* pass the fnRenderFormBelowSection("containerTwo", {idPdfData:caseStudyData}) */}
+                {fnRenderFormBelowSection("containerTwo")}
             </div>
 
 
