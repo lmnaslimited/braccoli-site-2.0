@@ -7,36 +7,20 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 330ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
-    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
-  digest: [32m'4170345529'[39m
+ [32m[1m✓[22m[39m Ready in 281ms
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/career/page.js:1:17147) {
+  digest: [32m'1813221699'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
     at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1034376225'[39m
+  digest: [32m'1813221699'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
     at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1034376225'[39m
+  digest: [32m'1813221699'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/career/page.js:1:17147) {
+  digest: [32m'1813221699'[39m
 }
