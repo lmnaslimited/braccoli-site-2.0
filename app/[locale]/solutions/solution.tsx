@@ -105,7 +105,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         </div>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerTwo")}
+                {fnRenderFormBelowSection("containerTwo", {idPdfData:idSolution.solution.heroSection})}
             </div>
 
 

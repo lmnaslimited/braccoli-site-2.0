@@ -63,6 +63,12 @@ export default function Event() {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (SelectedCard !== null) {
+          console.log("Selected card index (after update):", event[SelectedCard])
+
+        }
+      }, [SelectedCard])
     return (
         <>
             <div ref={LdSectionRefs("containerOne")}>
@@ -119,7 +125,7 @@ export default function Event() {
                         </Tabs>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerOne", SelectedCard != null ? event[SelectedCard] : undefined)}
+                {fnRenderFormBelowSection("containerOne", {idData:SelectedCard != null ? event[SelectedCard] : undefined})}
             </div>
         </>
     )

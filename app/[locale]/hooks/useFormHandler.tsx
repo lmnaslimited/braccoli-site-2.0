@@ -5,7 +5,12 @@ import { useState, useRef, type ReactNode } from "react"
 import { CheckCircle } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm, LdContactFormConfig, LdBookingFormConfig, LdDownloadFormConfig, LdWebinarFormConfig } from "@repo/ui/components/form"
-import type { TformMode, TtrendCardProps } from "@repo/middleware"
+import type { TformMode, TheroSection, TtrendCardProps } from "@repo/middleware"
+
+type OptionalRenderParams = {
+    idData?: TtrendCardProps;
+    idPdfData?: TheroSection;
+  };
 
 export const useFormHandler = () => {
     const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
@@ -76,7 +81,8 @@ export const useFormHandler = () => {
      * This function determines whether to show a form, success message, or nothing
      * based on the current state and section ID.
      */
-    const fnRenderFormBelowSection = (iSectionId: string, idData?: TtrendCardProps): ReactNode => {
+    const fnRenderFormBelowSection = (iSectionId: string, options: OptionalRenderParams = {}): ReactNode => {
+        const { idData, idPdfData } = options;
         const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
@@ -134,6 +140,7 @@ export const useFormHandler = () => {
                                 fnSetActiveSection(null)
                             }}
                             data={idData || null}
+                            pdfData={idPdfData || null}
                         />
                     ) : null}
                 </div>
