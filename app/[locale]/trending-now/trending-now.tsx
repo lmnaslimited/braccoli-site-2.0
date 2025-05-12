@@ -75,13 +75,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
               href: idTrend.trend.heroSection.buttons?.[0]?.href || "#",
               size: "lg",
               iconPosition: "after",
-            },
-            {
-              ...idTrend.trend.heroSection.buttons?.[1],
-              href: idTrend.trend.heroSection.buttons?.[1]?.href || "#",
-              size: "lg",
-              iconPosition: "after",
-            },
+            }
           ]
         }}
           onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
@@ -171,7 +165,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
       </section>
 
       {/* Latest Trends Section */}
-      <section className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <section id="recent-trend" className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle
             idTitle={{
