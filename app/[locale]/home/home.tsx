@@ -28,16 +28,16 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
 
-  const TrendingNowIcons = [
+  // Trending-Now section icons
+  const LaTrendingNowIcons = [
     <MessageSquare key="message" className="h-10 w-10 text-primary" />,
     <Users key="users" className="h-10 w-10 text-primary" />,
     <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
     <Globe key="globe" className="h-10 w-10 text-primary" />,
   ];
 
-  const PainpointSeverities = [85, 78, 92, 70];
-
-  console.log(idHome.home.testimonials);
+  // Painpoint section percentages
+  const LaPainpointSeverities = [85, 78, 92, 70];
 
   return (
     <div>
@@ -112,7 +112,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   <div className="w-full bg-background rounded-full border border-black/50 h-2.5 mb-2">
                     <div
                       className="bg-primary h-2.5 rounded-full"
-                      style={{ width: `${PainpointSeverities[index]}%` }}
+                      style={{ width: `${LaPainpointSeverities[index]}%` }}
                     ></div>
                   </div>
                   <p className="text-muted-foreground">{point.label}</p>
@@ -336,7 +336,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  {TrendingNowIcons.map((icon, idx) => (
+                  {LaTrendingNowIcons.map((icon, idx) => (
                     <div
                       key={idx}
                       className="w-32 h-32 bg-accent flex items-center justify-center"
