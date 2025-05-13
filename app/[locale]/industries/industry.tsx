@@ -94,7 +94,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                       src={idSection.image?.source || "placeholder.svg"}
                       alt={idSection.image?.alternate || ""}
                       fill
-                      className="object-cover"
+                      className="object-fill"
                     />
                   </div>
                 )}
@@ -120,7 +120,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                       src={idSection.image?.source || "/placeholder.svg"}
                       alt={idSection.image?.alternate || ""}
                       fill
-                      className="object-cover"
+                      className="object-fill"
                     />
                   </div>
                 )}
