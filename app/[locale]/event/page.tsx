@@ -16,6 +16,7 @@ export default async function EventsPage({
         context,
         clTransformerFactory.createTransformer('event')
     );
+    console.log(pageData.event.heroSection.heading)
     return (
         <Events idEvent={pageData} />
     );

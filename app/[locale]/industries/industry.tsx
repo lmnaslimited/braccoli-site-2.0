@@ -11,8 +11,6 @@ import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
 
-
-
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
@@ -111,7 +109,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                         icon: "ArrowRight",
                         iconPosition: "after",
                       })) as Tbutton[],
-                      className: "bg-primary/5",
+                      className: "bg-accent",
                     }}
                   />
                 </div>
@@ -175,8 +173,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* cta */}
-      <div ref={LdSectionRefs("containerThree")}>
-        <section className="bg-primary/5 rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
+      <div ref={LdSectionRefs("containerThree")} className="bg-accent">
+        <section className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
               idTitle={{
@@ -230,7 +228,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
 
       {/* success story */}
       <div ref={LdSectionRefs("containerFour")}>
-        <section className="py-16 md:py-24 lg:py-24 bg-muted/30">
+        <section className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{

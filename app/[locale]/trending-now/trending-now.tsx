@@ -62,7 +62,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
       <section
         ref={LdSectionRefs("containerOne")}
@@ -84,7 +84,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
 
       {/* Frustration Section*/}
       <section ref={LdSectionRefs("containerTwo")}>
-        <div className="bg-gradient-to-br from-grayBackground to-background overflow-hidden">
+        <div className="bg-gradient-to-br from-accent to-background overflow-hidden">
           <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl ">
             <div className="mx-auto max-w-[58rem]">
               <TitleSubtitle
@@ -115,15 +115,15 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                 <div className="grid gap-6 md:grid-cols-3">
                   {idTrend.trend.noiseSection.map((idSection, idIndex) => (
                     <div key={idIndex} className="relative overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/90 z-10"></div>
-                      <div className="h-48 overflow-y-scroll p-4 bg-grayBackground rounded-lg border border-border text-sm">
+                      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10"></div>
+                      <div className="h-48 overflow-y-scroll p-4 bg-background rounded-lg border border-border text-sm">
                         <div className="space-y-3">
                           {idSection.point.map((idItem, idx) => (
                             <div key={idx} className="flex items-start gap-2">
-                              <div className="w-8 h-8 rounded-full bg-muted flex-shrink-0"></div>
+                              <div className="w-8 h-8 rounded-full bg-accent flex-shrink-0"></div>
                               <div>
                                 <p className="font-medium">{idItem.label}</p>
-                                <p className="text-muted-foreground">
+                                <p className="text-foreground">
                                   {idItem.description}
                                 </p>
                               </div>
@@ -132,10 +132,10 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                         </div>
                       </div>
                       <div className="mt-3 text-center">
-                        <p className="font-medium text-primary">
+                        <p className="font-medium text-foreground">
                           {idSection.heading.title}
                         </p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="text-xs text-foreground">
                           {idSection.heading.subtitle}
                         </p>
                       </div>
@@ -143,7 +143,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                   ))}
                 </div>
               </div>
-              <div className="mt-16 text-center bg-gradient-to-r from-grayBackground to-muted p-8 rounded-xl border border-border">
+              <div className="mt-16 text-center bg-accent p-8 rounded-xl border border-border">
                 <p className="text-lg font-medium mb-6">
                   <span className="font-bold">
                     {idTrend.trend.frustrationSection[1].title}

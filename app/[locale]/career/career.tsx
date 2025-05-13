@@ -219,13 +219,13 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
       />
 
       {/* challengeSection */}
-      <section id="problem" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
+      <section id="problem" className="lg:py-24 md:py-24 py-16 bg-accent">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="relative mx-auto md:ml-0 w-full space-y-4">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10">
-                  <Lightbulb className="h-4 w-4 text-primary" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
+                  <Lightbulb className="h-4 w-4 text-background" />
                 </div>
                 <h4 className="font-semibold text-lg">
                   {idCareer.career.challengeSection.highlight && idCareer.career.challengeSection.highlight[0]?.label}
@@ -245,7 +245,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               </div>
             </div>
             <div className="space-y-6">
-              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
+              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-accent text-primary">
                 <span className="block sm:inline">
                   {idCareer.career.challengeSection.heading.badge}
                 </span>
@@ -275,11 +275,11 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
       </section>
 
       {/* guideSection */}
-      <section id="plan" className="lg:py-24 md:py-24 py-16 bg-background">
+      <section id="plan" className="lg:py-24 md:py-24 py-16">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
+              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-accent text-primary">
                 <span className="block sm:inline">
                   {idCareer.career.guideSection[0].heading.badge}
                 </span>
@@ -304,7 +304,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
                 return (
                   <div className="flex items-start gap-2" key={iIndex}>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 shrink-0">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent shrink-0">
                       <IconComponent className="h-5 w-5 text-primary" />
                     </div>
                     <div>
@@ -325,9 +325,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-
       {/* jobsSection */}
-      <section id="cta" className="lg:py-24 md:py-24 py-16 bg-grayBackground">
+      <section id="cta" className="lg:py-24 md:py-24 py-16">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
           <TitleSubtitle
             idTitle={{
@@ -339,12 +338,13 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
           />
           <Tabs defaultValue="students" className="mb-10">
             {/* student and industry tab */}
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 rounded-none">
               {idCareer.career.jobsSection.list.slice(0, 2).map((idTitle, iIndex) => (
                 <TabsTrigger
                   value={idTitle.subtitle}
                   onClick={() => fnSetActiveTab(idTitle.subtitle)}
                   key={iIndex}
+                  className="rounded-none"
                 >
                   <Icons.GraduationCap className="h-4 w-4 mr-2" />
                   {idTitle.title}
@@ -624,7 +624,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
       </section>
 
       {/* planSection */}
-      <section id="learning" className="lg:py-24 md:py-24 py-16 bg-background">
+      <section id="learning" className="lg:py-24 md:py-24 py-16">
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
             {/* (hidden on mobile) */}
@@ -667,7 +667,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-primary/5 text-primary">
+              <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-accent text-foreground">
                 <span className="block sm:inline">
                   {idCareer.career.planSection.heading.badge}
                 </span>
@@ -680,8 +680,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               }}
               />
               <div className="flex items-start gap-3">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 mt-1">
-                  <Lightbulb className="h-4 w-4 text-primary" />
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent mt-1">
+                  <Lightbulb className="h-4 w-4 text-foreground" />
                 </div>
                 <TitleSubtitle idTitle={{
                   ...(idCareer.career.planSection.highlight?.[0] ?? {}),
@@ -709,7 +709,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
       </section>
 
       {/* trendingSection */}
-      <section className="border-b border-border/40 lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <section className="lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle idTitle={{
             ...idCareer.career.trendingSection,

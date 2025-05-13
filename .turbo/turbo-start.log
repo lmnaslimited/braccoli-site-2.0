@@ -7,20 +7,50 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 281ms
+ [32m[1m✓[22m[39m Ready in 296ms
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1813221699'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1813221699'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
+    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
+  digest: [32m'3060928692'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'title')
+    at u (.next/server/app/[locale]/solutions/[slug]/page.js:1:7780) {
+  digest: [32m'3060928692'[39m
+}
+Retrying... Attempt 2
+{
+  highlight: [32m'Register'[39m,
+  title: [32m'Events '[39m,
+  __typename: [32m'ComponentCoreHeader'[39m
+}
+Retrying... Attempt 3
+Retrying... Attempt 2
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1813221699'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
+}
+Error fetching LinkedIn posts: Error: Failed to fetch images
+    at a (.next/server/app/api/social/route.js:2:6167)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+Error fetching LinkedIn posts: Error: Failed to fetch images
+    at a (.next/server/app/api/social/route.js:2:6167)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at a (.next/server/app/[locale]/career/page.js:1:17147) {
-  digest: [32m'1813221699'[39m
+    at a (.next/server/app/[locale]/career/page.js:1:17094) {
+  digest: [32m'1130340430'[39m
 }
