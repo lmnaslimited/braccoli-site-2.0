@@ -99,20 +99,20 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
       </div>
 
       {/* solutions */}
-      <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <section className="bg-primary py-16 md:py-24 lg:py-24">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
               ...idProduct?.solutionsHeaderFooter.header,
               className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center text-background",
               headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed text-primary/70",
+              descripClass: "max-w-[85%] md:text-xl/relaxed text-muted-foreground",
             }}
           />
           <div className="mx-auto max-w-5xl md:py-12 py-6">
             <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block"></div>
+              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-background hidden md:block"></div>
               {idProduct?.solutionsCard.map((idCard, iIndex) => (
                 <div className="relative mb-12 md:mb-16" key={iIndex}>
                   <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
@@ -145,7 +145,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   <Button
                     key={iIndex}
                     size="lg"
-                    className="gap-2"
+                    className="gap-2 border border-border"
                     variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
                   >
                     <Link href={idBtn.href ?? "/"}>
@@ -162,7 +162,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
       {/* guide */}
       <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -191,7 +191,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         {idFeature.highlight?.map((idHighlight, iHighlightIndex) => (
                           <div
                             key={iHighlightIndex}
-                            className="flex items-center gap-2 bg-grayBackground px-3 py-2 rounded-lg"
+                            className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
                           >
                             {renderIcon(idHighlight.icon)}
                             <span className="text-sm font-medium">
@@ -211,7 +211,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         <Link
                           key={iIndex}
                           href={idButton.href || "#"}
-                          className="inline-flex items-center text-sm font-medium text-muted-foreground bg-grayBackground px-4 py-2 rounded-md hover:bg-graybackground transition-colors underline-offset-4 hover:underline"
+                          className="inline-flex items-center text-sm font-medium text-muted-foreground bg-accent border border-border px-4 py-2 rounded-md  transition-colors underline-offset-4 hover:underline"
                         >
                           {idButton.label}
                           <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
@@ -230,7 +230,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 </div>
               ))}
             </div>
-            <div className="mx-auto max-w-[58rem] text-center mt-12 bg-grayBackground p-8 rounded-lg border border-border shadow-sm">
+            <div className="mx-auto max-w-[58rem] text-center mt-12 bg-accent p-8 rounded-lg border border-border shadow-sm">
               <p className="text-primary/70 font-medium mb-6">
                 {idProduct?.guideSectionHeaderFooter.title}
               </p>
@@ -263,7 +263,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
       {/* successStory */}
       <div ref={LdSectionRefs("containerFour")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
+        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -351,9 +351,9 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
       {/* pricing  */}
       <div ref={LdSectionRefs("containerFive")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground">
+        <section className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-            <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
+            <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-accent px-3 py-1 text-sm mb-4">
               <span className="font-medium">
                 {idProduct?.pricingSectionHeaderFooter.header.badge}
               </span>
@@ -363,12 +363,12 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 ...idProduct?.pricingSectionHeaderFooter.header,
                 className:
                   "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
-                headingClass: "md:text-5xl",
-                descripClass: "max-w-[85%] md:text-xl/relaxed",
+                headingClass: "md:text-5xl text-background",
+                descripClass: "max-w-[85%] md:text-xl/relaxed text-background",
               }}
             />
             <div className="mx-auto max-w-5xl py-12">
-              <div className="relative mx-auto max-w-3xl bg-background rounded-xl border-2 border-primary p-8 shadow-lg">
+              <div className="relative mx-auto max-w-3xl bg-background rounded-xl border-2 border-foreground p-8 shadow-lg">
                 <TitleSubtitle
                   idTitle={{
                     ...idProduct?.pricingHighlight.header,
@@ -377,7 +377,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   }}
                 />
                 <div className="flex items-center justify-center gap-2 text-sm">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-grayBackground">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent">
                     <Clock className="h-4 w-4" />
                   </div>
 
@@ -440,10 +440,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
       {/* cta */}
       <div ref={LdSectionRefs("containerSix")}>
-        <section className="py-16 md:py-24 lg:py-24 bg-gradient-to-b from-background to-grayBackground">
+        <section className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
-              <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-muted px-3 py-1 text-sm mb-4">
+              <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-accent border border-border px-3 py-1 text-sm mb-4">
                 <span className="font-medium">
                   {idProduct?.ctaSectionHeader.badge}
                 </span>
@@ -451,18 +451,18 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               <TitleSubtitle
                 idTitle={{
                   ...idProduct?.ctaSectionHeader,
-                  className: "items-center justify-center",
+                  className: "items-center justify-center text-foregroud",
                   headingClass: "md:text-5xl",
                   descripClass: "md:text-xl/relaxed text-center",
                 }}
               />
-              <div className="mt-8 p-6 bg-background rounded-lg border border-border shadow-sm">
+              <div className="mt-8 p-6 bg-accent rounded-lg border border-border shadow-sm">
                 <TitleSubtitle
                   idTitle={{
                     ...idProduct?.ctaSection.header,
                     className: "mb-4",
                     headingClass: "md:text-xl mb-2",
-                    descripClass: "md:text-base",
+                    descripClass: "md:text-base text-foregroud",
                   }}
                 />
                 <div className="flex items-center justify-center gap-2 text-sm mb-6">

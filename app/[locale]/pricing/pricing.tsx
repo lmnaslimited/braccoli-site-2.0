@@ -19,24 +19,22 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
     return (
         <>
             <div ref={LdSectionRefs("containerOne")}>
-                <div className="bg-grayBackground">
-                    <Hero idHero={{
-                        ...idPricing.pricing.heroSection,
-                        buttons: idPricing.pricing.heroSection.buttons.map((idButton) => ({
-                            ...idButton,
-                            iconPosition: "after",
-                            size: "lg",
-                        })),
-                    }}
-                        onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
-                    />
-                </div>
+                <Hero idHero={{
+                    ...idPricing.pricing.heroSection,
+                    buttons: idPricing.pricing.heroSection.buttons.map((idButton) => ({
+                        ...idButton,
+                        iconPosition: "after",
+                        size: "lg",
+                    })),
+                }}
+                    onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
+                />
                 {fnRenderFormBelowSection("containerOne")}
             </div>
 
             {/* Problem Section */}
             <div ref={LdSectionRefs("containerTwo")}>
-                <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-muted">
+                <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                         <TitleSubtitle idTitle={{
                             ...idPricing.pricing.problemSection.header,
@@ -171,7 +169,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                     </div>
                                 </div>
                             </div>
-                            <div className="mx-auto max-w-[58rem] text-center mt-16 bg-grayBackground p-8 rounded-xl border-2 border-muted shadow-lg">
+                            <div className="mx-auto max-w-[58rem] text-center mt-16 bg-accent p-8 rounded-xl border-2 border-muted shadow-lg">
                                 <div className="inline-flex items-center rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
                                     <span className="font-medium">{idPricing.pricing.planFooter.title}</span>
                                 </div>
@@ -204,9 +202,9 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
 
             {/* Guide Section*/}
             <div ref={LdSectionRefs("containerFour")}>
-                <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-gradient-to-b from-primary to-primary/70 text-background">
+                <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-                        <div className="flex mx-auto w-fit items-center rounded-full bg-background/20 text-background px-3 py-1 text-sm mb-4">
+                        <div className="flex mx-auto w-fit items-center rounded-full bg-primary border border-border text-background px-3 py-1 text-sm mb-4">
                             <span className="font-medium">{idPricing.pricing.guideHeader.badge}</span>
                         </div>
                         <TitleSubtitle idTitle={{
@@ -218,13 +216,13 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                         }} />
                         <div className="mx-auto max-w-6xl">
                             <Tabs defaultValue="performance" className="w-full">
-                                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-primary/70 p-1 rounded-lg">
+                                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-accent p-1 rounded-none">
                                     {idPricing.pricing.guideCategories.map((iTab) => (
                                         <TabsTrigger
                                             key={iTab.label}
                                             value={iTab.label!}
-                                            className="data-[state=active]:bg-accent data-[state=active]:text-primary 
-                         text-grayBackground transition-all px-4 rounded-lg"
+                                            className="data-[state=active]:bg-background data-[state=active]:text-primary 
+                         text-grayBackground transition-all px-4 rounded-none"
                                         >
                                             {iTab.label!.charAt(0).toUpperCase() +
                                                 iTab.label!.slice(1).replace("-", " ")}
@@ -232,12 +230,12 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                     ))}
                                 </TabsList>
 
-                                <div className="bg-background rounded-xl p-4 shadow-2xl">
+                                <div className="bg-background p-4 shadow-2xl">
                                     {idPricing.pricing.guideCategories.map((iTab) => (
                                         <TabsContent
                                             key={iTab.label!}
                                             value={iTab.label!}
-                                            className="space-y-4 rounded-lg overflow-hidden"
+                                            className="space-y-4 overflow-hidden"
                                         >
                                             <div className="overflow-x-auto">
                                                 <Table>
@@ -279,7 +277,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                     ))}
                                 </div>
                             </Tabs>
-                            <div className="mx-auto max-w-5xl mt-12 bg-gradient-to-r from-primary/80 to-primary/70 rounded-xl overflow-hidden shadow-xl border border-primary/60">
+                            <div className="mx-auto max-w-5xl mt-12 border border-background rounded-xl overflow-hidden shadow-xl">
                                 <div className="grid md:grid-cols-5 items-center">
                                     <div className="md:col-span-3 p-6 md:p-8 text-accent">
                                         <TitleSubtitle idTitle={{
@@ -289,7 +287,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                         }} />
                                         <div className="flex flex-col sm:flex-row gap-3">
                                             {idPricing.pricing.guideFooter.buttons.map((idBtn, iIndex) => (
-                                                <Button key={iIndex} size="lg" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
+                                                <Button key={iIndex} size="lg" className="bg-background text-foreground" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
                                                 >
                                                     {idBtn.icon && (() => {
                                                         const iconName = typeof idBtn.icon === "string" ? idBtn.icon : "HelpCircle";
@@ -305,16 +303,16 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="md:col-span-2 bg-gradient-to-br from-primary/70 to-primary/80 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
-                                        <div className="bg-secondary/10 rounded-full p-3 mb-3">
-                                            <Icons.Download className="h-6 w-6 text-accent" />
+                                    <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center items-center text-center border-t md:border-t-0 md:border-l border-primary/60">
+                                        <div className="bg-background rounded-full p-3 mb-3">
+                                            <Icons.Download className="h-6 w-6 text-foreground" />
                                         </div>
                                         <TitleSubtitle idTitle={{
                                             ...idPricing.pricing.guideCallout,
                                             headingClass: "md:text-lg mb-1",
                                             descripClass: "md:text-sm text-accent",
                                         }} />
-                                        <div className="inline-flex items-center rounded-full bg-secondary/20 px-3 py-1 text-sm">
+                                        <div className="inline-flex items-center rounded-full bg-background text-foreground px-3 py-1 text-sm">
                                             <span className="font-medium">
                                                 {idPricing.pricing.guideCallout.badge}
                                             </span>
@@ -329,7 +327,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
             </div>
 
             {/* Testimonials Section*/}
-            < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-grayBackground" >
+            < section className="py-16 md:py-24 lg:py-24 bg-grayBackground" >
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                     <TitleSubtitle idTitle={{
                         ...idPricing.pricing.testimonialHeader.header,
@@ -378,17 +376,17 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
             </section >
 
             {/* FAQ Section */}
-            < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background" >
+            < section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent" >
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-                    <div className="flex items-center w-fit mx-auto rounded-full bg-accent  px-3 py-1 text-sm mb-4">
+                    <div className="flex items-center w-fit mx-auto rounded-full border border-border bg-accent px-3 py-1 text-sm mb-4">
                         <span className="font-medium">{idPricing.pricing.faqSection.heading.badge}</span>
                     </div>
                     <TitleSubtitle idTitle={{
                         ...idPricing.pricing.faqSection.heading,
                         className:
                             "mx-auto flex max-w-[58rem] flex-col items-center justify-center gap-4 text-center mb-6",
-                        headingClass: "md:text-5xl",
-                        descripClass: "md:text-xl/relaxed",
+                        headingClass: "md:text-5xl text-foreground",
+                        descripClass: "md:text-xl/relaxed text-foreground",
                     }} />
                     <div className="mx-auto max-w-3xl space-y-4">
                         <FAQs idFaq={idPricing.pricing.faqSection.point} />

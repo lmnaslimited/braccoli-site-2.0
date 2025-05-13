@@ -56,10 +56,10 @@ export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {
     return (
         <>
             <div ref={LdSectionRefs("containerOne")}>
-                <section className="border-b border-border/40 lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+                <section className="lg:py-24 md:py-24 py-16 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                     <div className="mx-auto max-w-[85rem]">
                         <TitleSubtitle idTitle={{
-                            highlight: idEvent.event.heroSection.heading.title,
+                            title: idEvent.event.heroSection.heading.title,
                             className: "text-center md:text-left",
                             headingClass: "",
                             descripClass: "",

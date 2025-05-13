@@ -37,8 +37,8 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                     </div>
 
                     <div className="lg:col-span-4 order-2">
-                        <div className={cn("bg-background rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
-                            <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-primary md:text-4xl">
+                        <div className={cn("bg-card border border-border rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
+                            <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-foreground md:text-4xl">
                                 {LdContactPageFormConfig.title}
                             </h2>
                             {ContactMessage && (
@@ -57,7 +57,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                             <SectionForm
                                 config={LdContactPageFormConfig}
                                 onSuccess={fnHandleContactSuccess}
-                                className="shadow-none bg-transparent p-0"
+                                className="shadow-none bg-transparent p-0 border-none"
                                 hideCardHeader={true}
                             />
 
@@ -80,8 +80,8 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                         </div>
 
                         <div className="lg:col-span-4 order-4">
-                            <div className={cn("bg-background rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
-                                <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-primary md:text-4xl">
+                            <div className={cn("bg-card border border-borde rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
+                                <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-foreground md:text-4xl">
                                     {LdBookingPageFormConfig.title}
                                 </h2>
                                 {BookingMessage && (
@@ -100,7 +100,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 <SectionForm
                                     config={LdBookingPageFormConfig}
                                     onSuccess={fnHandleBookingSuccess}
-                                    className="shadow-none bg-transparent p-0"
+                                    className="shadow-none bg-transparent p-0 border-none"
                                     hideCardHeader={true}
                                 />
                             </div>

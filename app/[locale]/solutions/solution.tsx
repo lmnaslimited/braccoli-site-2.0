@@ -55,7 +55,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
 
             {/* Guide Section */}
             <div ref={LdSectionRefs("containerTwo")}>
-                <section className="w-full py-16 md:py-24 lg:py-24 bg-slate">
+                <section className="bg-accent w-full py-16 md:py-24 lg:py-24">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                         <TitleSubtitle
                             idTitle={{
@@ -108,7 +108,6 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                 {fnRenderFormBelowSection("containerTwo")}
             </div>
 
-
             {/*Plan Section*/}
             <div ref={LdSectionRefs("containerThree")}>
                 <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
@@ -121,7 +120,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         }
                     />
                     <div className="grid gap-12 md:gap-16 relative">
-                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-muted -translate-x-1/2 z-0"></div>
+                        <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-foreground -translate-x-1/2 z-0"></div>
                         {idSolution.solution.planCard.map((idStep, iIndex) => (
                             <div
                                 key={iIndex}
@@ -130,8 +129,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 {iIndex % 2 === 1 ? (
                                     <>
                                         <div className="flex justify-center md:justify-end">
-                                            <div className="bg-primary/10 p-6 rounded-full relative z-10">
-                                                <div className="bg-primary text-primary-foreground p-4 rounded-full">
+                                            <div className="bg-accent p-6 rounded-full relative z-10">
+                                                <div className="bg-foreground text-primary-foreground p-4 rounded-full">
                                                     {renderIcon(idStep.image?.svg)}
                                                 </div>
                                             </div>
@@ -142,7 +141,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                                 avatarDetails: { label: idStep.header?.badge ?? "" },
                                                 namePosition: "bottom",
                                                 footerClassName: "items-start",
-                                                className: "bg-slate shadow-none border-none hover:shadow-none"
+                                                className: "bg-accent shadow-none border-none hover:shadow-none"
                                             }}
                                         />
                                     </>
@@ -154,12 +153,12 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                                 avatarDetails: { label: idStep.header?.badge ?? "" },
                                                 namePosition: "bottom",
                                                 footerClassName: "items-end",
-                                                className: "bg-slate md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
+                                                className: "bg-accent md:text-right order-2 md:order-1 border-none hover:shadow-none shadow-none"
                                             }}
                                         />
                                         <div className="flex justify-center md:justify-start order-1 md:order-2">
-                                            <div className="bg-primary/10 p-6 rounded-full relative z-10">
-                                                <div className="bg-primary text-primary-foreground p-4 rounded-full">
+                                            <div className="bg-accent p-6 rounded-full relative z-10">
+                                                <div className="bg-foreground text-primary-foreground p-4 rounded-full">
                                                     {renderIcon(idStep.image?.svg)}
                                                 </div>
                                             </div>
@@ -168,9 +167,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 )}
                             </div>
                         ))}
-
                     </div>
-                    <div className="mt-16 bg-slate p-8 md:p-10 rounded-lg shadow-sm">
+                    <div className="mt-16 bg-accent p-8 md:p-10 rounded-lg shadow-sm">
                         <div className="flex flex-col items-center text-center space-y-6">
                             <TitleSubtitle idTitle={{
                                 ...idSolution.solution.planFooter.header,
@@ -196,7 +194,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
             </div>
 
             {/* Solution Section */}
-            < div ref={LdSectionRefs("containerFour")} >
+            < div ref={LdSectionRefs("containerFour")}>
                 <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center flex flex-col items-center justify-center">
                     <TitleSubtitle idTitle={{
                         ...idSolution.solution.solutionHeader,
@@ -209,7 +207,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 key={iIndex}
                                 idCardProps={{
                                     header: idCard.header,
-                                    className: "max-w-xl bg-slate border-gray-200 text-center items-center justify-center",
+                                    className: "max-w-xl bg-accent border-gray-200 text-center items-center justify-center",
                                     buttonPosition: "items-center justify-center",
                                     buttons: (idCard.buttons ?? []).map(button => ({
                                         ...button,
@@ -238,7 +236,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
 
             {/* Success Section */}
             < div ref={LdSectionRefs("containerFive")} >
-                <section className="py-16 md:py-24 lg:py-24 bg-muted/30" id="success-story">
+                <section className="bg-accent py-16 md:py-24 lg:py-24" id="success-story">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                         <TitleSubtitle idTitle={{
                             ...idSolution.solution.successHeader,
@@ -288,7 +286,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
             </div >
 
             {/* Story Section */}
-            < div ref={LdSectionRefs("containerSix")} >
+            < div ref={LdSectionRefs("containerSix")}>
                 <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center">
                     <TitleSubtitle idTitle={{
                         ...idSolution.solution.storyHeader,
@@ -318,8 +316,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                 {fnRenderFormBelowSection("containerSix")}
             </div >
 
-            {/* CalloutSection */}
-            <section className="py-16 md:py-24 lg:py-24 bg-muted/30">
+            {/* SuccessCalloutSection */}
+            < section className="py-16 md:py-24 lg:py-24" >
                 <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                     <TitleSubtitle idTitle={{
                         ...idSolution.solution.calloutHeader,
@@ -372,9 +370,11 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         )}
                     </div>
                 </div>
-            </section>
+            </section >
+
+            {/* CalloutSection */}
             < div ref={LdSectionRefs("containerSeven")} >
-                <section className="bg-dark">
+                <section className="bg-primary">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                         <Callout
                             idCallout={{
@@ -390,9 +390,11 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                 </section>
                 {fnRenderFormBelowSection("containerSeven")}
             </div >
+
+            {/* FinalcalloutSection */}
             <section className="py-20">
                 <div className="container px-4 md:px-6">
-                    <div className="max-w-md mx-auto bg-muted/50 dark:bg-muted/20 rounded-xl border p-6 shadow-sm">
+                    <div className="max-w-md mx-auto rounded-xl border p-6 shadow-sm">
                         <div className="text-center space-y-2 mb-6">
                             <TitleSubtitle idTitle={{
                                 ...idSolution.solution.calloutFooter.header,
