@@ -529,7 +529,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   </div> */}
                         </CardContent>
                         <CardFooter>
-                          <Link href={`/jobs/${idJob.id}`} className="w-full">
+                          <Link href={idJob.applyUrl} className="w-full">
                             <Button
                               variant="outline"
                               className="w-full group/btn border-primary/20 hover:bg-primary/5"

@@ -14,6 +14,7 @@ import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPage
 import { getIconComponent } from "@repo/ui/lib/icon";
 
 // const caseStudyData = {
+//     pdfName: "Sample-lmnas",
 //     heroSection:{
 //         image:{
 //             source: 'https://res.cloudinary.com/lmnas/image/upload/f_png/v1742273824/Website/placeholder/placeholder.svg'
@@ -108,39 +109,33 @@ import { getIconComponent } from "@repo/ui/lib/icon";
 //         },
 //     ],
 //     contact: {
-//         connect:[
-//             {
-//         label: "+91 98840 44470",
-//         href: "tel:+91 98840 44470"
+      
+           
+//         phoneHref: "+91 98840 44470",
+
+//         websiteHref: "https://beta.lmnas.com/",
+
+//       address: "#B206 Radiance Royal, Poonthalmalle, CH-56.",
+
+//         emailHref: "hello@lmnas.com",
+        
 //       },
-//       {
-//         label: "https://beta.lmnas.com/",
-//         href:"https://beta.lmnas.com/"
-//       },
-//       {
-//       label: "#B206 Radiance Royal, Poonthalmalle, CH-56.",
-//       href:"#B206 Radiance Royal, Poonthalmalle, CH-56."
-//       },
-//       {
-//         label: "hello@lmnas.com",
-//         href:"mailto:hello@lmnas.com"
-//       },
-//     ],
+
 //     social:[
 //         {
-//             label: "https://in.linkedin.com/company/lmnaslimited",
+//             href: "https://in.linkedin.com/company/lmnaslimited",
 //             icon: "LinkedIn"
 //           },
 //           {
-//             label: "https://www.youtube.com/@lmnascloudsolutions.4549",
+//             href: "https://www.youtube.com/@lmnascloudsolutions.4549",
 //             icon: "Youtube"
 //           },
 //           {
-//             label: "https://x.com/lmnaslimited",
+//             href: "https://x.com/lmnaslimited",
 //             icon: "X"
 //             }
 //     ]
-// }
+
 // }
 
 const renderIcon = (icon: Tbutton['icon']) => {
