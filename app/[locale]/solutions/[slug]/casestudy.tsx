@@ -80,12 +80,13 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                         {/* Main Content Column */}
                         <div className="lg:col-span-8">
                             {/* Problem Section */}
-                            {idcaseStudies.caseStudies[0]?.problemSection && <ProblemSection idCaseStudy={idcaseStudies.caseStudies[0]?.problemSection} />}
+                            {idcaseStudies.caseStudies[0]?.problemSection && <ProblemSection idCaseStudy={idcaseStudies.caseStudies[0]?.problemSection} 
+                             onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}/>}
 
                             {/* Solution Section */}
                             <div ref={LdSectionRefs("containerOne")}>
                             {idcaseStudies.caseStudies[0]?.solutionSection && <SolutionSection idCaseStudy={idcaseStudies.caseStudies[0]?.solutionSection} 
-                            onButtonClick={(mode) => {fnHandleFormButtonClick(mode as TformMode, "containerOne"); console.log("mode", mode)}} />}
+                            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />}
                             {fnRenderFormBelowSection("containerOne", {idPdfData:idcaseStudies})}
                             </div>
                         </div>
@@ -94,7 +95,7 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                         <div className="hidden lg:block lg:col-span-4" ref={LdSectionRefs("containerTwo")}>
                         
                             {idcaseStudies.caseStudies[0]?.sidebarData && <DynamicSidebar idCaseStudy={idcaseStudies.caseStudies[0]?.sidebarData} 
-                            onButtonClick={(mode) => {fnHandleFormButtonClick(mode as TformMode, "containerTwo"); console.log("mode", mode)}}/>}
+                            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}/>}
                        
                         {fnRenderFormBelowSection("containerTwo", {idPdfData: idcaseStudies})}
                          </div>
