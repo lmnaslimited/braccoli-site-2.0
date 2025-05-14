@@ -41,6 +41,6 @@ export default async function CaseStudy({
     clTransformerFactory.createTransformer('caseStudies')
   );
   return (
-    <CaseStudyPage idcaseStudies={pageData.caseStudies[0]!} />
+    <CaseStudyPage idcaseStudies={pageData} />
   );
 }
