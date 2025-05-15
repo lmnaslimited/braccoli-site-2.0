@@ -21,6 +21,7 @@ export default async function TermsAndConditions({
     context,
     clTransformerFactory.createTransformer("termsAndCondition")
   )
+  console.log(idTerms)
   return (
     <>
       <div className="bg-background min-h-screen">

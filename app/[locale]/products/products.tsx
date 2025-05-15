@@ -99,70 +99,90 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
       </div>
 
       {/* solutions */}
-      <section className="bg-primary py-16 md:py-24 lg:py-24">
-        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <TitleSubtitle
-            idTitle={{
-              ...idProduct?.solutionsHeaderFooter.header,
-              className:
-                "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center text-background",
-              headingClass: "md:text-5xl",
-              descripClass: "max-w-[85%] md:text-xl/relaxed text-muted-foreground",
-            }}
-          />
-          <div className="mx-auto max-w-5xl md:py-12 py-6">
-            <div className="relative">
-              <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-background hidden md:block"></div>
-              {idProduct?.solutionsCard.map((idCard, iIndex) => (
-                <div className="relative mb-12 md:mb-16" key={iIndex}>
-                  <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
-                    <div className="relative z-10 hidden md:flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
-                      <span className="text-xl font-bold">{iIndex + 1}</span>
-                    </div>
-                    <CustomCard
-                      key={iIndex}
-                      idCardProps={{
-                        header: idCard.header,
-                        link:
-                          idCard.buttons?.map((iaButton) => ({
-                            ...iaButton,
-                            icon: "ChevronRight",
-                            className: "ml-1 h-3 w-3",
-                            iconPosition: "after",
-                          })) as Tbutton[],
+      <div ref={LdSectionRefs("containerSeven")}>
+        <section className="bg-primary py-16 md:py-24 lg:py-24">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+            <TitleSubtitle
+              idTitle={{
+                ...idProduct?.solutionsHeaderFooter.header,
+                className:
+                  "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center text-background",
+                headingClass: "md:text-5xl",
+                descripClass: "max-w-[85%] md:text-xl/relaxed text-muted-foreground",
+              }}
+            />
+            <div className="mx-auto max-w-5xl md:py-12 py-6">
+              <div className="relative">
+                <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-background hidden md:block"></div>
+                {idProduct?.solutionsCard.map((idCard, iIndex) => (
+                  <div className="relative mb-12 md:mb-16" key={iIndex}>
+                    <div className="grid gap-8 md:grid-cols-[80px_1fr] items-start">
+                      <div className="relative z-10 hidden md:flex h-16 w-16 items-center justify-center rounded-full bg-background border-2 border-border shadow-md">
+                        <span className="text-xl font-bold">{iIndex + 1}</span>
+                      </div>
+                      <CustomCard
+                        key={iIndex}
+                        idCardProps={{
+                          header: idCard.header,
+                          link:
+                            idCard.buttons?.map((iaButton) => ({
+                              ...iaButton,
+                              icon: "ChevronRight",
+                              className: "ml-1 h-3 w-3",
+                              iconPosition: "after",
+                            })) as Tbutton[],
 
-                        footerClassName: "items-start",
-                        className: "relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
-                      }}
-                    />
+                          footerClassName: "items-start",
+                          className: "relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                        }}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="mx-auto max-w-[58rem] text-center mt-16">
-              <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                {idProduct?.solutionsHeaderFooter.buttons.map((idBtn, iIndex) => (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-2 border border-border"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    <Link href={idBtn.href ?? "/"}>
-                      <span>{idBtn.label}</span>
-                    </Link>
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
                 ))}
+              </div>
+              <div className="mx-auto max-w-[58rem] text-center mt-16">
+                <div className="flex flex-col gap-4 sm:flex-row justify-center">
+                  {idProduct?.solutionsHeaderFooter.buttons.map((idBtn, iIndex) => {
+                    const hasHref = Boolean(idBtn.href);
+
+                    return (
+                      <Button
+                        key={iIndex}
+                        size="lg"
+                        className="gap-2 border border-border group"
+                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                        onClick={() =>
+                          idBtn.formMode &&
+                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven")
+                        }
+                      >
+                        {hasHref ? (
+                          <Link href={idBtn.href ?? "/"}>
+                            <span className="flex items-center">
+                              {idBtn.label}
+                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            </span>
+                          </Link>
+                        ) : (
+                          <>
+                            <span>{idBtn.label}</span>
+                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </>
+                        )}
+                      </Button>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+        {fnRenderFormBelowSection("containerSeven")}
+      </div>
 
       {/* guide */}
       <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24">
+        <section id="features" className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{

@@ -71,13 +71,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         className: "border-l-4 border-l-primary",
                                         buttons: (idCard.buttons || []).map(button => ({
                                             ...button,
-                                            iconPosition: "before",
+                                            iconPosition: "after",
                                         })) as Tbutton[],
-                                        onButtonClick: idCard.buttons?.find(btn => "formMode" in btn) &&
-                                            (() => fnHandleFormButtonClick(
-                                                idCard.buttons?.find(btn => "formMode" in btn)?.formMode as TformMode,
-                                                "containerTwo"
-                                            )),
                                     }}
                                 />
                             ))}

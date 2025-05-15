@@ -77,15 +77,15 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       <section className="bg-accent">
         <div className="py-16 ">
           <Feature
-          idFeature={
-            {
-              ...idHome.home.problemSection[1],
-              iShowButton: false,
-              layout: "centered",
-            } as TfeatureProps
-          }
-        />
-      </div>
+            idFeature={
+              {
+                ...idHome.home.problemSection[1],
+                iShowButton: false,
+                layout: "centered",
+              } as TfeatureProps
+            }
+          />
+        </div>
       </section>
 
       {/* business problem section */}
@@ -250,7 +250,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       {/* Callout Section */}
       <div className="bg-accent" ref={LdSectionRefs("containerThree")}>
         <Callout
-          idCallout={idHome.home.calloutSection[1] as TcalloutProps}
+          idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode) =>
             fnHandleFormButtonClick(mode as TformMode, "containerThree")
           }
