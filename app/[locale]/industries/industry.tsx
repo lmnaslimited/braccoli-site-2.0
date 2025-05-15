@@ -15,8 +15,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
   const allSuccessCards: TcardProps[] =
-    idIndustry?.caseStudies.caseStudies
-      ?.map((caseStudy) => caseStudy.solutionSection?.successCard)
+    idIndustry?.caseStudies
+      ?.map((item) => item.solutionSection?.successCard)
       .filter(Boolean)
       .flat() ?? [];
 
