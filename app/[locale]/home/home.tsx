@@ -193,7 +193,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   idLogoProps={{
                     logos: idHome.home.successClients,
                     variant: "grid",
-                    logoSize: "small",
+                    logoSize: "large",
                     logosPerRow: 4,
                   }}
                 />
