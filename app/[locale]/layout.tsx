@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+// import type { Metadata } from "next"
 import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
@@ -8,10 +8,10 @@ import { fnGetCacheData } from "../api/getData";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
 
-export const metadata: Metadata = {
-  title: "LMNAs Cloud Solutions - AI-Powered ERP Solutions",
-  description: "Enterprise-grade cloud solutions with AI integration for modern businesses",
-}
+// export const metadata: Metadata = {
+//   title: "LMNAs Cloud Solutions - AI-Powered ERP Solutions",
+//   description: "Enterprise-grade cloud solutions with AI integration for modern businesses",
+// }
 
 export default async function RootLayout({
   params,
@@ -33,7 +33,6 @@ export default async function RootLayout({
     context,
     clTransformerFactory.createTransformer("navbar")
   );
-
 
   return (
     <html lang="en" suppressHydrationWarning>

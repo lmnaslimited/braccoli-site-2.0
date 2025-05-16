@@ -7,60 +7,8 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 296ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
+ [32m[1m✓[22m[39m Ready in 291ms
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'menu')
+    at D (.next/server/chunks/450.js:1:11094) {
+  digest: [32m'3525057332'[39m
 }
