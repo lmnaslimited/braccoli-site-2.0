@@ -42,20 +42,12 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   // Stores the video/trend data fetched from the backend
   const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
 
-  // Filter video data based on selected tab
   // If "all" is selected, return all videos
-  // Otherwise, return videos matching the selected source
-  // const filteredByTab = SelectedTab === "all"
-  // ? (() => {
-  //     const linkedInItems = video.filter(v => v.source.toLowerCase() === "linkedin").slice(0, 6);
-  //     const otherItems = video.filter(v => v.source.toLowerCase() !== "linkedin").slice(0, 3);
-  //     return [...linkedInItems, ...otherItems];
-  //   })()
-  // : video.filter(v => v.source.toLowerCase() === SelectedTab);
-
+  // Otherwise, return cards matching the selected source
   // Control the number of items shown in the UI
   // If the tab is expanded (via "Show More"), show all filtered videos
-  // Otherwise, show only the first 9 items
+  // Otherwise, show only the first 6 items
+
   const FilteredTrends = (() => {
     if (SelectedTab === "all") {
       const linkedInItems = video.filter(v => v.source.toLowerCase() === "linkedin");
@@ -69,7 +61,6 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
       return expandedTab === SelectedTab ? tabItems.slice(0, 9) : tabItems.slice(0, 6);
     }
   })();
-  
 
 
   // Fetch video data from the API when the component mounts
