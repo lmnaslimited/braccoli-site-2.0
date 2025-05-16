@@ -7,8 +7,11 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 291ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'menu')
-    at D (.next/server/chunks/450.js:1:11094) {
-  digest: [32m'3525057332'[39m
-}
+ [32m[1m✓[22m[39m Ready in 419ms
+Retrying... Attempt 2
+Retrying... Attempt 3
+Error during fetch operation: fetch failed
+Error fetching LinkedIn posts: Error: Failed after retries
+    at i (.next/server/app/api/social/route.js:2:5448)
+    at async a (.next/server/app/api/social/route.js:2:5645)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)

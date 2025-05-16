@@ -18,6 +18,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, 
 import TrendCard from "@repo/ui/components/trendCard";
 import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, } from "lucide-react";
 import { JobData, JobFilters, Tbutton, TcareerPageTarget, TtrendCardProps } from "@repo/middleware";
+import { CarrerChart } from "@repo/ui/components/chart";
 
 export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   const [, fnSetActiveTab] = useState("students");
@@ -231,18 +232,11 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   {idCareer.career.challengeSection.highlight && idCareer.career.challengeSection.highlight[0]?.label}
                 </h4>
               </div>
-              <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
-                <div className="aspect-[4/3] relative">
-                  {idCareer.career.challengeSection.image?.source && (
-                    <Image
-                      src={idCareer.career.challengeSection.image.source}
-                      alt={idCareer.career.challengeSection.image.alternate || 'image'}
-                      fill
-                      className="object-cover rounded-lg"
-                    />
-                  )}
-                </div>
-              </div>
+              {/* <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full"> */}
+              {/* <div className="aspect-[4/3] relative"> */}
+              <CarrerChart />
+              {/* </div> */}
+              {/* </div> */}
             </div>
             <div className="space-y-6">
               <div className="inline-flex items-center rounded-full border border-primary/10 px-4 py-1.5 text-sm font-medium bg-accent text-primary">
