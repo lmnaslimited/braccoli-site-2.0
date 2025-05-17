@@ -7,6 +7,4 @@
    - Network:      http://192.168.1.55:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 372ms
-(node:130385) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m[1m✓[22m[39m Ready in 898ms

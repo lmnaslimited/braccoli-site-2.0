@@ -22,13 +22,15 @@ import {
   TableRow,
 } from "@repo/ui/components/ui/table";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TformMode, TpricingPageTarget } from "@repo/middleware";
+import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware";
 import { useState } from "react";
 
 export default function Pricing({
   idPricing,
+  idcaseStudies,
 }: {
   idPricing: TpricingPageTarget;
+  idcaseStudies: TcaseStudies;
 }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
@@ -457,7 +459,7 @@ export default function Pricing({
             </div>
           </div>
         </section>
-        {fnRenderFormBelowSection("containerFour")}
+        {fnRenderFormBelowSection("containerFour",{ idPdfData: idcaseStudies })}
       </div>
 
       {/* Testimonials Section*/}
