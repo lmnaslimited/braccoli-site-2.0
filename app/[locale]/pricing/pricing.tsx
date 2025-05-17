@@ -39,7 +39,6 @@ export default function Pricing({
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
-
   return (
     <>
       <div ref={LdSectionRefs("containerOne")}>
@@ -52,8 +51,8 @@ export default function Pricing({
               size: "lg",
             })),
           }}
-          onButtonClick={(mode) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne")
+          onButtonClick={(mode,formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerOne",formTitle)
           }
         />
         {fnRenderFormBelowSection("containerOne")}
@@ -113,7 +112,8 @@ export default function Pricing({
                             idBtn.formMode &&
                             fnHandleFormButtonClick(
                               idBtn.formMode as TformMode,
-                              "containerTwo"
+                              "containerTwo",
+                              idBtn.label
                             )
                           }
                         >
@@ -230,15 +230,16 @@ export default function Pricing({
                                     onClick={() =>{
                                       fnHandleFormButtonClick(
                                         "contact" as TformMode,
-                                        `containerPlan${iIndex + 1}`
+                                        `containerPlan${iIndex + 1}`,
+                                        iPlan.name
                                       );
                                       setOpenedFormId(prev => (prev === containerId ? null : containerId));
                                     }
                                     }
                                   >
                                     {iIndex === 2
-                                      ? "Most Popular"
-                                      : "Get Started"}{" "}
+                                      ? idPricing.pricing.planFooter.list[1]?.label
+                                      : idPricing.pricing.planFooter.list[0]?.label}{" "}
                                         {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
                                   </Button>
                                 </TableCell>
@@ -282,7 +283,8 @@ export default function Pricing({
                             idBtn.formMode &&
                             fnHandleFormButtonClick(
                               idBtn.formMode as TformMode,
-                              "containerThree"
+                              "containerThree",
+                              idBtn.label
                             )
                           }
                         >
@@ -408,7 +410,8 @@ export default function Pricing({
                               idBtn.formMode &&
                               fnHandleFormButtonClick(
                                 idBtn.formMode as TformMode,
-                                "containerFour"
+                                "containerFour",
+                                idBtn.label
                               )
                             }
                           >
@@ -597,7 +600,8 @@ export default function Pricing({
                           idBtn.formMode &&
                           fnHandleFormButtonClick(
                             idBtn.formMode as TformMode,
-                            "containerFive"
+                            "containerFive",
+                            idBtn.label
                           )
                         }
                       >
