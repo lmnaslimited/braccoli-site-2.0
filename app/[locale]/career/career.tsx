@@ -20,6 +20,7 @@ import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, } from "lucide-r
 import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { CarrerChart } from "@repo/ui/components/pieChart";
 
 
 
@@ -271,7 +272,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 </h4>
               </div>
               <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
-                <div className="aspect-[4/3] relative">
+                {/* <div className="aspect-[4/3] relative">
                   {idCareer.career.challengeSection.image?.source && (
                     <Image
                       src={idCareer.career.challengeSection.image.source}
@@ -280,7 +281,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                       className="object-cover rounded-lg"
                     />
                   )}
-                </div>
+                </div> */}
+                <CarrerChart />
               </div>
             </div>
             <div className="space-y-6">
