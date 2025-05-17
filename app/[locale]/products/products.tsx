@@ -9,11 +9,12 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import Image from 'next/image';
 
-const renderIcon = (icon: Tbutton['icon']) => {
+const renderIcon = (icon: Tbutton['icon'], className?:string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
   const IconComponent = getIconComponent(iconName);
-  return <IconComponent className="w-5 h-5" />;
+  return <IconComponent className={className || "w-5 h-5"} />;
 };
 
 export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
@@ -33,7 +34,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               })),
             } as TheroSection
           }
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
+          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)}
         />
         {fnRenderFormBelowSection("containerOne")}
       </div>
@@ -85,7 +86,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         size="lg"
                         className="gap-4"
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo", idBtn.label)}
                       >
                         {idBtn.label}
                       </Button>)
@@ -153,7 +154,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
                         onClick={() =>
                           idBtn.formMode &&
-                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven")
+                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven", idBtn.label)
                         }
                       >
                         {hasHref ? (
@@ -202,7 +203,15 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 !== 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {renderIcon(idFeature.image?.svg)}
+                        {idFeature.image?.svg && renderIcon(idFeature.image?.svg, "w-24 h-24")}
+                        {idFeature.image?.source && (
+                        <Image
+                          src={idFeature.image?.source}
+                          alt={idFeature.image?.alternate}
+                          className="object-contain w-full h-full"
+                          fill
+                         />
+                        )}
                       </div>
                     ) : null}
 
@@ -242,8 +251,16 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
                     {iIndex % 2 === 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
-                        <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {renderIcon(idFeature.image?.svg)}
+                        {/* <div className="absolute inset-0"></div> */}
+                        {idFeature.image?.svg && renderIcon(idFeature.image?.svg, "w-24 h-24")}
+                        {idFeature.image?.source && (
+                        <Image
+                          src={idFeature.image?.source}
+                          alt={idFeature.image?.alternate}
+                          className="object-scale-down bg-background"
+                          fill
+                         />
+                        )}
                       </div>
                     ) : null}
                   </div>
@@ -269,7 +286,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       size="lg"
                       className="gap-4"
                       variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
                     >
                       {idBtn.label}
                     </Button>)
@@ -357,7 +374,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       size="lg"
                       className="gap-4"
                       variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
+                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label)}
                     >
                       {idBtn.label}
                     </Button>)
@@ -444,7 +461,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                           size="lg"
                           className="gap-4"
                           variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                          onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive")}
+                          onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive", idBtn.label)}
                         >
                           {idBtn.label}
                         </Button>)
@@ -506,7 +523,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         size="lg"
                         className="gap-4"
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSix")}
+                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSix", idBtn.label)}
                       >
                         {idBtn.label}
                       </Button>)

@@ -3,9 +3,10 @@
 import type React from "react"
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
-import { LdBookingPageFormConfig, LdContactPageFormConfig, SectionForm } from "@repo/ui/components/form"
+import { SectionForm } from "@repo/ui/components/form"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { TcontactTarget } from "@repo/middleware"
+import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
@@ -19,6 +20,16 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
     const fnHandleBookingSuccess = (iMessage: string) => {
         fnsetBookingMessage(iMessage)
     }
+
+const LdBookingForm = idContact.forms.find(form => form.formId === "booking");
+const LdContactForm = idContact.forms.find(form => form.formId === "contact");
+
+if (!LdBookingForm) {
+  throw new Error("Booking form not found or missing formId");
+}
+if (!LdContactForm) {
+    throw new Error("Booking form not found or missing formId");
+  }
 
     return (
         <section>
@@ -39,7 +50,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                     <div className="lg:col-span-4 order-2">
                         <div className={cn("bg-card border border-border rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
                             <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-foreground md:text-4xl">
-                                {LdContactPageFormConfig.title}
+                                {LdContactForm.title}
                             </h2>
                             {ContactMessage && (
                                 <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md relative">
@@ -55,7 +66,11 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 </div>
                             )}
                             <SectionForm
-                                config={LdContactPageFormConfig}
+                                config={{
+                                    ...LdContactForm,
+                                    fields: idContact.contact.contactForm, // override with your desired fields
+                                    schema: generateSchemaFromFields(idContact.contact.contactForm || [])
+                                  }}
                                 onSuccess={fnHandleContactSuccess}
                                 className="shadow-none bg-transparent p-0 border-none"
                                 hideCardHeader={true}
@@ -82,7 +97,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                         <div className="lg:col-span-4 order-4">
                             <div className={cn("bg-card border border-borde rounded-xl shadow-md p-2 md:p-4 mx-auto md:max-w-2xl w-full")}>
                                 <h2 className="text-xl sm:text-3xl font-bold font-sans tracking-wide text-foreground md:text-4xl">
-                                    {LdBookingPageFormConfig.title}
+                                    {LdBookingForm.title}
                                 </h2>
                                 {BookingMessage && (
                                     <div className="mt-4 p-4 bg-green-50 text-green-700 rounded-md relative">
@@ -98,7 +113,11 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     </div>
                                 )}
                                 <SectionForm
-                                    config={LdBookingPageFormConfig}
+                                    config={{
+                                        ...LdBookingForm,
+                                        fields: idContact.contact.bookingForm, // override with your desired fields
+                                        schema: generateSchemaFromFields(idContact.contact.bookingForm || [])
+                                      }}
                                     onSuccess={fnHandleBookingSuccess}
                                     className="shadow-none bg-transparent p-0 border-none"
                                     hideCardHeader={true}
