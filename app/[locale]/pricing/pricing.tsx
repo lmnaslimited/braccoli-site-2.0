@@ -27,7 +27,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                         size: "lg",
                     })),
                 }}
-                    onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
+                    onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)}
                 />
                 {fnRenderFormBelowSection("containerOne")}
             </div>
@@ -74,7 +74,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                                 variant={
                                                     (idBtn.variant as Tbutton["variant"]) ?? "default"
                                                 }
-                                                onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+                                                onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo", idBtn.label)}
                                             >
                                                 {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
                                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -186,7 +186,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                             key={iIndex}
                                             size="lg"
                                             variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+                                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
                                         >
                                             {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
                                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -287,7 +287,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                         }} />
                                         <div className="flex flex-col sm:flex-row gap-3">
                                             {idPricing.pricing.guideFooter.buttons.map((idBtn, iIndex) => (
-                                                <Button key={iIndex} size="lg" className="bg-background text-foreground" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
+                                                <Button key={iIndex} size="lg" className="bg-background text-foreground" onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label)}
                                                 >
                                                     {idBtn.icon && (() => {
                                                         const iconName = typeof idBtn.icon === "string" ? idBtn.icon : "HelpCircle";
@@ -418,7 +418,7 @@ export default function Pricing({ idPricing }: { idPricing: TpricingPageTarget }
                                                 variant={
                                                     (idBtn.variant as Tbutton["variant"]) ?? "default"
                                                 }
-                                                onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive")}
+                                                onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive", idBtn.label)}
                                             >
                                                 {idBtn.href ? <Link href={idBtn.href}> {idBtn.label} </Link> : idBtn.label}
                                                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

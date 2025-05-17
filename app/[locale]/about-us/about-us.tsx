@@ -195,7 +195,7 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                         <div
                                             key={iIndex}
                                             className="border border-background p-6 hover:bg-foreground transition-colors group"
-                                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerOne")}
+                                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerOne", idBtn.label)}
                                         >
                                             {renderIcon(idBtn.icon, "h-8 w-8 text-background mb-4 mx-auto")}
                                             <p className="font-medium mb-2">{idBtn.label}</p>

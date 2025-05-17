@@ -38,11 +38,19 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                                 variant: "outline",
                                 size: "lg",
                             })),
-                            onButtonClick: idcaseStudies.caseStudies[0]?.heroSection.buttons?.find(btn => "formMode" in btn) &&
-                                (() => fnHandleFormButtonClick(
-                                    idcaseStudies.caseStudies[0]?.heroSection.buttons?.find(btn => "formMode" in btn)?.formMode as TformMode,
-                                    "containerTwo"
-                                )),
+                            onButtonClick: (() => {
+                                const LaButton = (idcaseStudies.caseStudies[0]?.heroSection.buttons ?? []).find(
+                                  btn => "formMode" in btn
+                                );
+                                return LaButton
+                                  ? () =>
+                                      fnHandleFormButtonClick(
+                                        LaButton.formMode as TformMode,
+                                        "containerTwo",
+                                        LaButton.label
+                                      )
+                                  : undefined;
+                              })(),
                         }}
                     />
 
@@ -81,12 +89,12 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                         <div className="lg:col-span-8">
                             {/* Problem Section */}
                             {idcaseStudies.caseStudies[0]?.problemSection && <ProblemSection idCaseStudy={idcaseStudies.caseStudies[0]?.problemSection}
-                                onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />}
+                                onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />}
 
                             {/* Solution Section */}
                             <div ref={LdSectionRefs("containerOne")}>
                                 {idcaseStudies.caseStudies[0]?.solutionSection && <SolutionSection idCaseStudy={idcaseStudies.caseStudies[0]?.solutionSection}
-                                    onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />}
+                                    onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />}
                                 {fnRenderFormBelowSection("containerOne", { idPdfData: idcaseStudies })}
                             </div>
                         </div>
@@ -95,7 +103,7 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                         <div className="hidden lg:block lg:col-span-4" ref={LdSectionRefs("containerTwo")}>
 
                             {idcaseStudies.caseStudies[0]?.sidebarData && <DynamicSidebar idCaseStudy={idcaseStudies.caseStudies[0]?.sidebarData}
-                                onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")} />}
+                                onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerTwo", formTitle)} />}
 
                             {fnRenderFormBelowSection("containerTwo", { idPdfData: idcaseStudies })}
                         </div>

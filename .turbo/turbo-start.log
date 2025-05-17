@@ -1,66 +1,113 @@
 
-> braccoli@0.1.0 start /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.57:3000
+   - Network:      http://192.168.31.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 296ms
+ [32m[1m✓[22m[39m Ready in 561ms
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+(node:71766) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+transform {
+  contact: {
+    header: [ [36m[Object][39m, [36m[Object][39m ],
+    contactForm: [
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m
+    ],
+    bookingForm: [
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m,
+      [36m[Object][39m, [36m[Object][39m
+    ],
+    __typename: [32m'Contact'[39m
+  },
+  forms: [
+    {
+      title: [32m'Download Resources'[39m,
+      terms: [36m[Object][39m,
+      successTitle: [32m'Happy Reading!'[39m,
+      successMessage: [32m'Your download will start shortly!'[39m,
+      submitText: [32m'Download Now'[39m,
+      showTerms: [33mtrue[39m,
+      privacy: [36m[Object][39m,
+      description: [32m'Fill out the form to access our content'[39m,
+      formId: [32m'download'[39m,
+      verifiedMessage: [1mnull[22m,
+      unVerifiedMessage: [1mnull[22m,
+      policyDescription: [32m'By submitting, you agree to our'[39m,
+      __typename: [32m'Form'[39m
+    },
+    {
+      title: [32m'Join Our Webinar – Register Now'[39m,
+      terms: [36m[Object][39m,
+      successTitle: [32m'Thank You!'[39m,
+      successMessage: [32m'Thank you for registering! A confirmation email has been sent to your inbox'[39m,
+      submitText: [32m'Register'[39m,
+      showTerms: [33mtrue[39m,
+      privacy: [36m[Object][39m,
+      description: [32m'Fill out the form to receive your webinar access link.'[39m,
+      formId: [32m'webinar'[39m,
+      verifiedMessage: [1mnull[22m,
+      unVerifiedMessage: [1mnull[22m,
+      policyDescription: [32m'By submitting, you agree to our'[39m,
+      __typename: [32m'Form'[39m
+    },
+    {
+      title: [32m'Book an Appointment'[39m,
+      terms: [36m[Object][39m,
+      successTitle: [32m'Thank You!'[39m,
+      successMessage: [32m'Your booking has been confirmed successfully!'[39m,
+      submitText: [32m'Book Now'[39m,
+      showTerms: [33mtrue[39m,
+      privacy: [36m[Object][39m,
+      description: [32m'Fill out the form below to schedule a meeting with us.'[39m,
+      formId: [32m'booking'[39m,
+      verifiedMessage: [36m[Object][39m,
+      unVerifiedMessage: [36m[Object][39m,
+      policyDescription: [32m'By submitting, you agree to our'[39m,
+      __typename: [32m'Form'[39m
+    },
+    {
+      title: [32m'Contact Us'[39m,
+      terms: [36m[Object][39m,
+      successTitle: [32m'Thank You!'[39m,
+      successMessage: [32m'Your message has been sent!'[39m,
+      submitText: [32m'Send Message'[39m,
+      showTerms: [33mtrue[39m,
+      privacy: [36m[Object][39m,
+      description: [32m'Get in touch with our team'[39m,
+      formId: [32m'contact'[39m,
+      verifiedMessage: [1mnull[22m,
+      unVerifiedMessage: [1mnull[22m,
+      policyDescription: [32m'By submitting, you agree to our'[39m,
+      __typename: [32m'Form'[39m
+    }
+  ]
+}
+pagadata [1mnull[22m
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
+    at s (.next/server/app/[locale]/career/page.js:1:17174) {
+  digest: [32m'3905061235'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
+    at s (.next/server/app/[locale]/career/page.js:1:17174) {
+  digest: [32m'3905061235'[39m
 }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m
+pagadata [1mnull[22m

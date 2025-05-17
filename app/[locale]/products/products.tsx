@@ -34,7 +34,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               })),
             } as TheroSection
           }
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")}
+          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)}
         />
         {fnRenderFormBelowSection("containerOne")}
       </div>
@@ -86,7 +86,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         size="lg"
                         className="gap-4"
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo", idBtn.label)}
                       >
                         {idBtn.label}
                       </Button>)
@@ -154,7 +154,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
                         onClick={() =>
                           idBtn.formMode &&
-                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven")
+                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven", idBtn.label)
                         }
                       >
                         {hasHref ? (
@@ -286,7 +286,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       size="lg"
                       className="gap-4"
                       variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
                     >
                       {idBtn.label}
                     </Button>)
@@ -374,7 +374,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                       size="lg"
                       className="gap-4"
                       variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour")}
+                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label)}
                     >
                       {idBtn.label}
                     </Button>)
@@ -461,7 +461,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                           size="lg"
                           className="gap-4"
                           variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                          onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive")}
+                          onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive", idBtn.label)}
                         >
                           {idBtn.label}
                         </Button>)
@@ -523,7 +523,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         size="lg"
                         className="gap-4"
                         variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSix")}
+                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSix", idBtn.label)}
                       >
                         {idBtn.label}
                       </Button>)

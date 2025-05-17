@@ -101,7 +101,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
             }
           ]
         }}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
         {fnRenderFormBelowSection("containerOne")}
       </section>
 
@@ -175,7 +175,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/80 text-background"
-                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode, "containerTwo")}
+                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode, "containerTwo", idTrend.trend.frustrationSection[1].buttons[0]?.label)}
                 >
                   {idTrend.trend.frustrationSection[1].buttons[0]?.label}{" "}
                   {renderIcon(idTrend.trend.frustrationSection[1].buttons[0]?.icon)}
@@ -256,8 +256,8 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                 size: "lg",
               })),
             }}
-            onButtonClick={(mode) =>
-              fnHandleFormButtonClick(mode as TformMode, "containerFour")
+            onButtonClick={(mode, formTitle) =>
+              fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
             }
           />
         </div>

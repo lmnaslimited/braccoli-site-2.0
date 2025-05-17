@@ -16,6 +16,9 @@ export default async function ContactPage({
         context,
         clTransformerFactory.createTransformer('contact')
     );
+    // console.log("contact", pageData)
+   
+console.log("transform", pageData)
     return (
         <Contact idContact={pageData} />
     );
