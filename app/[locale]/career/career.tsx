@@ -250,8 +250,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
             })),
           }
         }
-        onButtonClick={(mode) =>
-          fnHandleFormButtonClick(mode as TformMode, "containerOne")
+        onButtonClick={(mode, formTitle) =>
+          fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
         }
       />
       {fnRenderFormBelowSection("containerOne")}
@@ -643,7 +643,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                             variant={
                               (idBtn.variant as Tbutton["variant"]) ?? "default"
                             }
-                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}>
+                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}>
                             <BtnIconComponent className="h-4 w-4" />
                             {idBtn.label}
                           </Button>

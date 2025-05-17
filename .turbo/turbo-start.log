@@ -1,66 +1,12 @@
 
-> braccoli@0.1.0 start /home/tyro24005/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.57:3000
+   - Network:      http://192.168.31.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 296ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/app/[locale]/career/page.js:1:17175) {
-  digest: [32m'4068882094'[39m
-}
+ [32m[1m✓[22m[39m Ready in 529ms
+(node:39145) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)

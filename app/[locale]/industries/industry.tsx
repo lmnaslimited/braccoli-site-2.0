@@ -32,7 +32,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
               iconPosition: "after",
             })),
           } as TheroSection}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
         {fnRenderFormBelowSection("containerOne")}
       </div>
 
@@ -63,7 +63,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 iconPosition: "before",
               })),
             } as TcalloutProps}
-            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerTwo")}
+            onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerTwo", formTitle)}
           />
         </div>
         {fnRenderFormBelowSection("containerTwo")}
@@ -211,7 +211,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   size="lg"
                   className="text-md px-8 py-6"
                   onClick={() =>
-                    idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")
+                    idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)
                   }
                 >
                   {idBtn.label}
@@ -279,7 +279,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     className="group"
                     onClick={() => {
                       if (idBtn.formMode) {
-                        fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour");
+                        fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label);
                       }
                     }}
                   >
