@@ -1,7 +1,7 @@
 import { clTransformerFactory, Tcontext, ThomePageTarget } from '@repo/middleware'
 import { fnGetCacheData } from '../api/getData';
 import Home from './home/home';
-import type { Metadata, Viewport } from 'next';
+import { Metadata } from 'next';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -20,7 +20,6 @@ export async function generateMetadata(): Promise<Metadata> {
       'education ERP',
       'distribution solutions'
     ],
-    metadataBase: new URL('https://beta.lmnas.com'),
     alternates: {
       canonical: 'https://beta.lmnas.com/',
     },
@@ -51,47 +50,9 @@ export async function generateMetadata(): Promise<Metadata> {
       ],
       creator: '@lmnaslimited',
     },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: false,
-      googleBot: {
-        index: true,
-        follow: true,
-        'max-snippet': -1,
-        'max-image-preview': 'large',
-        'max-video-preview': -1,
-      }
-    },
-    authors: [
-      {
-        name: 'LMNAs Team',
-        url: 'https://beta.lmnas.com/about'
-      }
-    ],
-    creator: 'LMNAs',
-    publisher: 'LMNAs',
     category: 'Business',
-    applicationName: 'LMNAs Cloud ERP',
-    icons: {
-      icon: '/favicon.ico',
-      shortcut: '/favicon.ico',
-      apple: '/apple-touch-icon.png',
-    },
-    appleWebApp: {
-      capable: true,
-      title: 'LMNAs Cloud ERP',
-      statusBarStyle: 'default',
-    },
   };
 }
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1.0,
-  maximumScale: 5.0,
-  userScalable: true,
-};
 
 export default async function HomePage({
   params,
