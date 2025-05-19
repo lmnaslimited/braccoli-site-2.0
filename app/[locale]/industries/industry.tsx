@@ -89,14 +89,16 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
               >
                 {isEven && (
-                  <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-first">
-                    <Image
-                      src={idSection.image?.source || "placeholder.svg"}
-                      alt={idSection.image?.alternate || ""}
-                      fill
-                      className="object-fill"
-                    />
-                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg order-last lg:order-first flex items-center justify-center">
+                  <Image
+                    src={idSection.image?.source || "placeholder.svg"}
+                    alt={idSection.image?.alternate || ""}
+                    width={600}
+                    height={400}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
+                
                 )}
 
                 <div className="space-y-6">
@@ -115,14 +117,15 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 </div>
 
                 {!isEven && (
-                  <div className="relative h-[300px] md:h-[400px] rounded-xl overflow-hidden shadow-lg order-last lg:order-none">
-                    <Image
-                      src={idSection.image?.source || "/placeholder.svg"}
-                      alt={idSection.image?.alternate || ""}
-                      fill
-                      className="object-fill"
-                    />
-                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg order-last lg:order-none flex items-center justify-center">
+                  <Image
+                    src={idSection.image?.source || "/placeholder.svg"}
+                    alt={idSection.image?.alternate || ""}
+                    width={600}
+                    height={400}
+                    className="object-contain w-full h-auto"
+                  />
+                </div>
                 )}
               </div>
             );

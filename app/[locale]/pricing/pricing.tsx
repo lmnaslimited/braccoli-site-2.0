@@ -327,7 +327,7 @@ export default function Pricing({
               }}
             />
             <div className="mx-auto max-w-6xl">
-              <Tabs defaultValue="performance" className="w-full">
+              <Tabs defaultValue={idPricing.pricing.guideCategories[0]?.label} className="w-full">
                 <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 bg-accent p-1 rounded-none">
                   {idPricing.pricing.guideCategories.map((iTab) => (
                     <TabsTrigger
