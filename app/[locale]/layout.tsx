@@ -2,52 +2,65 @@ import type React from "react"
 import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TnavbarTarget } from "@repo/middleware";
+import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget } from "@repo/middleware";
 import { fnGetCacheData } from "../api/getData";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
 import type { Metadata, Viewport } from 'next';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string; }> }): Promise<Metadata> {
+
+  const { locale } = await params;
+  const context: Tcontext = { locale: locale }
+
+  const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
+    context,
+    clTransformerFactory.createTransformer("globalMeta")
+  );
+
+  const data = globalMetaData?.globalMeta;
+
+  if (!data) return {};
+
   return {
-    metadataBase: new URL('https://beta.lmnas.com'),
+    metadataBase: data.metadataBase ? new URL(data.metadataBase) : undefined,
     robots: {
-      index: true,
-      follow: true,
-      nocache: false,
+      index: data.robotsIndex,
+      follow: data.robotsFollow,
+      nocache: data.robotsNocache,
       googleBot: {
-        index: true,
-        follow: true,
-        'max-snippet': -1,
-        'max-image-preview': 'large',
-        'max-video-preview': -1,
-      }
+        index: data.googleBotIndex,
+        follow: data.googleBotFollow,
+        'max-snippet': data.googleBotMaxSnippet,
+        'max-image-preview': data.googleBotMaxImagePreview,
+        'max-video-preview': data.googleBotMaxVideoPreview,
+      },
     },
-    authors: [
-      {
-        name: 'LMNAs Team',
-        url: 'https://beta.lmnas.com/about'
-      }
-    ],
-    creator: 'LMNAs',
-    publisher: 'LMNAs',
-    applicationName: 'LMNAs Cloud ERP',
+    authors: data.authorsName && data.authorsURL
+      ? [{ name: data.authorsName, url: data.authorsURL }]
+      : undefined,
+    creator: data.creator,
+    publisher: data.publisher,
+    applicationName: data.applicationName,
     icons: {
-      icon: [
-        { url: '/icon.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
-      ],
-      apple: [
-        { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }
-      ],
-      shortcut: '/favicon.ico',
+      icon: data.icons?.map((icon: any) => ({
+        url: icon.url,
+        sizes: icon.sizes,
+        type: icon.type,
+      })),
+      apple: data.apple?.map((icon: any) => ({
+        url: icon.url,
+        sizes: icon.sizes,
+        type: icon.type,
+      })),
+      shortcut: data.shortcut,
     },
     appleWebApp: {
-      capable: true,
-      title: 'LMNAs Cloud ERP',
-      statusBarStyle: 'default',
+      capable: data.appleWebAppCapable,
+      title: data.appleWebAppTitle,
+      statusBarStyle: data.appleWebAppStatusBarStyle,
     },
-    manifest: '/manifest.webmanifest',
+    manifest: data.manifest,
   };
 }
 

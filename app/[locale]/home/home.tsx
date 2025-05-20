@@ -25,8 +25,6 @@ import CustomCard from "@repo/ui/components/customCard";
 import LogoShowcase from "@repo/ui/components/logoShowCase";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
-
-
 const renderIcon = (icon: Tbutton['icon']) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
   const IconComponent = getIconComponent(iconName);
@@ -140,7 +138,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                         (idBtn.variant as Tbutton["variant"]) ?? "default"
                       }
                     >
-                    {idBtn.label}{" "}
+                      {idBtn.label}{" "}
                       {renderIcon(idBtn.icon)}
                     </Button>
 
@@ -247,16 +245,16 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               ))}
             </div>
             <div className="mt-8 text-center">
-                {idHome.home.socialSection.buttons[0]?.href && (
-                  <Link href={idHome.home.socialSection.buttons[0]?.href}>
-                                  <Button size="lg">
+              {idHome.home.socialSection.buttons[0]?.href && (
+                <Link href={idHome.home.socialSection.buttons[0]?.href}>
+                  <Button size="lg">
 
                     {idHome.home.socialSection.buttons[0]?.label}{" "}
                     {renderIcon(idHome.home.socialSection.buttons[0]?.icon)}
-                    </Button>
+                  </Button>
 
-                  </Link>
-                )}
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -339,18 +337,18 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   <p className="text-primary mb-6">
                     {idHome.home.trendingNowSection.subtitle}
                   </p>
-                 
-                    {idHome.home.trendingNowSection.buttons[0]?.href && (
-                      <Link
-                        href={idHome.home.trendingNowSection.buttons[0]?.href}
-                      > <Button  size="lg">
+
+                  {idHome.home.trendingNowSection.buttons[0]?.href && (
+                    <Link
+                      href={idHome.home.trendingNowSection.buttons[0]?.href}
+                    > <Button size="lg">
 
                         {idHome.home.trendingNowSection.buttons[0]?.label}
                         {renderIcon(idHome.home.trendingNowSection.buttons[0]?.icon)}
-                        </Button>
+                      </Button>
 
-                      </Link>
-                    )}
+                    </Link>
+                  )}
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
