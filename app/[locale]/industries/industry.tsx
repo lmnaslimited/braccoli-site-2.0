@@ -10,10 +10,15 @@ import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
+import { getIconComponent } from "@repo/ui/lib/icon";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
-
+  const renderIcon = (icon: Tbutton['icon']) => {
+    const iconName = typeof icon === "string" ? icon : "HelpCircle";
+    const IconComponent = getIconComponent(iconName);
+    return <IconComponent className="w-5 h-5" />;
+  };
   const allSuccessCards: TcardProps[] =
     idIndustry?.caseStudies
       ?.map((item) => item.solutionSection?.successCard)
@@ -168,7 +173,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
               })) ?? [],
             TabDefault: {
               text: "All",
-              label: "Show More",
+              AllLabel: idIndustry?.industries[0]?.allFeatureHeader.highlight ?? "Show More",
+              LessLabel: idIndustry?.industries[0]?.allFeatureHeader.badge ?? "Show Less",
             },
           }}
         />
@@ -217,7 +223,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)
                   }
                 >
-                  {idBtn.label}
+                  {idBtn.label} {" "}
+                  {renderIcon(idBtn.icon)}
                 </Button>
               ))}
               <p className="text-sm text-muted-foreground mt-4">
@@ -265,7 +272,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 })),
                 TabDefault: {
                   text: "All",
-                  label: "Show More",
+                  AllLabel: idIndustry?.industries[0]?.successStoryHeaderFooter?.list?.[0]?.label ?? "Show More",
+                  LessLabel: idIndustry?.industries[0]?.successStoryHeaderFooter?.list?.[1]?.label ?? "Show Less",
                 },
               }}
             />
