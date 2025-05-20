@@ -25,12 +25,6 @@ import CustomCard from "@repo/ui/components/customCard";
 import LogoShowcase from "@repo/ui/components/logoShowCase";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
-const renderIcon = (icon: Tbutton['icon']) => {
-  const iconName = typeof icon === "string" ? icon : "HelpCircle";
-  const IconComponent = getIconComponent(iconName);
-  return <IconComponent className="w-5 h-5" />;
-};
-
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
@@ -46,6 +40,12 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   // Painpoint section percentages
   const LaPainpointSeverities = [85, 78, 92, 70];
 
+  const renderIcon = (icon: Tbutton['icon']) => {
+    const iconName = typeof icon === "string" ? icon : "HelpCircle";
+    const IconComponent = getIconComponent(iconName);
+    return <IconComponent className="w-5 h-5" />;
+  };
+
   return (
     <div>
       {/* Hero section */}
@@ -60,8 +60,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               })),
             } as TheroSection
           }
-          onButtonClick={(mode) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne")
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerOne")}
@@ -153,7 +153,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                       idBtn.formMode &&
                       fnHandleFormButtonClick(
                         idBtn.formMode as TformMode,
-                        "containerTwo"
+                        "containerTwo",
+                        idBtn.label
                       )
                     }
                   >
@@ -264,8 +265,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       <div className="bg-accent" ref={LdSectionRefs("containerThree")}>
         <Callout
           idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
-          onButtonClick={(mode) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerThree")
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerThree", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerThree")}
@@ -305,8 +306,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               layout: "simple",
             } as TcalloutProps
           }
-          onButtonClick={(mode) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerFour")
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerFour")}

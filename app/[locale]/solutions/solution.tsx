@@ -48,7 +48,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                             iconPosition: "after",
                         })),
                     } as TheroSection}
-                    onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+                    onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
                 {fnRenderFormBelowSection("containerOne")}
             </div>
 
@@ -88,7 +88,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                             <div className="flex flex-wrap gap-4 justify-center">
                                 {idSolution.solution.guideFooter.buttons.map((idBtn, iIndex) =>
                                     <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}
-                                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo")}
+                                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo", idBtn.label)}
                                     >
                                         {idBtn.href ? <Link href={idBtn.href}>
                                             {idBtn.label}
@@ -174,7 +174,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                             <div className="flex flex-wrap gap-4 justify-center">
                                 {idSolution.solution.planFooter.buttons.map((idBtn, iIndex) =>
                                     <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}
-                                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree")}
+                                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
                                     >
                                         {renderIcon(idBtn.icon)}
                                         {idBtn.href ? <Link href={idBtn.href}>
@@ -209,11 +209,16 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         iconPosition: "after",
                                         size: "lg",
                                     })) as Tbutton[],
-                                    onButtonClick: idCard.buttons?.find(btn => "formMode" in btn) &&
-                                        (() => fnHandleFormButtonClick(
-                                            idCard.buttons?.find(btn => "formMode" in btn)?.formMode as TformMode,
-                                            "containerFour"
-                                        )),
+                                    onButtonClick:(() => {
+                                        const LaButton = idCard.buttons?.find(btn => "formMode" in btn);
+                                        return LaButton
+                                          ? () => fnHandleFormButtonClick(
+                                            LaButton.formMode as TformMode,
+                                              "containerFour",
+                                              LaButton.label
+                                            )
+                                          : undefined;
+                                      })(),
                                 }}
                             />
                         ))}
@@ -221,7 +226,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                     <p className="font-semibold mt-16 mb-6 text-xl">
                         {idSolution.solution.solutionFooter.title}
                     </p>
-                    <Button size={"lg"} onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFour")}>
+                    <Button size={"lg"} onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFour", idSolution.solution.solutionFooter.buttons[0]?.label)}>
                         {idSolution.solution.solutionFooter.buttons[0]?.label}{" "}
                         {renderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
                     </Button>
@@ -270,7 +275,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                             }}
                         />
                         <div className="mt-3 text-center">
-                            <Button size="lg" className="group" onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFive")}>
+                            <Button size="lg" className="group" onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFive", idSolution.solution.solutionFooter.buttons[0]?.label)}>
                                 {idSolution.solution.solutionFooter.buttons[0]?.label}
                                 {renderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
                             </Button>
@@ -303,7 +308,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                     <p className="font-semibold mt-16 mb-6 text-xl">
                         {idSolution.solution.storyFooter.description}
                     </p>
-                    <Button size={"lg"} onClick={() => idSolution.solution.storyFooter.formMode && fnHandleFormButtonClick(idSolution.solution.storyFooter.formMode as TformMode, "containerSix")}>
+                    <Button size={"lg"} onClick={() => idSolution.solution.storyFooter.formMode && fnHandleFormButtonClick(idSolution.solution.storyFooter.formMode as TformMode, "containerSix", idSolution.solution.storyFooter.label)}>
                         {idSolution.solution.storyFooter.label}{" "}
                         {renderIcon(idSolution.solution.storyFooter.icon)}
                     </Button>
@@ -379,7 +384,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                     iconPosition: "before",
                                 })),
                             } as TcalloutProps}
-                            onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerSeven")}
+                            onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerSeven", formTitle)}
                         />
                     </div>
                 </section>

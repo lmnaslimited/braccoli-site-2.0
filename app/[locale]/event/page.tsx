@@ -16,6 +16,7 @@ export default async function EventsPage({
         context,
         clTransformerFactory.createTransformer('event')
     );
+
     return (
         <Events idEvent={pageData} />
     );

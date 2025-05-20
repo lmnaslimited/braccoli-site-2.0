@@ -8,8 +8,9 @@ import { useEffect, useState } from "react";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Callout from "@repo/ui/components/callout";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { TformMode, TtrendsPageSource } from "@repo/middleware"
+import { Tbutton, TformMode, TtrendsPageSource } from "@repo/middleware"
 import { TtrendCardProps } from "@repo/ui/type";
+import { getIconComponent } from "@repo/ui/lib/icon";
 
 export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSource }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -23,6 +24,16 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
     "all", "linkedin", "youtube", "x"
   ];
 
+
+  const toggleExpandTab = () => {
+    if (expandedTab === SelectedTab) {
+      setExpandedTab(""); // collapse
+    } else {
+      setExpandedTab(SelectedTab); // expand
+    }
+  };
+
+  
   // When user switches tabs, reset the expanded state
   useEffect(() => {
     setExpandedTab(""); // reset expanded tab when tab is switched
@@ -31,20 +42,26 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
   // Stores the video/trend data fetched from the backend
   const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
 
-  // Filter video data based on selected tab
   // If "all" is selected, return all videos
-  // Otherwise, return videos matching the selected source
-  const filteredByTab = SelectedTab === "all"
-    ? video
-    : video.filter(
-      (idTrend) => idTrend.source.toLowerCase() === SelectedTab
-    );
-
+  // Otherwise, return cards matching the selected source
   // Control the number of items shown in the UI
   // If the tab is expanded (via "Show More"), show all filtered videos
-  // Otherwise, show only the first 9 items
-  const FilteredTrends =
-    expandedTab === SelectedTab ? filteredByTab : filteredByTab.slice(0, 9);
+  // Otherwise, show only the first 6 items
+
+  const FilteredTrends = (() => {
+    if (SelectedTab === "all") {
+      const linkedInItems = video.filter(v => v.source.toLowerCase() === "linkedin");
+      const otherItems = video.filter(v => v.source.toLowerCase() !== "linkedin");
+  
+      return expandedTab === "all"
+        ? [...linkedInItems.slice(0, 6), ...otherItems.slice(0, 3)]
+        : [...linkedInItems.slice(0, 3), ...otherItems.slice(0, 3)];
+    } else {
+      const tabItems = video.filter(v => v.source.toLowerCase() === SelectedTab);
+      return expandedTab === SelectedTab ? tabItems.slice(0, 9) : tabItems.slice(0, 6);
+    }
+  })();
+
 
   // Fetch video data from the API when the component mounts
   useEffect(() => {
@@ -61,6 +78,12 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
     fetchData();
   }, []);
 
+  const renderIcon = (icon: Tbutton['icon']) => {
+    const iconName = typeof icon === "string" ? icon : "HelpCircle";
+    const IconComponent = getIconComponent(iconName);
+    return <IconComponent className="w-5 h-5" />;
+  };
+  
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
@@ -78,7 +101,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
             }
           ]
         }}
-          onButtonClick={(mode) => fnHandleFormButtonClick(mode as TformMode, "containerOne")} />
+          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
         {fnRenderFormBelowSection("containerOne")}
       </section>
 
@@ -152,9 +175,10 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/80 text-background"
-                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode, "containerTwo")}
+                  onClick={() => idTrend.trend.frustrationSection[1].buttons[0]?.formMode && fnHandleFormButtonClick(idTrend.trend.frustrationSection[1].buttons[0]?.formMode, "containerTwo", idTrend.trend.frustrationSection[1].buttons[0]?.label)}
                 >
-                  {idTrend.trend.frustrationSection[1].buttons[0]?.label}
+                  {idTrend.trend.frustrationSection[1].buttons[0]?.label}{" "}
+                  {renderIcon(idTrend.trend.frustrationSection[1].buttons[0]?.icon)}
                 </Button>
               </div>
             </div>
@@ -202,11 +226,19 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
               </div>
 
               <div className="mt-12 text-center">
-                <Button variant="outline" size="lg" className="group">
-                  {idTrend.trend.showAll.label}
-                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </div>
+  <Button
+    variant="outline"
+    size="lg"
+    className="group"
+    onClick={toggleExpandTab}
+  >
+    {expandedTab === SelectedTab
+      ? idTrend.trend.showAll.description
+      : idTrend.trend.showAll.label}
+    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+  </Button>
+</div>
+
             </TabsContent>
           </Tabs>
         </div>
@@ -224,9 +256,13 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
                 size: "lg",
               })),
             }}
+            onButtonClick={(mode, formTitle) =>
+              fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
+            }
           />
         </div>
       </section>
+      {fnRenderFormBelowSection("containerFour")}
     </div >
   );
 }

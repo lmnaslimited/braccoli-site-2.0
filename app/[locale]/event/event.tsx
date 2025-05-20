@@ -87,7 +87,7 @@ export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {
                             <TabsContent value={SelectedTab} className="mt-0">
                                 <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                                     {FilteredTrends.map((video, iIndex) => (
-                                        <TrendCard key={iIndex} idTrends={{ ...video, btnLabel: idEvent.event.heroSection.heading.highlight }} onButtonClick={(mode) => { fnHandleFormButtonClick(mode as TformMode, "containerOne"); fnSetSelectedCard(iIndex); }} />
+                                        <TrendCard key={iIndex} idTrends={{ ...video, btnLabel: idEvent.event.heroSection.heading.highlight }} onButtonClick={(mode, formTitle) => { fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle); fnSetSelectedCard(iIndex); }} />
                                     ))}
                                 </div>
 
