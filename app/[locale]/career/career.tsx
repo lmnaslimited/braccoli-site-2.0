@@ -185,7 +185,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
     }
   };
 
-  
+
   // When user switches tabs, reset the expanded state
   useEffect(() => {
     setExpandedTab(""); // reset expanded tab when tab is switched
@@ -204,8 +204,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
     if (SelectedTab === "all") {
       const YoutubeItems = video.filter(v => v.source.toLowerCase() === "youtube");
       const otherItems = video.filter(v => v.source.toLowerCase() !== "youtube");
-      
-  
+
+
       return expandedTab === "all"
         ? [...YoutubeItems.slice(0, 6), ...otherItems.slice(0, 3)]
         : [...YoutubeItems.slice(0, 6), ...otherItems.slice(0, 0)];
@@ -239,23 +239,23 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   };
   return (
     <>
-          <div ref={LdSectionRefs("containerOne")}>
-      <Hero
-        idHero={
-          {
-            ...idCareer?.career?.heroSection,
-            buttons: idCareer?.career?.heroSection.buttons.map((iaButton) => ({
-              ...iaButton,
-              iconPosition: "after",
-              size: "lg",
-            })),
+      <div ref={LdSectionRefs("containerOne")}>
+        <Hero
+          idHero={
+            {
+              ...idCareer?.career?.heroSection,
+              buttons: idCareer?.career?.heroSection.buttons.map((iaButton) => ({
+                ...iaButton,
+                iconPosition: "after",
+                size: "lg",
+              })),
+            }
           }
-        }
-        onButtonClick={(mode, formTitle) =>
-          fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
-        }
-      />
-      {fnRenderFormBelowSection("containerOne")}
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
+          }
+        />
+        {fnRenderFormBelowSection("containerOne")}
       </div>
 
       {/* challengeSection */}
@@ -369,32 +369,32 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
       {/* jobsSection */}
       <div ref={LdSectionRefs("containerThree")}>
-      <section id="jobs" className="lg:py-24 md:py-24 py-16">
-        <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
-          <TitleSubtitle
-            idTitle={{
-              ...idCareer.career.jobsSection.header,
-              className: "m-0 items-center justify-center",
-              headingClass: "text-3xl sm:text-4xl tracking-normal",
-              descripClass: "max-w-lg mx-auto",
-            }}
-          />
-          <Tabs defaultValue="students" className="mb-10">
-            {/* student and industry tab */}
-            <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 rounded-none">
-              {idCareer.career.jobsSection.list.slice(0, 2).map((idTitle, iIndex) => (
-                <TabsTrigger
-                  value={idTitle.subtitle}
-                  onClick={() => fnSetActiveTab(idTitle.subtitle)}
-                  key={iIndex}
-                  className="rounded-none"
-                >
-                  <Icons.GraduationCap className="h-4 w-4 mr-2" />
-                  {idTitle.title}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+        <section id="jobs" className="lg:py-24 md:py-24 py-16">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
+            <TitleSubtitle
+              idTitle={{
+                ...idCareer.career.jobsSection.header,
+                className: "m-0 items-center justify-center",
+                headingClass: "text-3xl sm:text-4xl tracking-normal",
+                descripClass: "max-w-lg mx-auto",
+              }}
+            />
+            <Tabs defaultValue="students" className="mb-10">
+              {/* student and industry tab */}
+              <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 rounded-none">
+                {idCareer.career.jobsSection.list.slice(0, 2).map((idTitle, iIndex) => (
+                  <TabsTrigger
+                    value={idTitle.subtitle}
+                    onClick={() => fnSetActiveTab(idTitle.subtitle)}
+                    key={iIndex}
+                    className="rounded-none"
+                  >
+                    <Icons.GraduationCap className="h-4 w-4 mr-2" />
+                    {idTitle.title}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+              {/* <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
       {career.section3.tab.tabTitle.map((idTitle, iIndex) => (
         <TabsTrigger
           value={idTitle.value}
@@ -406,161 +406,161 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </TabsTrigger>
       ))}
     </TabsList> */}
-            <TabsContent value="students" className="mt-6">
-              {/* Simplified search and filters */}
-              <div className="mb-8">
-                <div className="flex flex-col md:flex-row gap-4 mb-4">
-                  <div className="relative flex-grow">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-border" />
-                    <Input
-                      placeholder="Search for opportunities..."
-                      className="pl-10"
-                      value={SearchTerm}
-                      onChange={(event) => fnSetSearchTerm(event.target.value)}
-                    />
-                  </div>
-                  {fnGetActiveFilterCount() > 0 && (
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      onClick={fnClearFilters}
-                      className="h-10 w-10 shrink-0"
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  )}
-                </div>
-                {/* Simplified horizontal filter bar */}
-                <div className="flex flex-wrap gap-3 mb-4">
-                  {Object.entries(FilterOptions).map(
-                    ([iCategory]) => (
-                      <DropdownMenu key={iCategory}>
-                        <DropdownMenuTrigger asChild>
-                          <Button
-                            variant="outline"
-                            className="border-primary/20 hover:bg-primary/5"
-                          >
-                            {iCategory}
-                            {SelectedFilters[
-                              iCategory as keyof typeof SelectedFilters
-                            ].length > 0 && (
-                                <Badge className="ml-2 bg-primary text-background">
-                                  {
-                                    SelectedFilters[
-                                      iCategory as keyof typeof SelectedFilters
-                                    ].length
-                                  }
-                                </Badge>
-                              )}
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start" className="w-56">
-                          {FilterOptions[
-                            iCategory as keyof typeof SelectedFilters
-                          ].map((iOption) => (
-                            <DropdownMenuItem
-                              key={iOption}
-                              className="flex items-center gap-2 cursor-pointer"
-                              onSelect={(e) => {
-                                e.preventDefault();
-                                fnHandleFilterChange(
-                                  iCategory as keyof typeof SelectedFilters,
-                                  iOption
-                                );
-                              }}
-                            >
-                              <Checkbox
-                                id={`${iCategory}-${iOption}`}
-                                checked={SelectedFilters[
-                                  iCategory as keyof typeof SelectedFilters
-                                ].includes(iOption)}
-                                onCheckedChange={() => { }}
-                                className="rounded-sm"
-                              />
-                              <Label
-                                htmlFor={`${iCategory}-${iOption}`}
-                                className={`text-sm flex-1 cursor-pointer ${SelectedFilters[
-                                  iCategory as keyof typeof SelectedFilters
-                                ].includes(iOption)
-                                  ? "font-medium"
-                                  : ""
-                                  }`}
-                              >
-                                {iOption}
-                              </Label>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    )
-                  )}
-                </div>
-                {/* Active filters display */}
-                {fnGetActiveFilterCount() > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {Object.entries(SelectedFilters).map(
-                      ([iCategory, iaValues]) =>
-                        iaValues.map((iValue) => (
-                          <Badge
-                            key={`${iCategory}-${iValue}`}
-                            variant="secondary"
-                            className="flex items-center gap-1 bg-grayBackground"
-                          >
-                            {iValue}
-                            <X
-                              className="h-3 w-3 cursor-pointer ml-1"
-                              onClick={() =>
-                                fnHandleFilterChange(
-                                  iCategory as keyof typeof SelectedFilters,
-                                  iValue
-                                )
-                              }
-                            />
-                          </Badge>
-                        ))
+              <TabsContent value="students" className="mt-6">
+                {/* Simplified search and filters */}
+                <div className="mb-8">
+                  <div className="flex flex-col md:flex-row gap-4 mb-4">
+                    <div className="relative flex-grow">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-border" />
+                      <Input
+                        placeholder="Search for opportunities..."
+                        className="pl-10"
+                        value={SearchTerm}
+                        onChange={(event) => fnSetSearchTerm(event.target.value)}
+                      />
+                    </div>
+                    {fnGetActiveFilterCount() > 0 && (
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        onClick={fnClearFilters}
+                        className="h-10 w-10 shrink-0"
+                      >
+                        <X className="h-4 w-4" />
+                      </Button>
                     )}
                   </div>
-                )}
-              </div>
-              {/* Job listings */}
-              {LaFilteredJobs.length > 0 ? (
-                <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
-                  {LaFilteredJobs.map((idJob, iIndex) => (
-                    <motion.div
-                      key={idJob.id}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: iIndex * 0.1 }}
-                    >
-                      <Card className="h-full border hover:shadow-md transition-all group">
-                        <CardHeader className="pb-2">
-                          <div className="flex justify-between items-start">
-                            <Badge
+                  {/* Simplified horizontal filter bar */}
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    {Object.entries(FilterOptions).map(
+                      ([iCategory]) => (
+                        <DropdownMenu key={iCategory}>
+                          <DropdownMenuTrigger asChild>
+                            <Button
                               variant="outline"
-                              className="w-fit bg-primary/5 text-primary border-primary/20"
+                              className="border-primary/20 hover:bg-primary/5"
                             >
-                              {idJob.role}
+                              {iCategory}
+                              {SelectedFilters[
+                                iCategory as keyof typeof SelectedFilters
+                              ].length > 0 && (
+                                  <Badge className="ml-2 bg-primary text-background">
+                                    {
+                                      SelectedFilters[
+                                        iCategory as keyof typeof SelectedFilters
+                                      ].length
+                                    }
+                                  </Badge>
+                                )}
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="start" className="w-56">
+                            {FilterOptions[
+                              iCategory as keyof typeof SelectedFilters
+                            ].map((iOption) => (
+                              <DropdownMenuItem
+                                key={iOption}
+                                className="flex items-center gap-2 cursor-pointer"
+                                onSelect={(e) => {
+                                  e.preventDefault();
+                                  fnHandleFilterChange(
+                                    iCategory as keyof typeof SelectedFilters,
+                                    iOption
+                                  );
+                                }}
+                              >
+                                <Checkbox
+                                  id={`${iCategory}-${iOption}`}
+                                  checked={SelectedFilters[
+                                    iCategory as keyof typeof SelectedFilters
+                                  ].includes(iOption)}
+                                  onCheckedChange={() => { }}
+                                  className="rounded-sm"
+                                />
+                                <Label
+                                  htmlFor={`${iCategory}-${iOption}`}
+                                  className={`text-sm flex-1 cursor-pointer ${SelectedFilters[
+                                    iCategory as keyof typeof SelectedFilters
+                                  ].includes(iOption)
+                                    ? "font-medium"
+                                    : ""
+                                    }`}
+                                >
+                                  {iOption}
+                                </Label>
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      )
+                    )}
+                  </div>
+                  {/* Active filters display */}
+                  {fnGetActiveFilterCount() > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {Object.entries(SelectedFilters).map(
+                        ([iCategory, iaValues]) =>
+                          iaValues.map((iValue) => (
+                            <Badge
+                              key={`${iCategory}-${iValue}`}
+                              variant="secondary"
+                              className="flex items-center gap-1 bg-grayBackground"
+                            >
+                              {iValue}
+                              <X
+                                className="h-3 w-3 cursor-pointer ml-1"
+                                onClick={() =>
+                                  fnHandleFilterChange(
+                                    iCategory as keyof typeof SelectedFilters,
+                                    iValue
+                                  )
+                                }
+                              />
                             </Badge>
-                            <Badge
-                              variant="outline"
-                              className="w-fit bg-primary/5 text-primary border-primary/20"
-                            >
+                          ))
+                      )}
+                    </div>
+                  )}
+                </div>
+                {/* Job listings */}
+                {LaFilteredJobs.length > 0 ? (
+                  <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
+                    {LaFilteredJobs.map((idJob, iIndex) => (
+                      <motion.div
+                        key={idJob.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: iIndex * 0.1 }}
+                      >
+                        <Card className="h-full border hover:shadow-md transition-all group">
+                          <CardHeader className="pb-2">
+                            <div className="flex justify-between items-start">
+                              <Badge
+                                variant="outline"
+                                className="w-fit bg-primary/5 text-primary border-primary/20"
+                              >
+                                {idJob.role}
+                              </Badge>
+                              <Badge
+                                variant="outline"
+                                className="w-fit bg-primary/5 text-primary border-primary/20"
+                              >
+                                {idJob.location}
+                              </Badge>
+                            </div>
+                            <CardTitle className="text-lg mt-2">
+                              {idJob.title}
+                            </CardTitle>
+                            <CardDescription className="flex items-center">
+                              <Briefcase className="h-3 w-3 mr-1" />
                               {idJob.location}
-                            </Badge>
-                          </div>
-                          <CardTitle className="text-lg mt-2">
-                            {idJob.title}
-                          </CardTitle>
-                          <CardDescription className="flex items-center">
-                            <Briefcase className="h-3 w-3 mr-1" />
-                            {idJob.location}
-                          </CardDescription>
-                        </CardHeader>
-                        <CardContent className="pb-2">
-                          <p className="text-sm text-muted-foreground line-clamp-2">
-                            {fnStripMarkdownOrHtml(idJob.description)}
-                          </p>
-                          {/* <div className="mt-2 flex flex-wrap gap-1">
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="pb-2">
+                            <p className="text-sm text-muted-foreground line-clamp-2">
+                              {fnStripMarkdownOrHtml(idJob.description)}
+                            </p>
+                            {/* <div className="mt-2 flex flex-wrap gap-1">
                     {idJob.skills.map((skill, index) => (
                       <span
                         key={index}
@@ -570,107 +570,107 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                       </span>
                     ))}
                   </div> */}
-                        </CardContent>
-                        <CardFooter>
-                          <Link href={idJob.applyUrl} target="_blank" className="w-full">
-                            <Button
-                              variant="outline"
-                              className="w-full group/btn border-primary/20 hover:bg-primary/5"
-                            >
-                              Apply{" "}
-                              <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
-                            </Button>
-                          </Link>
-                        </CardFooter>
-                      </Card>
-                    </motion.div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-12 bg-background rounded-xl border">
-                  <p className="text-muted-foreground">
-                    {idCareer.career.jobsSection.buttons[0]?.description}
-                  </p>
-                </div>
-              )}
-              <motion.div
-                className="mt-10 text-center"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                <Button variant="outline" className="group border-primary/20 hover:bg-primary/5">
-                  {idCareer.career.jobsSection.buttons[0]?.label}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
-              </motion.div>
-            </TabsContent>
-            <TabsContent value="institutions" className="mt-6">
-              <div className="bg-background rounded-xl p-8 shadow-sm border">
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                  <div className="md:w-2/3 space-y-6">
-                    {/* <div className="flex items-center gap-3">
+                          </CardContent>
+                          <CardFooter>
+                            <Link href={idJob.applyUrl} target="_blank" className="w-full">
+                              <Button
+                                variant="outline"
+                                className="w-full group/btn border-primary/20 hover:bg-primary/5"
+                              >
+                                Apply{" "}
+                                <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover/btn:translate-x-1" />
+                              </Button>
+                            </Link>
+                          </CardFooter>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-center py-12 bg-background rounded-xl border">
+                    <p className="text-muted-foreground">
+                      {idCareer.career.jobsSection.buttons[0]?.description}
+                    </p>
+                  </div>
+                )}
+                <motion.div
+                  className="mt-10 text-center"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.4 }}
+                >
+                  <Button variant="outline" className="group border-primary/20 hover:bg-primary/5">
+                    {idCareer.career.jobsSection.buttons[0]?.label}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </motion.div>
+              </TabsContent>
+              <TabsContent value="institutions" className="mt-6">
+                <div className="bg-background rounded-xl p-8 shadow-sm border">
+                  <div className="flex flex-col md:flex-row gap-8 items-center">
+                    <div className="md:w-2/3 space-y-6">
+                      {/* <div className="flex items-center gap-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 ">
                 <Building className="h-5 w-5 text-primary" />
               </div>
             </div> */}
-                    {/* <TitleSubtitle idTitle={{
+                      {/* <TitleSubtitle idTitle={{
                       ...idCareer.career.planSection.heading,
                       className: "m-0",
                       headingClass: "md:text-xl tracking-tight leading-tight",
                       descripClass: "md:text-sm",
                     }}
                     /> */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                      {idCareer.career.jobsSection.list.slice(2, 4).map((idTitle, iIndex) => (
-                        <div className="border rounded-lg p-4" key={iIndex}>
-                          <TitleSubtitle idTitle={{
-                            ...idTitle,
-                            className: "m-0",
-                            headingClass:
-                              "md:text-lg text-lg tracking-tight leading-tight",
-                            descripClass: "md:text-base text-base",
-                          }}
-                          />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex flex-wrap gap-4 pt-4">
-                      {idCareer.career.jobsSection.buttons.slice(1, 3).map((idBtn, iIndex) => {
-                        const BtnIconComponent =
-                          (Icons[idBtn.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
-                        return (
-                          
-                          <Button key={iIndex} size="lg" className="group"
-                            variant={
-                              (idBtn.variant as Tbutton["variant"]) ?? "default"
-                            }
-                            onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}>
-                            <BtnIconComponent className="h-4 w-4" />
-                            {idBtn.label}
-                          </Button>
-                          
-                        );
-                      })}
-                       
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        {idCareer.career.jobsSection.list.slice(2, 4).map((idTitle, iIndex) => (
+                          <div className="border rounded-lg p-4" key={iIndex}>
+                            <TitleSubtitle idTitle={{
+                              ...idTitle,
+                              className: "m-0",
+                              headingClass:
+                                "md:text-lg text-lg tracking-tight leading-tight",
+                              descripClass: "md:text-base text-base",
+                            }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="flex flex-wrap gap-4 pt-4">
+                        {idCareer.career.jobsSection.buttons.slice(1, 3).map((idBtn, iIndex) => {
+                          const BtnIconComponent =
+                            (Icons[idBtn.icon as keyof typeof Icons] as LucideIcon) || Icons.Users;
+                          return (
 
+                            <Button key={iIndex} size="lg" className="group"
+                              variant={
+                                (idBtn.variant as Tbutton["variant"]) ?? "default"
+                              }
+                              onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}>
+                              <BtnIconComponent className="h-4 w-4" />
+                              {idBtn.label}
+                            </Button>
+
+                          );
+                        })}
+
+
+                      </div>
                     </div>
-                  </div>
-                  <div className="md:w-1/3 md:flex justify-center hidden">
-                    <div className="relative w-full max-w-xs aspect-square">
-                      <div className="absolute -inset-0.5 rounded-xl bg-primary/10 opacity-75 blur-xl"></div>
-                      <div className="relative h-full w-full rounded-xl bg-background flex items-center justify-center p-6">
-                        <Building className="h-16 w-16 text-primary opacity-20" />
+                    <div className="md:w-1/3 md:flex justify-center hidden">
+                      <div className="relative w-full max-w-xs aspect-square">
+                        <div className="absolute -inset-0.5 rounded-xl bg-primary/10 opacity-75 blur-xl"></div>
+                        <div className="relative h-full w-full rounded-xl bg-background flex items-center justify-center p-6">
+                          <Building className="h-16 w-16 text-primary opacity-20" />
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-      {fnRenderFormBelowSection("containerThree")}
+              </TabsContent>
+            </Tabs>
+          </div>
+        </section>
+        {fnRenderFormBelowSection("containerThree")}
       </div>
 
       {/* planSection */}
@@ -744,14 +744,14 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               </div>
               <div className="flex flex-wrap gap-4 pt-2">
                 {idCareer.career.planSection.buttons.map((idBtn, iIndex) => (
-                  <Link href={idBtn.href ?? "#"}  target="_blank" key={iIndex}>
-                  <Button
-                    key={iIndex} size="lg" className="group"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                     {idBtn.label}{" "}
-                    {renderIcon(idBtn.icon)}
-                  </Button>
+                  <Link href={idBtn.href ?? "#"} target="_blank" key={iIndex}>
+                    <Button
+                      key={iIndex} size="lg" className="group"
+                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                    >
+                      {idBtn.label}{" "}
+                      {renderIcon(idBtn.icon)}
+                    </Button>
                   </Link>
                 ))}
               </div>
@@ -765,7 +765,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
       <section id="recent-trend" className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
-        <TitleSubtitle idTitle={{
+          <TitleSubtitle idTitle={{
             ...idCareer.career.trendingSection,
             className: "text-center md:text-left",
             headingClass: "",
@@ -799,18 +799,18 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               </div>
 
               <div className="mt-12 text-center">
-  <Button
-    variant="outline"
-    size="lg"
-    className="group"
-    onClick={toggleExpandTab}
-  >
-    {expandedTab === SelectedTab
-      ? idCareer.career.trendingFooter[0]?.description
-      : idCareer.career.trendingFooter[0]?.label}
-    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-  </Button>
-</div>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group"
+                  onClick={toggleExpandTab}
+                >
+                  {expandedTab === SelectedTab
+                    ? idCareer.career.trendingFooter[0]?.description
+                    : idCareer.career.trendingFooter[0]?.label}
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
 
             </TabsContent>
           </Tabs>

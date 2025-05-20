@@ -2,7 +2,6 @@ import { clTransformerFactory, TaboutUsPageTarget, Tcontext } from "@repo/middle
 import AboutUs from "./about-us";
 import { fnGetCacheData } from "../../api/getData";
 
-
 export default async function AboutUsPage({
   params,
 }: {
@@ -18,6 +17,6 @@ export default async function AboutUsPage({
     clTransformerFactory.createTransformer('aboutUs')
   );
   return (
-    <AboutUs idAboutUs={pageData}/>
+    <AboutUs idAboutUs={pageData} />
   );
 }
