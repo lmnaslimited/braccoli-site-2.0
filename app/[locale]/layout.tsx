@@ -2,7 +2,7 @@ import type React from "react"
 import { GeistSans } from 'geist/font/sans';
 import "@repo/ui/globals.css"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget } from "@repo/middleware";
+import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware";
 import { fnGetCacheData } from "../api/getData";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
@@ -43,12 +43,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     publisher: data.publisher,
     applicationName: data.applicationName,
     icons: {
-      icon: data.icons?.map((icon: any) => ({
+      icon: data.icons?.map((icon: TseoIcons) => ({
         url: icon.url,
         sizes: icon.sizes,
         type: icon.type,
       })),
-      apple: data.apple?.map((icon: any) => ({
+      apple: data.apple?.map((icon: TseoIcons) => ({
         url: icon.url,
         sizes: icon.sizes,
         type: icon.type,
