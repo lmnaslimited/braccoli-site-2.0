@@ -137,7 +137,8 @@ export default function CaseStudyPage({ idcaseStudies }: { idcaseStudies: TcaseS
                                 })) ?? [],
                             TabDefault: {
                                 text: "All Industry",
-                                label: "View All Solution",
+                                AllLabel: "View All Solution",
+                                LessLabel: "Show Less",
                             },
                         }}
                     />
