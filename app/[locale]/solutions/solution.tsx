@@ -270,7 +270,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 })),
                                 TabDefault: {
                                     text: "All",
-                                    label: "Show More",
+                                    AllLabel: "Show More",
+                                    LessLabel: "Show Less",
                                 },
                             }}
                         />
