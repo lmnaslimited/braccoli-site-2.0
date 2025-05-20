@@ -1,6 +1,12 @@
-"use client"
+"use client";
 import Link from "next/link";
-import { ArrowRight, CheckCircle, ChevronRight, Clock, Users, } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  ChevronRight,
+  Clock,
+  Users,
+} from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import CustomCard from "@repo/ui/components/customCard";
@@ -9,16 +15,17 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
-import Image from 'next/image';
+import Image from "next/image";
 
-const renderIcon = (icon: Tbutton['icon'], className?:string) => {
+const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
   const IconComponent = getIconComponent(iconName);
   return <IconComponent className={className || "w-5 h-5"} />;
 };
 
-export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
-  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
+export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
+  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
+    useFormHandler();
   return (
     <>
       <div ref={LdSectionRefs("containerOne")}>
@@ -34,7 +41,13 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               })),
             } as TheroSection
           }
-          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)}
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerOne",
+              formTitle
+            )
+          }
         />
         {fnRenderFormBelowSection("containerOne")}
       </div>
@@ -58,9 +71,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   header: { title: idProduct?.problemsSection.title },
                   list: idProduct?.problemsSection.list?.map((idList) => ({
                     ...idList,
-                    icon: idList.icon
-                    ,
-                  }))
+                    icon: idList.icon,
+                  })),
                 }}
               />
               <div className="flex flex-col justify-center space-y-4">
@@ -68,29 +80,45 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   idTitle={{
                     ...idProduct?.problemsSection.header,
                     headingClass: "md:text-2xl",
-                    className: "md:text-left text-center mb-2"
+                    className: "md:text-left text-center mb-2",
                   }}
                 />
                 <div className="flex flex-col gap-4 sm:flex-row">
-                  {idProduct?.problemsSection.buttons.map((idBtn, iIndex) => (
-                    idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-4"
-                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                    >
-                      {idBtn.label}
-                    </Button></Link>)
-                      : (<Button
+                  {idProduct?.problemsSection.buttons.map((idBtn, iIndex) =>
+                    idBtn.href ? (
+                      <Link href={idBtn.href} key={iIndex}>
+                        <Button
+                          key={iIndex}
+                          size="lg"
+                          className="gap-4"
+                          variant={
+                            (idBtn.variant as Tbutton["variant"]) ?? "default"
+                          }
+                        >
+                          {idBtn.label}
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
                         key={iIndex}
                         size="lg"
                         className="gap-4"
-                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerTwo", idBtn.label)}
+                        variant={
+                          (idBtn.variant as Tbutton["variant"]) ?? "default"
+                        }
+                        onClick={() =>
+                          idBtn.formMode &&
+                          fnHandleFormButtonClick(
+                            idBtn.formMode as TformMode,
+                            "containerTwo",
+                            idBtn.label
+                          )
+                        }
                       >
                         {idBtn.label}
-                      </Button>)
-                  ))}
+                      </Button>
+                    )
+                  )}
                 </div>
               </div>
             </div>
@@ -109,7 +137,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 className:
                   "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center text-background",
                 headingClass: "md:text-5xl",
-                descripClass: "max-w-[85%] md:text-xl/relaxed text-muted-foreground",
+                descripClass:
+                  "max-w-[85%] md:text-xl/relaxed text-muted-foreground",
               }}
             />
             <div className="mx-auto max-w-5xl md:py-12 py-6">
@@ -125,16 +154,16 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         key={iIndex}
                         idCardProps={{
                           header: idCard.header,
-                          link:
-                            idCard.buttons?.map((iaButton) => ({
-                              ...iaButton,
-                              icon: "ChevronRight",
-                              className: "ml-1 h-3 w-3",
-                              iconPosition: "after",
-                            })) as Tbutton[],
+                          link: idCard.buttons?.map((iaButton) => ({
+                            ...iaButton,
+                            icon: "ChevronRight",
+                            className: "ml-1 h-3 w-3",
+                            iconPosition: "after",
+                          })) as Tbutton[],
 
                           footerClassName: "items-start",
-                          className: "relative z-10 md:ml-4 border-none hover:shadow-none shadow-none"
+                          className:
+                            "relative z-10 md:ml-4 border-none hover:shadow-none shadow-none",
                         }}
                       />
                     </div>
@@ -143,36 +172,44 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
               </div>
               <div className="mx-auto max-w-[58rem] text-center mt-16">
                 <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                  {idProduct?.solutionsHeaderFooter.buttons.map((idBtn, iIndex) => {
-                    const hasHref = Boolean(idBtn.href);
+                  {idProduct?.solutionsHeaderFooter.buttons.map(
+                    (idBtn, iIndex) => {
+                      const hasHref = Boolean(idBtn.href);
 
-                    return (
-                      <Button
-                        key={iIndex}
-                        size="lg"
-                        className="gap-2 border border-border group"
-                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() =>
-                          idBtn.formMode &&
-                          fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSeven", idBtn.label)
-                        }
-                      >
-                        {hasHref ? (
-                          <Link href={idBtn.href ?? "/"}>
-                            <span className="flex items-center">
-                              {idBtn.label}
+                      return (
+                        <Button
+                          key={iIndex}
+                          size="lg"
+                          className="gap-2 border border-border group"
+                          variant={
+                            (idBtn.variant as Tbutton["variant"]) ?? "default"
+                          }
+                          onClick={() =>
+                            idBtn.formMode &&
+                            fnHandleFormButtonClick(
+                              idBtn.formMode as TformMode,
+                              "containerSeven",
+                              idBtn.label
+                            )
+                          }
+                        >
+                          {hasHref ? (
+                            <Link href={idBtn.href ?? "/"}>
+                              <span className="flex items-center">
+                                {idBtn.label}
+                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                              </span>
+                            </Link>
+                          ) : (
+                            <>
+                              <span>{idBtn.label}</span>
                               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </span>
-                          </Link>
-                        ) : (
-                          <>
-                            <span>{idBtn.label}</span>
-                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </>
-                        )}
-                      </Button>
-                    );
-                  })}
+                            </>
+                          )}
+                        </Button>
+                      );
+                    }
+                  )}
                 </div>
               </div>
             </div>
@@ -183,7 +220,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
       {/* guide */}
       <div ref={LdSectionRefs("containerThree")}>
-        <section id="features" className="border-b border-border/40 py-16 md:py-24 lg:py-24">
+        <section
+          id="features"
+          className="border-b border-border/40 py-16 md:py-24 lg:py-24"
+        >
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -203,37 +243,39 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     {iIndex % 2 !== 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
                         <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image?.svg && renderIcon(idFeature.image?.svg, "w-24 h-24")}
+                        {idFeature.image?.svg &&
+                          renderIcon(idFeature.image?.svg, "w-24 h-24")}
                         {idFeature.image?.source && (
-                        <Image
-                          src={idFeature.image?.source}
-                          alt={idFeature.image?.alternate}
-                          className="object-contain w-full h-full"
-                          fill
-                         />
+                          <Image
+                            src={idFeature.image?.source}
+                            alt={idFeature.image?.alternate}
+                            fill
+                            className="object-contain"
+                          />
                         )}
                       </div>
                     ) : null}
 
                     <div className="space-y-4">
                       <div className="flex items-center gap-4 mb-4 flex-wrap">
-                        {idFeature.highlight?.map((idHighlight, iHighlightIndex) => (
-                          <div
-                            key={iHighlightIndex}
-                            className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
-                          >
-                            {renderIcon(idHighlight.icon)}
-                            <span className="text-sm font-medium">
-                              {idHighlight.label}
-                            </span>
-                          </div>
-                        ))}
+                        {idFeature.highlight?.map(
+                          (idHighlight, iHighlightIndex) => (
+                            <div
+                              key={iHighlightIndex}
+                              className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
+                            >
+                              {renderIcon(idHighlight.icon)}
+                              <span className="text-sm font-medium">
+                                {idHighlight.label}
+                              </span>
+                            </div>
+                          )
+                        )}
                       </div>
                       <TitleSubtitle
                         idTitle={{
                           ...idFeature.heading,
-                          headingClass:
-                            "md:text-2xl transition-al",
+                          headingClass: "md:text-2xl transition-al",
                         }}
                       />
                       {idFeature.buttons.map((idButton, iIndex) => (
@@ -246,20 +288,20 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                           <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
                         </Link>
                       ))}
-
                     </div>
 
                     {iIndex % 2 === 0 ? (
                       <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
                         {/* <div className="absolute inset-0"></div> */}
-                        {idFeature.image?.svg && renderIcon(idFeature.image?.svg, "w-24 h-24")}
+                        {idFeature.image?.svg &&
+                          renderIcon(idFeature.image?.svg, "w-24 h-24")}
                         {idFeature.image?.source && (
-                        <Image
-                          src={idFeature.image?.source}
-                          alt={idFeature.image?.alternate}
-                          className="object-scale-down bg-background"
-                          fill
-                         />
+                          <Image
+                            src={idFeature.image?.source}
+                            alt={idFeature.image?.alternate}
+                            fill
+                            className="object-contain"
+                          />
                         )}
                       </div>
                     ) : null}
@@ -272,25 +314,42 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 {idProduct?.guideSectionHeaderFooter.title}
               </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                {idProduct?.guideSectionHeaderFooter.buttons?.map((idBtn, iIndex) => (
-                  idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-4"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    {idBtn.label}
-                  </Button></Link>)
-                    : (<Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-4"
-                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
-                    >
-                      {idBtn.label}
-                    </Button>)
-                ))}
+                {idProduct?.guideSectionHeaderFooter.buttons?.map(
+                  (idBtn, iIndex) =>
+                    idBtn.href ? (
+                      <Link href={idBtn.href} key={iIndex}>
+                        <Button
+                          key={iIndex}
+                          size="lg"
+                          className="gap-4"
+                          variant={
+                            (idBtn.variant as Tbutton["variant"]) ?? "default"
+                          }
+                        >
+                          {idBtn.label}
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        key={iIndex}
+                        size="lg"
+                        className="gap-4"
+                        variant={
+                          (idBtn.variant as Tbutton["variant"]) ?? "default"
+                        }
+                        onClick={() =>
+                          idBtn.formMode &&
+                          fnHandleFormButtonClick(
+                            idBtn.formMode as TformMode,
+                            "containerThree",
+                            idBtn.label
+                          )
+                        }
+                      >
+                        {idBtn.label}
+                      </Button>
+                    )
+                )}
               </div>
             </div>
           </div>
@@ -330,7 +389,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         className: "h-5 w-5",
                         iconPosition: "before",
                         size: "lg",
-                      }))
+                      })),
                     }}
                   />
                 ))}
@@ -345,7 +404,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                         subtitle: idItem.description,
                         headingClass: "md:text-4xl mb-0",
                       },
-                      className: "text-center"
+                      className: "text-center",
                     }}
                   />
                 ))}
@@ -360,25 +419,42 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                 </span>
               </p>
               <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                {idProduct?.successStoryHeaderFooter.buttons?.map((idBtn, iIndex) => (
-                  idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-4"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                  >
-                    {idBtn.label}
-                  </Button></Link>)
-                    : (<Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-4"
-                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label)}
-                    >
-                      {idBtn.label}
-                    </Button>)
-                ))}
+                {idProduct?.successStoryHeaderFooter.buttons?.map(
+                  (idBtn, iIndex) =>
+                    idBtn.href ? (
+                      <Link href={idBtn.href} key={iIndex}>
+                        <Button
+                          key={iIndex}
+                          size="lg"
+                          className="gap-4"
+                          variant={
+                            (idBtn.variant as Tbutton["variant"]) ?? "default"
+                          }
+                        >
+                          {idBtn.label}
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
+                        key={iIndex}
+                        size="lg"
+                        className="gap-4"
+                        variant={
+                          (idBtn.variant as Tbutton["variant"]) ?? "default"
+                        }
+                        onClick={() =>
+                          idBtn.formMode &&
+                          fnHandleFormButtonClick(
+                            idBtn.formMode as TformMode,
+                            "containerFour",
+                            idBtn.label
+                          )
+                        }
+                      >
+                        {idBtn.label}
+                      </Button>
+                    )
+                )}
               </div>
             </div>
           </div>
@@ -424,19 +500,19 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
 
                 <div className="mt-8 space-y-6">
                   <div className="grid gap-4 md:grid-cols-2">
-                    {idProduct?.pricingHighlight.list?.map((idpoint, iIndex) => (
-                      <div className="space-y-2" key={iIndex}>
-                        <div className="flex items-center gap-2">
-                          <CheckCircle className="h-5 w-5" />
-                          <span className="font-medium">
-                            {idpoint.label}
-                          </span>
+                    {idProduct?.pricingHighlight.list?.map(
+                      (idpoint, iIndex) => (
+                        <div className="space-y-2" key={iIndex}>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-5 w-5" />
+                            <span className="font-medium">{idpoint.label}</span>
+                          </div>
+                          <p className="text-sm text-muted-foreground pl-7">
+                            {idpoint.description}
+                          </p>
                         </div>
-                        <p className="text-sm text-muted-foreground pl-7">
-                          {idpoint.description}
-                        </p>
-                      </div>
-                    ))}
+                      )
+                    )}
                   </div>
                   <div className="text-center space-y-2 mt-8">
                     <p className="font-medium text-lg">
@@ -447,25 +523,43 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                     </p>
                   </div>
                   <div className="flex flex-col gap-4 sm:flex-row justify-center mt-6">
-                    {idProduct?.pricingSectionHeaderFooter.buttons.map((idBtn, iIndex) => (
-                      idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
-                        key={iIndex}
-                        size="lg"
-                        className="gap-4"
-                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                      >
-                        {idBtn.label}
-                      </Button></Link>)
-                        : (<Button
-                          key={iIndex}
-                          size="lg"
-                          className="gap-4"
-                          variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                          onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFive", idBtn.label)}
-                        >
-                          {idBtn.label}
-                        </Button>)
-                    ))}
+                    {idProduct?.pricingSectionHeaderFooter.buttons.map(
+                      (idBtn, iIndex) =>
+                        idBtn.href ? (
+                          <Link href={idBtn.href} key={iIndex}>
+                            <Button
+                              key={iIndex}
+                              size="lg"
+                              className="gap-4"
+                              variant={
+                                (idBtn.variant as Tbutton["variant"]) ??
+                                "default"
+                              }
+                            >
+                              {idBtn.label}
+                            </Button>
+                          </Link>
+                        ) : (
+                          <Button
+                            key={iIndex}
+                            size="lg"
+                            className="gap-4"
+                            variant={
+                              (idBtn.variant as Tbutton["variant"]) ?? "default"
+                            }
+                            onClick={() =>
+                              idBtn.formMode &&
+                              fnHandleFormButtonClick(
+                                idBtn.formMode as TformMode,
+                                "containerFive",
+                                idBtn.label
+                              )
+                            }
+                          >
+                            {idBtn.label}
+                          </Button>
+                        )
+                    )}
                   </div>
                 </div>
               </div>
@@ -509,25 +603,41 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts; }) {
                   <span>{idProduct?.ctaSection.title}</span>
                 </div>
                 <div className="flex flex-col gap-4 sm:flex-row justify-center">
-                  {idProduct?.ctaSection.buttons?.map((idBtn, iIndex) => (
-                    idBtn.href ? (<Link href={idBtn.href} key={iIndex}><Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-4"
-                      variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                    >
-                      {idBtn.label}
-                    </Button></Link>)
-                      : (<Button
+                  {idProduct?.ctaSection.buttons?.map((idBtn, iIndex) =>
+                    idBtn.href ? (
+                      <Link href={idBtn.href} key={iIndex}>
+                        <Button
+                          key={iIndex}
+                          size="lg"
+                          className="gap-4"
+                          variant={
+                            (idBtn.variant as Tbutton["variant"]) ?? "default"
+                          }
+                        >
+                          {idBtn.label}
+                        </Button>
+                      </Link>
+                    ) : (
+                      <Button
                         key={iIndex}
                         size="lg"
                         className="gap-4"
-                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                        onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerSix", idBtn.label)}
+                        variant={
+                          (idBtn.variant as Tbutton["variant"]) ?? "default"
+                        }
+                        onClick={() =>
+                          idBtn.formMode &&
+                          fnHandleFormButtonClick(
+                            idBtn.formMode as TformMode,
+                            "containerSix",
+                            idBtn.label
+                          )
+                        }
                       >
                         {idBtn.label}
-                      </Button>)
-                  ))}
+                      </Button>
+                    )
+                  )}
                 </div>
               </div>
               <p className="mt-6 text-sm text-muted-foreground">
