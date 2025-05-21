@@ -35,7 +35,6 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
               ...idProduct?.heroSection,
               buttons: idProduct?.heroSection.buttons.map((idButton) => ({
                 ...idButton,
-                icon: "ArrowRight",
                 iconPosition: "after",
                 size: "lg",
               })),
@@ -95,7 +94,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}
+                          {idBtn.label}{" "}
+                          {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -115,7 +115,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           )
                         }
                       >
-                        {idBtn.label}
+                        {idBtn.label}{" "}
+                          {renderIcon(idBtn.icon)}
                       </Button>
                     )
                   )}
@@ -123,8 +124,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
               </div>
             </div>
           </div>
+          {fnRenderFormBelowSection("containerTwo")}
         </section>
-        {fnRenderFormBelowSection("containerTwo")}
       </div>
 
       {/* solutions */}
@@ -218,7 +219,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
         {fnRenderFormBelowSection("containerSeven")}
       </div>
 
-      {/* guide */}
+      {/* Feature Section */}
       <div ref={LdSectionRefs("containerThree")}>
         <section
           id="features"
@@ -326,7 +327,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}
+                          {idBtn.label}{" "}
+                          {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -346,15 +348,16 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           )
                         }
                       >
-                        {idBtn.label}
+                        {idBtn.label}{" "}
+                          {renderIcon(idBtn.icon)}
                       </Button>
                     )
                 )}
               </div>
             </div>
           </div>
+          {fnRenderFormBelowSection("containerThree")}
         </section>
-        {fnRenderFormBelowSection("containerThree")}
       </div>
 
       {/* successStory */}
@@ -369,7 +372,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                 headingClass: "md:text-5xl",
               }}
             />
-            <div className="mx-auto max-w-5xl md:py-12">
+            <div className="mx-auto max-w-5xl md:py-6">
               <div className="grid gap-8 md:grid-cols-2">
                 {idProduct?.successStoryCard.map((idCard, iIndex) => (
                   <CustomCard
@@ -394,21 +397,15 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                   />
                 ))}
               </div>
-              <div className="mt-12 grid gap-6 md:grid-cols-4">
-                {idProduct?.successStoryHighlight?.map((idItem, iIndex) => (
-                  <CustomCard
-                    key={iIndex}
-                    idCardProps={{
-                      header: {
-                        title: idItem.label,
-                        subtitle: idItem.description,
-                        headingClass: "md:text-4xl mb-0",
-                      },
-                      className: "text-center",
-                    }}
-                  />
-                ))}
-              </div>
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+              {idProduct?.successStoryHighlight?.map((idItem, iIndex) => (
+                <div className="text-center" key={iIndex}>
+                  <p className="text-3xl font-light mb-2">{idItem.label}</p>
+                  <div className="h-0.5 w-8 bg-primary mx-auto mb-2"></div>
+                  <p className="text-sm text-primary">{idItem.description}</p>
+                </div>
+              ))}
+            </div>
             </div>
             <div className="mx-auto max-w-[58rem] text-center mt-8">
               <p className="text-primary/70 mb-6">
@@ -431,7 +428,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}
+                          {idBtn.label}{" "}
+                          {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -451,7 +449,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           )
                         }
                       >
-                        {idBtn.label}
+                        {idBtn.label}{" "}
+                        {renderIcon(idBtn.icon)}
                       </Button>
                     )
                 )}
@@ -536,7 +535,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                                 "default"
                               }
                             >
-                              {idBtn.label}
+                              {idBtn.label}{" "}
+                              {renderIcon(idBtn.icon)}
                             </Button>
                           </Link>
                         ) : (
@@ -556,7 +556,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                               )
                             }
                           >
-                            {idBtn.label}
+                            {idBtn.label}{" "}
+                            {renderIcon(idBtn.icon)}
                           </Button>
                         )
                     )}
@@ -614,7 +615,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}
+                          {idBtn.label}{" "}  
+                          {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -634,7 +636,8 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           )
                         }
                       >
-                        {idBtn.label}
+                        {idBtn.label}{" "}
+                        {renderIcon(idBtn.icon)}
                       </Button>
                     )
                   )}
