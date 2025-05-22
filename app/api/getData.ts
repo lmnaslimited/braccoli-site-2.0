@@ -9,12 +9,15 @@ export type Tcontext = {
     }
   }
   caseStudiesFilters2?: {
-    heroSection: {
-      tag: {
-        eq: string
-      }
-    }
-  }
+        heroSection?: {
+            tag: {
+                eq: string;
+            };
+        };
+         slug?: {
+                ne: string;
+            };
+    };
 }
 
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();

@@ -7,9 +7,8 @@ import CustomCard from "@repo/ui/components/customCard";
 import LogoShowcase from "@repo/ui/components/logoShowCase";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
-import { Input } from "@repo/ui/components/ui/input";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Download } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
@@ -21,21 +20,6 @@ const renderIcon = (icon: Tbutton['icon']) => {
 
 export default function Solutions({ idSolution }: { idSolution: TsolutionPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
-
-    const calloutSection = {
-        logo: Array(6).fill({
-            svg: (
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 400 200"
-                    className="w-full max-w-md sm:max-w-lg lg:max-w-xl"
-                >
-                    <rect width="100%" height="100%" fill="#ddd" />
-                </svg>
-            ),
-            alt: "rectangle",
-        }),
-    };
 
     return (
         <>
@@ -189,8 +173,8 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
             </div>
 
             {/* Solution Section */}
-            < div ref={LdSectionRefs("containerFour")}>
-                <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center flex flex-col items-center justify-center">
+            < div className="bg-accent" ref={LdSectionRefs("containerFour")}>
+                <section className=" px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center flex flex-col items-center justify-center">
                     <TitleSubtitle idTitle={{
                         ...idSolution.solution.solutionHeader,
                         className: "text-center items-center",
@@ -202,7 +186,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 key={iIndex}
                                 idCardProps={{
                                     header: idCard.header,
-                                    className: "max-w-xl bg-accent border-gray-200 text-center items-center justify-center",
+                                    className: "max-w-xl border-gray-200 text-center items-center justify-center",
                                     buttonPosition: "items-center justify-center",
                                     buttons: (idCard.buttons ?? []).map(button => ({
                                         ...button,
@@ -236,7 +220,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
 
             {/* Success Section */}
             < div ref={LdSectionRefs("containerFive")} >
-                <section className="bg-accent py-16 md:py-24 lg:py-24" id="success-story">
+                <section className=" py-16 md:py-24 lg:py-24" id="success-story">
                     <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
                         <TitleSubtitle idTitle={{
                             ...idSolution.solution.successHeader,
@@ -245,19 +229,19 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         } as Theader} />
                         <Tab
                             idTab={{
-                                data: idSolution.solution.successSection.map((idCard) => ({
+                                data: idSolution.caseStudies.map((idCard) => ({
                                     ...idCard,
                                     header: {
-                                        ...idCard.header,
+                                        ...idCard.solutionSection.successCard.header,
                                         descripClass: "text-left text-sm h-16",
                                         headingClass: "text-left text-lg mb-4",
                                     },
                                     image: {
-                                        source: idCard.image?.source,
-                                        alternate: idCard.image?.alternate ?? '',
+                                        source: idCard.heroSection.image?.source,
+                                        alternate: idCard.heroSection.image?.alternate ?? '',
                                         aspectRatio: "wide",
                                     },
-                                    button: idCard.buttons?.map((idButton) => ({
+                                    buttons: idCard.solutionSection.successCard.buttons?.map((idButton) => ({
                                         ...idButton,
                                         icon: idButton.icon,
                                         className: "size-5",
@@ -265,8 +249,9 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         size: "lg",
                                         variant: "outline",
                                     })) ?? [],
-                                    tag: idCard.category,
-                                    className: "max-w-xl border-gray-200 text-center items-center justify-center"
+                                    category: idCard.heroSection.tag,
+                                    className: "max-w-xl border-gray-200 text-center items-center justify-center",
+                                    tag: idCard.heroSection.tag
                                 })),
                                 TabDefault: {
                                     text: "All",
@@ -287,7 +272,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
             </div >
 
             {/* Story Section */}
-            < div ref={LdSectionRefs("containerSix")}>
+            < div className="bg-accent" ref={LdSectionRefs("containerSix")}>
                 <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl text-center">
                     <TitleSubtitle idTitle={{
                         ...idSolution.solution.storyHeader,
@@ -301,7 +286,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 idCardProps={{
                                     ...idCard,
                                     header: { ...idCard.header, headingClass: "md:text-2xl", descripClass: "text-base h-16" },
-                                    className: "max-w-md bg-primary/5 border-gray-400 text-left",
+                                    className: "max-w-md  border-gray-400 text-left",
                                 }}
                             />
                         ))}
@@ -326,13 +311,13 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         headingClass: "md:text-5xl",
                     } as Theader} />
                     <div className="flex items-center justify-center">
-                        <div className="max-w-7xl ">
+              <div className="max-w-7xl ">
                             <LogoShowcase
                                 idLogoProps={{
-                                    logos: calloutSection.logo,
+                                    logos: idSolution.home.successClients,
                                     variant: "grid",
-                                    logoSize: "small",
-                                    logosPerRow: 6
+                                    logoSize: "large",
+                                    logosPerRow: 4
                                 }}
                             />
                         </div>
@@ -404,24 +389,13 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 descripClass: "md:text-base text-base"
                             }} />
                         </div>
-                        <form className="space-y-4">
-                            <div className="space-y-2">
-                                <Input
-                                    type="email"
-                                    placeholder="Enter your email"
-                                    required
-                                    className="w-full"
-                                />
-                                <p className="text-xs text-muted-foreground">
-                                    {idSolution.solution.calloutFooter.title}
-                                </p>
-                            </div>
                             {/* Add callout footer is button as 1 */}
+                            <Link href={idSolution.solution.calloutFooter.buttons[1]?.href ?? "#success-story"}>
                             <Button type="submit" className="w-full" size="lg">
                                 {idSolution.solution.calloutFooter.buttons[1]?.label}
-                                <Download className="ml-2 h-4 w-4" />
+                                <ArrowUp className="ml-2 h-4 w-4" />
                             </Button>
-                        </form>
+                            </Link>
                     </div>
                 </div>
             </section >
