@@ -34,6 +34,11 @@ export default async function CaseStudy({
         eq: slug,
       },
     },
+    caseStudiesFilters2: {
+      slug: {
+        ne: slug,
+      },
+    }
   };
 
   const pageData: TcaseStudiesPageTarget = await fnGetCacheData(

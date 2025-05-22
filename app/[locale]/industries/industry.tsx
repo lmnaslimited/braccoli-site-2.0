@@ -263,8 +263,9 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   },
                   button: idCard.buttons?.map((idButton: Tbutton) => ({
                     ...idButton,
+                    
                     iconPosition: "after",
-                    icon: "ArrowRight",
+                    icon: idButton.icon,
                     size: "lg",
                     variant: "outline",
                   })) ?? [],
