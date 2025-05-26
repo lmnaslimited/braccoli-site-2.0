@@ -35,6 +35,7 @@ export default async function Industries({
         eq: slug,
       },
     },
+    caseStudiesLocale2: locale,
     caseStudiesFilters2: {
       heroSection: {
         tag: {
