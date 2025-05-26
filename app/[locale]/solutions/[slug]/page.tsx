@@ -29,6 +29,7 @@ export default async function CaseStudy({
 
   const context: Tcontext = {
     locale: locale,
+    footerLocale2: locale,
     filters: {
       slug: {
         eq: slug,

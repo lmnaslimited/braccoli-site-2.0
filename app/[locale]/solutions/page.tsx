@@ -10,7 +10,10 @@ export default async function SolutionPage({
   }>;
 }) {
   const { locale } = await params;
-  const context: Tcontext = { locale: locale }
+  const context: Tcontext = {
+    locale: locale,
+    caseStudiesLocale2: locale,
+  };
   const pageData: TsolutionPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("solution")
