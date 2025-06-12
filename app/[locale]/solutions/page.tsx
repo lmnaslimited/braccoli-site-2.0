@@ -1,22 +1,31 @@
-import { clTransformerFactory, Tcontext, TsolutionPageTarget } from "@repo/middleware";
-import { fnGetCacheData } from "../../api/getData";
-import Solution from "./solution";
+import type { Metadata } from 'next'
+import Solution from './solution'
+import { getPageMetadata } from '../../api/getPageMetadata'
+import { fnGetCacheData } from '../../api/getData'
+import { clTransformerFactory, Tcontext, TsolutionPageTarget } from '@repo/middleware'
 
-export default async function SolutionPage({
-  params,
-}: {
-  params: Promise<{
-    locale: string;
-  }>;
-}) {
-  const { locale } = await params;
+async function getSolutionPageData(params: { locale: string }) {
+  const { locale } = params
+
   const context: Tcontext = {
     locale: locale,
-    caseStudiesLocale2: locale,
-  };
+    caseStudiesLocale2: locale
+  }
+
   const pageData: TsolutionPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("solution")
-  );
+    clTransformerFactory.createTransformer('solution')
+  )
+
+  return pageData
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const pageData = await getSolutionPageData(await params)
+  return getPageMetadata(pageData.solution.metaData)
+}
+
+export default async function SolutionPage({ params }: { params: Promise<{ locale: string }> }) {
+  const pageData = await getSolutionPageData(await params)
   return <Solution idSolution={pageData} />
 }

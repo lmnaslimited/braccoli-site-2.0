@@ -1,26 +1,32 @@
 import Link from "next/link";
-import FAQs from "@repo/ui/components/faq";
-import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
-import ReactMarkdown from "react-markdown";
+import type { Metadata } from 'next';
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import ReactMarkdown from "react-markdown";
+import FAQs from "@repo/ui/components/faq";
 import { fnGetCacheData } from "../../api/getData";
+import { getPageMetadata } from '../../api/getPageMetadata';
+import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory, Tcontext, TprivacyPolicyPageSource } from "@repo/middleware";
 
-
-export default async function PrivacyPolicy({ params,
-}: {
-  params: Promise<{
-    locale: string;
-  }>;
-}) {
-
-  const { locale } = await params;
+async function getPrivacyPolicyData(locale: string) {
   const context: Tcontext = { locale: locale }
-  const idPrivacy: TprivacyPolicyPageSource = await fnGetCacheData(
+  const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("privacyPolicy")
+    clTransformerFactory.createTransformer('privacyPolicy')
   )
+  return pageData
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const pageData = await getPrivacyPolicyData(locale)
+  return getPageMetadata(pageData.privacyPolicy.metaData)
+}
+
+export default async function PrivacyPolicy({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const idPrivacy = await getPrivacyPolicyData(locale)
   return (
     <>
       <div className="bg-background min-h-screen">
