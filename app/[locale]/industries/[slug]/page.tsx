@@ -39,7 +39,6 @@ async function getIndustriesPageData({ slug, locale }: { slug: string; locale: s
     context,
     clTransformerFactory.createTransformer('industries')
   )
-
   return pageData
 }
 
