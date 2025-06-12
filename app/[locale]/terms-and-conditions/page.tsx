@@ -1,26 +1,32 @@
 import Link from "next/link"
-import FAQs from "@repo/ui/components/faq"
-import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
-import { fnGetCacheData } from "../../api/getData"
-import ReactMarkdown from "react-markdown"
+import type { Metadata } from 'next';
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
-import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from "@repo/middleware"
+import ReactMarkdown from "react-markdown"
+import FAQs from "@repo/ui/components/faq"
+import { fnGetCacheData } from "../../api/getData"
+import { getPageMetadata } from '../../api/getPageMetadata';
+import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
+import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware';
 
-export default async function TermsAndConditions({
-  params,
-}: {
-  params: Promise<{
-    locale: string;
-  }>;
-}) {
-
-  const { locale } = await params;
+async function getTermsPageData(locale: string) {
   const context: Tcontext = { locale: locale }
-  const idTerms: TtermsAndConditionsPageTarget = await fnGetCacheData(
+  const pageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("termsAndCondition")
+    clTransformerFactory.createTransformer('termsAndCondition')
   )
+  return pageData
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  const pageData = await getTermsPageData(locale)
+  return getPageMetadata(pageData.termsAndCondition.metaData)
+}
+
+export default async function TermsAndConditions({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const idTerms = await getTermsPageData(locale)
   return (
     <>
       <div className="bg-background min-h-screen">

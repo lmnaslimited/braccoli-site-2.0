@@ -1,23 +1,25 @@
+import type { Metadata } from 'next'
+import Contact from './contact'
+import { fnGetCacheData } from '../../api/getData'
+import { getPageMetadata } from '../../api/getPageMetadata'
 import { clTransformerFactory, TcontactTarget, Tcontext } from '@repo/middleware'
-import { fnGetCacheData } from '../../api/getData';
-import Contact from './contact';
 
-export default async function ContactPage({
-    params,
-}: {
-    params: Promise<{
-        locale: string;
-    }>;
-}) {
-    const { locale } = await params;
+async function getContactPageData(params: { locale: string }) {
+    const { locale } = params
     const context: Tcontext = { locale: locale }
-
     const pageData: TcontactTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('contact')
-    );
-   
-    return (
-        <Contact idContact={pageData} />
-    );
+    )
+    return pageData
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const pageData = await getContactPageData(await params)
+    return getPageMetadata(pageData.contact.metaData)
+}
+
+export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
+    const pageData = await getContactPageData(await params)
+    return <Contact idContact={pageData} />
 }
