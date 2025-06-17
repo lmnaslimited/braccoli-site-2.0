@@ -1,5 +1,6 @@
 "use client"
 import "@repo/ui/globals.css"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 
 export default function Error({
@@ -75,7 +76,7 @@ export default function Error({
                     >
                         {/* Left side - Illustration */}
                         <div className="flex-shrink-0">
-                            <img
+                            <Image
                                 src="https://res.cloudinary.com/lmnas/image/upload/v1750055832/Website/Error%20Page/coffee-worker_qrtdop.png"
                                 alt="Person working on laptop while sitting on a coffee cup"
                                 width={300}

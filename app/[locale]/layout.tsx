@@ -1,5 +1,4 @@
 import type React from "react"
-import Head from "next/head"
 import Script from "next/script"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
@@ -102,13 +101,11 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <Head>
-        <Script
-          id="schema-org"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(data.schemaData) }}
-        />
-      </Head>
+      <Script
+        id="schema-org"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(data.schemaData) }}
+      />
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />

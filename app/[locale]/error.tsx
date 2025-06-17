@@ -79,7 +79,6 @@ export default function Error({
                         width={300}
                         height={450}
                         className="w-full max-w-xs h-auto"
-                        priority
                     />
                 </div>
 
