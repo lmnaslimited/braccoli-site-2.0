@@ -15,7 +15,6 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
-import Image from "next/image";
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -116,7 +115,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                        {renderIcon(idBtn.icon)}
                       </Button>
                     )
                   )}
@@ -176,7 +175,6 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                   {idProduct?.solutionsHeaderFooter.buttons.map(
                     (idBtn, iIndex) => {
                       const hasHref = Boolean(idBtn.href);
-
                       return (
                         <Button
                           key={iIndex}
@@ -234,81 +232,61 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                 headingClass: "md:text-5xl",
               }}
             />
-            <div className="mx-auto max-w-6xl md:py-12 ">
-              {idProduct?.guideFeature.map((idFeature, iIndex) => (
-                <div
-                  key={iIndex}
-                  className="group relative overflow-hidden rounded-lg border border-border bg-background shadow-sm transition-all hover:shadow-md mb-12"
-                >
-                  <div className="grid gap-8 md:grid-cols-2 items-center p-6 md:p-8">
-                    {iIndex % 2 !== 0 ? (
-                      <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden order-last md:order-first group-hover:border-border transition-all">
-                        <div className="absolute inset-0 bg-gradient-to-br from-grayBackground to-muted opacity-50 group-hover:opacity-30 transition-all"></div>
-                        {idFeature.image?.svg &&
-                          renderIcon(idFeature.image?.svg, "w-24 h-24")}
-                        {idFeature.image?.source && (
-                          <Image
-                            src={idFeature.image?.source}
-                            alt={idFeature.image?.alternate}
-                            fill
-                            className="object-contain"
-                          />
-                        )}
+            <div className="mx-auto max-w-6xl md:py-12">
+              {idProduct?.guideFeature.map((idFeature, iIndex) => {
+                const isEven = iIndex % 2 === 0
+                return (
+                  <div key={iIndex} className="py-10 lg:py-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                      <div
+                        className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
+                      >
+                        <video
+                          src={idFeature.image?.source}
+                          className="aspect-[16/9] w-full object-cover rounded-sm"
+                          width={1000}
+                          height={1000}
+                          autoPlay
+                          muted
+                          loop
+                        />
                       </div>
-                    ) : null}
-
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-4 mb-4 flex-wrap">
-                        {idFeature.highlight?.map(
-                          (idHighlight, iHighlightIndex) => (
+                      <div className="space-y-4 lg:col-span-5">
+                        <div className="flex items-center gap-4 mb-4 flex-wrap">
+                          {idFeature.highlight?.map((idHighlight, iHighlightIndex) => (
                             <div
                               key={iHighlightIndex}
                               className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
                             >
                               {renderIcon(idHighlight.icon)}
-                              <span className="text-sm font-medium">
-                                {idHighlight.label}
-                              </span>
+                              <span className="text-sm font-medium">{idHighlight.label}</span>
                             </div>
-                          )
-                        )}
+                          ))}
+                        </div>
+                        <TitleSubtitle
+                          idTitle={{
+                            ...idFeature.heading,
+                            className: "mx-auto m-0",
+                            headingClass: "text-lg lg:text-2xl transition-all",
+                          }}
+                        />
+                        <div className="space-y-2">
+                          {idFeature.buttons.map((idButton, iButtonIndex) => (
+                            <Link
+                              key={iButtonIndex}
+                              href={idButton.href || "#"}
+                              className="inline-flex items-center text-sm font-medium text-muted-foreground bg-accent border border-border px-4 py-2 rounded-md transition-colors underline-offset-4 hover:underline"
+                            >
+                              {idButton.label}
+                              <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                            </Link>
+                          ))}
+                        </div>
                       </div>
-                      <TitleSubtitle
-                        idTitle={{
-                          ...idFeature.heading,
-                          headingClass: "md:text-2xl transition-al",
-                        }}
-                      />
-                      {idFeature.buttons.map((idButton, iIndex) => (
-                        <Link
-                          key={iIndex}
-                          href={idButton.href || "#"}
-                          className="inline-flex items-center text-sm font-medium text-muted-foreground bg-accent border border-border px-4 py-2 rounded-md  transition-colors underline-offset-4 hover:underline"
-                        >
-                          {idButton.label}
-                          <ChevronRight className="ml-1 md:h-3 md:w-3 h-6 w-6 transition-transform group-hover:translate-x-1" />
-                        </Link>
-                      ))}
                     </div>
-
-                    {iIndex % 2 === 0 ? (
-                      <div className="relative h-[300px] rounded-lg border border-border bg-grayBackground flex items-center justify-center overflow-hidden group-hover:border-muted transition-all">
-                        {/* <div className="absolute inset-0"></div> */}
-                        {idFeature.image?.svg &&
-                          renderIcon(idFeature.image?.svg, "w-24 h-24")}
-                        {idFeature.image?.source && (
-                          <Image
-                            src={idFeature.image?.source}
-                            alt={idFeature.image?.alternate}
-                            fill
-                            className="object-contain"
-                          />
-                        )}
-                      </div>
-                    ) : null}
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
             <div className="mx-auto max-w-[58rem] text-center mt-12 bg-accent p-8 rounded-lg border border-border shadow-sm">
               <p className="text-primary/70 font-medium mb-6">
@@ -349,7 +327,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                        {renderIcon(idBtn.icon)}
                       </Button>
                     )
                 )}
@@ -398,14 +376,14 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                 ))}
               </div>
               <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
-              {idProduct?.successStoryHighlight?.map((idItem, iIndex) => (
-                <div className="text-center" key={iIndex}>
-                  <p className="text-3xl font-light mb-2">{idItem.label}</p>
-                  <div className="h-0.5 w-8 bg-primary mx-auto mb-2"></div>
-                  <p className="text-sm text-primary">{idItem.description}</p>
-                </div>
-              ))}
-            </div>
+                {idProduct?.successStoryHighlight?.map((idItem, iIndex) => (
+                  <div className="text-center" key={iIndex}>
+                    <p className="text-3xl font-light mb-2">{idItem.label}</p>
+                    <div className="h-0.5 w-8 bg-primary mx-auto mb-2"></div>
+                    <p className="text-sm text-primary">{idItem.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
             <div className="mx-auto max-w-[58rem] text-center mt-8">
               <p className="text-primary/70 mb-6">
@@ -615,7 +593,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}{" "}  
+                          {idBtn.label}{" "}
                           {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>

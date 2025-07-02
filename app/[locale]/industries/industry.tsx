@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image";
 import { Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import Callout from "@repo/ui/components/callout";
@@ -87,59 +86,58 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
         <div className="space-y-24">
           {idIndustry?.industries[0]?.feature?.map((idSection, iIndex) => {
             const isEven = iIndex % 2 === 0;
-
             return (
-              <div
-                key={iIndex}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center"
-              >
-                {isEven && (
-                  <div className="rounded-xl overflow-hidden shadow-lg order-last lg:order-first flex items-center justify-center">
-                  <Image
-                    src={idSection.image?.source || "placeholder.svg"}
-                    alt={idSection.image?.alternate || ""}
-                    width={600}
-                    height={400}
-                    className="object-contain w-full h-auto"
-                  />
+              <div key={iIndex} className="py-2 lg:py-4">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  <div
+                    className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
+                  >
+                    <video
+                      src={idSection.image?.source || "placeholder.svg"}
+                      className="aspect-[16/9] w-full object-cover rounded-sm"
+                      width={1000}
+                      height={1000}
+                      autoPlay
+                      muted
+                      loop
+                    />
+                  </div>
+                  <div className="space-y-4 lg:col-span-5">
+                    {idSection.header && (
+                      <TitleSubtitle
+                        idTitle={{
+                          ...idSection.header,
+                          className: "mx-auto m-0",
+                          headingClass: "text-lg md:text-xl lg:text-2xl",
+                          descripClass: "text-sm md:text-base lg:text-lg",
+                        }}
+                      />
+                    )}
+                    <CustomCard
+                      idCardProps={{
+                        header: {
+                          ...idSection.card!.header,
+                          headingClass: "mb-2 text-md",
+                          descripClass: "text-sm mb-4",
+                        },
+                        link: idSection.card?.buttons?.map((idButton) => ({
+                          ...idButton,
+                          icon: "ArrowRight",
+                          iconPosition: "after",
+                        })) as Tbutton[],
+                        className: "bg-accent p-0",
+                      }}
+                    />
+                  </div>
                 </div>
-                
-                )}
-
-                <div className="space-y-6">
-                  {idSection.header && <TitleSubtitle idTitle={idSection.header} />}
-                  <CustomCard
-                    idCardProps={{
-                      header: idSection.card!.header,
-                      link: idSection.card?.buttons?.map((idButton) => ({
-                        ...idButton,
-                        icon: "ArrowRight",
-                        iconPosition: "after",
-                      })) as Tbutton[],
-                      className: "bg-accent",
-                    }}
-                  />
-                </div>
-
-                {!isEven && (
-                  <div className="rounded-xl overflow-hidden shadow-lg order-last lg:order-none flex items-center justify-center">
-                  <Image
-                    src={idSection.image?.source || "/placeholder.svg"}
-                    alt={idSection.image?.alternate || ""}
-                    width={600}
-                    height={400}
-                    className="object-contain w-full h-auto"
-                  />
-                </div>
-                )}
               </div>
-            );
+            )
           })}
         </div>
-      </section>
+      </section >
 
       {/* allFeature */}
-      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      < section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" >
         <TitleSubtitle
           idTitle={{
             ...idIndustry?.industries[0]?.allFeatureHeader,
@@ -179,10 +177,10 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           }}
         />
 
-      </section>
+      </section >
 
       {/* cta */}
-      <div ref={LdSectionRefs("containerThree")} className="bg-accent">
+      < div ref={LdSectionRefs("containerThree")} className="bg-accent" >
         <section className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
@@ -234,10 +232,10 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           </div>
         </section>
         {fnRenderFormBelowSection("containerThree")}
-      </div>
+      </div >
 
       {/* success story */}
-      <div ref={LdSectionRefs("containerFour")}>
+      < div ref={LdSectionRefs("containerFour")} >
         <section className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -263,7 +261,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   },
                   button: idCard.buttons?.map((idButton: Tbutton) => ({
                     ...idButton,
-                    
+
                     iconPosition: "after",
                     icon: idButton.icon,
                     size: "lg",
@@ -304,7 +302,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           </div>
         </section>
         {fnRenderFormBelowSection("containerFour")}
-      </div>
+      </div >
     </>
   );
 }
