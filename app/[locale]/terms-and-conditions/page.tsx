@@ -27,8 +27,17 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function TermsAndConditions({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
   const idTerms = await getTermsPageData(locale)
+  const jsonLd = idTerms.termsAndCondition.metaData.schemaData
   return (
     <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">

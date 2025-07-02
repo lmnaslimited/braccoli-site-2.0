@@ -24,5 +24,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function TrendingNow({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getTrendingNowPageData(await params)
-  return <TrendingNowPage idTrend={pageData} />
+  const jsonLd = pageData.trend.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <TrendingNowPage idTrend={pageData} />
+    </>
+  )
 }

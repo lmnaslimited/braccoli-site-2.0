@@ -52,5 +52,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
   const pageData = await getProductsPageData({ slug, locale })
-  return <ProductsComp idProduct={pageData.products[0]!} />
+  const jsonLd = pageData.products[0]?.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <ProductsComp idProduct={pageData.products[0]!} />
+    </>
+  )
 }

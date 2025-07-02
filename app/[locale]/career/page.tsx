@@ -21,5 +21,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function CareerPage({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getCareerPageData(await params)
-  return <Career idCareer={pageData} />
+  const jsonLd = pageData.career.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <Career idCareer={pageData} />
+    </>
+  )
 }
