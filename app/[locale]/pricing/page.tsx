@@ -39,5 +39,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
   const { pricingPageData, pageData } = await getPricingPageData(await params)
-  return <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
+  const jsonLd = pageData.pricing.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
+    </>
+  )
 }

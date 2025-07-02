@@ -56,5 +56,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Industries({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
   const pageData = await getIndustriesPageData({ slug, locale })
-  return <IndustryComp idIndustry={pageData} />
+  const jsonLd = pageData.industries[0]?.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <IndustryComp idIndustry={pageData} />
+    </>
+  )
 }

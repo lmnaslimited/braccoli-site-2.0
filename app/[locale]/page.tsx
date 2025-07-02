@@ -21,5 +21,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getHomePageData(await params)
-  return <Home idHome={pageData} />
+  const jsonLd = pageData.home.metaData.schemaData
+  return (
+    <>
+      <Home idHome={pageData} />
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+    </>
+  )
 }

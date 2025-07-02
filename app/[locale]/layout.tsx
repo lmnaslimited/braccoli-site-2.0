@@ -1,5 +1,4 @@
 import type React from "react"
-import Script from "next/script"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
@@ -87,8 +86,6 @@ export default async function RootLayout({
   const { locale } = await params
   const context: Tcontext = { locale: locale }
 
-  const data = await fnGetGlobalData(locale)
-
   const footerData: TfooterTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("footer")
@@ -101,11 +98,6 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <Script
-        id="schema-org"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(data.schemaData) }}
-      />
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />

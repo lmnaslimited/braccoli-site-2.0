@@ -21,5 +21,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function AboutUsPage({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getAboutUsPageData(await params)
-  return <AboutUs idAboutUs={pageData} />
+  const jsonLd = pageData.aboutUs.metaData.schemaData
+
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <AboutUs idAboutUs={pageData} />
+    </>
+  )
 }

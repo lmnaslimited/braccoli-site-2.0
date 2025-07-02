@@ -27,5 +27,18 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function SolutionPage({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getSolutionPageData(await params)
-  return <Solution idSolution={pageData} />
+  const jsonLd = pageData.solution.metaData.schemaData
+  return (
+    <>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
+      <Solution idSolution={pageData} />
+    </>
+  )
 }
