@@ -87,20 +87,32 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           {idIndustry?.industries[0]?.feature?.map((idSection, iIndex) => {
             const isEven = iIndex % 2 === 0;
             return (
-              <div key={iIndex} className="py-2 lg:py-4">
+              <div key={iIndex} className="py-2 md:py-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                   <div
                     className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
                   >
-                    <video
-                      src={idSection.image?.source || "placeholder.svg"}
-                      className="aspect-[16/9] w-full object-cover rounded-sm"
-                      width={1000}
-                      height={1000}
-                      autoPlay
-                      muted
-                      loop
-                    />
+                    {idSection.image?.source ? (
+                      idSection.image.source.endsWith(".mp4") ? (
+                        <video
+                          src={idSection.image.source}
+                          className="aspect-[16/9] w-full object-cover rounded-sm"
+                          width={1000}
+                          height={1000}
+                          autoPlay
+                          muted
+                          loop
+                        />
+                      ) : (
+                        <img
+                          src={idSection.image.source}
+                          alt="Feature visual"
+                          className="aspect-[16/9] w-full object-cover rounded-sm"
+                          width={1000}
+                          height={1000}
+                        />
+                      )
+                    ) : null}
                   </div>
                   <div className="space-y-4 lg:col-span-5">
                     {idSection.header && (

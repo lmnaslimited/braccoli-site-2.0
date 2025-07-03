@@ -236,20 +236,30 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
               {idProduct?.guideFeature.map((idFeature, iIndex) => {
                 const isEven = iIndex % 2 === 0
                 return (
-                  <div key={iIndex} className="py-10 lg:py-12">
+                  <div key={iIndex} className="py-16 md:py-20 ">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                       <div
                         className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
                       >
-                        <video
-                          src={idFeature.image?.source}
-                          className="aspect-[16/9] w-full object-cover rounded-sm"
-                          width={1000}
-                          height={1000}
-                          autoPlay
-                          muted
-                          loop
-                        />
+                        {idFeature.image?.source?.endsWith(".mp4") ? (
+                          <video
+                            src={idFeature.image.source}
+                            className="aspect-[16/9] w-full object-cover rounded-sm"
+                            width={1000}
+                            height={1000}
+                            autoPlay
+                            muted
+                            loop
+                          />
+                        ) : (
+                          <img
+                            src={idFeature.image?.source || "placeholder.png"}
+                            alt={idFeature.image?.alternate}
+                            className="aspect-[16/9] w-full object-cover rounded-sm"
+                            width={1000}
+                            height={1000}
+                          />
+                        )}
                       </div>
                       <div className="space-y-4 lg:col-span-5">
                         <div className="flex items-center gap-4 mb-4 flex-wrap">
