@@ -87,7 +87,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           {idIndustry?.industries[0]?.feature?.map((idSection, iIndex) => {
             const isEven = iIndex % 2 === 0;
             return (
-              <div key={iIndex} className="py-2 md:py-8">
+              <div key={iIndex} className="py-2 md:py-8 last:lg:pb-0">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                   <div
                     className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
