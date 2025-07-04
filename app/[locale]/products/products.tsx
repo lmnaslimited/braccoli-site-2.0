@@ -232,12 +232,12 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                 headingClass: "md:text-5xl",
               }}
             />
-            <div className="mx-auto max-w-6xl md:py-12">
+            <div className="mx-auto md:py-12">
               {idProduct?.guideFeature.map((idFeature, iIndex) => {
                 const isEven = iIndex % 2 === 0
                 return (
-                  <div key={iIndex} className="pb-28 lg:pb-40 lg:last:pb-0">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                  <div key={iIndex} className="pb-20 lg:pb-48 lg:last:pb-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                       <div
                         className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
                       >
