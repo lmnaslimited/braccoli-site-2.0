@@ -7,6 +7,7 @@ import { SectionForm } from "@repo/ui/components/form"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { TcontactTarget } from "@repo/middleware"
 import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
+import LocationCard from "@repo/ui/components/locationCard"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
@@ -21,15 +22,16 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
         fnsetBookingMessage(iMessage)
     }
 
-const LdBookingForm = idContact.forms.find(form => form.formId === "booking");
-const LdContactForm = idContact.forms.find(form => form.formId === "contact");
+    const LdBookingForm = idContact.forms.find(form => form.formId === "booking");
+    const LdContactForm = idContact.forms.find(form => form.formId === "contact");
 
-if (!LdBookingForm) {
-  throw new Error("Booking form not found or missing formId");
-}
-if (!LdContactForm) {
-    throw new Error("Booking form not found or missing formId");
-  }
+    if (!LdBookingForm) {
+        throw new Error("Booking form not found or missing formId");
+    }
+    if (!LdContactForm) {
+        throw new Error("Booking form not found or missing formId");
+    }
+
 
     return (
         <section>
@@ -68,9 +70,9 @@ if (!LdContactForm) {
                             <SectionForm
                                 config={{
                                     ...LdContactForm,
-                                    fields: idContact.contact.contactForm, // override with your desired fields
+                                    fields: idContact.contact.contactForm,
                                     schema: generateSchemaFromFields(idContact.contact.contactForm || [])
-                                  }}
+                                }}
                                 onSuccess={fnHandleContactSuccess}
                                 className="shadow-none bg-transparent p-0 border-none"
                                 hideCardHeader={true}
@@ -117,7 +119,7 @@ if (!LdContactForm) {
                                         ...LdBookingForm,
                                         fields: idContact.contact.bookingForm, // override with your desired fields
                                         schema: generateSchemaFromFields(idContact.contact.bookingForm || [])
-                                      }}
+                                    }}
                                     onSuccess={fnHandleBookingSuccess}
                                     className="shadow-none bg-transparent p-0 border-none"
                                     hideCardHeader={true}
@@ -127,6 +129,34 @@ if (!LdContactForm) {
                     </div>
                 </div>
             </div>
-        </section>
+
+            <div className="pt-14 relative overflow-hidden">
+                <div className="container mx-auto px-6 relative">
+                    <div className="max-w-7xl mx-auto">
+                        <p className="text-foreground text-sm tracking-widest uppercase mb-6 text-center">{idContact.contact.locationHeadline}</p>
+                        <TitleSubtitle
+                            idTitle={{
+                                ...(idContact.contact.locationHeader),
+                                className: "text-center mb-20",
+                                headingClass: "text-4xl md:text-6xl font-light mb-8 leading-tight  text-foreground",
+                                descripClass: "text-xl text-foreground max-w-2xl mx-auto leading-relaxed",
+                            }}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <section className="container mx-auto px-6 last:p-20 relative">
+                <div className="max-w-8xl mx-auto">
+                    <div>
+                        {idContact.contact.locationCard.map((lLocation, lIndex) => (
+                            <div key={lLocation.index} className={`relative ${lIndex < idContact.contact.locationCard.length - 1 ? "mb-32" : ""}`}>
+                                <LocationCard location={lLocation} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        </section >
     )
 }

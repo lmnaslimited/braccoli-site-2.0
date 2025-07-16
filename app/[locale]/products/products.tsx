@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image"
 import {
   ArrowRight,
   CheckCircle,
@@ -252,9 +253,9 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             loop
                           />
                         ) : (
-                          <img
+                          <Image
                             src={idFeature.image?.source || "placeholder.png"}
-                            alt={idFeature.image?.alternate}
+                            alt={idFeature.image?.alternate || "image"}
                             className="aspect-[16/9] w-full object-cover rounded-sm"
                             width={1000}
                             height={1000}
