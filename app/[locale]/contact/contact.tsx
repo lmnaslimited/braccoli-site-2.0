@@ -3,7 +3,7 @@ import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
 import { SectionForm } from "@repo/ui/components/form"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
-import type { TcontactTarget } from "@repo/middleware"
+import { TcontactTarget } from "@repo/middleware"
 import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
 import LocationCard from "@repo/ui/components/locationCard"
 
