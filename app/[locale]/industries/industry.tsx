@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 import { Calendar } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import Callout from "@repo/ui/components/callout";
@@ -104,9 +105,9 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                           loop
                         />
                       ) : (
-                        <img
+                        <Image
                           src={idSection.image.source}
-                          alt="Feature visual"
+                          alt={idSection.image.alternate}
                           className="aspect-[16/9] w-full object-cover rounded-sm"
                           width={1000}
                           height={1000}

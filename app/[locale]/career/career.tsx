@@ -384,8 +384,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
               <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 rounded-none">
                 {idCareer.career.jobsSection.list.slice(0, 2).map((idTitle, iIndex) => (
                   <TabsTrigger
-                    value={idTitle.subtitle}
-                    onClick={() => fnSetActiveTab(idTitle.subtitle)}
+                    value={idTitle.subtitle || `tab-${iIndex}`}
+                    onClick={() => fnSetActiveTab(idTitle.subtitle || `tab-${iIndex}`)}
                     key={iIndex}
                     className="rounded-none"
                   >
