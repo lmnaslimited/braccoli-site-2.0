@@ -183,7 +183,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                         <div className="space-y-16 md:space-y-32">
                             {idContact.contact.locationCard.map((lLocation) => (
                                 <div key={lLocation.index}>
-                                    <LocationCard location={lLocation} />
+                                    <LocationCard idLocation={lLocation} />
                                 </div>
                             ))}
                         </div>
