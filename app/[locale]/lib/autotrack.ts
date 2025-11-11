@@ -5,30 +5,30 @@ type RA = RudderAnalytics | RudderAnalyticsPreloader | undefined;
 
 export const initAutoTracking = (rudderanalytics: RA) => {
   if (typeof window === "undefined" || !rudderanalytics) return;
-  console.log("✅ Smart Auto-Tracking initializing...");
+  // console.log("✅ Smart Auto-Tracking initializing...");
 
-  const normalizeText = (text?: string | null) => {
-    if (!text) return undefined;
-    return text.replace(/\s+/g, " ").trim().slice(0, 100);
+  const fnNormalizeText = (iText?: string | null) => {
+    if (!iText) return undefined;
+    return iText.replace(/\s+/g, " ").trim().slice(0, 100);
   };
 
-  const getElementPath = (el: HTMLElement | null): string => {
-    const parts: string[] = [];
-    while (el && el.tagName && el.tagName.toLowerCase() !== "body") {
-      let part = el.tagName.toLowerCase();
-      if (el.id) part += `#${el.id}`;
-      if (el.className && typeof el.className === "string") {
-        const cls = el.className.split(" ").filter(Boolean).slice(0, 3).join(".");
-        if (cls) part += `.${cls}`;
+  const fnGetElementPath = (ieElement: HTMLElement | null): string => {
+    const LaParts: string[] = [];
+    while (ieElement && ieElement.tagName && ieElement.tagName.toLowerCase() !== "body") {
+      let lPart = ieElement.tagName.toLowerCase();
+      if (ieElement.id) lPart += `#${ieElement.id}`;
+      if (ieElement.className && typeof ieElement.className === "string") {
+        const lCls = ieElement.className.split(" ").filter(Boolean).slice(0, 3).join(".");
+        if (lCls) lPart += `.${lCls}`;
       }
-      parts.unshift(part);
-      el = el.parentElement;
+      LaParts.unshift(lPart);
+      ieElement = ieElement.parentElement;
     }
-    return parts.join(" > ");
+    return LaParts.join(" > ");
   };
 
   // 1️⃣ Page views
-  const trackPage = () => {
+  const fnTrackPage = () => {
     rudderanalytics.page(window.location.pathname, document.title, {
       url: window.location.href,
       referrer: document.referrer,
@@ -38,44 +38,44 @@ export const initAutoTracking = (rudderanalytics: RA) => {
       },
     });
   };
-  trackPage();
-  window.addEventListener("popstate", trackPage);
-  window.addEventListener("pushstate", trackPage);
+  fnTrackPage();
+  window.addEventListener("popstate", fnTrackPage);
+  window.addEventListener("pushstate", fnTrackPage);
 
   // 2️⃣ Clicks with semantic context
-  document.addEventListener("click", (e) => {
-    const target = e.target as HTMLElement;
-    if (!target) return;
+  document.addEventListener("click", (event) => {
+    const LeTarget = event.target as HTMLElement;
+    if (!LeTarget) return;
 
-    const tag = target.tagName.toLowerCase();
-    const role = target.getAttribute("role");
-    const ariaLabel = target.getAttribute("aria-label");
-    const dataEvent = target.getAttribute("data-event");
-    const component = target.closest("[data-component]")?.getAttribute("data-component");
+    const LTag = LeTarget.tagName.toLowerCase();
+    const LRole = LeTarget.getAttribute("role");
+    const LAriaLabel = LeTarget.getAttribute("aria-label");
+    const LDataEvent = LeTarget.getAttribute("data-event");
+    const LdComponent = LeTarget.closest("[data-component]")?.getAttribute("data-component");
 
     // Determine interaction type
-    const interactionType =
-      dataEvent ||
-      role ||
-      (tag === "button"
+    const LInteractionType =
+      LDataEvent ||
+      LRole ||
+      (LTag === "button"
         ? "button_click"
-        : tag === "a"
+        : LTag === "a"
         ? "link_click"
-        : tag === "input"
+        : LTag === "input"
         ? "input_interaction"
         : "ui_interaction");
 
     // Collect semantic details
-    const eventData = {
-      event: interactionType,
-      tag,
-      id: target.id || undefined,
-      class: target.className || undefined,
-      text: normalizeText(target.textContent),
-      ariaLabel: ariaLabel || undefined,
-      dataEvent,
-      component,
-      path: getElementPath(target),
+    const LdEventData = {
+      event: LInteractionType,
+      LTag,
+      id: LeTarget.id || undefined,
+      class: LeTarget.className || undefined,
+      text: fnNormalizeText(LeTarget.textContent),
+      ariaLabel: LAriaLabel || undefined,
+      LDataEvent,
+      LdComponent,
+      path: fnGetElementPath(LeTarget),
       location: {
         pathname: window.location.pathname,
         href: window.location.href,
@@ -83,28 +83,28 @@ export const initAutoTracking = (rudderanalytics: RA) => {
       timestamp: new Date().toISOString(),
     };
 
-    rudderanalytics.track(interactionType, eventData);
+    rudderanalytics.track(LInteractionType, LdEventData);
 
     // Outbound links
-    if (tag === "a" && (target as HTMLAnchorElement).hostname !== window.location.hostname) {
+    if (LTag === "a" && (LeTarget as HTMLAnchorElement).hostname !== window.location.hostname) {
       rudderanalytics.track("outbound_link_click", {
-        href: (target as HTMLAnchorElement).href,
-        targetHost: (target as HTMLAnchorElement).hostname,
-        component,
-        text: normalizeText(target.textContent),
+        href: (LeTarget as HTMLAnchorElement).href,
+        targetHost: (LeTarget as HTMLAnchorElement).hostname,
+        LdComponent,
+        text: fnNormalizeText(LeTarget.textContent),
       });
     }
   });
 
   // 3️⃣ Forms
-  document.addEventListener("submit", (e) => {
-    const form = e.target as HTMLFormElement;
-    const name = form.getAttribute("name") || form.id || "Unnamed Form";
+  document.addEventListener("submit", (event) => {
+    const LeForm = event.target as HTMLFormElement;
+    const LName = LeForm.getAttribute("name") || LeForm.id || "Unnamed Form";
 
     rudderanalytics.track("form_submit", {
-      form_name: name,
-      path: getElementPath(form),
-      fields: Array.from(form.elements)
+      form_name: LName,
+      path: fnGetElementPath(LeForm),
+      fields: Array.from(LeForm.elements)
         // .map((el: any) => el.name)
         .map((el) => {
           if (
@@ -122,18 +122,18 @@ export const initAutoTracking = (rudderanalytics: RA) => {
   });
 
   // 4️⃣ Scroll depth tracking
-  let lastDepth = 0;
+  let lLastDepth = 0;
   window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.body.scrollHeight - window.innerHeight;
-    const scrolled = Math.floor((scrollTop / docHeight) * 100);
-    const thresholds = [25, 50, 75, 100];
+    const LScrollTop = window.scrollY;
+    const LDocHeight = document.body.scrollHeight - window.innerHeight;
+    const LScrolled = Math.floor((LScrollTop / LDocHeight) * 100);
+    const LaThresholds = [25, 50, 75, 100];
 
-    for (const t of thresholds) {
-      if (scrolled >= t && lastDepth < t) {
-        lastDepth = t;
+    for (const LThreshold of LaThresholds) {
+      if (LScrolled >= LThreshold && lLastDepth < LThreshold) {
+        lLastDepth = LThreshold;
         rudderanalytics.track("scroll_depth", {
-          depth: `${t}%`,
+          depth: `${LThreshold}%`,
           page: window.location.pathname,
           viewport: {
             width: window.innerWidth,
@@ -151,12 +151,12 @@ export const initAutoTracking = (rudderanalytics: RA) => {
   });
 
   // 6️⃣ Identify known user
-  const user = JSON.parse(localStorage.getItem("lens_user") || "null");
-  if (user?.id) {
-    rudderanalytics.identify(user.id, {
-      name: user.name,
-      email: user.email,
-      role: user.role,
+  const LdUser = JSON.parse(localStorage.getItem("lens_user") || "null");
+  if (LdUser?.id) {
+    rudderanalytics.identify(LdUser.id, {
+      name: LdUser.name,
+      email: LdUser.email,
+      role: LdUser.role,
     });
   }
 
@@ -171,5 +171,5 @@ export const initAutoTracking = (rudderanalytics: RA) => {
 //     track: (event: any) => console.log("🧩 Tracked event:", event),
 //   });
 
-  console.log("✅ Smart Auto-tracking fully enabled");
+  // console.log("✅ Smart Auto-tracking fully enabled");
 };

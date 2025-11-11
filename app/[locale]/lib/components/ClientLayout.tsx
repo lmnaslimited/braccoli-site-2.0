@@ -5,16 +5,16 @@ import { initAutoTracking } from "../autotrack";
 import useRudderStackAnalytics from "../useRudderAnalytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }){
-    console.log("ClientLayout component rendered");
+    // console.log("ClientLayout component rendered");
             // initRudderStack();
-    const rudderanalytics = useRudderStackAnalytics();
+    const LdRudderanalytics = useRudderStackAnalytics();
     useEffect(() => {
-    if (!rudderanalytics) return;
+    if (!LdRudderanalytics) return;
 
-    rudderanalytics.ready(() => {
-      console.log("✅ RudderStack ready — initializing auto tracking");
-      initAutoTracking(rudderanalytics);
+   LdRudderanalytics.ready(() => {
+      // console.log("✅ RudderStack ready — initializing auto tracking");
+      initAutoTracking(LdRudderanalytics);
     });
-  }, [rudderanalytics]);
+  }, [LdRudderanalytics]);
     return  <>{children}</>
 }
