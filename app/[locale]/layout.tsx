@@ -7,6 +7,7 @@ import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
+import ClientLayout from "./lib/components/ClientLayout"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -101,7 +102,10 @@ export default async function RootLayout({
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />
-          <main className="">{children}</main>
+          <main className="">
+            <ClientLayout>
+            {children}</ClientLayout>
+            </main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
       </body>
