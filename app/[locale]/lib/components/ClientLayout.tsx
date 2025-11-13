@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { initAutoTracking } from "../autotrack";
+import { fnInitAutoTracking } from "../autotrack";
 import useRudderStackAnalytics from "../useRudderAnalytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }){
@@ -13,7 +13,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
    LdRudderanalytics.ready(() => {
       // console.log("✅ RudderStack ready — initializing auto tracking");
-      initAutoTracking(LdRudderanalytics);
+      fnInitAutoTracking(LdRudderanalytics);
     });
   }, [LdRudderanalytics]);
     return  <>{children}</>

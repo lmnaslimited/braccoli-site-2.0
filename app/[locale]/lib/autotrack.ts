@@ -3,7 +3,7 @@ import { RudderAnalytics, RudderAnalyticsPreloader } from "@rudderstack/analytic
 
 type RA = RudderAnalytics | RudderAnalyticsPreloader | undefined;
 
-export const initAutoTracking = (rudderanalytics: RA) => {
+export const fnInitAutoTracking = (rudderanalytics: RA) => {
   if (typeof window === "undefined" || !rudderanalytics) return;
   // console.log("✅ Smart Auto-Tracking initializing...");
 
