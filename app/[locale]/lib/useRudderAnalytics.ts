@@ -44,7 +44,7 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
           // Build SDK configuration
           const LdLoadOptions: Partial<LoadOptions> = {
             onLoaded: () => {
-              console.log('LMNAs Analytics is loaded!!!');
+              // console.log('LMNAs Analytics is loaded!!!');
             },
           };
 
@@ -64,7 +64,7 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
           LdAnalyticsInstance.load(LWriteKey, LDataplaneUrl, LdLoadOptions);
 
           LdAnalyticsInstance.ready(() => {
-            console.log('LMNAS Analytics is ready!!!');
+            // console.log('LMNAS Analytics is ready!!!');
           });
 
           return LdAnalyticsInstance;
