@@ -22,7 +22,7 @@ import {
   TableRow,
 } from "@repo/ui/components/ui/table";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware";
+import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/type";
 import { useState } from "react";
 
 export default function Pricing({

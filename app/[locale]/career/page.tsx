@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
 import Career from './career'
+import type { Metadata } from 'next'
 import { fnGetCacheData } from '../../api/getData'
 import { getPageMetadata } from '../../api/getPageMetadata'
-import { clTransformerFactory, TcareerPageTarget, Tcontext } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { TcareerPageTarget, Tcontext } from '@repo/middleware/type'
 
 async function getCareerPageData(params: { locale: string }) {
   const { locale } = params

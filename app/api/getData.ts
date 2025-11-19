@@ -1,4 +1,4 @@
-import { ITransformer, Tcontext } from '@repo/middleware';
+import { ITransformer, Tcontext } from '@repo/middleware/type';
 import { unstable_cache } from 'next/cache';
 
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>();

@@ -1,36 +1,47 @@
-import type React from "react"
-import type { Metadata, Viewport } from 'next'
-import "@repo/ui/globals.css"
-import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from "../api/getData"
-import Footer from "@repo/ui/components/footer"
-import Navbar from "@repo/ui/components/navbar"
-import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
+import type React from "react";
+import "@repo/ui/globals.css";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata, Viewport } from "next";
+import { fnGetCacheData } from "../api/getData";
+import Footer from "@repo/ui/components/footer";
+import Navbar from "@repo/ui/components/navbar";
+import { clTransformerFactory } from "@repo/middleware";
+import { ThemeProvider } from "@repo/ui/components/theme-provider";
+import {
+  Tcontext,
+  TfooterTarget,
+  TglobalMetaTarget,
+  TnavbarTarget,
+  TseoIcons,
+} from "@repo/middleware/type";
 
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1.0,
   maximumScale: 5.0,
   userScalable: true,
-}
+};
 
 async function fnGetGlobalData(locale: string) {
-  const context: Tcontext = { locale }
+  const context: Tcontext = { locale };
 
   const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("globalMeta")
-  )
+  );
 
-  return globalMetaData?.globalMeta
+  return globalMetaData?.globalMeta;
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params
-  const data = await fnGetGlobalData(locale)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const data = await fnGetGlobalData(locale);
 
-  if (!data) return {}
+  if (!data) return {};
 
   return {
     metadataBase: data.metadataBase ? new URL(data.metadataBase) : undefined,
@@ -41,14 +52,15 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       googleBot: {
         index: data.googleBotIndex,
         follow: data.googleBotFollow,
-        'max-snippet': data.googleBotMaxSnippet,
-        'max-image-preview': data.googleBotMaxImagePreview,
-        'max-video-preview': data.googleBotMaxVideoPreview,
+        "max-snippet": data.googleBotMaxSnippet,
+        "max-image-preview": data.googleBotMaxImagePreview,
+        "max-video-preview": data.googleBotMaxVideoPreview,
       },
     },
-    authors: data.authorsName && data.authorsURL
-      ? [{ name: data.authorsName, url: data.authorsURL }]
-      : undefined,
+    authors:
+      data.authorsName && data.authorsURL
+        ? [{ name: data.authorsName, url: data.authorsURL }]
+        : undefined,
     creator: data.creator,
     publisher: data.publisher,
     applicationName: data.applicationName,
@@ -71,7 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       statusBarStyle: data.appleWebAppStatusBarStyle,
     },
     manifest: data.manifest,
-  }
+  };
 }
 
 export default async function RootLayout({
@@ -79,32 +91,37 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   params: Promise<{
-    locale: string
-  }>
-  children: React.ReactNode
+    locale: string;
+  }>;
+  children: React.ReactNode;
 }>) {
-  const { locale } = await params
-  const context: Tcontext = { locale: locale }
+  const { locale } = await params;
+  const context: Tcontext = { locale: locale };
 
   const footerData: TfooterTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("footer")
-  )
+  );
 
   const navbarData: TnavbarTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("navbar")
-  )
+  );
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar idNavbar={navbarData} />
           <main className="">{children}</main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }

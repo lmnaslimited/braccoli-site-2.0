@@ -1,4 +1,5 @@
-import { clTransformerFactory, Tcontext, TformsPageTarget } from "@repo/middleware";
+import {  Tcontext, TformsPageTarget } from "@repo/middleware/type";
+import { clTransformerFactory } from "@repo/middleware";
 import { fnGetCacheData } from "../getData";
 import { NextResponse } from "next/server";
 

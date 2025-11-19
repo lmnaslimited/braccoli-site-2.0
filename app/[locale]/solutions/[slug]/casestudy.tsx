@@ -8,9 +8,8 @@ import { Button } from "@repo/ui/components/ui/button";
 import { ProblemSection } from "@repo/ui/components/problemSection";
 import { SolutionSection } from "@repo/ui/components/solutionSection";
 import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
-// import Callout from "@repo/ui/components/callout";
 import { ArrowLeft, LucideIcon } from "lucide-react";
-import { TcaseStudies, TformMode, Theader } from "@repo/middleware";
+import { TcaseStudies, TformMode, Theader } from "@repo/middleware/type";
 import { useFormHandler } from "../../hooks/useFormHandler";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 

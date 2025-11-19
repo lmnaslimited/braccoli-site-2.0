@@ -1,12 +1,12 @@
 "use client"
 
 import type React from "react"
-import { useState, useRef, type ReactNode, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
+import { useParams } from 'next/navigation';
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm} from "@repo/ui/components/form"
-import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware"
-import { useParams } from 'next/navigation';
+import { useState, useRef, type ReactNode, useEffect } from "react"
+import {  TformMode,  TcaseStudies,  TtrendCardProps,  TformConfig } from "@repo/middleware/type"
 import { generateSchemaFromFields } from '@repo/ui/lib/zodTransformation'
 
 type OptionalRenderParams = {

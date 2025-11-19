@@ -9,7 +9,7 @@ import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
+import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware/type";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {

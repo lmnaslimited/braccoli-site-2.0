@@ -9,7 +9,7 @@ import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { ArrowUp } from "lucide-react";
-import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware";
+import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware/type";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
 const renderIcon = (icon: Tbutton['icon']) => {

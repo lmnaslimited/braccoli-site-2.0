@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
 import AboutUs from './about-us'
+import type { Metadata } from 'next'
 import { fnGetCacheData } from '../../api/getData'
 import { getPageMetadata } from '../../api/getPageMetadata'
-import { clTransformerFactory, TaboutUsPageTarget, Tcontext } from '@repo/middleware'
+import {clTransformerFactory} from "@repo/middleware"
+import {  TaboutUsPageTarget, Tcontext } from '@repo/middleware/type'
 
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params

@@ -2,7 +2,8 @@ import Home from './home/home'
 import type { Metadata } from 'next'
 import { fnGetCacheData } from '../api/getData'
 import { getPageMetadata } from '../api/getPageMetadata'
-import { clTransformerFactory, Tcontext, ThomePageTarget } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { ThomePageTarget, Tcontext } from '@repo/middleware/type'
 
 async function getHomePageData(params: { locale: string }) {
   const { locale } = params

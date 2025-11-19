@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware";
+import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/type";
 import CustomCard from "@repo/ui/components/customCard";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { useFormHandler } from "../hooks/useFormHandler";

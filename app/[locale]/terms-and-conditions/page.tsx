@@ -7,7 +7,8 @@ import FAQs from "@repo/ui/components/faq"
 import { fnGetCacheData } from "../../api/getData"
 import { getPageMetadata } from '../../api/getPageMetadata';
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
-import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware';
+import {  Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware/type';
+import { clTransformerFactory } from "@repo/middleware";
 
 async function getTermsPageData(locale: string) {
   const context: Tcontext = { locale: locale }

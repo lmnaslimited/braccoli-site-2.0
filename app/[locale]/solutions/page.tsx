@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Solution from './solution'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, Tcontext, TsolutionPageTarget } from '@repo/middleware'
+import {  Tcontext, TsolutionPageTarget } from '@repo/middleware/type'
+import { clTransformerFactory } from '@repo/middleware'
 
 async function getSolutionPageData(params: { locale: string }) {
   const { locale } = params

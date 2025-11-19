@@ -17,7 +17,7 @@ import { Checkbox } from "@repo/ui/components/ui/checkbox";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@repo/ui/components/ui/card";
 import TrendCard from "@repo/ui/components/trendCard";
 import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, } from "lucide-react";
-import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware";
+import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/type";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { CarrerChart } from "@repo/ui/components/pieChart";

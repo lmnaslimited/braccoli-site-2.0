@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { TpageMetadata } from '@repo/middleware';
+import type { TpageMetadata } from '@repo/middleware/type';
 
 export function getPageMetadata(data: TpageMetadata): Metadata {
     return {

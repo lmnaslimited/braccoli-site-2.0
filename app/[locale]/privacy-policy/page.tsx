@@ -7,7 +7,8 @@ import FAQs from "@repo/ui/components/faq";
 import { fnGetCacheData } from "../../api/getData";
 import { getPageMetadata } from '../../api/getPageMetadata';
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
-import { clTransformerFactory, Tcontext, TprivacyPolicyPageSource } from "@repo/middleware";
+import {  Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/type";
+import { clTransformerFactory } from "@repo/middleware";  
 
 async function getPrivacyPolicyData(locale: string) {
   const context: Tcontext = { locale: locale }

@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Pricing from './pricing'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware'
+import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/type'
+import { clTransformerFactory } from '@repo/middleware'
 
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params

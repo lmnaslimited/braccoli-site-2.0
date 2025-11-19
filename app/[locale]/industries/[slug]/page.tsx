@@ -4,7 +4,8 @@ import { fnGetCacheData } from '../../../api/getData'
 import { getPageMetadata } from '../../../api/getPageMetadata'
 import { clQuerySlug } from '../../../../../../packages/middleware/src/api/query'
 import { clSlugsTransformer } from '../../../../../../packages/middleware/src/engine/transformer'
-import { clTransformerFactory, IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware'
+import {  IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware/type'
+import {clTransformerFactory} from "@repo/middleware"
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params

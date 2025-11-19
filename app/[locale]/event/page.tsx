@@ -1,8 +1,9 @@
-import type { Metadata } from 'next'
 import Events from './event'
+import type { Metadata } from 'next'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, Tcontext, TeventPageTarget } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { TeventPageTarget, Tcontext } from '@repo/middleware/type'
 
 async function getEventsPageData(params: { locale: string }) {
     const { locale } = params

@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import TrendingNowPage from './trending-now'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, Tcontext, TtrendsPageTarget } from '@repo/middleware'
+import {  Tcontext, TtrendsPageTarget } from '@repo/middleware/type'
+import { clTransformerFactory } from '@repo/middleware'
 
 async function getTrendingNowPageData(params: { locale: string }) {
   const { locale } = params

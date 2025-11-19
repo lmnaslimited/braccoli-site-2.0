@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^16.0.3",
     "@repo/middleware": "workspace:*",
     "@repo/ui": "workspace:*",
     "libphonenumber-js": "^1.12.6",
