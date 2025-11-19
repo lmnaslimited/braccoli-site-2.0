@@ -4,9 +4,55 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.31.111:3000
+   - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 726ms
-(node:7031) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node --trace-warnings ...` to show where the warning was created)
+ [32m[1m✓[22m[39m Ready in 312ms
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
