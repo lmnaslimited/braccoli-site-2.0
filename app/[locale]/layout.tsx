@@ -1,11 +1,10 @@
 import type React from "react";
+import type { Metadata, Viewport } from "next";
 import "@repo/ui/globals.css";
 import { GeistSans } from "geist/font/sans";
-import type { Metadata, Viewport } from "next";
 import { fnGetCacheData } from "../api/getData";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
-import { clTransformerFactory } from "@repo/middleware";
 import { ThemeProvider } from "@repo/ui/components/theme-provider";
 import {
   Tcontext,
@@ -14,6 +13,8 @@ import {
   TnavbarTarget,
   TseoIcons,
 } from "@repo/middleware/type";
+import ClientLayout from "./lib/components/ClientLayout";
+import { clTransformerFactory } from "@repo/middleware";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -118,7 +119,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <Navbar idNavbar={navbarData} />
-          <main className="">{children}</main>
+          <main className="">
+            <ClientLayout>{children}</ClientLayout>
+          </main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
       </body>

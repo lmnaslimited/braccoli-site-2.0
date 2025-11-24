@@ -13,10 +13,18 @@ const nextConfig: NextConfig = {
         source: "/en/blog",
         destination: `http://localhost:3001/`,
       },
+       {
+        source: "/de/blog",
+        destination: `http://localhost:3001/`,
+      },
       {
         source: "/en/blog/:path+",
         destination: `http://localhost:3001/:path+`,
       },
+      {
+        source: "/de/blog/:path+",
+        destination: `http://localhost:3001/:path+`,
+      }
     ];
   },
   reactStrictMode: true,
