@@ -1,9 +1,4 @@
 import type { NextConfig } from "next";
-import bundleAnalyzer from "@next/bundle-analyzer";
-
-const withBundleAnalyzer = bundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
-});
 
 const nextConfig: NextConfig = {
   // output: "standalone",
@@ -13,7 +8,7 @@ const nextConfig: NextConfig = {
         source: "/en/blog",
         destination: `http://localhost:3001/`,
       },
-       {
+      {
         source: "/de/blog",
         destination: `http://localhost:3001/`,
       },
@@ -24,7 +19,7 @@ const nextConfig: NextConfig = {
       {
         source: "/de/blog/:path+",
         destination: `http://localhost:3001/:path+`,
-      }
+      },
     ];
   },
   reactStrictMode: true,
@@ -45,4 +40,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);
+export default nextConfig;
