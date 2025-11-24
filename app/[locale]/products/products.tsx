@@ -259,6 +259,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             className="aspect-[16/9] w-full object-cover rounded-sm"
                             width={1000}
                             height={1000}
+                            loading="lazy"
                           />
                         )}
                       </div>

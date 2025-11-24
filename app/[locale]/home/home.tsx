@@ -1,74 +1,58 @@
-"use client";
 import Link from "next/link";
-import Feature from "@repo/ui/components/feature";
-import Hero from "@repo/ui/components/hero";
-import Callout from "@repo/ui/components/callout";
-import FAQs from "@repo/ui/components/faq";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Button } from "@repo/ui/components/ui/button";
 import {
   Tbutton,
   TcalloutProps,
   TfeatureProps,
-  TformMode,
-  TheroSection,
   ThomePageTarget,
 } from "@repo/middleware/type";
-import { useFormHandler } from "../hooks/useFormHandler";
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
+import Hero from "@repo/ui/components/hero";
+import FAQs from "@repo/ui/components/faq";
+import Callout from "@repo/ui/components/callout";
+import Feature from "@repo/ui/components/feature";
+import FormSection from "@repo/ui/components/formSection";
 import CustomCard from "@repo/ui/components/customCard";
 import LogoShowcase from "@repo/ui/components/logoShowCase";
+import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import { Button } from "@repo/ui/components/ui/button";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
+
+// Painpoint Section Percentages
+const LaPainpointSeverities = [85, 78, 92, 70];
+
+// Trending-Now section icons
+const LaTrendingNowIcons = [
+  <MessageSquare key="message" className="h-10 w-10 text-primary" />,
+  <Users key="users" className="h-10 w-10 text-primary" />,
+  <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
+  <Globe key="globe" className="h-10 w-10 text-primary" />,
+];
+
+const renderIcon = (icon: Tbutton["icon"]) => {
+  const IconComponent = getIconComponent(
+    typeof icon === "string" ? icon : "HelpCircle"
+  );
+  return <IconComponent className="w-5 h-5" />;
+};
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
-  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
-    useFormHandler();
-
-  // Trending-Now section icons
-  const LaTrendingNowIcons = [
-    <MessageSquare key="message" className="h-10 w-10 text-primary" />,
-    <Users key="users" className="h-10 w-10 text-primary" />,
-    <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
-    <Globe key="globe" className="h-10 w-10 text-primary" />,
-  ];
-
-  // Painpoint section percentages
-  const LaPainpointSeverities = [85, 78, 92, 70];
-
-  const renderIcon = (icon: Tbutton['icon']) => {
-    const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
-    return <IconComponent className="w-5 h-5" />;
-  };
-
   return (
     <div>
-      {/* Hero section */}
-      <div ref={LdSectionRefs("containerOne")}>
+      {/* Section One */}
+      <FormSection sectionId="containerOne">
         <Hero
-          idHero={
-            {
-              ...idHome.home.heroSection,
-              buttons: idHome.home.heroSection.buttons.map((btn) => ({
-                ...btn,
-                iconPosition: "after",
-              })),
-            } as TheroSection
-          }
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
-          }
+          idHero={{
+            ...idHome.home.heroSection,
+            buttons: idHome.home.heroSection.buttons.map((btn) => ({
+              ...btn,
+              iconPosition: "after",
+            })),
+          }}
         />
-        {fnRenderFormBelowSection("containerOne")}
-      </div>
+      </FormSection>
 
-      {/* problem section */}
-      <div className="bg-grayBackground">
+      {/* Section Two */}
+      <section className="bg-grayBackground">
         <Feature
           idFeature={
             {
@@ -78,9 +62,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
-      {/* Why section */}
+      {/* Section Three */}
       <section className="bg-accent">
         <div className="py-16 ">
           <Feature
@@ -95,9 +79,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         </div>
       </section>
 
-      {/* business problem section */}
-      <div className="bg-background" ref={LdSectionRefs("containerTwo")}>
-        <section className="py-24 px-4 border-t bg-grayBackground">
+      {/* Section Four */}
+      {/* Need to add href links to buttons (starpi side and query side) */}
+      <section className="bg-background">
+        <div className="py-24 px-4 border-t bg-grayBackground">
           <div className="max-w-4xl mx-auto">
             <TitleSubtitle
               idTitle={{
@@ -131,46 +116,24 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                 idBtn.href ? (
                   <Link href={idBtn.href} key={iIndex}>
                     <Button
-                      key={iIndex}
                       size="lg"
                       className="gap-4"
                       variant={
                         (idBtn.variant as Tbutton["variant"]) ?? "default"
                       }
                     >
-                      {idBtn.label}{" "}
-                      {renderIcon(idBtn.icon)}
+                      {idBtn.label} {renderIcon(idBtn.icon)}
                     </Button>
-
                   </Link>
-                ) : (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-4"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                    onClick={() =>
-                      idBtn.formMode &&
-                      fnHandleFormButtonClick(
-                        idBtn.formMode as TformMode,
-                        "containerTwo",
-                        idBtn.label
-                      )
-                    }
-                  >
-                    {idBtn.label}{" "}
-                    {renderIcon(idBtn.icon)}
-                  </Button>
-                )
+                ) : null
               )}
             </div>
           </div>
-        </section>
-        {fnRenderFormBelowSection("containerTwo")}
-      </div>
+        </div>
+      </section>
 
-      {/* product section */}
-      <div className="py-16 bg-accent">
+      {/* Section Five */}
+      <section className="py-16 bg-accent">
         <Feature
           idFeature={
             {
@@ -181,9 +144,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
-      {/* Social Proof Section */}
+      {/* Section Six */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
@@ -197,7 +160,6 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full",
               }}
             />
-
             <div className="flex items-center justify-center">
               <div className="max-w-7xl ">
                 <LogoShowcase
@@ -235,7 +197,6 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                 />
               ))}
             </div>
-
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
               {idHome.home.socialSection.highlight?.map((item, iIndex) => (
                 <div className="text-center" key={iIndex}>
@@ -249,11 +210,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               {idHome.home.socialSection.buttons[0]?.href && (
                 <Link href={idHome.home.socialSection.buttons[0]?.href}>
                   <Button size="lg">
-
                     {idHome.home.socialSection.buttons[0]?.label}{" "}
                     {renderIcon(idHome.home.socialSection.buttons[0]?.icon)}
                   </Button>
-
                 </Link>
               )}
             </div>
@@ -261,19 +220,22 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         </div>
       </section>
 
-      {/* Callout Section */}
-      <div className="bg-accent" ref={LdSectionRefs("containerThree")}>
-        <Callout
-          idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerThree", formTitle)
-          }
-        />
-        {fnRenderFormBelowSection("containerThree")}
-      </div>
+      {/* Section Seven */}
+      <section className="bg-accent">
+        <FormSection sectionId="containerTwo">
+          <Callout
+            idCallout={
+              {
+                ...idHome.home.calloutSection[1],
+                layout: "simple",
+              } as TcalloutProps
+            }
+          />
+        </FormSection>
+      </section>
 
-      {/* Problem Section */}
-      <div className="py-16">
+      {/* Section Eight */}
+      <section className="py-16">
         <Feature
           idFeature={
             {
@@ -283,10 +245,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
-      {/* FAQ Section */}
-      <div className="bg-grayBackground">
+      {/* Section Nine */}
+      <section className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -295,25 +257,23 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             <FAQs idFaq={idHome.home.faqSection.list} />
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Callout Section */}
-      <div className="bg-accent" ref={LdSectionRefs("containerFour")}>
-        <Callout
-          idCallout={
-            {
-              ...idHome.home.calloutSection[2],
-              layout: "simple",
-            } as TcalloutProps
-          }
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
-          }
-        />
-        {fnRenderFormBelowSection("containerFour")}
-      </div>
+      {/* Section Ten */}
+      <section className="bg-accent">
+        <FormSection sectionId="containerThree">
+          <Callout
+            idCallout={
+              {
+                ...idHome.home.calloutSection[2],
+                layout: "simple",
+              } as TcalloutProps
+            }
+          />
+        </FormSection>
+      </section>
 
-      {/* Trending Now Section */}
+      {/* Section Eleven */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
@@ -342,12 +302,14 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   {idHome.home.trendingNowSection.buttons[0]?.href && (
                     <Link
                       href={idHome.home.trendingNowSection.buttons[0]?.href}
-                    > <Button size="lg">
-
+                    >
+                      {" "}
+                      <Button size="lg">
                         {idHome.home.trendingNowSection.buttons[0]?.label}
-                        {renderIcon(idHome.home.trendingNowSection.buttons[0]?.icon)}
+                        {renderIcon(
+                          idHome.home.trendingNowSection.buttons[0]?.icon
+                        )}
                       </Button>
-
                     </Link>
                   )}
                 </div>
