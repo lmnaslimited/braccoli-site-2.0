@@ -1,7 +1,7 @@
-import {  IQuery, ITransformer, TcaseStudiesPageTarget, Tcontext, TslugsSource, TslugsTarget } from "@repo/middleware/type";
+import { IQuery, ITransformer, TcaseStudiesPageTarget, Tcontext, TslugsSource, TslugsTarget } from "@repo/middleware/type";
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
-import { fnGetCacheData } from "../../../api/getData";
+import { fnGetCacheData } from "@app/lib/strapi/get-data";
 import CaseStudyPage from "./casestudy";
 import { clTransformerFactory } from "@repo/middleware";
 

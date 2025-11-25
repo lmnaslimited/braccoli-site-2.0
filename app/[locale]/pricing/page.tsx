@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Pricing from './pricing'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { fnGetCacheData } from '../../api/getData'
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
 import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/type'
 import { clTransformerFactory } from '@repo/middleware'
 
@@ -43,6 +43,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   const jsonLd = pageData.pricing.metaData.schemaData
   return (
     <>
+      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -51,7 +52,6 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           }}
         />
       )}
-      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
     </>
   )
 }

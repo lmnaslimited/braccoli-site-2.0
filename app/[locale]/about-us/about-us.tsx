@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/type";
 import CustomCard from "@repo/ui/components/customCard";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "@app/hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
 

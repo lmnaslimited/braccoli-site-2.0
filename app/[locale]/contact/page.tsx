@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Contact from "./contact";
-import { fnGetCacheData } from "../../api/getData";
-import { getPageMetadata } from "../../api/getPageMetadata";
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
 import { clTransformerFactory } from "@repo/middleware";
 import { TcontactTarget, Tcontext } from "@repo/middleware/type";
 
@@ -33,6 +33,7 @@ export default async function ContactPage({
   const jsonLd = pageData.contact.metaData.schemaData;
   return (
     <>
+      <Contact idContact={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -41,7 +42,6 @@ export default async function ContactPage({
           }}
         />
       )}
-      <Contact idContact={pageData} />
     </>
   );
 }

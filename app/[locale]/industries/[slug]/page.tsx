@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import IndustryComp from '../industry'
-import { fnGetCacheData } from '../../../api/getData'
-import { getPageMetadata } from '../../../api/getPageMetadata'
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
 import { clQuerySlug } from '../../../../../../packages/middleware/src/api/query'
 import { clSlugsTransformer } from '../../../../../../packages/middleware/src/engine/transformer'
-import {  IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware/type'
-import {clTransformerFactory} from "@repo/middleware"
+import { IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware/type'
+import { clTransformerFactory } from "@repo/middleware"
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -60,6 +60,7 @@ export default async function Industries({ params }: { params: Promise<{ locale:
   const jsonLd = pageData.industries[0]?.metaData.schemaData
   return (
     <>
+      <IndustryComp idIndustry={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -68,7 +69,6 @@ export default async function Industries({ params }: { params: Promise<{ locale:
           }}
         />
       )}
-      <IndustryComp idIndustry={pageData} />
     </>
   )
 }

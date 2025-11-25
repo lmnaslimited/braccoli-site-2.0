@@ -8,7 +8,7 @@ import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
 import PainPoints from "@repo/ui/components/painPoint";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/useFormHandler";
 import {
   Tbutton,
   TcalloutProps,
@@ -215,10 +215,10 @@ export default function IndustryComp({
                   })) ?? [],
                 image: idCard.image
                   ? {
-                      ...idCard.image,
-                      svg: idCard.image.svg,
-                      className: "h-10 w-10 mx-6 mt-4",
-                    }
+                    ...idCard.image,
+                    svg: idCard.image.svg,
+                    className: "h-10 w-10 mx-6 mt-4",
+                  }
                   : idCard.image,
               })) ?? [],
             TabDefault: {

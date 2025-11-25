@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Solution from './solution'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { fnGetCacheData } from '../../api/getData'
-import {  Tcontext, TsolutionPageTarget } from '@repo/middleware/type'
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
+import { Tcontext, TsolutionPageTarget } from '@repo/middleware/type'
 import { clTransformerFactory } from '@repo/middleware'
 
 async function getSolutionPageData(params: { locale: string }) {
@@ -31,6 +31,7 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
   const jsonLd = pageData.solution.metaData.schemaData
   return (
     <>
+      <Solution idSolution={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -39,7 +40,6 @@ export default async function SolutionPage({ params }: { params: Promise<{ local
           }}
         />
       )}
-      <Solution idSolution={pageData} />
     </>
   )
 }

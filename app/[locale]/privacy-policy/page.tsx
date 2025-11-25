@@ -4,11 +4,11 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 import FAQs from "@repo/ui/components/faq";
-import { fnGetCacheData } from "../../api/getData";
-import { getPageMetadata } from '../../api/getPageMetadata';
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
-import {  Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/type";
-import { clTransformerFactory } from "@repo/middleware";  
+import { Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/type";
+import { clTransformerFactory } from "@repo/middleware";
 
 async function getPrivacyPolicyData(locale: string) {
   const context: Tcontext = { locale: locale }
@@ -31,16 +31,6 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
   const jsonLd = idPrivacy.privacyPolicy.metaData.schemaData
   return (
     <>
-      {
-        jsonLd && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
-            }}
-          />
-        )
-      }
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -124,8 +114,17 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
             </div>
           </div>
         </div>
-
       </div>
+      {
+        jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            }}
+          />
+        )
+      }
     </>
   );
 }

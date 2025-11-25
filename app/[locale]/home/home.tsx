@@ -81,56 +81,70 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
 
       {/* Section Four */}
       {/* Need to add href links to buttons (starpi side and query side) */}
-      <section className="bg-background">
-        <div className="py-24 px-4 border-t bg-grayBackground">
-          <div className="max-w-4xl mx-auto">
-            <TitleSubtitle
-              idTitle={{
-                ...idHome.home.calloutSection[0]?.header,
-                className: "m-0 items-center justify-center text-primary",
-                headingClass: "text-3xl sm:text-4xl tracking-normal",
-                descripClass: "max-w-lg mx-auto",
-              }}
-            />
-            <div className="space-y-8 py-20">
-              {idHome.home.calloutSection[0]?.list.map((point, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2 text-primary">
-                    <span className="font-medium ">{point.icon}</span>
-                    <span className="text-sm font-medium">
-                      {point.description}
-                    </span>
+      <FormSection sectionId="containerFour" >
+        <section className="bg-background">
+          <div className="py-24 px-4 border-t bg-grayBackground">
+            <div className="max-w-4xl mx-auto">
+              <TitleSubtitle
+                idTitle={{
+                  ...idHome.home.calloutSection[0]?.header,
+                  className: "m-0 items-center justify-center text-primary",
+                  headingClass: "text-3xl sm:text-4xl tracking-normal",
+                  descripClass: "max-w-lg mx-auto",
+                }}
+              />
+              <div className="space-y-8 py-20">
+                {idHome.home.calloutSection[0]?.list.map((point, index) => (
+                  <div key={index}>
+                    <div className="flex justify-between items-center mb-2 text-primary">
+                      <span className="font-medium ">{point.icon}</span>
+                      <span className="text-sm font-medium">
+                        {point.description}
+                      </span>
+                    </div>
+                    <div className="w-full bg-background rounded-full border border-black/50 h-2.5 mb-2">
+                      <div
+                        className="bg-primary h-2.5 rounded-full"
+                        style={{ width: `${LaPainpointSeverities[index]}%` }}
+                      ></div>
+                    </div>
+                    <p className="text-muted-foreground">{point.label}</p>
                   </div>
-                  <div className="w-full bg-background rounded-full border border-black/50 h-2.5 mb-2">
-                    <div
-                      className="bg-primary h-2.5 rounded-full"
-                      style={{ width: `${LaPainpointSeverities[index]}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-muted-foreground">{point.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row items-center justify-center">
-              {idHome.home.calloutSection[0]?.buttons.map((idBtn, iIndex) =>
-                idBtn.href ? (
-                  <Link href={idBtn.href} key={iIndex}>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4 sm:flex-row items-center justify-center">
+                {idHome.home.calloutSection[0]?.buttons.map((idBtn, iIndex) =>
+                  idBtn.href ? (
+                    <Link href={idBtn.href} key={iIndex}>
+                      <Button
+                        size="lg"
+                        className="gap-4"
+                        variant={
+                          (idBtn.variant as Tbutton["variant"]) ?? "default"
+                        }
+                      >
+                        {idBtn.label} {renderIcon(idBtn.icon)}
+                      </Button>
+                    </Link>
+                  ) :
                     <Button
+                      key={iIndex}
                       size="lg"
                       className="gap-4"
                       variant={
                         (idBtn.variant as Tbutton["variant"]) ?? "default"
                       }
+                      formMode={idBtn.formMode}
+
                     >
                       {idBtn.label} {renderIcon(idBtn.icon)}
                     </Button>
-                  </Link>
-                ) : null
-              )}
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </FormSection>
 
       {/* Section Five */}
       <section className="py-16 bg-accent">

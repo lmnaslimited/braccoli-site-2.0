@@ -2,10 +2,12 @@ import type React from "react";
 import type { Metadata, Viewport } from "next";
 import "@repo/ui/globals.css";
 import { GeistSans } from "geist/font/sans";
-import { fnGetCacheData } from "../api/getData";
+import ClientLayout from "@app/components/client-layout";
+import { ThemeProvider } from "@repo/ui/components/theme-provider";
+import { fnGetCacheData } from "@app/lib/strapi/get-data";
+import { clTransformerFactory } from "@repo/middleware";
 import Footer from "@repo/ui/components/footer";
 import Navbar from "@repo/ui/components/navbar";
-import { ThemeProvider } from "@repo/ui/components/theme-provider";
 import {
   Tcontext,
   TfooterTarget,
@@ -13,8 +15,6 @@ import {
   TnavbarTarget,
   TseoIcons,
 } from "@repo/middleware/type";
-import ClientLayout from "./lib/components/ClientLayout";
-import { clTransformerFactory } from "@repo/middleware";
 
 export const viewport: Viewport = {
   width: "device-width",

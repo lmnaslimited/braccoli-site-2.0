@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import TrendingNowPage from './trending-now'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { fnGetCacheData } from '../../api/getData'
-import {  Tcontext, TtrendsPageTarget } from '@repo/middleware/type'
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
+import { Tcontext, TtrendsPageTarget } from '@repo/middleware/type'
 import { clTransformerFactory } from '@repo/middleware'
 
 async function getTrendingNowPageData(params: { locale: string }) {
@@ -28,6 +28,7 @@ export default async function TrendingNow({ params }: { params: Promise<{ locale
   const jsonLd = pageData.trend.metaData.schemaData
   return (
     <>
+      <TrendingNowPage idTrend={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -36,7 +37,6 @@ export default async function TrendingNow({ params }: { params: Promise<{ locale
           }}
         />
       )}
-      <TrendingNowPage idTrend={pageData} />
     </>
   )
 }

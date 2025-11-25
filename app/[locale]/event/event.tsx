@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import TrendCard from "@repo/ui/components/trendCard";
 import { Button } from "@repo/ui/components/ui/button";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/useFormHandler";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import {
   Tabs,

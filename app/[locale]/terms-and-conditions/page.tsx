@@ -4,10 +4,10 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import ReactMarkdown from "react-markdown"
 import FAQs from "@repo/ui/components/faq"
-import { fnGetCacheData } from "../../api/getData"
-import { getPageMetadata } from '../../api/getPageMetadata';
+import { fnGetCacheData } from '@app/lib/strapi/get-data'
+import { getPageMetadata } from '@app/lib/metadata/page-metadata'
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
-import {  Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware/type';
+import { Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware/type';
 import { clTransformerFactory } from "@repo/middleware";
 
 async function getTermsPageData(locale: string) {
@@ -31,14 +31,6 @@ export default async function TermsAndConditions({ params }: { params: Promise<{
   const jsonLd = idTerms.termsAndCondition.metaData.schemaData
   return (
     <>
-      {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
-          }}
-        />
-      )}
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
         <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
@@ -116,6 +108,14 @@ export default async function TermsAndConditions({ params }: { params: Promise<{
           </div>
         </div>
       </div>
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+          }}
+        />
+      )}
     </>
   )
 }

@@ -4,21 +4,21 @@ import type React from "react"
 import { CheckCircle, X } from "lucide-react"
 import { useParams } from 'next/navigation';
 import { Button } from "@repo/ui/components/ui/button"
-import { SectionForm} from "@repo/ui/components/form"
+import { SectionForm } from "@repo/ui/components/form"
 import { useState, useRef, type ReactNode, useEffect } from "react"
-import {  TformMode,  TcaseStudies,  TtrendCardProps,  TformConfig } from "@repo/middleware/type"
+import { TformMode, TcaseStudies, TtrendCardProps, TformConfig } from "@repo/middleware/type"
 import { generateSchemaFromFields } from '@repo/ui/lib/zodTransformation'
 
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
     idPdfData?: TcaseStudies;
-  };
+};
 
 export const useFormHandler = () => {
 
     const LdParams = useParams();
     const Locale = LdParams.locale as string;
-    
+
     //state variable to store the fetched form data
     const [PageData, fnSetPageData] = useState<TformConfig[] | null>(null);
 
@@ -27,22 +27,22 @@ export const useFormHandler = () => {
     useEffect(() => {
         const fnFetchData = async () => {
             try {
-            //call the form data from strapi
-              const LdGetFormsConfig = await fetch(`/api/forms?locale=${Locale}`);
-              const LdFormsConfig = await LdGetFormsConfig.json();
-              //generate the schema dynamically based on incoming fields
-              const LdFormsSchema = LdFormsConfig.forms.map((form: TformConfig) => ({
-                ...form,
-                schema: generateSchemaFromFields(form.fields || []),
-              }))
-              fnSetPageData(LdFormsSchema);
+                //call the form data from strapi
+                const LdGetFormsConfig = await fetch(`/api/forms?locale=${Locale}`);
+                const LdFormsConfig = await LdGetFormsConfig.json();
+                //generate the schema dynamically based on incoming fields
+                const LdFormsSchema = LdFormsConfig.forms.map((form: TformConfig) => ({
+                    ...form,
+                    schema: generateSchemaFromFields(form.fields || []),
+                }))
+                fnSetPageData(LdFormsSchema);
             } catch (err) {
-              console.error('Client fetch error:', err);
+                console.error('Client fetch error:', err);
             }
-          };
-      
-          fnFetchData();
-    },[Locale])
+        };
+
+        fnFetchData();
+    }, [Locale])
 
     const [ActiveSection, fnSetActiveSection] = useState<string | null>(null)
     const [FormMode, fnSetFormMode] = useState<TformMode>(null)
@@ -66,7 +66,7 @@ export const useFormHandler = () => {
      * This function toggles forms on and off and scrolls to the appropriate section.
      * If the same button is clicked twice, it closes the form.
      */
-    const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string, iFormTitle?:string) => {
+    const fnHandleFormButtonClick = (iMode: TformMode, iSectionId: string, iFormTitle?: string) => {
         if (ActiveSection === iSectionId && FormMode === iMode && FormTitle === iFormTitle) {
             fnSetActiveSection(null)
             fnSetFormMode(null)
@@ -122,35 +122,12 @@ export const useFormHandler = () => {
 
         if (!shouldShowForm && !shouldShowSuccess) return null
 
-        // Select the appropriate form configuration based on the form mode
-        // let LdFormConfig = undefined
-        // switch (FormMode) {
-        //     case "contact":
-        //         LdFormConfig = LdContactFormConfig
-        //         break
-        //     case "booking":
-        //         LdFormConfig = LdBookingFormConfig
-        //         break
-        //     case "download":
-        //         LdFormConfig = LdDownloadFormConfig
-        //         break
-        //     case "webinar":
-        //         LdFormConfig = {
-        //             ...LdWebinarFormConfig,
-        //             title: idData?.title ?? "Join Our Webinar – Register Now"
-        //         };
-        //         break
-        //     default:
-        //         if (!shouldShowSuccess) return null
-        // }
-        // Find the entire form record from the array based on formId === FormMode
-        
         const LdMatchedFormRecord = PageData?.find(record => record.formId === FormMode);
 
         if (!LdMatchedFormRecord && !shouldShowSuccess) return null;
 
         // Optionally override the title for webinar form
-         const LdFormConfig = FormMode === "webinar"
+        const LdFormConfig = FormMode === "webinar"
             ? {
                 ...LdMatchedFormRecord,
                 title: idData?.title ?? LdMatchedFormRecord?.title ?? "Join Our Webinar – Register Now",
