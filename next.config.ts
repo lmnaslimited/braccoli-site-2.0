@@ -7,6 +7,11 @@ const withBundleAnalyzer = bundleAnalyzer({
 
 const nextConfig: NextConfig = {
   // output: "standalone",
+  // experimental: {
+  //   legacyBrowsers: false, - uncomment to disable polyfills for legacy browsers
+  // },
+  // productionBrowserSourceMaps: true, - uncomment to enable source maps in production
+
   async rewrites() {
     return [
       {
@@ -45,4 +50,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withBundleAnalyzer(nextConfig);;
+export default withBundleAnalyzer(nextConfig);
