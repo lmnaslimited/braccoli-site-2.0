@@ -8,6 +8,7 @@ import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
 import ClientLayout from "./lib/components/ClientLayout"
+import ChatInit from "./chat-int"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -107,7 +108,11 @@ export default async function RootLayout({
             {children}</ClientLayout>
             </main>
           <Footer idFooter={footerData} />
-        </ThemeProvider>
+        </ThemeProvider> 
+        <ChatInit></ChatInit> 
+
+
+
       </body>
     </html>
   )

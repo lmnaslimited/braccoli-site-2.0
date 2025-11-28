@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@n8n/chat": "^0.67.0",
     "@repo/middleware": "workspace:*",
     "@repo/ui": "workspace:*",
     "@rudderstack/analytics-js": "^3.24.3",
