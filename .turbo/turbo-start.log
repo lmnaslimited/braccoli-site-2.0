@@ -7,7 +7,71 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 289ms
+ [32m[1m✓[22m[39m Ready in 254ms
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
+Error: connect ECONNREFUSED 127.0.0.1:3001
+    at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
+  errno: [33m-111[39m,
+  code: [32m'ECONNREFUSED'[39m,
+  syscall: [32m'connect'[39m,
+  address: [32m'127.0.0.1'[39m,
+  port: [33m3001[39m
+}
 Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
     at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
   errno: [33m-111[39m,
