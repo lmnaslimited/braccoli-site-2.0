@@ -1,5 +1,7 @@
-// /lib/autotrack.ts
-import { RudderAnalytics, RudderAnalyticsPreloader } from "@rudderstack/analytics-js";
+import {
+  RudderAnalytics,
+  RudderAnalyticsPreloader,
+} from "@rudderstack/analytics-js";
 
 type RA = RudderAnalytics | RudderAnalyticsPreloader | undefined;
 
@@ -14,11 +16,19 @@ export const fnInitAutoTracking = (rudderanalytics: RA) => {
 
   const fnGetElementPath = (ieElement: HTMLElement | null): string => {
     const LaParts: string[] = [];
-    while (ieElement && ieElement.tagName && ieElement.tagName.toLowerCase() !== "body") {
+    while (
+      ieElement &&
+      ieElement.tagName &&
+      ieElement.tagName.toLowerCase() !== "body"
+    ) {
       let lPart = ieElement.tagName.toLowerCase();
       if (ieElement.id) lPart += `#${ieElement.id}`;
       if (ieElement.className && typeof ieElement.className === "string") {
-        const lCls = ieElement.className.split(" ").filter(Boolean).slice(0, 3).join(".");
+        const lCls = ieElement.className
+          .split(" ")
+          .filter(Boolean)
+          .slice(0, 3)
+          .join(".");
         if (lCls) lPart += `.${lCls}`;
       }
       LaParts.unshift(lPart);
@@ -51,7 +61,8 @@ export const fnInitAutoTracking = (rudderanalytics: RA) => {
     const LRole = LeTarget.getAttribute("role");
     const LAriaLabel = LeTarget.getAttribute("aria-label");
     const LDataEvent = LeTarget.getAttribute("data-event");
-    const LdComponent = LeTarget.closest("[data-component]")?.getAttribute("data-component");
+    const LdComponent =
+      LeTarget.closest("[data-component]")?.getAttribute("data-component");
 
     // Determine interaction type
     const LInteractionType =
@@ -60,10 +71,10 @@ export const fnInitAutoTracking = (rudderanalytics: RA) => {
       (LTag === "button"
         ? "button_click"
         : LTag === "a"
-        ? "link_click"
-        : LTag === "input"
-        ? "input_interaction"
-        : "ui_interaction");
+          ? "link_click"
+          : LTag === "input"
+            ? "input_interaction"
+            : "ui_interaction");
 
     // Collect semantic details
     const LdEventData = {
@@ -86,7 +97,10 @@ export const fnInitAutoTracking = (rudderanalytics: RA) => {
     rudderanalytics.track(LInteractionType, LdEventData);
 
     // Outbound links
-    if (LTag === "a" && (LeTarget as HTMLAnchorElement).hostname !== window.location.hostname) {
+    if (
+      LTag === "a" &&
+      (LeTarget as HTMLAnchorElement).hostname !== window.location.hostname
+    ) {
       rudderanalytics.track("outbound_link_click", {
         href: (LeTarget as HTMLAnchorElement).href,
         targetHost: (LeTarget as HTMLAnchorElement).hostname,
@@ -160,16 +174,16 @@ export const fnInitAutoTracking = (rudderanalytics: RA) => {
     });
   }
 
-//   // 7️⃣ Consent data
-//   const consent = localStorage.getItem("lens_consent");
-//   if (consent) {
-//     rudderanalytics.consent?.({ marketing: consent === "true" });
-//   }
+  //   // 7️⃣ Consent data
+  //   const consent = localStorage.getItem("lens_consent");
+  //   if (consent) {
+  //     rudderanalytics.consent?.({ marketing: consent === "true" });
+  //   }
 
-//   // 8️⃣ Register custom integration
-//   rudderanalytics.addCustomIntegration?.("ConsoleLogger", {
-//     track: (event: any) => console.log("🧩 Tracked event:", event),
-//   });
+  //   // 8️⃣ Register custom integration
+  //   rudderanalytics.addCustomIntegration?.("ConsoleLogger", {
+  //     track: (event: any) => console.log("🧩 Tracked event:", event),
+  //   });
 
   // console.log("✅ Smart Auto-tracking fully enabled");
 };

@@ -1,11 +1,20 @@
-import { useEffect, useState } from 'react';
-import {type LoadOptions, RudderAnalytics, RudderAnalyticsPreloader} from '@rudderstack/analytics-js';
+import { useEffect, useState } from "react";
+import {
+  type LoadOptions,
+  RudderAnalytics,
+  RudderAnalyticsPreloader,
+} from "@rudderstack/analytics-js";
 
 // Shared initialization promise
 let ldInitializationPromise: Promise<RudderAnalytics | undefined> | null = null;
 
-const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader | undefined => {
-  const [LdAnalytics, fnSetAnalytics] = useState<RudderAnalytics | RudderAnalyticsPreloader>();
+const useRudderStackAnalytics = ():
+  | RudderAnalytics
+  | RudderAnalyticsPreloader
+  | undefined => {
+  const [LdAnalytics, fnSetAnalytics] = useState<
+    RudderAnalytics | RudderAnalyticsPreloader
+  >();
 
   useEffect(() => {
     if (!LdAnalytics) {
@@ -22,7 +31,8 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
         // Start new initialization
         ldInitializationPromise = (async () => {
           const LWriteKey = process.env.NEXT_PUBLIC_RUDDERSTACK_WRITE_KEY;
-          const LDataplaneUrl = process.env.NEXT_PUBLIC_RUDDERSTACK_DATAPLANE_URL;
+          const LDataplaneUrl =
+            process.env.NEXT_PUBLIC_RUDDERSTACK_DATAPLANE_URL;
           const LConfigUrl = process.env.NEXT_PUBLIC_RUDDERSTACK_CONFIG_URL;
 
           if (!LWriteKey || !LDataplaneUrl) {
@@ -38,7 +48,7 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
             return undefined;
           }
 
-          const { RudderAnalytics } = await import('@rudderstack/analytics-js');
+          const { RudderAnalytics } = await import("@rudderstack/analytics-js");
           const LdAnalyticsInstance = new RudderAnalytics();
 
           // Build SDK configuration
@@ -52,14 +62,14 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
           if (LConfigUrl) {
             LdLoadOptions.configUrl = LConfigUrl;
           }
-          LdLoadOptions.sessions =  {
-                    autoTrack: true,
-                    cutOff: {
-                    enabled: true, // Optional; set to true to enable the feature
-                    duration: 12 * 60 * 60 * 1000 // Optional; 12 hours in milliseconds (default)
-                    },
-                    timeout: 10 * 60 * 1000,  // 10 min in milliseconds; Default is 30 minutes
-                };
+          LdLoadOptions.sessions = {
+            autoTrack: true,
+            cutOff: {
+              enabled: true, // Optional; set to true to enable the feature
+              duration: 12 * 60 * 60 * 1000, // Optional; 12 hours in milliseconds (default)
+            },
+            timeout: 10 * 60 * 1000, // 10 min in milliseconds; Default is 30 minutes
+          };
 
           LdAnalyticsInstance.load(LWriteKey, LDataplaneUrl, LdLoadOptions);
 
@@ -76,7 +86,9 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
         }
       };
 
-      fnInitialize().catch(e => console.error('Error initializing RudderStack Analytics:', e));
+      fnInitialize().catch((e) =>
+        console.error("Error initializing RudderStack Analytics:", e)
+      );
     }
   }, [LdAnalytics]);
 
@@ -85,7 +97,7 @@ const useRudderStackAnalytics = (): RudderAnalytics | RudderAnalyticsPreloader |
     return LdAnalytics;
   }
 
-  return typeof window !== 'undefined' ? window.rudderanalytics : undefined;
+  return typeof window !== "undefined" ? window.rudderanalytics : undefined;
 };
 
 export default useRudderStackAnalytics;

@@ -1,7 +1,8 @@
 "use client"
-import "@repo/ui/globals.css"
+
 import Image from "next/image"
 import { useEffect, useState } from "react"
+import "@repo/ui/globals.css"
 
 export default function Error({
     error,

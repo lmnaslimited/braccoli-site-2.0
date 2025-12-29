@@ -1,16 +1,17 @@
 "use client"
+
 import Image from "next/image"
 import { Calendar } from "lucide-react";
-import Hero from "@repo/ui/components/hero";
-import Callout from "@repo/ui/components/callout";
-import CustomCard from "@repo/ui/components/customCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Tab from "@repo/ui/components/tab";
 import { Button } from "@repo/ui/components/ui/button";
-import PainPoints from "@repo/ui/components/painPoint";
-import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
+import Hero from "@repo/ui/components/hero";
+import Tab from "@repo/ui/components/tab";
+import Callout from "@repo/ui/components/callout";
+import PainPoints from "@repo/ui/components/painpoint";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware/type";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();

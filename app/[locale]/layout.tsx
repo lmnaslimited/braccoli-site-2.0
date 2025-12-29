@@ -2,13 +2,15 @@ import type React from "react"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from "../api/getData"
 import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
+import ChatInit from "../components/chat-int"
+import ClientLayout from "../components/client-layout"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
-import ClientLayout from "./lib/components/ClientLayout"
-import ChatInit from "./chat-int"
+import { fnGetCacheData } from "../api/strapi/get-data"
+import { clTransformerFactory } from "@repo/middleware"
+import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/type"
+
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -105,14 +107,12 @@ export default async function RootLayout({
           <Navbar idNavbar={navbarData} />
           <main className="">
             <ClientLayout>
-            {children}</ClientLayout>
-            </main>
+              {children}
+            </ClientLayout>
+          </main>
           <Footer idFooter={footerData} />
-        </ThemeProvider> 
-        <ChatInit></ChatInit> 
-
-
-
+        </ThemeProvider>
+        <ChatInit />
       </body>
     </html>
   )

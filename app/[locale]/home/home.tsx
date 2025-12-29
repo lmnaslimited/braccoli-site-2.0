@@ -1,11 +1,17 @@
 "use client";
+
 import Link from "next/link";
-import Feature from "@repo/ui/components/feature";
-import Hero from "@repo/ui/components/hero";
-import Callout from "@repo/ui/components/callout";
-import FAQs from "@repo/ui/components/faq";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
+import Hero from "@repo/ui/components/hero";
+import FAQs from "@repo/ui/components/faq";
+import Feature from "@repo/ui/components/feature";
+import Callout from "@repo/ui/components/callout";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import CustomCard from "@repo/ui/components/custom-card";
+import LogoShowcase from "@repo/ui/components/logo-showcase";
+import { useFormHandler } from "../../hooks/form-handler";
+import { getIconComponent } from "@repo/ui/lib/icon";
+import { Globe, Lightbulb, MessageSquare, Users } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -13,17 +19,7 @@ import {
   TformMode,
   TheroSection,
   ThomePageTarget,
-} from "@repo/middleware";
-import { useFormHandler } from "../hooks/useFormHandler";
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
-import CustomCard from "@repo/ui/components/customCard";
-import LogoShowcase from "@repo/ui/components/logoShowCase";
-import { getIconComponent } from "@repo/ui/lib/icon";
+} from "@repo/middleware/type";
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
@@ -67,7 +63,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         {fnRenderFormBelowSection("containerOne")}
       </div>
 
-      {/* problem section */}
+      {/* Problem Section */}
       <div>
         <Feature
           idFeature={
@@ -95,7 +91,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         </div>
       </section>
 
-      {/* business problem section */}
+      {/* Business Problem Section */}
       <div className="bg-background" ref={LdSectionRefs("containerTwo")}>
         <section className="py-24 px-4 border-t">
           <div className="max-w-4xl mx-auto">
@@ -169,7 +165,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         {fnRenderFormBelowSection("containerTwo")}
       </div>
 
-      {/* product section */}
+      {/* Product Section */}
       <div className="py-16 bg-accent">
         <Feature
           idFeature={
