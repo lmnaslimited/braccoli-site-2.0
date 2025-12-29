@@ -14,7 +14,7 @@ import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import CustomCard from "@repo/ui/components/custom-card";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 

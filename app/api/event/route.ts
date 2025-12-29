@@ -1,4 +1,4 @@
-import { getEventData } from "./fetchEvent"
+import { getEventData } from "./fetch-event"
 
 export async function GET() {
   const LdData = await getEventData() // This uses the infinite cache

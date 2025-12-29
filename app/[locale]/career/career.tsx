@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";

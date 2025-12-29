@@ -1,11 +1,11 @@
 'use client'
 
 import Link from "next/link";
-import CustomCard from "@repo/ui/components/custom-card";
-import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { useFormHandler } from "../../hooks/form-handler";
 import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon'], className?: string) => {
@@ -108,7 +108,7 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                 </div>
                             ))}
 
-                            {/* current and beyond years */}
+                            {/* Current and Beyond Years */}
                             <div className="grid md:grid-cols-12 gap-6 items-start">
                                 <div className="md:col-span-2">
                                     <div className="sticky top-24">

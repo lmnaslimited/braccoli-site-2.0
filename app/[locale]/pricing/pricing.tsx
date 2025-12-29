@@ -23,7 +23,7 @@ import {
   TableRow,
 } from "@repo/ui/components/ui/table";
 import { getIconComponent } from "@repo/ui/lib/icon";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
 
 export default function Pricing({

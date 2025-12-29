@@ -8,7 +8,7 @@ import Callout from "@repo/ui/components/callout";
 import TrendCard from "@repo/ui/components/trend-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TtrendsPageSource, TtrendCardProps } from "@repo/middleware/types"
 

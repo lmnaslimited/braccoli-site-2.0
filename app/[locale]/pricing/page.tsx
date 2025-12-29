@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Pricing from './pricing'
-import { fnGetCacheData } from '../../api/getData'
-import { getPageMetadata } from '../../api/getPageMetadata'
+import { fnGetCacheData } from '../../api/strapi/get-data'
+import { getPageMetadata } from '../../api/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/types'
 

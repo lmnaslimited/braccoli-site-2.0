@@ -1,4 +1,3 @@
-// /lib/autotrack.ts
 import {
   RudderAnalytics,
   RudderAnalyticsPreloader,

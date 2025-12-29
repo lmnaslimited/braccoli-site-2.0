@@ -7,8 +7,8 @@
    - Network:      http://192.168.31.111:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 357ms
-(node:67532) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+ [32m[1m✓[22m[39m Ready in 311ms
+(node:90174) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
 (Use `node --trace-warnings ...` to show where the warning was created)
 Failed to proxy http://localhost:3001/ Error: connect ECONNREFUSED 127.0.0.1:3001
     at <unknown> (Error: connect ECONNREFUSED 127.0.0.1:3001) {
@@ -26,3 +26,38 @@ Error: connect ECONNREFUSED 127.0.0.1:3001
   address: [32m'127.0.0.1'[39m,
   port: [33m3001[39m
 }
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Mon, 29 Dec 2025 17:50:25 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async p (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async p (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async p (.next/server/app/api/social/route.js:1:1027)

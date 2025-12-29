@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Events from './event'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { fnGetCacheData } from '../../api/getData'
+import { fnGetCacheData } from '../../api/strapi/get-data'
+import { getPageMetadata } from '../../api/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TeventPageTarget } from '@repo/middleware/types'
 

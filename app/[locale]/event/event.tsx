@@ -6,7 +6,7 @@ import TrendCard from "@repo/ui/components/trend-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { TeventPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/types";
 
 export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {

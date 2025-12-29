@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Contact from './contact'
-import { fnGetCacheData } from '../../api/getData'
-import { getPageMetadata } from '../../api/getPageMetadata'
+import { fnGetCacheData } from '../../api/strapi/get-data'
+import { getPageMetadata } from '../../api/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcontactTarget, Tcontext } from '@repo/middleware/types'
 

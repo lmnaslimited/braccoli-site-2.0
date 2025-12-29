@@ -9,7 +9,7 @@ import Callout from "@repo/ui/components/callout";
 import CustomCard from "@repo/ui/components/custom-card";
 import LogoShowcase from "@repo/ui/components/logo-showcase";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import { useFormHandler } from "../hooks/useFormHandler";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware/types";
 
