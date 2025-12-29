@@ -1,13 +1,13 @@
 "use client"
 
 import type React from "react"
+import { useParams } from 'next/navigation';
 import { useState, useRef, type ReactNode, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm } from "@repo/ui/components/form"
+import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
 import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
-import { useParams } from 'next/navigation';
-import { generateSchemaFromFields } from '@repo/ui/lib/zodTransformation'
 
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
@@ -18,8 +18,6 @@ export const useFormHandler = () => {
 
     const LdParams = useParams();
     const Locale = LdParams.locale as string;
-
-    //state variable to store the fetched form data
     const [PageData, fnSetPageData] = useState<TformConfig[] | null>(null);
 
     //useeffect to call the form api
@@ -121,29 +119,6 @@ export const useFormHandler = () => {
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
         if (!shouldShowForm && !shouldShowSuccess) return null
-
-        // Select the appropriate form configuration based on the form mode
-        // let LdFormConfig = undefined
-        // switch (FormMode) {
-        //     case "contact":
-        //         LdFormConfig = LdContactFormConfig
-        //         break
-        //     case "booking":
-        //         LdFormConfig = LdBookingFormConfig
-        //         break
-        //     case "download":
-        //         LdFormConfig = LdDownloadFormConfig
-        //         break
-        //     case "webinar":
-        //         LdFormConfig = {
-        //             ...LdWebinarFormConfig,
-        //             title: idData?.title ?? "Join Our Webinar – Register Now"
-        //         };
-        //         break
-        //     default:
-        //         if (!shouldShowSuccess) return null
-        // }
-        // Find the entire form record from the array based on formId === FormMode
 
         const LdMatchedFormRecord = PageData?.find(record => record.formId === FormMode);
 

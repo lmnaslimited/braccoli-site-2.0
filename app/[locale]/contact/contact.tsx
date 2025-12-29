@@ -2,11 +2,11 @@
 
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
-import TitleSubtitle from "@repo/ui/components/titleSubtitle"
 import { SectionForm } from "@repo/ui/components/form"
-import LocationCard from "@repo/ui/components/locationCard"
+import LocationCard from "@repo/ui/components/location-card"
+import TitleSubtitle from "@repo/ui/components/title-subtitle"
 import { TcontactTarget } from "@repo/middleware/types"
-import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
+import { generateSchemaFromFields } from "@repo/ui/lib/zod-transformation"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
@@ -78,7 +78,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         </button>
                                     </div>
                                 )}
-
                                 <SectionForm
                                     config={{
                                         ...LdContactForm,
@@ -110,7 +109,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 />
                             </div>
                         </div>
-
                         <div className="md:col-span-4 order-4">
                             <div
                                 className={cn(
@@ -122,7 +120,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground">
                                     {LdBookingForm.title}
                                 </h2>
-
                                 {BookingMessage && (
                                     <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
                                         {BookingMessage}
@@ -143,7 +140,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         </button>
                                     </div>
                                 )}
-
                                 <SectionForm
                                     config={{
                                         ...LdBookingForm,

@@ -10,8 +10,8 @@ import {
   Users,
 } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import CustomCard from "@repo/ui/components/customCard";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import CustomCard from "@repo/ui/components/custom-card";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";

@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
-import TrendCard from "@repo/ui/components/trendCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import TrendCard from "@repo/ui/components/trend-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import { useFormHandler } from "../hooks/useFormHandler";

@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import * as Icons from "lucide-react";
+import { ArrowLeft, LucideIcon } from "lucide-react";
+import { useFormHandler } from "../../hooks/useFormHandler";
 import Tab from "@repo/ui/components/tab";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import CustomCard from "@repo/ui/components/customCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { ProblemSection } from "@repo/ui/components/problemSection";
-import { SolutionSection } from "@repo/ui/components/solutionSection";
-import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
-import { ArrowLeft, LucideIcon } from "lucide-react";
-import { useFormHandler } from "../../hooks/useFormHandler";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { ProblemSection } from "@repo/ui/components/problem";
+import { SolutionSection } from "@repo/ui/components/solution";
+import { DynamicSidebar } from "@repo/ui/components/dynamic-sidebar";
 import { TcaseStudies, TformMode, Theader } from "@repo/middleware/types";
 
 export default function CaseStudyPage({

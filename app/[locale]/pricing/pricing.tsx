@@ -6,8 +6,8 @@ import * as Icons from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import CustomCard from "@repo/ui/components/customCard";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import CustomCard from "@repo/ui/components/custom-card";
 import {
   Tabs,
   TabsContent,

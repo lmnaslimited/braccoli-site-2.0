@@ -5,9 +5,9 @@ import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
 import Callout from "@repo/ui/components/callout";
 import Feature from "@repo/ui/components/feature";
-import CustomCard from "@repo/ui/components/customCard";
-import LogoShowcase from "@repo/ui/components/logoShowCase"
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import CustomCard from "@repo/ui/components/custom-card";
+import LogoShowcase from "@repo/ui/components/logo-showcase"
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";

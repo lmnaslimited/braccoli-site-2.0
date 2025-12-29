@@ -1,8 +1,8 @@
 'use client'
 
 import Link from "next/link";
-import CustomCard from "@repo/ui/components/customCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
