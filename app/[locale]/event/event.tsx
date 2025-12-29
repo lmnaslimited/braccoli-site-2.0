@@ -1,12 +1,13 @@
 'use client'
+
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import TrendCard from "@repo/ui/components/trendCard";
+import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { TeventPageTarget, TformMode, TtrendCardProps } from "@repo/middleware";
+import { TeventPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/types";
 
 export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -109,7 +110,7 @@ export default function Events({ idEvent }: { idEvent: TeventPageTarget }) {
                         </Tabs>
                     </div>
                 </section>
-                {fnRenderFormBelowSection("containerOne", {idData:SelectedCard != null ? event[SelectedCard] : undefined})}
+                {fnRenderFormBelowSection("containerOne", { idData: SelectedCard != null ? event[SelectedCard] : undefined })}
             </div>
         </>
     )

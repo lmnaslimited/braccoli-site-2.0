@@ -1,16 +1,16 @@
 "use client";
+
+import { useEffect, useState } from "react";
 import { ChevronRight, Linkedin, Twitter, Youtube } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
-import TrendCard from "@repo/ui/components/trendCard";
 import Hero from "@repo/ui/components/hero";
-import { useEffect, useState } from "react";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import Callout from "@repo/ui/components/callout";
+import TrendCard from "@repo/ui/components/trendCard";
+import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TformMode, TtrendsPageSource } from "@repo/middleware"
-import { TtrendCardProps } from "@repo/ui/type";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { Tbutton, TformMode, TtrendsPageSource, TtrendCardProps } from "@repo/middleware/types"
 
 export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSource }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
@@ -33,7 +33,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
     }
   };
 
-  
+
   // When user switches tabs, reset the expanded state
   useEffect(() => {
     setExpandedTab(""); // reset expanded tab when tab is switched
@@ -52,7 +52,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
     if (SelectedTab === "all") {
       const linkedInItems = video.filter(v => v.source.toLowerCase() === "linkedin");
       const otherItems = video.filter(v => v.source.toLowerCase() !== "linkedin");
-  
+
       return expandedTab === "all"
         ? [...linkedInItems.slice(0, 6), ...otherItems.slice(0, 3)]
         : [...linkedInItems.slice(0, 3), ...otherItems.slice(0, 3)];
@@ -83,7 +83,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
-  
+
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section */}
@@ -226,18 +226,18 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
               </div>
 
               <div className="mt-12 text-center">
-  <Button
-    variant="outline"
-    size="lg"
-    className="group"
-    onClick={toggleExpandTab}
-  >
-    {expandedTab === SelectedTab
-      ? idTrend.trend.showAll.description
-      : idTrend.trend.showAll.label}
-    <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-  </Button>
-</div>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group"
+                  onClick={toggleExpandTab}
+                >
+                  {expandedTab === SelectedTab
+                    ? idTrend.trend.showAll.description
+                    : idTrend.trend.showAll.label}
+                  <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </div>
 
             </TabsContent>
           </Tabs>

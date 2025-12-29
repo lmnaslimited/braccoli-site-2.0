@@ -1,11 +1,12 @@
 "use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import * as Icons from "lucide-react";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { Button } from "@repo/ui/components/ui/button";
 import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Button } from "@repo/ui/components/ui/button";
 import CustomCard from "@repo/ui/components/customCard";
 import {
   Tabs,
@@ -21,9 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from "@repo/ui/components/ui/table";
+import { getIconComponent } from "@repo/ui/lib/icon";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware";
-import { useState } from "react";
+import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
 
 export default function Pricing({
   idPricing,
@@ -34,9 +35,9 @@ export default function Pricing({
 }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
-    const [openedFormId, setOpenedFormId] = useState<string | null>(null);
+  const [openedFormId, setOpenedFormId] = useState<string | null>(null);
 
-        const renderIcon = (icon: Tbutton["icon"]) => {
+  const renderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
@@ -53,8 +54,8 @@ export default function Pricing({
               size: "lg",
             })),
           }}
-          onButtonClick={(mode,formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne",formTitle)
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerOne")}
@@ -197,9 +198,9 @@ export default function Pricing({
                                     >
                                       {
                                         iPlan[
-                                          Object.keys(iPlan)[
-                                            iIndex + 1
-                                          ] as keyof typeof iPlan
+                                        Object.keys(iPlan)[
+                                        iIndex + 1
+                                        ] as keyof typeof iPlan
                                         ]
                                       }
                                     </TableCell>
@@ -214,39 +215,39 @@ export default function Pricing({
                               (iPlan, iIndex) => {
                                 const containerId = `containerPlan${iIndex + 1}`;
                                 const isOpen = openedFormId === containerId;
-                                
-                                return(
-                                <TableCell key={iIndex} className="text-center">
-                                  <Button
-                                    variant={
-                                      iIndex === 2 ? "default" : "outline"
-                                    
-                                    }
-                                    size="sm"
-                                    className={
+
+                                return (
+                                  <TableCell key={iIndex} className="text-center">
+                                    <Button
+                                      variant={
+                                        iIndex === 2 ? "default" : "outline"
+
+                                      }
+                                      size="sm"
+                                      className={
                                         iIndex === 2
-                                        ? "bg-primary"
-                                        : ""
-                                        
-                                    }
-                                    onClick={() =>{
-                                      fnHandleFormButtonClick(
-                                        "contact" as TformMode,
-                                        `containerPlan${iIndex + 1}`,
-                                        iPlan.name
-                                      );
-                                      setOpenedFormId(prev => (prev === containerId ? null : containerId));
-                                    }
-                                    }
-                                  >
-                                    {iIndex === 2
-                                      ? idPricing.pricing.planFooter.list[1]?.label
-                                      : idPricing.pricing.planFooter.list[0]?.label}{" "}
-                                        {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
-                                  </Button>
-                                </TableCell>
-                              )
-})}
+                                          ? "bg-primary"
+                                          : ""
+
+                                      }
+                                      onClick={() => {
+                                        fnHandleFormButtonClick(
+                                          "contact" as TformMode,
+                                          `containerPlan${iIndex + 1}`,
+                                          iPlan.name
+                                        );
+                                        setOpenedFormId(prev => (prev === containerId ? null : containerId));
+                                      }
+                                      }
+                                    >
+                                      {iIndex === 2
+                                        ? idPricing.pricing.planFooter.list[1]?.label
+                                        : idPricing.pricing.planFooter.list[0]?.label}{" "}
+                                      {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
+                                    </Button>
+                                  </TableCell>
+                                )
+                              })}
                           </TableRow>
                         </TableBody>
                       </Table>
@@ -459,7 +460,7 @@ export default function Pricing({
             </div>
           </div>
         </section>
-        {fnRenderFormBelowSection("containerFour",{ idPdfData: idcaseStudies })}
+        {fnRenderFormBelowSection("containerFour", { idPdfData: idcaseStudies })}
       </div>
 
       {/* Testimonials Section*/}

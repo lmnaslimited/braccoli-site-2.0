@@ -1,11 +1,12 @@
 'use client'
+
 import Link from "next/link";
-import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware";
 import CustomCard from "@repo/ui/components/customCard";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon'], className?: string) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";

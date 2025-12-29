@@ -1,11 +1,12 @@
 "use client"
+
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
-import { SectionForm } from "@repo/ui/components/form"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle"
-import { TcontactTarget } from "@repo/middleware"
-import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
+import { SectionForm } from "@repo/ui/components/form"
 import LocationCard from "@repo/ui/components/locationCard"
+import { TcontactTarget } from "@repo/middleware/types"
+import { generateSchemaFromFields } from "@repo/ui/lib/zodTransformation"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")

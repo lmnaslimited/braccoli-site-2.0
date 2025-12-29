@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Events from './event'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, Tcontext, TeventPageTarget } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { Tcontext, TeventPageTarget } from '@repo/middleware/types'
 
 async function getEventsPageData(params: { locale: string }) {
     const { locale } = params
@@ -24,6 +25,7 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
     const jsonLd = pageData.event.metaData.schemaData
     return (
         <>
+            <Events idEvent={pageData} />
             {jsonLd && (
                 <script
                     type="application/ld+json"
@@ -32,7 +34,6 @@ export default async function EventsPage({ params }: { params: Promise<{ locale:
                     }}
                 />
             )}
-            <Events idEvent={pageData} />
         </>
     )
 }

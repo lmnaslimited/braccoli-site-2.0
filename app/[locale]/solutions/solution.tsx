@@ -1,5 +1,7 @@
 "use client";
+
 import Link from "next/link";
+import { ArrowUp } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import Tab from "@repo/ui/components/tab";
 import Callout from "@repo/ui/components/callout";
@@ -8,9 +10,8 @@ import LogoShowcase from "@repo/ui/components/logoShowCase";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { ArrowUp } from "lucide-react";
-import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -193,16 +194,16 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         iconPosition: "after",
                                         size: "lg",
                                     })) as Tbutton[],
-                                    onButtonClick:(() => {
+                                    onButtonClick: (() => {
                                         const LaButton = idCard.buttons?.find(btn => "formMode" in btn);
                                         return LaButton
-                                          ? () => fnHandleFormButtonClick(
-                                            LaButton.formMode as TformMode,
-                                              "containerFour",
-                                              LaButton.label
+                                            ? () => fnHandleFormButtonClick(
+                                                LaButton.formMode as TformMode,
+                                                "containerFour",
+                                                LaButton.label
                                             )
-                                          : undefined;
-                                      })(),
+                                            : undefined;
+                                    })(),
                                 }}
                             />
                         ))}
@@ -311,7 +312,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         headingClass: "md:text-5xl",
                     } as Theader} />
                     <div className="flex items-center justify-center">
-              <div className="max-w-7xl ">
+                        <div className="max-w-7xl ">
                             <LogoShowcase
                                 idLogoProps={{
                                     logos: idSolution.home.successClients,
@@ -389,13 +390,13 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 descripClass: "md:text-base text-base"
                             }} />
                         </div>
-                            {/* Add callout footer is button as 1 */}
-                            <Link href={idSolution.solution.calloutFooter.buttons[1]?.href ?? "#success-story"}>
+                        {/* Add callout footer is button as 1 */}
+                        <Link href={idSolution.solution.calloutFooter.buttons[1]?.href ?? "#success-story"}>
                             <Button type="submit" className="w-full" size="lg">
                                 {idSolution.solution.calloutFooter.buttons[1]?.label}
                                 <ArrowUp className="ml-2 h-4 w-4" />
                             </Button>
-                            </Link>
+                        </Link>
                     </div>
                 </div>
             </section >

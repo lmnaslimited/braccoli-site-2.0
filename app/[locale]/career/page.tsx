@@ -2,7 +2,8 @@ import type { Metadata } from 'next'
 import Career from './career'
 import { fnGetCacheData } from '../../api/getData'
 import { getPageMetadata } from '../../api/getPageMetadata'
-import { clTransformerFactory, TcareerPageTarget, Tcontext } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { TcareerPageTarget, Tcontext } from '@repo/middleware/types'
 
 async function getCareerPageData(params: { locale: string }) {
   const { locale } = params
@@ -24,6 +25,7 @@ export default async function CareerPage({ params }: { params: Promise<{ locale:
   const jsonLd = pageData.career.metaData.schemaData
   return (
     <>
+      <Career idCareer={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -32,7 +34,6 @@ export default async function CareerPage({ params }: { params: Promise<{ locale:
           }}
         />
       )}
-      <Career idCareer={pageData} />
     </>
   )
 }

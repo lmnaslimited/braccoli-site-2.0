@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import Image from "next/image"
 import {
@@ -14,8 +15,8 @@ import CustomCard from "@repo/ui/components/customCard";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";

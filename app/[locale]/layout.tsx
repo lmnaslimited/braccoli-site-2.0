@@ -6,7 +6,8 @@ import { fnGetCacheData } from "../api/getData"
 import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
+import { clTransformerFactory } from "@repo/middleware"
+import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 import ClientLayout from "./lib/components/ClientLayout"
 import ChatInit from "./chat-int"
 
@@ -105,11 +106,11 @@ export default async function RootLayout({
           <Navbar idNavbar={navbarData} />
           <main className="">
             <ClientLayout>
-            {children}</ClientLayout>
-            </main>
+              {children}</ClientLayout>
+          </main>
           <Footer idFooter={footerData} />
-        </ThemeProvider> 
-        <ChatInit></ChatInit> 
+        </ThemeProvider>
+        <ChatInit></ChatInit>
 
 
 

@@ -1,11 +1,22 @@
 "use client";
+
 import Link from "next/link";
-import Feature from "@repo/ui/components/feature";
 import Hero from "@repo/ui/components/hero";
-import Callout from "@repo/ui/components/callout";
 import FAQs from "@repo/ui/components/faq";
+import Callout from "@repo/ui/components/callout";
+import Feature from "@repo/ui/components/feature";
+import CustomCard from "@repo/ui/components/customCard";
+import LogoShowcase from "@repo/ui/components/logoShowCase"
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
 import { Button } from "@repo/ui/components/ui/button";
+import { useFormHandler } from "../hooks/useFormHandler";
+import { getIconComponent } from "@repo/ui/lib/icon";
+import {
+  MessageSquare,
+  Users,
+  Lightbulb,
+  Globe,
+} from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -13,17 +24,7 @@ import {
   TformMode,
   TheroSection,
   ThomePageTarget,
-} from "@repo/middleware";
-import { useFormHandler } from "../hooks/useFormHandler";
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
-import CustomCard from "@repo/ui/components/customCard";
-import LogoShowcase from "@repo/ui/components/logoShowCase";
-import { getIconComponent } from "@repo/ui/lib/icon";
+} from "@repo/middleware/types";
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =

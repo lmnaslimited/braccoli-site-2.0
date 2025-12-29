@@ -1,28 +1,26 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
-import { ChevronRight, LucideIcon } from "lucide-react";
+import { useFormHandler } from "../hooks/useFormHandler";
+import { getIconComponent } from "@repo/ui/lib/icon";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@repo/ui/components/ui/tabs";
+import TrendCard from "@repo/ui/components/trendCard";
+import { CarrerChart } from "@repo/ui/components/pieChart";
 import { Input } from "@repo/ui/components/ui/input";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@repo/ui/components/ui/dropdown-menu";
 import { Button } from "@repo/ui/components/ui/button";
 import { Label } from "@repo/ui/components/ui/label";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Checkbox } from "@repo/ui/components/ui/checkbox";
+import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@repo/ui/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@repo/ui/components/ui/card";
-import TrendCard from "@repo/ui/components/trendCard";
-import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, } from "lucide-react";
-import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware";
-import { useFormHandler } from "../hooks/useFormHandler";
-import { getIconComponent } from "@repo/ui/lib/icon";
-import { CarrerChart } from "@repo/ui/components/pieChart";
-
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@repo/ui/components/ui/dropdown-menu"
+import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, ChevronRight, LucideIcon } from "lucide-react";
+import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/types";
 
 
 export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
