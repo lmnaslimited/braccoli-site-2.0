@@ -1,8 +1,7 @@
-// Server-only file (no "use client")
 import { unstable_cache } from "next/cache"
-import { youTubeApi } from "@repo/ui/api/youTubeApi"
-import { LinkedInApi } from "@repo/ui/api/linkedInApi"
-import { TwitterApi } from "@repo/ui/api/twitterApi"
+import { youTubeApi } from "@repo/ui/api/social/youtube"
+import { LinkedInApi } from "@repo/ui/api/social/linkedin"
+import { TwitterApi } from "@repo/ui/api/social/twitter"
 
 export const getSocialData = unstable_cache(
   async () => {

@@ -1,5 +1,5 @@
 import { unstable_cache } from "next/cache"
-import { EventApi } from "@repo/ui/api/eventApi"
+import { EventApi } from "@repo/ui/api/event/fetch-event"
 
 export const getEventData = unstable_cache(
   async () => {
