@@ -174,8 +174,8 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
             </section>
 
             {/* CTA Section*/}
-            <div ref={LdSectionRefs("containerOne")}>
-                <section className="py-24 bg-primary text-background">
+            <section ref={LdSectionRefs("containerOne")}>
+                <div className="py-24 bg-primary text-background">
                     <div className="container mx-auto px-6">
                         <div className="max-w-3xl mx-auto text-center">
                             <TitleSubtitle
@@ -207,9 +207,9 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
                 {fnRenderFormBelowSection("containerOne")}
-            </div>
+            </section>
         </>
     )
 }
