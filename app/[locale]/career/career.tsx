@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
-import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { useFormHandler } from "../../hooks/form-handler";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import TrendCard from "@repo/ui/components/trend-card";
@@ -212,6 +212,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   };
   return (
     <>
+      {/* Hero Section */}
       <div ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={
@@ -231,7 +232,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         {fnRenderFormBelowSection("containerOne")}
       </div>
 
-      {/* challengeSection */}
+      {/* Challenge Section */}
       <section id="problem" className="lg:py-24 md:py-24 py-16 bg-accent">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -240,9 +241,9 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary">
                   <Lightbulb className="h-4 w-4 text-background" />
                 </div>
-                <h4 className="font-semibold text-lg">
+                <p className="font-semibold text-lg">
                   {idCareer.career.challengeSection.highlight && idCareer.career.challengeSection.highlight[0]?.label}
-                </h4>
+                </p>
               </div>
               <div className="relative overflow-hidden rounded-xl border border-border bg-background p-1 w-full">
                 <CarrerChart />
@@ -254,7 +255,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   {idCareer.career.challengeSection.heading.badge}
                 </span>
               </div>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-lg text-muted-foreground ">
                 {idCareer.career?.challengeSection?.highlight?.[0]?.description}
               </p>
               <TitleSubtitle
@@ -279,7 +280,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* guideSection */}
+      {/* Guide Section */}
       <section id="plan" className="lg:py-24 md:py-24 py-16">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -324,7 +325,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* jobsSection */}
+      {/* JobsSection */}
       <div ref={LdSectionRefs("containerThree")}>
         <section id="jobs" className="lg:py-24 md:py-24 py-16">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-6xl">
@@ -352,7 +353,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 ))}
               </TabsList>
               <TabsContent value="students" className="mt-6">
-                {/* Simplified search and filters */}
+                {/* simplified search and filters */}
                 <div className="mb-8">
                   <div className="flex flex-col md:flex-row gap-4 mb-4">
                     <div className="relative flex-grow">
@@ -375,7 +376,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                       </Button>
                     )}
                   </div>
-                  {/* Simplified horizontal filter bar */}
+                  {/* simplified horizontal filter bar */}
                   <div className="flex flex-wrap gap-3 mb-4">
                     {Object.entries(FilterOptions).map(
                       ([iCategory]) => (
@@ -440,7 +441,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                       )
                     )}
                   </div>
-                  {/* Active filters display */}
+                  {/* active filters display */}
                   {fnGetActiveFilterCount() > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {Object.entries(SelectedFilters).map(
@@ -467,7 +468,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                     </div>
                   )}
                 </div>
-                {/* Job listings */}
+                {/* job listings */}
                 {LaFilteredJobs.length > 0 ? (
                   <div className="grid gap-8 grid-cols-1 md:grid-cols-2">
                     {LaFilteredJobs.map((idJob, iIndex) => (
@@ -592,11 +593,11 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         {fnRenderFormBelowSection("containerThree")}
       </div>
 
-      {/* planSection */}
+      {/* Plan Section */}
       <section id="learning" className="lg:py-24 md:py-24 py-16">
         <div className="px-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-7xl md:px-24 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-center">
-            {/* (hidden on mobile) */}
+            {/* hidden on mobile */}
             <motion.div
               className="relative mx-auto lg:ml-0 w-full max-w-lg hidden lg:block"
               initial={{ opacity: 0, x: -50 }}
@@ -679,7 +680,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
         </div>
       </section>
 
-      {/* trendingSection */}
+      {/* TrendingSection */}
       <section id="recent-trend" className="py-16 md:py-24 lg:py-24 px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <div className="mx-auto max-w-[85rem]">
           <TitleSubtitle idTitle={{
@@ -707,14 +708,12 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 ))}
               </TabsList>
             </div>
-
             <TabsContent value={SelectedTab} className="mt-0">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {FilteredTrends.map((idTrend, idIndex) => (
                   <TrendCard key={idIndex} idTrends={idTrend} />
                 ))}
               </div>
-
               <div className="mt-12 text-center">
                 <Button
                   variant="outline"
@@ -728,7 +727,6 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
-
             </TabsContent>
           </Tabs>
         </div>

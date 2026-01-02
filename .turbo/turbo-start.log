@@ -7,4 +7,279 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 307ms
+ [32m[1m✓[22m[39m Ready in 761ms
+Error fetching external data: TypeError: Failed to parse URL from undefined/api/resource/Job Opening?fields=["name","job_title","status","designation","custom_job_location","description","_user_tags","creation", "custom_excerpt_description", "route"]&limit_page_length=0
+    at <unknown> (.next/server/chunks/181.js:2:6876)
+    at K (.next/server/chunks/181.js:2:13360)
+    at <unknown> (.next/server/chunks/181.js:2:16346)
+    at <unknown> (.next/server/chunks/181.js:2:24022)
+    at a.with (.next/server/chunks/181.js:1:12618)
+    at u.with (.next/server/chunks/181.js:1:6818)
+    at u.startActiveSpan (.next/server/chunks/181.js:1:21873)
+    at a.startActiveSpan (.next/server/chunks/181.js:1:22407)
+    at <unknown> (.next/server/chunks/181.js:2:23530) {
+  [cause]: TypeError: Invalid URL
+      at <unknown> (.next/server/chunks/181.js:2:6876)
+      at K (.next/server/chunks/181.js:2:13360)
+      at <unknown> (.next/server/chunks/181.js:2:16346)
+      at <unknown> (.next/server/chunks/181.js:2:24022)
+      at a.with (.next/server/chunks/181.js:1:12618)
+      at u.with (.next/server/chunks/181.js:1:6818)
+      at u.startActiveSpan (.next/server/chunks/181.js:1:21873)
+      at a.startActiveSpan (.next/server/chunks/181.js:1:22407) {
+    code: [32m'ERR_INVALID_URL'[39m,
+    input: [32m'undefined/api/resource/Job Opening?fields=["name","job_title","status","designation","custom_job_location","description","_user_tags","creation", "custom_excerpt_description", "route"]&limit_page_length=0'[39m
+  }
+}
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:56:45 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:56:54 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Retrying... Attempt 2
+Retrying... Attempt 3
+Error during fetch operation: fetch failed
+Error fetching LinkedIn posts: Error: Failed after retries
+    at i (.next/server/app/api/social/route.js:2:5448)
+    at async o (.next/server/app/api/social/route.js:2:5645)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:57:11 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Retrying... Attempt 2
+Retrying... Attempt 3
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:57:17 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Retrying... Attempt 2
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:57:24 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:57:36 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+Response {
+  status: [33m400[39m,
+  statusText: [32m'Bad Request'[39m,
+  headers: Headers {
+    [32m'alt-svc'[39m: [32m'h3=":443"; ma=2592000,h3-29=":443"; ma=2592000'[39m,
+    [32m'content-encoding'[39m: [32m'gzip'[39m,
+    [32m'content-type'[39m: [32m'application/json; charset=UTF-8'[39m,
+    date: [32m'Fri, 02 Jan 2026 11:57:41 GMT'[39m,
+    server: [32m'scaffolding on HTTPServer2'[39m,
+    [32m'transfer-encoding'[39m: [32m'chunked'[39m,
+    vary: [32m'Origin, X-Origin, Referer'[39m,
+    [32m'x-content-type-options'[39m: [32m'nosniff'[39m,
+    [32m'x-frame-options'[39m: [32m'SAMEORIGIN'[39m,
+    [32m'x-xss-protection'[39m: [32m'0'[39m
+  },
+  body: ReadableStream { locked: [33mfalse[39m, state: [32m'readable'[39m, supportsBYOB: [33mtrue[39m },
+  bodyUsed: [33mfalse[39m,
+  ok: [33mfalse[39m,
+  redirected: [33mfalse[39m,
+  type: [32m'default'[39m,
+  url: [32m'https://www.googleapis.com/youtube/v3/search?key=undefined&channelId=undefined&part=snippet,id&order=date&maxResults=20'[39m
+}
+Error fetching LinkedIn posts: Error: HTTP error! Status: 401
+    at o (.next/server/app/api/social/route.js:2:5810)
+    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
+ [31m[1m⨯[22m[39m TypeError: (intermediate value)(intermediate value)(intermediate value) is not iterable
+    at d.revalidate (.next/server/app/api/social/route.js:1:886)
+    at async (.next/server/chunks/277.js:1:8777)
+    at async f (.next/server/app/api/social/route.js:1:1027)
