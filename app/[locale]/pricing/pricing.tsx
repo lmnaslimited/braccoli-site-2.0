@@ -44,7 +44,7 @@ export default function Pricing({
   };
   return (
     <>
-      <div ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={{
             ...idPricing.pricing.heroSection,
@@ -59,11 +59,11 @@ export default function Pricing({
           }
         />
         {fnRenderFormBelowSection("containerOne")}
-      </div>
+      </section>
 
       {/* Problem Section */}
-      <div ref={LdSectionRefs("containerTwo")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
+      <section ref={LdSectionRefs("containerTwo")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -134,13 +134,13 @@ export default function Pricing({
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerTwo")}
-      </div>
+      </section>
 
       {/* Plans Section*/}
-      <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+      <section ref={LdSectionRefs("containerThree")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
           <div ref={LdSectionRefs("containerSecond")}>
             <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
               <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
@@ -306,12 +306,12 @@ export default function Pricing({
             </div>
           </div>
           {fnRenderFormBelowSection("containerThree")}
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* Guide Section*/}
-      <div ref={LdSectionRefs("containerFour")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
+      <section ref={LdSectionRefs("containerFour")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center rounded-full bg-primary border border-border text-background px-3 py-1 text-sm mb-4">
               <span className="font-medium">
@@ -459,9 +459,9 @@ export default function Pricing({
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerFour", { idPdfData: idcaseStudies })}
-      </div>
+      </section>
 
       {/* Testimonials Section*/}
       <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
@@ -569,8 +569,8 @@ export default function Pricing({
       </section>
 
       {/* CTA Section */}
-      <div ref={LdSectionRefs("containerFive")}>
-        <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <section ref={LdSectionRefs("containerFive")}>
+        <div className="py-16 md:py-24 lg:py-24 bg-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
               <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
@@ -621,9 +621,9 @@ export default function Pricing({
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerFive")}
-      </div>
+      </section>
     </>
   );
 }
