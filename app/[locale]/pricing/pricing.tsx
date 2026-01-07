@@ -103,32 +103,39 @@ export default function Pricing({
                     {idPricing.pricing.problemSection.title}
                   </p>
                   <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                    {idPricing.pricing.problemSection.buttons.map(
-                      (idBtn, iIndex) => (
-                        <Button
-                          key={iIndex}
-                          size="lg"
-                          variant={
-                            (idBtn.variant as Tbutton["variant"]) ?? "default"
-                          }
-                          onClick={() =>
-                            idBtn.formMode &&
+                    {idPricing.pricing.problemSection.buttons.map((idBtn, iIndex) => (
+                      <Button
+                        key={iIndex}
+                        asChild
+                        size="lg"
+                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                        onClick={(e) => {
+                          if (idBtn.formMode) {
+                            e.preventDefault();
                             fnHandleFormButtonClick(
                               idBtn.formMode as TformMode,
                               "containerTwo",
                               idBtn.label
-                            )
+                            );
                           }
-                        >
-                          {idBtn.href ? (
-                            <Link href={idBtn.href}> {idBtn.label} </Link>
-                          ) : (
-                            idBtn.label
-                          )}{" "}
-                          {renderIcon(idBtn.icon)}
-                        </Button>
-                      )
-                    )}
+                        }}
+                      >
+                        {idBtn.href ? (
+                          <Link
+                            href={idBtn.href}
+                            className="flex items-center gap-2"
+                          >
+                            <span>{idBtn.label}</span>
+                            {renderIcon(idBtn.icon)}
+                          </Link>
+                        ) : (
+                          <span className="flex items-center gap-2">
+                            {idBtn.label}
+                            {renderIcon(idBtn.icon)}
+                          </span>
+                        )}
+                      </Button>
+                    ))}
                   </div>
                 </div>
               </div>

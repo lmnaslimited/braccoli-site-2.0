@@ -48,7 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const pageData = await getIndustriesPageData({ slug, locale })
 
   if (!pageData?.industries?.[0]?.metaData) {
-    throw new Error("Meta data not found for industry page")
+    console.warn(`No metadata found for industry page: ${slug}`)
+    return {}
   }
 
   return getPageMetadata(pageData.industries[0].metaData)

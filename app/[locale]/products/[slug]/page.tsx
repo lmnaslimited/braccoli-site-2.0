@@ -44,10 +44,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const pageData = await getProductsPageData({ slug, locale })
 
   if (!pageData?.products?.[0]?.metaData) {
-    throw new Error(`Meta data not found for product slug: ${slug}`)
+    console.warn(`No metadata found for product page: ${slug}`)
+    return {}
   }
 
-  return getPageMetadata(pageData.products[0].metaData)
+  return getPageMetadata(pageData?.products?.[0]?.metaData)
 }
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
