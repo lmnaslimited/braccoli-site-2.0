@@ -31,19 +31,9 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
   const jsonLd = idPrivacy.privacyPolicy.metaData.schemaData
   return (
     <>
-      {
-        jsonLd && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
-            }}
-          />
-        )
-      }
       <div className="bg-background min-h-screen">
         {/* Hero Section */}
-        <div className="relative overflow-hidden bg-primary text-primary-foreground py-20">
+        <section className="relative overflow-hidden bg-primary text-primary-foreground py-20">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute inset-0 bg-gradient-to-br from-primary to-background"></div>
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-muted to-transparent"></div>
@@ -61,9 +51,9 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
               </p>
             </div>
           </div>
-        </div>
+        </section>
         {/* Content Section */}
-        <div className="container mx-auto px-4 py-12 max-w-4xl">
+        <section className="container mx-auto px-4 py-12 max-w-4xl">
           <div className="p-8 mb-12">
             <div className="prose prose-gray max-w-none text-card-foreground leading-relaxed text-justify">
               <ReactMarkdown
@@ -75,7 +65,7 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
             </div>
           </div>
           {/* FAQ Section */}
-          <div className="mb-12">
+          <section className="mb-12">
             <div className="flex items-center mb-8">
               <div className="h-px flex-1 bg-gradient-to-r from-transparent to-border"></div>
               <h2 className="text-2xl font-bold px-4 text-foreground">
@@ -86,9 +76,9 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
             <div className="bg-card rounded-xl shadow-sm border border-border p-6 md:p-8">
               <FAQs idFaq={idPrivacy.privacyPolicy.faq.point} />
             </div>
-          </div>
+          </section>
           {/* Contact Section */}
-          <div className="bg-card rounded-xl shadow-sm border border-border p-8 mb-12">
+          <section className="bg-card rounded-xl shadow-sm border border-border p-8 mb-12">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center">
               <span className="bg-muted p-2 rounded-full mr-3">
                 <Mail className="w-5 h-5 text-muted-foreground" />
@@ -122,10 +112,19 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
                 </a>
               </div>
             </div>
-          </div>
-        </div>
-
+          </section>
+        </section>
       </div>
+      {
+        jsonLd && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            }}
+          />
+        )
+      }
     </>
   );
 }
