@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from '../api/strapi/get-data'
+import { fnGetCacheData } from '../utils/strapi/get-data'
 import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"

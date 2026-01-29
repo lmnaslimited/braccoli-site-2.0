@@ -9,10 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@n8n/chat": "^0.67.0",
     "@repo/middleware": "workspace:*",
     "@repo/ui": "workspace:*",
-    "@rudderstack/analytics-js": "^3.24.3",
     "libphonenumber-js": "^1.12.6",
     "next": "15.1.6",
     "react": "^19.0.0",
