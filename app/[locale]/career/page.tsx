@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Career from './career'
-import { fnGetCacheData } from '../../api/strapi/get-data'
-import { getPageMetadata } from '../../api/metadata/page-metadata'
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcareerPageTarget, Tcontext } from '@repo/middleware/types'
 

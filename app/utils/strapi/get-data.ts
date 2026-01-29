@@ -4,7 +4,7 @@ import { unstable_cache } from "next/cache"
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
-  transformer: ITransformer<DynamicSourceType, DynamicTargetType>
+  transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
 ) {
   const locale = iContext?.locale ?? "en"
 
@@ -38,7 +38,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
       {
         revalidate: 10,
         tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale],
-      }
+      },
     )
     LdCacheMap.set(LCacheKey, fetcher)
   }

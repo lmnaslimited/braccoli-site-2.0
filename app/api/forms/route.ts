@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { fnGetCacheData } from "../../api/strapi/get-data"
+import { fnGetCacheData } from "../../utils/strapi/get-data"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TformsPageTarget } from "@repo/middleware/types"
 
@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     // This likely maps raw backend data into a structured `TformsPageTarget` format
     const pageData: TformsPageTarget = await fnGetCacheData(
       context,
-      clTransformerFactory.createTransformer("forms")
+      clTransformerFactory.createTransformer("forms"),
     )
 
     // Return the fetched and transformed data as JSON response
@@ -27,7 +27,7 @@ export async function GET(request: Request) {
     // Return an error response with status 500 (Internal Server Error)
     return NextResponse.json(
       { error: "Failed to fetch form config" },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

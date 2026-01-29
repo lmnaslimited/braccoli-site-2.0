@@ -1,6 +1,6 @@
 
 import CaseStudyPage from "./casestudy";
-import { fnGetCacheData } from '../../../api/strapi/get-data'
+import { fnGetCacheData } from '../../../utils/strapi/get-data'
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { clTransformerFactory } from "@repo/middleware";

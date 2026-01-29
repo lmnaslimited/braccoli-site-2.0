@@ -2,9 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from '../api/strapi/get-data'
-import ChatInit from "../components/chat-int"
-import ClientLayout from "..//components/client-layout"
+import { fnGetCacheData } from '../utils/strapi/get-data'
 import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
@@ -105,13 +103,10 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />
           <main className="">
-            <ClientLayout>
-              {children}
-            </ClientLayout>
+            {children}
           </main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
-        <ChatInit />
       </body>
     </html>
   )

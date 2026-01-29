@@ -4,8 +4,8 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 import FAQs from "@repo/ui/components/faq";
-import { fnGetCacheData } from '../../api/strapi/get-data'
-import { getPageMetadata } from '../../api/metadata/page-metadata'
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/types";
