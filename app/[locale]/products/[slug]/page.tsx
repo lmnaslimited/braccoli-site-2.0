@@ -5,6 +5,7 @@ import { fnGetCacheData } from "../../../api/getData";
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { clTransformerFactory, IQuery, ITransformer, Tcontext, TproductsPageTarget, TslugsSource, TslugsTarget, } from "@repo/middleware";
+import { draftMode } from 'next/headers';
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -27,7 +28,8 @@ async function getProductsPageData({ slug, locale }: { slug: string; locale: str
       slug: {
         eq: slug
       }
-    }
+    },
+    ...(await draftMode()).isEnabled && { publicationState: 'preview' },
   }
 
   const pageData: TproductsPageTarget = await fnGetCacheData(

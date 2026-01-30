@@ -1,5 +1,5 @@
 
-> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/yuvaraj/lenscloud-projects/PROJ-0076/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.6[39m[22m
@@ -7,4 +7,40 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 697ms
+ [32m[1m✓[22m[39m Ready in 296ms
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: crm-revamp
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'1192601721'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at r (.next/server/app/[locale]/career/page.js:5:53960) {
+  digest: [32m'3367224150'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: crm-revamp
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'1192601721'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: preview-crm-cloud
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'2714004441'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at r (.next/server/app/[locale]/career/page.js:5:53960) {
+  digest: [32m'3367224150'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: preview-crm-cloud
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'2714004441'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: preview-crm-cloud
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'4207972847'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
+    at r (.next/server/app/[locale]/career/page.js:5:53960) {
+  digest: [32m'3367224150'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: preview-crm-cloud
+    at Module.x (.next/server/app/[locale]/products/[slug]/page.js:1:20371) {
+  digest: [32m'4207972847'[39m
+}
