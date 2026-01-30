@@ -36,7 +36,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
       },
       [LCacheKey],
       {
-        revalidate: 10,
+        revalidate: 3600,
         tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale],
       },
     )
