@@ -24,6 +24,7 @@ const renderIcon = (icon: Tbutton["icon"], className?: string) => {
 };
 
 export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
+  console.log("strapi data:",idProduct)
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
   return (
@@ -126,9 +127,9 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
           {fnRenderFormBelowSection("containerTwo")}
         </section>
-      </div>
+      </div> 
 
-      {/* solutions */}
+       {/* solutions */}
       <div ref={LdSectionRefs("containerSeven")}>
         <section className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
