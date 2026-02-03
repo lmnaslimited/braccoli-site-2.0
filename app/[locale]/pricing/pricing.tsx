@@ -1,12 +1,13 @@
 "use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import * as Icons from "lucide-react";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { Button } from "@repo/ui/components/ui/button";
 import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { Button } from "@repo/ui/components/ui/button";
-import CustomCard from "@repo/ui/components/customCard";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import CustomCard from "@repo/ui/components/custom-card";
 import {
   Tabs,
   TabsContent,
@@ -21,9 +22,9 @@ import {
   TableHeader,
   TableRow,
 } from "@repo/ui/components/ui/table";
-import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware";
-import { useState } from "react";
+import { getIconComponent } from "@repo/ui/lib/icon";
+import { useFormHandler } from "../../hooks/form-handler";
+import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
 
 export default function Pricing({
   idPricing,
@@ -34,16 +35,16 @@ export default function Pricing({
 }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
-    const [openedFormId, setOpenedFormId] = useState<string | null>(null);
+  const [openedFormId, setOpenedFormId] = useState<string | null>(null);
 
-        const renderIcon = (icon: Tbutton["icon"]) => {
+  const renderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
   return (
     <>
-      <div ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={{
             ...idPricing.pricing.heroSection,
@@ -53,16 +54,16 @@ export default function Pricing({
               size: "lg",
             })),
           }}
-          onButtonClick={(mode,formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne",formTitle)
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerOne")}
-      </div>
+      </section>
 
       {/* Problem Section */}
-      <div ref={LdSectionRefs("containerTwo")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
+      <section ref={LdSectionRefs("containerTwo")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -102,44 +103,51 @@ export default function Pricing({
                     {idPricing.pricing.problemSection.title}
                   </p>
                   <div className="flex flex-col gap-2 sm:flex-row justify-center">
-                    {idPricing.pricing.problemSection.buttons.map(
-                      (idBtn, iIndex) => (
-                        <Button
-                          key={iIndex}
-                          size="lg"
-                          variant={
-                            (idBtn.variant as Tbutton["variant"]) ?? "default"
-                          }
-                          onClick={() =>
-                            idBtn.formMode &&
+                    {idPricing.pricing.problemSection.buttons.map((idBtn, iIndex) => (
+                      <Button
+                        key={iIndex}
+                        asChild
+                        size="lg"
+                        variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                        onClick={(e) => {
+                          if (idBtn.formMode) {
+                            e.preventDefault();
                             fnHandleFormButtonClick(
                               idBtn.formMode as TformMode,
                               "containerTwo",
                               idBtn.label
-                            )
+                            );
                           }
-                        >
-                          {idBtn.href ? (
-                            <Link href={idBtn.href}> {idBtn.label} </Link>
-                          ) : (
-                            idBtn.label
-                          )}{" "}
-                          {renderIcon(idBtn.icon)}
-                        </Button>
-                      )
-                    )}
+                        }}
+                      >
+                        {idBtn.href ? (
+                          <Link
+                            href={idBtn.href}
+                            className="flex items-center gap-2"
+                          >
+                            <span>{idBtn.label}</span>
+                            {renderIcon(idBtn.icon)}
+                          </Link>
+                        ) : (
+                          <span className="flex items-center gap-2">
+                            {idBtn.label}
+                            {renderIcon(idBtn.icon)}
+                          </span>
+                        )}
+                      </Button>
+                    ))}
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerTwo")}
-      </div>
+      </section>
 
       {/* Plans Section*/}
-      <div ref={LdSectionRefs("containerThree")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
+      <section ref={LdSectionRefs("containerThree")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
           <div ref={LdSectionRefs("containerSecond")}>
             <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
               <div className="flex w-fit items-center rounded-full bg-accent px-3 py-1 text-sm mb-4 mx-auto">
@@ -197,9 +205,9 @@ export default function Pricing({
                                     >
                                       {
                                         iPlan[
-                                          Object.keys(iPlan)[
-                                            iIndex + 1
-                                          ] as keyof typeof iPlan
+                                        Object.keys(iPlan)[
+                                        iIndex + 1
+                                        ] as keyof typeof iPlan
                                         ]
                                       }
                                     </TableCell>
@@ -214,39 +222,39 @@ export default function Pricing({
                               (iPlan, iIndex) => {
                                 const containerId = `containerPlan${iIndex + 1}`;
                                 const isOpen = openedFormId === containerId;
-                                
-                                return(
-                                <TableCell key={iIndex} className="text-center">
-                                  <Button
-                                    variant={
-                                      iIndex === 2 ? "default" : "outline"
-                                    
-                                    }
-                                    size="sm"
-                                    className={
+
+                                return (
+                                  <TableCell key={iIndex} className="text-center">
+                                    <Button
+                                      variant={
+                                        iIndex === 2 ? "default" : "outline"
+
+                                      }
+                                      size="sm"
+                                      className={
                                         iIndex === 2
-                                        ? "bg-primary"
-                                        : ""
-                                        
-                                    }
-                                    onClick={() =>{
-                                      fnHandleFormButtonClick(
-                                        "contact" as TformMode,
-                                        `containerPlan${iIndex + 1}`,
-                                        iPlan.name
-                                      );
-                                      setOpenedFormId(prev => (prev === containerId ? null : containerId));
-                                    }
-                                    }
-                                  >
-                                    {iIndex === 2
-                                      ? idPricing.pricing.planFooter.list[1]?.label
-                                      : idPricing.pricing.planFooter.list[0]?.label}{" "}
-                                        {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
-                                  </Button>
-                                </TableCell>
-                              )
-})}
+                                          ? "bg-primary"
+                                          : ""
+
+                                      }
+                                      onClick={() => {
+                                        fnHandleFormButtonClick(
+                                          "contact" as TformMode,
+                                          `containerPlan${iIndex + 1}`,
+                                          iPlan.name
+                                        );
+                                        setOpenedFormId(prev => (prev === containerId ? null : containerId));
+                                      }
+                                      }
+                                    >
+                                      {iIndex === 2
+                                        ? idPricing.pricing.planFooter.list[1]?.label
+                                        : idPricing.pricing.planFooter.list[0]?.label}{" "}
+                                      {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
+                                    </Button>
+                                  </TableCell>
+                                )
+                              })}
                           </TableRow>
                         </TableBody>
                       </Table>
@@ -305,12 +313,12 @@ export default function Pricing({
             </div>
           </div>
           {fnRenderFormBelowSection("containerThree")}
-        </section>
-      </div>
+        </div>
+      </section>
 
       {/* Guide Section*/}
-      <div ref={LdSectionRefs("containerFour")}>
-        <section className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
+      <section ref={LdSectionRefs("containerFour")}>
+        <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center rounded-full bg-primary border border-border text-background px-3 py-1 text-sm mb-4">
               <span className="font-medium">
@@ -458,9 +466,9 @@ export default function Pricing({
               </div>
             </div>
           </div>
-        </section>
-        {fnRenderFormBelowSection("containerFour",{ idPdfData: idcaseStudies })}
-      </div>
+        </div>
+        {fnRenderFormBelowSection("containerFour", { idPdfData: idcaseStudies })}
+      </section>
 
       {/* Testimonials Section*/}
       <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
@@ -568,8 +576,8 @@ export default function Pricing({
       </section>
 
       {/* CTA Section */}
-      <div ref={LdSectionRefs("containerFive")}>
-        <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <section ref={LdSectionRefs("containerFive")}>
+        <div className="py-16 md:py-24 lg:py-24 bg-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
               <div className="flex items-center mx-auto w-fit rounded-full bg-primary text-background px-3 py-1 text-sm mb-4">
@@ -620,9 +628,9 @@ export default function Pricing({
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerFive")}
-      </div>
+      </section>
     </>
   );
 }

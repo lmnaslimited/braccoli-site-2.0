@@ -2,11 +2,14 @@ import type React from "react"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from "../api/getData"
+import { fnGetCacheData } from '../utils/strapi/get-data'
+import ChatInit from "../components/chat-int"
+import ClientLayout from "..//components/client-layout"
 import Footer from "@repo/ui/components/footer"
 import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
-import { clTransformerFactory, Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware"
+import { clTransformerFactory } from "@repo/middleware"
+import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -101,9 +104,14 @@ export default async function RootLayout({
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />
-          <main className="">{children}</main>
+          <main className="">
+            <ClientLayout>
+              {children}
+            </ClientLayout>
+          </main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
+        <ChatInit />
       </body>
     </html>
   )

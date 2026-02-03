@@ -4,10 +4,11 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import ReactMarkdown from "react-markdown"
 import FAQs from "@repo/ui/components/faq"
-import { fnGetCacheData } from "../../api/getData"
-import { getPageMetadata } from '../../api/getPageMetadata';
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
-import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware';
+import { clTransformerFactory } from '@repo/middleware';
+import { Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware/types';
 
 async function getTermsPageData(locale: string) {
   const context: Tcontext = { locale: locale }

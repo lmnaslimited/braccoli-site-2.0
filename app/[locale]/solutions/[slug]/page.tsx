@@ -1,8 +1,10 @@
-import { clTransformerFactory, IQuery, ITransformer, TcaseStudiesPageTarget, Tcontext, TslugsSource, TslugsTarget } from "@repo/middleware";
+
+import CaseStudyPage from "./casestudy";
+import { fnGetCacheData } from '../../../utils/strapi/get-data'
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
-import { fnGetCacheData } from "../../../api/getData";
-import CaseStudyPage from "./casestudy";
+import { clTransformerFactory } from "@repo/middleware";
+import { IQuery, ITransformer, TcaseStudiesPageTarget, Tcontext, TslugsSource, TslugsTarget } from "@repo/middleware/types";
 
 export async function generateStaticParams({
   params,

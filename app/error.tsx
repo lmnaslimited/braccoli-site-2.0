@@ -1,4 +1,5 @@
 "use client"
+
 import "@repo/ui/globals.css"
 import Image from "next/image"
 import { useEffect, useState } from "react"

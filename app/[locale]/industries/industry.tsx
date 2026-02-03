@@ -1,24 +1,27 @@
 "use client"
+
 import Image from "next/image"
 import { Calendar } from "lucide-react";
+import Tab from "@repo/ui/components/tab";
 import Hero from "@repo/ui/components/hero";
 import Callout from "@repo/ui/components/callout";
-import CustomCard from "@repo/ui/components/customCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import Tab from "@repo/ui/components/tab";
-import { Button } from "@repo/ui/components/ui/button";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import PainPoints from "@repo/ui/components/painPoint";
-import { useFormHandler } from "../hooks/useFormHandler";
-import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware";
+import { Button } from "@repo/ui/components/ui/button";
+import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
+import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware/types";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
+
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
+
   const allSuccessCards: TcardProps[] =
     idIndustry?.caseStudies
       ?.map((item) => item.solutionSection?.successCard)
@@ -27,8 +30,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
 
   return (
     <>
-      {/* hero */}
-      <div ref={LdSectionRefs("containerOne")}>
+      {/* Hero Section */}
+      <section ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={{
             ...idIndustry.industries[0]?.heroSection,
@@ -39,11 +42,11 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           } as TheroSection}
           onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
         {fnRenderFormBelowSection("containerOne")}
-      </div>
+      </section>
 
-      {/* problems */}
-      <div ref={LdSectionRefs("containerTwo")}>
-        <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      {/* Problem Section */}
+      <section ref={LdSectionRefs("containerTwo")}>
+        <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <TitleSubtitle
               idTitle={{
@@ -55,7 +58,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             />
             <PainPoints idItems={idIndustry?.industries[0]?.problemSection.list as Titems[]} />
           </div>
-        </section>
+        </div>
         <div className="bg-primary">
           <Callout
             idCallout={{
@@ -72,9 +75,9 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           />
         </div>
         {fnRenderFormBelowSection("containerTwo")}
-      </div>
+      </section>
 
-      {/* features */}
+      {/* Features Section */}
       <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
         <TitleSubtitle
           idTitle={{
@@ -149,7 +152,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
         </div>
       </section >
 
-      {/* allFeature */}
+      {/* All Features Section */}
       < section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" >
         <TitleSubtitle
           idTitle={{
@@ -189,12 +192,11 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             },
           }}
         />
-
       </section >
 
-      {/* cta */}
-      < div ref={LdSectionRefs("containerThree")} className="bg-accent" >
-        <section className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
+      {/* Call to Action Section */}
+      < section ref={LdSectionRefs("containerThree")} className="bg-accent" >
+        <div className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
               idTitle={{
@@ -243,13 +245,13 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
               </p>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerThree")}
-      </div >
+      </section >
 
-      {/* success story */}
-      < div ref={LdSectionRefs("containerFour")} >
-        <section className="py-16 md:py-24 lg:py-24">
+      {/* Success Story Section */}
+      <section ref={LdSectionRefs("containerFour")} >
+        <div className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
               idTitle={{
@@ -289,7 +291,6 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 },
               }}
             />
-
             <div className="mt-12 text-center">
               <div className="space-y-4">
                 <h3 className="text-xl font-medium">
@@ -313,9 +314,9 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
               </div>
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerFour")}
-      </div >
+      </section>
     </>
   );
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import AboutUs from './about-us'
-import { fnGetCacheData } from '../../api/getData'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { clTransformerFactory, TaboutUsPageTarget, Tcontext } from '@repo/middleware'
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { clTransformerFactory } from '@repo/middleware'
+import { TaboutUsPageTarget, Tcontext } from '@repo/middleware/types'
 
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
@@ -25,6 +26,7 @@ export default async function AboutUsPage({ params }: { params: Promise<{ locale
 
   return (
     <>
+      <AboutUs idAboutUs={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -33,7 +35,6 @@ export default async function AboutUsPage({ params }: { params: Promise<{ locale
           }}
         />
       )}
-      <AboutUs idAboutUs={pageData} />
     </>
   )
 }
