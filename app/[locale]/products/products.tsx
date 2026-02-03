@@ -18,11 +18,11 @@ import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 
-const renderIcon = (icon: Tbutton["icon"], className?: string) => {
-  const iconName = typeof icon === "string" ? icon : "HelpCircle";
-  const IconComponent = getIconComponent(iconName);
-  return <IconComponent className={className || "w-5 h-5"} />;
-};
+// const renderIcon = (icon: Tbutton["icon"], className?: string) => {
+//   const iconName = typeof icon === "string" ? icon : "HelpCircle";
+//   const IconComponent = getIconComponent(iconName);
+//   return <IconComponent className={className || "w-5 h-5"} />;
+// };
 
 export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
@@ -54,7 +54,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Problems Section */}
-      <section ref={LdSectionRefs("containerTwo")}>
+      {/* <section ref={LdSectionRefs("containerTwo")}>
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -128,10 +128,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
           {fnRenderFormBelowSection("containerTwo")}
         </div>
-      </section>
+      </section> */}
 
       {/* Solutions Section */}
-      <section ref={LdSectionRefs("containerSeven")}>
+      {/* <section ref={LdSectionRefs("containerSeven")}>
         <div className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -218,10 +218,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
         </div>
         {fnRenderFormBelowSection("containerSeven")}
-      </section>
+      </section> */}
 
       {/* Feature Section */}
-      <section ref={LdSectionRefs("containerThree")}>
+      {/* <section ref={LdSectionRefs("containerThree")}>
         <div
           id="features"
           className="border-b border-border/40 py-16 md:py-24 lg:py-24"
@@ -349,10 +349,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
           {fnRenderFormBelowSection("containerThree")}
         </div>
-      </section>
+      </section> */}
 
       {/* Success Stories Section */}
-      <section ref={LdSectionRefs("containerFour")}>
+      {/* <section ref={LdSectionRefs("containerFour")}>
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -450,10 +450,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
         </div>
         {fnRenderFormBelowSection("containerFour")}
-      </section>
+      </section> */}
 
       {/* Pricing Section */}
-      <section ref={LdSectionRefs("containerFive")}>
+      {/* <section ref={LdSectionRefs("containerFive")}>
         <div className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-accent px-3 py-1 text-sm mb-4">
@@ -559,10 +559,10 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
         </div>
         {fnRenderFormBelowSection("containerFive")}
-      </section>
+      </section> */}
 
       {/* Call to Action Section */}
-      <section ref={LdSectionRefs("containerSix")}>
+      {/* <section ref={LdSectionRefs("containerSix")}>
         <div className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">
@@ -641,7 +641,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           </div>
         </div>
         {fnRenderFormBelowSection("containerSix")}
-      </section>
+      </section> */}
     </>
   );
 }

@@ -18,64 +18,64 @@ export const viewport: Viewport = {
   userScalable: true,
 }
 
-async function fnGetGlobalData(locale: string) {
-  const context: Tcontext = { locale }
+// async function fnGetGlobalData(locale: string) {
+//   const context: Tcontext = { locale }
 
-  const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
-    context,
-    clTransformerFactory.createTransformer("globalMeta")
-  )
+//   const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
+//     context,
+//     clTransformerFactory.createTransformer("globalMeta")
+//   )
 
-  return globalMetaData?.globalMeta
-}
+//   return globalMetaData?.globalMeta
+// }
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { locale } = await params
-  const data = await fnGetGlobalData(locale)
+// export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+//   const { locale } = await params
+//   const data = await fnGetGlobalData(locale)
 
-  if (!data) return {}
+//   if (!data) return {}
 
-  return {
-    metadataBase: data.metadataBase ? new URL(data.metadataBase) : undefined,
-    robots: {
-      index: data.robotsIndex,
-      follow: data.robotsFollow,
-      nocache: data.robotsNocache,
-      googleBot: {
-        index: data.googleBotIndex,
-        follow: data.googleBotFollow,
-        'max-snippet': data.googleBotMaxSnippet,
-        'max-image-preview': data.googleBotMaxImagePreview,
-        'max-video-preview': data.googleBotMaxVideoPreview,
-      },
-    },
-    authors: data.authorsName && data.authorsURL
-      ? [{ name: data.authorsName, url: data.authorsURL }]
-      : undefined,
-    creator: data.creator,
-    publisher: data.publisher,
-    applicationName: data.applicationName,
-    icons: {
-      icon: data.icons?.map((icon: TseoIcons) => ({
-        url: icon.url,
-        sizes: icon.sizes,
-        type: icon.type,
-      })),
-      apple: data.apple?.map((icon: TseoIcons) => ({
-        url: icon.url,
-        sizes: icon.sizes,
-        type: icon.type,
-      })),
-      shortcut: data.shortcut,
-    },
-    appleWebApp: {
-      capable: data.appleWebAppCapable,
-      title: data.appleWebAppTitle,
-      statusBarStyle: data.appleWebAppStatusBarStyle,
-    },
-    manifest: data.manifest,
-  }
-}
+//   return {
+//     metadataBase: data.metadataBase ? new URL(data.metadataBase) : undefined,
+//     robots: {
+//       index: data.robotsIndex,
+//       follow: data.robotsFollow,
+//       nocache: data.robotsNocache,
+//       googleBot: {
+//         index: data.googleBotIndex,
+//         follow: data.googleBotFollow,
+//         'max-snippet': data.googleBotMaxSnippet,
+//         'max-image-preview': data.googleBotMaxImagePreview,
+//         'max-video-preview': data.googleBotMaxVideoPreview,
+//       },
+//     },
+//     authors: data.authorsName && data.authorsURL
+//       ? [{ name: data.authorsName, url: data.authorsURL }]
+//       : undefined,
+//     creator: data.creator,
+//     publisher: data.publisher,
+//     applicationName: data.applicationName,
+//     icons: {
+//       icon: data.icons?.map((icon: TseoIcons) => ({
+//         url: icon.url,
+//         sizes: icon.sizes,
+//         type: icon.type,
+//       })),
+//       apple: data.apple?.map((icon: TseoIcons) => ({
+//         url: icon.url,
+//         sizes: icon.sizes,
+//         type: icon.type,
+//       })),
+//       shortcut: data.shortcut,
+//     },
+//     appleWebApp: {
+//       capable: data.appleWebAppCapable,
+//       title: data.appleWebAppTitle,
+//       statusBarStyle: data.appleWebAppStatusBarStyle,
+//     },
+//     manifest: data.manifest,
+//   }
+// }
 
 export default async function RootLayout({
   params,
@@ -105,13 +105,13 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />
           <main className="">
-            <ClientLayout>
+            {/* <ClientLayout> */}
               {children}
-            </ClientLayout>
+            {/* </ClientLayout> */}
           </main>
           <Footer idFooter={footerData} />
         </ThemeProvider>
-        <ChatInit />
+        {/* <ChatInit /> */}
       </body>
     </html>
   )
