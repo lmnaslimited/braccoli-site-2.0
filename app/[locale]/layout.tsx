@@ -89,27 +89,27 @@ export default async function RootLayout({
   const { locale } = await params
   const context: Tcontext = { locale: locale }
 
-  const footerData: TfooterTarget = await fnGetCacheData(
-    context,
-    clTransformerFactory.createTransformer("footer")
-  )
+  // const footerData: TfooterTarget = await fnGetCacheData(
+  //   context,
+  //   clTransformerFactory.createTransformer("footer")
+  // )
 
-  const navbarData: TnavbarTarget = await fnGetCacheData(
-    context,
-    clTransformerFactory.createTransformer("navbar")
-  )
+  // const navbarData: TnavbarTarget = await fnGetCacheData(
+  //   context,
+  //   clTransformerFactory.createTransformer("navbar")
+  // )
 
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar idNavbar={navbarData} />
+          {/* <Navbar idNavbar={navbarData} /> */}
           <main className="">
             {/* <ClientLayout> */}
               {children}
             {/* </ClientLayout> */}
           </main>
-          <Footer idFooter={footerData} />
+          {/* <Footer idFooter={footerData} /> */}
         </ThemeProvider>
         {/* <ChatInit /> */}
       </body>

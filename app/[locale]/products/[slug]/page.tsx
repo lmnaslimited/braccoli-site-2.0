@@ -57,7 +57,7 @@ export default async function Products({ params }: { params: Promise<{ locale: s
   const { slug, locale } = await params
 
   const { isEnabled: isDraftMode } = await draftMode();
-  const status = isDraftMode ? "draft" : "published";
+  const status = isDraftMode ? "DRAFT" : "PUBLISHED";
 
   const pageData = await getProductsPageData({ slug, locale , status})
   // const jsonLd = pageData.products[0]?.metaData.schemaData
