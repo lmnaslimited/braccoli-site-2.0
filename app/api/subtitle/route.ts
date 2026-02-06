@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server"
 import { Tsubtitle } from "@repo/middleware/types"
 
+const STRAPI_URL = "http://localhost:1337"
+
 const buildWebVTTContent = (subtitles: Tsubtitle[]) =>
   "WEBVTT\n\n" +
   subtitles
@@ -12,24 +14,29 @@ const buildWebVTTContent = (subtitles: Tsubtitle[]) =>
 
 export async function GET(req: Request) {
   try {
-    const data = new URL(req.url).searchParams.get("data")
-    console.log("Subtitle data received:", data)
+    const sourceId = new URL(req.url).searchParams.get("sourceId")
 
-    if (!data) throw new Error("Missing subtitle data")
+    if (!sourceId) return new NextResponse("Bad request", { status: 400 })
 
-    const subtitles = JSON.parse(data) as Tsubtitle[]
-    console.log("Parsed subtitles:", subtitles)
+    const res = await fetch(
+      `${STRAPI_URL}/api/subtitles?filters[sourceId][$eq]=${sourceId}&populate=*`,
+    )
 
-    const webVttText = buildWebVTTContent(subtitles)
-    console.log("Generated WebVTT:", webVttText)
+    const json = await res.json()
 
-    return new NextResponse(webVttText, {
-      headers: {
-        "Content-Type": "text/vtt",
-        "Cache-Control": "no-store",
-      },
+    if (!json.data?.length)
+      return new NextResponse("No subtitles", { status: 404 })
+
+    // console.log("json", json)
+
+    const subtitles = json.data[0].subtitle
+
+    const formatText = buildWebVTTContent(subtitles)
+
+    return new NextResponse(formatText, {
+      headers: { "Content-Type": "text/vtt" },
     })
-  } catch {
-    return new NextResponse("Invalid subtitle data", { status: 400 })
+  } catch (error) {
+    return new NextResponse("Error", { status: 500 })
   }
 }

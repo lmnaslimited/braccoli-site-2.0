@@ -249,7 +249,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         {idFeature.image?.source?.endsWith(".mp4") ? (
                           <VideoPlayer
                             src={idFeature.image.source}
-                            subtitle={idFeature.image?.subtitle}
+                            sourceId={idFeature.image?.sourceId}
                           />
                         ) : (
                           <Image
