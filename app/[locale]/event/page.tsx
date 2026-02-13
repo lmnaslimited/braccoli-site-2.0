@@ -3,10 +3,12 @@ import Events from './event'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
 import { clTransformerFactory, Tcontext, TeventPageTarget } from '@repo/middleware'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getEventsPageData(params: { locale: string }) {
     const { locale } = params
-    const context: Tcontext = { locale: locale }
+    const status = await fnGetStatus()
+    const context: Tcontext = { locale: locale, status }
     const pageData: TeventPageTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('event')

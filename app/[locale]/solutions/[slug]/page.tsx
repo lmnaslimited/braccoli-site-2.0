@@ -3,6 +3,7 @@ import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { fnGetCacheData } from "../../../api/getData";
 import CaseStudyPage from "./casestudy";
+import { fnGetStatus } from "../../../utils/strapi/get-status";
 
 export async function generateStaticParams({
   params,
@@ -26,6 +27,7 @@ export default async function CaseStudy({
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const { slug, locale } = await params;
+    const status = await fnGetStatus()
 
   const context: Tcontext = {
     locale: locale,
@@ -39,7 +41,8 @@ export default async function CaseStudy({
       slug: {
         ne: slug,
       },
-    }
+    },
+    status
   };
 
   const pageData: TcaseStudiesPageTarget = await fnGetCacheData(

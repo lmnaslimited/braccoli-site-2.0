@@ -8,9 +8,11 @@ import { fnGetCacheData } from "../../api/getData"
 import { getPageMetadata } from '../../api/getPageMetadata';
 import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
 import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware';
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getTermsPageData(locale: string) {
-  const context: Tcontext = { locale: locale }
+  const status = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status }
   const pageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('termsAndCondition')

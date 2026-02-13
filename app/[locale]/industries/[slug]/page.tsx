@@ -5,6 +5,7 @@ import { getPageMetadata } from '../../../api/getPageMetadata'
 import { clQuerySlug } from '../../../../../../packages/middleware/src/api/query'
 import { clSlugsTransformer } from '../../../../../../packages/middleware/src/engine/transformer'
 import { clTransformerFactory, IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware'
+import { fnGetStatus } from '../../../utils/strapi/get-status'
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -17,9 +18,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getIndustriesPageData({ slug, locale }: { slug: string; locale: string }) {
+async function getIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
+    status,
     filters: {
       slug: {
         eq: slug,
@@ -55,7 +57,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Industries({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const pageData = await getIndustriesPageData({ slug, locale })
+  const status = await fnGetStatus()
+  const pageData = await getIndustriesPageData({ slug, locale, status })
   const jsonLd = pageData.industries[0]?.metaData.schemaData
   return (
     <>

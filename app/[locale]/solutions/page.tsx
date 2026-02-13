@@ -3,13 +3,15 @@ import Solution from './solution'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
 import { clTransformerFactory, Tcontext, TsolutionPageTarget } from '@repo/middleware'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getSolutionPageData(params: { locale: string }) {
   const { locale } = params
-
+  const status = await fnGetStatus()
   const context: Tcontext = {
     locale: locale,
-    caseStudiesLocale2: locale
+    caseStudiesLocale2: locale,
+    status
   }
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(

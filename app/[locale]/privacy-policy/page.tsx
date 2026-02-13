@@ -8,9 +8,11 @@ import { fnGetCacheData } from "../../api/getData";
 import { getPageMetadata } from '../../api/getPageMetadata';
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory, Tcontext, TprivacyPolicyPageSource } from "@repo/middleware";
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getPrivacyPolicyData(locale: string) {
-  const context: Tcontext = { locale: locale }
+  const status = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status }
   const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('privacyPolicy')

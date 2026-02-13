@@ -3,10 +3,12 @@ import Contact from './contact'
 import { fnGetCacheData } from '../../api/getData'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { clTransformerFactory, TcontactTarget, Tcontext } from '@repo/middleware'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getContactPageData(params: { locale: string }) {
     const { locale } = params
-    const context: Tcontext = { locale: locale }
+    const status = await fnGetStatus()
+    const context: Tcontext = { locale: locale, status }
     const pageData: TcontactTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('contact')

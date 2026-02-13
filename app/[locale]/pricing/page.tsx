@@ -3,17 +3,20 @@ import Pricing from './pricing'
 import { getPageMetadata } from '../../api/getPageMetadata'
 import { fnGetCacheData } from '../../api/getData'
 import { clTransformerFactory, TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
+  const status = await fnGetStatus()
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {
       slug: {
         eq: 'erp-comparison-lens'
       }
-    }
+    },
+    status
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,

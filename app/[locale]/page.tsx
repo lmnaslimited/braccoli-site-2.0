@@ -3,10 +3,12 @@ import type { Metadata } from 'next'
 import { fnGetCacheData } from '../api/getData'
 import { getPageMetadata } from '../api/getPageMetadata'
 import { clTransformerFactory, Tcontext, ThomePageTarget } from '@repo/middleware'
+import { fnGetStatus } from '../utils/strapi/get-status'
 
 async function getHomePageData(params: { locale: string }) {
   const { locale } = params
-  const context: Tcontext = { locale: locale }
+  const status = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status }
   const pageData: ThomePageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('home')
