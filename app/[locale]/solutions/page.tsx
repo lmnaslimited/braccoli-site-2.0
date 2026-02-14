@@ -7,11 +7,11 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getSolutionPageData(params: { locale: string }) {
   const { locale } = params
-  const lStatus = await fnGetStatus()
+  const LStatus = await fnGetStatus()
   const context: Tcontext = {
     locale: locale,
     caseStudiesLocale2: locale,
-    status: lStatus, //Publication status from Strapi
+    status: LStatus, //Publication status from Strapi
   }
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(

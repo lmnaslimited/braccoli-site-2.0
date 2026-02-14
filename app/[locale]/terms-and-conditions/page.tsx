@@ -11,8 +11,8 @@ import { clTransformerFactory, Tcontext, TtermsAndConditionsPageTarget } from '@
 import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getTermsPageData(locale: string) {
-  const lStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
-  const context: Tcontext = { locale: locale, status : lStatus }
+  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const context: Tcontext = { locale: locale, status : LStatus }
   const pageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('termsAndCondition')

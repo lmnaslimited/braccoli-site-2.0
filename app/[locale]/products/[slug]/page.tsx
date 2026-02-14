@@ -53,8 +53,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const lStatus = await fnGetStatus() //Publication status from Strapi
-  const pageData = await getProductsPageData({ slug, locale,status: lStatus })
+  const LStatus = await fnGetStatus() //Publication status from Strapi
+  const pageData = await getProductsPageData({ slug, locale,status: LStatus })
   const jsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>

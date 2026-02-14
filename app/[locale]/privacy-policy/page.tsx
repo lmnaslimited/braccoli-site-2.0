@@ -11,8 +11,8 @@ import { clTransformerFactory, Tcontext, TprivacyPolicyPageSource } from "@repo/
 import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getPrivacyPolicyData(locale: string) {
-  const lStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
-  const context: Tcontext = { locale: locale, status : lStatus }
+  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const context: Tcontext = { locale: locale, status : LStatus }
   const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('privacyPolicy')

@@ -7,8 +7,8 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getContactPageData(params: { locale: string }) {
     const { locale } = params
-    const lStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
-    const context: Tcontext = { locale: locale, status: lStatus }
+    const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+    const context: Tcontext = { locale: locale, status: LStatus }
     const pageData: TcontactTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('contact')

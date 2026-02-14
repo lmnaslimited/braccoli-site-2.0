@@ -27,7 +27,7 @@ export default async function CaseStudy({
   params: Promise<{ slug: string; locale: string }>;
 }) {
   const { slug, locale } = await params;
-  const lStatus = await fnGetStatus()
+  const LStatus = await fnGetStatus()
 
   const context: Tcontext = {
     locale: locale,
@@ -42,7 +42,7 @@ export default async function CaseStudy({
         ne: slug,
       },
     },
-    status: lStatus, //Publication status from Strapi
+    status: LStatus, //Publication status from Strapi
   };
 
   const pageData: TcaseStudiesPageTarget = await fnGetCacheData(

@@ -21,8 +21,10 @@ const LdSingleRoutes: Record<string, string> = {
   "terms-and-condition": "terms-and-conditions",
   trend: "trending-now",
 };
+// Add special content types (e.g., "terms-and-condition") to the route maps above
+// to ensure proper handling inside fnGetPreviewPath.
 
-// 🔹 Function to build preview redirect path
+// Function to build preview redirect path
 function fnGetPreviewPath(
   iContentType?: string,
   iSlug?: string | null,
@@ -38,8 +40,8 @@ function fnGetPreviewPath(
 
   // Collection Types
   else if (LdCollectionRoutes[iContentType]) {
-    const lRoute = LdCollectionRoutes[iContentType];
-    lBasePath = iSlug ? `/${lRoute}/${iSlug}` : `/${lRoute}`;
+    const LRoute = LdCollectionRoutes[iContentType];
+    lBasePath = iSlug ? `/${LRoute}/${iSlug}` : `/${LRoute}`;
   }
 
   // Single Types
@@ -53,42 +55,42 @@ function fnGetPreviewPath(
     lBasePath = `/${iContentType}`;
   }
 
-  const lLocalePath =
+  const LLocalePath =
     iLocale && iLocale !== "en" ? `/${iLocale}${lBasePath}` : lBasePath;
 
-  const lStatusParam = iStatus ? `?status=${iStatus}` : "";
+  const LStatusParam = iStatus ? `?status=${iStatus}` : "";
 
-  return lLocalePath + lStatusParam;
+  return LLocalePath + LStatusParam;
 }
 
 export const GET = async (iRequest: Request) => {
 
   const { searchParams } = new URL(iRequest.url);
 
-  const ldSearchParams = Object.fromEntries(searchParams);
+  const LdSearchParams = Object.fromEntries(searchParams);
 
-  const { secret, slug, locale, uid, status } = ldSearchParams;
+  const { secret, slug, locale, uid, status } = LdSearchParams;
 
   if (secret !== process.env.PREVIEW_SECRET) {
     return new Response("Invalid token", { status: 401 });
   }
 
-  const lContentType = uid?.split(".").pop();
+  const LContentType = uid?.split(".").pop();
 
-  const lFinalPath = fnGetPreviewPath(
-    lContentType,
+  const LFinalPath = fnGetPreviewPath(
+    LContentType,
     slug ?? null,
     locale ?? null,
     status ?? null,
   );
 
-  const lDraft = await draftMode();
+  const LDraft = await draftMode();
 
   if (status === "draft") {
-    lDraft.enable();
+    LDraft.enable();
   } else {
-    lDraft.disable();
+    LDraft.disable();
   }
 
-  redirect(lFinalPath);
+  redirect(LFinalPath);
 };
