@@ -7,7 +7,7 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
-    const lstatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const lstatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
   const context: Tcontext = { locale: locale ,status:lstatus}
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,
