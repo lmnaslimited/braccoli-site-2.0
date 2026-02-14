@@ -42,7 +42,7 @@ export default async function CaseStudy({
         ne: slug,
       },
     },
-    status
+    status: status, //Publication status from Strapi
   };
 
   const pageData: TcaseStudiesPageTarget = await fnGetCacheData(

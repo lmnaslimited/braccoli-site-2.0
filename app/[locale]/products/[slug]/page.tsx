@@ -24,7 +24,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
 async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
-    status,
+    status: status, //Publication status from Strapi
     filters: {
       slug: {
         eq: slug

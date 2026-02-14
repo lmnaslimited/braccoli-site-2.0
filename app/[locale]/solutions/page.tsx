@@ -11,7 +11,7 @@ async function getSolutionPageData(params: { locale: string }) {
   const context: Tcontext = {
     locale: locale,
     caseStudiesLocale2: locale,
-    status
+    status: status, //Publication status from Strapi
   }
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(
