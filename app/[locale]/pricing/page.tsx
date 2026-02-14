@@ -16,7 +16,7 @@ async function getPricingPageData(params: { locale: string }) {
         eq: 'erp-comparison-lens'
       }
     },
-    status
+    status: status
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,

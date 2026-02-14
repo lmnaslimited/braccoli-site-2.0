@@ -12,7 +12,7 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 
 async function getPrivacyPolicyData(locale: string) {
   const status = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status }
+  const context: Tcontext = { locale: locale, status : status }
   const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('privacyPolicy')

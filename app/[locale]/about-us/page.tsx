@@ -8,7 +8,7 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
     const status = await fnGetStatus()
-  const context: Tcontext = { locale: locale ,status}
+  const context: Tcontext = { locale: locale ,status:status}
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('aboutUs')

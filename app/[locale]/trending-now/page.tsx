@@ -9,7 +9,7 @@ async function getTrendingNowPageData(params: { locale: string }) {
   const { locale } = params
   const status = await fnGetStatus()
 
-  const context: Tcontext = { locale: locale, status }
+  const context: Tcontext = { locale: locale, status: status }
 
   const pageData: TtrendsPageTarget = await fnGetCacheData(
     context,
