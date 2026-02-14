@@ -24,7 +24,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
 async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
-    status: status, //Publication status from Strapi
+    status: status, 
     filters: {
       slug: {
         eq: slug
@@ -53,8 +53,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const status = await fnGetStatus()
-  const pageData = await getProductsPageData({ slug, locale,status })
+  const lStatus = await fnGetStatus() //Publication status from Strapi
+  const pageData = await getProductsPageData({ slug, locale,status: lStatus })
   const jsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>

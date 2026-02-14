@@ -8,7 +8,7 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
-  const status = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const lStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {
@@ -16,7 +16,7 @@ async function getPricingPageData(params: { locale: string }) {
         eq: 'erp-comparison-lens'
       }
     },
-    status: status
+    status: lStatus
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,

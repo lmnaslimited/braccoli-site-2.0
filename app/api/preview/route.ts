@@ -1,113 +1,94 @@
-
 // app/api/preview/route.ts
 
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 
-function getPreviewPath(
-  contentType: string | undefined,
-  slug: string | null,
-  locale: string | null,
-  status: string | null,
+// Constant dictionaries for route mapping
+const LdCollectionRoutes: Record<string, string> = {
+  product: "products",
+  industry: "industries",
+  solution: "solutions",
+};
+
+const LdSingleRoutes: Record<string, string> = {
+  "about-us": "about-us",
+  career: "career",
+  contact: "contact",
+  event: "event",
+  home: "",
+  pricing: "pricing",
+  "privacy-policy": "privacy-policy",
+  "terms-and-condition": "terms-and-conditions",
+  trend: "trending-now",
+};
+
+// 🔹 Function to build preview redirect path
+function fnGetPreviewPath(
+  iContentType?: string,
+  iSlug?: string | null,
+  iLocale?: string | null,
+  iStatus?: string | null,
 ): string {
 
+  let lBasePath = "/";
 
-  let basePath = "/";
-
-  if (!contentType) {
-    basePath = "/";
+  if (!iContentType) {
+    lBasePath = "/";
   }
 
   // Collection Types
-  else if (contentType === "product") {
-    basePath = slug ? `/products/${slug}` : "/products";
-  }
-
-  else if (contentType === "industry") {
-    basePath = slug ? `/industries/${slug}` : "/industries";
-  }
-
-  else if (contentType === "solution") {
-    basePath = slug ? `/solutions/${slug}` : "/solutions";
+  else if (LdCollectionRoutes[iContentType]) {
+    const lRoute = LdCollectionRoutes[iContentType];
+    lBasePath = iSlug ? `/${lRoute}/${iSlug}` : `/${lRoute}`;
   }
 
   // Single Types
-  else if (contentType === "about-us") {
-    basePath = "/about-us";
+  else if (LdSingleRoutes[iContentType] !== undefined) {
+    const lRoute = LdSingleRoutes[iContentType];
+    lBasePath = lRoute ? `/${lRoute}` : "/";
   }
 
-  else if (contentType === "career") {
-    basePath = "/career";
-  }
-
-  else if (contentType === "contact") {
-    basePath = "/contact";
-  }
-
-  else if (contentType === "event") {
-    basePath = "/event";
-  }
-
-  else if (contentType === "home") {
-    basePath = "/";
-  }
-
-  else if (contentType === "pricing") {
-    basePath = "/pricing";
-  }
-
-  else if (contentType === "privacy-policy") {
-    basePath = "/privacy-policy";
-  }
-
-  else if (contentType === "terms-and-condition") {
-    basePath = "/terms-and-conditions";
-  }
-
-  else if (contentType === "trend") {
-    basePath = "/trending-now";
-  }
-
-  // fallback
+  // Fallback
   else {
-    basePath = `/${contentType}`;
+    lBasePath = `/${iContentType}`;
   }
 
-  const localePath =
-    locale && locale !== "en" ? "/" + locale + basePath : basePath;
-  const statusParam = status ? "?status=" + status : "";
-  return localePath + statusParam;
+  const lLocalePath =
+    iLocale && iLocale !== "en" ? `/${iLocale}${lBasePath}` : lBasePath;
+
+  const lStatusParam = iStatus ? `?status=${iStatus}` : "";
+
+  return lLocalePath + lStatusParam;
 }
 
-export const GET = async (request: Request) => {
-  // Parse query string parameters
-  const { searchParams } = new URL(request.url);
-  const searchParamsData = Object.fromEntries(searchParams);
-  const { secret, slug, locale, uid, status } = searchParamsData;
+export const GET = async (iRequest: Request) => {
 
-  console.log(searchParamsData);
+  const { searchParams } = new URL(iRequest.url);
 
-  // Check the secret and next parameters
+  const ldSearchParams = Object.fromEntries(searchParams);
+
+  const { secret, slug, locale, uid, status } = ldSearchParams;
+
   if (secret !== process.env.PREVIEW_SECRET) {
     return new Response("Invalid token", { status: 401 });
   }
 
-  const contentType = uid?.split(".").pop();
-  const finalPath = getPreviewPath(
-    contentType,
+  const lContentType = uid?.split(".").pop();
+
+  const lFinalPath = fnGetPreviewPath(
+    lContentType,
     slug ?? null,
     locale ?? null,
     status ?? null,
   );
 
-  // Enable Draft Mode by setting the cookie
-  const draft = await draftMode();
- if (status === "draft") {
-  draft.enable();
-} else {
-  draft.disable();
-}
+  const lDraft = await draftMode();
 
-  // Redirect to the path from the fetched post
-  redirect(finalPath);
+  if (status === "draft") {
+    lDraft.enable();
+  } else {
+    lDraft.disable();
+  }
+
+  redirect(lFinalPath);
 };

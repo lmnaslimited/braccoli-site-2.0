@@ -8,8 +8,8 @@ import { fnGetStatus } from '../../utils/strapi/get-status'
 async function getTrendingNowPageData(params: { locale: string }) {
   const { locale } = params
 
-  const status = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
-  const context: Tcontext = { locale: locale, status: status }
+  const lStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const context: Tcontext = { locale: locale, status: lStatus }
 
   const pageData: TtrendsPageTarget = await fnGetCacheData(
     context,
