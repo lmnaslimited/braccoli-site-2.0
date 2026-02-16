@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 const LdCollectionRoutes: Record<string, string> = {
   product: "products",
   industry: "industries",
-  solution: "solutions",
+  "case-study": "solutions"
 };
 
 const LdSingleRoutes: Record<string, string> = {

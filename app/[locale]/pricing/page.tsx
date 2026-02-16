@@ -23,7 +23,7 @@ async function getPricingPageData(params: { locale: string }) {
     clTransformerFactory.createTransformer('caseStudies')
   )
 
-  const context: Tcontext = { locale: locale, }
+  const context: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
   const pageData: TpricingPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('pricing')

@@ -5,7 +5,7 @@ import { fnGetCacheData } from "../../../api/getData";
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { clTransformerFactory, IQuery, ITransformer, Tcontext, TproductsPageTarget, TslugsSource, TslugsTarget, } from "@repo/middleware";
-import { fnGetStatus } from '../../../utils/strapi/get-status'
+import { fnGetStatus } from "../../../utils/strapi/get-status";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -21,10 +21,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
+async function getProductsPageData({ slug, locale,status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
-    status: status, 
+    status: status, //Publication status from Strapi
     filters: {
       slug: {
         eq: slug
@@ -42,7 +42,8 @@ async function getProductsPageData({ slug, locale, status }: { slug: string; loc
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
-  const pageData = await getProductsPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
 
   if (!pageData?.products?.[0]?.metaData) {
     throw new Error(`Meta data not found for product slug: ${slug}`)
@@ -53,8 +54,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const LStatus = await fnGetStatus() //Publication status from Strapi
-  const pageData = await getProductsPageData({ slug, locale,status: LStatus })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
   const jsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>
