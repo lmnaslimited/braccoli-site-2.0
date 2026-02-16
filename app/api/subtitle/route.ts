@@ -1,11 +1,9 @@
 import { NextResponse } from "next/server"
 import { Tsubtitle } from "@repo/middleware/types"
 
-const STRAPI_URL = "http://localhost:1337"
-
-const buildWebVTTContent = (subtitles: Tsubtitle[]) =>
+const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
   "WEBVTT\n\n" +
-  subtitles
+  iaSubtitles
     .map(
       ({ startTime, endTime, text }) =>
         `${startTime} --> ${endTime}\n${text}\n`,
@@ -14,29 +12,31 @@ const buildWebVTTContent = (subtitles: Tsubtitle[]) =>
 
 export async function GET(req: Request) {
   try {
-    const sourceId = new URL(req.url).searchParams.get("sourceId")
+    const LSourceId = new URL(req.url).searchParams.get("sourceId")
 
-    if (!sourceId) return new NextResponse("Bad request", { status: 400 })
+    if (!LSourceId) return new NextResponse("Bad request", { status: 400 })
 
-    const res = await fetch(
-      `${STRAPI_URL}/api/subtitles?filters[sourceId][$eq]=${sourceId}&populate=*`,
+    const LdResponse = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subtitles?filters[sourceId][$eq]=${LSourceId}&populate=*`,
     )
 
-    const json = await res.json()
+    if (!LdResponse.ok) return new NextResponse("Strapi error", { status: 502 })
 
-    if (!json.data?.length)
-      return new NextResponse("No subtitles", { status: 404 })
+    const LdJsonData = await LdResponse.json()
 
-    // console.log("json", json)
+    const LaSubtitles = LdJsonData.data[0].subtitle ?? []
 
-    const subtitles = json.data[0].subtitle
+    if (!LaSubtitles.length)
+      return new NextResponse("No subtitle content", { status: 404 })
 
-    const formatText = buildWebVTTContent(subtitles)
-
-    return new NextResponse(formatText, {
-      headers: { "Content-Type": "text/vtt" },
+    const LFormatText = fnBuildWebVTTContent(LaSubtitles)
+    return new NextResponse(LFormatText, {
+      headers: {
+        "Content-Type": "text/vtt",
+        "Cache-Control": "no-cache",
+      },
     })
   } catch (error) {
-    return new NextResponse("Error", { status: 500 })
+    return new NextResponse("Server error", { status: 500 })
   }
 }
