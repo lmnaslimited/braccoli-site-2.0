@@ -8,20 +8,22 @@ import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/midd
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
+  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {
       slug: {
         eq: 'erp-comparison-lens'
       }
-    }
+    },
+    status: LStatus
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,
     clTransformerFactory.createTransformer('caseStudies')
   )
 
-  const context: Tcontext = { locale: locale, }
+  const context: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
   const pageData: TpricingPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('pricing')

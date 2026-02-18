@@ -7,7 +7,8 @@ import { Tcontext, ThomePageTarget } from '@repo/middleware/types'
 
 async function getHomePageData(params: { locale: string }) {
   const { locale } = params
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: ThomePageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('home')

@@ -7,7 +7,8 @@ import { Tcontext, TeventPageTarget } from '@repo/middleware/types'
 
 async function getEventsPageData(params: { locale: string }) {
     const { locale } = params
-    const context: Tcontext = { locale: locale }
+    const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+    const context: Tcontext = { locale: locale, status: LStatus }
     const pageData: TeventPageTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('event')

@@ -21,9 +21,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getProductsPageData({ slug, locale }: { slug: string; locale: string }) {
+async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
+    status: status, //Publication status from Strapi
     filters: {
       slug: {
         eq: slug
@@ -41,7 +42,8 @@ async function getProductsPageData({ slug, locale }: { slug: string; locale: str
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
-  const pageData = await getProductsPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
 
   if (!pageData?.products?.[0]?.metaData) {
     console.warn(`No metadata found for product page: ${slug}`)
@@ -53,7 +55,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const pageData = await getProductsPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
   const jsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>

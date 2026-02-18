@@ -18,9 +18,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getIndustriesPageData({ slug, locale }: { slug: string; locale: string }) {
+async function getIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
+    status: status, //Publication status from Strapi 
     filters: {
       slug: {
         eq: slug,
@@ -57,7 +58,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Industries({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const pageData = await getIndustriesPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getIndustriesPageData({ slug, locale, status: LStatus })
   const jsonLd = pageData.industries[0]?.metaData.schemaData
   return (
     <>

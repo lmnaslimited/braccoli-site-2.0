@@ -7,7 +7,8 @@ import { TcontactTarget, Tcontext } from '@repo/middleware/types'
 
 async function getContactPageData(params: { locale: string }) {
     const { locale } = params
-    const context: Tcontext = { locale: locale }
+    const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+    const context: Tcontext = { locale: locale, status: LStatus }
     const pageData: TcontactTarget = await fnGetCacheData(
         context,
         clTransformerFactory.createTransformer('contact')
