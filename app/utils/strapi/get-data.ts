@@ -7,8 +7,10 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
 ) {
   const locale = iContext?.locale ?? "en"
+  const status = iContext?.status ?? "PUBLISHED"
 
   let slug: string | undefined
+
   if (iContext?.filters?.slug?.eq) {
     slug = iContext.filters.slug.eq
   }
@@ -25,19 +27,27 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   }
 
   const LCacheKey = slug
-    ? `${transformer.contentType}-${locale}-${slug}`
-    : `${transformer.contentType}-${locale}`
+    ? `${transformer.contentType}-${locale}-${slug}-${status}`
+    : `${transformer.contentType}-${locale}-${status}`
 
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
-        const pageData: DynamicTargetType = await transformer.execute(iContext)
+        const updatedContext = {
+          ...iContext,
+          status,
+        }
+        const pageData: DynamicTargetType =
+          await transformer.execute(updatedContext)
+
         return pageData
       },
       [LCacheKey],
       {
         revalidate: 3600,
-        tags: slug ? [LCacheKey, locale, slug] : [LCacheKey, locale],
+        tags: slug
+          ? [LCacheKey, locale, slug, status]
+          : [LCacheKey, locale, status],
       },
     )
     LdCacheMap.set(LCacheKey, fetcher)

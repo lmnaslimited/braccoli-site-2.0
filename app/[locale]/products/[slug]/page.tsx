@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ProductsComp from "../products";
 import { fnGetCacheData } from '../../../utils/strapi/get-data'
 import { getPageMetadata } from '../../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../../utils/strapi/get-status'
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { clTransformerFactory } from "@repo/middleware";
@@ -24,7 +25,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
 async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
-    status: status, //Publication status from Strapi
+    status: status,
     filters: {
       slug: {
         eq: slug
@@ -46,11 +47,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const pageData = await getProductsPageData({ slug, locale, status: LStatus })
 
   if (!pageData?.products?.[0]?.metaData) {
-    console.warn(`No metadata found for product page: ${slug}`)
-    return {}
+    throw new Error(`Meta data not found for product slug: ${slug}`)
   }
 
-  return getPageMetadata(pageData?.products?.[0]?.metaData)
+  return getPageMetadata(pageData.products[0].metaData)
 }
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {

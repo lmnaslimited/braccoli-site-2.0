@@ -1,7 +1,5 @@
-// app/api/preview/route.ts
-
-import { draftMode } from "next/headers";
-import { redirect } from "next/navigation";
+import { draftMode } from "next/headers"
+import { redirect } from "next/navigation"
 
 // Constant dictionaries for route mapping
 const LdCollectionRoutes: Record<string, string> = {
@@ -9,7 +7,7 @@ const LdCollectionRoutes: Record<string, string> = {
   industry: "industries",
   "case-study": "solutions",
   solution: "solutions",
-};
+}
 
 const LdSingleRoutes: Record<string, string> = {
   "about-us": "about-us",
@@ -21,7 +19,7 @@ const LdSingleRoutes: Record<string, string> = {
   "privacy-policy": "privacy-policy",
   "terms-and-condition": "terms-and-conditions",
   trend: "trending-now",
-};
+}
 // Add special content types (e.g., "terms-and-condition") to the route maps above
 // to ensure proper handling inside fnGetPreviewPath.
 
@@ -32,66 +30,64 @@ function fnGetPreviewPath(
   iLocale?: string | null,
   iStatus?: string | null,
 ): string {
-
-  let lBasePath = "/";
+  let lBasePath = "/"
 
   if (!iContentType) {
-    lBasePath = "/";
+    lBasePath = "/"
   }
 
   // Collection Types
   else if (LdCollectionRoutes[iContentType]) {
-    const LRoute = LdCollectionRoutes[iContentType];
-    lBasePath = iSlug ? `/${LRoute}/${iSlug}` : `/${LRoute}`;
+    const LRoute = LdCollectionRoutes[iContentType]
+    lBasePath = iSlug ? `/${LRoute}/${iSlug}` : `/${LRoute}`
   }
 
   // Single Types
   else if (LdSingleRoutes[iContentType] !== undefined) {
-    const lRoute = LdSingleRoutes[iContentType];
-    lBasePath = lRoute ? `/${lRoute}` : "/";
+    const lRoute = LdSingleRoutes[iContentType]
+    lBasePath = lRoute ? `/${lRoute}` : "/"
   }
 
   // Fallback
   else {
-    lBasePath = `/${iContentType}`;
+    lBasePath = `/${iContentType}`
   }
 
   const LLocalePath =
-    iLocale && iLocale !== "en" ? `/${iLocale}${lBasePath}` : lBasePath;
+    iLocale && iLocale !== "en" ? `/${iLocale}${lBasePath}` : lBasePath
 
-  const LStatusParam = iStatus ? `?status=${iStatus}` : "";
+  const LStatusParam = iStatus ? `?status=${iStatus}` : ""
 
-  return LLocalePath + LStatusParam;
+  return LLocalePath + LStatusParam
 }
 
 export const GET = async (iRequest: Request) => {
+  const { searchParams } = new URL(iRequest.url)
 
-  const { searchParams } = new URL(iRequest.url);
+  const LdSearchParams = Object.fromEntries(searchParams)
 
-  const LdSearchParams = Object.fromEntries(searchParams);
-
-  const { secret, slug, locale, uid, status } = LdSearchParams;
+  const { secret, slug, locale, uid, status } = LdSearchParams
 
   if (secret !== process.env.PREVIEW_SECRET) {
-    return new Response("Invalid token", { status: 401 });
+    return new Response("Invalid token", { status: 401 })
   }
 
-  const LContentType = uid?.split(".").pop();
+  const LContentType = uid?.split(".").pop()
 
   const LFinalPath = fnGetPreviewPath(
     LContentType,
     slug ?? null,
     locale ?? null,
     status ?? null,
-  );
+  )
 
-  const LDraft = await draftMode();
+  const LDraft = await draftMode()
 
   if (status === "draft") {
-    LDraft.enable();
+    LDraft.enable()
   } else {
-    LDraft.disable();
+    LDraft.disable()
   }
 
-  redirect(LFinalPath);
-};
+  redirect(LFinalPath)
+}

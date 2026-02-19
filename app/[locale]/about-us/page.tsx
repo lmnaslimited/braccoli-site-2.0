@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import AboutUs from './about-us'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
-import { TaboutUsPageTarget, Tcontext } from '@repo/middleware/types'
+import type { Tcontext, TaboutUsPageTarget } from '@repo/middleware/types'
 
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
-  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const LStatus = await fnGetStatus()
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,

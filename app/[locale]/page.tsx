@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { fnGetCacheData } from '../utils/strapi/get-data'
 import { getPageMetadata } from '../utils/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
+import { fnGetStatus } from '../utils/strapi/get-status'
 import { Tcontext, ThomePageTarget } from '@repo/middleware/types'
 
 async function getHomePageData(params: { locale: string }) {

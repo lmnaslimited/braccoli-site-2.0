@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import IndustryComp from '../industry'
 import { fnGetCacheData } from '../../../utils/strapi/get-data'
 import { getPageMetadata } from '../../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../../utils/strapi/get-status'
 import { clQuerySlug } from '../../../../../../packages/middleware/src/api/query'
 import { clSlugsTransformer } from '../../../../../../packages/middleware/src/engine/transformer'
 import { clTransformerFactory } from '@repo/middleware'
@@ -21,7 +22,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
 async function getIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
-    status: status, //Publication status from Strapi 
+    status: status,
     filters: {
       slug: {
         eq: slug,
@@ -49,8 +50,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const pageData = await getIndustriesPageData({ slug, locale })
 
   if (!pageData?.industries?.[0]?.metaData) {
-    console.warn(`No metadata found for industry page: ${slug}`)
-    return {}
+    throw new Error("Meta data not found for industry page")
   }
 
   return getPageMetadata(pageData.industries[0].metaData)

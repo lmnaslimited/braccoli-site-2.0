@@ -2,13 +2,14 @@ import type { Metadata } from 'next'
 import Pricing from './pricing'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/types'
 
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
-  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const LStatus = await fnGetStatus()
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {

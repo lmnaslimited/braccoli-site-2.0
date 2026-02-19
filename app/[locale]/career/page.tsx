@@ -2,12 +2,13 @@ import type { Metadata } from 'next'
 import Career from './career'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcareerPageTarget, Tcontext } from '@repo/middleware/types'
 
 async function getCareerPageData(params: { locale: string }) {
   const { locale } = params
-  const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
+  const LStatus = await fnGetStatus()
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TcareerPageTarget = await fnGetCacheData(
     context,
