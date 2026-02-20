@@ -1,18 +1,18 @@
 "use client";
+
 import Link from "next/link";
 import * as Icons from "lucide-react";
+import { ArrowLeft, LucideIcon } from "lucide-react";
+import { useFormHandler } from "../../../hooks/form-handler";
 import Tab from "@repo/ui/components/tab";
-import CustomCard from "@repo/ui/components/customCard";
 import { Badge } from "@repo/ui/components/ui/badge";
 import { Button } from "@repo/ui/components/ui/button";
-import { ProblemSection } from "@repo/ui/components/problemSection";
-import { SolutionSection } from "@repo/ui/components/solutionSection";
-import { DynamicSidebar } from "@repo/ui/components/dynamicSidebar";
-// import Callout from "@repo/ui/components/callout";
-import { ArrowLeft, LucideIcon } from "lucide-react";
-import { TcaseStudies, TformMode, Theader } from "@repo/middleware";
-import { useFormHandler } from "../../hooks/useFormHandler";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { ProblemSection } from "@repo/ui/components/problem";
+import { SolutionSection } from "@repo/ui/components/solution";
+import { DynamicSidebar } from "@repo/ui/components/dynamic-sidebar";
+import { TcaseStudies, TformMode, Theader } from "@repo/middleware/types";
 
 export default function CaseStudyPage({
   idcaseStudies,
@@ -52,11 +52,11 @@ export default function CaseStudyPage({
                 ).find((btn) => "formMode" in btn);
                 return LaButton
                   ? () =>
-                      fnHandleFormButtonClick(
-                        LaButton.formMode as TformMode,
-                        "containerTwo",
-                        LaButton.label
-                      )
+                    fnHandleFormButtonClick(
+                      LaButton.formMode as TformMode,
+                      "containerTwo",
+                      LaButton.label
+                    )
                   : undefined;
               })(),
             }}
@@ -140,7 +140,7 @@ export default function CaseStudyPage({
               className="hidden lg:block lg:col-span-4 sticky top-24 self-start"
               ref={LdSectionRefs("containerTwo")}
             >
-                 {fnRenderFormBelowSection("containerTwo", { idPdfData: idcaseStudies })}
+              {fnRenderFormBelowSection("containerTwo", { idPdfData: idcaseStudies })}
               {idcaseStudies.caseStudies[0]?.sidebarData && (
                 <DynamicSidebar
                   idCaseStudy={idcaseStudies.caseStudies[0]?.sidebarData}
@@ -153,7 +153,7 @@ export default function CaseStudyPage({
                   }
                 />
               )}
-             
+
             </div>
           </div>
         </section>
@@ -208,66 +208,66 @@ export default function CaseStudyPage({
         </section> */}
       </main>
 
-       < div ref={LdSectionRefs("containerFive")} >
-                <section className=" py-16 md:py-24 lg:py-24" id="success-story">
-                    <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-                        <TitleSubtitle idTitle={{
-                            ...idcaseStudies.caseStudies[0]?.moreCaseStudies,
-                            className: "text-center items-center",
-                            headingClass: "md:text-5xl",
-                        } as Theader} />
-                        <Tab
-                            idTab={{
-                                data: idcaseStudies.allCaseStudies.map((idCard) => ({
-                                    ...idCard,
-                                    header: {
-                                        ...idCard.solutionSection.successCard.header,
-                                        descripClass: "text-left text-sm h-16",
-                                        headingClass: "text-left text-lg mb-4",
-                                    },
-                                    image: {
-                                        source: idCard.heroSection.image?.source,
-                                        alternate: idCard.heroSection.image?.alternate ?? '',
-                                        aspectRatio: "wide",
-                                    },
-                                    buttons: idCard.solutionSection.successCard.buttons?.map((idButton) => ({
-                                        ...idButton,
-                                        icon: idButton.icon,
-                                        className: "size-5",
-                                        iconPosition: "after",
-                                        size: "lg",
-                                        variant: "outline",
-                                    })) ?? [],
-                                    category: idCard.heroSection.tag,
-                                    className: "max-w-xl border-gray-200 text-center items-center justify-center",
-                                    tag: idCard.heroSection.tag,
+      < div ref={LdSectionRefs("containerFive")} >
+        <section className=" py-16 md:py-24 lg:py-24" id="success-story">
+          <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+            <TitleSubtitle idTitle={{
+              ...idcaseStudies.caseStudies[0]?.moreCaseStudies,
+              className: "text-center items-center",
+              headingClass: "md:text-5xl",
+            } as Theader} />
+            <Tab
+              idTab={{
+                data: idcaseStudies.allCaseStudies.map((idCard) => ({
+                  ...idCard,
+                  header: {
+                    ...idCard.solutionSection.successCard.header,
+                    descripClass: "text-left text-sm h-16",
+                    headingClass: "text-left text-lg mb-4",
+                  },
+                  image: {
+                    source: idCard.heroSection.image?.source,
+                    alternate: idCard.heroSection.image?.alternate ?? '',
+                    aspectRatio: "wide",
+                  },
+                  buttons: idCard.solutionSection.successCard.buttons?.map((idButton) => ({
+                    ...idButton,
+                    icon: idButton.icon,
+                    className: "size-5",
+                    iconPosition: "after",
+                    size: "lg",
+                    variant: "outline",
+                  })) ?? [],
+                  category: idCard.heroSection.tag,
+                  className: "max-w-xl border-gray-200 text-center items-center justify-center",
+                  tag: idCard.heroSection.tag,
 
-                                })),
-                                TabDefault: {
-                                    text: "All ",
-                                    defaultTab:idcaseStudies.caseStudies[0]?.heroSection.tag,
-                                    AllLabel: "Show More",
-                                    LessLabel: "Show Less",
-                                },
-                            }}
-                        />
-                        <div className="text-center">
-            {idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
-              idcaseStudies.caseStudies[0].heroSection.link[0].label && (
-                <Link
-                  href={idcaseStudies.caseStudies[0].heroSection.link[0].href}
-                >
-                  <Button size="lg">
-                    <ArrowLeft className="h-4 w-4" />
-                    {idcaseStudies.caseStudies[0].heroSection.link[0].label}
-                  </Button>
-                </Link>
-              )}
+                })),
+                TabDefault: {
+                  text: "All ",
+                  defaultTab: idcaseStudies.caseStudies[0]?.heroSection.tag,
+                  AllLabel: "Show More",
+                  LessLabel: "Show Less",
+                },
+              }}
+            />
+            <div className="text-center">
+              {idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
+                idcaseStudies.caseStudies[0].heroSection.link[0].label && (
+                  <Link
+                    href={idcaseStudies.caseStudies[0].heroSection.link[0].href}
+                  >
+                    <Button size="lg">
+                      <ArrowLeft className="h-4 w-4" />
+                      {idcaseStudies.caseStudies[0].heroSection.link[0].label}
+                    </Button>
+                  </Link>
+                )}
+            </div>
           </div>
-                    </div>
-                </section>
-                {fnRenderFormBelowSection("containerFive")}
-            </div >
+        </section>
+        {fnRenderFormBelowSection("containerFive")}
+      </div >
     </>
   );
 }

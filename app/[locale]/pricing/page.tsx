@@ -1,26 +1,30 @@
 import type { Metadata } from 'next'
 import Pricing from './pricing'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { fnGetCacheData } from '../../api/getData'
-import { clTransformerFactory, TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware'
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
+import { clTransformerFactory } from '@repo/middleware'
+import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/types'
 
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
+  const LStatus = await fnGetStatus()
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {
       slug: {
         eq: 'erp-comparison-lens'
       }
-    }
+    },
+    status: LStatus
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,
     clTransformerFactory.createTransformer('caseStudies')
   )
 
-  const context: Tcontext = { locale: locale, }
+  const context: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
   const pageData: TpricingPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('pricing')
@@ -42,6 +46,7 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
   const jsonLd = pageData.pricing.metaData.schemaData
   return (
     <>
+      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -50,7 +55,6 @@ export default async function PricingPage({ params }: { params: Promise<{ locale
           }}
         />
       )}
-      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
     </>
   )
 }

@@ -1,11 +1,12 @@
 'use client'
+
 import Link from "next/link";
-import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware";
-import CustomCard from "@repo/ui/components/customCard";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
-import { useFormHandler } from "../hooks/useFormHandler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
+import CustomCard from "@repo/ui/components/custom-card";
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import { useFormHandler } from "../../hooks/form-handler";
+import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon'], className?: string) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -107,7 +108,7 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                 </div>
                             ))}
 
-                            {/* current and beyond years */}
+                            {/* Current and Beyond Years */}
                             <div className="grid md:grid-cols-12 gap-6 items-start">
                                 <div className="md:col-span-2">
                                     <div className="sticky top-24">
@@ -173,8 +174,8 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
             </section>
 
             {/* CTA Section*/}
-            <div ref={LdSectionRefs("containerOne")}>
-                <section className="py-24 bg-primary text-background">
+            <section ref={LdSectionRefs("containerOne")}>
+                <div className="py-24 bg-primary text-background">
                     <div className="container mx-auto px-6">
                         <div className="max-w-3xl mx-auto text-center">
                             <TitleSubtitle
@@ -206,9 +207,9 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                             </div>
                         </div>
                     </div>
-                </section>
+                </div>
                 {fnRenderFormBelowSection("containerOne")}
-            </div>
+            </section>
         </>
     )
 }

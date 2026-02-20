@@ -1,12 +1,15 @@
 import Home from './home/home'
 import type { Metadata } from 'next'
-import { fnGetCacheData } from '../api/getData'
-import { getPageMetadata } from '../api/getPageMetadata'
-import { clTransformerFactory, Tcontext, ThomePageTarget } from '@repo/middleware'
+import { fnGetCacheData } from '../utils/strapi/get-data'
+import { getPageMetadata } from '../utils/metadata/page-metadata'
+import { clTransformerFactory } from '@repo/middleware'
+import { fnGetStatus } from '../utils/strapi/get-status'
+import { Tcontext, ThomePageTarget } from '@repo/middleware/types'
 
 async function getHomePageData(params: { locale: string }) {
   const { locale } = params
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: ThomePageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('home')

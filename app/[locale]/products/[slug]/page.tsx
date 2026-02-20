@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
 import ProductsComp from "../products";
-import { getPageMetadata } from "../../../api/getPageMetadata";
-import { fnGetCacheData } from "../../../api/getData";
+import { fnGetCacheData } from '../../../utils/strapi/get-data'
+import { getPageMetadata } from '../../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../../utils/strapi/get-status'
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
-import { clTransformerFactory, IQuery, ITransformer, Tcontext, TproductsPageTarget, TslugsSource, TslugsTarget, } from "@repo/middleware";
+import { clTransformerFactory } from "@repo/middleware";
+import { IQuery, ITransformer, Tcontext, TproductsPageTarget, TslugsSource, TslugsTarget, } from "@repo/middleware/types";
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -20,9 +22,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getProductsPageData({ slug, locale }: { slug: string; locale: string }) {
+async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
+    status: status,
     filters: {
       slug: {
         eq: slug
@@ -40,7 +43,8 @@ async function getProductsPageData({ slug, locale }: { slug: string; locale: str
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
-  const pageData = await getProductsPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
 
   if (!pageData?.products?.[0]?.metaData) {
     throw new Error(`Meta data not found for product slug: ${slug}`)
@@ -51,10 +55,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const pageData = await getProductsPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
   const jsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>
+      <ProductsComp idProduct={pageData.products[0]!} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -63,7 +69,6 @@ export default async function Products({ params }: { params: Promise<{ locale: s
           }}
         />
       )}
-      <ProductsComp idProduct={pageData.products[0]!} />
     </>
   )
 }

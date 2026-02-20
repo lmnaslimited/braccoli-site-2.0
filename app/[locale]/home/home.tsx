@@ -1,11 +1,24 @@
 "use client";
+
 import Link from "next/link";
-import Feature from "@repo/ui/components/feature";
 import Hero from "@repo/ui/components/hero";
-import Callout from "@repo/ui/components/callout";
 import FAQs from "@repo/ui/components/faq";
-import TitleSubtitle from "@repo/ui/components/titleSubtitle";
+import Callout from "@repo/ui/components/callout";
+import Feature from "@repo/ui/components/feature";
+import CustomCard from "@repo/ui/components/custom-card";
+import LogoShowcase from "@repo/ui/components/logo-showcase"
+import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
+
+import { useFormHandler } from "../../hooks/form-handler";
+import { getIconComponent } from "@repo/ui/lib/icon";
+
+import {
+  MessageSquare,
+  Users,
+  Lightbulb,
+  Globe,
+} from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -13,23 +26,13 @@ import {
   TformMode,
   TheroSection,
   ThomePageTarget,
-} from "@repo/middleware";
-import { useFormHandler } from "../hooks/useFormHandler";
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
-import CustomCard from "@repo/ui/components/customCard";
-import LogoShowcase from "@repo/ui/components/logoShowCase";
-import { getIconComponent } from "@repo/ui/lib/icon";
+} from "@repo/middleware/types";
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
 
-  // Trending-Now section icons
+  // Trending Now Section Icons
   const LaTrendingNowIcons = [
     <MessageSquare key="message" className="h-10 w-10 text-primary" />,
     <Users key="users" className="h-10 w-10 text-primary" />,
@@ -37,7 +40,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
     <Globe key="globe" className="h-10 w-10 text-primary" />,
   ];
 
-  // Painpoint section percentages
+  // Painpoint Section Severities
   const LaPainpointSeverities = [85, 78, 92, 70];
 
   const renderIcon = (icon: Tbutton['icon']) => {
@@ -48,8 +51,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
 
   return (
     <div>
-      {/* Hero section */}
-      <div ref={LdSectionRefs("containerOne")}>
+      {/* Hero Section */}
+      <section ref={LdSectionRefs("containerOne")}>
         <Hero
           idHero={
             {
@@ -65,10 +68,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerOne")}
-      </div>
+      </section>
 
-      {/* problem section */}
-      <div className="bg-grayBackground">
+      {/* Problem Section */}
+      <section className="bg-grayBackground">
         <Feature
           idFeature={
             {
@@ -78,9 +81,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
-      {/* Why section */}
+      {/* Why Section */}
       <section className="bg-accent">
         <div className="py-16 ">
           <Feature
@@ -95,9 +98,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
         </div>
       </section>
 
-      {/* business problem section */}
-      <div className="bg-background" ref={LdSectionRefs("containerTwo")}>
-        <section className="py-24 px-4 border-t bg-grayBackground">
+      {/* Business Problem Section */}
+      <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
+        <div className="py-24 px-4 border-t bg-grayBackground">
           <div className="max-w-4xl mx-auto">
             <TitleSubtitle
               idTitle={{
@@ -165,12 +168,12 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               )}
             </div>
           </div>
-        </section>
+        </div>
         {fnRenderFormBelowSection("containerTwo")}
-      </div>
+      </section>
 
-      {/* product section */}
-      <div className="py-16 bg-accent">
+      {/* Product Section */}
+      <section className="py-16 bg-accent">
         <Feature
           idFeature={
             {
@@ -181,7 +184,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
       {/* Social Proof Section */}
       <section className="py-24 bg-background">
@@ -197,7 +200,6 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full",
               }}
             />
-
             <div className="flex items-center justify-center">
               <div className="max-w-7xl ">
                 <LogoShowcase
@@ -262,7 +264,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Callout Section */}
-      <div className="bg-accent" ref={LdSectionRefs("containerThree")}>
+      <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
         <Callout
           idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode, formTitle) =>
@@ -270,10 +272,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerThree")}
-      </div>
+      </section>
 
       {/* Problem Section */}
-      <div className="py-16">
+      <section className="py-16">
         <Feature
           idFeature={
             {
@@ -283,10 +285,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </div>
+      </section>
 
       {/* FAQ Section */}
-      <div className="bg-grayBackground">
+      <section className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -295,10 +297,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             <FAQs idFaq={idHome.home.faqSection.list} />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Callout Section */}
-      <div className="bg-accent" ref={LdSectionRefs("containerFour")}>
+      <section className="bg-accent" ref={LdSectionRefs("containerFour")}>
         <Callout
           idCallout={
             {
@@ -311,7 +313,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerFour")}
-      </div>
+      </section>
 
       {/* Trending Now Section */}
       <section className="py-24 bg-background">

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import IndustryComp from '../industry'
-import { fnGetCacheData } from '../../../api/getData'
-import { getPageMetadata } from '../../../api/getPageMetadata'
+import { fnGetCacheData } from '../../../utils/strapi/get-data'
+import { getPageMetadata } from '../../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../../utils/strapi/get-status'
 import { clQuerySlug } from '../../../../../../packages/middleware/src/api/query'
 import { clSlugsTransformer } from '../../../../../../packages/middleware/src/engine/transformer'
-import { clTransformerFactory, IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware'
+import { clTransformerFactory } from '@repo/middleware'
+import { IQuery, ITransformer, Tcontext, TindustriesPageTarget, TslugsSource, TslugsTarget } from '@repo/middleware/types'
 
 export async function generateStaticParams({ params }: { params: { locale: string } }) {
   const { locale } = params
@@ -17,9 +19,10 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getIndustriesPageData({ slug, locale }: { slug: string; locale: string }) {
+async function getIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
   const context: Tcontext = {
     locale: locale,
+    status: status,
     filters: {
       slug: {
         eq: slug,
@@ -55,10 +58,12 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function Industries({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
-  const pageData = await getIndustriesPageData({ slug, locale })
+  const LStatus = await fnGetStatus()
+  const pageData = await getIndustriesPageData({ slug, locale, status: LStatus })
   const jsonLd = pageData.industries[0]?.metaData.schemaData
   return (
     <>
+      <IndustryComp idIndustry={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -67,7 +72,6 @@ export default async function Industries({ params }: { params: Promise<{ locale:
           }}
         />
       )}
-      <IndustryComp idIndustry={pageData} />
     </>
   )
 }

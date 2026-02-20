@@ -1,12 +1,15 @@
 import type { Metadata } from 'next'
 import AboutUs from './about-us'
-import { fnGetCacheData } from '../../api/getData'
-import { getPageMetadata } from '../../api/getPageMetadata'
-import { clTransformerFactory, TaboutUsPageTarget, Tcontext } from '@repo/middleware'
+import { fnGetCacheData } from '../../utils/strapi/get-data'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
+import { clTransformerFactory } from '@repo/middleware'
+import type { Tcontext, TaboutUsPageTarget } from '@repo/middleware/types'
 
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('aboutUs')
@@ -25,6 +28,7 @@ export default async function AboutUsPage({ params }: { params: Promise<{ locale
 
   return (
     <>
+      <AboutUs idAboutUs={pageData} />
       {jsonLd && (
         <script
           type="application/ld+json"
@@ -33,7 +37,6 @@ export default async function AboutUsPage({ params }: { params: Promise<{ locale
           }}
         />
       )}
-      <AboutUs idAboutUs={pageData} />
     </>
   )
 }
