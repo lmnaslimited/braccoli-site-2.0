@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Solution from './solution'
-import { fnGetCacheData } from '../../utils/strapi/get-data'
-import { getPageMetadata } from '../../utils/metadata/page-metadata'
-import { fnGetStatus } from '../../utils/strapi/get-status'
+import { fnGetCacheData } from '../../lib/strapi/get-data'
+import { getPageMetadata } from '../../lib/metadata/page-metadata'
+import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TsolutionPageTarget } from '@repo/middleware/types'
 

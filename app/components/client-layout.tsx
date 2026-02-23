@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { fnInitAutoTracking } from "../utils/rudder/auto-track";
-import useRudderStackAnalytics from "../utils/rudder/rudder-analytics";
+import { fnInitAutoTracking } from "../lib/rudder/auto-track";
+import useRudderStackAnalytics from "../lib/rudder/rudder-analytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     // console.log("ClientLayout component rendered");

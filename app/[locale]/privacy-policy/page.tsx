@@ -4,9 +4,9 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import ReactMarkdown from "react-markdown";
 import FAQs from "@repo/ui/components/faq";
-import { fnGetCacheData } from '../../utils/strapi/get-data'
-import { getPageMetadata } from '../../utils/metadata/page-metadata'
-import { fnGetStatus } from '../../utils/strapi/get-status'
+import { fnGetCacheData } from '../../lib/strapi/get-data'
+import { getPageMetadata } from '../../lib/metadata/page-metadata'
+import { fnGetStatus } from '../../lib/strapi/get-status'
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/types";

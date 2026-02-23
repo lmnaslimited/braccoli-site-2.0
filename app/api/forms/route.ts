@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { fnGetCacheData } from "../../utils/strapi/get-data"
+import { fnGetCacheData } from "../../lib/strapi/get-data"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TformsPageTarget } from "@repo/middleware/types"
 
