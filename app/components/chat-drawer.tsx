@@ -26,7 +26,7 @@ export default function ChatDrawer() {
     const [currentQuestion, setCurrentQuestion] = useState<DiscoveryQuestion | null>(null)
     const [answers, setAnswers] = useState<Record<string, string>>({})
 
-    console.log("AIChatDrawer state:", { isChatOpen })
+    // console.log("AIChatDrawer state:", { isChatOpen })
 
     useEffect(() => {
         if (!isChatOpen || !benefitSlug) return
@@ -34,7 +34,7 @@ export default function ChatDrawer() {
         const run = async () => {
             const benefitType = slugToBenefitType[benefitSlug]
 
-            console.log("Mapped benefitSlug to benefitType:", { benefitSlug, benefitType })
+            // console.log("Mapped benefitSlug to benefitType:", { benefitSlug, benefitType })
 
             if (!benefitType) return
 
@@ -43,7 +43,7 @@ export default function ChatDrawer() {
             const response = await fetch("/api/session/me")
 
             const json = (await response.json()) as { session: UserSession | null }
-            console.log("Session JSON:", json)
+            // console.log("Session JSON:", json)
 
             setSession(json.session)
 

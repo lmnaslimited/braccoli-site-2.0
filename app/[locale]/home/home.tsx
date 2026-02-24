@@ -32,6 +32,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
 
+  console.log("Rendering Home component with idHome:", idHome.home.heroSection.buttons[0]);
+
   // Trending Now Section Icons
   const LaTrendingNowIcons = [
     <MessageSquare key="message" className="h-10 w-10 text-primary" />,
@@ -60,7 +62,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               buttons: idHome.home.heroSection.buttons.map((btn) => ({
                 ...btn,
                 iconPosition: "after",
-                benefitMode: "pipeline-audit",
+                benefitMode: btn.benefitMode,
               })),
             } as TheroSection
           }
