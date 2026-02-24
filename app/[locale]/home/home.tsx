@@ -60,12 +60,13 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               buttons: idHome.home.heroSection.buttons.map((btn) => ({
                 ...btn,
                 iconPosition: "after",
+                benefitMode: "pipeline-audit",
               })),
             } as TheroSection
           }
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
-          }
+        // onButtonClick={(mode, formTitle) =>
+        //   fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
+        // }
         />
         {fnRenderFormBelowSection("containerOne")}
       </section>

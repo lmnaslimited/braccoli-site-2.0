@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { useCTAContext } from "../context/cta-context-provider"
+import { useCTAContext } from "@repo/ui/context/cta-context-provider"
 import type { UserSession } from "../types/session"
 import type { BenefitType, CTAContext, DiscoveryQuestion } from "../types/engine"
 import ChatInput from "../components/chat-input"
