@@ -58,6 +58,8 @@ export default function ChatDrawer() {
                 userIntent: `Run ${benefitType.replaceAll("_", " ")}`,
             }
 
+            console.log("Initial CTA context:", initialContext)
+
             setContext(initialContext)
 
             const chatStartResponse = await fetch("/api/chat/start", {

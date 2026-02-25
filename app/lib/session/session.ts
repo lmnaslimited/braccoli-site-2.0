@@ -10,7 +10,7 @@ function getSecret() {
 }
 
 function sign(value: string) {
-  console.log("Signing value:", value)
+  // console.log("Signing value:", value)
   return createHmac("sha256", getSecret()).update(value).digest("hex")
 }
 
@@ -22,8 +22,8 @@ function encodeSession(data: UserSession) {
 
 function decodeSession(raw: string): UserSession | null {
   const [payload, signature] = raw.split(".")
-  console.log("Decoded payload:", payload)
-  console.log("Decoded signature:", signature)
+  // console.log("Decoded payload:", payload)
+  // console.log("Decoded signature:", signature)
   if (!payload || !signature || sign(payload) !== signature) {
     return null
   }
@@ -39,10 +39,10 @@ function decodeSession(raw: string): UserSession | null {
 
 export async function getSession(): Promise<UserSession | null> {
   const cookieStore = await cookies()
-  console.log("Cookies:", cookieStore)
+  // console.log("Cookies:", cookieStore)
 
   const raw = cookieStore.get(COOKIE_NAME)?.value
-  console.log("Raw session cookie:", raw)
+  // console.log("Raw session cookie:", raw)
 
   if (!raw) {
     return null
