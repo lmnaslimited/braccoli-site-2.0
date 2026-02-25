@@ -125,9 +125,17 @@ export default function ChatDrawer() {
   if (!isChatOpen) return null
 
   return (
-    <aside className="fixed sm:bottom-6 left-1/2 z-[120] w-full -translate-x-1/2 max-h-[92vh] sm:max-h-[88vh] overflow-y-auto border border-border bg-card text-card-foreground dark:bg-neutral-500 shadow-[0_20px_60px_rgba(0,0,0,0.35)] dark:border-white/20 dark:shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.18),0_0_50px_rgba(255,255,255,0.08)] p-4 sm:p-5 animate-[drawerSlideUp_0.28s_ease-out]">
-      <div className="space-y-4">
-
+    <aside className="fixed bottom-0 sm:bottom-6 left-0 right-0 z-[120]
+w-full max-h-[92vh] sm:max-h-[88vh]
+overflow-y-auto border border-border
+bg-card text-card-foreground dark:bg-neutral-500
+shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+dark:border-white/20
+dark:shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.18),0_0_50px_rgba(255,255,255,0.08)]
+px-4 sm:px-6 lg:px-10
+p-4 sm:p-5
+animate-[drawerSlideUp_0.28s_ease-out]">
+      <div className="mx-auto max-w-4xl space-y-3">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="flex items-center gap-2 text-lg sm:text-xl font-semibold leading-none">
