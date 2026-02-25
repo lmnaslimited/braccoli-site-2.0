@@ -13,7 +13,7 @@ const CTAContext = createContext<CTAContextValue | undefined>(undefined)
 
 export function CTAContextProvider({ children }: { children: ReactNode }) {
     const [isChatOpen, setIsChatOpen] = useState(true)
-    const [benefitSlug, setBenefitSlug] = useState<string | null>(null)
+    const [benefitSlug, setBenefitSlug] = useState<string | null>("pipeline-audit")
 
     const value = useMemo(
         () => ({

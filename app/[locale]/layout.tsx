@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
-import { fnGetCacheData } from '../utils/strapi/get-data'
+import { fnGetCacheData } from '../lib/strapi/get-data'
 import ChatInit from "../components/chat-int"
 import ClientLayout from "..//components/client-layout"
 import Footer from "@repo/ui/components/footer"

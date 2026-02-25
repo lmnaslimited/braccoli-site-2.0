@@ -125,13 +125,13 @@ export default function ChatDrawer() {
   if (!isChatOpen) return null
 
   return (
-    <aside className="fixed bottom-4 sm:bottom-6 left-1/2 z-[120] w-[94%] sm:w-[92%] md:w-[88%] lg:w-[80%] max-w-2xl -translate-x-1/2 max-h-[92vh] sm:max-h-[88vh] overflow-y-auto rounded-2xl border border-border bg-card text-card-foreground dark:bg-neutral-500 shadow-[0_20px_60px_rgba(0,0,0,0.35)] dark:border-white/20 dark:shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.18),0_0_50px_rgba(255,255,255,0.08)] p-4 sm:p-5 animate-[drawerSlideUp_0.28s_ease-out]">
+    <aside className="fixed sm:bottom-6 left-1/2 z-[120] w-full -translate-x-1/2 max-h-[92vh] sm:max-h-[88vh] overflow-y-auto border border-border bg-card text-card-foreground dark:bg-neutral-500 shadow-[0_20px_60px_rgba(0,0,0,0.35)] dark:border-white/20 dark:shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.18),0_0_50px_rgba(255,255,255,0.08)] p-4 sm:p-5 animate-[drawerSlideUp_0.28s_ease-out]">
       <div className="space-y-4">
 
         {/* Header */}
         <div className="flex items-center justify-between border-b border-border pb-3">
           <div className="flex items-center gap-2 text-lg sm:text-xl font-semibold leading-none">
-            <span className="h-2 w-2 rounded-full bg-green-500" />
+            {/* <span className="h-2 w-2 rounded-full bg-green-500" /> */}
             {greeting || fallbackGreeting}
           </div>
 

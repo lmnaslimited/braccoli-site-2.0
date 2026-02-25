@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import ProductsComp from "../products";
-import { fnGetCacheData } from '../../../utils/strapi/get-data'
-import { getPageMetadata } from '../../../utils/metadata/page-metadata'
-import { fnGetStatus } from '../../../utils/strapi/get-status'
+import { fnGetCacheData } from '../../../lib/strapi/get-data'
+import { getPageMetadata } from '../../../lib/metadata/page-metadata'
+import { fnGetStatus } from '../../../lib/strapi/get-status'
 import { clQuerySlug } from "../../../../../../packages/middleware/src/api/query";
 import { clSlugsTransformer } from "../../../../../../packages/middleware/src/engine/transformer";
 import { clTransformerFactory } from "@repo/middleware";
