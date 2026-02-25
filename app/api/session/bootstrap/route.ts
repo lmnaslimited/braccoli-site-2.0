@@ -37,11 +37,11 @@ async function fetchWhois(ip: string) {
 
 export async function POST(request: NextRequest) {
   try {
-    console.log("Bootstrapping session with request:", request)
+    // console.log("Bootstrapping session with request:", request)
 
     const currentIp =
       request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? ""
-    console.log("Extracted IP:", currentIp)
+    // console.log("Extracted IP:", currentIp)
 
     const existing = (await getSession()) ?? {
       sessionId: crypto.randomUUID(),

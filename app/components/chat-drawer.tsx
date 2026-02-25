@@ -10,9 +10,9 @@ import FollowUpQuestionRenderer from "../components/follow-up-question-renderer"
 import ResultSummaryRenderer from "../components/result-summary-renderer"
 
 const slugToBenefitType: Record<string, BenefitType> = {
-    "roi-calculator": "ROI_CALCULATOR",
-    "pipeline-audit": "PIPELINE_AUDIT",
-    "cpq-maturity": "CPQ_MATURITY_SCAN",
+    "roi_calculator": "ROI_CALCULATOR",
+    "pipeline_audit": "PIPELINE_AUDIT",
+    "cpq_maturity": "CPQ_MATURITY_SCAN",
 }
 
 export default function ChatDrawer() {
@@ -26,10 +26,12 @@ export default function ChatDrawer() {
     const [currentQuestion, setCurrentQuestion] = useState<DiscoveryQuestion | null>(null)
     const [answers, setAnswers] = useState<Record<string, string>>({})
 
-    // console.log("AIChatDrawer state:", { isChatOpen })
+    // console.log("AIChatDrawer state:", { isChatOpen, benefitSlug })
 
     useEffect(() => {
         if (!isChatOpen || !benefitSlug) return
+
+        // console.log("Chat opened with benefitSlug:", benefitSlug)
 
         const run = async () => {
             const benefitType = slugToBenefitType[benefitSlug]
@@ -43,6 +45,7 @@ export default function ChatDrawer() {
             const response = await fetch("/api/session/me")
 
             const json = (await response.json()) as { session: UserSession | null }
+
             // console.log("Session JSON:", json)
 
             setSession(json.session)
@@ -62,6 +65,7 @@ export default function ChatDrawer() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ context: initialContext }),
             })
+
             const chatStart = await chatStartResponse.json()
 
             setGreeting(chatStart.greeting)
