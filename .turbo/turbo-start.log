@@ -7,4 +7,77 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 306ms
+ [32m[1m✓[22m[39m Ready in 369ms
+Cookies: h {
+  _parsed: Map(5) {
+    [32m'rl_anonymous_id'[39m => {
+      name: [32m'rl_anonymous_id'[39m,
+      value: [32m'RS_ENC_v3_IjU3NDJkZDJlLTVhNmMtNGQ4My1hZTAwLTQ3OGQ0NWFjMjEyOSI='[39m,
+      path: [32m'/'[39m
+    },
+    [32m'rl_page_init_referrer'[39m => {
+      name: [32m'rl_page_init_referrer'[39m,
+      value: [32m'RS_ENC_v3_IiRkaXJlY3Qi'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'lmnas_session'[39m => {
+      name: [32m'lmnas_session'[39m,
+      value: [32m'eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'jwtToken'[39m => {
+      name: [32m'jwtToken'[39m,
+      value: [32m'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxOTk2NjY1LCJleHAiOjE3NzQ1ODg2NjV9.rsPUP4EsfvRwy91aXJaLYToV-tMyOlsZeMoSGSIEfig'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'rl_session'[39m => {
+      name: [32m'rl_session'[39m,
+      value: [32m'RS_ENC_v3_eyJpZCI6MTc3MTk5NzMzNTY3MSwibWFudWFsVHJhY2siOnRydWV9'[39m,
+      path: [32m'/'[39m
+    }
+  },
+  _headers: Headers {
+    [32m'set-cookie'[39m: [32m'rl_anonymous_id=RS_ENC_v3_IjU3NDJkZDJlLTVhNmMtNGQ4My1hZTAwLTQ3OGQ0NWFjMjEyOSI%3D; Path=/, rl_page_init_referrer=RS_ENC_v3_IiRkaXJlY3Qi; Path=/, lmnas_session=eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a; Path=/, jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxOTk2NjY1LCJleHAiOjE3NzQ1ODg2NjV9.rsPUP4EsfvRwy91aXJaLYToV-tMyOlsZeMoSGSIEfig; Path=/, rl_session=RS_ENC_v3_eyJpZCI6MTc3MTk5NzMzNTY3MSwibWFudWFsVHJhY2siOnRydWV9; Path=/'[39m
+  }
+}
+Raw session cookie: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a
+Decoded payload: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9
+Decoded signature: 60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a
+Signing value: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9
+Signing value: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9
+Cookies: h {
+  _parsed: Map(5) {
+    [32m'rl_anonymous_id'[39m => {
+      name: [32m'rl_anonymous_id'[39m,
+      value: [32m'RS_ENC_v3_IjU3NDJkZDJlLTVhNmMtNGQ4My1hZTAwLTQ3OGQ0NWFjMjEyOSI='[39m,
+      path: [32m'/'[39m
+    },
+    [32m'rl_page_init_referrer'[39m => {
+      name: [32m'rl_page_init_referrer'[39m,
+      value: [32m'RS_ENC_v3_IiRkaXJlY3Qi'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'lmnas_session'[39m => {
+      name: [32m'lmnas_session'[39m,
+      value: [32m'eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'jwtToken'[39m => {
+      name: [32m'jwtToken'[39m,
+      value: [32m'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxOTk2NjY1LCJleHAiOjE3NzQ1ODg2NjV9.rsPUP4EsfvRwy91aXJaLYToV-tMyOlsZeMoSGSIEfig'[39m,
+      path: [32m'/'[39m
+    },
+    [32m'rl_session'[39m => {
+      name: [32m'rl_session'[39m,
+      value: [32m'RS_ENC_v3_eyJpZCI6MTc3MTk5NzMzNTY3MSwibWFudWFsVHJhY2siOnRydWUsInNlc3Npb25TdGFydCI6dHJ1ZX0='[39m,
+      path: [32m'/'[39m
+    }
+  },
+  _headers: Headers {
+    [32m'set-cookie'[39m: [32m'rl_anonymous_id=RS_ENC_v3_IjU3NDJkZDJlLTVhNmMtNGQ4My1hZTAwLTQ3OGQ0NWFjMjEyOSI%3D; Path=/, rl_page_init_referrer=RS_ENC_v3_IiRkaXJlY3Qi; Path=/, lmnas_session=eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a; Path=/, jwtToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzcxOTk2NjY1LCJleHAiOjE3NzQ1ODg2NjV9.rsPUP4EsfvRwy91aXJaLYToV-tMyOlsZeMoSGSIEfig; Path=/, rl_session=RS_ENC_v3_eyJpZCI6MTc3MTk5NzMzNTY3MSwibWFudWFsVHJhY2siOnRydWUsInNlc3Npb25TdGFydCI6dHJ1ZX0%3D; Path=/'[39m
+  }
+}
+Raw session cookie: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9.60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a
+Decoded payload: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9
+Decoded signature: 60d581b23459a8b386e9065e750bf42494667a8e1a50775407d43e7fc97d4f2a
+Signing value: eyJzZXNzaW9uSWQiOiJiNmVhYmRlYi05ZDBiLTQ3ZTEtOWZlMy02MWFlZTkxYmY1ZDIiLCJhbm9ueW1vdXNJZCI6IjdmM2FmYzc0LTIwMzUtNGViNy1hNmExLTM0YzRhNDlhYjJhNSJ9

@@ -11,7 +11,7 @@ import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 import ChatDrawer from "../components/chat-drawer"
-import { CTAContextProvider } from "../context/cta-context-provider"
+import { CTAContextProvider } from "@repo/ui/context/cta-context-provider"
 
 export const viewport: Viewport = {
   width: 'device-width',

@@ -60,6 +60,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               buttons: idHome.home.heroSection.buttons.map((btn) => ({
                 ...btn,
                 iconPosition: "after",
+                benefitMode: btn.benefitMode,
               })),
             } as TheroSection
           }

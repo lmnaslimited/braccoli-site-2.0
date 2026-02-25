@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useMemo, useState } from "react"
-import { useCTAContext } from "../context/cta-context-provider"
+import { useCTAContext } from "@repo/ui/context/cta-context-provider"
 import type { UserSession } from "../types/session"
 import type { BenefitType, CTAContext, DiscoveryQuestion } from "../types/engine"
 import ChatInput from "../components/chat-input"
@@ -10,9 +10,9 @@ import FollowUpQuestionRenderer from "../components/follow-up-question-renderer"
 import ResultSummaryRenderer from "../components/result-summary-renderer"
 
 const slugToBenefitType: Record<string, BenefitType> = {
-  "roi-calculator": "ROI_CALCULATOR",
-  "pipeline-audit": "PIPELINE_AUDIT",
-  "cpq-maturity": "CPQ_MATURITY_SCAN",
+    "roi_calculator": "ROI_CALCULATOR",
+    "pipeline_audit": "PIPELINE_AUDIT",
+    "cpq_maturity": "CPQ_MATURITY_SCAN",
 }
 
 export default function ChatDrawer() {
@@ -50,13 +50,13 @@ export default function ChatDrawer() {
 
       setContext(initialContext)
 
-      const chatStartResponse = await fetch("/api/chat/start", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ context: initialContext }),
-      })
+            const chatStartResponse = await fetch("/api/chat/start", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ context: initialContext }),
+            })
 
-      const chatStart = await chatStartResponse.json()
+            const chatStart = await chatStartResponse.json()
 
       setGreeting(chatStart.greeting)
       setCurrentQuestion(chatStart.question ?? null)
