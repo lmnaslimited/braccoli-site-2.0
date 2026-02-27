@@ -8,7 +8,8 @@ export async function POST(request: Request) {
   const firstQuestion = questions[0]
 
   return NextResponse.json({
-    greeting: `Great choice. I will run a ${context.benefitType.replaceAll("_", " ")} with you and keep this under 2 clicks from insight to action.`,
+    greeting: `Great! Get actionable insights in just a few guided steps with our ${context.benefitType.replaceAll("_", " ")}.`,
     question: firstQuestion,
   })
 }
+// Get actionable insights in just a few guided steps with our ROI Calculator
