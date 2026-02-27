@@ -20,14 +20,10 @@ export async function getBenefitQuestions(
     },
   }
 
-  console.log("Fetching benefit questions with context:", context)
-
   const data = (await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer("benefitQuestions"),
   )) as TbenefitQuestionsPageTarget
-
-  console.log("Fetched benefit questions data:", data)
 
   const benefitEntry = data?.benefitQuestions?.[0]
 

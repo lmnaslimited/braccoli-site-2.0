@@ -7,31 +7,28 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 369ms
-Fetching ROI_CALCULATOR questions from Strapi...
-Fetched questions for benefit type: ROI_CALCULATOR [
-  {
-    questionid: [32m'annual_revenue'[39m,
-    key: [32m'annualRevenue'[39m,
-    question: [32m'What is your current annual revenue influenced by sales operations?'[39m,
-    inputType: [32m'number'[39m,
-    options: [90mundefined[39m
-  },
-  {
-    questionid: [32m'quote_turnaround'[39m,
-    key: [32m'quoteTurnaroundDays'[39m,
-    question: [32m'How many days does it take to send a technical quote?'[39m,
-    inputType: [32m'number'[39m,
-    options: [90mundefined[39m
-  },
-  {
-    questionid: [32m'win_rate'[39m,
-    key: [32m'winRate'[39m,
-    question: [32m'What is your current win rate percentage?'[39m,
-    inputType: [32m'number'[39m,
-    options: [90mundefined[39m
-  }
-]
-Fetching ROI_CALCULATOR questions from Strapi...
-Fetching ROI_CALCULATOR questions from Strapi...
-Fetching ROI_CALCULATOR questions from Strapi...
+ [32m[1m✓[22m[39m Ready in 343ms
+Received context: {
+  benefitType: [32m'roi_calculator'[39m,
+  industry: [32m'Transformer Manufacturing'[39m,
+  entryPage: [32m'/'[39m,
+  leadSource: [32m'Website CTA'[39m,
+  userIntent: [32m'Run roi calculator'[39m
+}
+Locale: en
+Fetching benefit questions with context: { locale: [32m'en'[39m, filters: { benefitType: { eq: [32m'roi_calculator'[39m } } }
+Fetched benefit questions data: {
+  benefitQuestions: [ { benefitType: [32m'roi_calculator'[39m, questions: [36m[Array][39m } ]
+}
+Fetching benefit questions with context: { locale: [32m'en'[39m, filters: { benefitType: { eq: [32m'roi_calculator'[39m } } }
+Fetched benefit questions data: {
+  benefitQuestions: [ { benefitType: [32m'roi_calculator'[39m, questions: [36m[Array][39m } ]
+}
+Fetching benefit questions with context: { locale: [32m'en'[39m, filters: { benefitType: { eq: [32m'roi_calculator'[39m } } }
+Fetched benefit questions data: {
+  benefitQuestions: [ { benefitType: [32m'roi_calculator'[39m, questions: [36m[Array][39m } ]
+}
+Fetching benefit questions with context: { locale: [32m'en'[39m, filters: { benefitType: { eq: [32m'roi_calculator'[39m } } }
+Fetched benefit questions data: {
+  benefitQuestions: [ { benefitType: [32m'roi_calculator'[39m, questions: [36m[Array][39m } ]
+}

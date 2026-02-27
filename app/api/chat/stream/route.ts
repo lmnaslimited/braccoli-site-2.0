@@ -7,8 +7,10 @@ export async function POST(request: Request) {
     context: TbenefitContext
     answers: Record<string, string>
   }
+  const { searchParams } = new URL(request.url)
+  const locale = searchParams.get("locale") ?? "en"
 
-  const flow = await getBenefitQuestions(context.benefitType)
+  const flow = await getBenefitQuestions(context.benefitType, locale)
   const answeredCount = Object.keys(answers).length
   const nextQuestion = flow[answeredCount]
 

@@ -8,9 +8,6 @@ export async function POST(request: Request) {
   const { searchParams } = new URL(request.url)
   const locale = searchParams.get("locale") ?? "en"
 
-  console.log("Received context:", context)
-  console.log("Locale:", locale)
-
   const questions = await getBenefitQuestions(context.benefitType, locale)
 
   const firstQuestion = questions[0]
