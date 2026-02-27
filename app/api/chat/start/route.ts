@@ -1,16 +1,18 @@
 import { NextResponse } from "next/server"
 import { getBenefitQuestions } from "../../../lib/benefit-questions-repository"
-import { CTAContext } from "../../../types/engine"
+import { TbenefitContext } from "@repo/middleware/types"
 
 export async function POST(request: Request) {
-  const { context } = (await request.json()) as { context: CTAContext }
-  // console.log("Received context for chat start:", context)
-  const questions = await getBenefitQuestions(context.benefitType)
-  console.log(
-    "Fetched questions for benefit type:",
-    context.benefitType,
-    questions,
-  )
+  const { context } = (await request.json()) as { context: TbenefitContext }
+
+  const { searchParams } = new URL(request.url)
+  const locale = searchParams.get("locale") ?? "en"
+
+  console.log("Received context:", context)
+  console.log("Locale:", locale)
+
+  const questions = await getBenefitQuestions(context.benefitType, locale)
+
   const firstQuestion = questions[0]
 
   return NextResponse.json({

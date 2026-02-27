@@ -25,7 +25,12 @@ export default function ChatInput({ onSubmit, options, inputType }: Props) {
                     <button
                         key={option}
                         onClick={() => onSubmit(option)}
-                        className="rounded-lg border border-slate-200 px-3 py-2 text-left text-sm text-slate-700 transition hover:bg-slate-50"
+                        className="              rounded-lg border border-border bg-muted/40
+              px-3 py-2 text-left text-sm font-medium
+              text-foreground
+              transition
+              hover:bg-muted
+              focus:outline-none focus:ring-2 focus:ring-primary/40"
                     >
                         {option}
                     </button>
@@ -41,12 +46,23 @@ export default function ChatInput({ onSubmit, options, inputType }: Props) {
                 value={value}
                 onChange={(event) => setValue(event.target.value)}
                 placeholder="Type your answer"
-                className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm outline-none focus:border-slate-700"
+                className="flex-1 rounded-lg border border-border
+          bg-background px-3 py-2 text-sm
+          text-foreground placeholder:text-muted-foreground
+          outline-none
+          focus:ring-2 focus:ring-primary/40"
             />
-            <button
-                type="submit"
-                className="rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white"
-            >
+
+      <button
+        type="submit"
+        disabled={!value.trim()}
+        className="
+          rounded-lg bg-primary px-4 py-2
+          text-sm font-medium text-primary-foreground
+          transition
+          hover:opacity-90
+          disabled:opacity-50 disabled:cursor-not-allowed
+        ">
                 Send
             </button>
         </form>

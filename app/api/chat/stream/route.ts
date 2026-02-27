@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server"
 import { getBenefitQuestions } from "../../../lib/benefit-questions-repository"
-import { CTAContext } from "../../../types/engine"
+import { TbenefitContext } from "@repo/middleware/types"
 
 export async function POST(request: Request) {
   const { context, answers } = (await request.json()) as {
-    context: CTAContext
+    context: TbenefitContext
     answers: Record<string, string>
   }
 
