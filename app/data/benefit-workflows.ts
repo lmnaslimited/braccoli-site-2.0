@@ -1,7 +1,13 @@
-import { BenefitType, DiscoveryQuestion } from "../types/engine"
+import {
+  TbenefitType,
+  TbenefitQuestionItemTarget,
+} from "@repo/middleware/types"
 
-export const benefitQuestions: Record<BenefitType, DiscoveryQuestion[]> = {
-  ROI_CALCULATOR: [
+export const benefitQuestions: Record<
+  TbenefitType,
+  TbenefitQuestionItemTarget[]
+> = {
+  roi_calculator: [
     {
       questionid: "annual_revenue",
       key: "annualRevenue",
@@ -22,7 +28,7 @@ export const benefitQuestions: Record<BenefitType, DiscoveryQuestion[]> = {
       inputType: "number",
     },
   ],
-  PIPELINE_AUDIT: [
+  pipeline_audit: [
     {
       questionid: "blocked_stage",
       key: "blockedStage",
@@ -38,7 +44,7 @@ export const benefitQuestions: Record<BenefitType, DiscoveryQuestion[]> = {
       options: ["High", "Medium", "Low"],
     },
   ],
-  CPQ_MATURITY_SCAN: [
+  cpq_maturity_scan: [
     {
       questionid: "cpq_tooling",
       key: "cpqTooling",
@@ -47,7 +53,7 @@ export const benefitQuestions: Record<BenefitType, DiscoveryQuestion[]> = {
       options: ["Yes", "No", "Partially"],
     },
   ],
-  SALES_CYCLE_ANALYZER: [
+  sales_cycle_analyzer: [
     {
       questionid: "cycle_days",
       key: "cycleDays",
@@ -55,7 +61,7 @@ export const benefitQuestions: Record<BenefitType, DiscoveryQuestion[]> = {
       inputType: "number",
     },
   ],
-  TENDER_COMPLEXITY_SCORE: [
+  tender_complexity_score: [
     {
       questionid: "tender_volume",
       key: "tenderVolume",
