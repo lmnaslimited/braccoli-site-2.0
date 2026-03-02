@@ -2,6 +2,7 @@ import { ITransformer, Tcontext } from "@repo/middleware/types"
 import { unstable_cache } from "next/cache"
 
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
+
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
@@ -10,12 +11,18 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   const status = iContext?.status ?? "PUBLISHED"
 
   let slug: string | undefined
+  let benefitType: string | undefined
 
+  // Extract slug filter
   if (iContext?.filters?.slug?.eq) {
     slug = iContext.filters.slug.eq
   }
 
-  // Add the new filter conditionally
+  // Extract benefitType filter
+  if (iContext?.filters?.benefitType?.eq) {
+    benefitType = iContext.filters.benefitType.eq
+  }
+
   if (slug && ["manufacturing", "retail", "distribution"].includes(slug)) {
     ;(iContext as Tcontext)["caseStudiesFilters2"] = {
       heroSection: {
@@ -26,9 +33,11 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
     }
   }
 
-  const LCacheKey = slug
-    ? `${transformer.contentType}-${locale}-${slug}-${status}`
-    : `${transformer.contentType}-${locale}-${status}`
+  const LCacheKey = benefitType
+    ? `${transformer.contentType}-${locale}-${benefitType}-${status}`
+    : slug
+      ? `${transformer.contentType}-${locale}-${slug}-${status}`
+      : `${transformer.contentType}-${locale}-${status}`
 
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
@@ -37,6 +46,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
           ...iContext,
           status,
         }
+
         const pageData: DynamicTargetType =
           await transformer.execute(updatedContext)
 
@@ -45,11 +55,14 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
       [LCacheKey],
       {
         revalidate: 3600,
-        tags: slug
-          ? [LCacheKey, locale, slug, status]
-          : [LCacheKey, locale, status],
+        tags: benefitType
+          ? [LCacheKey, locale, benefitType, status]
+          : slug
+            ? [LCacheKey, locale, slug, status]
+            : [LCacheKey, locale, status],
       },
     )
+
     LdCacheMap.set(LCacheKey, fetcher)
   }
 
