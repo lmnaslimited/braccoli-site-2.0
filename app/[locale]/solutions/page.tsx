@@ -2,15 +2,17 @@ import type { Metadata } from 'next'
 import Solution from './solution'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TsolutionPageTarget } from '@repo/middleware/types'
 
 async function getSolutionPageData(params: { locale: string }) {
   const { locale } = params
-
+  const LStatus = await fnGetStatus()
   const context: Tcontext = {
     locale: locale,
-    caseStudiesLocale2: locale
+    caseStudiesLocale2: locale,
+    status: LStatus,
   }
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(

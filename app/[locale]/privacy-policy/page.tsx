@@ -6,12 +6,14 @@ import ReactMarkdown from "react-markdown";
 import FAQs from "@repo/ui/components/faq";
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/types";
 
 async function getPrivacyPolicyData(locale: string) {
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('privacyPolicy')

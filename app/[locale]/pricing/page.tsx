@@ -2,26 +2,29 @@ import type { Metadata } from 'next'
 import Pricing from './pricing'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { getPageMetadata } from '../../utils/metadata/page-metadata'
+import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/types'
 
 async function getPricingPageData(params: { locale: string }) {
   const { locale } = params
 
+  const LStatus = await fnGetStatus()
   const pricingContext: Tcontext = {
     locale: locale,
     filters: {
       slug: {
         eq: 'erp-comparison-lens'
       }
-    }
+    },
+    status: LStatus
   }
   const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
     pricingContext,
     clTransformerFactory.createTransformer('caseStudies')
   )
 
-  const context: Tcontext = { locale: locale, }
+  const context: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
   const pageData: TpricingPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('pricing')
