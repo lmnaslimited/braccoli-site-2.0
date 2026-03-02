@@ -61,14 +61,14 @@ export default async function Products({ params }: { params: Promise<{ locale: s
   return (
     <>
       <ProductsComp idProduct={pageData.products[0]!} />
-      {/* {jsonLd && (
+      {jsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
-      )} */}
+      )}
     </>
   )
 }

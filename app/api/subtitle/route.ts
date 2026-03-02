@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server"
-import { Tsubtitle } from "@repo/middleware/types"
+import { Tcontext, Tsubtitle, TsubtitleTarget } from "@repo/middleware/types"
+import { clTransformerFactory } from "@repo/middleware"
+import { fnGetCacheData } from "../../utils/strapi/get-data"
 
 const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
   "WEBVTT\n\n" +
@@ -10,33 +12,45 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
     )
     .join("\n")
 
-export async function GET(req: Request) {
+export async function GET(request: Request) {
   try {
-    const LSourceId = new URL(req.url).searchParams.get("sourceId")
+    console.log("Received request for subtitles", request)
 
-    if (!LSourceId) return new NextResponse("Bad request", { status: 400 })
+    const { searchParams } = new URL(request.url)
 
-    const LdResponse = await fetch(
-      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/subtitles?filters[sourceId][$eq]=${LSourceId}&populate=*`,
+    const LSourceId = searchParams.get("sourceId")
+    const LLocale = searchParams.get("locale") || "en"
+
+    console.log("Extracted parameters:", { LSourceId, LLocale })
+
+    if (!LSourceId && !LLocale)
+      return new NextResponse("Bad request", { status: 400 })
+
+    const context: Tcontext = {
+      locale: LLocale,
+      filters: {
+        sourceId: { eq: LSourceId },
+      },
+    }
+
+    const LdResponse: TsubtitleTarget = await fnGetCacheData(
+      context,
+      clTransformerFactory.createTransformer("subtitles"),
     )
 
-    if (!LdResponse.ok) return new NextResponse("Strapi error", { status: 502 })
-
-    const LdJsonData = await LdResponse.json()
-
-    const LaSubtitles = LdJsonData.data[0].subtitle ?? []
+    const LaSubtitles = LdResponse.subtitles?.[0]?.subtitle ?? []
 
     if (!LaSubtitles.length)
       return new NextResponse("No subtitle content", { status: 404 })
 
     const LFormatText = fnBuildWebVTTContent(LaSubtitles)
+
     return new NextResponse(LFormatText, {
       headers: {
         "Content-Type": "text/vtt",
-        "Cache-Control": "no-cache",
       },
     })
   } catch (error) {
-    return new NextResponse("Server error", { status: 500 })
+    return new NextResponse(`Server error: ${error}`, { status: 500 })
   }
 }
