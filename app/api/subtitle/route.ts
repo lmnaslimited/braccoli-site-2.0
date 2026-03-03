@@ -14,14 +14,10 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
 
 export async function GET(request: Request) {
   try {
-    console.log("Received request for subtitles", request)
-
     const { searchParams } = new URL(request.url)
 
     const LSourceId = searchParams.get("sourceId")
     const LLocale = searchParams.get("locale") || "en"
-
-    console.log("Extracted parameters:", { LSourceId, LLocale })
 
     if (!LSourceId && !LLocale)
       return new NextResponse("Bad request", { status: 400 })

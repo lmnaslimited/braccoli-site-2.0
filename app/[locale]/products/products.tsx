@@ -17,7 +17,6 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
-// import { createSubtitleUrl } from "../../utils/subtitle/subtitle"
 import VideoPlayer from "@repo/ui/components/video-player";
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
