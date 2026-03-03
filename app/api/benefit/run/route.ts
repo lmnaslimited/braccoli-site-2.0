@@ -33,7 +33,7 @@ export async function POST(request: Request) {
         anonymousId: session.anonymousId,
         userId: session.identity?.email,
         event: "benefit_followup_triggered",
-        properties: { benefitSlug: input.benefitSlug },
+        properties: { benefitType: input.benefitType },
       })
 
       return NextResponse.json({
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
     session.benefitHistory = upsertBenefitHistory(
       session,
-      input.benefitSlug,
+      input.benefitType,
       parsed.result?.score,
     )
     await saveSession(session)
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
       userId: session.identity?.email,
       event: "benefit_completed",
       properties: {
-        benefitSlug: input.benefitSlug,
+        benefitType: input.benefitType,
         score: parsed.result?.score,
       },
     })

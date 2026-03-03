@@ -6,7 +6,7 @@ export const BenefitAnswerSchema = z.object({
 })
 
 export const BenefitRunRequestSchema = z.object({
-  benefitSlug: z.string().min(1),
+  benefitType: z.string().min(1),
   sessionId: z.string().min(1),
   answers: z.array(BenefitAnswerSchema).min(1),
   stage: z.enum(["standard_completed", "followup"]),

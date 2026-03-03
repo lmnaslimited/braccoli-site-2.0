@@ -13,7 +13,7 @@ export async function POST(request: Request) {
   const firstQuestion = questions[0]
 
   return NextResponse.json({
-    greeting: `Great! Get actionable insights in just a few guided steps with our ${context.benefitType.replaceAll("_", " ")}.`,
+    greeting: `Get actionable insights in just a few guided steps with our ${context.benefitType.replaceAll("_", " ")}.`,
     question: firstQuestion,
   })
 }

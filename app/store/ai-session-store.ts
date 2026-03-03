@@ -1,34 +1,35 @@
-"use client"
+"use client";
 
-import { create } from "zustand"
+import { create } from "zustand";
 import {
   BenefitResult,
-  CTAContext,
   ChatMessage,
   DiscoveryQuestion,
   WorkflowStatus,
-} from "../types/engine"
+} from "../types/engine";
+
+import { TbenefitContext } from "@repo/middleware/types";
 
 type AISessionState = {
-  isDrawerOpen: boolean
-  context?: CTAContext
-  messages: ChatMessage[]
-  workflowStatus: WorkflowStatus
-  currentQuestion?: DiscoveryQuestion
-  answers: Record<string, string>
-  result?: BenefitResult
-  loading: boolean
-  openDrawer: () => void
-  closeDrawer: () => void
-  setContext: (context: CTAContext) => void
-  addMessage: (message: Omit<ChatMessage, "id" | "timestamp">) => void
-  setQuestion: (question?: DiscoveryQuestion) => void
-  saveAnswer: (key: string, value: string) => void
-  setWorkflowStatus: (status: WorkflowStatus) => void
-  setLoading: (loading: boolean) => void
-  setResult: (result?: BenefitResult) => void
-  resetSession: () => void
-}
+  isDrawerOpen: boolean;
+  context?: TbenefitContext;
+  messages: ChatMessage[];
+  workflowStatus: WorkflowStatus;
+  currentQuestion?: DiscoveryQuestion;
+  answers: Record<string, string>;
+  result?: BenefitResult;
+  loading: boolean;
+  openDrawer: () => void;
+  closeDrawer: () => void;
+  setContext: (context: TbenefitContext) => void;
+  addMessage: (message: Omit<ChatMessage, "id" | "timestamp">) => void;
+  setQuestion: (question?: DiscoveryQuestion) => void;
+  saveAnswer: (key: string, value: string) => void;
+  setWorkflowStatus: (status: WorkflowStatus) => void;
+  setLoading: (loading: boolean) => void;
+  setResult: (result?: BenefitResult) => void;
+  resetSession: () => void;
+};
 
 export const useAISessionStore = create<AISessionState>((set) => ({
   isDrawerOpen: false,
@@ -65,4 +66,4 @@ export const useAISessionStore = create<AISessionState>((set) => ({
       result: undefined,
       loading: false,
     }),
-}))
+}));

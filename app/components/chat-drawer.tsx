@@ -1,203 +1,239 @@
-"use client"
+"use client";
 
-import { useEffect, useMemo, useState } from "react"
-import { useCTAContext } from "@repo/ui/context/cta-context-provider"
-import type { UserSession } from "../types/session"
-import type { TbenefitContext } from "@repo/middleware/types"
+import { useEffect, useMemo, useState, useRef } from "react";
+import { useCTAContext } from "@repo/ui/context/cta-context-provider";
+import type { UserSession } from "../types/session";
+import type { TbenefitContext } from "@repo/middleware/types";
 
-import type { DiscoveryQuestion } from "../types/engine"
+import type { DiscoveryQuestion } from "../types/engine";
 
-import ChatInput from "../components/chat-input"
-import GreetingBanner from "../components/greeting-banner"
-import FollowUpQuestionRenderer from "../components/follow-up-question-renderer"
-import ResultSummaryRenderer from "../components/result-summary-renderer"
-
+import ChatInput from "../components/chat-input";
+import GreetingBanner from "../components/greeting-banner";
+import FollowUpQuestionRenderer from "../components/follow-up-question-renderer";
+import ResultSummaryRenderer from "../components/result-summary-renderer";
+import AIMessage from "../components/ai-message";
+import AIStreaming from "../components/ai-streaming";
+import { useAISessionStore } from "../store/ai-session-store";
 
 export default function ChatDrawer() {
-    const { isChatOpen, closeChat, benefitType } = useCTAContext()
+  const chatScrollRef = useRef<HTMLDivElement | null>(null);
+  const { messages, addMessage } = useAISessionStore();
+  const { isChatOpen, closeChat, benefitType } = useCTAContext();
 
-    const [session, setSession] = useState<UserSession | null>(null)
-    const [loading, setLoading] = useState(false)
-    const [followups, setFollowups] = useState<
-        Array<{ id: string; prompt: string }>
-    >([])
-    const [result, setResult] = useState<{
-        summary: string
-        score?: number
-        recommendation?: string
-    }>()
-    const [context, setContext] = useState<TbenefitContext | null>(null)
-    const [greeting, setGreeting] = useState<string>("")
-    const [currentQuestion, setCurrentQuestion] =
-        useState<DiscoveryQuestion | null>(null)
-    const [answers, setAnswers] = useState<Record<string, string>>({})
+  const [session, setSession] = useState<UserSession | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [followups, setFollowups] = useState<
+    Array<{ id: string; prompt: string }>
+  >([]);
+  const [result, setResult] = useState<{
+    summary: string;
+    score?: number;
+    recommendation?: string;
+  }>();
+  const [context, setContext] = useState<TbenefitContext | null>(null);
+  const [greeting, setGreeting] = useState<string>("");
+  const [currentQuestion, setCurrentQuestion] =
+    useState<DiscoveryQuestion | null>(null);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
 
-    useEffect(() => {
-        if (!isChatOpen || !benefitType) return
+  useEffect(() => {
+    const el = chatScrollRef.current;
+    if (!el) return;
+    el.scrollTop = el.scrollHeight;
+  }, [messages, loading]);
 
-        console.log("Chat opened with benefit type:", benefitType)
+  useEffect(() => {
+    if (!isChatOpen || !benefitType) return;
 
-        const run = async () => {
+    console.log("Chat opened with benefit type:", benefitType);
 
-            await fetch("/api/session/bootstrap", { method: "POST" })
+    const run = async () => {
+      await fetch("/api/session/bootstrap", { method: "POST" });
 
-            const response = await fetch("/api/session/me")
-            const json = (await response.json()) as { session: UserSession | null }
-            setSession(json.session)
+      const response = await fetch("/api/session/me");
+      const json = (await response.json()) as { session: UserSession | null };
+      setSession(json.session);
 
-            const initialContext: TbenefitContext = {
-                benefitType,
-                industry: "Transformer Manufacturing",
-                entryPage: "/",
-                leadSource: "Website CTA",
-                userIntent: `Run ${benefitType.replaceAll("_", " ")}`,
-            }
+      const initialContext: TbenefitContext = {
+        benefitType,
+        industry: "Transformer Manufacturing",
+        entryPage: "/",
+        leadSource: "Website CTA",
+        userIntent: `Run ${benefitType.replaceAll("_", " ")}`,
+      };
 
-            console.log("Initial CTA context:", initialContext)
+      console.log("Initial CTA context:", initialContext);
 
-            setContext(initialContext)
+      setContext(initialContext);
 
-            const chatStartResponse = await fetch("/api/chat/start", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ context: initialContext }),
-            })
+      const chatStartResponse = await fetch("/api/chat/start", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ context: initialContext }),
+      });
 
-            const chatStart = await chatStartResponse.json()
+      const chatStart = await chatStartResponse.json();
 
-            setGreeting(chatStart.greeting)
-            setCurrentQuestion(chatStart.question ?? null)
-            setAnswers({})
-            setFollowups([])
-            setResult(undefined)
-            setLoading(false)
-        }
+      setGreeting(chatStart.greeting);
+      if (chatStart.question?.question) {
+        setCurrentQuestion(chatStart.question);
 
-        void run()
-    }, [benefitType, isChatOpen])
+        addMessage({
+          role: "assistant",
+          content: chatStart.question.question,
+        });
+      }
+      setAnswers({});
+      setFollowups([]);
+      setResult(undefined);
+      setLoading(false);
+    };
 
-    const fallbackGreeting = useMemo(() => {
-        if (session?.identity?.name) return `Welcome back, ${session.identity.name}`
-        return `Let's run your ${benefitType ?? "benefit"} flow.`
-    }, [benefitType, session?.identity?.name])
+    void run();
+  }, [benefitType, isChatOpen]);
 
-    const runBenefit = async (discoveryAnswers: Record<string, string>) => {
-        if (!benefitType || !session?.sessionId) return
+  const fallbackGreeting = useMemo(() => {
+    if (session?.identity?.name)
+      return `Welcome back, ${session.identity.name}`;
+    return `Let's run your ${benefitType ?? "benefit"} flow.`;
+  }, [benefitType, session?.identity?.name]);
 
-        const response = await fetch("/api/benefit/run", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                benefitType,
-                sessionId: session.sessionId,
-                stage: followups.length ? "followup" : "standard_completed",
-                answers: Object.entries(discoveryAnswers).map(
-                    ([questionId, value]) => ({
-                        questionId,
-                        value,
-                    }),
-                ),
-            }),
-        })
+  const runBenefit = async (discoveryAnswers: Record<string, string>) => {
+    if (!benefitType || !session?.sessionId) return;
 
-        const json = await response.json()
-        setFollowups(json.followupQuestions ?? [])
-        setResult(json.result)
+    const response = await fetch("/api/benefit/run", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        benefitType,
+        sessionId: session.sessionId,
+        stage: followups.length ? "followup" : "standard_completed",
+        answers: Object.entries(discoveryAnswers).map(
+          ([questionId, value]) => ({
+            questionId,
+            value,
+          }),
+        ),
+      }),
+    });
+
+    const json = await response.json();
+    setFollowups(json.followupQuestions ?? []);
+    setResult(json.result);
+  };
+
+  const submitDiscoveryAnswer = async (answer: string) => {
+    if (!currentQuestion || !context || !answer.trim()) return;
+
+    // USER bubble
+    addMessage({
+      role: "user",
+      content: answer.trim(),
+    });
+
+    const mergedAnswers = { ...answers, [currentQuestion.key]: answer.trim() };
+    setAnswers(mergedAnswers);
+    setLoading(true);
+
+    const response = await fetch("/api/chat/stream", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ context, answers: mergedAnswers }),
+    });
+
+    const json = await response.json();
+
+    if (json.nextQuestion) {
+      if (json.message) {
+        addMessage({
+          role: "assistant",
+          content: json.message,
+        });
+      }
+
+      addMessage({
+        role: "assistant",
+        content: json.nextQuestion.question,
+      });
+
+      setCurrentQuestion(json.nextQuestion);
+      setLoading(false);
+      return;
     }
 
-    const submitDiscoveryAnswer = async (answer: string) => {
-        if (!currentQuestion || !context || !answer.trim()) return
+    setCurrentQuestion(null);
 
-        const mergedAnswers = { ...answers, [currentQuestion.key]: answer.trim() }
-        setAnswers(mergedAnswers)
-        setLoading(true)
-
-        const response = await fetch("/api/chat/stream", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ context, answers: mergedAnswers }),
-        })
-
-        const json = await response.json()
-
-        if (json.nextQuestion) {
-            setCurrentQuestion(json.nextQuestion)
-            setLoading(false)
-            return
-        }
-
-        setCurrentQuestion(null)
-        await runBenefit(mergedAnswers)
-        setLoading(false)
+    if (json.message) {
+      addMessage({
+        role: "assistant",
+        content: json.message,
+      });
     }
 
-    if (!isChatOpen) return null
+    await runBenefit(mergedAnswers);
+    setLoading(false);
+  };
 
-    return (
-        <aside
-            className="fixed bottom-0 sm:bottom-6 left-0 right-0 z-[120]
-                    w-full max-h-[92vh] sm:max-h-[88vh]
-                    overflow-y-auto border border-border
-                    bg-card text-card-foreground dark:bg-neutral-500
-                    shadow-[0_20px_60px_rgba(0,0,0,0.35)]
-                    dark:border-white/20
-                    dark:shadow-[0_30px_100px_rgba(0,0,0,0.95),0_0_0_1px_rgba(255,255,255,0.18),0_0_50px_rgba(255,255,255,0.08)]
-                    px-4 sm:px-6 lg:px-10
-                    p-4 sm:p-5
-                    animate-[drawerSlideUp_0.28s_ease-out]"
+  if (!isChatOpen) return null;
+
+  return (
+    <aside className="fixed inset-x-0 bottom-0 z-[120] w-full border border-border bg-card text-card-foreground dark:bg-neutral-500 shadow-xl p-4">
+      <div className="mx-auto max-w-4xl space-y-3">
+        {/* Header */}
+        <div className="flex items-center justify-between border-border pb-3">
+          <GreetingBanner session={session} />
+
+          <button
+            onClick={closeChat}
+            className="text-xs font-medium text-muted-foreground hover:text-foreground"
+          >
+            Close
+          </button>
+        </div>
+
+        {/* Greeting Banner */}
+
+        <div className="flex items-center gap-2 rounded-lg bg-slate-100 px-2 py-2 text-sm text-slate-700">
+          {/* <span className="h-2 w-2 rounded-full bg-green-500" /> */}
+          {greeting || fallbackGreeting}
+        </div>
+        <div
+          ref={chatScrollRef}
+          className="max-h-80 overflow-y-auto space-y-3 rounded-xl border bg-slate-50 p-3"
         >
-            <div className="mx-auto max-w-4xl space-y-3">
-                {/* Header */}
-                <div className="flex items-center justify-between border-b border-border pb-3">
-                    <div className="flex items-center gap-2 text-lg sm:text-xl font-semibold leading-none">
-                        {/* <span className="h-2 w-2 rounded-full bg-green-500" /> */}
-                        {greeting || fallbackGreeting}
-                    </div>
+          {messages.map((message) => (
+            <AIMessage key={message.id} message={message} />
+          ))}
 
-                    <button
-                        onClick={closeChat}
-                        className="text-xs font-medium text-muted-foreground hover:text-foreground"
-                    >
-                        Close
-                    </button>
-                </div>
+          <AIStreaming active={loading} />
+        </div>
 
-                {/* Greeting Banner */}
-                <GreetingBanner session={session} />
+        {/* Question Block */}
+        {currentQuestion && (
+          <div className="space-y-3 rounded-xl border border-border bg-muted/40 p-4">
+            {/* <p className="text-sm font-medium text-foreground">
+              {currentQuestion.question}
+            </p> */}
 
-                {/* Question Block */}
-                {currentQuestion && (
-                    <div className="space-y-3 rounded-xl border border-border bg-muted/40 p-4">
-                        <p className="text-sm font-medium text-foreground">
-                            {currentQuestion.question}
-                        </p>
+            <ChatInput
+              inputType={currentQuestion.inputType}
+              options={currentQuestion.options}
+              onSubmit={submitDiscoveryAnswer}
+            />
 
-                        <ChatInput
-                            inputType={currentQuestion.inputType}
-                            options={currentQuestion.options}
-                            onSubmit={submitDiscoveryAnswer}
-                        />
+            {loading && (
+              <p className="text-xs text-muted-foreground">Working…</p>
+            )}
+          </div>
+        )}
 
-                        {loading && (
-                            <p className="text-xs text-muted-foreground">Working…</p>
-                        )}
-                    </div>
-                )}
-
-                {/* Empty State */}
-                {!currentQuestion && !result && !followups.length && (
-                    <p className="text-sm text-muted-foreground">
-                        Answer the guided questions to run this benefit.
-                    </p>
-                )}
-
-                {/* Results / Followups */}
-                {followups.length ? (
-                    <FollowUpQuestionRenderer questions={followups} />
-                ) : (
-                    <ResultSummaryRenderer result={result} />
-                )}
-            </div>
-        </aside>
-    )
+        {/* Results / Followups */}
+        {followups.length ? (
+          <FollowUpQuestionRenderer questions={followups} />
+        ) : (
+          <ResultSummaryRenderer result={result} />
+        )}
+      </div>
+    </aside>
+  );
 }

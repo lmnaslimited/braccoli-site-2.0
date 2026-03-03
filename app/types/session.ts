@@ -15,7 +15,7 @@ export interface UserSession {
     enrichedAt?: string
   }
   benefitHistory?: {
-    benefitSlug: string
+    benefitType: string
     lastCalculatedAt: string
     lastScore?: number
   }[]

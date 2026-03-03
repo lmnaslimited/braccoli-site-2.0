@@ -2,17 +2,17 @@ import type { UserSession } from "../../types/session"
 
 export function upsertBenefitHistory(
   session: UserSession,
-  benefitSlug: string,
+  benefitType: string,
   score?: number,
 ): UserSession["benefitHistory"] {
   const history = session.benefitHistory ?? []
   const withoutCurrent = history.filter(
-    (entry) => entry.benefitSlug !== benefitSlug,
+    (entry) => entry.benefitType !== benefitType,
   )
   return [
     ...withoutCurrent,
     {
-      benefitSlug,
+      benefitType,
       lastCalculatedAt: new Date().toISOString(),
       lastScore: score,
     },

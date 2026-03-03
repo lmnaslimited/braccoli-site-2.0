@@ -6,7 +6,7 @@ export function buildBenefitPrompt(
   session: UserSession,
 ) {
   const previous = session.benefitHistory?.find(
-    (item) => item.benefitSlug === input.benefitSlug,
+    (item) => item.benefitType === input.benefitType,
   )
 
   return {
@@ -18,7 +18,7 @@ export function buildBenefitPrompt(
         : "No previous score found.",
     ].join("\n"),
     user: JSON.stringify({
-      benefitSlug: input.benefitSlug,
+      benefitType: input.benefitType,
       stage: input.stage,
       answers: input.answers,
     }),
