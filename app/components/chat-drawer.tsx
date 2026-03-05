@@ -15,6 +15,9 @@ import AIMessage from "../components/ai-message";
 import AIStreaming from "../components/ai-streaming";
 import { useAISessionStore } from "../store/ai-session-store";
 
+import { Button } from "@repo/ui/components/ui/button";
+import Link from "next/link";
+
 export default function ChatDrawer() {
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
   const { messages, addMessage } = useAISessionStore();
@@ -231,7 +234,33 @@ export default function ChatDrawer() {
         {followups.length ? (
           <FollowUpQuestionRenderer questions={followups} />
         ) : (
-          <ResultSummaryRenderer result={result} />
+          <>
+            <ResultSummaryRenderer result={result} />
+
+            {result && (
+              <div className="flex gap-3 pt-3">
+                <Link href="/en/contact">
+                  <Button
+                    variant="default"
+                    onClick={() => {
+                      closeChat();
+                    }}
+                  >
+                    Book Consultation
+                  </Button>
+                </Link>
+
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    console.log("Secondary action clicked");
+                  }}
+                >
+                  Download Full Report
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </aside>
