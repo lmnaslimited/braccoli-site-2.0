@@ -20,7 +20,7 @@ import Link from "next/link";
 
 export default function ChatDrawer() {
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
-  const { messages, addMessage } = useAISessionStore();
+  const { messages, addMessage, resetSession } = useAISessionStore();
   const { isChatOpen, closeChat, benefitType } = useCTAContext();
 
   const [session, setSession] = useState<UserSession | null>(null);
@@ -187,7 +187,10 @@ export default function ChatDrawer() {
           <GreetingBanner session={session} />
 
           <button
-            onClick={closeChat}
+            onClick={() => {
+              closeChat();
+              resetSession();
+            }}
             className="text-xs font-medium text-muted-foreground hover:text-foreground"
           >
             Close
@@ -244,6 +247,7 @@ export default function ChatDrawer() {
                     variant="default"
                     onClick={() => {
                       closeChat();
+                      resetSession();
                     }}
                   >
                     Book Consultation
