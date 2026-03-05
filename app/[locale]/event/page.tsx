@@ -12,7 +12,7 @@ async function getEventsPageData(params: { locale: string }) {
     const context: Tcontext = { locale: locale, status: LStatus }
     const pageData: TeventPageTarget = await fnGetCacheData(
         context,
-        clTransformerFactory.createTransformer('event')
+        clTransformerFactory.fnCreateTransformer('event')
     )
     return pageData
 }

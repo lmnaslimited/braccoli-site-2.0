@@ -25,7 +25,7 @@ async function fnGetGlobalData(locale: string) {
 
   const globalMetaData: TglobalMetaTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("globalMeta")
+    clTransformerFactory.fnCreateTransformer("globalMeta")
   )
 
   return globalMetaData?.globalMeta
@@ -93,12 +93,12 @@ export default async function RootLayout({
 
   const footerData: TfooterTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("footer")
+    clTransformerFactory.fnCreateTransformer("footer")
   )
 
   const navbarData: TnavbarTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer("navbar")
+    clTransformerFactory.fnCreateTransformer("navbar")
   )
 
   return (

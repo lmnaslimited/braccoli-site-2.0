@@ -12,7 +12,7 @@ async function getCareerPageData(params: { locale: string }) {
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TcareerPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('career')
+    clTransformerFactory.fnCreateTransformer('career')
   )
   return pageData
 }

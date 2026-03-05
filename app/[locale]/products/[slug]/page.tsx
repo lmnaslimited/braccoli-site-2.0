@@ -15,7 +15,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   const ioTransformer: ITransformer<TslugsSource, TslugsTarget> =
     new clSlugsTransformer('products', ioQuery)
 
-  const slugs: TslugsTarget = await ioTransformer.execute({ locale: locale, })
+  const slugs: TslugsTarget = await ioTransformer.fnExecute({ locale: locale, })
 
   return slugs.map(islug => ({
     slug: islug.slug
@@ -35,7 +35,7 @@ async function getProductsPageData({ slug, locale, status }: { slug: string; loc
 
   const pageData: TproductsPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('products')
+    clTransformerFactory.fnCreateTransformer('products')
   )
 
   return pageData

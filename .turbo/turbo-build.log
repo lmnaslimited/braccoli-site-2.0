@@ -8,54 +8,22 @@
 
  [37m[1m [22m[39m Creating an optimized production build ...
  [32m[1m✓[22m[39m Compiled successfully
-[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G[?25h
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G[?25h
 ./app/components/chat-drawer.tsx
-93:6  Warning: React Hook useEffect has a missing dependency: 'addMessage'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+96:6  Warning: React Hook useEffect has a missing dependency: 'addMessage'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
 
 info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
-[?25l [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G[?25h    [32m[1m✓[22m[39m Linting and checking validity of types 
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
-[?25l [37m[1m [22m[39m Generating static pages (0/15)  [36m[    ][39m[2K[1G [37m[1m [22m[39m Generating static pages (0/15)  [36m[=   ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (15/15)
-[?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m..[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m..[39m[2K[1G [37m[1m [22m[39m Finalizing page optimization  [36m...[39m[2K[1G [37m[1m [22m[39m Collecting build traces  [36m...[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
-[2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
+[?25l [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m [2K[1G [36m..[39m [2K[1G [36m...[39m [2K[1G [36m.[39m Failed to compile.
 
-[4mRoute (app)[24m                              [4mSize[24m     [4mFirst Load JS[24m
-┌ ○ /_not-found                          988 B           [37m[1m107 kB[22m[39m
-├ ƒ /[locale]                            3.33 kB         [37m[1m553 kB[22m[39m
-├ ƒ /[locale]/about-us                   2.35 kB         [37m[1m400 kB[22m[39m
-├ ƒ /[locale]/career                     105 kB          [37m[1m545 kB[22m[39m
-├ ƒ /[locale]/contact                    2.49 kB         [37m[1m499 kB[22m[39m
-├ ƒ /[locale]/event                      5.54 kB         [37m[1m246 kB[22m[39m
-├ ● /[locale]/industries/[slug]          5.04 kB         [37m[1m406 kB[22m[39m
-├ ƒ /[locale]/pricing                    7.23 kB         [37m[1m408 kB[22m[39m
-├ ƒ /[locale]/privacy-policy             2.3 kB          [37m[1m115 kB[22m[39m
-├ ● /[locale]/products/[slug]            4.74 kB         [37m[1m403 kB[22m[39m
-├ ƒ /[locale]/solutions                  3.57 kB         [37m[1m554 kB[22m[39m
-├ ● /[locale]/solutions/[slug]           5.38 kB         [37m[1m445 kB[22m[39m
-├ ƒ /[locale]/terms-and-conditions       2.3 kB          [37m[1m115 kB[22m[39m
-├ ƒ /[locale]/trending-now               7.78 kB         [37m[1m403 kB[22m[39m
-├ ƒ /api/benefit/run                     170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/chat/start                      170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/chat/stream                     170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/event                           170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/forms                           170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/job                             170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/preview                         170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/session/bootstrap               170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/session/me                      170 B           [37m[1m106 kB[22m[39m
-├ ƒ /api/social                          170 B           [37m[1m106 kB[22m[39m
-├ ○ /robots.txt                          0 B                [37m[1m0 B[22m[39m
-└ ○ /sitemap.xml                         0 B                [37m[1m0 B[22m[39m
-+ First Load JS shared by all            [37m[1m106 kB[22m[39m
-  ├ chunks/5935-64a6095e27e697e0.js      50.8 kB
-  ├ chunks/bb799022-bfa940660b009364.js  53 kB
-  └ other shared chunks (total)          2.32 kB
+./app/lib/benefit-questions-repository.ts:25:26
+Type error: Property 'createTransformer' does not exist on type 'typeof clTransformerFactory'. Did you mean 'fnCreateTransformer'?
 
-
-ƒ Middleware                             [37m[1m32 kB[22m[39m
-
-○  (Static)   prerendered as static content
-●  (SSG)      prerendered as static HTML (uses [36mgenerateStaticParams[39m)
-ƒ  (Dynamic)  server-rendered on demand
-
-[?25h
+[0m [90m 23 |[39m   [36mconst[39m data [33m=[39m ([36mawait[39m fnGetCacheData([0m
+[0m [90m 24 |[39m     context[33m,[39m[0m
+[0m[31m[1m>[22m[39m[90m 25 |[39m     clTransformerFactory[33m.[39mcreateTransformer([32m"benefitQuestions"[39m)[33m,[39m[0m
+[0m [90m    |[39m                          [31m[1m^[22m[39m[0m
+[0m [90m 26 |[39m   )) [36mas[39m [33mTbenefitQuestionsPageTarget[39m[0m
+[0m [90m 27 |[39m[0m
+[0m [90m 28 |[39m   [36mconst[39m benefitEntry [33m=[39m data[33m?[39m[33m.[39mbenefitQuestions[33m?[39m[33m.[39m[[35m0[39m][0m
+[2K[1G[?25hNext.js build worker exited with code: 1 and signal: null
+[?25l [36m.[39m [?25h[41m[30m ELIFECYCLE [39m[49m [31mCommand failed with exit code 1.[39m

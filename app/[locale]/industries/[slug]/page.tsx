@@ -12,7 +12,7 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   const { locale } = params
   const ioQuery: IQuery<TslugsSource> = new clQuerySlug('industries')
   const ioTransformer: ITransformer<TslugsSource, TslugsTarget> = new clSlugsTransformer('industries', ioQuery)
-  const slugs: TslugsTarget = await ioTransformer.execute({ locale: locale })
+  const slugs: TslugsTarget = await ioTransformer.fnExecute({ locale: locale })
 
   return slugs.map((islug) => ({
     slug: islug.slug
@@ -40,7 +40,7 @@ async function getIndustriesPageData({ slug, locale, status }: { slug: string; l
 
   const pageData: TindustriesPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('industries')
+    clTransformerFactory.fnCreateTransformer('industries')
   )
   return pageData
 }

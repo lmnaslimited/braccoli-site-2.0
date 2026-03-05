@@ -16,7 +16,7 @@ async function getPrivacyPolicyData(locale: string) {
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('privacyPolicy')
+    clTransformerFactory.fnCreateTransformer('privacyPolicy')
   )
   return pageData
 }

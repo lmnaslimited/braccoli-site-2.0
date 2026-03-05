@@ -14,7 +14,7 @@ async function getTrendingNowPageData(params: { locale: string }) {
 
   const pageData: TtrendsPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('trend')
+    clTransformerFactory.fnCreateTransformer('trend')
   )
 
   return pageData

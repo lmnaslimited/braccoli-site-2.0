@@ -1,9 +1,9 @@
 import { unstable_cache } from "next/cache"
-import { EventApi } from "@repo/ui/api/event/fetch-event"
+import { fnEventApi } from "@repo/ui/api/event/fetch-event"
 
 export const getEventData = unstable_cache(
   async () => {
-    const LdJobs = await EventApi()
+    const LdJobs = await fnEventApi()
     return LdJobs
   },
   ["eventData"],

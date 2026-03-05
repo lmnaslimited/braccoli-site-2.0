@@ -48,7 +48,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
         }
 
         const pageData: DynamicTargetType =
-          await transformer.execute(updatedContext)
+          await transformer.fnExecute(updatedContext)
 
         return pageData
       },

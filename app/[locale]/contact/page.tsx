@@ -12,7 +12,7 @@ async function getContactPageData(params: { locale: string }) {
     const context: Tcontext = { locale: locale, status: LStatus }
     const pageData: TcontactTarget = await fnGetCacheData(
         context,
-        clTransformerFactory.createTransformer('contact')
+        clTransformerFactory.fnCreateTransformer('contact')
     )
     return pageData
 }

@@ -12,7 +12,7 @@ async function getAboutUsPageData(params: { locale: string }) {
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('aboutUs')
+    clTransformerFactory.fnCreateTransformer('aboutUs')
   )
   return pageData
 }

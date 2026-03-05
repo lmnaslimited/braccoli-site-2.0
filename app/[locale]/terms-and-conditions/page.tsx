@@ -16,7 +16,7 @@ async function getTermsPageData(locale: string) {
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('termsAndCondition')
+    clTransformerFactory.fnCreateTransformer('termsAndCondition')
   )
   return pageData
 }

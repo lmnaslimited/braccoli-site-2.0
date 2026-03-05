@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     // This likely maps raw backend data into a structured `TformsPageTarget` format
     const pageData: TformsPageTarget = await fnGetCacheData(
       context,
-      clTransformerFactory.createTransformer("forms"),
+      clTransformerFactory.fnCreateTransformer("forms"),
     )
 
     // Return the fetched and transformed data as JSON response

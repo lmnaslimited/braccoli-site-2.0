@@ -12,7 +12,7 @@ async function getHomePageData(params: { locale: string }) {
   const context: Tcontext = { locale: locale, status: LStatus }
   const pageData: ThomePageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('home')
+    clTransformerFactory.fnCreateTransformer('home')
   )
   return pageData
 }

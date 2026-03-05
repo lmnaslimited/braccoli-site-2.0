@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { useFormHandler } from "../../hooks/form-handler";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
@@ -20,7 +20,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger, } from "@repo/ui/components/u
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, } from "@repo/ui/components/ui/card";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, } from "@repo/ui/components/ui/dropdown-menu"
 import { ArrowRight, Briefcase, Building, Lightbulb, Search, X, ChevronRight, LucideIcon } from "lucide-react";
-import { JobData, JobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/types";
+import { TjobData, TjobFilters, Tbutton, TcareerPageTarget, TformMode, TtrendCardProps } from "@repo/middleware/types";
 
 export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
@@ -38,9 +38,9 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   });
 
   // State to hold all student job listings fetched from the API
-  const [StudentJobs, fnSetStudentJobs] = useState<JobData[]>([]);
+  const [StudentJobs, fnSetStudentJobs] = useState<TjobData[]>([]);
   // State to store all available filter options (roles, locations) from the API
-  const [FilterOptions, fnSetFilterOptions] = useState<JobFilters>({
+  const [FilterOptions, fnSetFilterOptions] = useState<TjobFilters>({
     role: [],
     location: [],
   });
@@ -207,7 +207,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
   return (

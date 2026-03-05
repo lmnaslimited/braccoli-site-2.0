@@ -17,7 +17,7 @@ async function getSolutionPageData(params: { locale: string }) {
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(
     context,
-    clTransformerFactory.createTransformer('solution')
+    clTransformerFactory.fnCreateTransformer('solution')
   )
 
   return pageData
