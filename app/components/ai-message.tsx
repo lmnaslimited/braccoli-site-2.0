@@ -1,6 +1,6 @@
-import { ChatMessage } from "../types/ai-engine";
+import {TchatMessage} from "@repo/middleware/types"
 
-export default function AIMessage({ message }: { message: ChatMessage }) {
+export default function AIMessage({ message }: { message: TchatMessage }) {
   const isUser = message.role === "user";
 
   return (

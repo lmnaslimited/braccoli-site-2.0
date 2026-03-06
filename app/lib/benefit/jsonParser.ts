@@ -1,4 +1,4 @@
-import { N8NResultSchema, type N8NResult } from "../../types/benefit"
+import { N8NResultSchema, type N8NResult } from "../../schema/benefit.schema"
 
 export function parseBenefitJson(payload: unknown): N8NResult {
   let target = payload

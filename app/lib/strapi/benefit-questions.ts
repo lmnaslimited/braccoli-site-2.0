@@ -1,5 +1,5 @@
 import { TbenefitType } from "@repo/middleware/types"
-import { fnGetCacheData } from "../lib/strapi/get-data"
+import { fnGetCacheData } from "../strapi/get-data"
 import { clTransformerFactory } from "@repo/middleware"
 import {
   Tcontext,

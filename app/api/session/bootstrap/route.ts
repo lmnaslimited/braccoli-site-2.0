@@ -3,7 +3,7 @@ import { z } from "zod"
 import { cacheGet, cacheSet } from "../../../lib/redis/client"
 import { track } from "../../../lib/rudder/chat-track"
 import { getSession, saveSession } from "../../../lib/session/session"
-import type { UserSession } from "../../../types/session"
+import {TuserSession} from "@repo/middleware/types"
 
 const WhoisSchema = z.object({
   ip: z.string().optional(),
@@ -68,7 +68,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    await saveSession(existing as UserSession)
+    await saveSession(existing as TuserSession)
     await track({
       anonymousId: existing.anonymousId,
       event: "benefit_session_started",

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { BenefitRunRequestSchema } from "../../../types/benefit"
+import { BenefitRunRequestSchema } from "../../../schema/benefit.schema"
 import { getSession, saveSession } from "../../../lib/session/session"
 import { buildBenefitPrompt } from "../../../lib/benefit/promptBuilder"
 import { runBenefitWorkflow } from "../../../lib/n8n/client"

@@ -1,6 +1,6 @@
-import type { UserSession } from "../types/session"
+import type { TuserSession } from "@repo/middleware/types"
 
-export default function GreetingBanner({ session }: { session: UserSession | null }) {
+export default function GreetingBanner({ session }: { session: TuserSession | null }) {
     const message = session?.identity?.name
         ? `Welcome back, ${session.identity.name}`
         : "Welcome! Let’s create your benefit outcome."

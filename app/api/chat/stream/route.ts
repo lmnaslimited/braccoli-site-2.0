@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { getBenefitQuestions } from "../../../lib/benefit-questions-repository"
+import { getBenefitQuestions } from "../../../lib/strapi/benefit-questions"
 import { TbenefitContext } from "@repo/middleware/types"
 
 export async function POST(request: Request) {

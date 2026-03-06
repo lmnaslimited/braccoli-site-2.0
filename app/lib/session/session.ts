@@ -1,6 +1,6 @@
 import { cookies } from "next/headers"
 import { createHmac } from "node:crypto"
-import type { UserSession } from "../../types/session"
+import type { TuserSession } from "@repo/middleware/types"
 
 const COOKIE_NAME = "lmnas_session"
 const DEFAULT_SECRET = "dev-session-secret-change-me"
@@ -13,13 +13,13 @@ function sign(value: string) {
   return createHmac("sha256", getSecret()).update(value).digest("hex")
 }
 
-function encodeSession(data: UserSession) {
+function encodeSession(data: TuserSession) {
   const payload = Buffer.from(JSON.stringify(data)).toString("base64url")
   const signature = sign(payload)
   return `${payload}.${signature}`
 }
 
-function decodeSession(raw: string): UserSession | null {
+function decodeSession(raw: string): TuserSession | null {
   const [payload, signature] = raw.split(".")
   if (!payload || !signature || sign(payload) !== signature) {
     return null
@@ -28,13 +28,13 @@ function decodeSession(raw: string): UserSession | null {
   try {
     return JSON.parse(
       Buffer.from(payload, "base64url").toString("utf8"),
-    ) as UserSession
+    ) as TuserSession
   } catch {
     return null
   }
 }
 
-export async function getSession(): Promise<UserSession | null> {
+export async function getSession(): Promise<TuserSession | null> {
   const cookieStore = await cookies()
 
   const raw = cookieStore.get(COOKIE_NAME)?.value
@@ -45,7 +45,7 @@ export async function getSession(): Promise<UserSession | null> {
   return decodeSession(raw)
 }
 
-export async function saveSession(session: UserSession): Promise<void> {
+export async function saveSession(session: TuserSession): Promise<void> {
   const cookieStore = await cookies()
   cookieStore.set(COOKIE_NAME, encodeSession(session), {
     httpOnly: true,

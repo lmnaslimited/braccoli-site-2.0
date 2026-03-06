@@ -1,10 +1,10 @@
-import type { UserSession } from "../../types/session"
+import type { TuserSession } from "@repo/middleware/types"
 
 export function upsertBenefitHistory(
-  session: UserSession,
+  session: TuserSession,
   benefitType: string,
   score?: number,
-): UserSession["benefitHistory"] {
+): TuserSession["benefitHistory"] {
   const history = session.benefitHistory ?? []
   const withoutCurrent = history.filter(
     (entry) => entry.benefitType !== benefitType,

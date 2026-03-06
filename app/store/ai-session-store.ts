@@ -1,33 +1,27 @@
 "use client";
 
 import { create } from "zustand";
-import {
-  BenefitResult,
-  ChatMessage,
-  DiscoveryQuestion,
-  WorkflowStatus,
-} from "../types/engine";
 
-import { TbenefitContext } from "@repo/middleware/types";
+import type { TbenefitContext, TworkflowStatus, TchatMessage, TbenefitResult, TdiscoveryQuestion} from "@repo/middleware/types";
 
 type AISessionState = {
   isDrawerOpen: boolean;
   context?: TbenefitContext;
-  messages: ChatMessage[];
-  workflowStatus: WorkflowStatus;
-  currentQuestion?: DiscoveryQuestion;
+  messages: TchatMessage[];
+  workflowStatus: TworkflowStatus;
+  currentQuestion?: TdiscoveryQuestion;
   answers: Record<string, string>;
-  result?: BenefitResult;
+  result?: TbenefitResult;
   loading: boolean;
   openDrawer: () => void;
   closeDrawer: () => void;
   setContext: (context: TbenefitContext) => void;
-  addMessage: (message: Omit<ChatMessage, "id" | "timestamp">) => void;
-  setQuestion: (question?: DiscoveryQuestion) => void;
+  addMessage: (message: Omit<TchatMessage, "id" | "timestamp">) => void;
+  setQuestion: (question?: TdiscoveryQuestion) => void;
   saveAnswer: (key: string, value: string) => void;
-  setWorkflowStatus: (status: WorkflowStatus) => void;
+  setWorkflowStatus: (status: TworkflowStatus) => void;
   setLoading: (loading: boolean) => void;
-  setResult: (result?: BenefitResult) => void;
+  setResult: (result?: TbenefitResult) => void;
   resetSession: () => void;
 };
 

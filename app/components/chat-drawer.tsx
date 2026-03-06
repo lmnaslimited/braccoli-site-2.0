@@ -2,10 +2,7 @@
 
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useCTAContext } from "@repo/ui/context/cta-context-provider";
-import type { UserSession } from "../types/session";
-import type { TbenefitContext } from "@repo/middleware/types";
-
-import type { DiscoveryQuestion } from "../types/engine";
+import type { TbenefitContext, TdiscoveryQuestion, TuserSession } from "@repo/middleware/types";
 
 import ChatInput from "../components/chat-input";
 import GreetingBanner from "../components/greeting-banner";
@@ -23,7 +20,7 @@ export default function ChatDrawer() {
   const { messages, addMessage, resetSession } = useAISessionStore();
   const { isChatOpen, closeChat, benefitType } = useCTAContext();
 
-  const [session, setSession] = useState<UserSession | null>(null);
+  const [session, setSession] = useState<TuserSession | null>(null);
   const [loading, setLoading] = useState(false);
   const [followups, setFollowups] = useState<
     Array<{ id: string; prompt: string }>
@@ -36,7 +33,7 @@ export default function ChatDrawer() {
   const [context, setContext] = useState<TbenefitContext | null>(null);
   const [greeting, setGreeting] = useState<string>("");
   const [currentQuestion, setCurrentQuestion] =
-    useState<DiscoveryQuestion | null>(null);
+    useState<TdiscoveryQuestion | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -54,7 +51,7 @@ export default function ChatDrawer() {
       await fetch("/api/session/bootstrap", { method: "POST" });
 
       const response = await fetch("/api/session/me");
-      const json = (await response.json()) as { session: UserSession | null };
+      const json = (await response.json()) as { session: TuserSession | null };
       setSession(json.session);
 
       const initialContext: TbenefitContext = {

@@ -1,9 +1,9 @@
-import type { UserSession } from "../../types/session"
-import type { BenefitRunRequest } from "../../types/benefit"
+import type { TuserSession } from "@repo/middleware/types"
+import type { BenefitRunRequest } from "../../schema/benefit.schema"
 
 export function buildBenefitPrompt(
   input: BenefitRunRequest,
-  session: UserSession,
+  session: TuserSession,
 ) {
   const previous = session.benefitHistory?.find(
     (item) => item.benefitType === input.benefitType,
