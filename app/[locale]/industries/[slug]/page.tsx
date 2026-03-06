@@ -19,8 +19,8 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   }))
 }
 
-async function getIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
-  const context: Tcontext = {
+async function fnGetIndustriesPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
+  const LdContext: Tcontext = {
     locale: locale,
     status: status,
     filters: {
@@ -38,16 +38,16 @@ async function getIndustriesPageData({ slug, locale, status }: { slug: string; l
     },
   };
 
-  const pageData: TindustriesPageTarget = await fnGetCacheData(
-    context,
+  const LdPageData: TindustriesPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('industries')
   )
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
-  const pageData = await getIndustriesPageData({ slug, locale })
+  const pageData = await fnGetIndustriesPageData({ slug, locale })
 
   if (!pageData?.industries?.[0]?.metaData) {
     throw new Error("Meta data not found for industry page")
@@ -59,11 +59,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Industries({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
   const LStatus = await fnGetStatus()
-  const pageData = await getIndustriesPageData({ slug, locale, status: LStatus })
-  const jsonLd = pageData.industries[0]?.metaData.schemaData
+  const LdPageData = await fnGetIndustriesPageData({ slug, locale, status: LStatus })
+  const jsonLd = LdPageData.industries[0]?.metaData.schemaData
   return (
     <>
-      <IndustryComp idIndustry={pageData} />
+      <IndustryComp idIndustry={LdPageData} />
       {jsonLd && (
         <script
           type="application/ld+json"

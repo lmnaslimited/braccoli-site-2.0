@@ -18,7 +18,7 @@ import { useFormHandler } from "../../hooks/form-handler";
 import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 
-const renderIcon = (icon: Tbutton["icon"], className?: string) => {
+const fnRenderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
   const IconComponent = fnGetIconComponent(iconName);
   return <IconComponent className={className || "w-5 h-5"} />;
@@ -97,7 +97,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           }
                         >
                           {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {fnRenderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -118,7 +118,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {fnRenderIcon(idBtn.icon)}
                       </Button>
                     )
                   )}
@@ -271,7 +271,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                               key={iHighlightIndex}
                               className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
                             >
-                              {renderIcon(idHighlight.icon)}
+                              {fnRenderIcon(idHighlight.icon)}
                               <span className="text-sm font-medium">{idHighlight.label}</span>
                             </div>
                           ))}
@@ -319,7 +319,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           }
                         >
                           {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {fnRenderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -340,7 +340,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {fnRenderIcon(idBtn.icon)}
                       </Button>
                     )
                 )}
@@ -420,7 +420,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           }
                         >
                           {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {fnRenderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -441,7 +441,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {fnRenderIcon(idBtn.icon)}
                       </Button>
                     )
                 )}
@@ -527,7 +527,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                               }
                             >
                               {idBtn.label}{" "}
-                              {renderIcon(idBtn.icon)}
+                              {fnRenderIcon(idBtn.icon)}
                             </Button>
                           </Link>
                         ) : (
@@ -548,7 +548,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             }
                           >
                             {idBtn.label}{" "}
-                            {renderIcon(idBtn.icon)}
+                            {fnRenderIcon(idBtn.icon)}
                           </Button>
                         )
                     )}
@@ -607,7 +607,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           }
                         >
                           {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {fnRenderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -628,7 +628,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         }
                       >
                         {idBtn.label}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {fnRenderIcon(idBtn.icon)}
                       </Button>
                     )
                   )}

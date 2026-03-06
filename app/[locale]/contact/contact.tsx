@@ -9,11 +9,11 @@ import { TcontactTarget } from "@repo/middleware/types"
 import { fnGenerateSchemaFromFields } from "@repo/ui/lib/zod-transformation"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
-    const [ContactMessage, fnSetContactMessage] = useState("")
-    const [BookingMessage, fnsetBookingMessage] = useState("")
+    const [LContactMessage, fnSetContactMessage] = useState("")
+    const [LBookingMessage, fnSetBookingMessage] = useState("")
 
     const fnHandleContactSuccess = (iMessage: string) => fnSetContactMessage(iMessage)
-    const fnHandleBookingSuccess = (iMessage: string) => fnsetBookingMessage(iMessage)
+    const fnHandleBookingSuccess = (iMessage: string) => fnSetBookingMessage(iMessage)
 
     const LdBookingForm = idContact.forms.find((form) => form.formId === "booking")
     const LdContactForm = idContact.forms.find((form) => form.formId === "contact")
@@ -58,9 +58,9 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     {LdContactForm.title}
                                 </h2>
 
-                                {ContactMessage && (
+                                {LContactMessage && (
                                     <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {ContactMessage}
+                                        {LContactMessage}
                                         <button
                                             onClick={() => fnSetContactMessage("")}
                                             className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
@@ -120,11 +120,11 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground">
                                     {LdBookingForm.title}
                                 </h2>
-                                {BookingMessage && (
+                                {LBookingMessage && (
                                     <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {BookingMessage}
+                                        {LBookingMessage}
                                         <button
-                                            onClick={() => fnsetBookingMessage("")}
+                                            onClick={() => fnSetBookingMessage("")}
                                             className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
                                         >
                                             <svg

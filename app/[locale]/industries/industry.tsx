@@ -16,13 +16,13 @@ import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, T
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
 
-  const renderIcon = (icon: Tbutton['icon']) => {
+  const fnRenderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
 
-  const allSuccessCards: TcardProps[] =
+  const LaAllSuccessCards: TcardProps[] =
     idIndustry?.caseStudies
       ?.map((item) => item.solutionSection?.successCard)
       .filter(Boolean)
@@ -89,12 +89,12 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
         />
         <div className="space-y-24">
           {idIndustry?.industries[0]?.feature?.map((idSection, iIndex) => {
-            const isEven = iIndex % 2 === 0;
+            const LIsEven = iIndex % 2 === 0;
             return (
               <div key={iIndex} className="pb-4 md:pb-24 last:lg:pb-0">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                   <div
-                    className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
+                    className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${LIsEven ? "lg:order-first" : "lg:order-last"}`}
                   >
                     {idSection.image?.source ? (
                       idSection.image.source.endsWith(".mp4") ? (
@@ -237,7 +237,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   }
                 >
                   {idBtn.label} {" "}
-                  {renderIcon(idBtn.icon)}
+                  {fnRenderIcon(idBtn.icon)}
                 </Button>
               ))}
               <p className="text-sm text-muted-foreground mt-4">
@@ -262,7 +262,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
             />
             <Tab
               idTab={{
-                data: allSuccessCards.map((idCard) => ({
+                data: LaAllSuccessCards.map((idCard) => ({
                   ...idCard,
                   header: {
                     ...idCard.header,

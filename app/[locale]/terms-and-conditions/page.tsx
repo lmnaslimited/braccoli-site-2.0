@@ -11,33 +11,33 @@ import { ChevronRight, FileText, Mail, Globe } from "lucide-react"
 import { clTransformerFactory } from '@repo/middleware';
 import { Tcontext, TtermsAndConditionsPageTarget } from '@repo/middleware/types';
 
-async function getTermsPageData(locale: string) {
+async function fnGetTermsPageData(ilocale: string) {
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
-  const pageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
-    context,
+  const LdContext: Tcontext = { locale: ilocale, status: LStatus }
+  const LdPageData: TtermsAndConditionsPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('termsAndCondition')
   )
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const pageData = await getTermsPageData(locale)
-  return getPageMetadata(pageData.termsAndCondition.metaData)
+  const LdPageData = await fnGetTermsPageData(locale)
+  return getPageMetadata(LdPageData.termsAndCondition.metaData)
 }
 
 export default async function TermsAndConditions({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const idTerms = await getTermsPageData(locale)
-  const jsonLd = idTerms.termsAndCondition.metaData.schemaData
+  const idTerms = await fnGetTermsPageData(locale)
+  const LdJsonLd = idTerms.termsAndCondition.metaData.schemaData
   return (
     <>
-      {jsonLd && (
+      {LdJsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(LdJsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
       )}

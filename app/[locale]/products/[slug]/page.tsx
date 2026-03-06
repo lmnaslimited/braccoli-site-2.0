@@ -15,15 +15,15 @@ export async function generateStaticParams({ params }: { params: { locale: strin
   const ioTransformer: ITransformer<TslugsSource, TslugsTarget> =
     new clSlugsTransformer('products', ioQuery)
 
-  const slugs: TslugsTarget = await ioTransformer.fnExecute({ locale: locale, })
+  const LdSlugs: TslugsTarget = await ioTransformer.fnExecute({ locale: locale, })
 
-  return slugs.map(islug => ({
+  return LdSlugs.map(islug => ({
     slug: islug.slug
   }))
 }
 
-async function getProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
-  const context: Tcontext = {
+async function fnGetProductsPageData({ slug, locale, status }: { slug: string; locale: string; status?: string }) {
+  const LdContext: Tcontext = {
     locale: locale,
     status: status,
     filters: {
@@ -33,39 +33,39 @@ async function getProductsPageData({ slug, locale, status }: { slug: string; loc
     }
   }
 
-  const pageData: TproductsPageTarget = await fnGetCacheData(
-    context,
+  const LdPageData: TproductsPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('products')
   )
 
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string, slug: string }> }): Promise<Metadata> {
   const { slug, locale } = await params
   const LStatus = await fnGetStatus()
-  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
+  const LdPageData = await fnGetProductsPageData({ slug, locale, status: LStatus })
 
-  if (!pageData?.products?.[0]?.metaData) {
+  if (!LdPageData?.products?.[0]?.metaData) {
     throw new Error(`Meta data not found for product slug: ${slug}`)
   }
 
-  return getPageMetadata(pageData.products[0].metaData)
+  return getPageMetadata(LdPageData.products[0].metaData)
 }
 
 export default async function Products({ params }: { params: Promise<{ locale: string, slug: string }> }) {
   const { slug, locale } = await params
   const LStatus = await fnGetStatus()
-  const pageData = await getProductsPageData({ slug, locale, status: LStatus })
-  const jsonLd = pageData.products[0]?.metaData.schemaData
+  const pageData = await fnGetProductsPageData({ slug, locale, status: LStatus })
+  const LdJsonLd = pageData.products[0]?.metaData.schemaData
   return (
     <>
       <ProductsComp idProduct={pageData.products[0]!} />
-      {jsonLd && (
+      {LdJsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(LdJsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
       )}

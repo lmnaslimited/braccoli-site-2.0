@@ -6,39 +6,39 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TsolutionPageTarget } from '@repo/middleware/types'
 
-async function getSolutionPageData(params: { locale: string }) {
+async function fnGetSolutionPageData(params: { locale: string }) {
   const { locale } = params
   const LStatus = await fnGetStatus()
-  const context: Tcontext = {
+  const LdContext: Tcontext = {
     locale: locale,
     caseStudiesLocale2: locale,
     status: LStatus,
   }
 
-  const pageData: TsolutionPageTarget = await fnGetCacheData(
-    context,
+  const LdPageData: TsolutionPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('solution')
   )
 
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const pageData = await getSolutionPageData(await params)
-  return getPageMetadata(pageData.solution.metaData)
+  const LdPageData = await fnGetSolutionPageData(await params)
+  return getPageMetadata(LdPageData.solution.metaData)
 }
 
 export default async function SolutionPage({ params }: { params: Promise<{ locale: string }> }) {
-  const pageData = await getSolutionPageData(await params)
-  const jsonLd = pageData.solution.metaData.schemaData
+  const LdPageData = await fnGetSolutionPageData(await params)
+  const LdJsonLd = LdPageData.solution.metaData.schemaData
   return (
     <>
-      <Solution idSolution={pageData} />
-      {jsonLd && (
+      <Solution idSolution={LdPageData} />
+      {LdJsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(LdJsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
       )}

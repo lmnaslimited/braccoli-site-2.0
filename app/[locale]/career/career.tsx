@@ -27,9 +27,9 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
   const [, fnSetActiveTab] = useState("students");
   // Search term for filtering jobs
-  const [SearchTerm, fnSetSearchTerm] = useState("");
+  const [LSearchTerm, fnSetSearchTerm] = useState("");
   // Selected filter values for job role and location
-  const [SelectedFilters, fnSetSelectedFilters] = useState<{
+  const [LSelectedFilters, fnSetSelectedFilters] = useState<{
     role: string[];
     location: string[];
   }>({
@@ -38,9 +38,9 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   });
 
   // State to hold all student job listings fetched from the API
-  const [StudentJobs, fnSetStudentJobs] = useState<TjobData[]>([]);
+  const [LStudentJobs, fnSetStudentJobs] = useState<TjobData[]>([]);
   // State to store all available filter options (roles, locations) from the API
-  const [FilterOptions, fnSetFilterOptions] = useState<TjobFilters>({
+  const [LFilterOptions, fnSetFilterOptions] = useState<TjobFilters>({
     role: [],
     location: [],
   });
@@ -62,46 +62,46 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   }, []);
 
   // Apply filtering logic to the list of jobs based on search input and selected filters
-  const LaFilteredJobs = StudentJobs.filter((idJob) => {
+  const LaFilteredJobs = LStudentJobs.filter((idJob) => {
     // Check if job matches search term in title or description
-    const MatchesSearch =
-      SearchTerm === "" ||
-      idJob.title.toLowerCase().includes(SearchTerm.toLowerCase()) ||
-      idJob.description.toLowerCase().includes(SearchTerm.toLowerCase());
+    const LMatchesSearch =
+      LSearchTerm === "" ||
+      idJob.title.toLowerCase().includes(LSearchTerm.toLowerCase()) ||
+      idJob.description.toLowerCase().includes(LSearchTerm.toLowerCase());
 
     // Check if job matches selected roles
-    const MatchesRoles =
-      SelectedFilters.role.length === 0 ||
-      SelectedFilters.role.includes(idJob.role);
+    const LMatchesRoles =
+      LSelectedFilters.role.length === 0 ||
+      LSelectedFilters.role.includes(idJob.role);
 
     // Check if job matches selected locations
-    const MatchesCities =
-      SelectedFilters.location.length === 0 ||
-      SelectedFilters.location.some((city) => idJob.location.includes(city));
+    const LMatchesCities =
+      LSelectedFilters.location.length === 0 ||
+      LSelectedFilters.location.some((city) => idJob.location.includes(city));
 
     return (
-      MatchesSearch &&
-      MatchesRoles &&
-      MatchesCities
+      LMatchesSearch &&
+      LMatchesRoles &&
+      LMatchesCities
     );
   });
 
   // Toggle a filter value for a given category (role or location)
   const fnHandleFilterChange = (
-    iCategory: keyof typeof SelectedFilters,
+    iCategory: keyof typeof LSelectedFilters,
     iValue: string
   ): void => {
     fnSetSelectedFilters((idPrev) => {
-      const NewFilters = { ...idPrev };
+      const LdNewFilters = { ...idPrev };
       // If value is already selected, remove it; otherwise, add it
-      if (NewFilters[iCategory].includes(iValue)) {
-        NewFilters[iCategory] = NewFilters[iCategory].filter(
+      if (LdNewFilters[iCategory].includes(iValue)) {
+        LdNewFilters[iCategory] = LdNewFilters[iCategory].filter(
           (item) => item !== iValue
         );
       } else {
-        NewFilters[iCategory] = [...NewFilters[iCategory], iValue];
+        LdNewFilters[iCategory] = [...LdNewFilters[iCategory], iValue];
       }
-      return NewFilters;
+      return LdNewFilters;
     });
   };
 
@@ -116,7 +116,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
   // Count the total number of active filters applied
   const fnGetActiveFilterCount = (): number => {
-    return Object.values(SelectedFilters).reduce(
+    return Object.values(LSelectedFilters).reduce(
       (count, filters) => count + filters.length,
       0
     );
@@ -146,29 +146,29 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
 
   //social section
   // Tracks the currently selected tab (e.g., "all", "linkedin", etc.)
-  const [SelectedTab, setSelectedTab] = useState("all");
+  const [LSelectedTab, setSelectedTab] = useState("all");
   // Tracks the tab where "Show More" has been triggered
-  const [expandedTab, setExpandedTab] = useState("");
+  const [LExpandedTab, setExpandedTab] = useState("");
   // Define available content sources for tabs
-  const UniqueSources = [
+  const LaUniqueSources = [
     "all", "linkedin", "youtube", "x"
   ];
 
   const toggleExpandTab = () => {
-    if (expandedTab === SelectedTab) {
+    if (LExpandedTab === LSelectedTab) {
       setExpandedTab(""); // collapse
     } else {
-      setExpandedTab(SelectedTab); // expand
+      setExpandedTab(LSelectedTab); // expand
     }
   };
 
   // When user switches tabs, reset the expanded state
   useEffect(() => {
     setExpandedTab(""); // reset expanded tab when tab is switched
-  }, [SelectedTab]);
+  }, [LSelectedTab]);
 
   // Stores the video/trend data fetched from the backend
-  const [video, fnSetVideo] = useState<TtrendCardProps[]>([])
+  const [LaVideo, fnSetVideo] = useState<TtrendCardProps[]>([])
 
   // If "all" is selected, return all videos
   // Otherwise, return cards matching the selected source
@@ -177,16 +177,16 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   // Otherwise, show only the first 6 items
 
   const FilteredTrends = (() => {
-    if (SelectedTab === "all") {
-      const YoutubeItems = video.filter(v => v.source.toLowerCase() === "youtube");
-      const otherItems = video.filter(v => v.source.toLowerCase() !== "youtube");
+    if (LSelectedTab === "all") {
+      const YoutubeItems = LaVideo.filter(v => v.source.toLowerCase() === "youtube");
+      const otherItems = LaVideo.filter(v => v.source.toLowerCase() !== "youtube");
 
-      return expandedTab === "all"
+      return LExpandedTab === "all"
         ? [...YoutubeItems.slice(0, 6), ...otherItems.slice(0, 3)]
         : [...YoutubeItems.slice(0, 6), ...otherItems.slice(0, 0)];
     } else {
-      const tabItems = video.filter(v => v.source.toLowerCase() === SelectedTab);
-      return expandedTab === SelectedTab ? tabItems.slice(0, 9) : tabItems.slice(0, 6);
+      const tabItems = LaVideo.filter(v => v.source.toLowerCase() === LSelectedTab);
+      return LExpandedTab === LSelectedTab ? tabItems.slice(0, 9) : tabItems.slice(0, 6);
     }
   })();
 
@@ -361,7 +361,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                       <Input
                         placeholder="Search for opportunities..."
                         className="pl-10"
-                        value={SearchTerm}
+                        value={LSearchTerm}
                         onChange={(event) => fnSetSearchTerm(event.target.value)}
                       />
                     </div>
@@ -378,7 +378,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   </div>
                   {/* simplified horizontal filter bar */}
                   <div className="flex flex-wrap gap-3 mb-4">
-                    {Object.entries(FilterOptions).map(
+                    {Object.entries(LFilterOptions).map(
                       ([iCategory]) => (
                         <DropdownMenu key={iCategory}>
                           <DropdownMenuTrigger asChild>
@@ -387,13 +387,13 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                               className="border-primary/20 hover:bg-primary/5"
                             >
                               {iCategory}
-                              {SelectedFilters[
-                                iCategory as keyof typeof SelectedFilters
+                              {LSelectedFilters[
+                                iCategory as keyof typeof LSelectedFilters
                               ].length > 0 && (
                                   <Badge className="ml-2 bg-primary text-background">
                                     {
-                                      SelectedFilters[
-                                        iCategory as keyof typeof SelectedFilters
+                                      LSelectedFilters[
+                                        iCategory as keyof typeof LSelectedFilters
                                       ].length
                                     }
                                   </Badge>
@@ -401,8 +401,8 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="start" className="w-56">
-                            {FilterOptions[
-                              iCategory as keyof typeof SelectedFilters
+                            {LFilterOptions[
+                              iCategory as keyof typeof LSelectedFilters
                             ].map((iOption) => (
                               <DropdownMenuItem
                                 key={iOption}
@@ -410,23 +410,23 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                                 onSelect={(e) => {
                                   e.preventDefault();
                                   fnHandleFilterChange(
-                                    iCategory as keyof typeof SelectedFilters,
+                                    iCategory as keyof typeof LSelectedFilters,
                                     iOption
                                   );
                                 }}
                               >
                                 <Checkbox
                                   id={`${iCategory}-${iOption}`}
-                                  checked={SelectedFilters[
-                                    iCategory as keyof typeof SelectedFilters
+                                  checked={LSelectedFilters[
+                                    iCategory as keyof typeof LSelectedFilters
                                   ].includes(iOption)}
                                   onCheckedChange={() => { }}
                                   className="rounded-sm"
                                 />
                                 <Label
                                   htmlFor={`${iCategory}-${iOption}`}
-                                  className={`text-sm flex-1 cursor-pointer ${SelectedFilters[
-                                    iCategory as keyof typeof SelectedFilters
+                                  className={`text-sm flex-1 cursor-pointer ${LSelectedFilters[
+                                    iCategory as keyof typeof LSelectedFilters
                                   ].includes(iOption)
                                     ? "font-medium"
                                     : ""
@@ -444,7 +444,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   {/* active filters display */}
                   {fnGetActiveFilterCount() > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {Object.entries(SelectedFilters).map(
+                      {Object.entries(LSelectedFilters).map(
                         ([iCategory, iaValues]) =>
                           iaValues.map((iValue) => (
                             <Badge
@@ -457,7 +457,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                                 className="h-3 w-3 cursor-pointer ml-1"
                                 onClick={() =>
                                   fnHandleFilterChange(
-                                    iCategory as keyof typeof SelectedFilters,
+                                    iCategory as keyof typeof LSelectedFilters,
                                     iValue
                                   )
                                 }
@@ -697,7 +697,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
           >
             <div className="border-b mb-8">
               <TabsList className="w-full justify-start h-auto p-0 bg-transparent">
-                {UniqueSources.map((idTab) => (
+                {LaUniqueSources.map((idTab) => (
                   <TabsTrigger
                     key={idTab}
                     value={idTab}
@@ -708,7 +708,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                 ))}
               </TabsList>
             </div>
-            <TabsContent value={SelectedTab} className="mt-0">
+            <TabsContent value={LSelectedTab} className="mt-0">
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {FilteredTrends.map((idTrend, idIndex) => (
                   <TrendCard key={idIndex} idTrends={idTrend} />
@@ -721,7 +721,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                   className="group"
                   onClick={toggleExpandTab}
                 >
-                  {expandedTab === SelectedTab
+                  {LExpandedTab === LSelectedTab
                     ? idCareer.career.trendingFooter[0]?.description
                     : idCareer.career.trendingFooter[0]?.label}
                   <ChevronRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />

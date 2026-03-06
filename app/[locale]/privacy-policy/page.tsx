@@ -11,26 +11,26 @@ import { ChevronRight, Shield, Mail, Globe } from "lucide-react";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext, TprivacyPolicyPageSource } from "@repo/middleware/types";
 
-async function getPrivacyPolicyData(locale: string) {
+async function fnGetPrivacyPolicyData(ilocale: string) {
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
-  const pageData: TprivacyPolicyPageSource = await fnGetCacheData(
-    context,
+  const LdContext: Tcontext = { locale: ilocale, status: LStatus }
+  const LdPageData: TprivacyPolicyPageSource = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('privacyPolicy')
   )
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params
-  const pageData = await getPrivacyPolicyData(locale)
-  return getPageMetadata(pageData.privacyPolicy.metaData)
+  const LdPageData = await fnGetPrivacyPolicyData(locale)
+  return getPageMetadata(LdPageData.privacyPolicy.metaData)
 }
 
 export default async function PrivacyPolicy({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
-  const idPrivacy = await getPrivacyPolicyData(locale)
-  const jsonLd = idPrivacy.privacyPolicy.metaData.schemaData
+  const idPrivacy = await fnGetPrivacyPolicyData(locale)
+  const LdJsonLd = idPrivacy.privacyPolicy.metaData.schemaData
   return (
     <>
       <div className="bg-background min-h-screen">
@@ -118,11 +118,11 @@ export default async function PrivacyPolicy({ params }: { params: Promise<{ loca
         </section>
       </div>
       {
-        jsonLd && (
+        LdJsonLd && (
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+              __html: JSON.stringify(LdJsonLd, null, 2).replace(/</g, '\\u003c'),
             }}
           />
         )

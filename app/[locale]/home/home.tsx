@@ -43,7 +43,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   // Painpoint Section Severities
   const LaPainpointSeverities = [85, 78, 92, 70];
 
-  const renderIcon = (icon: Tbutton['icon']) => {
+  const fnRenderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
@@ -143,7 +143,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                       }
                     >
                       {idBtn.label}{" "}
-                      {renderIcon(idBtn.icon)}
+                      {fnRenderIcon(idBtn.icon)}
                     </Button>
 
                   </Link>
@@ -163,7 +163,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                     }
                   >
                     {idBtn.label}{" "}
-                    {renderIcon(idBtn.icon)}
+                    {fnRenderIcon(idBtn.icon)}
                   </Button>
                 )
               )}
@@ -254,7 +254,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   <Button size="lg">
 
                     {idHome.home.socialSection.buttons[0]?.label}{" "}
-                    {renderIcon(idHome.home.socialSection.buttons[0]?.icon)}
+                    {fnRenderIcon(idHome.home.socialSection.buttons[0]?.icon)}
                   </Button>
 
                 </Link>
@@ -348,7 +348,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                     > <Button size="lg">
 
                         {idHome.home.trendingNowSection.buttons[0]?.label}
-                        {renderIcon(idHome.home.trendingNowSection.buttons[0]?.icon)}
+                        {fnRenderIcon(idHome.home.trendingNowSection.buttons[0]?.icon)}
                       </Button>
 
                     </Link>

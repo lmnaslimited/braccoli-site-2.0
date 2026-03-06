@@ -15,9 +15,9 @@ import { DynamicSidebar } from "@repo/ui/components/dynamic-sidebar";
 import { TcaseStudies, TformMode, Theader } from "@repo/middleware/types";
 
 export default function CaseStudyPage({
-  idcaseStudies,
+  idCaseStudies,
 }: {
-  idcaseStudies: TcaseStudies;
+  idCaseStudies: TcaseStudies;
 }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
@@ -31,13 +31,13 @@ export default function CaseStudyPage({
           <CustomCard
             idCardProps={{
               header: {
-                ...idcaseStudies.caseStudies[0]?.heroSection.header,
+                ...idCaseStudies.caseStudies[0]?.heroSection.header,
                 headingClass: "text-lg mb-2 text-primary",
                 descripClass: "text-sm text-primary",
               },
               className:
                 "absolute right-4 top-24 z-20 hidden md:block md:right-8 md:top-32 lg:right-12 lg:top-40 w-80 backdrop-blur-md border border-background",
-              buttons: idcaseStudies.caseStudies[0]?.heroSection.buttons?.map(
+              buttons: idCaseStudies.caseStudies[0]?.heroSection.buttons?.map(
                 (button) => ({
                   ...button,
                   icon: "Download",
@@ -48,7 +48,7 @@ export default function CaseStudyPage({
               ),
               onButtonClick: (() => {
                 const LaButton = (
-                  idcaseStudies.caseStudies[0]?.heroSection.buttons ?? []
+                  idCaseStudies.caseStudies[0]?.heroSection.buttons ?? []
                 ).find((btn) => "formMode" in btn);
                 return LaButton
                   ? () =>
@@ -65,21 +65,21 @@ export default function CaseStudyPage({
           <div className="container relative z-10 mx-auto flex h-full flex-col items-start justify-end px-4 pb-12">
             <Link
               href={
-                idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href ?? ""
+                idCaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href ?? ""
               }
               className="mb-4 flex items-center gap-2 text-background hover:underline"
             >
               <ArrowLeft className="h-4 w-4" />
-              {idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.label ?? ""}
+              {idCaseStudies.caseStudies[0]?.heroSection.link?.[0]?.label ?? ""}
             </Link>
             <Badge className="mb-2">
-              {idcaseStudies.caseStudies[0]?.heroSection.tag}
+              {idCaseStudies.caseStudies[0]?.heroSection.tag}
             </Badge>
             <h1 className="mb-2 text-4xl font-bold text-background md:text-5xl">
-              {idcaseStudies.caseStudies[0]?.name}
+              {idCaseStudies.caseStudies[0]?.name}
             </h1>
             <div className="flex flex-wrap items-center gap-4 text-background">
-              {idcaseStudies.caseStudies[0]?.heroSection.list?.map(
+              {idCaseStudies.caseStudies[0]?.heroSection.list?.map(
                 (idItem, iIndex) => {
                   const IconComponent =
                     (Icons[idItem.icon as keyof typeof Icons] as LucideIcon) ||
@@ -102,9 +102,9 @@ export default function CaseStudyPage({
             {/* Main Content Column */}
             <div className="md:col-span-8">
               {/* Problem Section */}
-              {idcaseStudies.caseStudies[0]?.problemSection && (
+              {idCaseStudies.caseStudies[0]?.problemSection && (
                 <ProblemSection
-                  idCaseStudy={idcaseStudies.caseStudies[0]?.problemSection}
+                  idCaseStudy={idCaseStudies.caseStudies[0]?.problemSection}
                   onButtonClick={(mode, formTitle) =>
                     fnHandleFormButtonClick(
                       mode as TformMode,
@@ -117,9 +117,9 @@ export default function CaseStudyPage({
 
               {/* Solution Section */}
               <div ref={LdSectionRefs("containerOne")}>
-                {idcaseStudies.caseStudies[0]?.solutionSection && (
+                {idCaseStudies.caseStudies[0]?.solutionSection && (
                   <SolutionSection
-                    idCaseStudy={idcaseStudies.caseStudies[0]?.solutionSection}
+                    idCaseStudy={idCaseStudies.caseStudies[0]?.solutionSection}
                     onButtonClick={(mode, formTitle) =>
                       fnHandleFormButtonClick(
                         mode as TformMode,
@@ -130,7 +130,7 @@ export default function CaseStudyPage({
                   />
                 )}
                 {fnRenderFormBelowSection("containerOne", {
-                  idPdfData: idcaseStudies,
+                  idPdfData: idCaseStudies,
                 })}
               </div>
             </div>
@@ -140,10 +140,10 @@ export default function CaseStudyPage({
               className="hidden lg:block lg:col-span-4 sticky top-24 self-start"
               ref={LdSectionRefs("containerTwo")}
             >
-              {fnRenderFormBelowSection("containerTwo", { idPdfData: idcaseStudies })}
-              {idcaseStudies.caseStudies[0]?.sidebarData && (
+              {fnRenderFormBelowSection("containerTwo", { idPdfData: idCaseStudies })}
+              {idCaseStudies.caseStudies[0]?.sidebarData && (
                 <DynamicSidebar
-                  idCaseStudy={idcaseStudies.caseStudies[0]?.sidebarData}
+                  idCaseStudy={idCaseStudies.caseStudies[0]?.sidebarData}
                   onButtonClick={(mode, formTitle) =>
                     fnHandleFormButtonClick(
                       mode as TformMode,
@@ -166,7 +166,7 @@ export default function CaseStudyPage({
           <Tab
             idTab={{
               data:
-                idcaseStudies.caseStudies[0]?.relatedCaseStudies.map(
+                idCaseStudies.caseStudies[0]?.relatedCaseStudies.map(
                   (idCard) => ({
                     ...idCard,
                     header: {
@@ -193,14 +193,14 @@ export default function CaseStudyPage({
             }}
           />
           <div className="text-center">
-            {idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
-              idcaseStudies.caseStudies[0].heroSection.link[0].label && (
+            {idCaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
+              idCaseStudies.caseStudies[0].heroSection.link[0].label && (
                 <Link
-                  href={idcaseStudies.caseStudies[0].heroSection.link[0].href}
+                  href={idCaseStudies.caseStudies[0].heroSection.link[0].href}
                 >
                   <Button size="lg">
                     <ArrowLeft className="h-4 w-4" />
-                    {idcaseStudies.caseStudies[0].heroSection.link[0].label}
+                    {idCaseStudies.caseStudies[0].heroSection.link[0].label}
                   </Button>
                 </Link>
               )}
@@ -212,13 +212,13 @@ export default function CaseStudyPage({
         <section className=" py-16 md:py-24 lg:py-24" id="success-story">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle idTitle={{
-              ...idcaseStudies.caseStudies[0]?.moreCaseStudies,
+              ...idCaseStudies.caseStudies[0]?.moreCaseStudies,
               className: "text-center items-center",
               headingClass: "md:text-5xl",
             } as Theader} />
             <Tab
               idTab={{
-                data: idcaseStudies.allCaseStudies.map((idCard) => ({
+                data: idCaseStudies.allCaseStudies.map((idCard) => ({
                   ...idCard,
                   header: {
                     ...idCard.solutionSection.successCard.header,
@@ -245,21 +245,21 @@ export default function CaseStudyPage({
                 })),
                 TabDefault: {
                   text: "All ",
-                  defaultTab: idcaseStudies.caseStudies[0]?.heroSection.tag,
+                  defaultTab: idCaseStudies.caseStudies[0]?.heroSection.tag,
                   AllLabel: "Show More",
                   LessLabel: "Show Less",
                 },
               }}
             />
             <div className="text-center">
-              {idcaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
-                idcaseStudies.caseStudies[0].heroSection.link[0].label && (
+              {idCaseStudies.caseStudies[0]?.heroSection.link?.[0]?.href &&
+                idCaseStudies.caseStudies[0].heroSection.link[0].label && (
                   <Link
-                    href={idcaseStudies.caseStudies[0].heroSection.link[0].href}
+                    href={idCaseStudies.caseStudies[0].heroSection.link[0].href}
                   >
                     <Button size="lg">
                       <ArrowLeft className="h-4 w-4" />
-                      {idcaseStudies.caseStudies[0].heroSection.link[0].label}
+                      {idCaseStudies.caseStudies[0].heroSection.link[0].label}
                     </Button>
                   </Link>
                 )}

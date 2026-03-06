@@ -6,27 +6,27 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TtrendsPageTarget } from '@repo/middleware/types'
 
-async function getTrendingNowPageData(params: { locale: string }) {
+async function fnGetTrendingNowPageData(params: { locale: string }) {
   const { locale } = params
 
   const LStatus = await fnGetStatus()   //Fetch publication status from Strapi and pass it to context 
-  const context: Tcontext = { locale: locale, status: LStatus }
+  const LdContext: Tcontext = { locale: locale, status: LStatus }
 
-  const pageData: TtrendsPageTarget = await fnGetCacheData(
-    context,
+  const ldPageData: TtrendsPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('trend')
   )
 
-  return pageData
+  return ldPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const pageData = await getTrendingNowPageData(await params)
-  return getPageMetadata(pageData.trend.metaData)
+  const LdPageData = await fnGetTrendingNowPageData(await params)
+  return getPageMetadata(LdPageData.trend.metaData)
 }
 
 export default async function TrendingNow({ params }: { params: Promise<{ locale: string }> }) {
-  const pageData = await getTrendingNowPageData(await params)
+  const pageData = await fnGetTrendingNowPageData(await params)
   const jsonLd = pageData.trend.metaData.schemaData
   return (
     <>

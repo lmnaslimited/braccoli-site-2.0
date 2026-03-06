@@ -6,34 +6,34 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import type { Tcontext, TaboutUsPageTarget } from '@repo/middleware/types'
 
-async function getAboutUsPageData(params: { locale: string }) {
+async function fnGetAboutUsPageData(params: { locale: string }) {
   const { locale } = params
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
-  const pageData: TaboutUsPageTarget = await fnGetCacheData(
-    context,
+  const LdContext: Tcontext = { locale: locale, status: LStatus }
+  const LdPageData: TaboutUsPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('aboutUs')
   )
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const pageData = await getAboutUsPageData(await params)
-  return getPageMetadata(pageData.aboutUs.metaData)
+  const LdPageData = await fnGetAboutUsPageData(await params)
+  return getPageMetadata(LdPageData.aboutUs.metaData)
 }
 
 export default async function AboutUsPage({ params }: { params: Promise<{ locale: string }> }) {
-  const pageData = await getAboutUsPageData(await params)
-  const jsonLd = pageData.aboutUs.metaData.schemaData
+  const LdPageData = await fnGetAboutUsPageData(await params)
+  const LdjsonLd = LdPageData.aboutUs.metaData.schemaData
 
   return (
     <>
-      <AboutUs idAboutUs={pageData} />
-      {jsonLd && (
+      <AboutUs idAboutUs={LdPageData} />
+      {LdjsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(LdjsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
       )}

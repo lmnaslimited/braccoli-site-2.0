@@ -13,7 +13,7 @@ import { useFormHandler } from "../../hooks/form-handler";
 import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TcalloutProps, TformMode, Theader, TheroSection, TsolutionPageTarget } from "@repo/middleware/types";
 
-const renderIcon = (icon: Tbutton['icon']) => {
+const fnRenderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-6 h-6" />;
@@ -78,7 +78,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         {idBtn.href ? <Link href={idBtn.href}>
                                             {idBtn.label}
                                         </Link> : idBtn.label}
-                                        {renderIcon(idBtn.icon)}
+                                        {fnRenderIcon(idBtn.icon)}
                                     </Button>)}
                             </div>
                         </div>
@@ -111,7 +111,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         <div className="flex justify-center md:justify-end">
                                             <div className="bg-accent p-6 rounded-full relative z-10">
                                                 <div className="bg-foreground text-primary-foreground p-4 rounded-full">
-                                                    {renderIcon(idStep.image?.svg)}
+                                                    {fnRenderIcon(idStep.image?.svg)}
                                                 </div>
                                             </div>
                                         </div>
@@ -139,7 +139,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                         <div className="flex justify-center md:justify-start order-1 md:order-2">
                                             <div className="bg-accent p-6 rounded-full relative z-10">
                                                 <div className="bg-foreground text-primary-foreground p-4 rounded-full">
-                                                    {renderIcon(idStep.image?.svg)}
+                                                    {fnRenderIcon(idStep.image?.svg)}
                                                 </div>
                                             </div>
                                         </div>
@@ -161,7 +161,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                     <Button key={iIndex} size="lg" className="gap-2" variant={idBtn.variant as Tbutton["variant"] ?? "default"}
                                         onClick={() => idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)}
                                     >
-                                        {renderIcon(idBtn.icon)}
+                                        {fnRenderIcon(idBtn.icon)}
                                         {idBtn.href ? <Link href={idBtn.href}>
                                             {idBtn.label}
                                         </Link> : idBtn.label}
@@ -213,7 +213,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                     </p>
                     <Button size={"lg"} onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFour", idSolution.solution.solutionFooter.buttons[0]?.label)}>
                         {idSolution.solution.solutionFooter.buttons[0]?.label}{" "}
-                        {renderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
+                        {fnRenderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
                     </Button>
                 </section>
                 {fnRenderFormBelowSection("containerFour")}
@@ -264,7 +264,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                         <div className="mt-3 text-center">
                             <Button size="lg" className="group" onClick={() => idSolution.solution.solutionFooter.buttons[0]?.formMode && fnHandleFormButtonClick(idSolution.solution.solutionFooter.buttons[0]?.formMode as TformMode, "containerFive", idSolution.solution.solutionFooter.buttons[0]?.label)}>
                                 {idSolution.solution.solutionFooter.buttons[0]?.label}
-                                {renderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
+                                {fnRenderIcon(idSolution.solution.solutionFooter.buttons[0]?.icon)}
                             </Button>
                         </div>
                     </div>
@@ -297,7 +297,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                     </p>
                     <Button size={"lg"} onClick={() => idSolution.solution.storyFooter.formMode && fnHandleFormButtonClick(idSolution.solution.storyFooter.formMode as TformMode, "containerSix", idSolution.solution.storyFooter.label)}>
                         {idSolution.solution.storyFooter.label}{" "}
-                        {renderIcon(idSolution.solution.storyFooter.icon)}
+                        {fnRenderIcon(idSolution.solution.storyFooter.icon)}
                     </Button>
                 </section>
                 {fnRenderFormBelowSection("containerSix")}
@@ -352,7 +352,7 @@ export default function Solutions({ idSolution }: { idSolution: TsolutionPageTar
                                 <Link href={idSolution.solution.calloutFooter.buttons[0]?.href}>
                                     {idSolution.solution.calloutFooter.buttons[0]?.label}
                                 </Link>
-                                {renderIcon(idSolution.solution.calloutFooter.buttons[0]?.icon)}
+                                {fnRenderIcon(idSolution.solution.calloutFooter.buttons[0]?.icon)}
                             </Button>
                         )}
                     </div>

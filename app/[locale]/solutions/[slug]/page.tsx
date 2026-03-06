@@ -18,9 +18,9 @@ export async function generateStaticParams({
   const ioTransformer: ITransformer<TslugsSource, TslugsTarget> =
     new clSlugsTransformer('caseStudies', ioQuery);
 
-  const slugs: TslugsTarget = await ioTransformer.fnExecute({ locale });
+  const LdSlugs: TslugsTarget = await ioTransformer.fnExecute({ locale });
 
-  return slugs.map((islug) => ({
+  return LdSlugs.map((islug) => ({
     slug: islug.slug,
     locale,
   }));
@@ -34,7 +34,7 @@ export default async function CaseStudy({
   const { slug, locale } = await params;
   const LStatus = await fnGetStatus()
 
-  const context: Tcontext = {
+  const LdContext: Tcontext = {
     locale: locale,
     footerLocale2: locale,
     filters: {
@@ -51,10 +51,10 @@ export default async function CaseStudy({
   };
 
   const pageData: TcaseStudiesPageTarget = await fnGetCacheData(
-    context,
+    LdContext,
     clTransformerFactory.fnCreateTransformer('caseStudies')
   );
   return (
-    <CaseStudyPage idcaseStudies={pageData} />
+    <CaseStudyPage idCaseStudies={pageData} />
   );
 }

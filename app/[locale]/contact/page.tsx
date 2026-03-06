@@ -6,24 +6,24 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcontactTarget, Tcontext } from '@repo/middleware/types'
 
-async function getContactPageData(params: { locale: string }) {
+async function fnGetContactPageData(params: { locale: string }) {
     const { locale } = params
     const LStatus = await fnGetStatus()
-    const context: Tcontext = { locale: locale, status: LStatus }
-    const pageData: TcontactTarget = await fnGetCacheData(
-        context,
+    const LdContext: Tcontext = { locale: locale, status: LStatus }
+    const LPageData: TcontactTarget = await fnGetCacheData(
+        LdContext,
         clTransformerFactory.fnCreateTransformer('contact')
     )
-    return pageData
+    return LPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const pageData = await getContactPageData(await params)
+    const pageData = await fnGetContactPageData(await params)
     return getPageMetadata(pageData.contact.metaData)
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
-    const pageData = await getContactPageData(await params)
+    const pageData = await fnGetContactPageData(await params)
     const jsonLd = pageData.contact.metaData.schemaData
     return (
         <>

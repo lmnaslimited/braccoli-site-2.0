@@ -6,28 +6,28 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TeventPageTarget } from '@repo/middleware/types'
 
-async function getEventsPageData(params: { locale: string }) {
+async function fnGetEventsPageData(params: { locale: string }) {
     const { locale } = params
     const LStatus = await fnGetStatus()
-    const context: Tcontext = { locale: locale, status: LStatus }
-    const pageData: TeventPageTarget = await fnGetCacheData(
-        context,
+    const LdContext: Tcontext = { locale: locale, status: LStatus }
+    const LdPageData: TeventPageTarget = await fnGetCacheData(
+        LdContext,
         clTransformerFactory.fnCreateTransformer('event')
     )
-    return pageData
+    return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-    const pageData = await getEventsPageData(await params)
-    return getPageMetadata(pageData.event.metaData)
+    const LdPageData = await fnGetEventsPageData(await params)
+    return getPageMetadata(LdPageData.event.metaData)
 }
 
 export default async function EventsPage({ params }: { params: Promise<{ locale: string }> }) {
-    const pageData = await getEventsPageData(await params)
-    const jsonLd = pageData.event.metaData.schemaData
+    const LdPageData = await fnGetEventsPageData(await params)
+    const jsonLd = LdPageData.event.metaData.schemaData
     return (
         <>
-            <Events idEvent={pageData} />
+            <Events idEvent={LdPageData} />
             {jsonLd && (
                 <script
                     type="application/ld+json"

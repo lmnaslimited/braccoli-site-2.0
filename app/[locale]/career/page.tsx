@@ -6,24 +6,24 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcareerPageTarget, Tcontext } from '@repo/middleware/types'
 
-async function getCareerPageData(params: { locale: string }) {
+async function fnGetCareerPageData(params: { locale: string }) {
   const { locale } = params
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
-  const pageData: TcareerPageTarget = await fnGetCacheData(
-    context,
+  const LdContext: Tcontext = { locale: locale, status: LStatus }
+  const LdPageData: TcareerPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('career')
   )
-  return pageData
+  return LdPageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const pageData = await getCareerPageData(await params)
+  const pageData = await fnGetCareerPageData(await params)
   return getPageMetadata(pageData.career.metaData)
 }
 
 export default async function CareerPage({ params }: { params: Promise<{ locale: string }> }) {
-  const pageData = await getCareerPageData(await params)
+  const pageData = await fnGetCareerPageData(await params)
   const jsonLd = pageData.career.metaData.schemaData
   return (
     <>

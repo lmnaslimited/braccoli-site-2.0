@@ -6,11 +6,11 @@ import { fnGetStatus } from '../../lib/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { TcaseStudiesPageTarget, Tcontext, TpricingPageTarget } from '@repo/middleware/types'
 
-async function getPricingPageData(params: { locale: string }) {
+async function fnGetPricingPageData(params: { locale: string }) {
   const { locale } = params
 
   const LStatus = await fnGetStatus()
-  const pricingContext: Tcontext = {
+  const LdPricingContext: Tcontext = {
     locale: locale,
     filters: {
       slug: {
@@ -19,39 +19,39 @@ async function getPricingPageData(params: { locale: string }) {
     },
     status: LStatus
   }
-  const pricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
-    pricingContext,
+  const LdPricingPageData: TcaseStudiesPageTarget = await fnGetCacheData(
+    LdPricingContext,
     clTransformerFactory.fnCreateTransformer('caseStudies')
   )
 
-  const context: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
-  const pageData: TpricingPageTarget = await fnGetCacheData(
-    context,
+  const LdContext: Tcontext = { locale: locale, status: LStatus } //Include publication status in context for pricing page data as well
+  const LdPageData: TpricingPageTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.fnCreateTransformer('pricing')
   )
 
   return {
-    pricingPageData,
-    pageData
+    LdPricingPageData,
+    LdPageData
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  const { pageData } = await getPricingPageData(await params)
-  return getPageMetadata(pageData.pricing.metaData)
+  const { LdPageData } = await fnGetPricingPageData(await params)
+  return getPageMetadata(LdPageData.pricing.metaData)
 }
 
 export default async function PricingPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { pricingPageData, pageData } = await getPricingPageData(await params)
-  const jsonLd = pageData.pricing.metaData.schemaData
+  const { LdPricingPageData, LdPageData } = await fnGetPricingPageData(await params)
+  const LdJsonLd = LdPageData.pricing.metaData.schemaData
   return (
     <>
-      <Pricing idPricing={pageData} idcaseStudies={pricingPageData} />
-      {jsonLd && (
+      <Pricing idPricing={LdPageData} idcaseStudies={LdPricingPageData} />
+      {LdJsonLd && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(jsonLd, null, 2).replace(/</g, '\\u003c'),
+            __html: JSON.stringify(LdJsonLd, null, 2).replace(/</g, '\\u003c'),
           }}
         />
       )}

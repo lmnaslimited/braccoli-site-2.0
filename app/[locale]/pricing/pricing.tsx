@@ -35,9 +35,9 @@ export default function Pricing({
 }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
-  const [openedFormId, setOpenedFormId] = useState<string | null>(null);
+  const [LOpenedFormId, fnSetOpenedFormId] = useState<string | null>(null);
 
-  const renderIcon = (icon: Tbutton["icon"]) => {
+  const fnRenderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
@@ -126,12 +126,12 @@ export default function Pricing({
                             className="flex items-center gap-2"
                           >
                             <span>{idBtn.label}</span>
-                            {renderIcon(idBtn.icon)}
+                            {fnRenderIcon(idBtn.icon)}
                           </Link>
                         ) : (
                           <span className="flex items-center gap-2">
                             {idBtn.label}
-                            {renderIcon(idBtn.icon)}
+                            {fnRenderIcon(idBtn.icon)}
                           </span>
                         )}
                       </Button>
@@ -221,7 +221,7 @@ export default function Pricing({
                             {idPricing.pricing.planSection.pricingPlans.map(
                               (iPlan, iIndex) => {
                                 const containerId = `containerPlan${iIndex + 1}`;
-                                const isOpen = openedFormId === containerId;
+                                const isOpen = LOpenedFormId === containerId;
 
                                 return (
                                   <TableCell key={iIndex} className="text-center">
@@ -243,14 +243,14 @@ export default function Pricing({
                                           `containerPlan${iIndex + 1}`,
                                           iPlan.name
                                         );
-                                        setOpenedFormId(prev => (prev === containerId ? null : containerId));
+                                        fnSetOpenedFormId(prev => (prev === containerId ? null : containerId));
                                       }
                                       }
                                     >
                                       {iIndex === 2
                                         ? idPricing.pricing.planFooter.list[1]?.label
                                         : idPricing.pricing.planFooter.list[0]?.label}{" "}
-                                      {renderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
+                                      {fnRenderIcon(isOpen ? "ChevronUp" : "ChevronDown")}
                                     </Button>
                                   </TableCell>
                                 )
@@ -303,7 +303,7 @@ export default function Pricing({
                           ) : (
                             idBtn.label
                           )}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {fnRenderIcon(idBtn.icon)}
                         </Button>
                       )
                     )}
@@ -542,7 +542,7 @@ export default function Pricing({
               >
                 <Button variant="outline" size="lg">
                   {idPricing.pricing.testimonialHeader.buttons[0]?.label}{" "}
-                  {renderIcon(
+                  {fnRenderIcon(
                     idPricing.pricing.testimonialHeader.buttons[0]?.icon
                   )}
                 </Button>
@@ -620,7 +620,7 @@ export default function Pricing({
                         ) : (
                           idBtn.label
                         )}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {fnRenderIcon(idBtn.icon)}
                       </Button>
                     </div>
                   ))}
