@@ -9,7 +9,6 @@ import CustomCard from "@repo/ui/components/custom-card";
 import LogoShowcase from "@repo/ui/components/logo-showcase"
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
-
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
@@ -41,7 +40,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   ];
 
   // Painpoint Section Severities
-  const LaPainpointSeverities = [85, 78, 92, 70];
+  // const LaPainpointSeverities = [85, 78, 92, 70];
 
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -50,9 +49,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   };
 
   return (
-    <div>
+    <>
       {/* Hero Section */}
-      <section ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")} >
         <Hero
           idHero={
             {
@@ -68,126 +67,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerOne")}
-      </section>
+      </section >
 
-      {/* Problem Section */}
-      <section className="bg-grayBackground">
-        <Feature
-          idFeature={
-            {
-              ...idHome.home.problemSection[0],
-              iShowButton: true,
-              buttonPosition: "header",
-            } as TfeatureProps
-          }
-        />
-      </section>
-
-      {/* Why Section */}
-      <section className="bg-accent">
-        <div className="py-16 ">
-          <Feature
-            idFeature={
-              {
-                ...idHome.home.problemSection[1],
-                iShowButton: false,
-                layout: "centered",
-              } as TfeatureProps
-            }
-          />
-        </div>
-      </section>
-
-      {/* Business Problem Section */}
-      <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
-        <div className="py-24 px-4 border-t bg-grayBackground">
-          <div className="max-w-4xl mx-auto">
-            <TitleSubtitle
-              idTitle={{
-                ...idHome.home.calloutSection[0]?.header,
-                className: "m-0 items-center justify-center text-primary",
-                headingClass: "text-3xl sm:text-4xl tracking-normal",
-                descripClass: "max-w-lg mx-auto",
-              }}
-            />
-            <div className="space-y-8 py-20">
-              {idHome.home.calloutSection[0]?.list.map((point, index) => (
-                <div key={index}>
-                  <div className="flex justify-between items-center mb-2 text-primary">
-                    <span className="font-medium ">{point.icon}</span>
-                    <span className="text-sm font-medium">
-                      {point.description}
-                    </span>
-                  </div>
-                  <div className="w-full bg-background rounded-full border border-black/50 h-2.5 mb-2">
-                    <div
-                      className="bg-primary h-2.5 rounded-full"
-                      style={{ width: `${LaPainpointSeverities[index]}%` }}
-                    ></div>
-                  </div>
-                  <p className="text-muted-foreground">{point.label}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-4 sm:flex-row items-center justify-center">
-              {idHome.home.calloutSection[0]?.buttons.map((idBtn, iIndex) =>
-                idBtn.href ? (
-                  <Link href={idBtn.href} key={iIndex}>
-                    <Button
-                      key={iIndex}
-                      size="lg"
-                      className="gap-4"
-                      variant={
-                        (idBtn.variant as Tbutton["variant"]) ?? "default"
-                      }
-                    >
-                      {idBtn.label}{" "}
-                      {renderIcon(idBtn.icon)}
-                    </Button>
-
-                  </Link>
-                ) : (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="gap-4"
-                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
-                    onClick={() =>
-                      idBtn.formMode &&
-                      fnHandleFormButtonClick(
-                        idBtn.formMode as TformMode,
-                        "containerTwo",
-                        idBtn.label
-                      )
-                    }
-                  >
-                    {idBtn.label}{" "}
-                    {renderIcon(idBtn.icon)}
-                  </Button>
-                )
-              )}
-            </div>
-          </div>
-        </div>
-        {fnRenderFormBelowSection("containerTwo")}
-      </section>
-
-      {/* Product Section */}
-      <section className="py-16 bg-accent">
-        <Feature
-          idFeature={
-            {
-              ...idHome.home.problemSection[2],
-              layout: "centered",
-              iShowButton: true,
-              buttonPosition: "bottom-center",
-            } as TfeatureProps
-          }
-        />
-      </section>
-
-      {/* Social Proof Section */}
-      <section className="py-24 bg-background">
+      {/* Testimonial Section */}
+      < section className="py-24 bg-background" >
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <TitleSubtitle
@@ -261,21 +144,37 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Callout Section */}
-      <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
-        <Callout
-          idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerThree", formTitle)
-          }
-        />
-        {fnRenderFormBelowSection("containerThree")}
-      </section>
+      </section >
 
       {/* Problem Section */}
-      <section className="py-16">
+      < section className="bg-accent" >
+        <Feature
+          idFeature={
+            {
+              ...idHome.home.problemSection[0],
+              iShowButton: true,
+              buttonPosition: "header",
+            } as TfeatureProps
+          }
+        />
+      </section >
+
+      {/* Solutions Section */}
+      < section className="py-16" >
+        <Feature
+          idFeature={
+            {
+              ...idHome.home.problemSection[2],
+              layout: "centered",
+              iShowButton: true,
+              buttonPosition: "bottom-center",
+            } as TfeatureProps
+          }
+        />
+      </section >
+
+      {/* Customer Journey Section */}
+      < section className="py-16 bg-accent" >
         <Feature
           idFeature={
             {
@@ -285,10 +184,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </section>
+      </section >
 
       {/* FAQ Section */}
-      <section className="bg-grayBackground">
+      < section className="bg-grayBackground" >
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -297,10 +196,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             <FAQs idFaq={idHome.home.faqSection.list} />
           </div>
         </div>
-      </section>
+      </section >
 
       {/* Callout Section */}
-      <section className="bg-accent" ref={LdSectionRefs("containerFour")}>
+      < section className="bg-accent" ref={LdSectionRefs("containerFour")} >
         <Callout
           idCallout={
             {
@@ -313,10 +212,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerFour")}
-      </section>
+      </section >
 
-      {/* Trending Now Section */}
-      <section className="py-24 bg-background">
+      {/* Smart Move Section */}
+      < section className="py-24 bg-background" >
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className=" mb-16">
@@ -368,7 +267,107 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             </div>
           </div>
         </div>
-      </section>
-    </div>
+      </section >
+
+      {/* Why Section */}
+      {/* <section className="bg-accent">
+        <div className="py-16 ">
+          <Feature
+            idFeature={
+              {
+                ...idHome.home.problemSection[1],
+                iShowButton: false,
+                layout: "centered",
+              } as TfeatureProps
+            }
+          />
+        </div>
+      </section> */}
+
+      {/* Business Problem Section */}
+      {/* <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
+        <div className="py-24 px-4 border-t bg-grayBackground">
+          <div className="max-w-4xl mx-auto">
+            <TitleSubtitle
+              idTitle={{
+                ...idHome.home.calloutSection[0]?.header,
+                className: "m-0 items-center justify-center text-primary",
+                headingClass: "text-3xl sm:text-4xl tracking-normal",
+                descripClass: "max-w-lg mx-auto",
+              }}
+            />
+            <div className="space-y-8 py-20">
+              {idHome.home.calloutSection[0]?.list.map((point, index) => (
+                <div key={index}>
+                  <div className="flex justify-between items-center mb-2 text-primary">
+                    <span className="font-medium ">{point.icon}</span>
+                    <span className="text-sm font-medium">
+                      {point.description}
+                    </span>
+                  </div>
+                  <div className="w-full bg-background rounded-full border border-black/50 h-2.5 mb-2">
+                    <div
+                      className="bg-primary h-2.5 rounded-full"
+                      style={{ width: `${LaPainpointSeverities[index]}%` }}
+                    ></div>
+                  </div>
+                  <p className="text-muted-foreground">{point.label}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-4 sm:flex-row items-center justify-center">
+              {idHome.home.calloutSection[0]?.buttons.map((idBtn, iIndex) =>
+                idBtn.href ? (
+                  <Link href={idBtn.href} key={iIndex}>
+                    <Button
+                      key={iIndex}
+                      size="lg"
+                      className="gap-4"
+                      variant={
+                        (idBtn.variant as Tbutton["variant"]) ?? "default"
+                      }
+                    >
+                      {idBtn.label}{" "}
+                      {renderIcon(idBtn.icon)}
+                    </Button>
+
+                  </Link>
+                ) : (
+                  <Button
+                    key={iIndex}
+                    size="lg"
+                    className="gap-4"
+                    variant={(idBtn.variant as Tbutton["variant"]) ?? "default"}
+                    onClick={() =>
+                      idBtn.formMode &&
+                      fnHandleFormButtonClick(
+                        idBtn.formMode as TformMode,
+                        "containerTwo",
+                        idBtn.label
+                      )
+                    }
+                  >
+                    {idBtn.label}{" "}
+                    {renderIcon(idBtn.icon)}
+                  </Button>
+                )
+              )}
+            </div>
+          </div>
+        </div>
+        {fnRenderFormBelowSection("containerTwo")}
+      </section> */}
+
+      {/* Callout Section */}
+      {/* <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
+        <Callout
+          idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(mode as TformMode, "containerThree", formTitle)
+          }
+        />
+        {fnRenderFormBelowSection("containerThree")}
+      </section> */}
+    </>
   );
 }
