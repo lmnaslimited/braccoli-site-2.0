@@ -10,7 +10,7 @@ import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import PainPoints from "@repo/ui/components/pain-point";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../../hooks/form-handler";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware/types";
 
 export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }) {
@@ -18,7 +18,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
 
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
 

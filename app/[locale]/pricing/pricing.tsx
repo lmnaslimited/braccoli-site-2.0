@@ -22,7 +22,7 @@ import {
   TableHeader,
   TableRow,
 } from "@repo/ui/components/ui/table";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { useFormHandler } from "../../hooks/form-handler";
 import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
 
@@ -39,7 +39,7 @@ export default function Pricing({
 
   const renderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
   return (
@@ -81,7 +81,7 @@ export default function Pricing({
                         typeof idIssue.icon === "string"
                           ? idIssue.icon
                           : "HelpCircle";
-                      const IconComponent = getIconComponent(iconName);
+                      const IconComponent = fnGetIconComponent(iconName);
                       return (
                         <div key={iIndex} className="flex items-start gap-3">
                           <div className="mt-1 rounded-full bg-muted p-1.5 flex-shrink-0">
@@ -437,7 +437,7 @@ export default function Pricing({
                                     ? idBtn.icon
                                     : "HelpCircle";
                                 const IconComponent =
-                                  getIconComponent(iconName);
+                                  fnGetIconComponent(iconName);
                                 return <IconComponent />;
                               })()}
                           </Button>

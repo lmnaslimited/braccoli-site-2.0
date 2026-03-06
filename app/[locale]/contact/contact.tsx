@@ -6,7 +6,7 @@ import { SectionForm } from "@repo/ui/components/form"
 import LocationCard from "@repo/ui/components/location-card"
 import TitleSubtitle from "@repo/ui/components/title-subtitle"
 import { TcontactTarget } from "@repo/middleware/types"
-import { generateSchemaFromFields } from "@repo/ui/lib/zod-transformation"
+import { fnGenerateSchemaFromFields } from "@repo/ui/lib/zod-transformation"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
@@ -82,7 +82,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     config={{
                                         ...LdContactForm,
                                         fields: idContact.contact.contactForm,
-                                        schema: generateSchemaFromFields(idContact.contact.contactForm || []),
+                                        schema: fnGenerateSchemaFromFields(idContact.contact.contactForm || []),
                                     }}
                                     onSuccess={fnHandleContactSuccess}
                                     className="shadow-none bg-transparent p-0 border-none"
@@ -144,7 +144,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     config={{
                                         ...LdBookingForm,
                                         fields: idContact.contact.bookingForm,
-                                        schema: generateSchemaFromFields(idContact.contact.bookingForm || []),
+                                        schema: fnGenerateSchemaFromFields(idContact.contact.bookingForm || []),
                                     }}
                                     onSuccess={fnHandleBookingSuccess}
                                     className="shadow-none bg-transparent p-0 border-none"

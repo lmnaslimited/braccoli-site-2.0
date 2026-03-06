@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import CustomCard from "@repo/ui/components/custom-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
@@ -10,7 +10,7 @@ import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon'], className?: string) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className={className || "h-8 w-8 mb-8"} />;
 };
 

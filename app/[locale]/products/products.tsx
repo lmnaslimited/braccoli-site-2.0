@@ -15,12 +15,12 @@ import CustomCard from "@repo/ui/components/custom-card";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../../hooks/form-handler";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
-  const IconComponent = getIconComponent(iconName);
+  const IconComponent = fnGetIconComponent(iconName);
   return <IconComponent className={className || "w-5 h-5"} />;
 };
 

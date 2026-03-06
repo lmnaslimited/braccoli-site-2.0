@@ -11,7 +11,7 @@ import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 
 import { useFormHandler } from "../../hooks/form-handler";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 
 import {
   MessageSquare,
@@ -45,7 +45,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
 
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
 

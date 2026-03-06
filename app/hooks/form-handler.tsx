@@ -6,7 +6,7 @@ import { useState, useRef, type ReactNode, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm } from "@repo/ui/components/form"
-import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
+import { fnGenerateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
 import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
 
 type OptionalRenderParams = {
@@ -31,7 +31,7 @@ export const useFormHandler = () => {
                 //generate the schema dynamically based on incoming fields
                 const LdFormsSchema = LdFormsConfig.forms.map((form: TformConfig) => ({
                     ...form,
-                    schema: generateSchemaFromFields(form.fields || []),
+                    schema: fnGenerateSchemaFromFields(form.fields || []),
                 }))
                 fnSetPageData(LdFormsSchema);
             } catch (err) {

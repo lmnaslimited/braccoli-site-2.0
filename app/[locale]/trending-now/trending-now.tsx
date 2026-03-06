@@ -9,7 +9,7 @@ import TrendCard from "@repo/ui/components/trend-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@repo/ui/components/ui/tabs";
 import { useFormHandler } from "../../hooks/form-handler";
-import { getIconComponent } from "@repo/ui/lib/icon";
+import { fnGetIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TtrendsPageSource, TtrendCardProps } from "@repo/middleware/types"
 
 export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSource }) {
@@ -80,7 +80,7 @@ export default function TrendingNowPage({ idTrend }: { idTrend: TtrendsPageSourc
 
   const renderIcon = (icon: Tbutton['icon']) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
+    const IconComponent = fnGetIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
 
