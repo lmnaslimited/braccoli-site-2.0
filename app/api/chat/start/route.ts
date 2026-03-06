@@ -17,4 +17,3 @@ export async function POST(request: Request) {
     question: firstQuestion,
   })
 }
-// Get actionable insights in just a few guided steps with our ROI Calculator
