@@ -3,19 +3,19 @@ import { fnGetSession } from "../../../lib/session/session"
 
 export async function GET() {
   try {
-    const session = await fnGetSession()
-    if (!session) {
+    const idSession = await fnGetSession()
+    if (!idSession) {
       return NextResponse.json({ ok: true, session: null })
     }
 
     return NextResponse.json({
       ok: true,
       session: {
-        sessionId: session.sessionId,
-        anonymousId: session.anonymousId,
-        identity: session.identity,
-        enrichment: session.enrichment,
-        benefitHistory: session.benefitHistory,
+        sessionId: idSession.sessionId,
+        anonymousId: idSession.anonymousId,
+        identity: idSession.identity,
+        enrichment: idSession.enrichment,
+        benefitHistory: idSession.benefitHistory,
       },
     })
   } catch {

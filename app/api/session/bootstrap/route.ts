@@ -46,24 +46,24 @@ export async function POST(iRequest: NextRequest) {
     }
 
     if (idExisting.enrichment?.ip !== LCurrentIp) {
-      const emailKey = idExisting.identity?.email
+      const LEmailKey = idExisting.identity?.email
         ? `geo:email:${idExisting.identity.email}`
         : null
-      const ipKey = LCurrentIp ? `geo:ip:${LCurrentIp}` : null
-      const cached =
-        (emailKey ? await cacheGet(emailKey) : null) ??
-        (ipKey ? await cacheGet(ipKey) : null)
+      const LIpKey = LCurrentIp ? `geo:ip:${LCurrentIp}` : null
+      const LdCached =
+        (LEmailKey ? await cacheGet(LEmailKey) : null) ??
+        (LIpKey ? await cacheGet(LIpKey) : null)
 
-      if (cached) {
-        idExisting.enrichment = JSON.parse(cached)
+      if (LdCached) {
+        idExisting.enrichment = JSON.parse(LdCached)
       } else if (LCurrentIp) {
-        const whois = await fnFetchWhois(LCurrentIp)
-        if (whois) {
-          idExisting.enrichment = whois
-          if (ipKey)
-            await cacheSet(ipKey, JSON.stringify(whois), 60 * 60 * 24 * 30)
-          if (emailKey)
-            await cacheSet(emailKey, JSON.stringify(whois), 60 * 60 * 24 * 30)
+        const LdWois = await fnFetchWhois(LCurrentIp)
+        if (LdWois) {
+          idExisting.enrichment = LdWois
+          if (LIpKey)
+            await cacheSet(LIpKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
+          if (LEmailKey)
+            await cacheSet(LEmailKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
         }
       }
     }
