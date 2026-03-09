@@ -1,17 +1,17 @@
-export async function runBenefitWorkflow(payload: Record<string, unknown>) {
-  const webhookUrl = process.env.N8N_BENEFIT_WEBHOOK_URL
-  const apiKey = process.env.N8N_API_KEY
-  if (!webhookUrl) {
+export async function fnRunBenefitWorkflow(iPayload: Record<string, unknown>) {
+  const LWebhookUrl = process.env.N8N_BENEFIT_WEBHOOK_URL
+  const LApiKey = process.env.N8N_API_KEY
+  if (!LWebhookUrl) {
     throw new Error("n8n_not_configured")
   }
 
-  const response = await fetch(webhookUrl, {
+  const response = await fetch(LWebhookUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      ...(apiKey ? { "x-api-key": apiKey } : {}),
+      ...(LApiKey ? { "x-api-key": LApiKey } : {}),
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(iPayload),
   })
 
   if (!response.ok) {

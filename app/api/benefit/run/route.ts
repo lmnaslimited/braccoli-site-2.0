@@ -2,7 +2,7 @@ import { NextResponse } from "next/server"
 import { BenefitRunRequestSchema } from "../../../schema/benefit.schema"
 import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
 import { fnBuildBenefitPrompt } from "../../../lib/benefit/prompt-builder"
-import { runBenefitWorkflow } from "../../../lib/n8n/client"
+import { fnRunBenefitWorkflow } from "../../../lib/n8n/client"
 import { fnParseBenefitJson } from "../../../lib/benefit/json-parser"
 import { fnUpsertBenefitHistory } from "../../../lib/benefit/benefit-session-store"
 import { fnTrack } from "../../../lib/rudder/chat-track"
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     }
 
     const LdPrompts = fnBuildBenefitPrompt(idInput, idSession)
-    const LdWorkflowResponse = await runBenefitWorkflow({
+    const LdWorkflowResponse = await fnRunBenefitWorkflow({
       idSession,
       input: idInput,
       LdPrompts,
