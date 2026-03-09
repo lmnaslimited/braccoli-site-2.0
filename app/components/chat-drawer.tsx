@@ -142,7 +142,7 @@ export default function ChatDrawer() {
     const response = await fetch("/api/chat/stream", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ LdContext, answers: mergedAnswers }),
+      body: JSON.stringify({ context:LdContext, answers: mergedAnswers }),
     });
 
     const json = await response.json();

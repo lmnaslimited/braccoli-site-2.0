@@ -23,6 +23,6 @@ export async function POST(iRequest: Request) {
 
   return NextResponse.json({
     message: "Thanks. One more input so I can personalize this output.",
-    LdNextQuestion,
+    nextQuestion: LdNextQuestion,
   })
 }
