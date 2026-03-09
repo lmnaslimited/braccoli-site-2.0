@@ -2,26 +2,26 @@ import { cookies } from "next/headers"
 import { createHmac } from "node:crypto"
 import type { TuserSession } from "@repo/middleware/types"
 
-const COOKIE_NAME = "lmnas_session"
-const DEFAULT_SECRET = "dev-session-secret-change-me"
+const LCookieName = "lmnas_session"
+const LDefaultSecret = "dev-session-secret-change-me"
 
-function getSecret() {
-  return process.env.SESSION_SECRET ?? DEFAULT_SECRET
+function fnGetSecret() {
+  return process.env.SESSION_SECRET ?? LDefaultSecret
 }
 
-function sign(value: string) {
-  return createHmac("sha256", getSecret()).update(value).digest("hex")
+function fnSign(value: string) {
+  return createHmac("sha256", fnGetSecret()).update(value).digest("hex")
 }
 
-function encodeSession(data: TuserSession) {
-  const payload = Buffer.from(JSON.stringify(data)).toString("base64url")
-  const signature = sign(payload)
+function fnEncodeSession(iData: TuserSession) {
+  const payload = Buffer.from(JSON.stringify(iData)).toString("base64url")
+  const signature = fnSign(payload)
   return `${payload}.${signature}`
 }
 
-function decodeSession(raw: string): TuserSession | null {
-  const [payload, signature] = raw.split(".")
-  if (!payload || !signature || sign(payload) !== signature) {
+function fnDecodeSession(iRaw: string): TuserSession | null {
+  const [payload, signature] = iRaw.split(".")
+  if (!payload || !signature || fnSign(payload) !== signature) {
     return null
   }
 
@@ -37,17 +37,17 @@ function decodeSession(raw: string): TuserSession | null {
 export async function fnGetSession(): Promise<TuserSession | null> {
   const cookieStore = await cookies()
 
-  const raw = cookieStore.get(COOKIE_NAME)?.value
+  const raw = cookieStore.get(LCookieName)?.value
 
   if (!raw) {
     return null
   }
-  return decodeSession(raw)
+  return fnDecodeSession(raw)
 }
 
-export async function fnSaveSession(session: TuserSession): Promise<void> {
+export async function fnSaveSession(iSession: TuserSession): Promise<void> {
   const cookieStore = await cookies()
-  cookieStore.set(COOKIE_NAME, encodeSession(session), {
+  cookieStore.set(LCookieName, fnEncodeSession(iSession), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
