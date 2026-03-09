@@ -1,6 +1,6 @@
-type CacheValue = { value: string; expiresAt: number }
+type TcacheValue = { value: string; expiresAt: number }
 
-type RedisLike = {
+type TredisLike = {
   get: (key: string) => Promise<string | null>
   set: (
     key: string,
@@ -10,15 +10,15 @@ type RedisLike = {
   ) => Promise<unknown>
 }
 
-const memoryCache = new Map<string, CacheValue>()
+const LMemoryCache = new Map<string, TcacheValue>()
 
-async function loadIoRedis(): Promise<{
-  default: new (url: string) => RedisLike
+async function fnLoadIoRedis(): Promise<{
+  default: new (url: string) => TredisLike
 } | null> {
   try {
     const dynamicImport = new Function("m", "return import(m)") as (
       moduleName: string,
-    ) => Promise<{ default: new (url: string) => RedisLike }>
+    ) => Promise<{ default: new (url: string) => TredisLike }>
 
     return await dynamicImport("ioredis")
   } catch {
@@ -26,8 +26,8 @@ async function loadIoRedis(): Promise<{
   }
 }
 
-async function createRedisClient(): Promise<RedisLike | null> {
-  const redisModule = await loadIoRedis()
+async function fnCreateRedisClient(): Promise<TredisLike | null> {
+  const redisModule = await fnLoadIoRedis()
   if (!redisModule) {
     return null
   }
@@ -41,39 +41,39 @@ async function createRedisClient(): Promise<RedisLike | null> {
   return new Redis(redisUrl)
 }
 
-let clientPromise: Promise<RedisLike | null> | null = null
+let clientPromise: Promise<TredisLike | null> | null = null
 
-export async function getRedisClient() {
+export async function fnGetRedisClient() {
   if (!clientPromise) {
-    clientPromise = createRedisClient()
+    clientPromise = fnCreateRedisClient()
   }
   return clientPromise
 }
 
-export async function cacheGet(key: string): Promise<string | null> {
-  const redis = await getRedisClient()
+export async function fnCacheGet(key: string): Promise<string | null> {
+  const redis = await fnGetRedisClient()
   if (redis) {
     return redis.get(key)
   }
 
-  const item = memoryCache.get(key)
+  const item = LMemoryCache.get(key)
   if (!item || Date.now() > item.expiresAt) {
-    memoryCache.delete(key)
+    LMemoryCache.delete(key)
     return null
   }
   return item.value
 }
 
-export async function cacheSet(
+export async function fnCacheSet(
   key: string,
   value: string,
   ttlSeconds: number,
 ): Promise<void> {
-  const redis = await getRedisClient()
+  const redis = await fnGetRedisClient()
   if (redis) {
     await redis.set(key, value, "EX", ttlSeconds)
     return
   }
 
-  memoryCache.set(key, { value, expiresAt: Date.now() + ttlSeconds * 1000 })
+  LMemoryCache.set(key, { value, expiresAt: Date.now() + ttlSeconds * 1000 })
 }

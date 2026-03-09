@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
-import { cacheGet, cacheSet } from "../../../lib/redis/client"
+import { fnCacheGet, fnCacheSet } from "../../../lib/redis/client"
 import { fnTrack } from "../../../lib/rudder/chat-track"
 import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
 import {TuserSession} from "@repo/middleware/types"
@@ -51,8 +51,8 @@ export async function POST(iRequest: NextRequest) {
         : null
       const LIpKey = LCurrentIp ? `geo:ip:${LCurrentIp}` : null
       const LdCached =
-        (LEmailKey ? await cacheGet(LEmailKey) : null) ??
-        (LIpKey ? await cacheGet(LIpKey) : null)
+        (LEmailKey ? await fnCacheGet(LEmailKey) : null) ??
+        (LIpKey ? await fnCacheGet(LIpKey) : null)
 
       if (LdCached) {
         idExisting.enrichment = JSON.parse(LdCached)
@@ -61,9 +61,9 @@ export async function POST(iRequest: NextRequest) {
         if (LdWois) {
           idExisting.enrichment = LdWois
           if (LIpKey)
-            await cacheSet(LIpKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
+            await fnCacheSet(LIpKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
           if (LEmailKey)
-            await cacheSet(LEmailKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
+            await fnCacheSet(LEmailKey, JSON.stringify(LdWois), 60 * 60 * 24 * 30)
         }
       }
     }
