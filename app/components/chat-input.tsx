@@ -2,19 +2,15 @@
 
 import { FormEvent, useState } from "react"
 
-type Props = {
-    onSubmit: (value: string) => void
-    options?: string[]
-    inputType: "text" | "number" | "options"
-}
+import type { TchatInputProps } from "@repo/middleware/types"
 
-export default function ChatInput({ onSubmit, options, inputType }: Props) {
-    const [value, setValue] = useState("")
+export default function ChatInput({ onSubmit, options, inputType }: TchatInputProps) {
+    const [LValue, setValue] = useState("")
 
-    const handleSubmit = (event: FormEvent) => {
+    const fnHandleSubmit = (event: FormEvent) => {
         event.preventDefault()
-        if (!value.trim()) return
-        onSubmit(value)
+        if (!LValue.trim()) return
+        onSubmit(LValue)
         setValue("")
     }
 
@@ -40,10 +36,10 @@ export default function ChatInput({ onSubmit, options, inputType }: Props) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="mt-3 flex gap-2">
+        <form onSubmit={fnHandleSubmit} className="mt-3 flex gap-2">
             <input
                 type={inputType === "number" ? "number" : "text"}
-                value={value}
+                value={LValue}
                 onChange={(event) => setValue(event.target.value)}
                 placeholder="Type your answer"
                 className="flex-1 rounded-lg border border-border
@@ -55,7 +51,7 @@ export default function ChatInput({ onSubmit, options, inputType }: Props) {
 
       <button
         type="submit"
-        disabled={!value.trim()}
+        disabled={!LValue.trim()}
         className="
           rounded-lg bg-primary px-4 py-2
           text-sm font-medium text-primary-foreground
