@@ -2,28 +2,7 @@
 
 import { create } from "zustand";
 
-import type { TbenefitContext, TworkflowStatus, TchatMessage, TbenefitResult, TdiscoveryQuestion} from "@repo/middleware/types";
-
-type TaisessionState = {
-  isDrawerOpen: boolean;
-  idContext?: TbenefitContext;
-  LaMessages: TchatMessage[];
-  LWorkflowStatus: TworkflowStatus;
-  LdCurrentQuestion?: TdiscoveryQuestion;
-  LdAnswers: Record<string, string>;
-  LdResult?: TbenefitResult;
-  isLoading: boolean;
-  fnOpenDrawer: () => void;
-  fnCloseDrawer: () => void;
-  fnSetContext: (context: TbenefitContext) => void;
-  fnAddMessage: (message: Omit<TchatMessage, "id" | "timestamp">) => void;
-  fnSetQuestion: (question?: TdiscoveryQuestion) => void;
-  fnSaveAnswer: (key: string, value: string) => void;
-  fnSetWorkflowStatus: (status: TworkflowStatus) => void;
-  fnSetLoading: (isLoading: boolean) => void;
-  fnSetResult: (result?: TbenefitResult) => void;
-  fnResetSession: () => void;
-};
+import type {TaisessionState} from "@repo/middleware/types";
 
 export const useAISessionStore = create<TaisessionState>((set) => ({
   isDrawerOpen: false,

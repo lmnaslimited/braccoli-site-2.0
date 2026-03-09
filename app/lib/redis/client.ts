@@ -1,14 +1,4 @@
-type TcacheValue = { value: string; expiresAt: number }
-
-type TredisLike = {
-  get: (key: string) => Promise<string | null>
-  set: (
-    key: string,
-    value: string,
-    mode: "EX",
-    ttlSeconds: number,
-  ) => Promise<unknown>
-}
+import type { TredisLike, TcacheValue } from "@repo/middleware/types"
 
 const LMemoryCache = new Map<string, TcacheValue>()
 
