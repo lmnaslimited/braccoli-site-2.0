@@ -5,9 +5,8 @@ import Hero from "@repo/ui/components/hero";
 import FAQs from "@repo/ui/components/faq";
 import Callout from "@repo/ui/components/callout";
 import Feature from "@repo/ui/components/feature";
-import CustomCard from "@repo/ui/components/custom-card";
-import LogoShowcase from "@repo/ui/components/logo-showcase"
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import Testimonial from "@repo/ui/components/testimonial";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
@@ -70,7 +69,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Testimonial Section */}
-      < section className="py-24 bg-background" >
+      <section className="bg-accent" >
+        <Testimonial idTestimonial={idHome.home.testimonials} />
+      </section >
+
+      {/* < section className="py-24 bg-background" >
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <TitleSubtitle
@@ -144,10 +147,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             </div>
           </div>
         </div>
-      </section >
+      </section > */}
+
 
       {/* Problem Section */}
-      < section className="bg-accent" >
+      < section className="py-16 bg-background" >
         <Feature
           idFeature={
             {
@@ -160,7 +164,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Solutions Section */}
-      < section className="py-16" >
+      < section className="py-16 bg-accent" >
         <Feature
           idFeature={
             {
@@ -174,7 +178,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Customer Journey Section */}
-      < section className="py-16 bg-accent" >
+      < section className="py-16 bg-background" >
         <Feature
           idFeature={
             {
@@ -187,7 +191,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* FAQ Section */}
-      < section className="bg-grayBackground" >
+      < section className="bg-accent" >
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -199,7 +203,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Callout Section */}
-      < section className="bg-accent" ref={LdSectionRefs("containerFour")} >
+      < section className=" py-16 bg-background" ref={LdSectionRefs("containerFour")} >
         <Callout
           idCallout={
             {
@@ -215,7 +219,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Smart Move Section */}
-      < section className="py-24 bg-background" >
+      < section className="py-24 bg-accent" >
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className=" mb-16">
