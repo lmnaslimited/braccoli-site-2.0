@@ -12,8 +12,8 @@ import ChatInput from "../components/chat-input";
 import GreetingBanner from "../components/greeting-banner";
 import FollowUpQuestionRenderer from "../components/follow-up-question-renderer";
 import ResultSummaryRenderer from "../components/result-summary-renderer";
-import AIMessage from "../components/ai-message";
-import AIStreaming from "../components/ai-streaming";
+import AIMessage from "./message-box";
+import AIStreaming from "./streaming";
 import { useAISessionStore } from "../store/ai-session-store";
 
 import { Button } from "@repo/ui/components/ui/button";
