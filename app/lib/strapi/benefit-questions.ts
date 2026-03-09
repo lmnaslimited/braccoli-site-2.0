@@ -8,27 +8,27 @@ import {
 } from "@repo/middleware/types"
 
 export async function fnGetBenefitQuestions(
-  benefitType: TbenefitType,
-  locale: string,
+  iBenefitType: TbenefitType,
+  iLocale: string,
 ): Promise<TbenefitQuestionItemTarget[]> {
-  const context: Tcontext = {
-    locale,
+  const LdContext: Tcontext = {
+    locale: iLocale,
     filters: {
       benefitType: {
-        eq: benefitType as TbenefitType,
+        eq: iBenefitType as TbenefitType,
       },
     },
   }
 
-  const data = (await fnGetCacheData(
-    context,
+  const LdData = (await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("benefitQuestions"),
   )) as TbenefitQuestionsPageTarget
 
-  const benefitEntry = data?.benefitQuestions?.[0]
+  const benefitEntry = LdData?.benefitQuestions?.[0]
 
   if (!benefitEntry?.questions?.length) {
-    throw new Error(`No questions found for benefit type: ${benefitType}`)
+    throw new Error(`No questions found for benefit type: ${iBenefitType}`)
   }
 
   return benefitEntry.questions
