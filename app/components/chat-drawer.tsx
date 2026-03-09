@@ -2,7 +2,11 @@
 
 import { useEffect, useMemo, useState, useRef } from "react";
 import { useCTAContext } from "@repo/ui/context/cta-context-provider";
-import type { TbenefitContext, TdiscoveryQuestion, TuserSession } from "@repo/middleware/types";
+import type {
+  TbenefitContext,
+  TdiscoveryQuestion,
+  TuserSession,
+} from "@repo/middleware/types";
 
 import ChatInput from "../components/chat-input";
 import GreetingBanner from "../components/greeting-banner";
@@ -17,7 +21,7 @@ import Link from "next/link";
 
 export default function ChatDrawer() {
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
-  const { messages, addMessage, resetSession } = useAISessionStore();
+  const { LaMessages, fnAddMessage, fnResetSession } = useAISessionStore();
   const { isChatOpen, closeChat, benefitType } = useCTAContext();
 
   const [session, setSession] = useState<TuserSession | null>(null);
@@ -40,7 +44,7 @@ export default function ChatDrawer() {
     const el = chatScrollRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
-  }, [messages, loading]);
+  }, [LaMessages, loading]);
 
   useEffect(() => {
     if (!isChatOpen || !benefitType) return;
@@ -78,7 +82,7 @@ export default function ChatDrawer() {
       if (chatStart.question?.question) {
         setCurrentQuestion(chatStart.question);
 
-        addMessage({
+        fnAddMessage({
           role: "assistant",
           content: chatStart.question.question,
         });
@@ -126,7 +130,7 @@ export default function ChatDrawer() {
     if (!currentQuestion || !context || !answer.trim()) return;
 
     // USER bubble
-    addMessage({
+    fnAddMessage({
       role: "user",
       content: answer.trim(),
     });
@@ -145,13 +149,13 @@ export default function ChatDrawer() {
 
     if (json.nextQuestion) {
       if (json.message) {
-        addMessage({
+        fnAddMessage({
           role: "assistant",
           content: json.message,
         });
       }
 
-      addMessage({
+      fnAddMessage({
         role: "assistant",
         content: json.nextQuestion.question,
       });
@@ -164,7 +168,7 @@ export default function ChatDrawer() {
     setCurrentQuestion(null);
 
     if (json.message) {
-      addMessage({
+      fnAddMessage({
         role: "assistant",
         content: json.message,
       });
@@ -186,7 +190,7 @@ export default function ChatDrawer() {
           <button
             onClick={() => {
               closeChat();
-              resetSession();
+              fnResetSession();
             }}
             className="text-xs font-medium text-muted-foreground hover:text-foreground"
           >
@@ -204,7 +208,7 @@ export default function ChatDrawer() {
           ref={chatScrollRef}
           className="max-h-80 overflow-y-auto space-y-3 rounded-xl border bg-slate-50 p-3"
         >
-          {messages.map((message) => (
+          {LaMessages.map((message) => (
             <AIMessage key={message.id} message={message} />
           ))}
 
@@ -244,7 +248,7 @@ export default function ChatDrawer() {
                     variant="default"
                     onClick={() => {
                       closeChat();
-                      resetSession();
+                      fnResetSession();
                     }}
                   >
                     Book Consultation
