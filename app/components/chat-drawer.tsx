@@ -20,31 +20,31 @@ import { Button } from "@repo/ui/components/ui/button";
 import Link from "next/link";
 
 export default function ChatDrawer() {
-  const chatScrollRef = useRef<HTMLDivElement | null>(null);
+  const LChatScrollRef = useRef<HTMLDivElement | null>(null);
   const { LaMessages, fnAddMessage, fnResetSession } = useAISessionStore();
   const { isChatOpen, closeChat, benefitType } = useCTAContext();
 
-  const [session, setSession] = useState<TuserSession | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [followups, setFollowups] = useState<
+  const [LdSession, setSession] = useState<TuserSession | null>(null);
+  const [isLoading, setLoading] = useState(false);
+  const [LaFollowups, setFollowups] = useState<
     Array<{ id: string; prompt: string }>
   >([]);
-  const [result, setResult] = useState<{
+  const [LdResult, setResult] = useState<{
     summary: string;
     score?: number;
     recommendation?: string;
   }>();
-  const [context, setContext] = useState<TbenefitContext | null>(null);
-  const [greeting, setGreeting] = useState<string>("");
-  const [currentQuestion, setCurrentQuestion] =
+  const [LdContext, setContext] = useState<TbenefitContext | null>(null);
+  const [LGreeting, setGreeting] = useState<string>("");
+  const [LdCurrentQuestion, setCurrentQuestion] =
     useState<TdiscoveryQuestion | null>(null);
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [LdAnswers, setAnswers] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    const el = chatScrollRef.current;
+    const el = LChatScrollRef.current;
     if (!el) return;
     el.scrollTop = el.scrollHeight;
-  }, [LaMessages, loading]);
+  }, [LaMessages, isLoading]);
 
   useEffect(() => {
     if (!isChatOpen || !benefitType) return;
@@ -97,21 +97,21 @@ export default function ChatDrawer() {
   }, [benefitType, isChatOpen]);
 
   const fallbackGreeting = useMemo(() => {
-    if (session?.identity?.name)
-      return `Welcome back, ${session.identity.name}`;
+    if (LdSession?.identity?.name)
+      return `Welcome back, ${LdSession.identity.name}`;
     return `Let's run your ${benefitType ?? "benefit"} flow.`;
-  }, [benefitType, session?.identity?.name]);
+  }, [benefitType, LdSession?.identity?.name]);
 
   const runBenefit = async (discoveryAnswers: Record<string, string>) => {
-    if (!benefitType || !session?.sessionId) return;
+    if (!benefitType || !LdSession?.sessionId) return;
 
     const response = await fetch("/api/benefit/run", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         benefitType,
-        sessionId: session.sessionId,
-        stage: followups.length ? "followup" : "standard_completed",
+        sessionId: LdSession.sessionId,
+        stage: LaFollowups.length ? "followup" : "standard_completed",
         answers: Object.entries(discoveryAnswers).map(
           ([questionId, value]) => ({
             questionId,
@@ -127,7 +127,7 @@ export default function ChatDrawer() {
   };
 
   const submitDiscoveryAnswer = async (answer: string) => {
-    if (!currentQuestion || !context || !answer.trim()) return;
+    if (!LdCurrentQuestion || !LdContext || !answer.trim()) return;
 
     // USER bubble
     fnAddMessage({
@@ -135,14 +135,14 @@ export default function ChatDrawer() {
       content: answer.trim(),
     });
 
-    const mergedAnswers = { ...answers, [currentQuestion.key]: answer.trim() };
+    const mergedAnswers = { ...LdAnswers, [LdCurrentQuestion.key]: answer.trim() };
     setAnswers(mergedAnswers);
     setLoading(true);
 
     const response = await fetch("/api/chat/stream", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ context, answers: mergedAnswers }),
+      body: JSON.stringify({ LdContext, answers: mergedAnswers }),
     });
 
     const json = await response.json();
@@ -185,7 +185,7 @@ export default function ChatDrawer() {
       <div className="mx-auto max-w-4xl space-y-3">
         {/* Header */}
         <div className="flex items-center justify-between border-border pb-3">
-          <GreetingBanner session={session} />
+          <GreetingBanner session={LdSession} />
 
           <button
             onClick={() => {
@@ -202,46 +202,46 @@ export default function ChatDrawer() {
 
         <div className="flex items-center gap-2 rounded-lg bg-slate-100 px-2 py-2 text-sm text-slate-700">
           {/* <span className="h-2 w-2 rounded-full bg-green-500" /> */}
-          {greeting || fallbackGreeting}
+          {LGreeting || fallbackGreeting}
         </div>
         <div
-          ref={chatScrollRef}
+          ref={LChatScrollRef}
           className="max-h-80 overflow-y-auto space-y-3 rounded-xl border bg-slate-50 p-3"
         >
           {LaMessages.map((message) => (
             <AIMessage key={message.id} message={message} />
           ))}
 
-          <AIStreaming active={loading} />
+          <AIStreaming active={isLoading} />
         </div>
 
         {/* Question Block */}
-        {currentQuestion && (
+        {LdCurrentQuestion && (
           <div className="space-y-3 rounded-xl border border-border bg-muted/40 p-4">
             {/* <p className="text-sm font-medium text-foreground">
               {currentQuestion.question}
             </p> */}
 
             <ChatInput
-              inputType={currentQuestion.inputType}
-              options={currentQuestion.options}
+              inputType={LdCurrentQuestion.inputType}
+              options={LdCurrentQuestion.options}
               onSubmit={submitDiscoveryAnswer}
             />
 
-            {loading && (
+            {isLoading && (
               <p className="text-xs text-muted-foreground">Working…</p>
             )}
           </div>
         )}
 
         {/* Results / Followups */}
-        {followups.length ? (
-          <FollowUpQuestionRenderer questions={followups} />
+        {LaFollowups.length ? (
+          <FollowUpQuestionRenderer questions={LaFollowups} />
         ) : (
           <>
-            <ResultSummaryRenderer result={result} />
+            <ResultSummaryRenderer result={LdResult} />
 
-            {result && (
+            {LdResult && (
               <div className="flex gap-3 pt-3">
                 <Link href="/en/contact">
                   <Button
