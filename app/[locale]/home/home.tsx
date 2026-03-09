@@ -69,9 +69,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section >
 
       {/* Testimonial Section */}
-      <section className="bg-accent" >
-        <Testimonial idTestimonial={idHome.home.testimonials} />
-      </section >
+      <section className="bg-accent">
+        {idHome.home.testimonials?.[0] && (
+          <Testimonial idTestimonial={idHome.home.testimonials[0]} />
+        )}
+      </section>
 
       {/* < section className="py-24 bg-background" >
         <div className="container mx-auto px-6">
