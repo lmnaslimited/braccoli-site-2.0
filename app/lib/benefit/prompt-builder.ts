@@ -5,7 +5,7 @@ export function fnBuildBenefitPrompt(
   input: BenefitRunRequest,
   session: TuserSession,
 ) {
-  const previous = session.benefitHistory?.find(
+  const LdPrevious = session.benefitHistory?.find(
     (item) => item.benefitType === input.benefitType,
   )
 
@@ -13,8 +13,8 @@ export function fnBuildBenefitPrompt(
     system: [
       "You are LMNAs benefit intelligence assistant.",
       `Geo country: ${session.enrichment?.country ?? "unknown"}`,
-      previous?.lastScore
-        ? `Previous score: ${previous.lastScore}`
+      LdPrevious?.lastScore
+        ? `Previous score: ${LdPrevious.lastScore}`
         : "No previous score found.",
     ].join("\n"),
     user: JSON.stringify({

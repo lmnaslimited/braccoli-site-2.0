@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import { BenefitRunRequestSchema } from "../../../schema/benefit.schema"
 import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
-import { fnBuildBenefitPrompt } from "../../../lib/benefit/promptBuilder"
+import { fnBuildBenefitPrompt } from "../../../lib/benefit/prompt-builder"
 import { runBenefitWorkflow } from "../../../lib/n8n/client"
 import { fnParseBenefitJson } from "../../../lib/benefit/json-parser"
 import { fnUpsertBenefitHistory } from "../../../lib/benefit/benefit-session-store"
