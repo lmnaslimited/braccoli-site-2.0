@@ -7,6 +7,4 @@
    - Network:      http://192.168.1.57:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 663ms
-LeadApi error: Error: Missing required environment variables
-    at d (.next/server/chunks/302.js:1:2378)
+ [32m[1m✓[22m[39m Ready in 369ms
