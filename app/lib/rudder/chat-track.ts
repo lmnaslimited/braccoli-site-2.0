@@ -29,7 +29,7 @@ async function postRudder(
   }
 }
 
-export async function track(payload: EventPayload) {
+export async function fnTrack(payload: EventPayload) {
   await postRudder("track", payload)
 }
 

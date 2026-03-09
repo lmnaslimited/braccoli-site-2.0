@@ -1,6 +1,6 @@
 import type { TuserSession } from "@repo/middleware/types"
 
-export function upsertBenefitHistory(
+export function fnUpsertBenefitHistory(
   session: TuserSession,
   benefitType: string,
   score?: number,

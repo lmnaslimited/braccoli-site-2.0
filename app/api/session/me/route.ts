@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server"
-import { getSession } from "../../../lib/session/session"
+import { fnGetSession } from "../../../lib/session/session"
 
 export async function GET() {
   try {
-    const session = await getSession()
+    const session = await fnGetSession()
     if (!session) {
       return NextResponse.json({ ok: true, session: null })
     }

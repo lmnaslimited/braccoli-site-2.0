@@ -34,7 +34,7 @@ function decodeSession(raw: string): TuserSession | null {
   }
 }
 
-export async function getSession(): Promise<TuserSession | null> {
+export async function fnGetSession(): Promise<TuserSession | null> {
   const cookieStore = await cookies()
 
   const raw = cookieStore.get(COOKIE_NAME)?.value
@@ -45,7 +45,7 @@ export async function getSession(): Promise<TuserSession | null> {
   return decodeSession(raw)
 }
 
-export async function saveSession(session: TuserSession): Promise<void> {
+export async function fnSaveSession(session: TuserSession): Promise<void> {
   const cookieStore = await cookies()
   cookieStore.set(COOKIE_NAME, encodeSession(session), {
     httpOnly: true,

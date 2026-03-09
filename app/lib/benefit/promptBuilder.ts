@@ -1,7 +1,7 @@
 import type { TuserSession } from "@repo/middleware/types"
 import type { BenefitRunRequest } from "../../schema/benefit.schema"
 
-export function buildBenefitPrompt(
+export function fnBuildBenefitPrompt(
   input: BenefitRunRequest,
   session: TuserSession,
 ) {

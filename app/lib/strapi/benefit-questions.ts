@@ -7,7 +7,7 @@ import {
   TbenefitQuestionItemTarget,
 } from "@repo/middleware/types"
 
-export async function getBenefitQuestions(
+export async function fnGetBenefitQuestions(
   benefitType: TbenefitType,
   locale: string,
 ): Promise<TbenefitQuestionItemTarget[]> {

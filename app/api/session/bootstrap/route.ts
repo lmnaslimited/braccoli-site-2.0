@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
 import { z } from "zod"
 import { cacheGet, cacheSet } from "../../../lib/redis/client"
-import { track } from "../../../lib/rudder/chat-track"
-import { getSession, saveSession } from "../../../lib/session/session"
+import { fnTrack } from "../../../lib/rudder/chat-track"
+import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
 import {TuserSession} from "@repo/middleware/types"
 
-const WhoisSchema = z.object({
+const LWhoisSchema = z.object({
   ip: z.string().optional(),
   city: z.string().optional(),
   region: z.string().optional(),
@@ -13,53 +13,53 @@ const WhoisSchema = z.object({
   connection: z.object({ org: z.string().optional() }).optional(),
 })
 
-async function fetchWhois(ip: string) {
-  const key = process.env.WHOIS_IP_API_KEY
-  if (!key || !ip) {
+async function fnFetchWhois(ip: string) {
+  const LKey = process.env.WHOIS_IP_API_KEY
+  if (!LKey || !ip) {
     return undefined
   }
 
-  const res = await fetch(`https://ipwho.is/${ip}?apiKey=${key}`)
-  if (!res.ok) return undefined
-  const json: unknown = await res.json()
-  const parsed = WhoisSchema.safeParse(json)
-  if (!parsed.success) return undefined
+  const LdRes = await fetch(`https://ipwho.is/${ip}?apiKey=${LKey}`)
+  if (!LdRes.ok) return undefined
+  const LdJson: unknown = await LdRes.json()
+  const LdParsed = LWhoisSchema.safeParse(LdJson)
+  if (!LdParsed.success) return undefined
 
   return {
     ip,
-    city: parsed.data.city,
-    region: parsed.data.region,
-    country: parsed.data.country,
-    org: parsed.data.connection?.org,
+    city: LdParsed.data.city,
+    region: LdParsed.data.region,
+    country: LdParsed.data.country,
+    org: LdParsed.data.connection?.org,
     enrichedAt: new Date().toISOString(),
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST(iRequest: NextRequest) {
   try {
-    const currentIp =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? ""
+    const LCurrentIp =
+      iRequest.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? ""
 
-    const existing = (await getSession()) ?? {
+    const idExisting = (await fnGetSession()) ?? {
       sessionId: crypto.randomUUID(),
       anonymousId: crypto.randomUUID(),
     }
 
-    if (existing.enrichment?.ip !== currentIp) {
-      const emailKey = existing.identity?.email
-        ? `geo:email:${existing.identity.email}`
+    if (idExisting.enrichment?.ip !== LCurrentIp) {
+      const emailKey = idExisting.identity?.email
+        ? `geo:email:${idExisting.identity.email}`
         : null
-      const ipKey = currentIp ? `geo:ip:${currentIp}` : null
+      const ipKey = LCurrentIp ? `geo:ip:${LCurrentIp}` : null
       const cached =
         (emailKey ? await cacheGet(emailKey) : null) ??
         (ipKey ? await cacheGet(ipKey) : null)
 
       if (cached) {
-        existing.enrichment = JSON.parse(cached)
-      } else if (currentIp) {
-        const whois = await fetchWhois(currentIp)
+        idExisting.enrichment = JSON.parse(cached)
+      } else if (LCurrentIp) {
+        const whois = await fnFetchWhois(LCurrentIp)
         if (whois) {
-          existing.enrichment = whois
+          idExisting.enrichment = whois
           if (ipKey)
             await cacheSet(ipKey, JSON.stringify(whois), 60 * 60 * 24 * 30)
           if (emailKey)
@@ -68,14 +68,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    await saveSession(existing as TuserSession)
-    await track({
-      anonymousId: existing.anonymousId,
+    await fnSaveSession(idExisting as TuserSession)
+    await fnTrack({
+      anonymousId: idExisting.anonymousId,
       event: "benefit_session_started",
-      properties: { sessionId: existing.sessionId },
+      properties: { sessionId: idExisting.sessionId },
     })
 
-    return NextResponse.json({ ok: true, session: existing })
+    return NextResponse.json({ ok: true, session: idExisting })
   } catch {
     return NextResponse.json(
       {

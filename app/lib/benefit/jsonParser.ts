@@ -1,6 +1,6 @@
 import { N8NResultSchema, type N8NResult } from "../../schema/benefit.schema"
 
-export function parseBenefitJson(payload: unknown): N8NResult {
+export function fnParseBenefitJson(payload: unknown): N8NResult {
   let target = payload
   if (typeof payload === "string") {
     try {

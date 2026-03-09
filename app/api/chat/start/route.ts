@@ -1,19 +1,19 @@
 import { NextResponse } from "next/server"
-import { getBenefitQuestions } from "../../../lib/strapi/benefit-questions"
+import { fnGetBenefitQuestions } from "../../../lib/strapi/benefit-questions"
 import { TbenefitContext } from "@repo/middleware/types"
 
-export async function POST(request: Request) {
-  const { context } = (await request.json()) as { context: TbenefitContext }
+export async function POST(iRequest: Request) {
+  const { context:idContext } = (await iRequest.json()) as { context: TbenefitContext }
 
-  const { searchParams } = new URL(request.url)
-  const locale = searchParams.get("locale") ?? "en"
+  const { searchParams } = new URL(iRequest.url)
+  const iLocale = searchParams.get("locale") ?? "en"
 
-  const questions = await getBenefitQuestions(context.benefitType, locale)
+  const LaQuestions = await fnGetBenefitQuestions(idContext.benefitType, iLocale)
 
-  const firstQuestion = questions[0]
+  const LdFirstQuestion = LaQuestions[0]
 
   return NextResponse.json({
-    greeting: `Get actionable insights in just a few guided steps with our ${context.benefitType.replaceAll("_", " ")}.`,
-    question: firstQuestion,
+    greeting: `Get actionable insights in just a few guided steps with our ${idContext.benefitType.replaceAll("_", " ")}.`,
+    question: LdFirstQuestion,
   })
 }

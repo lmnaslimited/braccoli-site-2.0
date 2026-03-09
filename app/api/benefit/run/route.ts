@@ -1,69 +1,69 @@
 import { NextResponse } from "next/server"
 import { BenefitRunRequestSchema } from "../../../schema/benefit.schema"
-import { getSession, saveSession } from "../../../lib/session/session"
-import { buildBenefitPrompt } from "../../../lib/benefit/promptBuilder"
+import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
+import { fnBuildBenefitPrompt } from "../../../lib/benefit/promptBuilder"
 import { runBenefitWorkflow } from "../../../lib/n8n/client"
-import { parseBenefitJson } from "../../../lib/benefit/jsonParser"
-import { upsertBenefitHistory } from "../../../lib/benefit/benefitSessionStore"
-import { track } from "../../../lib/rudder/chat-track"
+import { fnParseBenefitJson } from "../../../lib/benefit/jsonParser"
+import { fnUpsertBenefitHistory } from "../../../lib/benefit/benefitSessionStore"
+import { fnTrack } from "../../../lib/rudder/chat-track"
 
 export async function POST(request: Request) {
   try {
-    const body: unknown = await request.json()
-    const input = BenefitRunRequestSchema.parse(body)
-    const session = await getSession()
+    const LBody: unknown = await request.json()
+    const idInput = BenefitRunRequestSchema.parse(LBody)
+    const idSession = await fnGetSession()
 
-    if (!session || session.sessionId !== input.sessionId) {
+    if (!idSession || idSession.sessionId !== idInput.sessionId) {
       return NextResponse.json(
         { error: "Invalid session", code: "SESSION_INVALID" },
         { status: 401 },
       )
     }
 
-    const prompts = buildBenefitPrompt(input, session)
-    const workflowResponse = await runBenefitWorkflow({
-      session,
-      input,
-      prompts,
+    const LdPrompts = fnBuildBenefitPrompt(idInput, idSession)
+    const LdWorkflowResponse = await runBenefitWorkflow({
+      idSession,
+      input: idInput,
+      LdPrompts,
     })
-    const parsed = parseBenefitJson(workflowResponse)
+    const LdParsed = fnParseBenefitJson(LdWorkflowResponse)
 
-    if (parsed.followup_required) {
-      await track({
-        anonymousId: session.anonymousId,
-        userId: session.identity?.email,
+    if (LdParsed.followup_required) {
+      await fnTrack({
+        anonymousId: idSession.anonymousId,
+        userId: idSession.identity?.email,
         event: "benefit_followup_triggered",
-        properties: { benefitType: input.benefitType },
+        properties: { benefitType: idInput.benefitType },
       })
 
       return NextResponse.json({
         ok: true,
         followupRequired: true,
-        followupQuestions: parsed.followupQuestions ?? [],
+        followupQuestions: LdParsed.followupQuestions ?? [],
       })
     }
 
-    session.benefitHistory = upsertBenefitHistory(
-      session,
-      input.benefitType,
-      parsed.result?.score,
+    idSession.benefitHistory = fnUpsertBenefitHistory(
+      idSession,
+      idInput.benefitType,
+      LdParsed.result?.score,
     )
-    await saveSession(session)
+    await fnSaveSession(idSession)
 
-    await track({
-      anonymousId: session.anonymousId,
-      userId: session.identity?.email,
+    await fnTrack({
+      anonymousId: idSession.anonymousId,
+      userId: idSession.identity?.email,
       event: "benefit_completed",
       properties: {
-        benefitType: input.benefitType,
-        score: parsed.result?.score,
+        benefitType: idInput.benefitType,
+        score: LdParsed.result?.score,
       },
     })
 
     return NextResponse.json({
       ok: true,
       followupRequired: false,
-      result: parsed.result,
+      result: LdParsed.result,
     })
   } catch {
     return NextResponse.json(
