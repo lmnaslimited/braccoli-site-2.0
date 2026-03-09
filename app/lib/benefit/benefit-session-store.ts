@@ -5,12 +5,12 @@ export function fnUpsertBenefitHistory(
   benefitType: string,
   score?: number,
 ): TuserSession["benefitHistory"] {
-  const history = session.benefitHistory ?? []
-  const withoutCurrent = history.filter(
+  const LaHistory = session.benefitHistory ?? []
+  const LaWithoutCurrent = LaHistory.filter(
     (entry) => entry.benefitType !== benefitType,
   )
   return [
-    ...withoutCurrent,
+    ...LaWithoutCurrent,
     {
       benefitType,
       lastCalculatedAt: new Date().toISOString(),

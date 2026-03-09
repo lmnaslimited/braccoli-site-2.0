@@ -3,8 +3,8 @@ import { BenefitRunRequestSchema } from "../../../schema/benefit.schema"
 import { fnGetSession, fnSaveSession } from "../../../lib/session/session"
 import { fnBuildBenefitPrompt } from "../../../lib/benefit/promptBuilder"
 import { runBenefitWorkflow } from "../../../lib/n8n/client"
-import { fnParseBenefitJson } from "../../../lib/benefit/jsonParser"
-import { fnUpsertBenefitHistory } from "../../../lib/benefit/benefitSessionStore"
+import { fnParseBenefitJson } from "../../../lib/benefit/json-parser"
+import { fnUpsertBenefitHistory } from "../../../lib/benefit/benefit-session-store"
 import { fnTrack } from "../../../lib/rudder/chat-track"
 
 export async function POST(request: Request) {
