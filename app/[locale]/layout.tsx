@@ -105,13 +105,13 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar idNavbar={navbarData} />
+          {/* <Navbar idNavbar={navbarData} /> */}
           <main className="">
             <ClientLayout>
-              <CTAContextProvider>
-                {children}
-                <ChatDrawer />
-              </CTAContextProvider>
+              {/* <CTAContextProvider> */}
+              {children}
+              {/* <ChatDrawer /> */}
+              {/* </CTAContextProvider> */}
             </ClientLayout>
           </main>
           <Footer idFooter={footerData} />
