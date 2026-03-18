@@ -10,8 +10,8 @@ import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
-import ChatDrawer from "../components/chat-drawer"
-import { CTAContextProvider } from "@repo/ui/context/cta-context-provider"
+// import ChatDrawer from "../components/chat-drawer"
+// import { CTAContextProvider } from "@repo/ui/context/cta-context-provider"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -105,7 +105,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {/* <Navbar idNavbar={navbarData} /> */}
+          <Navbar idNavbar={navbarData} />
           <main className="">
             <ClientLayout>
               {/* <CTAContextProvider> */}

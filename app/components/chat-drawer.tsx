@@ -28,7 +28,10 @@ type Props = {
 
 export default function ChatDrawer({ benefitType }: Props) {
 
+  
+
   const chatScrollRef = useRef<HTMLDivElement | null>(null);
+  const initializedRef = useRef(false);
 
   const { messages, addMessage, resetSession } = useAISessionStore();
 
@@ -90,7 +93,9 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   useEffect(() => {
 
-    if (!benefitType) return;
+      if (!benefitType || initializedRef.current) return;
+
+  initializedRef.current = true;
 
     const run = async () => {
 
@@ -151,7 +156,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
     void run();
 
-  }, [benefitType, addMessage]);
+  }, [benefitType]);
 
   /*
   ----------------------------
@@ -298,13 +303,13 @@ export default function ChatDrawer({ benefitType }: Props) {
         <div className="flex items-center justify-between border-border pb-3">
 
           <GreetingBanner session={session} />
-
+{/* 
           <button
             onClick={() => resetSession()}
             className="text-xs font-medium text-muted-foreground hover:text-foreground"
           >
             Close
-          </button>
+          </button> */}
 
         </div>
 

@@ -99,7 +99,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
 
 
       {/* Business Problem Section */}
-      {/* <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
+      <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
         <div className="py-24 px-4 border-t bg-grayBackground">
           <div className="max-w-4xl mx-auto">
             <TitleSubtitle
@@ -170,10 +170,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           </div>
         </div>
         {fnRenderFormBelowSection("containerTwo")}
-      </section> */}
+      </section> 
 
       {/* Product Section */}
-      {/* <section className="py-16 bg-accent">
+       <section className="py-16 bg-accent">
         <Feature
           idFeature={
             {
@@ -184,10 +184,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </section> */}
+      </section>
 
       {/* Social Proof Section */}
-      {/* <section className="py-24 bg-background">
+       <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <TitleSubtitle
@@ -261,10 +261,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             </div>
           </div>
         </div>
-      </section> */}
+      </section> 
 
       {/* Callout Section */}
-      {/* <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
+      <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
         <Callout
           idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode, formTitle) =>
@@ -272,10 +272,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerThree")}
-      </section> */}
+      </section>
 
       {/* Problem Section */}
-      {/* <section className="py-16">
+      <section className="py-16">
         <Feature
           idFeature={
             {
@@ -285,10 +285,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TfeatureProps
           }
         />
-      </section> */}
+      </section>
 
       {/* FAQ Section */}
-      {/* <section className="bg-grayBackground">
+      <section className="bg-grayBackground">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -297,10 +297,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             <FAQs idFaq={idHome.home.faqSection.list} />
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* Callout Section */}
-      {/* <section className="bg-accent" ref={LdSectionRefs("containerFour")}>
+      <section className="bg-accent" ref={LdSectionRefs("containerFour")}>
         <Callout
           idCallout={
             {
@@ -313,10 +313,10 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }
         />
         {fnRenderFormBelowSection("containerFour")}
-      </section> */}
+      </section>
 
       {/* Trending Now Section */}
-      {/* <section className="py-24 bg-background">
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className=" mb-16">
@@ -368,7 +368,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }
