@@ -6,6 +6,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
 ) {
+  // Extract necessary values from the context with default fallbacks
   const locale = iContext?.locale ?? "en"
   const status = iContext?.status ?? "PUBLISHED"
   const sourceId = iContext?.filters?.sourceId?.eq
@@ -26,6 +27,8 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
       },
     }
   }
+
+  // Construct the cache key based on the presence of slug and sourceId
 
 const LCacheKey = slug
   ? `${transformer.contentType}-${locale}-${slug}${sourceId ? `-${sourceId}` : ""}-${status}`

@@ -35,7 +35,7 @@ export async function GET(request: Request) {
       context,
       clTransformerFactory.createTransformer("subtitles"),
     )
-
+    //Extract the subtitle content from the response
     const LaSubtitles = LdResponse.subtitles?.[0]?.subtitle ?? []
 
     if (!LaSubtitles.length)
