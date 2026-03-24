@@ -8,6 +8,7 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
 ) {
   const locale = iContext?.locale ?? "en"
   const status = iContext?.status ?? "PUBLISHED"
+  const sourceId = iContext?.filters?.sourceId?.eq
 
   let slug: string | undefined
 
@@ -26,9 +27,9 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
     }
   }
 
-  const LCacheKey = slug
-    ? `${transformer.contentType}-${locale}-${slug}-${status}`
-    : `${transformer.contentType}-${locale}-${status}`
+const LCacheKey = slug
+  ? `${transformer.contentType}-${locale}-${slug}${sourceId ? `-${sourceId}` : ""}-${status}`
+  : `${transformer.contentType}-${locale}${sourceId ? `-${sourceId}` : ""}-${status}`;
 
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(

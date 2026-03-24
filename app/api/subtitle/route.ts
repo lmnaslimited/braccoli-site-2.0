@@ -3,7 +3,7 @@ import { Tcontext, Tsubtitle, TsubtitleTarget } from "@repo/middleware/types"
 import { clTransformerFactory } from "@repo/middleware"
 import { fnGetCacheData } from "../../utils/strapi/get-data"
 
-//convert subtitle data to webvtt forma
+//convert subtitle data to webvtt format
 //WebVTT is the standard subtitle format used in HTML5 video
 const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
   "WEBVTT\n\n" +
@@ -18,7 +18,6 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url)
-
     const LSourceId = searchParams.get("sourceId")
     const LLocale = searchParams.get("locale") || "en"
 
@@ -37,7 +36,6 @@ export async function GET(request: Request) {
       clTransformerFactory.createTransformer("subtitles"),
     )
 
-    // Extract subtitle array from response
     const LaSubtitles = LdResponse.subtitles?.[0]?.subtitle ?? []
 
     if (!LaSubtitles.length)

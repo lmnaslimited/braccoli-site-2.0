@@ -7,4 +7,16 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 345ms
+ [32m[1m✓[22m[39m Ready in 316ms
+Executing sourceId: [90mundefined[39m
+Cache Key: footer-en-PUBLISHED
+Executing sourceId: [90mundefined[39m
+Cache Key: home-en-PUBLISHED
+Executing sourceId: [90mundefined[39m
+Cache Key: globalMeta-en-PUBLISHED
+Executing sourceId: [90mundefined[39m
+Cache Key: home-en-PUBLISHED
+Executing sourceId: [90mundefined[39m
+Cache Key: navbar-en-PUBLISHED
+Executing sourceId: [90mundefined[39m
+Cache Key: forms-en-PUBLISHED
