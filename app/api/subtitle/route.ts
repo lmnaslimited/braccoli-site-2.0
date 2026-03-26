@@ -18,7 +18,9 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
 export async function GET(request: Request) {
   try {
     // Extract query params from request URL
-    const { searchParams } = new URL(request.url)
+    //request.url is the full URL of the incoming request from the client, 
+    // including query parameters
+    const { searchParams } = new URL(request.url) 
     const LSourceId = searchParams.get("sourceId") // subtitle source identifier
     const LLocale = searchParams.get("locale") || "en" // default locale = English
 
