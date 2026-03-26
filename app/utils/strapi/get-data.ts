@@ -29,11 +29,19 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   }
 
   // Construct the cache key based on the presence of slug and sourceId
+  // Build a unique cache key based on:
+  // - content type
+  // - locale
+  // - slug (optional)
+  // - sourceId (optional)
+  // - status
 
 const LCacheKey = slug
   ? `${transformer.contentType}-${locale}-${slug}${sourceId ? `-${sourceId}` : ""}-${status}`
   : `${transformer.contentType}-${locale}${sourceId ? `-${sourceId}` : ""}-${status}`;
 
+
+  // If cache entry does not exist, create and store it
   if (!LdCacheMap.has(LCacheKey)) {
     const fetcher = unstable_cache(
       async () => {
@@ -48,7 +56,7 @@ const LCacheKey = slug
       },
       [LCacheKey],
       {
-        revalidate: 3600,
+        revalidate: 3600, // revalidate every 1 hour
         tags: slug
           ? [LCacheKey, locale, slug, status]
           : [LCacheKey, locale, status],

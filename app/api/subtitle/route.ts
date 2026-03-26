@@ -14,16 +14,18 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
     )
     .join("\n")
 
-    //fetch subtitle data from strapi
+    /// API route handler to fetch and return subtitles
 export async function GET(request: Request) {
   try {
+    // Extract query params from request URL
     const { searchParams } = new URL(request.url)
-    const LSourceId = searchParams.get("sourceId")
-    const LLocale = searchParams.get("locale") || "en"
+    const LSourceId = searchParams.get("sourceId") // subtitle source identifier
+    const LLocale = searchParams.get("locale") || "en" // default locale = English
 
     if (!LSourceId && !LLocale)
       return new NextResponse("Bad request", { status: 400 })
 
+    /// Build context object for Strapi query
     const context: Tcontext = {
       locale: LLocale,
       filters: {
