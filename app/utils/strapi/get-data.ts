@@ -7,22 +7,22 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
 ) {
   // Extract necessary values from the context with default fallbacks
-  const locale = iContext?.locale ?? "en"
-  const status = iContext?.status ?? "PUBLISHED"
-  const sourceId = iContext?.filters?.sourceId?.eq
+  const LLocale = iContext?.locale ?? "en"
+  const LStatus = iContext?.status ?? "PUBLISHED"
+  const LSourceId = iContext?.filters?.sourceId?.eq
 
-  let slug: string | undefined
+  let LSlug: string | undefined
 
   if (iContext?.filters?.slug?.eq) {
-    slug = iContext.filters.slug.eq
+    LSlug = iContext.filters.slug.eq
   }
 
   // Add the new filter conditionally
-  if (slug && ["manufacturing", "retail", "distribution"].includes(slug)) {
+  if (LSlug && ["manufacturing", "retail", "distribution"].includes(LSlug)) {
     ;(iContext as Tcontext)["caseStudiesFilters2"] = {
       heroSection: {
         tag: {
-          eq: slug,
+          eq: LSlug,
         },
       },
     }
@@ -36,33 +36,32 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   // - sourceId (optional)
   // - status
 
-const LCacheKey = slug
-  ? `${transformer.contentType}-${locale}-${slug}${sourceId ? `-${sourceId}` : ""}-${status}`
-  : `${transformer.contentType}-${locale}${sourceId ? `-${sourceId}` : ""}-${status}`;
-
+const LCacheKey = LSlug
+  ? `${transformer.contentType}-${LLocale}-${LSlug}${LSourceId ? `-${LSourceId}` : ""}-${LStatus}`
+  : `${transformer.contentType}-${LLocale}${LSourceId ? `-${LSourceId}` : ""}-${LStatus}`;
 
   // If cache entry does not exist, create and store it
   if (!LdCacheMap.has(LCacheKey)) {
-    const fetcher = unstable_cache(
+    const fnFetcher = unstable_cache(
       async () => {
-        const updatedContext = {
+        const LdUpdatedContext = {
           ...iContext,
-          status,
+          status: LStatus,
         }
-        const pageData: DynamicTargetType =
-          await transformer.execute(updatedContext)
+        const LaPageData: DynamicTargetType =
+          await transformer.execute(LdUpdatedContext)
 
-        return pageData
+        return LaPageData
       },
       [LCacheKey],
       {
         revalidate: 3600, // revalidate every 1 hour
-        tags: slug
-          ? [LCacheKey, locale, slug, status]
-          : [LCacheKey, locale, status],
+        tags: LSlug
+          ? [LCacheKey, LLocale, LSlug, LStatus]
+          : [LCacheKey, LLocale, LStatus],
       },
     )
-    LdCacheMap.set(LCacheKey, fetcher)
+    LdCacheMap.set(LCacheKey, fnFetcher)
   }
 
   return await LdCacheMap.get(LCacheKey)!()

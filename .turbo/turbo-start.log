@@ -7,68 +7,51 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 306ms
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-cpq-cloud-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-cpq-cloud-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD01'[39m } } }
-Cache Key: subtitles-en-CPQPROD01-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD02'[39m } } }
-Cache Key: subtitles-en-CPQPROD02-PUBLISHED
-Cache Key: forms-en-PUBLISHED
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-lens-erp-suite-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-lens-erp-suite-PUBLISHED
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-crm-cloud-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-crm-cloud-PUBLISHED
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-hrms-cloud-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-hrms-cloud-PUBLISHED
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-analytical-cloud-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-analytical-cloud-PUBLISHED
-Cache Key: footer-en-PUBLISHED
-Cache Key: products-en-lumi-PUBLISHED
-Cache Key: navbar-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: products-en-lumi-PUBLISHED
-Cache Key: home-en-PUBLISHED
-Cache Key: globalMeta-en-PUBLISHED
-Cache Key: home-en-PUBLISHED
-Cache Key: forms-en-PUBLISHED
-Cache Key: forms-en-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD01'[39m } } }
-Cache Key: subtitles-en-CPQPROD01-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD02'[39m } } }
-Cache Key: subtitles-en-CPQPROD02-PUBLISHED
-Cache Key: footer-de-PUBLISHED
-Cache Key: products-de-cpq-cloud-PUBLISHED
-Cache Key: globalMeta-de-PUBLISHED
-Cache Key: products-de-cpq-cloud-PUBLISHED
-Cache Key: navbar-de-PUBLISHED
-Cache Key: forms-de-PUBLISHED
-LdContext { locale: [32m'de'[39m, filters: { sourceId: { eq: [32m'CPQPROD01'[39m } } }
-Cache Key: subtitles-de-CPQPROD01-PUBLISHED
-LdContext { locale: [32m'de'[39m, filters: { sourceId: { eq: [32m'CPQPROD02'[39m } } }
-Cache Key: subtitles-de-CPQPROD02-PUBLISHED
-LdContext { locale: [32m'de'[39m, filters: { sourceId: { eq: [32m'CPQPROD01'[39m } } }
-Cache Key: subtitles-de-CPQPROD01-PUBLISHED
-LdContext { locale: [32m'de'[39m, filters: { sourceId: { eq: [32m'CPQPROD02'[39m } } }
-Cache Key: subtitles-de-CPQPROD02-PUBLISHED
-Cache Key: forms-de-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD01'[39m } } }
-Cache Key: subtitles-en-CPQPROD01-PUBLISHED
-LdContext { locale: [32m'en'[39m, filters: { sourceId: { eq: [32m'CPQPROD02'[39m } } }
-Cache Key: subtitles-en-CPQPROD02-PUBLISHED
-Cache Key: forms-en-PUBLISHED
+ [32m[1m✓[22m[39m Ready in 353ms
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: home-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: home-en-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: forms-en-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-cpq-cloud-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-cpq-cloud-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-crm-cloud-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-crm-cloud-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-lens-erp-suite-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-lens-erp-suite-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-hrms-cloud-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-hrms-cloud-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-analytical-cloud-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-analytical-cloud-PUBLISHED
+Generated Cache Key: footer-en-PUBLISHED
+Generated Cache Key: products-en-lumi-PUBLISHED
+Generated Cache Key: navbar-en-PUBLISHED
+Generated Cache Key: globalMeta-en-PUBLISHED
+Generated Cache Key: products-en-lumi-PUBLISHED
+Generated Cache Key: subtitles-en-CPQPROD01-PUBLISHED
+Generated Cache Key: forms-en-PUBLISHED
+Generated Cache Key: subtitles-en-CPQPROD02-PUBLISHED
+Generated Cache Key: footer-de-PUBLISHED
+Generated Cache Key: products-de-cpq-cloud-PUBLISHED
+Generated Cache Key: globalMeta-de-PUBLISHED
+Generated Cache Key: products-de-cpq-cloud-PUBLISHED
+Generated Cache Key: navbar-de-PUBLISHED
+Generated Cache Key: subtitles-de-CPQPROD01-PUBLISHED
+Generated Cache Key: subtitles-de-CPQPROD02-PUBLISHED
+Generated Cache Key: forms-de-PUBLISHED
