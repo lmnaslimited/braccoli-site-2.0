@@ -27,8 +27,8 @@ export async function GET(request: Request) {
     if (!LSourceId && !LLocale)
       return new NextResponse("Bad request", { status: 400 })
 
-    /// Build context object for Strapi query
-    const context: Tcontext = {
+    /// Build context object for Strapi query to fetch subtitle data based on sourceId and locale
+    const LdContext: Tcontext = {
       locale: LLocale,
       filters: {
         sourceId: { eq: LSourceId },
@@ -36,7 +36,7 @@ export async function GET(request: Request) {
     }
 
     const LdResponse: TsubtitleTarget = await fnGetCacheData(
-      context,
+      LdContext,
       clTransformerFactory.createTransformer("subtitles"),
     )
     //Extract the subtitle content from the response
