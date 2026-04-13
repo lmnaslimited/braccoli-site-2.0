@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         source: "/en/blog",
         destination: `http://localhost:3001/`,
       },
-       {
+      {
         source: "/de/blog",
         destination: `http://localhost:3001/`,
       },
@@ -19,23 +19,25 @@ const nextConfig: NextConfig = {
       {
         source: "/de/blog/:path+",
         destination: `http://localhost:3001/:path+`,
-      }
+      },
     ];
   },
   reactStrictMode: true,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com" },
+      { protocol: "https", hostname: "raw.githubusercontent.com"},
       { protocol: "https", hostname: "i.ytimg.com" },
       { protocol: "https", hostname: "img.youtube.com" },
       { protocol: "https", hostname: "pbs.twimg.com" },
-      { protocol: "https", hostname: "media.licdn.com" }
-    ]
+      { protocol: "https", hostname: "media.licdn.com" },
+    ],
   },
   env: {
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY: process.env.NODE_ENV === "development"
-      ? "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
-      : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA"
+    NEXT_PUBLIC_RECAPTCHA_SITE_KEY:
+      process.env.NODE_ENV === "development"
+        ? "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
+        : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA",
   },
 };
 
