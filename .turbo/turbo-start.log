@@ -7,29 +7,4 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 303ms
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: lens-erp-suite
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20649) {
-  digest: [32m'3434828913'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/chunks/96.js:1:2229) {
-  digest: [32m'1199537511'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: lens-erp-suite
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20649) {
-  digest: [32m'3434828913'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: hrms-cloud
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20649) {
-  digest: [32m'2057222225'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of undefined (reading 'map')
-    at s (.next/server/chunks/96.js:1:2229) {
-  digest: [32m'1199537511'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: hrms-cloud
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20649) {
-  digest: [32m'2057222225'[39m
-}
-Retrying... Attempt 2
+ [32m[1m✓[22m[39m Ready in 423ms

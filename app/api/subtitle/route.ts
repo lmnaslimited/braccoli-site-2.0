@@ -3,7 +3,7 @@ import { Tcontext, Tsubtitle, TsubtitleTarget } from "@repo/middleware/types"
 import { clTransformerFactory } from "@repo/middleware"
 import { fnGetCacheData } from "../../utils/strapi/get-data"
 
-//convert subtitle data to webvtt forma
+//convert subtitle data to webvtt format
 //WebVTT is the standard subtitle format used in HTML5 video
 const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
   "WEBVTT\n\n" +
@@ -14,18 +14,21 @@ const fnBuildWebVTTContent = (iaSubtitles: Tsubtitle[]) =>
     )
     .join("\n")
 
-    //fetch subtitle data from strapi
+    /// API route handler to fetch and return subtitles
 export async function GET(request: Request) {
   try {
-    const { searchParams } = new URL(request.url)
-
-    const LSourceId = searchParams.get("sourceId")
-    const LLocale = searchParams.get("locale") || "en"
+    // Extract query params from request URL
+    //request.url is the full URL of the incoming request from the client, 
+    // including query parameters
+    const { searchParams } = new URL(request.url) 
+    const LSourceId = searchParams.get("sourceId") // subtitle source identifier
+    const LLocale = searchParams.get("locale") || "en" // default locale = English
 
     if (!LSourceId && !LLocale)
       return new NextResponse("Bad request", { status: 400 })
 
-    const context: Tcontext = {
+    /// Build context object for Strapi query to fetch subtitle data based on sourceId and locale
+    const LdContext: Tcontext = {
       locale: LLocale,
       filters: {
         sourceId: { eq: LSourceId },
@@ -33,11 +36,10 @@ export async function GET(request: Request) {
     }
 
     const LdResponse: TsubtitleTarget = await fnGetCacheData(
-      context,
+      LdContext,
       clTransformerFactory.createTransformer("subtitles"),
     )
-
-    // Extract subtitle array from response
+    //Extract the subtitle content from the response
     const LaSubtitles = LdResponse.subtitles?.[0]?.subtitle ?? []
 
     if (!LaSubtitles.length)
