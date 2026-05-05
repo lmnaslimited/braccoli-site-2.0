@@ -7,7 +7,7 @@ export default function AIMessage({ message }: { message: ChatMessage }) {
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <div
         className={`
-          max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed
+          max-w-[80%] rounded-2xl px-4 py-3 text-md leading-relaxed
 
           ${
             isUser

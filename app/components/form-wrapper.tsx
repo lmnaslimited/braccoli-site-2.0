@@ -40,11 +40,7 @@ export default function FormWrapper({
         title: string
     } | null>(null)
 
-    /*
-    -------------------------
-    Fetch Form Config
-    -------------------------
-    */
+    /*Fetch Form Config*/
 
     useEffect(() => {
 
