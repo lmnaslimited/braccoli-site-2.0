@@ -9,7 +9,6 @@ import CustomCard from "@repo/ui/components/custom-card";
 import LogoShowcase from "@repo/ui/components/logo-showcase"
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
-
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 

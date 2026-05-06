@@ -17,6 +17,7 @@ import { Separator } from "@repo/ui/components/ui/separator";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
+import VideoPlayer from "@repo/ui/components/video-player";
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -245,14 +246,9 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                         className={`w-full rounded-md overflow-hidden flex items-center justify-center lg:col-span-7  ${isEven ? "lg:order-first" : "lg:order-last"}`}
                       >
                         {idFeature.image?.source?.endsWith(".mp4") ? (
-                          <video
+                          <VideoPlayer
                             src={idFeature.image.source}
-                            className="aspect-[16/9] w-full object-cover rounded-sm"
-                            width={1000}
-                            height={1000}
-                            autoPlay
-                            muted
-                            loop
+                            sourceId={idFeature.image?.sourceId}
                           />
                         ) : (
                           <Image
