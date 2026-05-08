@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import type React from "react"
 import { useParams } from 'next/navigation';
 import { useState, useRef, type ReactNode, useEffect } from "react"
@@ -76,6 +77,12 @@ export const useFormHandler = () => {
             fnSetFormTitle(iFormTitle ?? null)
             fnSetSuccessMessage(null)
 
+            posthog.capture("form_opened", {
+                form_type: iMode,
+                section_id: iSectionId,
+                form_title: iFormTitle ?? null,
+            })
+
             setTimeout(() => {
                 if (FormRef.current) {
                     FormRef.current.scrollIntoView({
@@ -95,6 +102,12 @@ export const useFormHandler = () => {
     const fnHandleFormSuccess = (iMessage: string, ititle: string) => {
         if (ActiveSection) {
             fnSetSuccessMessage({ message: iMessage, title: ititle, section: ActiveSection })
+
+            posthog.capture("form_submitted", {
+                form_type: FormMode,
+                section_id: ActiveSection,
+                form_title: ititle,
+            })
 
             setTimeout(() => {
                 if (FormRef.current) {

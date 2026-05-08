@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // output: "standalone",
+  skipTrailingSlashRedirect: true,
   async rewrites() {
     return [
       {
@@ -19,6 +20,18 @@ const nextConfig: NextConfig = {
       {
         source: "/de/blog/:path+",
         destination: `http://localhost:3001/:path+`,
+      },
+      {
+        source: "/:locale(en|de)?/ingest/static/:path*",
+        destination: "https://eu-assets.i.posthog.com/static/:path*",
+      },
+      {
+        source: "/:locale(en|de)?/ingest/array/:path*",
+        destination: "https://eu-assets.i.posthog.com/array/:path*",
+      },
+      {
+        source: "/:locale(en|de)?/ingest/:path*",
+        destination: "https://eu.i.posthog.com/:path*",
       },
     ];
   },

@@ -1,8 +1,9 @@
 "use client";
 
+import posthog from "posthog-js";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import * as Icons from "lucide-react";
 import { getIconComponent } from "@repo/ui/lib/icon";
@@ -28,6 +29,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
   const [, fnSetActiveTab] = useState("students");
   // Search term for filtering jobs
   const [SearchTerm, fnSetSearchTerm] = useState("");
+  const LdSearchDebounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   // Selected filter values for job role and location
   const [SelectedFilters, fnSetSelectedFilters] = useState<{
     role: string[];
@@ -362,7 +364,15 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                         placeholder="Search for opportunities..."
                         className="pl-10"
                         value={SearchTerm}
-                        onChange={(event) => fnSetSearchTerm(event.target.value)}
+                        onChange={(event) => {
+                          fnSetSearchTerm(event.target.value);
+                          if (LdSearchDebounceRef.current) clearTimeout(LdSearchDebounceRef.current);
+                          LdSearchDebounceRef.current = setTimeout(() => {
+                            if (event.target.value.trim()) {
+                              posthog.capture("job_search_performed", { search_term: event.target.value.trim() });
+                            }
+                          }, 1000);
+                        }}
                       />
                     </div>
                     {fnGetActiveFilterCount() > 0 && (
@@ -508,7 +518,16 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
                             </p>
                           </CardContent>
                           <CardFooter>
-                            <Link href={idJob.applyUrl} target="_blank" className="w-full">
+                            <Link
+                              href={idJob.applyUrl}
+                              target="_blank"
+                              className="w-full"
+                              onClick={() => posthog.capture("job_apply_clicked", {
+                                job_title: idJob.title,
+                                job_role: idJob.role,
+                                job_location: idJob.location,
+                              })}
+                            >
                               <Button
                                 variant="outline"
                                 className="w-full group/btn border-primary/20 hover:bg-primary/5"
