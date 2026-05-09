@@ -1,5 +1,6 @@
 "use client";
 
+import posthog from "posthog-js";
 import Link from "next/link";
 import { useState } from "react";
 import * as Icons from "lucide-react";
@@ -244,6 +245,10 @@ export default function Pricing({
                                           iPlan.name
                                         );
                                         setOpenedFormId(prev => (prev === containerId ? null : containerId));
+                                        posthog.capture("pricing_plan_selected", {
+                                          plan_name: iPlan.name,
+                                          plan_index: iIndex,
+                                        });
                                       }
                                       }
                                     >

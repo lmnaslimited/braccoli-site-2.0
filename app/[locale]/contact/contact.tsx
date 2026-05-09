@@ -1,5 +1,6 @@
 "use client"
 
+import posthog from "posthog-js"
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
 import { SectionForm } from "@repo/ui/components/form"
@@ -12,8 +13,14 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
     const [ContactMessage, fnSetContactMessage] = useState("")
     const [BookingMessage, fnsetBookingMessage] = useState("")
 
-    const fnHandleContactSuccess = (iMessage: string) => fnSetContactMessage(iMessage)
-    const fnHandleBookingSuccess = (iMessage: string) => fnsetBookingMessage(iMessage)
+    const fnHandleContactSuccess = (iMessage: string) => {
+        fnSetContactMessage(iMessage)
+        posthog.capture("contact_form_submitted")
+    }
+    const fnHandleBookingSuccess = (iMessage: string) => {
+        fnsetBookingMessage(iMessage)
+        posthog.capture("booking_form_submitted")
+    }
 
     const LdBookingForm = idContact.forms.find((form) => form.formId === "booking")
     const LdContactForm = idContact.forms.find((form) => form.formId === "contact")
