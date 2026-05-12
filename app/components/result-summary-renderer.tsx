@@ -1,9 +1,11 @@
+import { TbenefitChat } from "@repo/middleware/types";
+
 export default function ResultSummaryRenderer({
-  result,
+  idResult, idContent
 }: {
-  result?: { summary: string; score?: number; recommendation?: string };
+  idResult?: { summary: string; score?: number; recommendation?: string }, idContent:TbenefitChat | null;
 }) {
-  if (!result) return null;
+  if (!idResult) return null;
 
   return (
     <div
@@ -14,23 +16,23 @@ export default function ResultSummaryRenderer({
       "
     >
       <p className="font-semibold text-base">
-        Result Summary
+      {idContent?.result ?? "Result Summary"}
       </p>
 
       <p className="leading-relaxed">
-        {result.summary}
+        {idResult.summary}
       </p>
 
-      {typeof result.score === "number" && (
+      {typeof idResult.score === "number" && (
         <p className="text-md opacity-90">
-          <span className="font-medium">Score:</span> {result.score}
+          <span className="font-medium">{idContent?.scroreText ?? "Score"}:</span> {idResult.score}
         </p>
       )}
 
-      {result.recommendation && (
+      {idResult.recommendation && (
         <p className="text-md opacity-90">
-          <span className="font-medium">Recommendation:</span>{" "}
-          {result.recommendation}
+          <span className="font-medium">{idContent?.recommendationText ?? "Recommendation"}:</span>{" "}
+          {idResult.recommendation}
         </p>
       )}
     </div>

@@ -1,9 +1,9 @@
 import Home from './home/home'
 import type { Metadata } from 'next'
-import { fnGetCacheData } from '../lib/strapi/get-data'
+import { fnGetCacheData } from '../utils/strapi/get-data'
 import { getPageMetadata } from '../lib/metadata/page-metadata'
 import { clTransformerFactory } from '@repo/middleware'
-import { fnGetStatus } from '../lib/strapi/get-status'
+import { fnGetStatus } from '../utils/strapi/get-status'
 import { Tcontext, ThomePageTarget } from '@repo/middleware/types'
 
 async function getHomePageData(params: { locale: string }) {

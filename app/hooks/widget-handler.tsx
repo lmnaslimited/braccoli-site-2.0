@@ -11,14 +11,14 @@ import {
 export const useWidgetHandler = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [activeWidget, setActiveWidget] = useState<string | null>(null)
-    const [widgetProps, setWidgetProps] = useState<any>(null)
+    const [widgetProps, setWidgetProps] = useState<unknown>(null)
 
   const widgetRef = useRef<HTMLDivElement>(null)
 
   const openWidget = (
     widgetName: string,
     sectionId: string,
-        props?: any
+        props?: unknown
   ) => {
     if (activeSection === sectionId && activeWidget === widgetName) {
       setActiveSection(null)
@@ -63,17 +63,17 @@ export const useWidgetHandler = () => {
 
   const renderWidget = (
     sectionId: string,
-        registry: Record<string, React.ComponentType<any>>
+        registry: Record<string, React.ComponentType<unknown>>
   ): ReactNode => {
     if (activeSection !== sectionId) return null
     if (!activeWidget) return null
 
-    const WidgetComponent = registry[activeWidget]
+    const WidgetComponent = registry[activeWidget] as React.ComponentType<Record<string, unknown>>
     if (!WidgetComponent) return null
 
     return (
       <div ref={widgetRef}>
-        <WidgetComponent {...(widgetProps ?? {})} />
+        <WidgetComponent {...(widgetProps as Record<string, unknown>)} />
       </div>
     )
   }

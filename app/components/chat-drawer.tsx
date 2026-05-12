@@ -3,12 +3,16 @@
 import { useEffect, useMemo, useState, useRef } from "react";
 
 import type {
+  TbenefitChat,
   TbenefitContext,
+  TbenefitPdfContent,
+  TbenefitPdfData,
   TbenefitType,
+  TformMode,
 } from "@repo/middleware/types";
 
 import type { DiscoveryQuestion } from "../types/engine";
-import type { UserSession } from "../types/session";
+import type { TuserSession } from "@repo/middleware/types";
 
 import ChatInput from "../components/chat-input";
 import GreetingBanner from "../components/greeting-banner";
@@ -20,7 +24,8 @@ import AIStreaming from "../components/ai-streaming";
 import { useAISessionStore } from "../store/ai-session-store";
 
 import { Button } from "@repo/ui/components/ui/button";
-import Link from "next/link";
+import { useFormHandler } from "../hooks/form-handler";
+import { useParams } from "next/navigation";
 
 type Props = {
   benefitType: TbenefitType;
@@ -28,15 +33,15 @@ type Props = {
 
 export default function ChatDrawer({ benefitType }: Props) {
 
-  
+  const { fnHandleFormButtonClick, fnRenderFormBelowSection } = useFormHandler();
 
-  const chatScrollRef = useRef<HTMLDivElement | null>(null);
-  const initializedRef = useRef(false);
+  const LdChatScrollRef = useRef<HTMLDivElement | null>(null);
+  const LInitializedRef = useRef(false);
 
   const { messages, addMessage, resetSession } = useAISessionStore();
 
-  const [session, setSession] = useState<UserSession | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [LdSession, fnSetSession] = useState<TuserSession | null>(null);
+  const [LLoading, fnSetLoading] = useState(false);
 
   const [followups, setFollowups] = useState<
     Array<{ id: string; prompt: string }>
@@ -57,6 +62,59 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   const [answers, setAnswers] = useState<Record<string, string>>({});
 
+  const [uiContent, setUiContent] = useState<TbenefitChat | null>(null);
+  const [LdPdfContent, fnSetPdfContent] = useState<TbenefitPdfContent | null>(null)
+  const LdParams = useParams();
+
+  const LLocale = LdParams.locale as string;
+  useEffect(() => {
+
+    const fnFetchChatData = async () => {
+  
+      try {
+  
+        const LdGetChatData = await fetch(
+          `/api/benefit/chat-data?locale=${LLocale}`
+        );
+  
+        const LdChatData = await LdGetChatData.json();
+        
+        setUiContent(LdChatData);
+  
+      } catch (LError) {
+  
+        console.error("Failed to load chat content", LError);
+  
+      }
+  
+    };
+  
+    void fnFetchChatData();
+  
+  }, [LLocale]);
+
+  useEffect(()=>{
+    const fnFetchChatData = async () => {
+      try {
+        const LdGetChatData = await fetch(
+          `/api/benefit/benefit-pdf?locale=${LLocale}`
+        );
+        const LaChatData = await LdGetChatData.json();
+        const LdMatchedPdf = LaChatData.find(
+          (iPdfData: TbenefitPdfContent) =>
+            iPdfData.benefit_type === benefitType
+        );
+  
+        if (LdMatchedPdf) {
+          fnSetPdfContent(LdMatchedPdf);
+        }
+      } catch (LError) {
+        console.error("Failed to load benefit pdf content", LError);
+      }
+    };
+  
+    void fnFetchChatData();
+  }, [benefitType, LLocale])
   /*
   ----------------------------
   Auto scroll chat
@@ -65,13 +123,13 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   useEffect(() => {
 
-    const el = chatScrollRef.current;
+    const el = LdChatScrollRef.current;
 
     if (!el) return;
 
     el.scrollTop = el.scrollHeight;
 
-  }, [messages, loading]);
+  }, [messages, LLoading]);
 
   /*
   ----------------------------
@@ -93,9 +151,9 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   useEffect(() => {
 
-      if (!benefitType || initializedRef.current) return;
+      if (!benefitType || !uiContent|| LInitializedRef.current) return;
 
-  initializedRef.current = true;
+      LInitializedRef.current = true;
 
     const run = async () => {
 
@@ -104,10 +162,10 @@ export default function ChatDrawer({ benefitType }: Props) {
       const response = await fetch("/api/session/me");
 
       const json = (await response.json()) as {
-        session: UserSession | null;
+        session: TuserSession | null;
       };
 
-      setSession(json.session);
+      fnSetSession(json.session);
 
       const initialContext: TbenefitContext = {
         benefitType,
@@ -118,7 +176,6 @@ export default function ChatDrawer({ benefitType }: Props) {
       };
 
       setContext(initialContext);
-
       const chatStartResponse = await fetch("/api/chat/start", {
 
         method: "POST",
@@ -129,6 +186,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         body: JSON.stringify({
           context: initialContext,
+          message: uiContent?.startFlowText
         }),
 
       });
@@ -151,12 +209,12 @@ export default function ChatDrawer({ benefitType }: Props) {
       setAnswers({});
       setFollowups([]);
       setResult(undefined);
-      setLoading(false);
+      fnSetLoading(false);
     };
 
     void run();
 
-  }, [benefitType]);
+  }, [benefitType, uiContent, addMessage]);
 
   /*
   ----------------------------
@@ -166,12 +224,12 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   const fallbackGreeting = useMemo(() => {
 
-    if (session?.identity?.name)
-      return `Welcome back, ${session.identity.name}`;
+    if (LdSession?.identity?.name)
+      return `Welcome back, ${LdSession.identity.name}`;
 
     return `Let's run your ${benefitType ?? "benefit"} flow.`;
 
-  }, [benefitType, session?.identity?.name]);
+  }, [benefitType, LdSession?.identity?.name]);
 
   /*
   ----------------------------
@@ -181,7 +239,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   const runBenefit = async (discoveryAnswers: Record<string, string>) => {
 
-    if (!benefitType || !session?.sessionId) return;
+    if (!benefitType || !LdSession?.sessionId) return;
 
     const response = await fetch("/api/benefit/run", {
 
@@ -193,7 +251,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
       body: JSON.stringify({
         benefitType,
-        sessionId: session.sessionId,
+        sessionId: LdSession.sessionId,
         stage: followups.length ? "followup" : "standard_completed",
         answers: Object.entries(discoveryAnswers).map(
           ([questionId, value]) => ({
@@ -233,7 +291,7 @@ export default function ChatDrawer({ benefitType }: Props) {
     };
 
     setAnswers(mergedAnswers);
-    setLoading(true);
+    fnSetLoading(true);
 
     const response = await fetch("/api/chat/stream", {
 
@@ -246,6 +304,7 @@ export default function ChatDrawer({ benefitType }: Props) {
       body: JSON.stringify({
         context,
         answers: mergedAnswers,
+        messages: uiContent?.streamFlow
       }),
 
     });
@@ -270,7 +329,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
       setCurrentQuestion(json.nextQuestion);
 
-      setLoading(false);
+      fnSetLoading(false);
 
       return;
     }
@@ -288,7 +347,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
     await runBenefit(mergedAnswers);
 
-    setLoading(false);
+    fnSetLoading(false);
 
   };
 
@@ -302,7 +361,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         <div className="flex items-center justify-between border-border pb-3">
 
-          <GreetingBanner session={session} />
+          <GreetingBanner idSession={LdSession} idContent={uiContent} />
 {/* 
           <button
             onClick={() => resetSession()}
@@ -324,7 +383,7 @@ export default function ChatDrawer({ benefitType }: Props) {
         {/* Messages */}
 
         <div
-          ref={chatScrollRef}
+          ref={LdChatScrollRef}
           className="max-h-80 overflow-y-auto space-y-3 rounded-xl border bg-slate-50 p-3"
         >
 
@@ -332,7 +391,7 @@ export default function ChatDrawer({ benefitType }: Props) {
             <AIMessage key={message.id} message={message} />
           ))}
 
-          <AIStreaming active={loading} />
+          <AIStreaming iActive={LLoading} idContent={uiContent}/>
 
         </div>
 
@@ -346,11 +405,12 @@ export default function ChatDrawer({ benefitType }: Props) {
               inputType={currentQuestion.inputType}
               options={currentQuestion.options}
               onSubmit={submitDiscoveryAnswer}
+              idContent={uiContent}
             />
 
-            {loading && (
+            {LLoading && (
               <p className="text-xs text-muted-foreground">
-                Working…
+               {uiContent?.working ?? "working..."}
               </p>
             )}
 
@@ -362,35 +422,48 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         {followups.length ? (
 
-          <FollowUpQuestionRenderer questions={followups} />
+          <FollowUpQuestionRenderer iaQuestions={followups} idContent={uiContent}/>
 
         ) : (
 
           <>
-            <ResultSummaryRenderer result={result} />
+            <ResultSummaryRenderer idResult={result} idContent={uiContent}/>
 
             {result && (
-
-              <div className="flex gap-3 pt-3">
-
-                <Link href="/en/contact">
-                  <Button variant="default">
-                    Book Consultation
-                  </Button>
-                </Link>
-
-                <Button variant="outline">
-                  Download Full Report
-                </Button>
-
-              </div>
-
-            )}
-
+            <>
+             {uiContent?.chatbuttons?.map((iButton) => {
+                  return (
+                    <Button
+                      key={iButton.label}
+                      variant={iButton.variant ?? "outline"}
+                      onClick={() => {
+                        fnHandleFormButtonClick(
+                          iButton.formMode as TformMode,
+                          "containerOne",
+                          iButton.label
+                        );
+                      }}
+                    >
+                      {iButton.label}
+                    </Button>
+                  );
+                }
+              )}
+              {fnRenderFormBelowSection("containerOne", {
+                idPdfData: {
+                  type: "benefit",
+                  benefitType,
+                  result,
+                  answers,
+                  LdSession,
+                  content: LdPdfContent
+                } as TbenefitPdfData
+              })}
+              
+            </>
+          )}
           </>
-
         )}
-
       </div>
 
     </aside>

@@ -44,12 +44,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "img.youtube.com" },
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "media.licdn.com" },
-<<<<<<< HEAD
       { protocol: "https", hostname: "raw.githubusercontent.com" },
     ]
-=======
-    ],
->>>>>>> main
   },
   env: {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY:

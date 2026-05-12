@@ -1,14 +1,16 @@
 "use client"
 
+import { TbenefitChat } from "@repo/middleware/types"
 import { FormEvent, useState } from "react"
 
 type Props = {
     onSubmit: (value: string) => void
     options?: string[]
     inputType: "text" | "number" | "options"
+    idContent: TbenefitChat | null
 }
 
-export default function ChatInput({ onSubmit, options, inputType }: Props) {
+export default function ChatInput({ onSubmit, options, inputType, idContent }: Props) {
     const [value, setValue] = useState("")
 
     const handleSubmit = (event: FormEvent) => {
@@ -63,7 +65,7 @@ export default function ChatInput({ onSubmit, options, inputType }: Props) {
           hover:opacity-90
           disabled:opacity-50 disabled:cursor-not-allowed
         ">
-                Send
+               {idContent?.sendButton}
             </button>
         </form>
     )
