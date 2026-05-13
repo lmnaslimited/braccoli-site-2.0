@@ -97,7 +97,7 @@ export default function ChatDrawer({ benefitType }: Props) {
     const fnFetchChatData = async () => {
       try {
         const LdGetChatData = await fetch(
-          `/api/benefit/benefit-pdf?locale=${LLocale}`
+          `/api/benefit/benefit-pdf?locale=${LLocale}&benefit_type=${benefitType}`
         );
         const LaChatData = await LdGetChatData.json();
         const LdMatchedPdf = LaChatData.find(

@@ -1,17 +1,10 @@
-<<<<<<< HEAD
-=======
 
 > braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://10.62.196.114:3000
+   - Network:      http://10.230.225.114:3000
 
  [32m[1m✓[22m[39m Starting...
-<<<<<<< HEAD
- [32m[1m✓[22m[39m Ready in 423ms
->>>>>>> main
-=======
- [32m[1m✓[22m[39m Ready in 627ms
->>>>>>> main
+ [32m[1m✓[22m[39m Ready in 318ms

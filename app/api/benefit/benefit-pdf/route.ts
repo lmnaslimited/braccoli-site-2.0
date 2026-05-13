@@ -6,10 +6,16 @@ import { TbenefitPdfContentTarget, Tcontext } from "@repo/middleware/types"
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const LLocale = searchParams.get("locale") || "en"
+  const LBenefitType = searchParams.get("benefit_type");
 
   // Prepare the context object that will be passed to the transformer
   const LdContext: Tcontext = {
     locale: LLocale,
+    filters:{
+      benefit_type:{
+        eq: LBenefitType
+      }
+    }
   }
 
   try {
