@@ -228,7 +228,7 @@ export default function Career({ idCareer }: { idCareer: TcareerPageTarget }) {
             }
           }
           onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle ?? undefined)
+            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
           }
         />
         {fnRenderFormBelowSection("containerOne")}

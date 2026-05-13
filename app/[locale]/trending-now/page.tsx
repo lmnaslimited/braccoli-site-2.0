@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import TrendingNowPage from './trending-now'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
-import { getPageMetadata } from '../../lib/metadata/page-metadata'
+import { getPageMetadata } from '../../utils/metadata/page-metadata'
 import { fnGetStatus } from '../../utils/strapi/get-status'
 import { clTransformerFactory } from '@repo/middleware'
 import { Tcontext, TtrendsPageTarget } from '@repo/middleware/types'
