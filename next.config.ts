@@ -44,7 +44,6 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "img.youtube.com" },
       { protocol: "https", hostname: "pbs.twimg.com" },
       { protocol: "https", hostname: "media.licdn.com" },
-      { protocol: "https", hostname: "raw.githubusercontent.com" },
     ]
   },
   env: {
