@@ -2,6 +2,6 @@ import FormWrapper from "../components/form-wrapper"
 import ChatDrawer from "../components/chat-drawer"
 
 export const widgetRegistry = {
-  form: FormWrapper,
-  chat: ChatDrawer,
+  form: FormWrapper as React.ComponentType<Record<string, unknown>>,
+  chat: ChatDrawer as React.ComponentType<Record<string, unknown>>,
 }

@@ -8,17 +8,20 @@ import {
     TbenefitType
 } from "@repo/middleware/types"
 
+type WidgetProps = Record<string, unknown>
+type WidgetRegistry = Record<string, React.ComponentType<WidgetProps>>
+
 export const useWidgetHandler = () => {
   const [activeSection, setActiveSection] = useState<string | null>(null)
   const [activeWidget, setActiveWidget] = useState<string | null>(null)
-    const [widgetProps, setWidgetProps] = useState<unknown>(null)
+  const [widgetProps, setWidgetProps] = useState<WidgetProps | null>(null)
 
   const widgetRef = useRef<HTMLDivElement>(null)
 
   const openWidget = (
     widgetName: string,
     sectionId: string,
-        props?: unknown
+    props?: WidgetProps
   ) => {
     if (activeSection === sectionId && activeWidget === widgetName) {
       setActiveSection(null)
@@ -28,7 +31,7 @@ export const useWidgetHandler = () => {
 
     setActiveSection(sectionId)
     setActiveWidget(widgetName)
-        setWidgetProps(props)
+    setWidgetProps(props || null)
 
     setTimeout(() => {
       widgetRef.current?.scrollIntoView({
@@ -41,15 +44,15 @@ export const useWidgetHandler = () => {
   const openCTA = (
     sectionId: string,
     options: {
-            formMode?: TformMode | null
-            benefitMode?: TbenefitType | null
+      formMode?: TformMode | null
+      benefitMode?: TbenefitType | null
       label?: string
     }
   ) => {
     if (options.formMode) {
       openWidget("form", sectionId, {
         formMode: options.formMode,
-                formTitle: options.label
+        formTitle: options.label
       })
       return
     }
@@ -63,17 +66,17 @@ export const useWidgetHandler = () => {
 
   const renderWidget = (
     sectionId: string,
-        registry: Record<string, React.ComponentType<unknown>>
+    registry: WidgetRegistry
   ): ReactNode => {
     if (activeSection !== sectionId) return null
     if (!activeWidget) return null
 
-    const WidgetComponent = registry[activeWidget] as React.ComponentType<Record<string, unknown>>
+    const WidgetComponent = registry[activeWidget]
     if (!WidgetComponent) return null
 
     return (
       <div ref={widgetRef}>
-        <WidgetComponent {...(widgetProps as Record<string, unknown>)} />
+        <WidgetComponent {...(widgetProps ?? {})} />
       </div>
     )
   }
