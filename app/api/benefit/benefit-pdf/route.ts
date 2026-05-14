@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     const LdPageData:TbenefitPdfContentTarget = await fnGetCacheData(LdContext, clTransformerFactory.createTransformer("benefitPdfContents"))
     // Return the fetched and transformed data as JSON response
     return NextResponse.json(LdPageData.benefitPdfContents)
-  } catch (idError) {
+  } catch {
     // Return an error response with status 500 (Internal Server Error)
     return NextResponse.json(
       { error: "Failed to fetch Benefit Creator Chat Setup" },
