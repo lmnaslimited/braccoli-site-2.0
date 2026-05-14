@@ -25,7 +25,6 @@ export async function GET(request: Request) {
     // Return the fetched and transformed data as JSON response
     return NextResponse.json(LdPageData.benefitPdfContents)
   } catch (idError) {
-    console.error("API error:", idError)
     // Return an error response with status 500 (Internal Server Error)
     return NextResponse.json(
       { error: "Failed to fetch Benefit Creator Chat Setup" },

@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server"
 import { getBenefitQuestions } from "../../../lib/benefit-questions-repository"
-import { TbenefitContext, Titems } from "@repo/middleware/types"
+import { TbenefitContext } from "@repo/middleware/types"
 
 export async function POST(request: Request) {
   const { context, answers, messages } = (await request.json()) as {
     context: TbenefitContext
     answers: Record<string, string>
-    messages: Titems
+    messages: {label: string, value: string}
   }
   const { searchParams } = new URL(request.url)
   const LLocale = searchParams.get("locale") ?? "en"
@@ -16,16 +16,16 @@ export async function POST(request: Request) {
   const LAnsweredCount = Object.keys(answers).length
   // Get the next question based on answered count
   const LNextQuestion = LaFlow[LAnsweredCount]
-
+  
   if (!LNextQuestion) {
     return NextResponse.json({
-      message: messages.title,
+      message: messages.label,
       nextQuestion: null,
     })
   }
 
   return NextResponse.json({
-    message: messages.label,
+    message: messages.value,
     nextQuestion:LNextQuestion,
   })
 }
