@@ -43,43 +43,46 @@ export default function ChatDrawer({ benefitType }: Props) {
   const [LdSession, fnSetSession] = useState<TuserSession | null>(null);
   const [LLoading, fnSetLoading] = useState(false);
 
-  const [followups, setFollowups] = useState<
+  const [LaFollowups, fnSetFollowups] = useState<
     Array<{ id: string; prompt: string }>
   >([]);
 
-  const [result, setResult] = useState<{
+  const [LdResult, fnSetResult] = useState<{
     summary: string;
     score?: number;
     recommendation?: string;
   }>();
 
-  const [context, setContext] = useState<TbenefitContext | null>(null);
+  const [LdContext, fnSetContext] = useState<TbenefitContext | null>(null);
 
-  const [greeting, setGreeting] = useState("");
+  const [LGreeting, fnSetGreeting] = useState("");
 
-  const [currentQuestion, setCurrentQuestion] =
+  const [LdCurrentQuestion, fnSetCurrentQuestion] =
     useState<DiscoveryQuestion | null>(null);
 
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [LaAnswers, fnSetAnswers] = useState<Record<string, string>>({});
 
-  const [uiContent, setUiContent] = useState<TbenefitChat | null>(null);
+  // State to store chat UI content fetched from API
+  const [LdUiContent, fnSetUiContent] = useState<TbenefitChat | null>(null);
+  // State to store benefit PDF content based on selected benefit type
   const [LdPdfContent, fnSetPdfContent] = useState<TbenefitPdfContent | null>(null)
   const LdParams = useParams();
 
   const LLocale = LdParams.locale as string;
+  // Fetch localized chat UI content whenever locale changes
   useEffect(() => {
 
     const fnFetchChatData = async () => {
   
       try {
-  
+        // API call to fetch chat content for current locale
         const LdGetChatData = await fetch(
           `/api/benefit/chat-data?locale=${LLocale}`
         );
   
         const LdChatData = await LdGetChatData.json();
         
-        setUiContent(LdChatData);
+        fnSetUiContent(LdChatData);
   
       } catch (LError) {
   
@@ -93,27 +96,24 @@ export default function ChatDrawer({ benefitType }: Props) {
   
   }, [LLocale]);
 
+  // Fetch benefit PDF content whenever benefit type or locale changes
   useEffect(()=>{
-    const fnFetchChatData = async () => {
+    const fnFetchPdfData = async () => {
       try {
+         // API call to fetch PDF content for locale and benefit type
         const LdGetChatData = await fetch(
           `/api/benefit/benefit-pdf?locale=${LLocale}&benefit_type=${benefitType}`
         );
         const LaChatData = await LdGetChatData.json();
-        const LdMatchedPdf = LaChatData.find(
-          (iPdfData: TbenefitPdfContent) =>
-            iPdfData.benefit_type === benefitType
-        );
-  
-        if (LdMatchedPdf) {
-          fnSetPdfContent(LdMatchedPdf);
-        }
+        
+        fnSetPdfContent(LaChatData);
+        
       } catch (LError) {
         console.error("Failed to load benefit pdf content", LError);
       }
     };
   
-    void fnFetchChatData();
+    void fnFetchPdfData();
   }, [benefitType, LLocale])
   /*
   ----------------------------
@@ -151,7 +151,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   useEffect(() => {
 
-      if (!benefitType || !uiContent|| LInitializedRef.current) return;
+      if (!benefitType || !LdUiContent|| LInitializedRef.current) return;
 
       LInitializedRef.current = true;
 
@@ -175,7 +175,7 @@ export default function ChatDrawer({ benefitType }: Props) {
         userIntent: `Run ${benefitType.replaceAll("_", " ")}`,
       };
 
-      setContext(initialContext);
+      fnSetContext(initialContext);
       const chatStartResponse = await fetch("/api/chat/start", {
 
         method: "POST",
@@ -186,18 +186,18 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         body: JSON.stringify({
           context: initialContext,
-          message: uiContent?.startFlowText
+          message: LdUiContent?.startFlowText
         }),
 
       });
 
       const chatStart = await chatStartResponse.json();
 
-      setGreeting(chatStart.greeting);
+      fnSetGreeting(chatStart.greeting);
 
       if (chatStart.question?.question) {
 
-        setCurrentQuestion(chatStart.question);
+        fnSetCurrentQuestion(chatStart.question);
 
         addMessage({
           role: "assistant",
@@ -206,15 +206,15 @@ export default function ChatDrawer({ benefitType }: Props) {
 
       }
 
-      setAnswers({});
-      setFollowups([]);
-      setResult(undefined);
+      fnSetAnswers({});
+      fnSetFollowups([]);
+      fnSetResult(undefined);
       fnSetLoading(false);
     };
 
     void run();
 
-  }, [benefitType, uiContent, addMessage]);
+  }, [benefitType, LdUiContent, addMessage]);
 
   /*
   ----------------------------
@@ -252,7 +252,7 @@ export default function ChatDrawer({ benefitType }: Props) {
       body: JSON.stringify({
         benefitType,
         sessionId: LdSession.sessionId,
-        stage: followups.length ? "followup" : "standard_completed",
+        stage: LaFollowups.length ? "followup" : "standard_completed",
         answers: Object.entries(discoveryAnswers).map(
           ([questionId, value]) => ({
             questionId,
@@ -265,8 +265,8 @@ export default function ChatDrawer({ benefitType }: Props) {
 
     const json = await response.json();
 
-    setFollowups(json.followupQuestions ?? []);
-    setResult(json.result);
+    fnSetFollowups(json.followupQuestions ?? []);
+    fnSetResult(json.result);
 
   };
 
@@ -278,7 +278,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   const submitDiscoveryAnswer = async (answer: string) => {
 
-    if (!currentQuestion || !context || !answer.trim()) return;
+    if (!LdCurrentQuestion || !LdContext || !answer.trim()) return;
 
     addMessage({
       role: "user",
@@ -286,11 +286,11 @@ export default function ChatDrawer({ benefitType }: Props) {
     });
 
     const mergedAnswers = {
-      ...answers,
-      [currentQuestion.key]: answer.trim(),
+      ...LaAnswers,
+      [LdCurrentQuestion.key]: answer.trim(),
     };
 
-    setAnswers(mergedAnswers);
+    fnSetAnswers(mergedAnswers);
     fnSetLoading(true);
 
     const response = await fetch("/api/chat/stream", {
@@ -302,9 +302,9 @@ export default function ChatDrawer({ benefitType }: Props) {
       },
 
       body: JSON.stringify({
-        context,
+        context: LdContext,
         answers: mergedAnswers,
-        messages: uiContent?.streamFlow
+        messages: LdUiContent?.streamFlow
       }),
 
     });
@@ -327,14 +327,14 @@ export default function ChatDrawer({ benefitType }: Props) {
         content: json.nextQuestion.question,
       });
 
-      setCurrentQuestion(json.nextQuestion);
+      fnSetCurrentQuestion(json.nextQuestion);
 
       fnSetLoading(false);
 
       return;
     }
 
-    setCurrentQuestion(null);
+    fnSetCurrentQuestion(null);
 
     if (json.message) {
 
@@ -361,7 +361,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         <div className="flex items-center justify-between border-border pb-3">
 
-          <GreetingBanner idSession={LdSession} idContent={uiContent} />
+          <GreetingBanner idSession={LdSession} idContent={LdUiContent} />
 {/* 
           <button
             onClick={() => resetSession()}
@@ -376,7 +376,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         <div className="flex items-center gap-2 rounded-lg bg-slate-100 px-2 py-2 text-md text-slate-700">
 
-          {greeting || fallbackGreeting}
+          {LGreeting || fallbackGreeting}
 
         </div>
 
@@ -391,26 +391,26 @@ export default function ChatDrawer({ benefitType }: Props) {
             <AIMessage key={message.id} message={message} />
           ))}
 
-          <AIStreaming iActive={LLoading} idContent={uiContent}/>
+          <AIStreaming iActive={LLoading} idContent={LdUiContent}/>
 
         </div>
 
         {/* Question */}
 
-        {currentQuestion && (
+        {LdCurrentQuestion && (
 
           <div className="space-y-3 rounded-xl border border-border bg-muted/40 p-4">
 
             <ChatInput
-              inputType={currentQuestion.inputType}
-              options={currentQuestion.options}
+              inputType={LdCurrentQuestion.inputType}
+              options={LdCurrentQuestion.options}
               onSubmit={submitDiscoveryAnswer}
-              idContent={uiContent}
+              idContent={LdUiContent}
             />
 
             {LLoading && (
               <p className="text-xs text-muted-foreground">
-               {uiContent?.working ?? "working..."}
+               {LdUiContent?.working ?? "working..."}
               </p>
             )}
 
@@ -420,19 +420,19 @@ export default function ChatDrawer({ benefitType }: Props) {
 
         {/* Results */}
 
-        {followups.length ? (
+        {LaFollowups.length ? (
 
-          <FollowUpQuestionRenderer iaQuestions={followups} idContent={uiContent}/>
+          <FollowUpQuestionRenderer iaQuestions={LaFollowups} idContent={LdUiContent}/>
 
         ) : (
 
           <>
-            <ResultSummaryRenderer idResult={result} idContent={uiContent}/>
+            <ResultSummaryRenderer idResult={LdResult} idContent={LdUiContent}/>
 
-            {result && (
+            {LdResult && (
             <>
             <div className="flex flex-wrap gap-2">
-             {uiContent?.chatbuttons?.map((iButton) => {
+             {LdUiContent?.chatbuttons?.map((iButton) => {
                   return (
                     <Button
                       key={iButton.label}
@@ -455,9 +455,9 @@ export default function ChatDrawer({ benefitType }: Props) {
                 idPdfData: {
                   type: "benefit",
                   benefitType,
-                  result,
-                  answers,
-                  LdSession,
+                  result:LdResult,
+                  answers:LaAnswers,
+                  session:LdSession,
                   content: LdPdfContent
                 } as TbenefitPdfData
               })}
