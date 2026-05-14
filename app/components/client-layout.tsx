@@ -2,8 +2,8 @@
 
 import posthog from "posthog-js";
 import { useEffect } from "react";
-import { fnInitAutoTracking } from "../lib/auto-track";
-import useRudderStackAnalytics from "../lib/rudder-analytics";
+import { fnInitAutoTracking } from "../lib/rudder/auto-track";
+import useRudderStackAnalytics from "../lib/rudder/rudder-analytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     // console.log("ClientLayout component rendered");

@@ -2,6 +2,7 @@ import { ITransformer, Tcontext } from "@repo/middleware/types"
 import { unstable_cache } from "next/cache"
 
 const LdCacheMap = new Map<string, ReturnType<typeof unstable_cache>>()
+
 export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   iContext: Tcontext,
   transformer: ITransformer<DynamicSourceType, DynamicTargetType>,
@@ -12,7 +13,8 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   const LSourceId = iContext?.filters?.sourceId?.eq
 
   let LSlug: string | undefined
-
+  let benefitType: string | undefined
+  // Extract slug filter
   if (iContext?.filters?.slug?.eq) {
     LSlug = iContext.filters.slug.eq
   }
@@ -36,7 +38,9 @@ export async function fnGetCacheData<DynamicSourceType, DynamicTargetType>(
   // - sourceId (optional)
   // - status
 
-const LCacheKey = LSlug
+const LCacheKey = benefitType
+  ? `${transformer.contentType}-${LLocale}-${benefitType}-${LStatus}`
+  :LSlug
   ? `${transformer.contentType}-${LLocale}-${LSlug}${LSourceId ? `-${LSourceId}` : ""}-${LStatus}`
   : `${transformer.contentType}-${LLocale}${LSourceId ? `-${LSourceId}` : ""}-${LStatus}`;
 
@@ -56,7 +60,9 @@ const LCacheKey = LSlug
       [LCacheKey],
       {
         revalidate: 3600, // revalidate every 1 hour
-        tags: LSlug
+        tags:benefitType
+          ? [LCacheKey, LLocale, benefitType, LStatus]
+          :  LSlug
           ? [LCacheKey, LLocale, LSlug, LStatus]
           : [LCacheKey, LLocale, LStatus],
       },

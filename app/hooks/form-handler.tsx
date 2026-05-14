@@ -8,11 +8,11 @@ import { CheckCircle, X } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm } from "@repo/ui/components/form"
 import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
-import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
+import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig, TbenefitPdfData } from "@repo/middleware/types"
 
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
-    idPdfData?: TcaseStudies;
+    idPdfData?: TcaseStudies | TbenefitPdfData;
 };
 
 export const useFormHandler = () => {

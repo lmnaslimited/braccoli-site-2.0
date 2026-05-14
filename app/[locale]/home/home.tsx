@@ -6,18 +6,13 @@ import FAQs from "@repo/ui/components/faq";
 import Callout from "@repo/ui/components/callout";
 import Feature from "@repo/ui/components/feature";
 import CustomCard from "@repo/ui/components/custom-card";
-import LogoShowcase from "@repo/ui/components/logo-showcase"
+import LogoShowcase from "@repo/ui/components/logo-showcase";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
+import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -26,10 +21,14 @@ import {
   TheroSection,
   ThomePageTarget,
 } from "@repo/middleware/types";
+import { useWidgetHandler } from "../../hooks/widget-handler";
+import { widgetRegistry } from "../../lib/widget-registry";
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
     useFormHandler();
+
+  const { openCTA, renderWidget } = useWidgetHandler();
 
   // Trending Now Section Icons
   const LaTrendingNowIcons = [
@@ -42,7 +41,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   // Painpoint Section Severities
   const LaPainpointSeverities = [85, 78, 92, 70];
 
-  const renderIcon = (icon: Tbutton['icon']) => {
+  const renderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
@@ -51,7 +50,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   return (
     <div>
       {/* Hero Section */}
-      <section ref={LdSectionRefs("containerOne")}>
+      <section>
         <Hero
           idHero={
             {
@@ -59,14 +58,20 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               buttons: idHome.home.heroSection.buttons.map((btn) => ({
                 ...btn,
                 iconPosition: "after",
+                benefitMode: btn.benefitMode,
               })),
             } as TheroSection
           }
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
+          onButtonClick={(formMode, label,benefitMode) =>
+            openCTA("containerOne", {
+              formMode,
+              label,
+              benefitMode,
+            })
           }
         />
-        {fnRenderFormBelowSection("containerOne")}
+
+        {renderWidget("containerOne", widgetRegistry)}
       </section>
 
       {/* Problem Section */}
@@ -83,19 +88,6 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Why Section */}
-      <section className="bg-accent">
-        <div className="py-16 ">
-          <Feature
-            idFeature={
-              {
-                ...idHome.home.problemSection[1],
-                iShowButton: false,
-                layout: "centered",
-              } as TfeatureProps
-            }
-          />
-        </div>
-      </section>
 
       {/* Business Problem Section */}
       <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
@@ -140,10 +132,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                         (idBtn.variant as Tbutton["variant"]) ?? "default"
                       }
                     >
-                      {idBtn.label}{" "}
-                      {renderIcon(idBtn.icon)}
+                      {idBtn.label} {renderIcon(idBtn.icon)}
                     </Button>
-
                   </Link>
                 ) : (
                   <Button
@@ -156,14 +146,13 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                       fnHandleFormButtonClick(
                         idBtn.formMode as TformMode,
                         "containerTwo",
-                        idBtn.label
+                        idBtn.label,
                       )
                     }
                   >
-                    {idBtn.label}{" "}
-                    {renderIcon(idBtn.icon)}
+                    {idBtn.label} {renderIcon(idBtn.icon)}
                   </Button>
-                )
+                ),
               )}
             </div>
           </div>
@@ -250,11 +239,9 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
               {idHome.home.socialSection.buttons[0]?.href && (
                 <Link href={idHome.home.socialSection.buttons[0]?.href}>
                   <Button size="lg">
-
                     {idHome.home.socialSection.buttons[0]?.label}{" "}
                     {renderIcon(idHome.home.socialSection.buttons[0]?.icon)}
                   </Button>
-
                 </Link>
               )}
             </div>
@@ -265,9 +252,18 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       {/* Callout Section */}
       <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
         <Callout
-          idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
+          idCallout={
+            {
+              ...idHome.home.calloutSection[1],
+              layout: "simple",
+            } as TcalloutProps
+          }
           onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerThree", formTitle)
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerThree",
+              formTitle,
+            )
           }
         />
         {fnRenderFormBelowSection("containerThree")}
@@ -308,7 +304,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TcalloutProps
           }
           onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerFour",
+              formTitle,
+            )
           }
         />
         {fnRenderFormBelowSection("containerFour")}
@@ -343,12 +343,14 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
                   {idHome.home.trendingNowSection.buttons[0]?.href && (
                     <Link
                       href={idHome.home.trendingNowSection.buttons[0]?.href}
-                    > <Button size="lg">
-
+                    >
+                      {" "}
+                      <Button size="lg">
                         {idHome.home.trendingNowSection.buttons[0]?.label}
-                        {renderIcon(idHome.home.trendingNowSection.buttons[0]?.icon)}
+                        {renderIcon(
+                          idHome.home.trendingNowSection.buttons[0]?.icon,
+                        )}
                       </Button>
-
                     </Link>
                   )}
                 </div>
