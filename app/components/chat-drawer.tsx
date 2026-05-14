@@ -431,6 +431,7 @@ export default function ChatDrawer({ benefitType }: Props) {
 
             {result && (
             <>
+            <div className="flex flex-wrap gap-2">
              {uiContent?.chatbuttons?.map((iButton) => {
                   return (
                     <Button
@@ -449,6 +450,7 @@ export default function ChatDrawer({ benefitType }: Props) {
                   );
                 }
               )}
+              </div>
               {fnRenderFormBelowSection("containerOne", {
                 idPdfData: {
                   type: "benefit",
