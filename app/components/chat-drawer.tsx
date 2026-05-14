@@ -35,31 +35,34 @@ export default function ChatDrawer({ benefitType }: Props) {
 
   const { fnHandleFormButtonClick, fnRenderFormBelowSection } = useFormHandler();
 
+  // Reference for chat container element used for scrolling behavior
   const LdChatScrollRef = useRef<HTMLDivElement | null>(null);
+  // Reference to track whether initial setup logic has already executed
   const LInitializedRef = useRef(false);
-
+  // Get AI session messages and session management functions from store
   const { messages, addMessage, resetSession } = useAISessionStore();
-
+  // State to store current user session details
   const [LdSession, fnSetSession] = useState<TuserSession | null>(null);
+  // State to control loading indicator during async operations
   const [LLoading, fnSetLoading] = useState(false);
-
+  // State to store follow-up prompts suggested to the user
   const [LaFollowups, fnSetFollowups] = useState<
     Array<{ id: string; prompt: string }>
   >([]);
-
+  // State to store generated result summary and recommendation details
   const [LdResult, fnSetResult] = useState<{
     summary: string;
     score?: number;
     recommendation?: string;
   }>();
-
+  // State to store benefit flow context information
   const [LdContext, fnSetContext] = useState<TbenefitContext | null>(null);
-
+  // State to store greeting message displayed in the chat
   const [LGreeting, fnSetGreeting] = useState("");
-
+  // State to store the currently active discovery question
   const [LdCurrentQuestion, fnSetCurrentQuestion] =
     useState<DiscoveryQuestion | null>(null);
-
+  // State to store user answers mapped by question id
   const [LaAnswers, fnSetAnswers] = useState<Record<string, string>>({});
 
   // State to store chat UI content fetched from API
