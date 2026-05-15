@@ -8,6 +8,7 @@ import LocationCard from "@repo/ui/components/location-card"
 import TitleSubtitle from "@repo/ui/components/title-subtitle"
 import { TcontactTarget } from "@repo/middleware/types"
 import { generateSchemaFromFields } from "@repo/ui/lib/zod-transformation"
+import { identifyPostHogFormSubmitter } from "../../lib/posthog-identify"
 
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
@@ -92,6 +93,17 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         schema: generateSchemaFromFields(idContact.contact.contactForm || []),
                                     }}
                                     onSuccess={fnHandleContactSuccess}
+                                    onSuccessfulSubmit={(idPayload) => {
+                                        identifyPostHogFormSubmitter(
+                                            idPayload.formData,
+                                            {
+                                                formId: "contact",
+                                                formTitle: idPayload.formTitle,
+                                                formSource: "contact_form",
+                                                newsletterOptIn: idPayload.formData.newsletter === true,
+                                            },
+                                        )
+                                    }}
                                     className="shadow-none bg-transparent p-0 border-none"
                                     hideCardHeader={true}
                                 />
@@ -154,6 +166,17 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         schema: generateSchemaFromFields(idContact.contact.bookingForm || []),
                                     }}
                                     onSuccess={fnHandleBookingSuccess}
+                                    onSuccessfulSubmit={(idPayload) => {
+                                        identifyPostHogFormSubmitter(
+                                            idPayload.formData,
+                                            {
+                                                formId: "booking",
+                                                formTitle: idPayload.formTitle,
+                                                formSource: "booking_form",
+                                                newsletterOptIn: idPayload.formData.newsletter === true,
+                                            },
+                                        )
+                                    }}
                                     className="shadow-none bg-transparent p-0 border-none"
                                     hideCardHeader={true}
                                 />
