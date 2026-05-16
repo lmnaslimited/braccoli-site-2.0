@@ -86,6 +86,12 @@ export const useFormHandler = () => {
                 newsletterOptIn: idPayload.formData.newsletter === true,
             },
         )
+
+        if (idPayload.formId === "download") {
+            posthog.capture("case_study_download_requested", {
+                case_study_name: LCaseStudyName,
+            })
+        }
     }
 
     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
