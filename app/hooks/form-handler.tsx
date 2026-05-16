@@ -68,6 +68,26 @@ export const useFormHandler = () => {
         }
     }
 
+    const fnHandleSuccessfulSubmit = (idPayload: {
+        formData: Record<string, unknown>
+        formId: string
+        formTitle?: string
+        meta?: Record<string, unknown>
+    }) => {
+        const LCaseStudyName = idPayload.meta?.case_study_name as string | undefined
+
+        identifyPostHogFormSubmitter(
+            idPayload.formData,
+            {
+                formId: idPayload.formId,
+                formTitle: idPayload.formTitle,
+                formSource: fnGetFormSource(idPayload.formId),
+                lastCaseStudyName: idPayload.formId === "download" ? LCaseStudyName : undefined,
+                newsletterOptIn: idPayload.formData.newsletter === true,
+            },
+        )
+    }
+
     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
         if (!RefStore.current[key]) {
             RefStore.current[key] = { current: null } as unknown as React.RefObject<HTMLDivElement>
@@ -190,18 +210,7 @@ export const useFormHandler = () => {
                         <SectionForm
                             config={LdFormConfig as TformConfig}
                             onSuccess={fnHandleFormSuccess}
-                            onSuccessfulSubmit={(idPayload) => {
-                                identifyPostHogFormSubmitter(
-                                    idPayload.formData,
-                                    {
-                                        formId: idPayload.formId,
-                                        formTitle: idPayload.formTitle,
-                                        formSource: fnGetFormSource(idPayload.formId),
-                                        lastCaseStudyName: idPayload.meta?.case_study_name as string | undefined,
-                                        newsletterOptIn: idPayload.formData.newsletter === true,
-                                    },
-                                )
-                            }}
+                            onSuccessfulSubmit={fnHandleSuccessfulSubmit}
                             onCancel={() => {
                                 fnSetActiveSection(null)
                             }}

@@ -271,7 +271,7 @@ export default function CaseStudyPage({
             </div>
           </div>
         </section>
-        {fnRenderFormBelowSection("containerFive")}
+        {fnRenderFormBelowSection("containerFive", { idPdfData: idcaseStudies })}
       </div >
     </>
   );
