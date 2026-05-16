@@ -36,7 +36,7 @@ export function identifyPostHogFormSubmitter(
 ) {
   const LEmail = fnNormalizeEmail(idFormData.email)
 
-  if (!LEmail || !posthog.__loaded) return
+  if (!LEmail) return
 
   const LSubmittedAt = new Date().toISOString()
   const LSetProperties: Record<string, unknown> = {
@@ -57,13 +57,17 @@ export function identifyPostHogFormSubmitter(
   if (LCaseStudyName) LSetProperties.last_case_study_name = LCaseStudyName
   if (idContext.newsletterOptIn) LSetProperties.newsletter_opt_in = true
 
+  const LSetOnceProperties: Record<string, unknown> = {
+    first_form_id: idContext.formId,
+    first_form_source: idContext.formSource,
+    first_submitted_at: LSubmittedAt,
+  }
+
+  if (LCaseStudyName) LSetOnceProperties.first_case_study_name = LCaseStudyName
+
   posthog.identify(
     LEmail,
     LSetProperties,
-    {
-      first_form_id: idContext.formId,
-      first_form_source: idContext.formSource,
-      first_submitted_at: LSubmittedAt,
-    },
+    LSetOnceProperties,
   )
 }

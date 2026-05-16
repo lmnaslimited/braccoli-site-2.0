@@ -75,11 +75,12 @@ export const useFormHandler = () => {
         meta?: Record<string, unknown>
     }) => {
         const LCaseStudyName = idPayload.meta?.case_study_name as string | undefined
+        const LIdentifyFormId = idPayload.formId === "download" ? "case_study" : idPayload.formId
 
         identifyPostHogFormSubmitter(
             idPayload.formData,
             {
-                formId: idPayload.formId,
+                formId: LIdentifyFormId,
                 formTitle: idPayload.formTitle,
                 formSource: fnGetFormSource(idPayload.formId),
                 lastCaseStudyName: idPayload.formId === "download" ? LCaseStudyName : undefined,
