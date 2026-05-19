@@ -5,22 +5,18 @@ const nextConfig: NextConfig = {
   skipTrailingSlashRedirect: true,
   async rewrites() {
     return [
-      {
-        source: "/en/blog",
-        destination: `http://localhost:3001/`,
+     {
+        source: "/:locale(en|de)/blog",
+        destination: "http://localhost:3001/:locale",
       },
       {
-        source: "/de/blog",
-        destination: `http://localhost:3001/`,
+        source: "/:locale(en|de)/blog/:path+",
+        destination: "http://localhost:3001/:locale/:path+",
       },
-      {
-        source: "/en/blog/:path+",
-        destination: `http://localhost:3001/:path+`,
-      },
-      {
-        source: "/de/blog/:path+",
-        destination: `http://localhost:3001/:path+`,
-      },
+       {
+  source: "/blog-static/:path*",
+  destination: "http://localhost:3001/blog-static/:path*",
+},
       {
         source: "/:locale(en|de)?/ingest/static/:path*",
         destination: "https://eu-assets.i.posthog.com/static/:path*",
