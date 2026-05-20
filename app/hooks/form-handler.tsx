@@ -9,6 +9,7 @@ import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm } from "@repo/ui/components/form"
 import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
 import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
+import { identifyPostHogFormSubmitter } from "../lib/posthog-identify"
 
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
@@ -51,6 +52,48 @@ export const useFormHandler = () => {
     )
     const RefStore = useRef<Record<string, React.RefObject<HTMLDivElement>>>({})
     const FormRef = useRef<HTMLDivElement>(null)
+
+    const fnGetFormSource = (iFormId: string) => {
+        switch (iFormId) {
+            case "booking":
+                return "booking_form"
+            case "contact":
+                return "contact_form"
+            case "download":
+                return "case_study_download"
+            case "webinar":
+                return "webinar_form"
+            default:
+                return `${iFormId}_form`
+        }
+    }
+
+    const fnHandleSuccessfulSubmit = (idPayload: {
+        formData: Record<string, unknown>
+        formId: string
+        formTitle?: string
+        meta?: Record<string, unknown>
+    }) => {
+        const LCaseStudyName = idPayload.meta?.case_study_name as string | undefined
+        const LIdentifyFormId = idPayload.formId === "download" ? "case_study" : idPayload.formId
+
+        identifyPostHogFormSubmitter(
+            idPayload.formData,
+            {
+                formId: LIdentifyFormId,
+                formTitle: idPayload.formTitle,
+                formSource: fnGetFormSource(idPayload.formId),
+                lastCaseStudyName: idPayload.formId === "download" ? LCaseStudyName : undefined,
+                newsletterOptIn: idPayload.formData.newsletter === true,
+            },
+        )
+
+        if (idPayload.formId === "download") {
+            posthog.capture("case_study_download_requested", {
+                case_study_name: LCaseStudyName,
+            })
+        }
+    }
 
     const LdSectionRefs = (key: string): React.RefObject<HTMLDivElement> => {
         if (!RefStore.current[key]) {
@@ -174,6 +217,7 @@ export const useFormHandler = () => {
                         <SectionForm
                             config={LdFormConfig as TformConfig}
                             onSuccess={fnHandleFormSuccess}
+                            onSuccessfulSubmit={fnHandleSuccessfulSubmit}
                             onCancel={() => {
                                 fnSetActiveSection(null)
                             }}

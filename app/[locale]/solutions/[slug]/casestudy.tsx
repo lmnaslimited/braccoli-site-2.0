@@ -1,6 +1,5 @@
 "use client";
 
-import posthog from "posthog-js";
 import Link from "next/link";
 import * as Icons from "lucide-react";
 import { ArrowLeft, LucideIcon } from "lucide-react";
@@ -53,9 +52,6 @@ export default function CaseStudyPage({
                 ).find((btn) => "formMode" in btn);
                 return LaButton
                   ? () => {
-                    posthog.capture("case_study_download_requested", {
-                      case_study_name: idcaseStudies.caseStudies[0]?.name,
-                    });
                     fnHandleFormButtonClick(
                       LaButton.formMode as TformMode,
                       "containerTwo",
@@ -271,7 +267,7 @@ export default function CaseStudyPage({
             </div>
           </div>
         </section>
-        {fnRenderFormBelowSection("containerFive")}
+        {fnRenderFormBelowSection("containerFive", { idPdfData: idcaseStudies })}
       </div >
     </>
   );
