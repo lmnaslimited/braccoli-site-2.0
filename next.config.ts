@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+
   // output: "standalone",
+  // This setting prevents Next.js from automatically redirecting URLs with trailing slashes to their non-trailing slash versions, allowing both versions to be accessible without redirection.
+
   skipTrailingSlashRedirect: true,
   async rewrites() {
     return [
@@ -33,6 +36,7 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   images: {
+    // This configuration allows Next.js to optimize and serve images from the specified external domains, ensuring that images from these sources can be used in the application without issues.
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "raw.githubusercontent.com"},
