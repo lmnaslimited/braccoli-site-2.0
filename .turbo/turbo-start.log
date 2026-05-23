@@ -1,10 +1,34 @@
 
-> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://10.62.196.114:3000
+   - Network:      http://10.220.107.80:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 627ms
+ [32m[1m✓[22m[39m Ready in 329ms
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20652) {
+  digest: [32m'3845454811'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20881) {
+  digest: [32m'2646316242'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20652) {
+  digest: [32m'3845454811'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20881) {
+  digest: [32m'2646316242'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20652) {
+  digest: [32m'3845454811'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20881) {
+  digest: [32m'2646316242'[39m
+}
