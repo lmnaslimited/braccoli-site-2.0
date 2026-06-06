@@ -13,12 +13,20 @@ export default function NewsletterIdentifyListener() {
     const fnHandleNewsletterSubscribed = (iEvent: Event) => {
       const LdEvent = iEvent as TNewsletterSubscribedEvent
 
-      if (
-        !LdEvent.detail?.email ||
-        !["subscribed", "already_subscribed"].includes(LdEvent.detail.status ?? "error")
-      ) {
+      // commented this out, to
+      // Temporarily identify users based only on email presence.
+      // This is a diagnostic change to verify whether the status-based
+      // success check is preventing some newsletter subscribers from
+      // being identified in PostHog.
+      // if (
+      //   !LdEvent.detail?.email ||
+      //   !["subscribed", "already_subscribed"].includes(LdEvent.detail.status ?? "error")
+      // ) {
+      //   return
+      // }
+      if (!LdEvent.detail?.email) {
         return
-      }
+      }  
 
       identifyPostHogFormSubmitter(
         { email: LdEvent.detail.email },
