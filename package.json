@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@n8n/chat": "^0.67.0",
+    "@react-pdf/renderer": "^4.3.0",
     "@repo/middleware": "workspace:*",
     "@repo/ui": "workspace:*",
     "@rudderstack/analytics-js": "^3.24.3",
