@@ -39,11 +39,11 @@ export async function POST(request: Request) {
      * Convert ECharts → SVG → PNG → Base64 image
      * so React-PDF can render them properly
      */
-    const enrichedPdfData = await enrichCharts(idPdfData);
+    const LaEnrichedPdfData = await enrichCharts(idPdfData);
      /**
      * Render React-PDF component into a PDF buffer
      */
-    const LdPdfBuffer = await renderToBuffer(<PdfComponent idData={enrichedPdfData} />);
+    const LdPdfBuffer = await renderToBuffer(<PdfComponent idData={LaEnrichedPdfData} />);
 
     const LFileName =
       idPdfData?.caseStudies?.[0]?.pdfName || "CaseStudy";
