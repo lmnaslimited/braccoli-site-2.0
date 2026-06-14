@@ -4,43 +4,19 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.52:3000
+   - Network:      http://10.19.215.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 281ms
+ [32m[1m✓[22m[39m Ready in 1189ms
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20850) {
-  digest: [32m'2471814214'[39m
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20495) {
+  digest: [32m'166382421'[39m
 }
  [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20621) {
-  digest: [32m'2485625095'[39m
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20266) {
+  digest: [32m'3999497270'[39m
 }
  [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20850) {
-  digest: [32m'2471814214'[39m
-}
-Error fetching external data: TypeError: fetch failed
-    at async o (.next/server/app/api/job/route.js:2:5211)
-    at async u.revalidate (.next/server/app/api/job/route.js:1:742)
-    at async (.next/server/chunks/211.js:1:8780)
-    at async l (.next/server/app/api/job/route.js:1:813) {
-  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
-}
-Error fetching LinkedIn posts: Error: HTTP error! Status: 401
-    at o (.next/server/app/api/social/route.js:2:5838)
-    at async d.revalidate (.next/server/app/api/social/route.js:1:776)
-    at async (.next/server/chunks/211.js:1:8780)
-    at async f (.next/server/app/api/social/route.js:1:1028)
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20850) {
-  digest: [32m'2471814214'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20621) {
-  digest: [32m'2485625095'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20850) {
-  digest: [32m'2471814214'[39m
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20495) {
+  digest: [32m'166382421'[39m
 }
