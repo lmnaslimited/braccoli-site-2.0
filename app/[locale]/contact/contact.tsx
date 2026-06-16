@@ -4,6 +4,7 @@ import posthog from "posthog-js"
 import { useState } from "react"
 import { cn } from "@repo/ui/lib/utils"
 import { SectionForm } from "@repo/ui/components/form"
+import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import LocationCard from "@repo/ui/components/location-card"
 import TitleSubtitle from "@repo/ui/components/title-subtitle"
 import { TcontactTarget } from "@repo/middleware/types"
@@ -86,7 +87,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         </button>
                                     </div>
                                 )}
-                                <SectionForm
+                                <DynamicForm
                                     config={{
                                         ...LdContactForm,
                                         fields: idContact.contact.contactForm,
@@ -105,7 +106,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         )
                                     }}
                                     className="shadow-none bg-transparent p-0 border-none"
-                                    hideCardHeader={true}
                                 />
                             </div>
                         </div>
