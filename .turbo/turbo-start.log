@@ -7,4 +7,18 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 850ms
+ [32m[1m✓[22m[39m Ready in 818ms
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20297) {
+  digest: [32m'531555478'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20526) {
+  digest: [32m'1629268498'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20297) {
+  digest: [32m'531555478'[39m
+}
+Failed to proxy https://eu.i.posthog.com/e?ip=0&_=1781764317789&ver=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
