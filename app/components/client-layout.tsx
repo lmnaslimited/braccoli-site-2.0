@@ -19,10 +19,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
             defaults: "2026-01-30",  
             capture_exceptions: true,  
             debug: process.env.NODE_ENV === "development",  
-            
-            loaded: () => {
-            window.dispatchEvent(new Event("posthog-ready"));
-  },    
+
             });  
     }, []);
 
