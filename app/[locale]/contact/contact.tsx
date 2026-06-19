@@ -2,8 +2,8 @@
 
 import posthog from "posthog-js"
 import { useState } from "react"
+import { useRef } from "react"
 import { cn } from "@repo/ui/lib/utils"
-import { SectionForm } from "@repo/ui/components/form"
 import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import LocationCard from "@repo/ui/components/location-card"
 import TitleSubtitle from "@repo/ui/components/title-subtitle"
@@ -14,13 +14,34 @@ import { identifyPostHogFormSubmitter } from "../../lib/posthog-identify"
 export default function ContactChildPage({ idContact }: { idContact: TcontactTarget }) {
     const [ContactMessage, fnSetContactMessage] = useState("")
     const [BookingMessage, fnsetBookingMessage] = useState("")
+    // const ContactSubmitterNameRef = useRef<string | null>(null)
+    // const BookingSubmitterNameRef = useRef<string | null>(null)
 
     const fnHandleContactSuccess = (iMessage: string) => {
-        fnSetContactMessage(iMessage)
+        // If a submitter name was captured earlier, interpolate it into the CMS message
+        // const LName = ContactSubmitterNameRef.current
+        let LMessage = iMessage
+        // if (LName) {
+        //     // Replace a {name} placeholder if present (case-insensitive), otherwise leave message as-is
+        //     if (/\{\s*name\s*\}/i.test(LMessage)) {
+        //         LMessage = LMessage.replace(/\{\s*name\s*\}/i, LName)
+        //     }
+        // }
+        fnSetContactMessage(LMessage)
+        // clear the stored name — the UI will continue to show the message until dismissed
+        // ContactSubmitterNameRef.current = null
         posthog.capture("contact_form_submitted")
     }
     const fnHandleBookingSuccess = (iMessage: string) => {
-        fnsetBookingMessage(iMessage)
+        // const LName = BookingSubmitterNameRef.current
+        let LMessage = iMessage
+        // if (LName) {
+        //     if (/\{\s*name\s*\}/i.test(LMessage)) {
+        //         LMessage = LMessage.replace(/\{\s*name\s*\}/i, LName)
+        //     }
+        // }
+        fnsetBookingMessage(LMessage)
+        // BookingSubmitterNameRef.current = null
         posthog.capture("booking_form_submitted")
     }
 
@@ -95,6 +116,23 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     }}
                                     onSuccess={fnHandleContactSuccess}
                                     onSuccessfulSubmit={(idPayload) => {
+                                        // capture name locally so the CMS message can be interpolated
+                                        try {
+                                            const LRawName = idPayload.formData.name
+                                            if (typeof LRawName === "string" && LRawName.trim()) {
+                                                ContactSubmitterNameRef.current = LRawName.trim()
+                                            } else if (typeof idPayload.formData.email === "string") {
+                                                const LEmail = idPayload.formData.email.trim()
+                                                const LLocal = LEmail.split("@")[0] || ""
+                                                const LParts = LLocal.split(/[._-]/).filter(Boolean)
+                                                if (LParts.length > 0) {
+                                                    ContactSubmitterNameRef.current = LParts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ")
+                                                }
+                                            }
+                                        } catch (e) {
+                                            ContactSubmitterNameRef.current = null
+                                        }
+
                                         identifyPostHogFormSubmitter(
                                             idPayload.formData,
                                             {
@@ -159,7 +197,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         </button>
                                     </div>
                                 )}
-                                <SectionForm
+                                <DynamicForm
                                     config={{
                                         ...LdBookingForm,
                                         fields: idContact.contact.bookingForm,
@@ -167,6 +205,22 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     }}
                                     onSuccess={fnHandleBookingSuccess}
                                     onSuccessfulSubmit={(idPayload) => {
+                                        try {
+                                            const LRawName = idPayload.formData.name
+                                            if (typeof LRawName === "string" && LRawName.trim()) {
+                                                BookingSubmitterNameRef.current = LRawName.trim()
+                                            } else if (typeof idPayload.formData.email === "string") {
+                                                const LEmail = idPayload.formData.email.trim()
+                                                const LLocal = LEmail.split("@")[0] || ""
+                                                const LParts = LLocal.split(/[._-]/).filter(Boolean)
+                                                if (LParts.length > 0) {
+                                                    BookingSubmitterNameRef.current = LParts.map(p => p.charAt(0).toUpperCase() + p.slice(1)).join(" ")
+                                                }
+                                            }
+                                        } catch (e) {
+                                            BookingSubmitterNameRef.current = null
+                                        }
+
                                         identifyPostHogFormSubmitter(
                                             idPayload.formData,
                                             {
@@ -178,7 +232,6 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         )
                                     }}
                                     className="shadow-none bg-transparent p-0 border-none"
-                                    hideCardHeader={true}
                                 />
                             </div>
                         </div>

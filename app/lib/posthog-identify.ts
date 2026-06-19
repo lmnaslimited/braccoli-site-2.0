@@ -70,4 +70,11 @@ export function identifyPostHogFormSubmitter(
     LSetProperties,
     LSetOnceProperties,
   )
+
+  window.dispatchEvent(
+  new CustomEvent("posthog-user-updated", {
+    detail: {LEmail, LSetProperties, LSetOnceProperties},
+  })
+);
 }
+
