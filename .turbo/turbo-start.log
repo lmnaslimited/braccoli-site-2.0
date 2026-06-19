@@ -7,15 +7,12 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 405ms
-(node:26756) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node --trace-warnings ...` to show where the warning was created)
-Failed to proxy https://us.i.posthog.com/e?ip=0&_=1781861240234&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+ [32m[1m✓[22m[39m Ready in 516ms
+Failed to proxy https://us.i.posthog.com/s?ip=0&_=1781864000953&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-Failed to proxy https://us.i.posthog.com/i/v0/e?ip=0&_=1781861252869&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://us.i.posthog.com/i/v0/e?ip=0&_=1781864000953&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-Failed to proxy https://us.i.posthog.com/s?ip=0&_=1781861252870&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://us.i.posthog.com/s?ip=0&_=1781864011850&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-reCAPTCHA verification score: [33m0.9[39m
-Failed to proxy https://us.i.posthog.com/s?ip=0&_=1781861265045&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://us.i.posthog.com/s?retry_count=1&ip=0&_=1781864016953&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
