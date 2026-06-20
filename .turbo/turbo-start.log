@@ -4,19 +4,7 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://10.19.215.114:3000
+   - Network:      http://10.180.141.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 1189ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20495) {
-  digest: [32m'166382421'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
-    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:20266) {
-  digest: [32m'3999497270'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at u (.next/server/app/[locale]/products/[slug]/page.js:1:20495) {
-  digest: [32m'166382421'[39m
-}
+ [32m[1m✓[22m[39m Ready in 531ms
