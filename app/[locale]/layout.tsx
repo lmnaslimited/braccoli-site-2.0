@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
 import { fnGetCacheData } from '../utils/strapi/get-data'
-// import ChatInit from "../components/chat-int"
+import ChatInit from "../components/chat-int"
 import ClientLayout from "..//components/client-layout"
 import NewsletterIdentifyListener from "../components/newsletter-identify-listener"
 import Footer from "@repo/ui/components/footer"
@@ -113,7 +113,7 @@ export default async function RootLayout({
           <Footer idFooter={footerData} />
         </ThemeProvider>
         <NewsletterIdentifyListener />
-        {/* <ChatInit /> */}
+        <ChatInit />
       </body>
     </html>
   )

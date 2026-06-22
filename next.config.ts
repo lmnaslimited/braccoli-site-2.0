@@ -28,23 +28,24 @@ const nextConfig: NextConfig = {
         source: "/blog-static/:path*",
         destination: "http://localhost:3001/blog-static/:path*",
       },
-      // Static assets  
-      {  
-      source: "/:locale(en|de)?/ingest/static/:path*",  
-      destination: "https://us-assets.i.posthog.com/static/:path*",  
+
+      // Proxies PostHog static asset requests through the application.
+      {
+        source: "/:locale(en|de)?/ingest/static/:path*",
+        destination: "https://eu-assets.i.posthog.com/static/:path*",
       },
 
-      // Array ingestion (fixed!)  
-      {  
-      source: "/:locale(en|de)?/ingest/array/:path*",  
-      destination: "https://us.i.posthog.com/array/:path*",  
+      // Proxies PostHog array ingestion requests.
+      {
+        source: "/:locale(en|de)?/ingest/array/:path*",
+        destination: "https://eu-assets.i.posthog.com/array/:path*",
       },
 
-      // All other PostHog requests  
-      {  
-      source: "/:locale(en|de)?/ingest/:path*",  
-      destination: "https://us.i.posthog.com/:path*",  
-      },  
+      // Proxies all remaining PostHog analytics requests.
+      {
+        source: "/:locale(en|de)?/ingest/:path*",
+        destination: "https://eu.i.posthog.com/:path*",
+      },
     ];
   },
 
@@ -68,8 +69,7 @@ const nextConfig: NextConfig = {
     NEXT_PUBLIC_RECAPTCHA_SITE_KEY:
       process.env.NODE_ENV === "development"
         ? "6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
-        :"6LeHPQ0rAAAAAHTN_Ya-NIc5M4lScSP3vu6OCYYy"
-        // : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA",
+        : "6LfALd4qAAAAACBjDTQWkmyh-WqbLb6yhbcm-UUA",
   },
 };
 
