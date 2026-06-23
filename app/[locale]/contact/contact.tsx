@@ -62,7 +62,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     "w-full max-w-2xl mx-auto",
                                 )}
                             >
-                                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground">
+                                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground px-6">
                                     {LdContactForm.title}
                                 </h2>
 
@@ -105,6 +105,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         )
                                     }}
                                     className="shadow-none bg-transparent p-0 border-none"
+                                    hideCardHeader={true}
                                 />
                             </div>
                         </div>
@@ -177,6 +178,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         )
                                     }}
                                     className="shadow-none bg-transparent p-0 border-none"
+                                    hideCardHeader={true}
                                 />
                             </div>
                         </div>

@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { useState, useRef, type ReactNode, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
-import { SectionForm } from "@repo/ui/components/form"
+// import { SectionForm } from "@repo/ui/components/form"//
 import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
 import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
