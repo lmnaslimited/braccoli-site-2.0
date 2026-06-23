@@ -7,6 +7,7 @@ import { useState, useRef, type ReactNode, useEffect } from "react"
 import { CheckCircle, X } from "lucide-react"
 import { Button } from "@repo/ui/components/ui/button"
 import { SectionForm } from "@repo/ui/components/form"
+import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import { generateSchemaFromFields } from '@repo/ui/lib/zod-transformation'
 import { type TformMode, type TcaseStudies, type TtrendCardProps, type TformConfig } from "@repo/middleware/types"
 import { identifyPostHogFormSubmitter } from "../lib/posthog-identify"
@@ -192,42 +193,44 @@ export const useFormHandler = () => {
             }
 
         return (
-            <div className="w-full bg-background py-8" ref={FormRef}>
-                <div className="container mx-auto px-4">
-                    {shouldShowSuccess ? (
-                        <div className="max-w-lg mx-auto bg-background rounded-lg shadow-md p-4 text-center">
-                            <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
-                            <h3 className="text-xl font-bold mb-2">{SuccessMessage?.title}</h3>
-                            <p className="mb-6">{SuccessMessage?.message}</p>
-                            <Button
-                                type="button"
-                                variant="outline"
-                                onClick={() => {
-                                    fnSetSuccessMessage(null)
-                                    fnSetActiveSection(null)
-                                    setTimeout(() => {
-                                        window.scrollTo({ top: 0, behavior: "smooth" })
-                                    }, 300)
-                                }}
-                            >
-                                <X />
-                            </Button>
-                        </div>
-                    ) : LdFormConfig ? (
-                        <SectionForm
-                            config={LdFormConfig as TformConfig}
-                            onSuccess={fnHandleFormSuccess}
-                            onSuccessfulSubmit={fnHandleSuccessfulSubmit}
-                            onCancel={() => {
-                                fnSetActiveSection(null)
-                            }}
-                            data={idData || null}
-                            pdfData={idPdfData || null}
-                        />
-                    ) : null}
+          <div className="w-full bg-background py-8" ref={FormRef}>
+            <div className="container mx-auto px-4">
+              {shouldShowSuccess ? (
+                <div className="max-w-lg mx-auto bg-background rounded-lg shadow-md p-4 text-center">
+                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
+                  <h3 className="text-xl font-bold mb-2">
+                    {SuccessMessage?.title}
+                  </h3>
+                  <p className="mb-6">{SuccessMessage?.message}</p>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      fnSetSuccessMessage(null);
+                      fnSetActiveSection(null);
+                      setTimeout(() => {
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                      }, 300);
+                    }}
+                  >
+                    <X />
+                  </Button>
                 </div>
+              ) : LdFormConfig ? (
+                <DynamicForm
+                  config={LdFormConfig as TformConfig}
+                  onSuccess={fnHandleFormSuccess}
+                  onSuccessfulSubmit={fnHandleSuccessfulSubmit}
+                  onCancel={() => {
+                    fnSetActiveSection(null);
+                  }}
+                  data={idData || null}
+                  pdfData={idPdfData || null}
+                />
+              ) : null}
             </div>
-        )
+          </div>
+        );
     }
 
     return { fnHandleFormButtonClick, fnHandleFormSuccess, fnRenderFormBelowSection, LdSectionRefs, FormRef }
