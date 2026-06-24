@@ -202,7 +202,22 @@ export const useFormHandler = () => {
                   <h3 className="text-xl font-bold mb-2">
                     {SuccessMessage?.title}
                   </h3>
-                  <p className="mb-6 whitespace-pre-line">{SuccessMessage?.message}</p>
+                  {(() => {
+                    const [LFirstLine, ...LRest] = SuccessMessage.message.split("\n")
+                        return (
+                            <>
+                            <p className="mt-2 whitespace-pre-line">
+                            {LFirstLine}
+                            </p>
+
+                            {LRest.length > 0 && (
+                                <p className="mt-2 whitespace-pre-line">
+                                {LRest.join("\n")}
+                                </p>
+                            )}
+                             </>
+                                            )
+                        })()}
                   <Button
                     type="button"
                     variant="outline"
