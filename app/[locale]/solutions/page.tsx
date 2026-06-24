@@ -13,6 +13,7 @@ async function getSolutionPageData(params: { locale: string }) {
     locale: locale,
     caseStudiesLocale2: locale,
     status: LStatus,
+    caseStudiesPagination: { limit: -1 }, //to get all the case study list, because by default graphql retrieve 10
   }
 
   const pageData: TsolutionPageTarget = await fnGetCacheData(
