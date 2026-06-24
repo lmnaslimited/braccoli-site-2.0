@@ -68,35 +68,49 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 </h2>
 
                                 {ContactMessage && (
-                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
-                                        {(() => {
-                                            const [LFirstLine, ...LRest] = ContactMessage.split("\n")
-                                            return (
-                                                <>
-                                                    <p className="flex items-center gap-2 text-xl font-bold">
-                                                        <CheckCircle className="w-7 h-7 text-green-500 shrink-0" />
-                                                        {LFirstLine}
-                                                    </p>
-                                                    {LRest.length > 0 && <p className="mt-1">{LRest.join("\n")}</p>}
-                                                </>
-                                            )
-                                        })()}
-                                        <button
-                                            onClick={() => fnSetContactMessage("")}
-                                            className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="size-5"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
+                                {(() => {
+                                    const formattedMessage = ContactMessage.replace(/\\n/g, "\n")
+                                    const [LFirstLine, ...LRest] = formattedMessage.split("\n")
+
+                                    return (
+                                        <>
+                                            <p className="flex items-center gap-2 text-xl font-bold">
+                                                <CheckCircle className="w-7 h-7 text-green-500 shrink-0" />
+                                                {LFirstLine}
+                                            </p>
+
+                                            {LRest.length > 0 && (
+                                                <div className="mt-2 ml-9">
+                                                    {LRest.map((line, index) => (
+                                                        <p key={index}>{line}</p>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </>
+                                    )
+                                })()}
+
+                                <button
+                                    onClick={() => fnSetContactMessage("")}
+                                    className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="1.5"
+                                        stroke="currentColor"
+                                        className="size-5"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 18 18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </button>
+                                </div>
                                 )}
                                 <DynamicForm
                                     config={{
