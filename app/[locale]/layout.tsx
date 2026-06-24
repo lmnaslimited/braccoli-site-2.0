@@ -11,6 +11,7 @@ import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
+import { AuthProvider } from "@repo/ui/components/auth/authContext"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -103,6 +104,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
+      <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar idNavbar={navbarData} />
           <main className="">
@@ -114,6 +116,7 @@ export default async function RootLayout({
         </ThemeProvider>
         <NewsletterIdentifyListener />
         <ChatInit />
+        </AuthProvider>
       </body>
     </html>
   )
