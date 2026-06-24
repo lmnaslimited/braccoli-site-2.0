@@ -12,17 +12,16 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
     useEffect(() => {
        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {  
-            api_host: process.env.NODE_ENV === "development"  
-            ? "https://us.i.posthog.com" // direct in dev, no proxy needed  
-            : "/ingest", // proxy only in production  
-            ui_host: "https://us.posthog.com",  
-            defaults: "2026-01-30",  
-            capture_exceptions: true,  
-            debug: process.env.NODE_ENV === "development",  
+            api_host: "/ingest",
+            ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
+            defaults: "2026-01-30",
+            capture_exceptions: true,
+            debug: process.env.NODE_ENV === "development",
             loaded: () => {
                 document.documentElement.dataset.posthogReady = "true"
                 window.dispatchEvent(new Event("posthog-ready"))
             },
+
             });  
     }, []);
 
