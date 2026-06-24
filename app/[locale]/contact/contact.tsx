@@ -2,6 +2,7 @@
 
 import posthog from "posthog-js"
 import { useState } from "react"
+import { CheckCircle } from "lucide-react"
 import { cn } from "@repo/ui/lib/utils"
 import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import LocationCard from "@repo/ui/components/location-card"
@@ -67,8 +68,19 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 </h2>
 
                                 {ContactMessage && (
-                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {ContactMessage}
+                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
+                                        {(() => {
+                                            const [LFirstLine, ...LRest] = ContactMessage.split("\n")
+                                            return (
+                                                <>
+                                                    <p className="flex items-center gap-2 text-xl font-bold">
+                                                        <CheckCircle className="w-7 h-7 text-green-500 shrink-0" />
+                                                        {LFirstLine}
+                                                    </p>
+                                                    {LRest.length > 0 && <p className="mt-1">{LRest.join("\n")}</p>}
+                                                </>
+                                            )
+                                        })()}
                                         <button
                                             onClick={() => fnSetContactMessage("")}
                                             className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
@@ -140,8 +152,19 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     {LdBookingForm.title}
                                 </h2>
                                 {BookingMessage && (
-                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {BookingMessage}
+                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
+                                        {(() => {
+                                            const [LFirstLine, ...LRest] = BookingMessage.split("\n")
+                                            return (
+                                                <>
+                                                    <p className="flex items-center gap-2 text-xl font-bold">
+                                                        <CheckCircle className="w-7 h-7 text-green-500 shrink-0" />
+                                                        {LFirstLine}
+                                                    </p>
+                                                    {LRest.length > 0 && <p className="mt-1">{LRest.join("\n")}</p>}
+                                                </>
+                                            )
+                                        })()}
                                         <button
                                             onClick={() => fnsetBookingMessage("")}
                                             className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"

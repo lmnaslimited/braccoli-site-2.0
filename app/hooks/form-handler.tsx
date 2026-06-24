@@ -31,6 +31,7 @@ export const useFormHandler = () => {
                 //call the form data from strapi
                 const LdGetFormsConfig = await fetch(`/api/forms?locale=${Locale}`);
                 const LdFormsConfig = await LdGetFormsConfig.json();
+                console.log('LdFormsConfig', LdFormsConfig);
                 //generate the schema dynamically based on incoming fields
                 const LdFormsSchema = LdFormsConfig.forms.map((form: TformConfig) => ({
                     ...form,
@@ -201,7 +202,7 @@ export const useFormHandler = () => {
                   <h3 className="text-xl font-bold mb-2">
                     {SuccessMessage?.title}
                   </h3>
-                  <p className="mb-6">{SuccessMessage?.message}</p>
+                  <p className="mb-6 whitespace-pre-line">{SuccessMessage?.message}</p>
                   <Button
                     type="button"
                     variant="outline"
