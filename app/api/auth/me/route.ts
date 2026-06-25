@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
       });
   
       const LTokenData = await LTokenResponse.json();
-      console.log('Refresh Response:', LTokenData);
+    
       if (!LTokenData.access_token) {
         throw new Error("Refresh token revoked or expired in Frappe");
       }
