@@ -1,68 +1,40 @@
 
-> braccoli@0.1.0 start /home/tyro23006/lmnas-turbo/apps/braccoli-site-2.0
+> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
 > next start
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.52:3000
+   - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 308ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at m (.next/server/app/[locale]/page.js:1:14463) {
-  digest: [32m'3848698992'[39m
+ [32m[1m✓[22m[39m Ready in 352ms
+checkNewsletterSubscription error TypeError: fetch failed
+    at async A (.next/server/chunks/629.js:1:12898) {
+  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
 }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at Module.d (.next/server/app/[locale]/page.js:1:14392) {
-  digest: [32m'320062276'[39m
+checkNewsletterSubscription error TypeError: fetch failed
+    at async A (.next/server/chunks/629.js:1:12898) {
+  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
 }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'logo')
-    at b (.next/server/chunks/814.js:1:19041) {
-  digest: [32m'2043818376'[39m
+ [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
+ [31m[1m⨯[22m[39m [TypeError: fetch failed] {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+}
+ [31m[1m⨯[22m[39m [TypeError: fetch failed] {
+  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
 }
  [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
  [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
-Failed to proxy https://eu-assets.i.posthog.com/static/posthog-recorder.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-Failed to proxy https://eu-assets.i.posthog.com/static/dead-clicks-autocapture.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at m (.next/server/app/[locale]/page.js:1:14463) {
-  digest: [32m'3848698992'[39m
+ [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
+ [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
+ [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
+checkNewsletterSubscription error TypeError: fetch failed
+    at async A (.next/server/chunks/629.js:1:12898) {
+  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
 }
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at Module.d (.next/server/app/[locale]/page.js:1:14392) {
-  digest: [32m'320062276'[39m
+checkNewsletterSubscription error TypeError: fetch failed
+    at async A (.next/server/chunks/629.js:1:12898) {
+  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
 }
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'logo')
-    at b (.next/server/chunks/814.js:1:19041) {
-  digest: [32m'2043818376'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at m (.next/server/app/[locale]/page.js:1:14463) {
-  digest: [32m'3848698992'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at Module.d (.next/server/app/[locale]/page.js:1:14392) {
-  digest: [32m'320062276'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'logo')
-    at b (.next/server/chunks/814.js:1:19041) {
-  digest: [32m'2043818376'[39m
-}
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at m (.next/server/app/[locale]/page.js:1:14463) {
-  digest: [32m'3848698992'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'metaData')
-    at Module.d (.next/server/app/[locale]/page.js:1:14392) {
-  digest: [32m'320062276'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'logo')
-    at b (.next/server/chunks/814.js:1:19041) {
-  digest: [32m'2043818376'[39m
-}
+ [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
  [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m

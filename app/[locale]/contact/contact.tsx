@@ -2,8 +2,9 @@
 
 import posthog from "posthog-js"
 import { useState } from "react"
+import { CheckCircle } from "lucide-react"
 import { cn } from "@repo/ui/lib/utils"
-import { SectionForm } from "@repo/ui/components/form"
+import { DynamicForm } from "@repo/ui/components/contact/DynamicForm"
 import LocationCard from "@repo/ui/components/location-card"
 import TitleSubtitle from "@repo/ui/components/title-subtitle"
 import { TcontactTarget } from "@repo/middleware/types"
@@ -62,31 +63,56 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     "w-full max-w-2xl mx-auto",
                                 )}
                             >
-                                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground">
+                                <h2 className="text-2xl md:text-3xl font-light tracking-wide text-foreground px-6">
                                     {LdContactForm.title}
                                 </h2>
 
                                 {ContactMessage && (
-                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {ContactMessage}
-                                        <button
-                                            onClick={() => fnSetContactMessage("")}
-                                            className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                strokeWidth="1.5"
-                                                stroke="currentColor"
-                                                className="size-5"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
+                                {(() => {
+                                    const LformattedMessage = ContactMessage.replace(/\\n/g, "\n")
+                                    const [LFirstLine, ...LRest] = LformattedMessage.split("\n")
+
+                                    return (
+                                        <>
+                                            <p className="flex items-center gap-2 text-xl font-bold">
+                                                <CheckCircle className="w-7 h-7 text-green-500 shrink-0" />
+                                                {LFirstLine}
+                                            </p>
+
+                                            {LRest.length > 0 && (
+                                                <div className="mt-2 ml-9">
+                                                    {LRest.map((line, index) => (
+                                                        <p key={index}>{line}</p>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </>
+                                    )
+                                })()}
+
+                                <button
+                                    onClick={() => fnSetContactMessage("")}
+                                    className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
+                                >
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="1.5"
+                                        stroke="currentColor"
+                                        className="size-5"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M6 18 18 6M6 6l12 12"
+                                        />
+                                    </svg>
+                                </button>
+                                </div>
                                 )}
-                                <SectionForm
+                                <DynamicForm
                                     config={{
                                         ...LdContactForm,
                                         fields: idContact.contact.contactForm,
@@ -140,8 +166,8 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                     {LdBookingForm.title}
                                 </h2>
                                 {BookingMessage && (
-                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative">
-                                        {BookingMessage}
+                                    <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
+                              {BookingMessage}
                                         <button
                                             onClick={() => fnsetBookingMessage("")}
                                             className="absolute top-2 right-2 text-green-700 hover:text-green-900 transition-colors"
@@ -159,7 +185,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                         </button>
                                     </div>
                                 )}
-                                <SectionForm
+                                <DynamicForm
                                     config={{
                                         ...LdBookingForm,
                                         fields: idContact.contact.bookingForm,

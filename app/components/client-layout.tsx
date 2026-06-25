@@ -9,13 +9,18 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     // const LdRudderanalytics = useRudderStackAnalytics();
 
     useEffect(() => {
-        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {  
             api_host: "/ingest",
             ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
             defaults: "2026-01-30",
             capture_exceptions: true,
             debug: process.env.NODE_ENV === "development",
-        });
+            loaded: () => {
+                document.documentElement.dataset.posthogReady = "true"
+                window.dispatchEvent(new Event("posthog-ready"))
+            },
+
+            });  
     }, []);
 
     // useEffect(() => {
