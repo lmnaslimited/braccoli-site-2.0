@@ -2,13 +2,11 @@
 
 import posthog from "posthog-js";
 import { useEffect } from "react";
-import { fnInitAutoTracking } from "../lib/auto-track";
-import useRudderStackAnalytics from "../lib/rudder-analytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     // console.log("ClientLayout component rendered");
     // initRudderStack();
-    const LdRudderanalytics = useRudderStackAnalytics();
+    // const LdRudderanalytics = useRudderStackAnalytics();
 
     useEffect(() => {
         posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
@@ -20,13 +18,13 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
         });
     }, []);
 
-    useEffect(() => {
-        if (!LdRudderanalytics) return;
+    // useEffect(() => {
+    //     if (!LdRudderanalytics) return;
 
-        LdRudderanalytics.ready(() => {
-            // console.log("✅ RudderStack ready — initializing auto tracking");
-            fnInitAutoTracking(LdRudderanalytics);
-        });
-    }, [LdRudderanalytics]);
+    //     LdRudderanalytics.ready(() => {
+    //         // console.log("✅ RudderStack ready — initializing auto tracking");
+    //         fnInitAutoTracking(LdRudderanalytics);
+    //     });
+    // }, [LdRudderanalytics]);
     return <>{children}</>
 }

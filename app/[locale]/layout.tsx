@@ -11,6 +11,7 @@ import Navbar from "@repo/ui/components/navbar"
 import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
+import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -104,6 +105,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <AppRecaptchaProvider>
           <Navbar idNavbar={navbarData} />
           <main className="">
             <ClientLayout>
@@ -111,6 +113,7 @@ export default async function RootLayout({
             </ClientLayout>
           </main>
           <Footer idFooter={footerData} />
+          </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
         <ChatInit />
