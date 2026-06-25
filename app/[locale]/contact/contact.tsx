@@ -70,8 +70,8 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
                                 {ContactMessage && (
                                 <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-md relative whitespace-pre-line">
                                 {(() => {
-                                    const formattedMessage = ContactMessage.replace(/\\n/g, "\n")
-                                    const [LFirstLine, ...LRest] = formattedMessage.split("\n")
+                                    const LformattedMessage = ContactMessage.replace(/\\n/g, "\n")
+                                    const [LFirstLine, ...LRest] = LformattedMessage.split("\n")
 
                                     return (
                                         <>
