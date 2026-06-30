@@ -362,17 +362,20 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
         {fnRenderFormBelowSection("containerFour")}
       </section>
 
-      {/* FAQ Section */}
-      <section className="bg-grayBackground">
-        <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
-            <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
-              {idIndustry?.industries[0]?.faqSection.title}{" "}
-            </h2>
-            <FAQs idFaq={idIndustry?.industries[0]?.faqSection.list ?? []} />
+   {/* FAQ Section */}
+      {/* FIXED: Properly wrapped the section inside the conditional operator */}
+      {idIndustry?.industries?.[0]?.faqSection?.list && idIndustry.industries[0].faqSection.list.length > 0 && (
+        <section className="bg-grayBackground">
+          <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
+              <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
+                {idIndustry?.industries?.[0]?.faqSection?.title}
+              </h2>
+              <FAQs idFaq={idIndustry?.industries?.[0]?.faqSection?.list ?? []} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </>
   );
 }

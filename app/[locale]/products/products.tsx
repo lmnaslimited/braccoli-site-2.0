@@ -264,13 +264,13 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                       <div className="space-y-4 lg:col-span-5">
                         <div className="flex items-center gap-4 mb-4 flex-wrap">
                           {idFeature.highlight?.map((idHighlight, iHighlightIndex) => (
-                            <div
-                              key={iHighlightIndex}
-                              className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
-                            >
-                              {renderIcon(idHighlight.icon)}
+                              <div
+                                key={iHighlightIndex}
+                                className="flex items-center gap-2 bg-accent border border-border px-3 py-2 rounded-lg"
+                              >
+                                {renderIcon(idHighlight.icon)}
                               <span className="text-sm font-medium">{idHighlight.label}</span>
-                            </div>
+                              </div>
                           ))}
                         </div>
                         <TitleSubtitle
@@ -498,7 +498,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             {idpoint.description}
                           </p>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
                   <div className="text-center space-y-2 mt-8">
@@ -523,8 +523,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                                 "default"
                               }
                             >
-                              {idBtn.label}{" "}
-                              {renderIcon(idBtn.icon)}
+                              {idBtn.label} {renderIcon(idBtn.icon)}
                             </Button>
                           </Link>
                         ) : (
@@ -540,12 +539,11 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                               fnHandleFormButtonClick(
                                 idBtn.formMode as TformMode,
                                 "containerFive",
-                                idBtn.label
+                                idBtn.label,
                               )
                             }
                           >
-                            {idBtn.label}{" "}
-                            {renderIcon(idBtn.icon)}
+                            {idBtn.label} {renderIcon(idBtn.icon)}
                           </Button>
                         )
                     )}
@@ -557,17 +555,20 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
         </div>
         {fnRenderFormBelowSection("containerFive")}
       </section>
-           {/* FAQ Section */}
-            <section className="bg-grayBackground">
-              <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
-                <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
-                  <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
-                    {idProduct.faqSection.title}
-                  </h2>
-                  <FAQs idFaq={idProduct.faqSection.list} />
-                </div>
-              </div>
-            </section>
+
+      {/* FAQ Section */}
+      {(idProduct?.faqSection?.list?.length ?? 0) > 0 && (
+        <section className="bg-grayBackground">
+          <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
+              <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
+                {idProduct?.faqSection?.title}
+              </h2>
+              <FAQs idFaq={idProduct.faqSection.list} />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Call to Action Section */}
       <section ref={LdSectionRefs("containerSix")}>
@@ -614,8 +615,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                             (idBtn.variant as Tbutton["variant"]) ?? "default"
                           }
                         >
-                          {idBtn.label}{" "}
-                          {renderIcon(idBtn.icon)}
+                          {idBtn.label} {renderIcon(idBtn.icon)}
                         </Button>
                       </Link>
                     ) : (
@@ -631,14 +631,13 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
                           fnHandleFormButtonClick(
                             idBtn.formMode as TformMode,
                             "containerSix",
-                            idBtn.label
+                            idBtn.label,
                           )
                         }
                       >
-                        {idBtn.label}{" "}
-                        {renderIcon(idBtn.icon)}
+                        {idBtn.label} {renderIcon(idBtn.icon)}
                       </Button>
-                    )
+                    ),
                   )}
                 </div>
               </div>
