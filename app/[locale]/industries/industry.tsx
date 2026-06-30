@@ -9,6 +9,7 @@ import CustomCard from "@repo/ui/components/custom-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import PainPoints from "@repo/ui/components/pain-point";
 import { Button } from "@repo/ui/components/ui/button";
+import FAQs from "@repo/ui/components/faq";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TcalloutProps, TformMode, TheroSection, Titems, Tindustries, TcardProps } from "@repo/middleware/types";
@@ -33,14 +34,25 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       {/* Hero Section */}
       <section ref={LdSectionRefs("containerOne")}>
         <Hero
-          idHero={{
-            ...idIndustry.industries[0]?.heroSection,
-            buttons: idIndustry.industries[0]?.heroSection.buttons.map((btn) => ({
-              ...btn,
-              iconPosition: "after",
-            })),
-          } as TheroSection}
-          onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)} />
+          idHero={
+            {
+              ...idIndustry.industries[0]?.heroSection,
+              buttons: idIndustry.industries[0]?.heroSection.buttons.map(
+                (btn) => ({
+                  ...btn,
+                  iconPosition: "after",
+                }),
+              ),
+            } as TheroSection
+          }
+          onButtonClick={(mode, formTitle) =>
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerOne",
+              formTitle,
+            )
+          }
+        />
         {fnRenderFormBelowSection("containerOne")}
       </section>
 
@@ -56,22 +68,36 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 descripClass: "mt-6",
               }}
             />
-            <PainPoints idItems={idIndustry?.industries[0]?.problemSection.list as Titems[]} />
+            <PainPoints
+              idItems={
+                idIndustry?.industries[0]?.problemSection.list as Titems[]
+              }
+            />
           </div>
         </div>
         <div className="bg-primary">
           <Callout
-            idCallout={{
-              header: {
-                title: idIndustry?.industries[0]?.problemSection.title,
-              },
-              subtitle: idIndustry?.industries[0]?.problemSection.subtitle,
-              buttons: idIndustry?.industries[0]?.problemSection.buttons?.map((btn) => ({
-                ...btn,
-                iconPosition: "before",
-              })),
-            } as TcalloutProps}
-            onButtonClick={(mode, formTitle) => fnHandleFormButtonClick(mode as TformMode, "containerTwo", formTitle)}
+            idCallout={
+              {
+                header: {
+                  title: idIndustry?.industries[0]?.problemSection.title,
+                },
+                subtitle: idIndustry?.industries[0]?.problemSection.subtitle,
+                buttons: idIndustry?.industries[0]?.problemSection.buttons?.map(
+                  (btn) => ({
+                    ...btn,
+                    iconPosition: "before",
+                  }),
+                ),
+              } as TcalloutProps
+            }
+            onButtonClick={(mode, formTitle) =>
+              fnHandleFormButtonClick(
+                mode as TformMode,
+                "containerTwo",
+                formTitle,
+              )
+            }
           />
         </div>
         {fnRenderFormBelowSection("containerTwo")}
@@ -179,23 +205,27 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   })) ?? [],
                 image: idCard.image
                   ? {
-                    ...idCard.image,
-                    svg: idCard.image.svg,
-                    className: "h-10 w-10 mx-6 mt-4",
-                  }
+                      ...idCard.image,
+                      svg: idCard.image.svg,
+                      className: "h-10 w-10 mx-6 mt-4",
+                    }
                   : idCard.image,
               })) ?? [],
             TabDefault: {
               text: "All",
-              AllLabel: idIndustry?.industries[0]?.allFeatureHeader.highlight ?? "Show More",
-              LessLabel: idIndustry?.industries[0]?.allFeatureHeader.badge ?? "Show Less",
+              AllLabel:
+                idIndustry?.industries[0]?.allFeatureHeader.highlight ??
+                "Show More",
+              LessLabel:
+                idIndustry?.industries[0]?.allFeatureHeader.badge ??
+                "Show Less",
             },
           }}
         />
-      </section >
+      </section>
 
       {/* Call to Action Section */}
-      < section ref={LdSectionRefs("containerThree")} className="bg-accent" >
+      <section ref={LdSectionRefs("containerThree")} className="bg-accent" >
         <div className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
@@ -220,8 +250,8 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     image: {
                       svg: idCard.icon,
                       className: "h-10 w-10 text-primary mx-auto mt-6",
-                      alternate: idCard.label || ""
-                    }
+                      alternate: idCard.label || "",
+                    },
                   }}
                 />
               ))}
@@ -233,11 +263,15 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                   size="lg"
                   className="text-md px-8 py-6"
                   onClick={() =>
-                    idBtn.formMode && fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerThree", idBtn.label)
+                    idBtn.formMode &&
+                    fnHandleFormButtonClick(
+                      idBtn.formMode as TformMode,
+                      "containerThree",
+                      idBtn.label,
+                    )
                   }
                 >
-                  {idBtn.label} {" "}
-                  {renderIcon(idBtn.icon)}
+                  {idBtn.label} {renderIcon(idBtn.icon)}
                 </Button>
               ))}
               <p className="text-sm text-muted-foreground mt-4">
@@ -247,10 +281,10 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
           </div>
         </div>
         {fnRenderFormBelowSection("containerThree")}
-      </section >
+      </section>
 
       {/* Success Story Section */}
-      <section ref={LdSectionRefs("containerFour")} >
+      <section ref={LdSectionRefs("containerFour")}>
         <div className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -270,24 +304,29 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                     headingClass: "text-lg mb-2",
                   },
                   image: {
-                    source: idCard.image?.source ?? '',
-                    alternate: idCard.image?.alternate ?? '',
+                    source: idCard.image?.source ?? "",
+                    alternate: idCard.image?.alternate ?? "",
                     aspectRatio: "wide",
                   },
-                  button: idCard.buttons?.map((idButton: Tbutton) => ({
-                    ...idButton,
+                  button:
+                    idCard.buttons?.map((idButton: Tbutton) => ({
+                      ...idButton,
 
-                    iconPosition: "after",
-                    icon: idButton.icon,
-                    size: "lg",
-                    variant: "outline",
-                  })) ?? [],
+                      iconPosition: "after",
+                      icon: idButton.icon,
+                      size: "lg",
+                      variant: "outline",
+                    })) ?? [],
                   tag: idCard.category,
                 })),
                 TabDefault: {
                   text: "All",
-                  AllLabel: idIndustry?.industries[0]?.successStoryHeaderFooter?.list?.[0]?.label ?? "Show More",
-                  LessLabel: idIndustry?.industries[0]?.successStoryHeaderFooter?.list?.[1]?.label ?? "Show Less",
+                  AllLabel:
+                    idIndustry?.industries[0]?.successStoryHeaderFooter
+                      ?.list?.[0]?.label ?? "Show More",
+                  LessLabel:
+                    idIndustry?.industries[0]?.successStoryHeaderFooter
+                      ?.list?.[1]?.label ?? "Show Less",
                 },
               }}
             />
@@ -296,26 +335,43 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
                 <h3 className="text-xl font-medium">
                   {idIndustry?.industries[0]?.successStoryHeaderFooter.title}
                 </h3>
-                {idIndustry?.industries[0]?.successStoryHeaderFooter?.buttons.map((idBtn, iIndex) => (
-                  <Button
-                    key={iIndex}
-                    size="lg"
-                    className="group"
-                    onClick={() => {
-                      if (idBtn.formMode) {
-                        fnHandleFormButtonClick(idBtn.formMode as TformMode, "containerFour", idBtn.label);
-                      }
-                    }}
-                  >
-                    {idBtn.label}
-                    <Calendar className="ml-2 h-4 w-4" />
-                  </Button>
-                ))}
+                {idIndustry?.industries[0]?.successStoryHeaderFooter?.buttons.map(
+                  (idBtn, iIndex) => (
+                    <Button
+                      key={iIndex}
+                      size="lg"
+                      className="group"
+                      onClick={() => {
+                        if (idBtn.formMode) {
+                          fnHandleFormButtonClick(
+                            idBtn.formMode as TformMode,
+                            "containerFour",
+                            idBtn.label,
+                          );
+                        }
+                      }}
+                    >
+                      {idBtn.label}
+                      <Calendar className="ml-2 h-4 w-4" />
+                    </Button>
+                  ))}
               </div>
             </div>
           </div>
         </div>
         {fnRenderFormBelowSection("containerFour")}
+      </section>
+
+      {/* FAQ Section */}
+      <section className="bg-grayBackground">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
+            <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
+              {idIndustry?.industries[0]?.faqSection.title}{" "}
+            </h2>
+            <FAQs idFaq={idIndustry?.industries[0]?.faqSection.list ?? []} />
+          </div>
+        </div>
       </section>
     </>
   );

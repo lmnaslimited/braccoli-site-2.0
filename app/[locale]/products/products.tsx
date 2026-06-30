@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import Hero from "@repo/ui/components/hero";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
+import FAQs from "@repo/ui/components/faq";
 import CustomCard from "@repo/ui/components/custom-card";
 import { Button } from "@repo/ui/components/ui/button";
 import { Separator } from "@repo/ui/components/ui/separator";
@@ -556,6 +557,17 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
         </div>
         {fnRenderFormBelowSection("containerFive")}
       </section>
+           {/* FAQ Section */}
+            <section className="bg-grayBackground">
+              <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
+                <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
+                  <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
+                    {idProduct.faqSection.title}
+                  </h2>
+                  <FAQs idFaq={idProduct.faqSection.list} />
+                </div>
+              </div>
+            </section>
 
       {/* Call to Action Section */}
       <section ref={LdSectionRefs("containerSix")}>
