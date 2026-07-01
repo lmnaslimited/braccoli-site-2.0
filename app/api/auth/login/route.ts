@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {
-    process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
+    // process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
   const LFrappeUrl = process.env.NEXT_PUBLIC_FRAPPE_URL;
   const LClientId = process.env.NEXT_PUBLIC_FRAPPE_CLIENT_ID;
   
