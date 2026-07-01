@@ -2,31 +2,34 @@
 
 import posthog from "posthog-js";
 import { useEffect } from "react";
-import { fnInitAutoTracking } from "../lib/auto-track";
-import useRudderStackAnalytics from "../lib/rudder-analytics";
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
     // console.log("ClientLayout component rendered");
     // initRudderStack();
-    const LdRudderanalytics = useRudderStackAnalytics();
+    // const LdRudderanalytics = useRudderStackAnalytics();
 
     useEffect(() => {
-        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+       posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {  
             api_host: "/ingest",
             ui_host: process.env.NEXT_PUBLIC_POSTHOG_HOST,
             defaults: "2026-01-30",
             capture_exceptions: true,
             debug: process.env.NODE_ENV === "development",
-        });
+            loaded: () => {
+                document.documentElement.dataset.posthogReady = "true"
+                window.dispatchEvent(new Event("posthog-ready"))
+            },
+
+            });  
     }, []);
 
-    useEffect(() => {
-        if (!LdRudderanalytics) return;
+    // useEffect(() => {
+    //     if (!LdRudderanalytics) return;
 
-        LdRudderanalytics.ready(() => {
-            // console.log("✅ RudderStack ready — initializing auto tracking");
-            fnInitAutoTracking(LdRudderanalytics);
-        });
-    }, [LdRudderanalytics]);
+    //     LdRudderanalytics.ready(() => {
+    //         // console.log("✅ RudderStack ready — initializing auto tracking");
+    //         fnInitAutoTracking(LdRudderanalytics);
+    //     });
+    // }, [LdRudderanalytics]);
     return <>{children}</>
 }
