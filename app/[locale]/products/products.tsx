@@ -32,7 +32,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
   return (
     <>
       {/* Hero Section */}
-      <section ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")} id="heroSection">
         <Hero
           idHero={
             {
@@ -56,7 +56,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Problems Section */}
-      <section ref={LdSectionRefs("containerTwo")}>
+      <section ref={LdSectionRefs("containerTwo")} id="problemsSection">
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -133,7 +133,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Solutions Section */}
-      <section ref={LdSectionRefs("containerSeven")}>
+      <section ref={LdSectionRefs("containerSeven")} id="solutionsSection">
         <div className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -223,7 +223,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Feature Section */}
-      <section ref={LdSectionRefs("containerThree")}>
+      <section ref={LdSectionRefs("containerThree")} id="featuresSection">
         <div
           id="features"
           className="border-b border-border/40 py-16 md:py-24 lg:py-24"
@@ -349,7 +349,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Success Stories Section */}
-      <section ref={LdSectionRefs("containerFour")}>
+      <section ref={LdSectionRefs("containerFour")} id="successStoriesSection">
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -450,7 +450,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
       </section>
 
       {/* Pricing Section */}
-      <section ref={LdSectionRefs("containerFive")}>
+      <section ref={LdSectionRefs("containerFive")} id="pricingSection">
         <div className="bg-primary py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center justify-center rounded-full bg-accent px-3 py-1 text-sm mb-4">
@@ -558,7 +558,7 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
 
       {/* FAQ Section */}
       {(idProduct?.faqSection?.list?.length ?? 0) > 0 && (
-        <section className="bg-grayBackground">
+        <section className="bg-grayBackground" id="faqSection">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
               <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">

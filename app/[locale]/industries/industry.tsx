@@ -32,7 +32,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
   return (
     <>
       {/* Hero Section */}
-      <section ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")} id="heroSection">
         <Hero
           idHero={
             {
@@ -57,7 +57,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* Problem Section */}
-      <section ref={LdSectionRefs("containerTwo")}>
+      <section ref={LdSectionRefs("containerTwo")} id="problemsSection">
         <div className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <div className="grid grid-cols-1 gap-16 lg:grid-cols-2">
             <TitleSubtitle
@@ -104,7 +104,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* Features Section */}
-      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+      <section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" id="featuresSection">
         <TitleSubtitle
           idTitle={{
             ...idIndustry?.industries[0]?.featuresSectionHeader,
@@ -179,7 +179,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section >
 
       {/* All Features Section */}
-      < section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" >
+      < section className="px-4 md:px-24 lg:px-8 py-16 md:py-24 lg:py-24 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl" id="allFeaturesSection">
         <TitleSubtitle
           idTitle={{
             ...idIndustry?.industries[0]?.allFeatureHeader,
@@ -225,7 +225,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* Call to Action Section */}
-      <section ref={LdSectionRefs("containerThree")} className="bg-accent" >
+      <section ref={LdSectionRefs("containerThree")} className="bg-accent" id="featuresSection">
         <div className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
@@ -284,7 +284,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* Success Story Section */}
-      <section ref={LdSectionRefs("containerFour")}>
+      <section ref={LdSectionRefs("containerFour")} id="successStoriesSection">
         <div className="py-16 md:py-24 lg:py-24">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -365,7 +365,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
    {/* FAQ Section */}
       {/* FIXED: Properly wrapped the section inside the conditional operator */}
       {idIndustry?.industries?.[0]?.faqSection?.list && idIndustry.industries[0].faqSection.list.length > 0 && (
-        <section className="bg-grayBackground">
+        <section className="bg-grayBackground" id="faqSection">
           <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
               <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
