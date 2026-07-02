@@ -46,6 +46,21 @@ const nextConfig: NextConfig = {
         source: "/:locale(en|de)?/ingest/:path*",
         destination: "https://eu.i.posthog.com/:path*",
       },
+
+      /////////////////////////////////
+      // proxies for frappe site
+
+      //Proxies main localized site landing page
+      // {
+      //   source: "/:locale(en|de)?/site",
+      //   destination: "http://dev.localhost:8000/",
+      // },
+
+      // //Proxies all sub-pages under the localized site route
+      // {
+      //   source: "/:locale(en|de)?/site/:path*",
+      //   destination: "http://dev.localhost:8000/:path*",
+      // }
     ];
   },
 
