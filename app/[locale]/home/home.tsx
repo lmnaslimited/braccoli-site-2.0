@@ -51,7 +51,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   return (
     <div>
       {/* Hero Section */}
-      <section ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")} id="heroSection">
         <Hero
           idHero={
             {
@@ -70,7 +70,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Problem Section */}
-      <section className="bg-grayBackground">
+      <section className="bg-grayBackground" id="problemsSection">
         <Feature
           idFeature={
             {
@@ -98,7 +98,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Business Problem Section */}
-      <section className="bg-background" ref={LdSectionRefs("containerTwo")}>
+      <section className="bg-background" ref={LdSectionRefs("containerTwo")} id="businessProblemSection">
         <div className="py-24 px-4 border-t bg-grayBackground">
           <div className="max-w-4xl mx-auto">
             <TitleSubtitle
@@ -172,7 +172,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Product Section */}
-      <section className="py-16 bg-accent">
+      <section className="py-16 bg-accent" id="productSection">
         <Feature
           idFeature={
             {
@@ -186,7 +186,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Social Proof Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" id="socialProofSection">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <TitleSubtitle
@@ -263,7 +263,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Callout Section */}
-      <section className="bg-accent" ref={LdSectionRefs("containerThree")}>
+      <section className="bg-accent" ref={LdSectionRefs("containerThree")} id="calloutSection">
         <Callout
           idCallout={{ ...idHome.home.calloutSection[1], layout: "simple" } as TcalloutProps}
           onButtonClick={(mode, formTitle) =>
@@ -287,7 +287,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-grayBackground">
+      <section className="bg-grayBackground" id="faqSection">
         <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto divide-y-2 divide-muted">
             <h2 className="text-center text-3xl font-extrabold text-primary sm:text-4xl">
@@ -315,7 +315,7 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       </section>
 
       {/* Trending Now Section */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-background" id="trendingNowSection">
         <div className="container mx-auto px-6">
           <div className="max-w-5xl mx-auto">
             <div className=" mb-16">
