@@ -225,7 +225,7 @@ export default function IndustryComp({ idIndustry }: { idIndustry: Tindustries }
       </section>
 
       {/* Call to Action Section */}
-      <section ref={LdSectionRefs("containerThree")} className="bg-accent" id="featuresSection">
+      <section ref={LdSectionRefs("containerThree")} className="bg-accent" id="ctaSection">
         <div className="rounded-2xl text-center py-16 md:py-24 lg:py-24 ">
           <div className="max-w-3xl px-4 md:px-24 lg:px-8 mx-auto space-y-6">
             <TitleSubtitle
