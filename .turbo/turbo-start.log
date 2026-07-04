@@ -7,34 +7,4 @@
    - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 352ms
-checkNewsletterSubscription error TypeError: fetch failed
-    at async A (.next/server/chunks/629.js:1:12898) {
-  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
-}
-checkNewsletterSubscription error TypeError: fetch failed
-    at async A (.next/server/chunks/629.js:1:12898) {
-  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
-}
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
- [31m[1m⨯[22m[39m [TypeError: fetch failed] {
-  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-}
- [31m[1m⨯[22m[39m [TypeError: fetch failed] {
-  [cause]: [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-}
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Reducing%20Manual%20Planning%20Effort.png [33m404[39m
-checkNewsletterSubscription error TypeError: fetch failed
-    at async A (.next/server/chunks/629.js:1:12898) {
-  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
-}
-checkNewsletterSubscription error TypeError: fetch failed
-    at async A (.next/server/chunks/629.js:1:12898) {
-  [cause]: [Error: self-signed certificate] { code: [32m'DEPTH_ZERO_SELF_SIGNED_CERT'[39m }
-}
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Scaling%20Planning%20Operations%20with%20Connected%20Intelligence.png [33m404[39m
- [31m[1m⨯[22m[39m upstream image response failed for https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Case%20Study/Operational%20Planning%20Visibility.png [33m404[39m
+ [32m[1m✓[22m[39m Ready in 438ms
