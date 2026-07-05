@@ -34,6 +34,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "https://lmnas.com/de/products/planning-cloud", lastModified: new Date() },
     { url: "https://lmnas.com/en/products/lens-ai-test-pilot", lastModified: new Date() },
     { url: "https://lmnas.com/de/products/lens-ai-test-pilot", lastModified: new Date() },
+    { url: "https://lmnas.com/en/products/chordium", lastModified: new Date() },
+    { url: "https://lmnas.com/de/products/chordium", lastModified: new Date() },
     {
       url: "https://lmnas.com/en/industries/manufacturing",
       lastModified: new Date(),

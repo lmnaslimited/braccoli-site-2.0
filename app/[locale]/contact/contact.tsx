@@ -36,7 +36,7 @@ export default function ContactChildPage({ idContact }: { idContact: TcontactTar
     }
 
     return (
-        <section className="w-full">
+        <section className="w-full" id="contactPage">
             <div className="container mx-auto max-w-7xl px-4 md:px-8">
                 {/* Contact Form Section */}
                 <div className="py-12 md:py-18">
