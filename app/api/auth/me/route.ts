@@ -1,5 +1,5 @@
 import { verifyAuthenticity } from '@repo/ui/api/auth/verify-authenticity';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 
 
 export async function GET(request: NextRequest) {
