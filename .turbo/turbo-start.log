@@ -4,25 +4,23 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.52:3000
+   - Network:      http://10.247.123.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 345ms
-BFF Sign Up Proxy Failure: TypeError: fetch failed
-    at async u (.next/server/app/api/auth/signup/route.js:1:917) {
-  [cause]: [Error [SocketError]: other side closed] {
-    code: [32m'UND_ERR_SOCKET'[39m,
-    socket: {
-      localAddress: [32m'::1'[39m,
-      localPort: [33m35190[39m,
-      remoteAddress: [32m'::1'[39m,
-      remotePort: [33m8000[39m,
-      remoteFamily: [32m'IPv6'[39m,
-      timeout: [90mundefined[39m,
-      bytesWritten: [33m363[39m,
-      bytesRead: [33m0[39m
-    }
-  }
+ [32m[1m✓[22m[39m Ready in 502ms
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22643) {
+  digest: [32m'825576552'[39m
 }
-(node:435299) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
-(Use `node --trace-warnings ...` to show where the warning was created)
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:22414) {
+  digest: [32m'2183248801'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22643) {
+  digest: [32m'825576552'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'loginTitle')
+    at p (.next/server/app/[locale]/login/page.js:1:3913) {
+  digest: [32m'3700491213'[39m
+}

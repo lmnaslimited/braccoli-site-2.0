@@ -9,19 +9,26 @@ import { getIconComponent } from '@repo/ui/lib/icon';
 
 type FormMode = 'login' | 'signup' | 'forgot';
 
+// Manages the complete authentication flow, including login, registration,
+// password recovery, and post-action success states.
 export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
+  // Tracks the currently active authentication flow.
   const [Lmode, fnSetMode] = useState<FormMode>('signup');
 
-  // Form states matching your exact naming guidelines
+  // Stores user input for each authentication form.
   const [LUsername, fnSetUsername] = useState('');
   const [LEmail, fnSetEmail] = useState('');
   const [LPassword, fnSetPassword] = useState('');
+
+  // Controls UI feedback during form submission.
   const [LbSubmitting, fnSetSubmitting] = useState(false);
   const [LError, fnSetError] = useState<string | null>(null);
   const [LSuccess, fnSetSuccess] = useState<string | null>(null);
+
+  // Controls password visibility within the login form.
   const [LbShowPassword, fnSetShowPassword] = useState(false);
 
-  // Switch between form states cleanly
+  // Switches between authentication modes while resetting transient form state.
   const fnSwitchMode = (iNewMode: FormMode) => {
     fnSetMode(iNewMode);
     fnSetError(null);
@@ -29,24 +36,26 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
     fnSetPassword('');
   };
 
-  // Google OAuth logic
+  // Initiates Google OAuth authentication.
   function fnHandleGoogleLogin() {
     window.location.href = '/api/auth/google';
   }
 
-  // Submission handler mapping directly to our endpoints
+  // Processes authentication requests for the active form mode.
   async function fnHandleSubmit(idEvent: React.FormEvent) {
     idEvent.preventDefault();
     fnSetSubmitting(true);
     fnSetError(null);
     fnSetSuccess(null);
 
+    // Endpoint configuration
     const LEndpoints: Record<FormMode, string> = {
       login: '/api/auth/login',
       signup: '/api/auth/signup',
       forgot: '/api/auth/reset-pwd',
     };
 
+    // payload configuration
     const LPayloads: Record<FormMode, object> = {
       login: { usr: LEmail, pwd: LPassword },
       signup: { username: LUsername, email: LEmail },
@@ -81,18 +90,15 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
       fnSetSubmitting(false);
     }
   }
+
+  // Resolves and renders the configured icon component.
   const fnRenderIcon = (iIcon: Tbutton['icon']) => {
       const iconName = typeof iIcon === "string" ? iIcon : "Home";
       const IconComponent = getIconComponent(iconName);
       return <IconComponent className="w-5 h-5" />;
     };
   
-  /* 
-    =========================================
-    STATE-DRIVEN CONFIGURATION MAPS 
-    =========================================
-    This cleanly eliminates nested UI conditional blocks.
-  */
+  // Centralizes mode-specific UI labels and button text.
   const LdUiConfig = {
     login: {
       title: idLogin.loginAndSignUp.loginTitle || 'Welcome Back',
@@ -114,11 +120,7 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
     },
   }[Lmode];
 
-  /* 
-    ========================================================================
-    SUCCESS VIEW: DYNAMIC COMPLETION STEPS & HOME ACTION
-    ========================================================================
-  */
+    // Displays the completion screen after successful registration or password recovery.
     if (LSuccess && (Lmode === 'signup' || Lmode === 'forgot')) {
       // Dynamically map sentence text chunks into individual sequential rows
       const LdStepLines = LSuccess.split(/(?<=[.!])\s+/).filter((line) => line.trim().length > 0);
@@ -309,12 +311,7 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
   );
 }
 
-/* 
-  ========================================================================
-  ISOLATED SUB-COMPONENTS
-  Defining repetitive markup variants at the base isolates long-term churn
-  ========================================================================
-*/
+// Reusable input field used throughout the authentication forms.
 function FormInput({ label, type, value, onChange, placeholder }: {
   label: string;
   type: string;
@@ -337,7 +334,7 @@ function FormInput({ label, type, value, onChange, placeholder }: {
   );
 }
 
-// Message Section
+// Reusable status message component for success and error notifications.
 function FormMessage({ variant, msg }: { variant: 'error' | 'success'; msg: string }) {
   const LIsError = variant === 'error';
   
