@@ -1,11 +1,12 @@
 "use client";
 
-import { usePostHog } from "posthog-js/react";
+// import { usePostHog } from "posthog-js/react";
+import { useFeatureFlagVariantKey, usePostHog } from 'posthog-js/react';
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import posthog from "posthog-js";
-import { ArrowRight, CheckCircle2, Cloud, Gauge, ShieldCheck } from "lucide-react";
+// import posthog from "posthog-js";
+import { ArrowRight, Cloud, Gauge, ShieldCheck } from "lucide-react";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import VideoPlayer from "@repo/ui/components/video-player";
 import { Button } from "@repo/ui/components/ui/button";
@@ -30,24 +31,7 @@ type TtimeLeft = {
   seconds: number;
 };
 
-type TLensCloudVariant = "control" | "variant-b";
-
-type TEarlyAccessFeature = {
-  flagKey: string | null;
-  name?: string;
-  stage?: string;
-};
-
-type TBetaStatus = "loading" | "available" | "enrolled" | "unavailable";
-
-type TBetaOptInProps = {
-  betaStatus: TBetaStatus;
-  isUpdating: boolean;
-  locale: string;
-  variant: TLensCloudVariant;
-  onToggle: () => void;
-  compact?: boolean;
-};
+// type TLensCloudVariant = "control" | "variant-b";
 
 type TCountdownProps = {
   countdownUnits: { label: string; value: number }[];
@@ -82,22 +66,22 @@ function fnPad(iValue: number): string {
 }
 
 
-function fnCaptureLensCloudEvent(
-  iEventName: string,
-  iVariant: TLensCloudVariant,
-  iLocale: string,
-  iProperties: Record<string, string | boolean> = {}
-) {
-  try {
-    posthog.capture(iEventName, {
-      variant: iVariant,
-      locale: iLocale,
-      ...iProperties,
-    });
-  } catch {
-    // The page must keep working when PostHog is unavailable or blocked.
-  }
-}
+// function fnCaptureLensCloudEvent(
+//   iEventName: string,
+//   iVariant: TLensCloudVariant,
+//   iLocale: string,
+//   iProperties: Record<string, string | boolean> = {}
+// ) {
+//   try {
+//     posthog.capture(iEventName, {
+//       variant: iVariant,
+//       locale: iLocale,
+//       ...iProperties,
+//     });
+//   } catch {
+//     // The page must keep working when PostHog is unavailable or blocked.
+//   }
+// }
 
 function CountdownPanel({
   countdownUnits,
@@ -141,14 +125,16 @@ function CountdownPanel({
 
 
 export default function LensCloud() {
+
+
   const LdParams = useParams();
   const LLocale = (LdParams?.locale as string) ?? "en";
 
   // Start null so server and first client render match; hydrate the real value on mount.
   const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
-  const [StVariant, fnSetVariant] = useState<TLensCloudVariant>("control");
-  const [StBetaStatus, fnSetBetaStatus] = useState<TBetaStatus>("loading");
-  const [SbUpdatingBeta, fnSetUpdatingBeta] = useState(false);
+  // const [StVariant, fnSetVariant] = useState<TLensCloudVariant>("control");
+  // const [StBetaStatus, fnSetBetaStatus] = useState<TBetaStatus>("loading");
+  // const [SbUpdatingBeta, fnSetUpdatingBeta] = useState(false);
 
   useEffect(() => {
     fnSetTimeLeft(fnGetTimeLeft());
@@ -161,15 +147,28 @@ export default function LensCloud() {
 
  
 const posthog = usePostHog()
-  const [variant, setVariant] = useState<string | undefined>(undefined)
+  // const [variant, setVariant] = useState<string | undefined>(undefined)
 
+const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
+
+  // useEffect(() => {
+  //   posthog.onFeatureFlags(() => {
+  //     const flag = posthog.getFeatureFlag("lens-cloud-launch-page-ab")
+  //     setVariant(flag as string)
+  //     console.log("Lens Cloud AB test variant:", flag)
+  //   })
+  // }, [posthog])
+
+   // 2. Fix the Metric Problem: Trigger a custom event immediately when the component renders with the correct variant
   useEffect(() => {
-    posthog.onFeatureFlags(() => {
-      const flag = posthog.getFeatureFlag("lens-cloud-launch-page-ab")
-      setVariant(flag as string)
-      console.log("Lens Cloud AB test variant:", flag)
-    })
-  }, [posthog])
+    // Only fire when the network request finishes and we know the true variant
+    if (variant !== undefined) {
+      posthog.capture('launch_cloud_viewed', {
+        $feature_flag: 'lens-cloud-launch-page-ab',
+        $feature_flag_variant: variant
+      });
+    }
+  }, [variant, posthog]);
 
   console.log("Lens Cloud AB test variant:", variant)
 
@@ -265,13 +264,6 @@ const posthog = usePostHog()
               <Button asChild size="lg" variant="outline" className="w-full">
                 <Link
                   href={`/${LLocale}/contact`}
-                  onClick={() =>
-                    fnCaptureLensCloudEvent(
-                      "lens_cloud_sales_cta_clicked",
-                      StVariant,
-                      LLocale
-                    )
-                  }
                 >
                   Talk to sales
                 </Link>
@@ -324,13 +316,7 @@ const posthog = usePostHog()
           <Button asChild size="lg">
             <Link
               href={`/${LLocale}/contact`}
-              onClick={() =>
-                fnCaptureLensCloudEvent(
-                  "lens_cloud_waitlist_cta_clicked",
-                  StVariant,
-                  LLocale
-                )
-              }
+
             >
               Join the waitlist
               <ArrowRight />
@@ -339,13 +325,8 @@ const posthog = usePostHog()
           <Button asChild size="lg" variant="outline">
             <Link
               href={`/${LLocale}/contact`}
-              onClick={() =>
-                fnCaptureLensCloudEvent(
-                  "lens_cloud_sales_cta_clicked",
-                  StVariant,
-                  LLocale
-                )
-              }
+
+              
             >
               Talk to sales
             </Link>

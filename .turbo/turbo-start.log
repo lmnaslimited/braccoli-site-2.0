@@ -4,7 +4,48 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://192.168.1.62:3000
+   - Network:      http://172.28.250.80:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 438ms
+ [32m[1m✓[22m[39m Ready in 396ms
+Lens Cloud AB test variant: [90mundefined[39m
+Lens Cloud AB test variant: [90mundefined[39m
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:22519) {
+  digest: [32m'3228514773'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+Lens Cloud AB test variant: [90mundefined[39m
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:22519) {
+  digest: [32m'3228514773'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+Lens Cloud AB test variant: [90mundefined[39m
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:22519) {
+  digest: [32m'3228514773'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:22748) {
+  digest: [32m'1089234842'[39m
+}
+Lens Cloud AB test variant: [90mundefined[39m
