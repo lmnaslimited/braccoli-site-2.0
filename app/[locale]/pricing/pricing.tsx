@@ -443,138 +443,164 @@ export default function Pricing({
 
         </div>
       </section> */}
+{/* Early Access Opt-In Section */}
+      <section className="relative min-h-screen flex items-center overflow-hidden border-b border-border/40 bg-background py-20 md:py-24">
+        {/* Ambient theme-token background accents */}
+        <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[140px]" />
+        <div className="pointer-events-none absolute -bottom-40 -left-20 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[120px]" />
 
-      <section className="relative overflow-hidden py-24 md:py-32 bg-background border-t border-border">
-  {/* Modern ambient geometric background accents using theme tokens */}
-  {/* <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[128px]" />
-  <div className="absolute bottom-0 left-0 -z-10 h-[400px] w-[400px] rounded-full bg-ring/5 blur-[100px]" /> */}
+        <div className="relative w-full px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 lg:items-center">
 
-  <div className="mx-auto max-w-7xl px-6 md:px-8">
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:items-center">
-      
-      {/* --- Left Column: Value Proposition & Urgency --- */}
-      <div className="lg:col-span-6 space-y-6">
-        <div className="inline-flex items-center gap-2.5 rounded-full bg-muted border border-border px-3 py-1 text-xs font-semibold text-foreground/80 tracking-wide">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          Early Access Opt-In Active
-        </div>
+            {/* Left Column: Value Proposition & Opt-In */}
+            <div className="space-y-7">
+              <div className="flex w-fit items-center gap-2 rounded-full bg-accent border border-border px-3 py-1 text-sm shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+                <span className="font-medium">Early Access — limited launch slots</span>
+              </div>
 
-        <h2 className="text-4xl font-black tracking-tight text-foreground sm:text-5xl lg:text-6xl leading-[1.1]">
-          Vanilla ERPNext Hosting. <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-muted-foreground/60 to-primary">
-            Zero Overhead.
-          </span>
-        </h2>
+              <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl leading-[1.1]">
+                Vanilla ERPNext Hosting,{" "}
+                <span className="text-primary">Zero Overhead.</span>
+              </h2>
 
-        <p className="text-base text-muted-foreground leading-relaxed max-w-2xl">
-          Opt in the upcoming LensCloud platform before the general release pool opens. Secure early access to our permanently free tier, engineered exclusively for production-grade vanilla Frappe deployments.
-        </p>
+              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+                Opt in to the upcoming LensCloud platform before the general
+                release. Secure early access to our permanently free tier, built
+                for production-grade vanilla Frappe deployments.
+              </p>
 
-        {/* --- Integrated Opt-In Field Strip --- */}
-        <div className="pt-4 max-w-lg">
-          <div className="flex flex-col gap-3 sm:flex-row bg-card p-2 rounded-2xl">
-            <input
-              type="email"
-              placeholder="Enter your professional email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 flex-1 rounded-xl border border-primary bg-background px-4 text-foreground transition placeholder:text-muted-foreground/50 focus:border-ring focus:ring-2 focus:ring-ring/20 outline-none"
-            />
-            <button
-              disabled={!email.trim()}
-              onClick={handleOptIn}
-              className="h-12 rounded-xl bg-primary px-8 font-semibold text-primary-foreground shadow transition-all hover:opacity-90 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50 whitespace-nowrap"
-            >
-              Secure My Spot
-            </button>
-          </div>
-          <p className="mt-3 text-sm text-muted-foreground/80 px-2 flex items-center gap-1.5">
-             No credit card required. Instance setup links sent on launch day.
-          </p>
-        </div>
-      </div>
+              <div className="max-w-lg space-y-4">
+                <div className="flex flex-col gap-3 sm:flex-row">
+                  <input
+                    type="email"
+                    placeholder="Enter your professional email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="h-12 flex-1 rounded-lg border border-border bg-background px-4 text-foreground transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
+                  />
+                  <Button
+                    size="lg"
+                    disabled={!email.trim()}
+                    onClick={handleOptIn}
+                    className="h-12"
+                  >
+                    Secure My Spot
+                  </Button>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  No credit card required. Instance setup links sent on launch
+                  day.
+                </p>
+              </div>
 
-      {/* --- Right Column: Environment Spec Module --- */}
-      <div className="lg:col-span-6 relative">
-        <div className="rounded-3xl border border-border bg-card p-6 shadow-2xl md:p-9 relative overflow-hidden backdrop-blur-sm">
-          
-          {/* Subtle geometric pattern overlay typical of dashboard designs */}
-          <svg className="absolute inset-0 -z-10 h-full w-full stroke-border/20 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]" aria-hidden="true">
-            <defs>
-              <pattern id="dashboard-pattern" width="20" height="20" x="50%" y="-1" patternUnits="userSpaceOnUse">
-                <path d="M.5 20V.5H20" fill="none" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" strokeWidth="0" fill="url(#dashboard-pattern)" />
-          </svg>
-
-          {/* Module Header */}
-          <div className="flex items-center justify-between border-b border-border pb-5">
-            <div>
-              <h3 className="text-xl font-extrabold text-foreground tracking-tight">Provisioning Manifesto</h3>
-              <p className="text-xs font-mono text-muted-foreground mt-0.5">Manifest: LENS_STARTER_FREE_v1.0</p>
-            </div>
-            <div className="text-right">
-              <span className="text-3xl font-black text-foreground">$0<span className="text-xs text-muted-foreground">/mo</span></span>
-              <p className="text-[10px] font-mono tracking-wider uppercase text-muted-foreground">Permanently</p>
-            </div>
-          </div>
-
-          {/* Technical Specs Readout */}
-          <div className="mt-7 space-y-6">
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80 font-mono">Infrastructure Resource Array</h4>
-              <ul className="mt-3 space-y-3 text-sm text-foreground/90">
-                <li className="flex items-start gap-3">
-                <CircleCheckBig className="text-green-500"/>
-                  <span><strong>1 Active Production Instance:</strong> Fully managed architecture ready for live deployment.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                <CircleCheckBig className="text-green-500"/>
-                  <span><strong>LensCloud Managed PaaS:</strong> OS, network, and database clustering handled natively.</span>
-                </li>
-              </ul>
+              {/* Trust signals */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3 pt-2">
+                {[
+                  "Free forever tier",
+                  "Fully managed hosting",
+                  "Cancel anytime",
+                ].map((iSignal) => (
+                  <div
+                    key={iSignal}
+                    className="flex items-center gap-2 text-sm text-muted-foreground"
+                  >
+                    <CircleCheckBig className="h-4 w-4 shrink-0 text-primary" />
+                    <span>{iSignal}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
-            {/* Environmental Parameter Flags */}
-            <div className="pt-6 border-t border-border">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground/80 font-mono">Instance Parameter Flags</h4>
-              <div className="mt-4 grid grid-cols-2 gap-3 text-xs font-mono">
-                
-                <div className="flex items-center justify-between gap-3 bg-muted border border-border rounded-lg p-2.5">
-                  <span className="text-foreground/90">Core ERPNext</span>
-                  <CircleCheckBig className="text-green-500"/>
-                </div>
-                
-                <div className="flex items-center justify-between gap-3 bg-muted/40 border border-border rounded-lg p-2.5">
-                  <span className="text-muted-foreground">Custom Apps</span>
-                  <CircleX className="text-orange-500" />
-                </div>
-                
-                <div className="flex items-center justify-between gap-3 bg-muted/40 border border-border rounded-lg p-2.5">
-                  <span className="text-muted-foreground">Server Scripts</span>
-                  <CircleX className="text-orange-500" />
+            {/* Right Column: Starter Plan Spec Card */}
+            <div className="mx-auto w-full max-w-md">
+              <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
+                {/* Dark header ribbon */}
+                <div className="bg-primary py-2.5 text-center">
+                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-background">
+                    Most Popular · Early Access
+                  </span>
                 </div>
 
-                <div className="flex items-center justify-between gap-3 bg-muted/40 border border-border rounded-lg p-2.5">
-                  <span className="text-muted-foreground">Client Scripts</span>
-                  <CircleX className="text-orange-500" />
+                <div className="p-8">
+                  {/* Card Header */}
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h3 className="text-3xl font-bold text-foreground">
+                        Starter Plan
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">
+                        Free forever
+                      </p>
+                    </div>
+                    <div className="text-right leading-none">
+                      <span className="text-5xl font-bold text-foreground">
+                        $0
+                      </span>
+                      <p className="text-sm text-muted-foreground mt-1">/mo</p>
+                    </div>
+                  </div>
+
+                  {/* What's Included */}
+                  <div className="mt-8">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                      What&apos;s included
+                    </h4>
+                    <ul className="space-y-3 text-sm text-foreground">
+                      <li className="flex items-start gap-3 rounded-xl bg-accent border border-border p-4">
+                        <CircleCheckBig className="h-5 w-5 shrink-0 text-primary mt-0.5" />
+                        <span>
+                          <strong>1 Production Instance</strong> — fully managed
+                          and ready for live deployment.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-3 rounded-xl bg-accent border border-border p-4">
+                        <CircleCheckBig className="h-5 w-5 shrink-0 text-primary mt-0.5" />
+                        <span>
+                          <strong>Managed Platform</strong> — OS, network, and
+                          database handled for you.
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  {/* Capabilities */}
+                  <div className="mt-8">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                      Capabilities
+                    </h4>
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div className="flex items-center justify-between gap-2 rounded-lg bg-accent border border-border px-3 py-2.5">
+                        <span className="text-foreground">Core ERPNext</span>
+                        <CircleCheckBig className="h-4 w-4 shrink-0 text-primary" />
+                      </div>
+                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
+                        <span className="text-muted-foreground">Custom Apps</span>
+                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
+                      </div>
+                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
+                        <span className="text-muted-foreground">Server Scripts</span>
+                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
+                      </div>
+                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
+                        <span className="text-muted-foreground">Client Scripts</span>
+                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
-      </div>
 
-    </div>
-  </div>
-  
-  {/* Retained your original hidden anchor tag for internal event handling */}
-  <button id="new-pricing-beta" className="hidden" type="button" />
-</section>
+        {/* Hidden anchor tag for internal event handling */}
+        <button id="new-pricing-beta" className="hidden" type="button" />
+      </section>
 
       {/* Guide Section*/}
       <section ref={LdSectionRefs("containerFour")} className="hidden">
