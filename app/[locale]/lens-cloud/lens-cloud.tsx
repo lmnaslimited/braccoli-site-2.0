@@ -6,9 +6,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 // import posthog from "posthog-js";
-import { ArrowRight, Cloud, Gauge, ShieldCheck } from "lucide-react";
-import TitleSubtitle from "@repo/ui/components/title-subtitle";
-import VideoPlayer from "@repo/ui/components/video-player";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import { cn } from "@repo/ui/lib/utils";
 
@@ -18,11 +16,6 @@ import { cn } from "@repo/ui/lib/utils";
 // Fixed launch date the countdown ticks down to (UTC to stay consistent across timezones).
 // TODO: replace with the real LENS Cloud launch date.
 const LAUNCH_DATE = new Date("2026-07-10T09:00:00Z");
-
-// Placeholder hero video for the teaser section.
-// TODO: swap with the final LENS Cloud launch reel.
-const HERO_VIDEO_SRC =
-  "https://storage.googleapis.com/lmnas-public/lens-cloud/teaser.mp4";
 
 type TtimeLeft = {
   days: number;
@@ -83,6 +76,44 @@ function fnPad(iValue: number): string {
 //   }
 // }
 
+// Owns the 1-second timer so only THIS small component re-renders every second,
+// not the whole LensCloud page (which would re-run both variant trees + logs).
+function LaunchCountdown({ compact = false }: { compact?: boolean }) {
+  // Start null so server and first client render match; hydrate the real value on mount.
+  const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
+
+  useEffect(() => {
+    fnSetTimeLeft(fnGetTimeLeft());
+    const LtInterval = setInterval(() => {
+      fnSetTimeLeft(fnGetTimeLeft());
+    }, 1000);
+
+    return () => clearInterval(LtInterval);
+  }, []);
+
+  const LaCountdownUnits: { label: string; value: number }[] = [
+    { label: "Days", value: StTimeLeft?.days ?? 0 },
+    { label: "Hours", value: StTimeLeft?.hours ?? 0 },
+    { label: "Minutes", value: StTimeLeft?.minutes ?? 0 },
+    { label: "Seconds", value: StTimeLeft?.seconds ?? 0 },
+  ];
+
+  const LbLaunched =
+    StTimeLeft !== null &&
+    StTimeLeft.days === 0 &&
+    StTimeLeft.hours === 0 &&
+    StTimeLeft.minutes === 0 &&
+    StTimeLeft.seconds === 0;
+
+  return (
+    <CountdownPanel
+      countdownUnits={LaCountdownUnits}
+      isLaunched={LbLaunched}
+      compact={compact}
+    />
+  );
+}
+
 function CountdownPanel({
   countdownUnits,
   isLaunched,
@@ -125,159 +156,77 @@ function CountdownPanel({
 
 
 export default function LensCloud() {
-
-
   const LdParams = useParams();
   const LLocale = (LdParams?.locale as string) ?? "en";
 
-  // Start null so server and first client render match; hydrate the real value on mount.
-  const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
-  // const [StVariant, fnSetVariant] = useState<TLensCloudVariant>("control");
-  // const [StBetaStatus, fnSetBetaStatus] = useState<TBetaStatus>("loading");
-  // const [SbUpdatingBeta, fnSetUpdatingBeta] = useState(false);
+  const posthog = usePostHog();
+  const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
 
+  // Fire the exposure event once — and only once the flag has resolved to its
+  // real value. This effect also owns the debug log, so it runs on variant
+  // change rather than on every render (the countdown no longer re-renders us).
   useEffect(() => {
-    fnSetTimeLeft(fnGetTimeLeft());
-    const LtInterval = setInterval(() => {
-      fnSetTimeLeft(fnGetTimeLeft());
-    }, 1000);
-
-    return () => clearInterval(LtInterval);
-  }, []);
-
- 
-const posthog = usePostHog()
-  // const [variant, setVariant] = useState<string | undefined>(undefined)
-
-const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
-
-  // useEffect(() => {
-  //   posthog.onFeatureFlags(() => {
-  //     const flag = posthog.getFeatureFlag("lens-cloud-launch-page-ab")
-  //     setVariant(flag as string)
-  //     console.log("Lens Cloud AB test variant:", flag)
-  //   })
-  // }, [posthog])
-
-   // 2. Fix the Metric Problem: Trigger a custom event immediately when the component renders with the correct variant
-  useEffect(() => {
-    // Only fire when the network request finishes and we know the true variant
     if (variant !== undefined) {
       posthog.capture('launch_cloud_viewed', {
         $feature_flag: 'lens-cloud-launch-page-ab',
-        $feature_flag_variant: variant
+        $feature_flag_variant: variant,
       });
+      console.log("Lens Cloud AB test variant:", variant);
     }
   }, [variant, posthog]);
 
-  console.log("Lens Cloud AB test variant:", variant)
-
-
-  const LaCountdownUnits: { label: string; value: number }[] = [
-    { label: "Days", value: StTimeLeft?.days ?? 0 },
-    { label: "Hours", value: StTimeLeft?.hours ?? 0 },
-    { label: "Minutes", value: StTimeLeft?.minutes ?? 0 },
-    { label: "Seconds", value: StTimeLeft?.seconds ?? 0 },
-  ];
-
-  const LbLaunched =
-    StTimeLeft !== null &&
-    StTimeLeft.days === 0 &&
-    StTimeLeft.hours === 0 &&
-    StTimeLeft.minutes === 0 &&
-    StTimeLeft.seconds === 0;
-
- 
+  // Hold rendering until PostHog resolves the flag, so the page paints exactly
+  // one variant instead of flashing the control first and then swapping.
+  if (variant === undefined) {
+    console.log("Lens Cloud AB test variant: waiting for PostHog to resolve...");
+    return <section className="min-h-screen" aria-hidden />;
+  }
+  // ── Variant B ─────────────────────────────────────────────────────────────
+  // Minimal, left-aligned framing focused on early access + urgency.
   if (variant === "variant-b") {
     return (
-      <section className="relative overflow-hidden">
+      <section className="relative flex min-h-screen items-center overflow-hidden">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.16),transparent_32%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--muted)/0.45))]"
+          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.14),transparent_40%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--muted)/0.4))]"
         />
 
-        <div className="container mx-auto grid gap-12 px-4 py-16 lg:grid-cols-[minmax(0,1fr)_minmax(360px,520px)] lg:items-center lg:py-24">
-          <div>
-            <span className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-              Beta access is opening
-            </span>
+        <div className="container mx-auto flex max-w-3xl flex-col px-4 py-24">
+          <span className="mb-6 inline-flex w-fit items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+            Early access opening soon
+          </span>
 
-            <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-              Get LENS Cloud in your team&apos;s hands before launch
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-              Join the beta to test cloud-native LENS workflows, validate performance
-              on real data, and shape the production release with direct feedback.
-            </p>
+          <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+            Be first in line for LENS Cloud
+          </h1>
+          <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
+            Cloud-native LENS launches in
+          </p>
 
-            <div className="mt-8 flex max-w-xl flex-col gap-4 sm:flex-row sm:items-start">
-             {/* button opt in */}
-            </div>
-
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                {
-                  icon: ShieldCheck,
-                  title: "Secure beta",
-                  copy: "Early access is controlled by PostHog enrollment.",
-                },
-                {
-                  icon: Gauge,
-                  title: "Performance-first",
-                  copy: "Stress test infrastructure before general release.",
-                },
-                {
-                  icon: Cloud,
-                  title: "Cloud-native",
-                  copy: "Preview the hosted LENS operating model.",
-                },
-              ].map((idItem) => (
-                <div
-                  key={idItem.title}
-                  className="rounded-xl border border-border/60 bg-background/70 p-4 shadow-sm backdrop-blur-sm"
-                >
-                  <idItem.icon className="mb-3 size-5 text-primary" />
-                  <h2 className="text-sm font-semibold text-foreground">{idItem.title}</h2>
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">{idItem.copy}</p>
-                </div>
-              ))}
-            </div>
+          <div className="mt-10 w-full max-w-xl">
+            <LaunchCountdown />
           </div>
 
-          <div className="space-y-6">
-            <div className="rounded-2xl border border-border/60 bg-card/75 p-5 shadow-xl backdrop-blur-sm">
-              <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
-                Launch countdown
-              </p>
-              <CountdownPanel
-                countdownUnits={LaCountdownUnits}
-                isLaunched={LbLaunched}
-                compact
-              />
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-border/60 shadow-xl">
-              <VideoPlayer src={HERO_VIDEO_SRC} />
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" variant="outline" className="w-full">
-                <Link
-                  href={`/${LLocale}/contact`}
-                >
-                  Talk to sales
-                </Link>
-              </Button>
-            </div>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <Button asChild size="lg">
+              <Link href={`/${LLocale}/contact`}>
+                Request early access
+                <ArrowRight />
+              </Link>
+            </Button>
+            <Button asChild size="lg" variant="outline">
+              <Link href={`/${LLocale}/contact`}>Talk to sales</Link>
+            </Button>
           </div>
         </div>
       </section>
     );
   }
 
+  // ── Control ───────────────────────────────────────────────────────────────
+  // Minimal, centered "coming soon" framing with a single waitlist CTA.
   return (
-    <section className="relative overflow-hidden">
-      {/* Ambient premium gradient backdrop */}
+    <section className="relative flex min-h-screen items-center overflow-hidden">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-background to-background"
@@ -287,61 +236,30 @@ const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
       />
 
-      <div className="container mx-auto flex flex-col items-center px-4 py-20 md:py-28">
-        {/* Badge */}
+      <div className="container mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center">
         <span className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-          Coming Soon yolo........
+          Coming soon
         </span>
 
-        {/* Hero heading + subtitle */}
-        <TitleSubtitle
-          idTitle={{
-            title: "LENS Cloud is almost",
-            highlight: "here",
-            subtitle:
-              "The next generation of intelligent, cloud-native data infrastructure. Enterprise-grade performance, built for teams that move fast.",
-            className: "items-center text-center max-w-3xl mb-0",
-            headingClass: "text-4xl sm:text-5xl md:text-6xl",
-            descripClass: "mx-auto",
-          }}
-        />
+        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+          LENS Cloud is almost <span className="text-primary">here</span>
+        </h1>
+        <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
+          The next generation of intelligent, cloud-native data infrastructure.
+          Be the first to know when we launch.
+        </p>
 
-        {/* Countdown */}
-        <div className="mt-12 w-full max-w-2xl">
-          <CountdownPanel countdownUnits={LaCountdownUnits} isLaunched={LbLaunched} />
+        <div className="mt-12 w-full">
+          <LaunchCountdown />
         </div>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
+        <div className="mt-10">
           <Button asChild size="lg">
-            <Link
-              href={`/${LLocale}/contact`}
-
-            >
+            <Link href={`/${LLocale}/contact`}>
               Join the waitlist
               <ArrowRight />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline">
-            <Link
-              href={`/${LLocale}/contact`}
-
-              
-            >
-              Talk to sales
-            </Link>
-          </Button>
-        </div>
-
-        <div className="mt-8">
-         {/* button opt in */}
-        </div>
-
-        {/* Video teaser */}
-        <div className="mt-16 w-full max-w-4xl">
-          <div className="overflow-hidden rounded-2xl border border-border/60 shadow-xl">
-            <VideoPlayer src={HERO_VIDEO_SRC} />
-          </div>
         </div>
       </div>
     </section>
