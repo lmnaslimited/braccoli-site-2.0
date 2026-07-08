@@ -28,7 +28,8 @@ function fnExtractLaunchDate(iRaw?: string): string | undefined {
   );
   return LdIsoMatch?.[0];
 }
-
+// Resolve the launch date from the Strapi-supplied string, falling back to a
+// hardcoded default when the value is missing or invalid. This ensures the
 function fnResolveLaunchDate(iRaw?: string): Date {
   const LdDateText = fnExtractLaunchDate(iRaw);
   if (LdDateText) {
@@ -209,7 +210,10 @@ function CountdownPanel({
   );
 }
 
-
+// The LensCloud page is a single-page launch experience, so it owns the entire viewport. The countdown is the hero, so it gets a full-bleed background treatment
+// (image for Variant B, ambient wash for Control). The page is fully responsive,
+// with a mobile-first layout that stacks content vertically and then flows into
+// a left-aligned layout on sm+ screens.
 export default function LensCloud({ launchDate }: { launchDate?: string }) {
   const LdParams = useParams();
   const LLocale = (LdParams?.locale as string) ?? "en";
@@ -230,14 +234,12 @@ export default function LensCloud({ launchDate }: { launchDate?: string }) {
         $feature_flag: 'lens-cloud-launch-page-ab',
         $feature_flag_variant: variant,
       });
-      console.log("Lens Cloud AB test variant:", variant);
     }
   }, [variant, posthog]);
 
   // Hold rendering until PostHog resolves the flag, so the page paints exactly
   // one variant instead of flashing the control first and then swapping.
   if (variant === undefined) {
-    console.log("Lens Cloud AB test variant: waiting for PostHog to resolve...");
     return <section className="min-h-screen" aria-hidden />;
   }
   // ── Variant B ─────────────────────────────────────────────────────────────

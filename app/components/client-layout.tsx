@@ -8,7 +8,6 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     // initRudderStack();
     // const LdRudderanalytics = useRudderStackAnalytics();
 
-
     useEffect(() => {
        posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {  
             api_host: "/ingest",
@@ -23,6 +22,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
 
             });  
     }, []);
+
     // useEffect(() => {
     //     if (!LdRudderanalytics) return;
 
