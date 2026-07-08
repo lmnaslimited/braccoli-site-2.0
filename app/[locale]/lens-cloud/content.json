@@ -1,0 +1,60 @@
+{
+  "en": {
+    "metadata": {
+      "title": "LENS Cloud — Coming Soon",
+      "description": "LENS Cloud is almost here. The next generation of intelligent, cloud-native data infrastructure. Join the waitlist for early access."
+    },
+    "common": {
+      "countdownLabels": {
+        "days": "Days",
+        "hours": "Hours",
+        "minutes": "Minutes",
+        "seconds": "Seconds"
+      },
+      "launchedMessage": "We're live. Welcome to LENS Cloud.",
+      "talkToSales": "Talk to sales"
+    },
+    "control": {
+      "badge": "Coming soon",
+      "titleBefore": "LENS Cloud is almost",
+      "highlight": "here",
+      "subtitle": "The next generation of intelligent, cloud-native data infrastructure. Be the first to know when we launch.",
+      "joinWaitlist": "Join the waitlist"
+    },
+    "variantB": {
+      "badge": "Early access opening soon",
+      "title": "Be first in line for LENS Cloud",
+      "subtitle": "Cloud-native LENS launches in",
+      "requestAccess": "Request early access"
+    }
+  },
+  "de": {
+    "metadata": {
+      "title": "LENS Cloud — Demnächst verfügbar",
+      "description": "LENS Cloud ist fast da. Die nächste Generation intelligenter, cloud-nativer Dateninfrastruktur. Tragen Sie sich in die Warteliste für frühen Zugang ein."
+    },
+    "common": {
+      "countdownLabels": {
+        "days": "Tage",
+        "hours": "Stunden",
+        "minutes": "Minuten",
+        "seconds": "Sekunden"
+      },
+      "launchedMessage": "Wir sind live. Willkommen bei LENS Cloud.",
+      "talkToSales": "Vertrieb kontaktieren"
+    },
+    "control": {
+      "badge": "Demnächst verfügbar",
+      "titleBefore": "LENS Cloud ist fast",
+      "highlight": "da",
+      "subtitle": "Die nächste Generation intelligenter, cloud-nativer Dateninfrastruktur. Erfahren Sie als Erste, wenn wir starten.",
+      "joinWaitlist": "Zur Warteliste"
+    },
+    "variantB": {
+      "badge": "Frühzugang bald verfügbar",
+      "title": "Sichern Sie sich Ihren Platz für LENS Cloud",
+      "subtitle": "Cloud-natives LENS startet in",
+      "requestAccess": "Frühzugang anfragen"
+    }
+  }
+}

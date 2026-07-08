@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import LensCloud from "./lens-cloud";
+import { fnGetLensCloudContent } from "./content";
 
-export const metadata: Metadata = {
-  title: "LENS Cloud — Coming Soon",
-  description:
-    "LENS Cloud is almost here. The next generation of intelligent, cloud-native data infrastructure. Join the waitlist for early access.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const LdContent = fnGetLensCloudContent(locale);
+
+  return {
+    title: LdContent.metadata.title,
+    description: LdContent.metadata.description,
+  };
+}
 
 export default function LensCloudPage() {
   return <LensCloud />;

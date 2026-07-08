@@ -9,9 +9,7 @@ import { useParams } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import { cn } from "@repo/ui/lib/utils";
-
-// const AB_TEST_FLAG_KEY = "lens-cloud-launch-page-ab";
-// const BETA_ACCESS_FLAG_KEY = "lens-cloud-beta";
+import { fnGetLensCloudContent, type TLensCloudContent } from "./content";
 
 // Fixed launch date the countdown ticks down to (UTC to stay consistent across timezones).
 // TODO: replace with the real LENS Cloud launch date.
@@ -24,11 +22,15 @@ type TtimeLeft = {
   seconds: number;
 };
 
+// Locale-driven copy slices, so subcomponents never hold hardcoded strings.
+type TCountdownLabels = TLensCloudContent["common"]["countdownLabels"];
+
 // type TLensCloudVariant = "control" | "variant-b";
 
 type TCountdownProps = {
   countdownUnits: { label: string; value: number }[];
   isLaunched: boolean;
+  launchedMessage: string;
   compact?: boolean;
 };
 
@@ -58,27 +60,17 @@ function fnPad(iValue: number): string {
   return iValue.toString().padStart(2, "0");
 }
 
-
-// function fnCaptureLensCloudEvent(
-//   iEventName: string,
-//   iVariant: TLensCloudVariant,
-//   iLocale: string,
-//   iProperties: Record<string, string | boolean> = {}
-// ) {
-//   try {
-//     posthog.capture(iEventName, {
-//       variant: iVariant,
-//       locale: iLocale,
-//       ...iProperties,
-//     });
-//   } catch {
-//     // The page must keep working when PostHog is unavailable or blocked.
-//   }
-// }
-
 // Owns the 1-second timer so only THIS small component re-renders every second,
 // not the whole LensCloud page (which would re-run both variant trees + logs).
-function LaunchCountdown({ compact = false }: { compact?: boolean }) {
+function LaunchCountdown({
+  labels,
+  launchedMessage,
+  compact = false,
+}: {
+  labels: TCountdownLabels;
+  launchedMessage: string;
+  compact?: boolean;
+}) {
   // Start null so server and first client render match; hydrate the real value on mount.
   const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
 
@@ -92,10 +84,10 @@ function LaunchCountdown({ compact = false }: { compact?: boolean }) {
   }, []);
 
   const LaCountdownUnits: { label: string; value: number }[] = [
-    { label: "Days", value: StTimeLeft?.days ?? 0 },
-    { label: "Hours", value: StTimeLeft?.hours ?? 0 },
-    { label: "Minutes", value: StTimeLeft?.minutes ?? 0 },
-    { label: "Seconds", value: StTimeLeft?.seconds ?? 0 },
+    { label: labels.days, value: StTimeLeft?.days ?? 0 },
+    { label: labels.hours, value: StTimeLeft?.hours ?? 0 },
+    { label: labels.minutes, value: StTimeLeft?.minutes ?? 0 },
+    { label: labels.seconds, value: StTimeLeft?.seconds ?? 0 },
   ];
 
   const LbLaunched =
@@ -109,6 +101,7 @@ function LaunchCountdown({ compact = false }: { compact?: boolean }) {
     <CountdownPanel
       countdownUnits={LaCountdownUnits}
       isLaunched={LbLaunched}
+      launchedMessage={launchedMessage}
       compact={compact}
     />
   );
@@ -117,12 +110,13 @@ function LaunchCountdown({ compact = false }: { compact?: boolean }) {
 function CountdownPanel({
   countdownUnits,
   isLaunched,
+  launchedMessage,
   compact = false,
 }: TCountdownProps) {
   if (isLaunched) {
     return (
       <p className="text-center text-2xl font-semibold text-primary">
-        We&apos;re live. Welcome to LENS Cloud.
+        {launchedMessage}
       </p>
     );
   }
@@ -159,6 +153,9 @@ export default function LensCloud() {
   const LdParams = useParams();
   const LLocale = (LdParams?.locale as string) ?? "en";
 
+  // All page copy is resolved from JSON by locale (en/de) — nothing is hardcoded.
+  const LdContent = fnGetLensCloudContent(LLocale);
+
   const posthog = usePostHog();
   const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
 
@@ -193,29 +190,32 @@ export default function LensCloud() {
 
         <div className="container mx-auto flex max-w-3xl flex-col px-4 py-24">
           <span className="mb-6 inline-flex w-fit items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-            Early access opening soon
+            {LdContent.variantB.badge}
           </span>
 
           <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-            Be first in line for LENS Cloud
+            {LdContent.variantB.title}
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
-            Cloud-native LENS launches in
+            {LdContent.variantB.subtitle}
           </p>
 
           <div className="mt-10 w-full max-w-xl">
-            <LaunchCountdown />
+            <LaunchCountdown
+              labels={LdContent.common.countdownLabels}
+              launchedMessage={LdContent.common.launchedMessage}
+            />
           </div>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
               <Link href={`/${LLocale}/contact`}>
-                Request early access
+                {LdContent.variantB.requestAccess}
                 <ArrowRight />
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <Link href={`/${LLocale}/contact`}>Talk to sales</Link>
+              <Link href={`/${LLocale}/contact`}>{LdContent.common.talkToSales}</Link>
             </Button>
           </div>
         </div>
@@ -238,25 +238,28 @@ export default function LensCloud() {
 
       <div className="container mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center">
         <span className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
-          Coming soon
+          {LdContent.control.badge}
         </span>
 
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
-          LENS Cloud is almost <span className="text-primary">here</span>
+          {LdContent.control.titleBefore}{" "}
+          <span className="text-primary">{LdContent.control.highlight}</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
-          The next generation of intelligent, cloud-native data infrastructure.
-          Be the first to know when we launch.
+          {LdContent.control.subtitle}
         </p>
 
         <div className="mt-12 w-full">
-          <LaunchCountdown />
+          <LaunchCountdown
+            labels={LdContent.common.countdownLabels}
+            launchedMessage={LdContent.common.launchedMessage}
+          />
         </div>
 
         <div className="mt-10">
           <Button asChild size="lg">
             <Link href={`/${LLocale}/contact`}>
-              Join the waitlist
+              {LdContent.control.joinWaitlist}
               <ArrowRight />
             </Link>
           </Button>
@@ -265,5 +268,3 @@ export default function LensCloud() {
     </section>
   );
 }
-
-
