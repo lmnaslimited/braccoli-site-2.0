@@ -2,7 +2,7 @@
 
 import posthog from "posthog-js";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as Icons from "lucide-react";
 import { Button } from "@repo/ui/components/ui/button";
 import Hero from "@repo/ui/components/hero";
@@ -26,8 +26,7 @@ import {
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { useFormHandler } from "../../hooks/form-handler";
 import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
-import { useReCaptcha } from "next-recaptcha-v3"
-import { CircleCheckBig, CircleX } from "lucide-react";
+import FreeOptIn from "@repo/ui/components/free-opt-in";
 
 export default function Pricing({
   idPricing,
@@ -45,46 +44,6 @@ export default function Pricing({
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
-
-  const [email, setEmail] = useState<string> ("")
-  const { executeRecaptcha } = useReCaptcha()
-
-  const handleOptIn = async () => {
-    const trimmedEmail = email.trim().toLowerCase()
-
-    if (!trimmedEmail) return
-
-    const recaptchaToken = await executeRecaptcha("beta_opt_in")
-
-    const response = await fetch("/api/beta-opt-in", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            email: trimmedEmail,
-            recaptchaToken,
-        }),
-    })
-
-    const data = await response.json()
-
-    if (!response.ok || !data.success) {
-        // Show your toast/message
-        return
-    }
-
-    posthog.identify(trimmedEmail, {
-        email: trimmedEmail,
-    })
-
-    // Trigger the Site App widget
-    document
-        .getElementById("new-pricing-beta")
-        ?.click()
-
-    setEmail("")
-}
 
   return (
     <>
@@ -364,243 +323,8 @@ export default function Pricing({
         </div>
       </section>
 
-      {/* Section Added for LensCloud Launch */}
-      {/* <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-2xl rounded-2xl border border-border bg-card p-8 text-center shadow-xl md:p-12 transition-all duration-300">
-           */}
-          {/* Badge */}
-          {/* <div className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-semibold text-primary-foreground tracking-wide">
-            <span className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse" />
-            Early Adopter Offer
-          </div> */}
-
-          {/* Header */}
-          {/* <h2 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Secure Your Free Subscription at Launch
-          </h2>
-
-          <p className="mt-4 text-base text-muted-foreground max-w-lg mx-auto leading-relaxed">
-            Be among the first to build on our next-generation platform. We are reserving a limited number of free-tier slots for early adopters who join before the public launch.
-          </p> */}
-
-          {/* Feature Box — Smooth layout fix */}
-          {/* <div className="mt-8 rounded-xl border border-border bg-muted/40 p-6 text-left">
-            <h3 className="font-semibold text-xs uppercase tracking-wider text-muted-foreground/80">
-              Your Early Adopter Package Includes:
-            </h3>
-
-            <ul className="mt-4 space-y-3 text-sm text-foreground/90">
-              <li className="flex items-start gap-2.5">
-                <svg className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span><strong>Priority Launch Access:</strong> Skip the public waitlist completely.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <svg className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span><strong>Free Starter Plan Slot:</strong> 1 Production Site included natively.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <svg className="h-5 w-5 shrink-0 text-green-600 dark:text-green-400 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth="3" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span><strong>Grandfathered Status:</strong> Keep your free tier post-launch.</span>
-              </li>
-            </ul>
-          </div> */}
-
-          {/* Form Layout */}
-          {/* <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="h-12 flex-1 rounded-xl border border-input bg-background px-4 text-foreground shadow-inner transition placeholder:text-muted-foreground focus:border-ring focus:ring-2 focus:ring-ring/20 outline-none"
-            /> */}
-
-            {/* <button
-              disabled={!email.trim()}
-              onClick={handleOptIn}
-              // id="new-pricing-beta"
-              className="h-12 rounded-xl bg-primary px-6 font-medium text-primary-foreground shadow-sm transition-all duration-200 hover:opacity-90 focus:ring-2 focus:ring-ring/20 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-40 whitespace-nowrap"
-            >
-              Secure My Spot
-            </button>
-            <button
-                id="new-pricing-beta"
-                className="hidden"
-                type="button"
-            />
-          </div> */}
-        
-          {/* Disclaimer */}
-          {/* <p className="mt-4 text-xs text-muted-foreground/90">
-            No credit card required. We will notify you the moment your account is ready to activate at launch.
-          </p>
-
-        </div>
-      </section> */}
-{/* Early Access Opt-In Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden border-b border-border/40 bg-background py-20 md:py-24">
-        {/* Ambient theme-token background accents */}
-        <div className="pointer-events-none absolute -top-40 right-0 h-[600px] w-[600px] rounded-full bg-primary/5 blur-[140px]" />
-        <div className="pointer-events-none absolute -bottom-40 -left-20 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[120px]" />
-
-        <div className="relative w-full px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 lg:items-center">
-
-            {/* Left Column: Value Proposition & Opt-In */}
-            <div className="space-y-7">
-              <div className="flex w-fit items-center gap-2 rounded-full bg-accent border border-border px-3 py-1 text-sm shadow-sm">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-                </span>
-                <span className="font-medium">Early Access — limited launch slots</span>
-              </div>
-
-              <h2 className="text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl leading-[1.1]">
-                Vanilla ERPNext Hosting,{" "}
-                <span className="text-primary">Zero Overhead.</span>
-              </h2>
-
-              <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Opt in to the upcoming LensCloud platform before the general
-                release. Secure early access to our permanently free tier, built
-                for production-grade vanilla Frappe deployments.
-              </p>
-
-              <div className="max-w-lg space-y-4">
-                <div className="flex flex-col gap-3 sm:flex-row">
-                  <input
-                    type="email"
-                    placeholder="Enter your professional email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 flex-1 rounded-lg border border-border bg-background px-4 text-foreground transition placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none"
-                  />
-                  <Button
-                    size="lg"
-                    disabled={!email.trim()}
-                    onClick={handleOptIn}
-                    className="h-12"
-                  >
-                    Secure My Spot
-                  </Button>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  No credit card required. Instance setup links sent on launch
-                  day.
-                </p>
-              </div>
-
-              {/* Trust signals */}
-              <div className="flex flex-wrap gap-x-6 gap-y-3 pt-2">
-                {[
-                  "Free forever tier",
-                  "Fully managed hosting",
-                  "Cancel anytime",
-                ].map((iSignal) => (
-                  <div
-                    key={iSignal}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
-                  >
-                    <CircleCheckBig className="h-4 w-4 shrink-0 text-primary" />
-                    <span>{iSignal}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Column: Starter Plan Spec Card */}
-            <div className="mx-auto w-full max-w-md">
-              <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-2xl">
-                {/* Dark header ribbon */}
-                <div className="bg-primary py-2.5 text-center">
-                  <span className="text-xs font-semibold uppercase tracking-[0.2em] text-background">
-                    Most Popular · Early Access
-                  </span>
-                </div>
-
-                <div className="p-8">
-                  {/* Card Header */}
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="text-3xl font-bold text-foreground">
-                        Starter Plan
-                      </h3>
-                      <p className="text-sm text-muted-foreground mt-1">
-                        Free forever
-                      </p>
-                    </div>
-                    <div className="text-right leading-none">
-                      <span className="text-5xl font-bold text-foreground">
-                        $0
-                      </span>
-                      <p className="text-sm text-muted-foreground mt-1">/mo</p>
-                    </div>
-                  </div>
-
-                  {/* What's Included */}
-                  <div className="mt-8">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                      What&apos;s included
-                    </h4>
-                    <ul className="space-y-3 text-sm text-foreground">
-                      <li className="flex items-start gap-3 rounded-xl bg-accent border border-border p-4">
-                        <CircleCheckBig className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                        <span>
-                          <strong>1 Production Instance</strong> — fully managed
-                          and ready for live deployment.
-                        </span>
-                      </li>
-                      <li className="flex items-start gap-3 rounded-xl bg-accent border border-border p-4">
-                        <CircleCheckBig className="h-5 w-5 shrink-0 text-primary mt-0.5" />
-                        <span>
-                          <strong>Managed Platform</strong> — OS, network, and
-                          database handled for you.
-                        </span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  {/* Capabilities */}
-                  <div className="mt-8">
-                    <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
-                      Capabilities
-                    </h4>
-                    <div className="grid grid-cols-2 gap-3 text-sm">
-                      <div className="flex items-center justify-between gap-2 rounded-lg bg-accent border border-border px-3 py-2.5">
-                        <span className="text-foreground">Core ERPNext</span>
-                        <CircleCheckBig className="h-4 w-4 shrink-0 text-primary" />
-                      </div>
-                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
-                        <span className="text-muted-foreground">Custom Apps</span>
-                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
-                      </div>
-                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
-                        <span className="text-muted-foreground">Server Scripts</span>
-                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
-                      </div>
-                      <div className="flex items-center justify-between gap-2 rounded-lg bg-muted/40 border border-border px-3 py-2.5">
-                        <span className="text-muted-foreground">Client Scripts</span>
-                        <CircleX className="h-4 w-4 shrink-0 text-muted-foreground" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Hidden anchor tag for internal event handling */}
-        <button id="new-pricing-beta" className="hidden" type="button" />
-      </section>
+      {/* Early Access Opt-In Section */}
+      <FreeOptIn />
 
       {/* Guide Section*/}
       <section ref={LdSectionRefs("containerFour")} className="hidden">
