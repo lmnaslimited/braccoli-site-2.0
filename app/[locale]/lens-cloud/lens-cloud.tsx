@@ -15,6 +15,12 @@ import { fnGetLensCloudContent, type TLensCloudContent } from "./content";
 // TODO: replace with the real LENS Cloud launch date.
 const LAUNCH_DATE = new Date("2026-07-10T09:00:00Z");
 
+// Placeholder full-viewport background image for Variant B.
+// TODO: replace with the final asset — a remote URL or a local file in /public
+// (e.g. "/lens-cloud/hero-bg.jpg"). Rendered as a CSS background, so no
+// next.config remotePatterns entry is required.
+const VARIANT_B_BG_IMAGE = "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Products/LensCloud/lencloud-bg-image.png";
+
 type TtimeLeft = {
   days: number;
   hours: number;
@@ -183,9 +189,18 @@ export default function LensCloud() {
   if (variant === "variant-b") {
     return (
       <section className="relative flex min-h-screen items-center overflow-hidden">
+        {/* Full-viewport background image (placeholder — swap VARIANT_B_BG_IMAGE). */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.14),transparent_40%),linear-gradient(180deg,hsl(var(--background)),hsl(var(--muted)/0.4))]"
+          className="absolute inset-0 -z-20 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${VARIANT_B_BG_IMAGE})` }}
+        />
+        {/* Curtain: theme-aware scrim so copy stays readable over the image.
+            Top-heavy on mobile (stacked content), left-heavy on sm+ (image
+            shows through on the right). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-background/95 via-background/85 to-background/70 sm:bg-gradient-to-r sm:from-background sm:via-background/85 sm:to-background/30"
         />
 
         <div className="container mx-auto flex max-w-3xl flex-col px-4 py-24">
@@ -209,7 +224,7 @@ export default function LensCloud() {
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <Button asChild size="lg">
-              <Link href={`/${LLocale}/contact`}>
+              <Link href={`/${LLocale}/pricing`}>
                 {LdContent.variantB.requestAccess}
                 <ArrowRight />
               </Link>
