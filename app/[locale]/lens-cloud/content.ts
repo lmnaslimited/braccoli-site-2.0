@@ -20,6 +20,7 @@ export type TLensCloudContent = {
     };
     launchedMessage: string;
     talkToSales: string;
+    launchingIn: string;
   };
   control: {
     badge: string;

@@ -12,20 +12,21 @@
         "seconds": "Seconds"
       },
       "launchedMessage": "We're live. Welcome to LENS Cloud.",
-      "talkToSales": "Talk to sales"
+      "talkToSales": "Talk to sales",
+      "launchingIn": "Launching in"
     },
     "control": {
       "badge": "Coming soon",
-      "titleBefore": "LENS Cloud is almost",
-      "highlight": "here",
+      "titleBefore": "Something big ",
+      "highlight": "is coming....",
       "subtitle": "The next generation of intelligent, cloud-native data infrastructure. Be the first to know when we launch.",
-      "joinWaitlist": "Join the waitlist"
+      "joinWaitlist": "Secure your spot"
     },
     "variantB": {
-      "badge": "Early access opening",
-      "title": "Be first in line for LENS Cloud",
+      "badge": "Coming soon",
+      "title": "Something big is coming. New Journey is Going to start.",
       "subtitle": "Cloud-native LENS launches in",
-      "requestAccess": "Request early access"
+      "requestAccess": "Secure your spot "
     }
   },
   "de": {
@@ -41,7 +42,8 @@
         "seconds": "Sekunden"
       },
       "launchedMessage": "Wir sind live. Willkommen bei LENS Cloud.",
-      "talkToSales": "Vertrieb kontaktieren"
+      "talkToSales": "Vertrieb kontaktieren",
+      "launchingIn": "Start in"
     },
     "control": {
       "badge": "Demnächst verfügbar",

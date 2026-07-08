@@ -38,6 +38,9 @@ type TCountdownProps = {
   isLaunched: boolean;
   launchedMessage: string;
   compact?: boolean;
+  // When true, the last unit (seconds) gets a subtle primary accent so the
+  // countdown reads as "live". Opt-in — Variant B never passes it.
+  pulseSeconds?: boolean;
 };
 
 // Compute the remaining time between now and the launch date, clamped at zero.
@@ -72,10 +75,12 @@ function LaunchCountdown({
   labels,
   launchedMessage,
   compact = false,
+  pulseSeconds = false,
 }: {
   labels: TCountdownLabels;
   launchedMessage: string;
   compact?: boolean;
+  pulseSeconds?: boolean;
 }) {
   // Start null so server and first client render match; hydrate the real value on mount.
   const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
@@ -109,6 +114,7 @@ function LaunchCountdown({
       isLaunched={LbLaunched}
       launchedMessage={launchedMessage}
       compact={compact}
+      pulseSeconds={pulseSeconds}
     />
   );
 }
@@ -118,6 +124,7 @@ function CountdownPanel({
   isLaunched,
   launchedMessage,
   compact = false,
+  pulseSeconds = false,
 }: TCountdownProps) {
   if (isLaunched) {
     return (
@@ -129,27 +136,48 @@ function CountdownPanel({
 
   return (
     <div className="grid grid-cols-4 gap-3 sm:gap-6">
-      {countdownUnits.map((idUnit) => (
-        <div
-          key={idUnit.label}
-          className={cn(
-            "flex flex-col items-center justify-center rounded-2xl border border-border/60 bg-card/60 shadow-sm backdrop-blur-sm transition-colors",
-            compact ? "p-3 sm:p-4" : "p-4 sm:p-6"
-          )}
-        >
-          <span
+      {countdownUnits.map((idUnit, iIndex) => {
+        // Accent the final tile (seconds) when asked, so the panel reads as live.
+        const LbIsSeconds = pulseSeconds && iIndex === countdownUnits.length - 1;
+
+        return (
+          <div
+            key={idUnit.label}
             className={cn(
-              "bg-gradient-to-b from-foreground to-muted-foreground bg-clip-text font-bold tabular-nums tracking-tight text-transparent",
-              compact ? "text-2xl sm:text-4xl" : "text-3xl sm:text-5xl"
+              "relative flex flex-col items-center justify-center rounded-2xl border shadow-sm backdrop-blur-sm transition-colors",
+              compact ? "p-3 sm:p-4" : "p-4 sm:p-6",
+              LbIsSeconds
+                ? "border-primary/30 bg-primary/5"
+                : "border-border/60 bg-card/60"
             )}
           >
-            {fnPad(idUnit.value)}
-          </span>
-          <span className="mt-2 text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-sm">
-            {idUnit.label}
-          </span>
-        </div>
-      ))}
+            {LbIsSeconds && (
+              // Small live indicator in the corner of the seconds tile.
+              <span
+                aria-hidden
+                className="absolute right-2 top-2 flex h-2 w-2"
+              >
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+              </span>
+            )}
+            <span
+              className={cn(
+                "bg-clip-text font-bold tabular-nums tracking-tight text-transparent",
+                LbIsSeconds
+                  ? "bg-gradient-to-b from-primary to-primary/70"
+                  : "bg-gradient-to-b from-foreground to-muted-foreground",
+                compact ? "text-2xl sm:text-4xl" : "text-3xl sm:text-5xl"
+              )}
+            >
+              {fnPad(idUnit.value)}
+            </span>
+            <span className="mt-2 text-xs font-medium uppercase tracking-wider text-muted-foreground sm:text-sm">
+              {idUnit.label}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -229,9 +257,6 @@ export default function LensCloud() {
                 <ArrowRight />
               </Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href={`/${LLocale}/contact`}>{LdContent.common.talkToSales}</Link>
-            </Button>
           </div>
         </div>
       </section>
@@ -239,45 +264,68 @@ export default function LensCloud() {
   }
 
   // ── Control ───────────────────────────────────────────────────────────────
-  // Minimal, centered "coming soon" framing with a single waitlist CTA.
+  // Minimal, centered "coming soon" framing. Deliberately image-free and
+  // text-forward so the A/B test isolates Variant B's image treatment as the
+  // variable. Depth comes from an ambient (theme-aware) background, not an asset.
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
+      {/* Ambient wash: soft primary tint fading into the page background. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-primary/5 via-background to-background"
+        className="pointer-events-none absolute inset-0 -z-20 bg-gradient-to-b from-primary/5 via-background to-background"
       />
+      {/* Faint grid texture — kept subtle via a mask that fades it out at the edges. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-20 [background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] [background-size:56px_56px] opacity-[0.15] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_75%)]"
+      />
+      {/* Glow behind the headline to lift the content off the grid. */}
       <div
         aria-hidden
         className="pointer-events-none absolute left-1/2 top-0 -z-10 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/10 blur-3xl"
       />
 
       <div className="container mx-auto flex max-w-2xl flex-col items-center px-4 py-24 text-center">
-        <span className="mb-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
+        <span className="mb-6 inline-flex animate-in fade-in slide-in-from-bottom-2 items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary duration-500">
+          {/* Live status dot ties the badge to the running countdown below. */}
+          <span aria-hidden className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
+          </span>
           {LdContent.control.badge}
         </span>
 
-        <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+        <h1 className="animate-in fade-in slide-in-from-bottom-3 text-4xl font-bold tracking-tight text-foreground delay-100 duration-500 fill-mode-both sm:text-5xl md:text-6xl">
           {LdContent.control.titleBefore}{" "}
-          <span className="text-primary">{LdContent.control.highlight}</span>
+          <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+            {LdContent.control.highlight}
+          </span>
         </h1>
-        <p className="mt-5 max-w-xl text-lg leading-8 text-muted-foreground">
+        {/* <p className="animate-in fade-in slide-in-from-bottom-3 mt-5 max-w-xl text-lg leading-8 text-muted-foreground delay-200 duration-500 fill-mode-both">
           {LdContent.control.subtitle}
-        </p>
+        </p> */}
 
-        <div className="mt-12 w-full">
+        <div className="animate-in fade-in slide-in-from-bottom-4 mt-12 w-full delay-300 duration-500 fill-mode-both">
+          {/* Countdown is the hero of the control variant: an eyebrow label +
+              the panel, with the seconds tile pulsing to signal "live". */}
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            {LdContent.common.launchingIn}
+          </p>
           <LaunchCountdown
             labels={LdContent.common.countdownLabels}
             launchedMessage={LdContent.common.launchedMessage}
+            pulseSeconds
           />
         </div>
 
-        <div className="mt-10">
-          <Button asChild size="lg">
+        <div className="animate-in fade-in slide-in-from-bottom-4 mt-10 flex flex-col items-center gap-4 delay-500 duration-500 fill-mode-both">
+          <Button asChild size="lg" className="transition-transform hover:scale-[1.03]">
             <Link href={`/${LLocale}/contact`}>
               {LdContent.control.joinWaitlist}
               <ArrowRight />
             </Link>
           </Button>
+          {/* Low-emphasis secondary path for sales-ready visitors. */}
         </div>
       </div>
     </section>
