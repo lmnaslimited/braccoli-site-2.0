@@ -222,29 +222,29 @@ export default function LensCloud({ launchDate }: { launchDate?: string }) {
   // All page copy is resolved from JSON by locale (en/de) — nothing is hardcoded.
   const LdContent = fnGetLensCloudContent(LLocale);
 
-  const posthog = usePostHog();
-  const variant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
+  const Lposthog = usePostHog();
+  const Lvariant = useFeatureFlagVariantKey('lens-cloud-launch-page-ab');
 
   // Fire the exposure event once — and only once the flag has resolved to its
   // real value. This effect also owns the debug log, so it runs on variant
   // change rather than on every render (the countdown no longer re-renders us).
   useEffect(() => {
-    if (variant !== undefined) {
-      posthog.capture('launch_cloud_viewed', {
+    if (Lvariant !== undefined) {
+      Lposthog.capture('launch_cloud_viewed', {
         $feature_flag: 'lens-cloud-launch-page-ab',
-        $feature_flag_variant: variant,
+        $feature_flag_variant: Lvariant,
       });
     }
-  }, [variant, posthog]);
+  }, [Lvariant, Lposthog]);
 
   // Hold rendering until PostHog resolves the flag, so the page paints exactly
   // one variant instead of flashing the control first and then swapping.
-  if (variant === undefined) {
+  if (Lvariant === undefined) {
     return <section className="min-h-screen" aria-hidden />;
   }
   // ── Variant B ─────────────────────────────────────────────────────────────
   // Minimal, left-aligned framing focused on early access + urgency.
-  if (variant === "variant-b") {
+  if (Lvariant === "variant-b") {
     return (
       <section className="relative flex min-h-screen items-center overflow-hidden">
         {/* Full-viewport background image (placeholder — swap VARIANT_B_BG_IMAGE). */}
