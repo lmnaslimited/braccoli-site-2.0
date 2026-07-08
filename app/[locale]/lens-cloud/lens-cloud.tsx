@@ -11,9 +11,34 @@ import { Button } from "@repo/ui/components/ui/button";
 import { cn } from "@repo/ui/lib/utils";
 import { fnGetLensCloudContent, type TLensCloudContent } from "./content";
 
-// Fixed launch date the countdown ticks down to (UTC to stay consistent across timezones).
-// TODO: replace with the real LENS Cloud launch date.
-const LAUNCH_DATE = new Date("2026-07-10T09:00:00Z");
+// Fallback launch date — used ONLY when Strapi doesn't supply a valid one.
+// The real launch date is authored in Strapi (About Us hero `description`) and
+// passed in via the `launchDate` prop. UTC keeps it timezone-stable.
+const DEFAULT_LAUNCH_DATE = new Date("2026-07-10T09:00:00Z");
+
+// Parse the Strapi-supplied launch date (an ISO 8601 string, e.g.
+// "2026-07-10T09:00:00Z"). Falls back to DEFAULT_LAUNCH_DATE when the value is
+// missing or not a parseable date, so the countdown never renders "NaN".
+function fnExtractLaunchDate(iRaw?: string): string | undefined {
+  if (!iRaw) return undefined;
+
+  const LdTrimmed = iRaw.trim();
+  const LdIsoMatch = LdTrimmed.match(
+    /\d{4}-\d{2}-\d{2}(?:[T\s]\d{2}:\d{2}:\d{2}(?:Z|[+-]\d{2}:?\d{2})?)?/
+  );
+  return LdIsoMatch?.[0];
+}
+
+function fnResolveLaunchDate(iRaw?: string): Date {
+  const LdDateText = fnExtractLaunchDate(iRaw);
+  if (LdDateText) {
+    const LdParsed = new Date(LdDateText);
+    if (!Number.isNaN(LdParsed.getTime())) {
+      return LdParsed;
+    }
+  }
+  return DEFAULT_LAUNCH_DATE;
+}
 
 // Placeholder full-viewport background image for Variant B.
 // TODO: replace with the final asset — a remote URL or a local file in /public
@@ -44,8 +69,8 @@ type TCountdownProps = {
 };
 
 // Compute the remaining time between now and the launch date, clamped at zero.
-function fnGetTimeLeft(): TtimeLeft {
-  const LnDiff = LAUNCH_DATE.getTime() - Date.now();
+function fnGetTimeLeft(launchDate: Date): TtimeLeft {
+  const LnDiff = launchDate.getTime() - Date.now();
 
   if (LnDiff <= 0) {
     return { days: 0, hours: 0, minutes: 0, seconds: 0 };
@@ -76,23 +101,25 @@ function LaunchCountdown({
   launchedMessage,
   compact = false,
   pulseSeconds = false,
+  launchDate,
 }: {
   labels: TCountdownLabels;
   launchedMessage: string;
   compact?: boolean;
   pulseSeconds?: boolean;
+  launchDate: Date;
 }) {
   // Start null so server and first client render match; hydrate the real value on mount.
   const [StTimeLeft, fnSetTimeLeft] = useState<TtimeLeft | null>(null);
 
   useEffect(() => {
-    fnSetTimeLeft(fnGetTimeLeft());
+    fnSetTimeLeft(fnGetTimeLeft(launchDate));
     const LtInterval = setInterval(() => {
-      fnSetTimeLeft(fnGetTimeLeft());
+      fnSetTimeLeft(fnGetTimeLeft(launchDate));
     }, 1000);
 
     return () => clearInterval(LtInterval);
-  }, []);
+  }, [launchDate]);
 
   const LaCountdownUnits: { label: string; value: number }[] = [
     { label: labels.days, value: StTimeLeft?.days ?? 0 },
@@ -183,9 +210,10 @@ function CountdownPanel({
 }
 
 
-export default function LensCloud() {
+export default function LensCloud({ launchDate }: { launchDate?: string }) {
   const LdParams = useParams();
   const LLocale = (LdParams?.locale as string) ?? "en";
+  const LdLaunchDate = fnResolveLaunchDate(launchDate);
 
   // All page copy is resolved from JSON by locale (en/de) — nothing is hardcoded.
   const LdContent = fnGetLensCloudContent(LLocale);
@@ -247,6 +275,7 @@ export default function LensCloud() {
             <LaunchCountdown
               labels={LdContent.common.countdownLabels}
               launchedMessage={LdContent.common.launchedMessage}
+              launchDate={LdLaunchDate}
             />
           </div>
 
@@ -314,6 +343,7 @@ export default function LensCloud() {
           <LaunchCountdown
             labels={LdContent.common.countdownLabels}
             launchedMessage={LdContent.common.launchedMessage}
+            launchDate={LdLaunchDate}
             pulseSeconds
           />
         </div>
