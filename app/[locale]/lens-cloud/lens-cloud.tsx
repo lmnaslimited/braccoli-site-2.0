@@ -350,7 +350,7 @@ export default function LensCloud({ launchDate }: { launchDate?: string }) {
 
         <div className="animate-in fade-in slide-in-from-bottom-4 mt-10 flex flex-col items-center gap-4 delay-500 duration-500 fill-mode-both">
           <Button asChild size="lg" className="transition-transform hover:scale-[1.03]">
-            <Link href={`/${LLocale}/contact`}>
+            <Link href={`/${LLocale}/pricing`}>
               {LdContent.control.joinWaitlist}
               <ArrowRight />
             </Link>
