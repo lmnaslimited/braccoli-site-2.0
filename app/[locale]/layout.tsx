@@ -113,8 +113,10 @@ export default async function RootLayout({
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
-        <Banner idBanner={LdBannerSettings}/>
+        <div className="sticky top-0 z-50">
+          <Banner idBanner={LdBannerSettings}/>
           <Navbar idNavbar={navbarData} />
+        </div>
           <main className="">
             <ClientLayout>
               {children}
