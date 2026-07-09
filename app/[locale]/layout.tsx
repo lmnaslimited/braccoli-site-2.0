@@ -12,6 +12,8 @@ import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
+import { fnGetStatus } from "../utils/strapi/get-status"
+import Banner from "@repo/ui/components/banner"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -89,7 +91,8 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const { locale } = await params
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const context: Tcontext = { locale: locale, status: LStatus }
 
   const footerData: TfooterTarget = await fnGetCacheData(
     context,
@@ -100,12 +103,17 @@ export default async function RootLayout({
     context,
     clTransformerFactory.createTransformer("navbar")
   )
-
+  const LdBannerSettings = await fnGetCacheData(
+    context, 
+    clTransformerFactory.createTransformer("bannerSetting")
+  )
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
+        <Banner idBanner={LdBannerSettings}/>
           <Navbar idNavbar={navbarData} />
           <main className="">
             <ClientLayout>
