@@ -26,6 +26,7 @@ import {
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { useFormHandler } from "../../hooks/form-handler";
 import { Tbutton, TcaseStudies, TformMode, TpricingPageTarget } from "@repo/middleware/types";
+import FreeOptIn from "@repo/ui/components/free-opt-in";
 
 export default function Pricing({
   idPricing,
@@ -43,9 +44,10 @@ export default function Pricing({
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
+
   return (
     <>
-      <section ref={LdSectionRefs("containerOne")}>
+      <section ref={LdSectionRefs("containerOne")} className="hidden">
         <Hero
           idHero={{
             ...idPricing.pricing.heroSection,
@@ -63,7 +65,7 @@ export default function Pricing({
       </section>
 
       {/* Problem Section */}
-      <section ref={LdSectionRefs("containerTwo")}>
+      <section ref={LdSectionRefs("containerTwo")} className="hidden">
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-accent">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <TitleSubtitle
@@ -147,7 +149,7 @@ export default function Pricing({
       </section>
 
       {/* Plans Section*/}
-      <section ref={LdSectionRefs("containerThree")}>
+      <section ref={LdSectionRefs("containerThree")} className="hidden">
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 bg-background">
           <div ref={LdSectionRefs("containerSecond")}>
             <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
@@ -321,8 +323,11 @@ export default function Pricing({
         </div>
       </section>
 
+      {/* Early Access Opt-In Section */}
+      <FreeOptIn />
+
       {/* Guide Section*/}
-      <section ref={LdSectionRefs("containerFour")}>
+      <section ref={LdSectionRefs("containerFour")} className="hidden">
         <div className="border-b border-border/40 py-16 md:py-24 lg:py-24 text-background bg-primary">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="flex mx-auto w-fit items-center rounded-full bg-primary border border-border text-background px-3 py-1 text-sm mb-4">
@@ -476,7 +481,7 @@ export default function Pricing({
       </section>
 
       {/* Testimonials Section*/}
-      <section className="py-16 md:py-24 lg:py-24 bg-grayBackground">
+      <section className="py-16 md:py-24 lg:py-24 bg-grayBackground hidden">
         <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
           <TitleSubtitle
             idTitle={{
@@ -581,7 +586,7 @@ export default function Pricing({
       </section>
 
       {/* CTA Section */}
-      <section ref={LdSectionRefs("containerFive")}>
+      <section ref={LdSectionRefs("containerFive")}  className="hidden">
         <div className="py-16 md:py-24 lg:py-24 bg-grayBackground">
           <div className="px-4 md:px-24 lg:px-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl">
             <div className="mx-auto max-w-3xl text-center">

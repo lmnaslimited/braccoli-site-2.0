@@ -19,6 +19,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
                 document.documentElement.dataset.posthogReady = "true"
                 window.dispatchEvent(new Event("posthog-ready"))
             },
+            opt_in_site_apps: true
 
             });  
     }, []);
