@@ -114,8 +114,8 @@ export default async function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
         <div className="sticky top-0 z-50">
-          <Banner idBanner={LdBannerSettings}/>
           <Navbar idNavbar={navbarData} />
+          <Banner idBanner={LdBannerSettings}/>
         </div>
           <main className="">
             <ClientLayout>

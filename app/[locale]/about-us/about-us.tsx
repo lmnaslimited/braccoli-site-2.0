@@ -1,8 +1,9 @@
 'use client'
 
 import Link from "next/link";
+import { useState } from "react";
 import { getIconComponent } from "@repo/ui/lib/icon";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import CustomCard from "@repo/ui/components/custom-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { useFormHandler } from "../../hooks/form-handler";
@@ -16,6 +17,9 @@ const renderIcon = (icon: Tbutton['icon'], className?: string) => {
 
 export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
+    const [iOpenMilestone, fnSetOpenMilestone] = useState<number | null>(null);
+    const fnToggleMilestone = (iIndex: number) => fnSetOpenMilestone((iPrev) => (iPrev === iIndex ? null : iIndex));
+    const iFinalMilestone = idAboutUs.aboutUs.previousYears.length;
     return (
         <>
             {/* Hero Section */}
@@ -79,63 +83,182 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
             </section>
 
             {/* Journey Timeline*/}
-            <section className="py-24">
-                <div className="container mx-auto px-6">
-                    <div className="max-w-5xl mx-auto">
-                        <p className="text-primary/50 text-sm tracking-widest uppercase mb-4">{idAboutUs?.aboutUs.timeLineHeader.badge}</p>
-                        <TitleSubtitle
-                            idTitle={{
-                                ...idAboutUs?.aboutUs.timeLineHeader,
-                                className: "max-w-5xl text-left",
-                                headingClass: "text-3xl md:text-4xl font-light",
-                                descripClass: "md:text-lg text-lg text-primary/70",
+
+        <section className="py-24">
+            <div className="container mx-auto px-6">
+                <div className="max-w-5xl mx-auto">
+                    <p className="text-primary/50 text-sm tracking-widest uppercase mb-4">
+                        {idAboutUs?.aboutUs.timeLineHeader.badge}
+                    </p>
+ 
+                    <TitleSubtitle
+                        idTitle={{
+                            ...idAboutUs?.aboutUs.timeLineHeader,
+                            className: "max-w-5xl text-left",
+                            headingClass: "text-3xl md:text-4xl font-light",
+                            descripClass: "md:text-lg text-lg text-primary/70",
+                        }}
+                    />
+ 
+                    <div className="relative mt-12">
+                        {/* Continuous vertical line
+                            FIX: bg-primary/30 (Tailwind's opacity modifier) can silently fail to
+                            render when --primary is defined in a format that doesn't support the
+                            alpha channel shorthand. Using inline style + opacity sidesteps that
+                            entirely. Also added z-0 + min-h so it never collapses to 0px if the
+                            parent's rendered height comes in shorter than expected. */}
+                        <div
+                            className="absolute left-6 top-5 bottom-5 z-0 w-0.5 -translate-x-1/2 md:left-7 min-h-[40px]"
+                            style={{
+                                backgroundColor: "var(--primary, currentColor)",
+                                opacity: 0.3,
                             }}
                         />
-                        <div className="relative mt-12 ml-2 space-y-12 border-l border-primary/15 md:ml-3">
-                            {idAboutUs.aboutUs.previousYears.map((idPrevYear, iIndex) => (
-                                <div className="relative pl-8 md:pl-12" key={iIndex}>
+ 
+                        {idAboutUs.aboutUs.previousYears.map((idPrevYear, iIndex) => {
+                            const bIsOpen = iOpenMilestone === iIndex;
+                            const sNumber = String(iIndex + 1).padStart(2, "0");
+ 
+                            return (
+                                <div
+                                    key={iIndex}
+                                    className="relative pl-16 pb-10 md:pl-20"
+                                >
                                     {/* Timeline node */}
-                                    <span className="absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full bg-primary ring-4 ring-background" />
-                                    <p className="text-sm font-medium uppercase tracking-widest text-primary/50">
-                                        {idPrevYear.icon}
-                                    </p>
-                                    <h3 className="mt-1 text-xl font-light md:text-2xl">
-                                        {idPrevYear.label}
-                                    </h3>
-                                    <div className="mt-4 border border-primary/10 bg-accent p-6 transition-colors hover:border-primary/25 md:p-8">
-                                        <p className="text-lg leading-relaxed text-primary/80">
-                                            {idPrevYear.description}
-                                        </p>
+                                    <span
+                                        className={`absolute left-6 top-0 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background text-sm font-semibold transition-colors duration-300 md:left-7 md:h-12 md:w-12 ${
+                                            bIsOpen
+                                                ? "bg-primary text-background"
+                                                : "bg-accent text-primary"
+                                        }`}
+                                    >
+                                        {sNumber}
+                                    </span>
+ 
+                                    <div className="border-b border-primary/10 pb-8">
+                                        <button
+                                            type="button"
+                                            onClick={() => fnToggleMilestone(iIndex)}
+                                            aria-expanded={bIsOpen}
+                                            className="group flex w-full items-center justify-between gap-4 text-left"
+                                        >
+                                            <div>
+                                                <p className="text-xs font-medium uppercase tracking-widest text-primary/50">
+                                                    {idPrevYear.icon}
+                                                </p>
+ 
+                                                <h3 className="mt-0.5 text-xl font-light transition-colors group-hover:text-primary md:text-2xl">
+                                                    {idPrevYear.label}
+                                                </h3>
+                                            </div>
+ 
+                                            <ChevronDown
+                                                className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${
+                                                    bIsOpen ? "rotate-180" : ""
+                                                }`}
+                                            />
+                                        </button>
+ 
+                                        <div
+                                            className={`grid transition-all duration-300 ease-in-out ${
+                                                bIsOpen
+                                                    ? "grid-rows-[1fr] opacity-100"
+                                                    : "grid-rows-[0fr] opacity-0"
+                                            }`}
+                                        >
+                                            <div className="overflow-hidden">
+                                                <div className="mt-4 border border-primary/10 bg-accent p-6 md:p-8">
+                                                    <p className="text-lg leading-relaxed text-primary/80">
+                                                        {idPrevYear.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            ))}
-
-                            {/* Current and Beyond Years */}
-                            <div className="relative pl-8 md:pl-12">
-                                {/* Highlighted timeline node */}
-                                <span className="absolute -left-[9px] top-1.5 h-[18px] w-[18px] rounded-full border-4 border-background bg-primary" />
-                                <p className="text-sm font-medium uppercase tracking-widest text-primary/50">
-                                    {idAboutUs.aboutUs.currentAndBeyondYears.heading.title}
-                                </p>
-                                <h3 className="mt-1 text-xl font-light md:text-2xl">
-                                    {idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}
-                                </h3>
-                                <div className="mt-4 bg-primary p-6 text-background md:p-8">
-                                    <p className="mb-4 text-lg">{idAboutUs.aboutUs.currentAndBeyondYears.heading.highlight}</p>
-                                    <ul className="space-y-4">
-                                        {idAboutUs.aboutUs.currentAndBeyondYears.highlight?.map((idHighlist, iIndex) => (
-                                            <li className="flex items-start gap-3" key={iIndex}>
-                                                <CheckCircle className="h-5 w-5 text-background/70 mt-0.5 flex-shrink-0" />
-                                                <p>{idHighlist.label}</p>
-                                            </li>
-                                        ))}
-                                    </ul>
+                            );
+                        })}
+ 
+                        {/* Final milestone */}
+                        {(() => {
+                            const bIsOpen = iOpenMilestone === iFinalMilestone;
+ 
+                            return (
+                                <div className="relative pl-16 md:pl-20">
+                                    <span
+                                        className={`absolute left-6 top-0 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background text-sm font-semibold transition-colors duration-300 md:left-7 md:h-12 md:w-12 ${
+                                            bIsOpen
+                                                ? "bg-background text-primary ring-2 ring-primary"
+                                                : "bg-primary text-background"
+                                        }`}
+                                    >
+                                        {String(iFinalMilestone + 1).padStart(2, "0")}
+                                    </span>
+ 
+                                    <button
+                                        type="button"
+                                        onClick={() => fnToggleMilestone(iFinalMilestone)}
+                                        aria-expanded={bIsOpen}
+                                        className="group flex w-full items-center justify-between gap-4 text-left"
+                                    >
+                                        <div>
+                                            <p className="text-xs font-medium uppercase tracking-widest text-primary/50">
+                                                {idAboutUs.aboutUs.currentAndBeyondYears.heading.title}
+                                            </p>
+ 
+                                            <h3 className="mt-0.5 text-xl font-light transition-colors group-hover:text-primary md:text-2xl">
+                                                {idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}
+                                            </h3>
+                                        </div>
+ 
+                                        <ChevronDown
+                                            className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${
+                                                bIsOpen ? "rotate-180" : ""
+                                            }`}
+                                        />
+                                    </button>
+ 
+                                    <div
+                                        className={`grid transition-all duration-300 ease-in-out ${
+                                            bIsOpen
+                                                ? "grid-rows-[1fr] opacity-100"
+                                                : "grid-rows-[0fr] opacity-0"
+                                        }`}
+                                    >
+                                        <div className="overflow-hidden">
+                                            <div className="mt-4 bg-primary p-6 text-background md:p-8">
+                                                <p className="mb-4 text-lg">
+                                                    {
+                                                        idAboutUs.aboutUs.currentAndBeyondYears
+                                                            .heading.highlight
+                                                    }
+                                                </p>
+ 
+                                                <ul className="space-y-4">
+                                                    {idAboutUs.aboutUs.currentAndBeyondYears.highlight?.map(
+                                                        (idHighlist, iIndex) => (
+                                                            <li
+                                                                key={iIndex}
+                                                                className="flex items-start gap-3"
+                                                            >
+                                                                <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-background/70" />
+ 
+                                                                <p>{idHighlist.label}</p>
+                                                            </li>
+                                                        )
+                                                    )}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            );
+                        })()}
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
+
 
             {/* Testimonials*/}
             <section className="py-24">
@@ -156,7 +279,7 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                     idCardProps={{
                                         header: {
                                             ...idCard.header,
-                                            descripClass: "italic md:text-lg text-lg text-primary/80 italic mb-8 md:leading-relaxed leading-relaxed",
+                                            descripClass: "italic md:text-lg text-lg text-primary/80 italic mb-8 md:leading-relaxed leading-relaxed line-clamp-none",
                                             headingClass: "m-0"
                                         },
                                         className: "max-w-lg",
