@@ -91,19 +91,17 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                 descripClass: "md:text-lg text-lg text-primary/70",
                             }}
                         />
-                        <div className="relative mt-12 ml-2 space-y-12 border-l border-primary/15 md:ml-3">
+                        <div className="space-y-12">
                             {idAboutUs.aboutUs.previousYears.map((idPrevYear, iIndex) => (
-                                <div className="relative pl-8 md:pl-12" key={iIndex}>
-                                    {/* Timeline node */}
-                                    <span className="absolute -left-[7px] top-1.5 h-3.5 w-3.5 rounded-full bg-primary ring-4 ring-background" />
-                                    <p className="text-sm font-medium uppercase tracking-widest text-primary/50">
-                                        {idPrevYear.icon}
-                                    </p>
-                                    <h3 className="mt-1 text-xl font-light md:text-2xl">
-                                        {idPrevYear.label}
-                                    </h3>
-                                    <div className="mt-4 border border-primary/10 bg-accent p-6 transition-colors hover:border-primary/25 md:p-8">
-                                        <p className="text-lg leading-relaxed text-primary/80">
+                                <div className="grid md:grid-cols-12 gap-6 items-start" key={iIndex}>
+                                    <div className="md:col-span-2">
+                                        <div className="sticky top-24">
+                                            <p className="text-3xl font-light">{idPrevYear.icon}</p>
+                                            <p className="text-primary/50">{idPrevYear.label}</p>
+                                        </div>
+                                    </div>
+                                    <div className="md:col-span-10 bg-background p-8 border border-primary/5">
+                                        <p className="text-lg text-primary/80">
                                             {idPrevYear.description}
                                         </p>
                                     </div>
@@ -111,17 +109,15 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                             ))}
 
                             {/* Current and Beyond Years */}
-                            <div className="relative pl-8 md:pl-12">
-                                {/* Highlighted timeline node */}
-                                <span className="absolute -left-[9px] top-1.5 h-[18px] w-[18px] rounded-full border-4 border-background bg-primary" />
-                                <p className="text-sm font-medium uppercase tracking-widest text-primary/50">
-                                    {idAboutUs.aboutUs.currentAndBeyondYears.heading.title}
-                                </p>
-                                <h3 className="mt-1 text-xl font-light md:text-2xl">
-                                    {idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}
-                                </h3>
-                                <div className="mt-4 bg-primary p-6 text-background md:p-8">
-                                    <p className="mb-4 text-lg">{idAboutUs.aboutUs.currentAndBeyondYears.heading.highlight}</p>
+                            <div className="grid md:grid-cols-12 gap-6 items-start">
+                                <div className="md:col-span-2">
+                                    <div className="sticky top-24">
+                                        <p className="text-3xl font-light">{idAboutUs.aboutUs.currentAndBeyondYears.heading.title}</p>
+                                        <p className="text-primary/50">{idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}</p>
+                                    </div>
+                                </div>
+                                <div className="md:col-span-10 bg-primary text-background p-8">
+                                    <p className="text-lg mb-4">{idAboutUs.aboutUs.currentAndBeyondYears.heading.highlight}</p>
                                     <ul className="space-y-4">
                                         {idAboutUs.aboutUs.currentAndBeyondYears.highlight?.map((idHighlist, iIndex) => (
                                             <li className="flex items-start gap-3" key={iIndex}>
