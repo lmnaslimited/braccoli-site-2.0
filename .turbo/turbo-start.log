@@ -7,7 +7,16 @@
    - Network:      http://192.168.1.52:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 310ms
-path pricing
-path pricing
-path pricing
+ [32m[1m✓[22m[39m Ready in 507ms
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:23507) {
+  digest: [32m'168754556'[39m
+}
+ [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
+    at Module.p (.next/server/app/[locale]/products/[slug]/page.js:1:23278) {
+  digest: [32m'1648571258'[39m
+}
+ [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
+    at u (.next/server/app/[locale]/products/[slug]/page.js:1:23507) {
+  digest: [32m'168754556'[39m
+}
