@@ -9,7 +9,8 @@ import type { Tcontext, TaboutUsPageTarget } from '@repo/middleware/types'
 async function getAboutUsPageData(params: { locale: string }) {
   const { locale } = params
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
+  // added pagination because starpi restricted to 10 items
+  const context: Tcontext = { locale: locale, status: LStatus, pagination: { limit: -1 } }
   const pageData: TaboutUsPageTarget = await fnGetCacheData(
     context,
     clTransformerFactory.createTransformer('aboutUs')
