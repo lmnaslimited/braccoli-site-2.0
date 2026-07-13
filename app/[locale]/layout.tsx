@@ -92,19 +92,21 @@ export default async function RootLayout({
 }>) {
   const { locale } = await params
   const LStatus = await fnGetStatus()
-  const context: Tcontext = { locale: locale, status: LStatus }
+  const LdContext: Tcontext = { locale: locale, status: LStatus }
 
-  const footerData: TfooterTarget = await fnGetCacheData(
-    context,
+  const LdFooterData: TfooterTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("footer")
   )
 
-  const navbarData: TnavbarTarget = await fnGetCacheData(
-    context,
+  const LdNavbarData: TnavbarTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("navbar")
   )
+
+  // Get the Banner details from strapi
   const LdBannerSettings = await fnGetCacheData(
-    context, 
+    LdContext, 
     clTransformerFactory.createTransformer("bannerSetting")
   )
   
@@ -113,16 +115,17 @@ export default async function RootLayout({
       <body className={`${GeistSans.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
+          {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
-          <Navbar idNavbar={navbarData} />
           <Banner idBanner={LdBannerSettings}/>
+          <Navbar idNavbar={LdNavbarData} />
         </div>
           <main className="">
             <ClientLayout>
               {children}
             </ClientLayout>
           </main>
-          <Footer idFooter={footerData} />
+          <Footer idFooter={LdFooterData} />
           </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
