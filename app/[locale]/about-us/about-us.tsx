@@ -1,13 +1,13 @@
 'use client'
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { ArrowRight, CheckCircle, ChevronDown } from "lucide-react";
 import CustomCard from "@repo/ui/components/custom-card";
 import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { useFormHandler } from "../../hooks/form-handler";
-import { Tbutton, TformMode, TaboutUsPageTarget } from "@repo/middleware/types";
+import { Tbutton, TformMode, TaboutUsPageTarget, Titems } from "@repo/middleware/types";
 
 const renderIcon = (icon: Tbutton['icon'], className?: string) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -17,9 +17,86 @@ const renderIcon = (icon: Tbutton['icon'], className?: string) => {
 
 export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }) {
     const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } = useFormHandler();
-    const [iOpenMilestone, fnSetOpenMilestone] = useState<number | null>(null);
-    const fnToggleMilestone = (iIndex: number) => fnSetOpenMilestone((iPrev) => (iPrev === iIndex ? null : iIndex));
-    const iFinalMilestone = idAboutUs.aboutUs.previousYears.length;
+    // Journey timeline — group milestones by year (parsed from each item's icon, e.g. "APR 2021")
+    const [iOpenYear, fnSetOpenYear] = useState<string | null>(null);
+    const fnToggleYear = (sYear: string) => fnSetOpenYear((iPrev) => (iPrev === sYear ? null : sYear));
+    const fnParseYear = (idIcon: Titems["icon"]): string => {
+        const sText = typeof idIcon === "string" ? idIcon : "";
+        return sText.match(/\d{4}/)?.[0] ?? sText.trim();
+    };
+    const fnParseMonth = (idIcon: Titems["icon"], sYear: string): string => {
+        const sText = typeof idIcon === "string" ? idIcon : "";
+        return sText.replace(sYear, "").replace(/&.*/, "").trim();
+    };
+    const ldYearGroups: { year: string; events: { month: string; label?: string; description?: string }[] }[] = [];
+    const ldYearIndex: Record<string, number> = {};
+    idAboutUs.aboutUs.previousYears.forEach((idPrevYear) => {
+        const sYear = fnParseYear(idPrevYear.icon);
+        let iGroupIdx = ldYearIndex[sYear];
+        if (iGroupIdx === undefined) {
+            iGroupIdx = ldYearGroups.length;
+            ldYearIndex[sYear] = iGroupIdx;
+            ldYearGroups.push({ year: sYear, events: [] });
+        }
+        ldYearGroups[iGroupIdx]!.events.push({
+            month: fnParseMonth(idPrevYear.icon, sYear),
+            label: idPrevYear.label,
+            description: idPrevYear.description,
+        });
+    });
+    const sBeyondYear = idAboutUs.aboutUs.currentAndBeyondYears.heading.title ?? "Beyond";
+
+    // Values auto-playing snap carousel
+    const rValuesTrack = useRef<HTMLDivElement>(null);
+    const rActiveValue = useRef(0);
+    const rValuesPaused = useRef(false);
+    const [iActiveValue, fnSetActiveValue] = useState(0);
+    const iValuesCount = idAboutUs?.aboutUs.valuesSection.length ?? 0;
+    const fnGoValue = (iIndex: number) => {
+        if (iValuesCount === 0) return;
+        const iClamped = ((iIndex % iValuesCount) + iValuesCount) % iValuesCount;
+        const ndTrack = rValuesTrack.current;
+        const ndCard = ndTrack?.children[iClamped] as HTMLElement | undefined;
+        if (ndTrack && ndCard) {
+            ndTrack.scrollTo({ left: ndCard.offsetLeft - (ndTrack.clientWidth - ndCard.clientWidth) / 2, behavior: "smooth" });
+        }
+        fnSetActiveValue(iClamped);
+    };
+    const fnOnValuesScroll = () => {
+        const ndTrack = rValuesTrack.current;
+        if (!ndTrack) return;
+        const iCenter = ndTrack.scrollLeft + ndTrack.clientWidth / 2;
+        let iNearest = 0;
+        let iMin = Infinity;
+        Array.from(ndTrack.children).forEach((ndChild, iIdx) => {
+            const ndEl = ndChild as HTMLElement;
+            const iCardCenter = ndEl.offsetLeft + ndEl.clientWidth / 2;
+            const iDist = Math.abs(iCardCenter - iCenter);
+            if (iDist < iMin) {
+                iMin = iDist;
+                iNearest = iIdx;
+            }
+        });
+        fnSetActiveValue(iNearest);
+    };
+    useEffect(() => {
+        rActiveValue.current = iActiveValue;
+    }, [iActiveValue]);
+    useEffect(() => {
+        if (iValuesCount <= 1) return;
+        const idInterval = setInterval(() => {
+            if (rValuesPaused.current) return;
+            const ndTrack = rValuesTrack.current;
+            const iNext = (rActiveValue.current + 1) % iValuesCount;
+            const ndCard = ndTrack?.children[iNext] as HTMLElement | undefined;
+            if (ndTrack && ndCard) {
+                ndTrack.scrollTo({ left: ndCard.offsetLeft - (ndTrack.clientWidth - ndCard.clientWidth) / 2, behavior: "smooth" });
+            }
+            fnSetActiveValue(iNext);
+        }, 5000);
+        return () => clearInterval(idInterval);
+    }, [iValuesCount]);
+
     return (
         <>
             {/* Hero Section */}
@@ -59,21 +136,50 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                                 descripClass: "md:text-lg text-lg text-primary/70 max-w-3xl",
                             }}
                         />
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {idAboutUs?.aboutUs.valuesSection.map((idValues, iIndex) => (
-                                <div className="border border-primary/10 p-10 bg-accent" key={iIndex}>
-                                    {renderIcon(idValues.badge)}
-                                    <h3 className="text-2xl font-light mb-4">{idValues.title}</h3>
-                                    <p className="text-primary/70 mb-6 leading-relaxed">
-                                        {idValues.subtitle}
-                                    </p>
-                                    <div className="mt-auto pt-6 border-t border-primary/10">
-                                        <p className="text-primary font-light">
-                                            {idValues.highlight}
+                        {/* Values tag-navigation auto-playing carousel */}
+                        <div className="mt-10">
+                            {/* Tag navigation */}
+                            <div className="mb-10 flex flex-wrap gap-3">
+                                {idAboutUs?.aboutUs.valuesSection.map((idValues, iIndex) => (
+                                    <button
+                                        key={iIndex}
+                                        type="button"
+                                        onClick={() => fnGoValue(iIndex)}
+                                        aria-pressed={iActiveValue === iIndex}
+                                        className={`rounded-full border px-6 py-2.5 text-sm font-medium transition-colors duration-300 ${iActiveValue === iIndex ? "border-primary bg-primary text-background" : "border-primary/30 text-primary hover:border-primary/60"}`}
+                                    >
+                                        {idValues.title}
+                                    </button>
+                                ))}
+                            </div>
+                            {/* Horizontal snap carousel */}
+                            <div
+                                ref={rValuesTrack}
+                                onScroll={fnOnValuesScroll}
+                                onMouseEnter={() => { rValuesPaused.current = true; }}
+                                onMouseLeave={() => { rValuesPaused.current = false; }}
+                                onTouchStart={() => { rValuesPaused.current = true; }}
+                                onTouchEnd={() => { rValuesPaused.current = false; }}
+                                className="-mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                            >
+                                {idAboutUs?.aboutUs.valuesSection.map((idValues, iIndex) => (
+                                    <div
+                                        key={iIndex}
+                                        className={`flex min-w-[85%] shrink-0 snap-center flex-col border bg-accent p-8 transition-colors duration-300 md:min-w-[70%] md:p-12 ${iActiveValue === iIndex ? "border-primary/30" : "border-primary/10"}`}
+                                    >
+                                        {renderIcon(idValues.badge)}
+                                        <h3 className="text-2xl font-light mb-4 md:text-3xl">{idValues.title}</h3>
+                                        <p className="text-primary/70 mb-8 leading-relaxed md:text-lg">
+                                            {idValues.subtitle}
                                         </p>
+                                        <div className="mt-auto pt-6 border-t border-primary/10">
+                                            <p className="text-lg font-medium text-primary">
+                                                {idValues.highlight}
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                         <p className="text-lg text-primary/70 mt-12 max-w-3xl">
                             {idAboutUs?.aboutUs.valuesSectionHeaderFooter.title}
@@ -100,153 +206,97 @@ export default function AboutUs({ idAboutUs }: { idAboutUs: TaboutUsPageTarget }
                         }}
                     />
  
-                    <div className="relative mt-12">
-                        {/* Continuous vertical line
-                            FIX: bg-primary/30 (Tailwind's opacity modifier) can silently fail to
-                            render when --primary is defined in a format that doesn't support the
-                            alpha channel shorthand. Using inline style + opacity sidesteps that
-                            entirely. Also added z-0 + min-h so it never collapses to 0px if the
-                            parent's rendered height comes in shorter than expected. */}
-                        <div
-                            className="absolute left-6 top-5 bottom-5 z-0 w-0.5 -translate-x-1/2 md:left-7 min-h-[40px]"
-                            style={{
-                                backgroundColor: "var(--primary, currentColor)",
-                                opacity: 0.3,
-                            }}
-                        />
- 
-                        {idAboutUs.aboutUs.previousYears.map((idPrevYear, iIndex) => {
-                            const bIsOpen = iOpenMilestone === iIndex;
-                            const sNumber = String(iIndex + 1).padStart(2, "0");
- 
+                    {/* Year-grouped accordion timeline */}
+                    <div className="mt-12 ml-4 border-l border-primary/20 md:ml-5">
+                        {ldYearGroups.map((idGroup) => {
+                            const bYearOpen = iOpenYear === idGroup.year;
                             return (
-                                <div
-                                    key={iIndex}
-                                    className="relative pl-16 pb-10 md:pl-20"
-                                >
-                                    {/* Timeline node */}
-                                    <span
-                                        className={`absolute left-6 top-0 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background text-sm font-semibold transition-colors duration-300 md:left-7 md:h-12 md:w-12 ${
-                                            bIsOpen
-                                                ? "bg-primary text-background"
-                                                : "bg-accent text-primary"
-                                        }`}
+                                <div className="relative pl-8 md:pl-12" key={idGroup.year}>
+                                    <button
+                                        type="button"
+                                        onClick={() => fnToggleYear(idGroup.year)}
+                                        aria-expanded={bYearOpen}
+                                        className="group relative flex w-full items-center justify-between gap-4 py-4 text-left"
                                     >
-                                        {sNumber}
-                                    </span>
- 
-                                    <div className="border-b border-primary/10 pb-8">
-                                        <button
-                                            type="button"
-                                            onClick={() => fnToggleMilestone(iIndex)}
-                                            aria-expanded={bIsOpen}
-                                            className="group flex w-full items-center justify-between gap-4 text-left"
-                                        >
-                                            <div>
-                                                <p className="text-xs font-medium uppercase tracking-widest text-primary/50">
-                                                    {idPrevYear.icon}
-                                                </p>
- 
-                                                <h3 className="mt-0.5 text-xl font-light transition-colors group-hover:text-primary md:text-2xl">
-                                                    {idPrevYear.label}
-                                                </h3>
-                                            </div>
- 
-                                            <ChevronDown
-                                                className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${
-                                                    bIsOpen ? "rotate-180" : ""
-                                                }`}
-                                            />
-                                        </button>
- 
-                                        <div
-                                            className={`grid transition-all duration-300 ease-in-out ${
-                                                bIsOpen
-                                                    ? "grid-rows-[1fr] opacity-100"
-                                                    : "grid-rows-[0fr] opacity-0"
-                                            }`}
-                                        >
-                                            <div className="overflow-hidden">
-                                                <div className="mt-4 border border-primary/10 bg-accent p-6 md:p-8">
-                                                    <p className="text-lg leading-relaxed text-primary/80">
-                                                        {idPrevYear.description}
-                                                    </p>
-                                                </div>
-                                            </div>
+                                        {/* Year node on the main line */}
+                                        <span
+                                            className={`absolute -left-8 top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-background transition-colors duration-300 md:-left-12 ${bYearOpen ? "bg-primary" : "bg-primary/40 group-hover:bg-primary"}`}
+                                        />
+                                        <div className="flex items-baseline gap-3">
+                                            <span className="text-2xl font-light tracking-tight transition-colors group-hover:text-primary md:text-3xl">
+                                                {idGroup.year}
+                                            </span>
+                                            <span className="text-xs font-medium uppercase tracking-widest text-primary/50">
+                                                {idGroup.events.length} milestone{idGroup.events.length > 1 ? "s" : ""}
+                                            </span>
+                                        </div>
+                                        <ChevronDown className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${bYearOpen ? "rotate-180" : ""}`} />
+                                    </button>
+                                    {/* Drawer: this year's mini-timeline */}
+                                    <div className={`grid transition-all duration-300 ease-in-out ${bYearOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+                                        <div className="overflow-hidden">
+                                            <ol className="relative mb-8 ml-1 space-y-6 border-l border-primary/15 pb-2 pl-6 pt-2">
+                                                {idGroup.events.map((idEvent, iEventIdx) => (
+                                                    <li className="relative" key={iEventIdx}>
+                                                        <span className="absolute -left-6 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full bg-primary ring-4 ring-background" />
+                                                        {idEvent.month && (
+                                                            <p className="text-xs font-semibold uppercase tracking-widest text-primary/50">
+                                                                {idEvent.month}
+                                                            </p>
+                                                        )}
+                                                        <h4 className="mt-0.5 text-lg font-light md:text-xl">
+                                                            {idEvent.label}
+                                                        </h4>
+                                                        <p className="mt-1 leading-relaxed text-primary/70">
+                                                            {idEvent.description}
+                                                        </p>
+                                                    </li>
+                                                ))}
+                                            </ol>
                                         </div>
                                     </div>
                                 </div>
                             );
                         })}
- 
-                        {/* Final milestone */}
+
+                        {/* 2025 & Beyond — its own year accordion */}
                         {(() => {
-                            const bIsOpen = iOpenMilestone === iFinalMilestone;
- 
+                            const bYearOpen = iOpenYear === sBeyondYear;
                             return (
-                                <div className="relative pl-16 md:pl-20">
-                                    <span
-                                        className={`absolute left-6 top-0 z-10 flex h-11 w-11 -translate-x-1/2 items-center justify-center rounded-full border-4 border-background text-sm font-semibold transition-colors duration-300 md:left-7 md:h-12 md:w-12 ${
-                                            bIsOpen
-                                                ? "bg-background text-primary ring-2 ring-primary"
-                                                : "bg-primary text-background"
-                                        }`}
-                                    >
-                                        {String(iFinalMilestone + 1).padStart(2, "0")}
-                                    </span>
- 
+                                <div className="relative pl-8 md:pl-12">
                                     <button
                                         type="button"
-                                        onClick={() => fnToggleMilestone(iFinalMilestone)}
-                                        aria-expanded={bIsOpen}
-                                        className="group flex w-full items-center justify-between gap-4 text-left"
+                                        onClick={() => fnToggleYear(sBeyondYear)}
+                                        aria-expanded={bYearOpen}
+                                        className="group relative flex w-full items-center justify-between gap-4 py-4 text-left"
                                     >
-                                        <div>
-                                            <p className="text-xs font-medium uppercase tracking-widest text-primary/50">
-                                                {idAboutUs.aboutUs.currentAndBeyondYears.heading.title}
-                                            </p>
- 
-                                            <h3 className="mt-0.5 text-xl font-light transition-colors group-hover:text-primary md:text-2xl">
-                                                {idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}
-                                            </h3>
-                                        </div>
- 
-                                        <ChevronDown
-                                            className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${
-                                                bIsOpen ? "rotate-180" : ""
-                                            }`}
+                                        {/* Final highlighted node */}
+                                        <span
+                                            className={`absolute -left-8 top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary ring-4 ring-background transition-all duration-300 md:-left-12 ${bYearOpen ? "scale-125" : ""}`}
                                         />
+                                        <div className="flex items-baseline gap-3">
+                                            <span className="text-2xl font-light tracking-tight transition-colors group-hover:text-primary md:text-3xl">
+                                                {sBeyondYear}
+                                            </span>
+                                            <span className="text-xs font-medium uppercase tracking-widest text-primary/50">
+                                                {idAboutUs.aboutUs.currentAndBeyondYears.heading.subtitle}
+                                            </span>
+                                        </div>
+                                        <ChevronDown className={`h-5 w-5 flex-shrink-0 text-primary/50 transition-transform duration-300 ${bYearOpen ? "rotate-180" : ""}`} />
                                     </button>
- 
-                                    <div
-                                        className={`grid transition-all duration-300 ease-in-out ${
-                                            bIsOpen
-                                                ? "grid-rows-[1fr] opacity-100"
-                                                : "grid-rows-[0fr] opacity-0"
-                                        }`}
-                                    >
+                                    <div className={`grid transition-all duration-300 ease-in-out ${bYearOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                                         <div className="overflow-hidden">
-                                            <div className="mt-4 bg-primary p-6 text-background md:p-8">
+                                            <div className="mb-8 mt-2 bg-primary p-6 text-background md:p-8">
                                                 <p className="mb-4 text-lg">
-                                                    {
-                                                        idAboutUs.aboutUs.currentAndBeyondYears
-                                                            .heading.highlight
-                                                    }
+                                                    {idAboutUs.aboutUs.currentAndBeyondYears.heading.highlight}
                                                 </p>
- 
                                                 <ul className="space-y-4">
-                                                    {idAboutUs.aboutUs.currentAndBeyondYears.highlight?.map(
-                                                        (idHighlist, iIndex) => (
-                                                            <li
-                                                                key={iIndex}
-                                                                className="flex items-start gap-3"
-                                                            >
-                                                                <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-background/70" />
- 
-                                                                <p>{idHighlist.label}</p>
-                                                            </li>
-                                                        )
-                                                    )}
+                                                    {idAboutUs.aboutUs.currentAndBeyondYears.highlight?.map((idHighlist, iIndex) => (
+                                                        <li className="flex items-start gap-3" key={iIndex}>
+                                                            <CheckCircle className="mt-0.5 h-5 w-5 flex-shrink-0 text-background/70" />
+                                                            <p>{idHighlist.label}</p>
+                                                        </li>
+                                                    ))}
                                                 </ul>
                                             </div>
                                         </div>
