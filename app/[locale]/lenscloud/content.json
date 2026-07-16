@@ -20,13 +20,15 @@
       "titleBefore": "LensCloud",
       "highlight": "is coming....",
       "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
-      "joinWaitlist": "Secure your spot"
+      "joinWaitlist": "Secure your spot",
+      "exploreBtn": "Explore LensCloud"
     },
     "variantB": {
       "badge": "Coming soon",
       "title": "LensCloud is coming. New Journey is Going to start.",
       "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
-      "requestAccess": "Secure your spot"
+      "requestAccess": "Secure your spot",
+      "exploreBtn": "Explore LensCloud"
     }
   },
   "de": {
@@ -50,13 +52,15 @@
       "titleBefore": "LensCloud",
       "highlight": "ist bald da",
       "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
-      "joinWaitlist": "Platz sichern"
+      "joinWaitlist": "Platz sichern",
+      "exploreBtn": "LensCloud erkunden"
     },
     "variantB": {
       "badge": "Frühzugang bald verfügbar",
       "title": "Sichern Sie sich Ihren Platz für LENS Cloud",
       "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
-      "requestAccess": "Frühzugang anfragen"
+      "requestAccess": "Frühzugang anfragen",
+      "exploreBtn": "LensCloud erkunden"
     }
   }
 }
