@@ -2,7 +2,7 @@
   "en": {
     "metadata": {
       "title": "LENS Cloud — Coming Soon",
-      "description": "LENS Cloud is almost here. The next generation of intelligent, cloud-native data infrastructure. Join the waitlist for early access."
+      "description": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access."
     },
     "common": {
       "countdownLabels": {
@@ -17,22 +17,24 @@
     },
     "control": {
       "badge": "Coming soon",
-      "titleBefore": "Something big ",
+      "titleBefore": "LensCloud",
       "highlight": "is coming....",
-      "subtitle": "The next generation of intelligent, cloud-native data infrastructure. Be the first to know when we launch.",
-      "joinWaitlist": "Secure your spot"
+      "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
+      "joinWaitlist": "Secure your spot",
+      "exploreBtn": "Explore LensCloud"
     },
     "variantB": {
       "badge": "Coming soon",
-      "title": "Something big is coming. New Journey is Going to start.",
-      "subtitle": "Cloud-native LENS launches in",
-      "requestAccess": "Secure your spot "
+      "title": "LensCloud is coming. New Journey is Going to start.",
+      "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
+      "requestAccess": "Secure your spot",
+      "exploreBtn": "Explore LensCloud"
     }
   },
   "de": {
     "metadata": {
       "title": "LENS Cloud — Demnächst verfügbar",
-      "description": "LENS Cloud ist fast da. Die nächste Generation intelligenter, cloud-nativer Dateninfrastruktur. Tragen Sie sich in die Warteliste für frühen Zugang ein."
+      "description": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an."
     },
     "common": {
       "countdownLabels": {
@@ -47,16 +49,18 @@
     },
     "control": {
       "badge": "Demnächst verfügbar",
-      "titleBefore": "LENS Cloud ist fast",
-      "highlight": "da",
-      "subtitle": "Die nächste Generation intelligenter, cloud-nativer Dateninfrastruktur. Erfahren Sie als Erste, wenn wir starten.",
-      "joinWaitlist": "Zur Warteliste"
+      "titleBefore": "LensCloud",
+      "highlight": "ist bald da",
+      "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
+      "joinWaitlist": "Platz sichern",
+      "exploreBtn": "LensCloud erkunden"
     },
     "variantB": {
       "badge": "Frühzugang bald verfügbar",
       "title": "Sichern Sie sich Ihren Platz für LENS Cloud",
-      "subtitle": "Cloud-natives LENS startet in",
-      "requestAccess": "Frühzugang anfragen"
+      "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
+      "requestAccess": "Frühzugang anfragen",
+      "exploreBtn": "LensCloud erkunden"
     }
   }
 }

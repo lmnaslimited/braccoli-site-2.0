@@ -288,6 +288,16 @@ export default function LensCloud({ launchDate }: { launchDate?: string }) {
                 <ArrowRight />
               </Link>
             </Button>
+            <Button 
+              asChild 
+              size="lg" 
+              variant="outline" 
+            >
+              <Link href={`/${LLocale}/products/lenscloud-platform`}>
+                {LdContent.variantB.exploreBtn}
+                <ArrowRight />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -358,6 +368,12 @@ export default function LensCloud({ launchDate }: { launchDate?: string }) {
             </Link>
           </Button>
           {/* Low-emphasis secondary path for sales-ready visitors. */}
+          <Button asChild size="lg">
+              <Link href={`/${LLocale}/products/lenscloud-platform`}>
+                {LdContent.control.exploreBtn}
+                <ArrowRight />
+              </Link>
+            </Button>
         </div>
       </div>
     </section>

@@ -324,7 +324,9 @@ export default function Pricing({
       </section>
 
       {/* Early Access Opt-In Section */}
-      <FreeOptIn />
+      {idPricing.pricing.json && (
+        <FreeOptIn idContent={idPricing.pricing.json}/>
+      )}
 
       {/* Guide Section*/}
       <section ref={LdSectionRefs("containerFour")} className="hidden">

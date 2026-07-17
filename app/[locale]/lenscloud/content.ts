@@ -28,12 +28,14 @@ export type TLensCloudContent = {
     highlight: string;
     subtitle: string;
     joinWaitlist: string;
+    exploreBtn: string
   };
   variantB: {
     badge: string;
     title: string;
     subtitle: string;
     requestAccess: string;
+    exploreBtn: string
   };
 };
 

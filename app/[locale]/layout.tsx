@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from 'next'
 import "@repo/ui/globals.css"
 import { GeistSans } from 'geist/font/sans'
 import { fnGetCacheData } from '../utils/strapi/get-data'
-import ChatInit from "../components/chat-int"
 import ClientLayout from "..//components/client-layout"
 import NewsletterIdentifyListener from "../components/newsletter-identify-listener"
 import Footer from "@repo/ui/components/footer"
@@ -13,6 +12,8 @@ import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
 import { AuthProvider } from "@repo/ui/components/auth/authContext"
+import { fnGetStatus } from "../utils/strapi/get-status"
+import Banner from "@repo/ui/components/banner"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -90,36 +91,47 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const { locale } = await params
-  const context: Tcontext = { locale: locale }
+  const LStatus = await fnGetStatus()
+  const LdContext: Tcontext = { locale: locale, status: LStatus }
 
-  const footerData: TfooterTarget = await fnGetCacheData(
-    context,
+  const LdFooterData: TfooterTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("footer")
   )
 
-  const navbarData: TnavbarTarget = await fnGetCacheData(
-    context,
+  const LdNavbarData: TnavbarTarget = await fnGetCacheData(
+    LdContext,
     clTransformerFactory.createTransformer("navbar")
   )
 
+  // Get the Banner details from strapi
+  const LdBannerSettings = await fnGetCacheData(
+    LdContext, 
+    clTransformerFactory.createTransformer("bannerSetting")
+  )
+  
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
       <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
-          <Navbar idNavbar={navbarData} />
+          {/* navbar and banner will stickto the top */}
+        <div className="sticky top-0 z-50">
+          <Banner idBanner={LdBannerSettings}/>
+          <Navbar idNavbar={LdNavbarData} />
+        </div>
           <main className="">
             <ClientLayout>
               {children}
             </ClientLayout>
           </main>
-          <Footer idFooter={footerData} />
+          <Footer idFooter={LdFooterData} />
           </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
-        <ChatInit />
         </AuthProvider>
+        {/* <ChatInit /> */}
       </body>
     </html>
   )
