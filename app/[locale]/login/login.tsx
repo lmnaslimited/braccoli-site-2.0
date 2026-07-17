@@ -6,6 +6,8 @@ import { Tbutton, TLoginTarget } from '@repo/middleware/types';
 import { Button } from '@repo/ui/components/ui/button';
 import Link from 'next/link';
 import { getIconComponent } from '@repo/ui/lib/icon';
+import { useReCaptcha } from "next-recaptcha-v3"
+import { validateRecaptcha } from '@repo/ui/api/newsletter/recaptcha';
 
 type FormMode = 'login' | 'signup' | 'forgot';
 
@@ -48,6 +50,12 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
     fnSetError(null);
     fnSetSuccess(null);
 
+    // Provides the function to generate a Google reCAPTCHA v3 token.
+    const { executeRecaptcha } = useReCaptcha()
+
+    // Generate a reCAPTCHA token for bot verification.
+    const LRecaptchaToken = await executeRecaptcha("login-and-signup")
+
     // Endpoint configuration
     const LEndpoints: Record<FormMode, string> = {
       login: '/api/auth/login',
@@ -63,6 +71,13 @@ export default function LoginForm({ idLogin }: { idLogin: TLoginTarget }) {
     };
 
     try {
+       // Verify the generated reCAPTCHA token with the backend.
+       const LdRecaptcha = await validateRecaptcha(LRecaptchaToken)
+       // Stop the flow if reCAPTCHA verification fails.
+       if (!LdRecaptcha.success) {
+         fnSetError("Sorry, we couldn't verfiy your human, please try again");
+         return
+       }
       const LdResponse = await fetch(LEndpoints[Lmode], {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
