@@ -4,7 +4,12 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://10.51.59.114:3000
+   - Network:      http://10.226.9.114:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 540ms
+ [32m[1m✓[22m[39m Ready in 602ms
+(node:420214) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+user [90mundefined[39m
+user [90mundefined[39m
+user [90mundefined[39m

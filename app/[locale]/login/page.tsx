@@ -1,4 +1,4 @@
-import LoginForm from '../login/login'
+import LoginForm from '@repo/ui/components/login'
 import { fnGetCacheData } from '../../utils/strapi/get-data'
 import { clTransformerFactory } from '@repo/middleware'
 import { fnGetStatus } from '../../utils/strapi/get-status'
