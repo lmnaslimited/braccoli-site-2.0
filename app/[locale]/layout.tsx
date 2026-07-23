@@ -11,6 +11,7 @@ import { ThemeProvider } from "@repo/ui/components/theme-provider"
 import { clTransformerFactory } from "@repo/middleware"
 import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } from "@repo/middleware/types"
 import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
+import { AuthProvider } from "@repo/ui/components/auth/authContext"
 import { fnGetStatus } from "../utils/strapi/get-status"
 import Banner from "@repo/ui/components/banner"
 
@@ -112,6 +113,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
+      <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
           {/* navbar and banner will stickto the top */}
@@ -128,6 +130,7 @@ export default async function RootLayout({
           </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
+        </AuthProvider>
         {/* <ChatInit /> */}
       </body>
     </html>
