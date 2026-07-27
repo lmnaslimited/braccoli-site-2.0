@@ -1,5 +1,3 @@
-import { login } from '@repo/ui/api/auth/login';
+import { login } from "@repo/ui/api/auth/login";
 
-export async function POST(request: Request) {
- return login(request)
-}
+export const POST = login
