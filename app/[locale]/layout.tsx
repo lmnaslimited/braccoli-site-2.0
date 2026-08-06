@@ -14,6 +14,7 @@ import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
 import { AuthProvider } from "@repo/ui/components/auth/authContext"
 import { fnGetStatus } from "../utils/strapi/get-status"
 import Banner from "@repo/ui/components/banner"
+import { ApprovalProvider } from "@repo/ui/components/auth/approvalContext"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -116,6 +117,7 @@ export default async function RootLayout({
       <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
+        <ApprovalProvider>
           {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
           <Banner idBanner={LdBannerSettings}/>
@@ -127,6 +129,7 @@ export default async function RootLayout({
             </ClientLayout>
           </main>
           <Footer idFooter={LdFooterData} />
+          </ApprovalProvider>
           </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
