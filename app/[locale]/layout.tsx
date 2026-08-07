@@ -110,6 +110,17 @@ export default async function RootLayout({
     LdContext, 
     clTransformerFactory.createTransformer("bannerSetting")
   )
+
+  // Get the login and env details from strapi
+  const LdLoginSettings = await fnGetCacheData(
+    LdContext, 
+    clTransformerFactory.createTransformer("loginAndSignUp")
+  )
+
+  const LdEnvSettings = await fnGetCacheData(
+    LdContext, 
+    clTransformerFactory.createTransformer("env")
+  )
   
   return (
     <html lang="en" suppressHydrationWarning>
@@ -117,7 +128,7 @@ export default async function RootLayout({
       <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
-        <ApprovalProvider>
+        <ApprovalProvider loginSettings={LdLoginSettings} envSettings={LdEnvSettings}>
           {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
           <Banner idBanner={LdBannerSettings}/>
