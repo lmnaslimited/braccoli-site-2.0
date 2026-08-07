@@ -117,18 +117,13 @@ export default async function RootLayout({
     clTransformerFactory.createTransformer("loginAndSignUp")
   )
 
-  const LdEnvSettings = await fnGetCacheData(
-    LdContext, 
-    clTransformerFactory.createTransformer("env")
-  )
-  
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
       <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
-        <ApprovalProvider loginSettings={LdLoginSettings} envSettings={LdEnvSettings}>
+        <ApprovalProvider loginSettings={LdLoginSettings} iStatus={LStatus}>
           {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
           <Banner idBanner={LdBannerSettings}/>
