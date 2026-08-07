@@ -31,9 +31,9 @@ export async function POST(request: Request) {
       }
 
      const LdLeadResult = await fnLeadToOpportunity({
-        email: data.LTrimmedEmail,
-        name: data.LGeneratedName,
-        recaptchaToken: data.LRecaptchaToken,
+        email: data.email,
+        name: data.name,
+        recaptchaToken: data.recaptchaToken,
         companyName: data.companyName,
         companyDomain: data.companyDomain,
         companyWebsite: data.companyWebsite,
