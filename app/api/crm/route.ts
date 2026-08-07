@@ -6,10 +6,15 @@ import { Tcontext } from "@repo/middleware/types";
 import { fnLeadToOpportunity } from "@repo/ui/api/casestudy/create-lead-opportunity";
 
 export async function POST(request: Request) {
+    // API endpoint to create a CRM lead and opportunity.
+    // It validates the incoming request data, loads environment configuration,
+    // and forwards the lead details for CRM processing.
   try {
+    // Extract request payload containing lead information, locale, and application status.
     const body = await request.json();
     const { data, locale, LStatus } = body;
 
+    // Retrieve cached environment settings required for CRM integration.
     const Ldcontext: Tcontext = { locale: locale, status: LStatus };
     const LdEnvSettings = await fnGetCacheData(
         Ldcontext, 
@@ -30,7 +35,8 @@ export async function POST(request: Request) {
         );
       }
 
-     const LdLeadResult = await fnLeadToOpportunity({
+    // Create CRM lead and opportunity using the provided user and company details.
+    const LdLeadResult = await fnLeadToOpportunity({
         email: data.email,
         name: data.name,
         recaptchaToken: data.recaptchaToken,
@@ -47,10 +53,11 @@ export async function POST(request: Request) {
         source: data.source,
         campaign: data.campaign,
         itemName: data.itemName,
-        env: LdEnvSettings
+        env: LdEnvSettings,
+        doctype: data.doctype
     });
     
-    // You can handle response headers or set cookies here if needed
+    // Return the CRM processing result to the client.
     const response = NextResponse.json(LdLeadResult, { status: 200 });
 
     return response;
