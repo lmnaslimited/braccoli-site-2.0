@@ -4,6 +4,7 @@ import { fnGetCacheData } from "../../utils/strapi/get-data";
 import { clTransformerFactory } from "@repo/middleware";
 import { Tcontext } from "@repo/middleware/types";
 import { fnLeadToOpportunity } from "@repo/ui/api/casestudy/create-lead-opportunity";
+import { fnGetStatus } from "../../utils/strapi/get-status";
 
 export async function POST(request: Request) {
     // API endpoint to create a CRM lead and opportunity.
@@ -12,8 +13,8 @@ export async function POST(request: Request) {
   try {
     // Extract request payload containing lead information, locale, and application status.
     const body = await request.json();
-    const { data, locale, LStatus } = body;
-
+    const LStatus = await fnGetStatus()
+    const { data, locale } = body;
     // Retrieve cached environment settings required for CRM integration.
     const Ldcontext: Tcontext = { locale: locale, status: LStatus };
     const LdEnvSettings = await fnGetCacheData(
