@@ -14,6 +14,7 @@ import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
 import { AuthProvider } from "@repo/ui/components/auth/authContext"
 import { fnGetStatus } from "../utils/strapi/get-status"
 import Banner from "@repo/ui/components/banner"
+import { ApprovalProvider } from "@repo/ui/components/auth/approvalContext"
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -109,13 +110,20 @@ export default async function RootLayout({
     LdContext, 
     clTransformerFactory.createTransformer("bannerSetting")
   )
-  
+
+  // Get the login and env details from strapi
+  const LdLoginSettings = await fnGetCacheData(
+    LdContext, 
+    clTransformerFactory.createTransformer("loginAndSignUp")
+  )
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${GeistSans.className}`}>
       <AuthProvider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         <AppRecaptchaProvider>
+        <ApprovalProvider loginSettings={LdLoginSettings} iStatus={LStatus}>
           {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
           <Banner idBanner={LdBannerSettings}/>
@@ -127,6 +135,7 @@ export default async function RootLayout({
             </ClientLayout>
           </main>
           <Footer idFooter={LdFooterData} />
+          </ApprovalProvider>
           </AppRecaptchaProvider>
         </ThemeProvider>
         <NewsletterIdentifyListener />
