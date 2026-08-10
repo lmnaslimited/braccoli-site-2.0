@@ -40,7 +40,6 @@ export async function POST(request: Request) {
     const LdLeadResult = await fnLeadToOpportunity({
         email: data.email,
         name: data.name,
-        recaptchaToken: data.recaptchaToken,
         companyName: data.companyName,
         companyDomain: data.companyDomain,
         companyWebsite: data.companyWebsite,
@@ -49,7 +48,6 @@ export async function POST(request: Request) {
         createOpportunity: data.createOpportunity,
         sendEmail: data.sendEmail,
         emailTemplate: data.emailTemplate,
-        humanVerfied: data.humanVerfied,
         opportType: data.opportType,
         source: data.source,
         campaign: data.campaign,
