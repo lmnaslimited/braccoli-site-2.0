@@ -53,7 +53,8 @@ export async function POST(request: Request) {
         campaign: data.campaign,
         itemName: data.itemName,
         env: LdEnvSettings,
-        doctype: data.doctype
+        doctype: data.doctype,
+        anonymousId: data.anonymousId || null
     });
     
     // Return the CRM processing result to the client.
