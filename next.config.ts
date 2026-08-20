@@ -32,19 +32,19 @@ const nextConfig: NextConfig = {
       // Proxies PostHog static asset requests through the application.
       {
         source: "/:locale(en|de)?/ingest/static/:path*",
-        destination: "https://eu-assets.i.posthog.com/static/:path*",
+        destination: "https://us-assets.i.posthog.com/static/:path*",
       },
 
       // Proxies PostHog array ingestion requests.
       {
         source: "/:locale(en|de)?/ingest/array/:path*",
-        destination: "https://eu-assets.i.posthog.com/array/:path*",
+        destination: "https://us-assets.i.posthog.com/array/:path*",
       },
 
       // Proxies all remaining PostHog analytics requests.
       {
         source: "/:locale(en|de)?/ingest/:path*",
-        destination: "https://eu.i.posthog.com/:path*",
+        destination: "https://us.i.posthog.com/:path*",
       },
     ];
   },

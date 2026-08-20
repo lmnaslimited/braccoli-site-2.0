@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function AboutUsPage({ params }: { params: Promise<{ locale: string }> }) {
   const pageData = await getAboutUsPageData(await params)
   const jsonLd = pageData.aboutUs.metaData.schemaData
+  console.log("pageData", pageData)
 
   return (
     <>
