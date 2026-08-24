@@ -40,6 +40,7 @@ export async function POST(request: Request) {
     const LdLeadResult = await fnLeadToOpportunity({
         email: data.email,
         name: data.name,
+        phone: data.phone,
         companyName: data.companyName,
         companyDomain: data.companyDomain,
         companyWebsite: data.companyWebsite,
