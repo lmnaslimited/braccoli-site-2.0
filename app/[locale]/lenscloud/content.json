@@ -1,65 +1,35 @@
 {
   "en": {
     "metadata": {
-      "title": "LENS Cloud — Coming Soon",
-      "description": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access."
+      "title": "LensCloud — Now Live",
+      "description": "LensCloud is now live. Deploy and operate LENS in the cloud without managing servers, infrastructure, security, or upgrades. Get started with LensCloud."
     },
     "common": {
-      "countdownLabels": {
-        "days": "Days",
-        "hours": "Hours",
-        "minutes": "Minutes",
-        "seconds": "Seconds"
-      },
-      "launchedMessage": "We're live. Welcome to LENS Cloud.",
-      "talkToSales": "Talk to sales",
-      "launchingIn": "Launching in"
+      "talkToSales": "Talk to sales"
     },
     "control": {
-      "badge": "Coming soon",
+      "badge": "Now live",
       "titleBefore": "LensCloud",
-      "highlight": "is coming....",
-      "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
-      "joinWaitlist": "Secure your spot",
-      "exploreBtn": "Explore LensCloud"
-    },
-    "variantB": {
-      "badge": "Coming soon",
-      "title": "LensCloud is coming. New Journey is Going to start.",
-      "subtitle": "LensCloud is opening early access soon. Experience the AI-native cloud platform for enterprise software. Join the waitlist and be among the first to get access.",
-      "requestAccess": "Secure your spot",
+      "highlight": "is live.",
+      "subtitle": "Deploy and operate LENS in the cloud without managing servers, infrastructure, security, or upgrades.",
+      "joinWaitlist": "Get started",
       "exploreBtn": "Explore LensCloud"
     }
   },
   "de": {
     "metadata": {
-      "title": "LENS Cloud — Demnächst verfügbar",
-      "description": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an."
+      "title": "LensCloud — Jetzt live",
+      "description": "LensCloud ist jetzt live. Stellen Sie LENS in der Cloud bereit und betreiben Sie es, ohne Server, Infrastruktur, Sicherheit oder Upgrades selbst verwalten zu müssen. Starten Sie mit LensCloud."
     },
     "common": {
-      "countdownLabels": {
-        "days": "Tage",
-        "hours": "Stunden",
-        "minutes": "Minuten",
-        "seconds": "Sekunden"
-      },
-      "launchedMessage": "Wir sind live. Willkommen bei LENS Cloud.",
-      "talkToSales": "Vertrieb kontaktieren",
-      "launchingIn": "Start in"
+      "talkToSales": "Vertrieb kontaktieren"
     },
     "control": {
-      "badge": "Demnächst verfügbar",
+      "badge": "Jetzt live",
       "titleBefore": "LensCloud",
-      "highlight": "ist bald da",
-      "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
-      "joinWaitlist": "Platz sichern",
-      "exploreBtn": "LensCloud erkunden"
-    },
-    "variantB": {
-      "badge": "Frühzugang bald verfügbar",
-      "title": "Sichern Sie sich Ihren Platz für LENS Cloud",
-      "subtitle": "LensCloud startet bald mit dem Early Access. Erleben Sie als einer der Ersten die KI-native Cloud-Plattform für Unternehmenssoftware. Melden Sie sich jetzt für die Warteliste an.",
-      "requestAccess": "Frühzugang anfragen",
+      "highlight": "ist live.",
+      "subtitle": "Stellen Sie LENS in der Cloud bereit und betreiben Sie es, ohne Server, Infrastruktur, Sicherheit oder Upgrades selbst verwalten zu müssen.",
+      "joinWaitlist": "Jetzt starten",
       "exploreBtn": "LensCloud erkunden"
     }
   }
