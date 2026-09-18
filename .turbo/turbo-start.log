@@ -1,0 +1,2566 @@
+
+> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
+> next start
+
+   [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.62:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 327ms
+{
+  "home": {
+    "heroSection": {
+      "heading": {
+        "title": "The AI-Native Cloud Platform for",
+        "subtitle": "LensCloud is opening early access soon. Secure your place and be among the first to explore an AI-native platform built for modern enterprises.",
+        "highlight": " Enterprise Software",
+        "badge": "Launching Soon",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": null,
+      "buttons": [
+        {
+          "label": "Start For Free",
+          "href": "/pricing",
+          "icon": "ArrowRight",
+          "formMode": null,
+          "variant": "default",
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": "Explore LensCloud",
+          "href": "/lenscloud",
+          "icon": "Cloud",
+          "formMode": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "image": {
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/lenscloud-launch-home-hero.png",
+        "alternate": "lenscloud-launch-home-image",
+        "__typename": "ComponentCoreImage"
+      },
+      "__typename": "ComponentSharedHero"
+    },
+    "problemSection": [
+      {
+        "highlight": [
+          {
+            "label": "Is inefficiency slowing you down?",
+            "description": "Our solutions streamline your processes boosting productivity across your organization.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Are disjointed systems holding your teams back?",
+            "description": "We integrate your systems ensuring seamless communication and collaboration.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Do you need real-time insights to make smarter decisions?",
+            "description": "Our analytics tools provide actionable insights empowering you to make data-driven decisions.\n",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Looking for a trusted partner in your digital transformation?",
+            "description": "With decades of experience we're committed to your success every step of the way.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "See How We Can Help You",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Why Choose LMNAs?",
+          "subtitle": null,
+          "highlight": "We solve problems that matter.",
+          "badge": null,
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Tailored Solutions",
+            "description": "We customize our ERP and solutions to fit your specific industry needs.",
+            "icon": "Sliders",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "End-to-End Expertise",
+            "description": "From CRM and CPQ to Analytics and HRMS, we integrate and streamline your enterprise processes.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Proven Results",
+            "description": "Decades of experience helping businesses reduce inefficiencies, improve profitability, and scale effortlessly.\n",
+            "icon": "TrendingUp",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Trusted Advisors",
+            "description": "LMNAs consultants partner with you every step of the way to ensure success.",
+            "icon": "HeadphonesIcon",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "Why Businesses Trust LMNAs",
+          "subtitle": "We don't just provide solutions—we help you solve problems that matter.",
+          "highlight": null,
+          "badge": "Why Choose Us",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "LENS ERP Suite",
+            "description": "The heart of your enterprise operations—integrated, efficient, and built to grow with you.",
+            "icon": "Database",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "CRM & CPQ",
+            "description": "Drive revenue with better customer management and streamlined pricing.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Analytics Cloud",
+            "description": "Actionable insights, whenever and wherever you need them.",
+            "icon": "BarChart3",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "HRMS Cloud",
+            "description": "Empower your workforce with seamless employee management.",
+            "icon": "UserCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "AI-Powered Tools",
+            "description": "From chatbots to predictive analytics, we deliver cutting-edge technology to your business.",
+            "icon": "Bot",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Explore Our Solutions",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Powerful Solutions Tailored to Your Needs",
+          "subtitle": "From ERP to AI-powered analytics, we offer a comprehensive suite of solutions to drive your business forward.",
+          "highlight": null,
+          "badge": "Solutions",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Discovery Session",
+            "description": "Understand your pain points and goals.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Customized Roadmap",
+            "description": "Tailored solutions designed for your business.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Implementation",
+            "description": "Seamless integration of LMNAs tools into your workflows.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Continuous Support",
+            "description": "Ongoing training, optimization, and enhancements.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "What to Expect When You Work with LMNAs",
+          "subtitle": "Our proven process ensures a smooth transition and maximizes the value of your investment.",
+          "highlight": null,
+          "badge": "Customer Journey",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      }
+    ],
+    "faqSection": {
+      "title": "Got Questions? We've Got Answers!",
+      "list": [
+        {
+          "label": "Can LMNAs work with my existing systems?",
+          "description": "Yes, LMNAs is designed to integrate seamlessly with a wide range of existing systems. Our team of experts will work closely with you to ensure a smooth integration process, minimizing disruption to your current operations.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How fast can I see results?",
+          "description": "Many of our clients start seeing improvements within weeks of implementation. However, the full benefits of LMNAs solutions typically become apparent within 3-6 months as your team becomes more familiar with the system and you start leveraging its full capabilities.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "What industries do you specialize in?",
+          "description": "LMNAs has extensive experience across various industries, including manufacturing, retail, healthcare, and logistics. Our solutions are highly customizable to meet the specific needs of your industry and business.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How do you ensure data security?",
+          "description": "At LMNAs, we take data security very seriously. We employ industry-leading security measures, including end-to-end encryption, regular security audits, and compliance with international data protection standards to ensure your data is always safe and secure.\n",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "calloutSection": [
+      {
+        "header": {
+          "title": "Does This Sound Like Your Business?",
+          "subtitle": "If so you're in the right place.\n",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Start Solving Your Problems Today",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": "We understand the challenges you face:",
+        "subtitle": "We get it. And we're here to fix it—for good.\n",
+        "list": [
+          {
+            "label": "Your Sales Manager struggles with manual pricing and lost leads.",
+            "icon": "Sales Department",
+            "description": "85% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Procurement team misses deadlines due to poor coordination.",
+            "icon": "Procurement Department",
+            "description": "78% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Operations Manager is tired of firefighting inefficiencies.",
+            "icon": "Operations Department",
+            "description": "92% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Finance Manager can't trust the numbers during quarterly reviews.",
+            "icon": "Finance Department",
+            "description": "70% Severity",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Transformation begins here. ",
+          "subtitle": "Solve your enterprise problems—just one conversation away.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book a Free Consultation Now",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Talk to an Expert",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Ready to solve your enterprise challenges? ",
+          "subtitle": "Let’s start with a conversation and build a better future for your business—every day.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book Your Free Consultation",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Contact Us Now",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      }
+    ],
+    "socialSection": {
+      "heading": {
+        "title": "Testimonials",
+        "subtitle": "Trusted by Leading Businesses Across Industries",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      "highlight": [
+        {
+          "label": "Efficiency Increase",
+          "description": "40%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Cost Reduction",
+          "description": "25%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Revenue Growth",
+          "description": "30%",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Read Our Case Studies",
+          "href": "/solutions",
+          "icon": "ArrowRight",
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedHero"
+    },
+    "trendingNowSection": {
+      "header": {
+        "title": "Smart Moves. Real Impact.",
+        "subtitle": "Here’s What Modern Businesses Are Prioritizing—Are You?",
+        "__typename": "ComponentCoreHeader"
+      },
+      "title": "You’ve seen what we offer.",
+      "subtitle": "Now take a look at how businesses like yours are already making bold moves—with results. Get inspired by real stories, forward-thinking innovations, and what’s trending right now inside the LMNAs ecosystem.",
+      "buttons": [
+        {
+          "label": "View Trending Now",
+          "href": "/trending-now",
+          "description": null,
+          "icon": "ArrowRight",
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": null,
+          "href": null,
+          "description": null,
+          "icon": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "testimonials": [
+      {
+        "header": {
+          "title": "Industry Leadership",
+          "subtitle": "Finally LENS AI Revenue Platform helped us to Quote in a single day. The impact on our manufacturing lead times has been transformative for our European operations.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "sgbcz",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgb2.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Daniel Polasek",
+          "description": "CEO, SGB Czech Trafo",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": null,
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      },
+      {
+        "header": {
+          "title": null,
+          "subtitle": "LENS gave us a unified view across US and India operations—streamlining finance, HR, and sales.\nEverything just works. Now I can focus on growing the business, not fixing processes.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "bluemaple_india",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaplein.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Swamy Chellappan",
+          "description": "CEO, BluemapleIT",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": "MessageSquare",
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      }
+    ],
+    "successClients": [
+      {
+        "svg": "SGBCzexhTrafoLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbcz-greyscale.png",
+        "alternate": "sgbcz",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "BluemapleLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaple-greyscale.png",
+        "alternate": "bluemaple",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "MindfreshLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/mindfresh-greyscale.png",
+        "alternate": "mindfresh",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "SGBIndiaLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbindia-greyscale.png",
+        "alternate": "sgbin",
+        "__typename": "ComponentCoreImage"
+      }
+    ],
+    "metaData": {
+      "title": "LMNAs Cloud Solutions | Cloud ERP for End-to-End Business Transformation.",
+      "description": "Unlock seamless operations and actionable insights with LMNAs. Empowering businesses across industries to overcome challenges and achieve transformational growth.",
+      "keywords": [
+        {
+          "description": "business transformation",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "cloud ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "enterprise solutions",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "operations optimization",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "data insights",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "LMNAs",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "industry growth",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "manufacturing ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "education ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "distribution solutions",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "canonical": "https://lmnas.com/en",
+      "ogTitle": "Reimagine Your Business | LMNAs",
+      "ogDescription": "Empowering businesses to overcome challenges and unlock extraordinary growth with LMNAs.",
+      "ogUrl": "https://lmnas.com/en",
+      "ogType": "website",
+      "ogSiteName": "LMNAs Cloud Solutions",
+      "ogLocale": "en_IN",
+      "ogImages": [
+        {
+          "url": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "LMNAs Hero Banner",
+          "__typename": "ComponentCoreSeoIcons"
+        }
+      ],
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Reimagine Your Business | LMNAs",
+      "twitterDescription": "Achieve seamless operations and data-driven growth with LMNAs. Discover how industry leaders succeed.",
+      "twitterImage": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+      "twitterCreator": "@lmnaslimited",
+      "category": "Business",
+      "schemaData": [
+        {
+          "url": "https://lmnas.com",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "WebSite",
+          "@context": "https://schema.org",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lmnas.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "url": "https://lmnas.com",
+          "logo": "https://lmnas.com/icon.png",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "Organization",
+          "sameAs": [
+            "https://in.linkedin.com/company/lmnaslimited",
+            "https://www.youtube.com/@lmnascloudsolutions.4549",
+            "https://twitter.com/lmnaslimited"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "postalCode": "600056",
+            "addressRegion": "Tamil Nadu",
+            "streetAddress": "#B206, Radiance Royal, Poonthamallee",
+            "addressCountry": "IN",
+            "addressLocality": "Chennai"
+          },
+          "@context": "https://schema.org",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919884044470",
+            "areaServed": [
+              "IN",
+              "GB",
+              "US",
+              "DE",
+              "CZ"
+            ],
+            "contactType": "sales",
+            "availableLanguage": [
+              "en",
+              "German"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "item": "https://lmnas.com",
+              "name": "Home",
+              "@type": "ListItem",
+              "position": 1
+            },
+            {
+              "item": "https://lmnas.com/about",
+              "name": "About Us",
+              "@type": "ListItem",
+              "position": 2
+            },
+            {
+              "item": "https://lmnas.com/career",
+              "name": "Careers",
+              "@type": "ListItem",
+              "position": 3
+            },
+            {
+              "item": "https://lmnas.com/contact",
+              "name": "Contact",
+              "@type": "ListItem",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@context": "https://schema.org",
+          "provider": {
+            "name": "LMNAs Cloud Solutions",
+            "@type": "Organization"
+          },
+          "serviceType": "Enterprise Cloud ERP, CRM, and Analytics",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://lmnas.com/contact"
+          }
+        }
+      ],
+      "__typename": "ComponentSharedPageMetadata"
+    },
+    "__typename": "Home"
+  }
+}
+{
+  "home": {
+    "heroSection": {
+      "heading": {
+        "title": "The AI-Native Cloud Platform for",
+        "subtitle": "LensCloud is opening early access soon. Secure your place and be among the first to explore an AI-native platform built for modern enterprises.",
+        "highlight": " Enterprise Software",
+        "badge": "Launching Soon",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": null,
+      "buttons": [
+        {
+          "label": "Start For Free",
+          "href": "/pricing",
+          "icon": "ArrowRight",
+          "formMode": null,
+          "variant": "default",
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": "Explore LensCloud",
+          "href": "/lenscloud",
+          "icon": "Cloud",
+          "formMode": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "image": {
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/lenscloud-launch-home-hero.png",
+        "alternate": "lenscloud-launch-home-image",
+        "__typename": "ComponentCoreImage"
+      },
+      "__typename": "ComponentSharedHero"
+    },
+    "problemSection": [
+      {
+        "highlight": [
+          {
+            "label": "Is inefficiency slowing you down?",
+            "description": "Our solutions streamline your processes boosting productivity across your organization.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Are disjointed systems holding your teams back?",
+            "description": "We integrate your systems ensuring seamless communication and collaboration.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Do you need real-time insights to make smarter decisions?",
+            "description": "Our analytics tools provide actionable insights empowering you to make data-driven decisions.\n",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Looking for a trusted partner in your digital transformation?",
+            "description": "With decades of experience we're committed to your success every step of the way.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "See How We Can Help You",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Why Choose LMNAs?",
+          "subtitle": null,
+          "highlight": "We solve problems that matter.",
+          "badge": null,
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Tailored Solutions",
+            "description": "We customize our ERP and solutions to fit your specific industry needs.",
+            "icon": "Sliders",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "End-to-End Expertise",
+            "description": "From CRM and CPQ to Analytics and HRMS, we integrate and streamline your enterprise processes.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Proven Results",
+            "description": "Decades of experience helping businesses reduce inefficiencies, improve profitability, and scale effortlessly.\n",
+            "icon": "TrendingUp",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Trusted Advisors",
+            "description": "LMNAs consultants partner with you every step of the way to ensure success.",
+            "icon": "HeadphonesIcon",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "Why Businesses Trust LMNAs",
+          "subtitle": "We don't just provide solutions—we help you solve problems that matter.",
+          "highlight": null,
+          "badge": "Why Choose Us",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "LENS ERP Suite",
+            "description": "The heart of your enterprise operations—integrated, efficient, and built to grow with you.",
+            "icon": "Database",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "CRM & CPQ",
+            "description": "Drive revenue with better customer management and streamlined pricing.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Analytics Cloud",
+            "description": "Actionable insights, whenever and wherever you need them.",
+            "icon": "BarChart3",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "HRMS Cloud",
+            "description": "Empower your workforce with seamless employee management.",
+            "icon": "UserCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "AI-Powered Tools",
+            "description": "From chatbots to predictive analytics, we deliver cutting-edge technology to your business.",
+            "icon": "Bot",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Explore Our Solutions",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Powerful Solutions Tailored to Your Needs",
+          "subtitle": "From ERP to AI-powered analytics, we offer a comprehensive suite of solutions to drive your business forward.",
+          "highlight": null,
+          "badge": "Solutions",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Discovery Session",
+            "description": "Understand your pain points and goals.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Customized Roadmap",
+            "description": "Tailored solutions designed for your business.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Implementation",
+            "description": "Seamless integration of LMNAs tools into your workflows.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Continuous Support",
+            "description": "Ongoing training, optimization, and enhancements.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "What to Expect When You Work with LMNAs",
+          "subtitle": "Our proven process ensures a smooth transition and maximizes the value of your investment.",
+          "highlight": null,
+          "badge": "Customer Journey",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      }
+    ],
+    "faqSection": {
+      "title": "Got Questions? We've Got Answers!",
+      "list": [
+        {
+          "label": "Can LMNAs work with my existing systems?",
+          "description": "Yes, LMNAs is designed to integrate seamlessly with a wide range of existing systems. Our team of experts will work closely with you to ensure a smooth integration process, minimizing disruption to your current operations.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How fast can I see results?",
+          "description": "Many of our clients start seeing improvements within weeks of implementation. However, the full benefits of LMNAs solutions typically become apparent within 3-6 months as your team becomes more familiar with the system and you start leveraging its full capabilities.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "What industries do you specialize in?",
+          "description": "LMNAs has extensive experience across various industries, including manufacturing, retail, healthcare, and logistics. Our solutions are highly customizable to meet the specific needs of your industry and business.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How do you ensure data security?",
+          "description": "At LMNAs, we take data security very seriously. We employ industry-leading security measures, including end-to-end encryption, regular security audits, and compliance with international data protection standards to ensure your data is always safe and secure.\n",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "calloutSection": [
+      {
+        "header": {
+          "title": "Does This Sound Like Your Business?",
+          "subtitle": "If so you're in the right place.\n",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Start Solving Your Problems Today",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": "We understand the challenges you face:",
+        "subtitle": "We get it. And we're here to fix it—for good.\n",
+        "list": [
+          {
+            "label": "Your Sales Manager struggles with manual pricing and lost leads.",
+            "icon": "Sales Department",
+            "description": "85% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Procurement team misses deadlines due to poor coordination.",
+            "icon": "Procurement Department",
+            "description": "78% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Operations Manager is tired of firefighting inefficiencies.",
+            "icon": "Operations Department",
+            "description": "92% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Finance Manager can't trust the numbers during quarterly reviews.",
+            "icon": "Finance Department",
+            "description": "70% Severity",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Transformation begins here. ",
+          "subtitle": "Solve your enterprise problems—just one conversation away.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book a Free Consultation Now",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Talk to an Expert",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Ready to solve your enterprise challenges? ",
+          "subtitle": "Let’s start with a conversation and build a better future for your business—every day.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book Your Free Consultation",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Contact Us Now",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      }
+    ],
+    "socialSection": {
+      "heading": {
+        "title": "Testimonials",
+        "subtitle": "Trusted by Leading Businesses Across Industries",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      "highlight": [
+        {
+          "label": "Efficiency Increase",
+          "description": "40%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Cost Reduction",
+          "description": "25%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Revenue Growth",
+          "description": "30%",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Read Our Case Studies",
+          "href": "/solutions",
+          "icon": "ArrowRight",
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedHero"
+    },
+    "trendingNowSection": {
+      "header": {
+        "title": "Smart Moves. Real Impact.",
+        "subtitle": "Here’s What Modern Businesses Are Prioritizing—Are You?",
+        "__typename": "ComponentCoreHeader"
+      },
+      "title": "You’ve seen what we offer.",
+      "subtitle": "Now take a look at how businesses like yours are already making bold moves—with results. Get inspired by real stories, forward-thinking innovations, and what’s trending right now inside the LMNAs ecosystem.",
+      "buttons": [
+        {
+          "label": "View Trending Now",
+          "href": "/trending-now",
+          "description": null,
+          "icon": "ArrowRight",
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": null,
+          "href": null,
+          "description": null,
+          "icon": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "testimonials": [
+      {
+        "header": {
+          "title": "Industry Leadership",
+          "subtitle": "Finally LENS AI Revenue Platform helped us to Quote in a single day. The impact on our manufacturing lead times has been transformative for our European operations.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "sgbcz",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgb2.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Daniel Polasek",
+          "description": "CEO, SGB Czech Trafo",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": null,
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      },
+      {
+        "header": {
+          "title": null,
+          "subtitle": "LENS gave us a unified view across US and India operations—streamlining finance, HR, and sales.\nEverything just works. Now I can focus on growing the business, not fixing processes.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "bluemaple_india",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaplein.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Swamy Chellappan",
+          "description": "CEO, BluemapleIT",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": "MessageSquare",
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      }
+    ],
+    "successClients": [
+      {
+        "svg": "SGBCzexhTrafoLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbcz-greyscale.png",
+        "alternate": "sgbcz",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "BluemapleLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaple-greyscale.png",
+        "alternate": "bluemaple",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "MindfreshLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/mindfresh-greyscale.png",
+        "alternate": "mindfresh",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "SGBIndiaLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbindia-greyscale.png",
+        "alternate": "sgbin",
+        "__typename": "ComponentCoreImage"
+      }
+    ],
+    "metaData": {
+      "title": "LMNAs Cloud Solutions | Cloud ERP for End-to-End Business Transformation.",
+      "description": "Unlock seamless operations and actionable insights with LMNAs. Empowering businesses across industries to overcome challenges and achieve transformational growth.",
+      "keywords": [
+        {
+          "description": "business transformation",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "cloud ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "enterprise solutions",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "operations optimization",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "data insights",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "LMNAs",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "industry growth",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "manufacturing ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "education ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "distribution solutions",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "canonical": "https://lmnas.com/en",
+      "ogTitle": "Reimagine Your Business | LMNAs",
+      "ogDescription": "Empowering businesses to overcome challenges and unlock extraordinary growth with LMNAs.",
+      "ogUrl": "https://lmnas.com/en",
+      "ogType": "website",
+      "ogSiteName": "LMNAs Cloud Solutions",
+      "ogLocale": "en_IN",
+      "ogImages": [
+        {
+          "url": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "LMNAs Hero Banner",
+          "__typename": "ComponentCoreSeoIcons"
+        }
+      ],
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Reimagine Your Business | LMNAs",
+      "twitterDescription": "Achieve seamless operations and data-driven growth with LMNAs. Discover how industry leaders succeed.",
+      "twitterImage": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+      "twitterCreator": "@lmnaslimited",
+      "category": "Business",
+      "schemaData": [
+        {
+          "url": "https://lmnas.com",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "WebSite",
+          "@context": "https://schema.org",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lmnas.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "url": "https://lmnas.com",
+          "logo": "https://lmnas.com/icon.png",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "Organization",
+          "sameAs": [
+            "https://in.linkedin.com/company/lmnaslimited",
+            "https://www.youtube.com/@lmnascloudsolutions.4549",
+            "https://twitter.com/lmnaslimited"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "postalCode": "600056",
+            "addressRegion": "Tamil Nadu",
+            "streetAddress": "#B206, Radiance Royal, Poonthamallee",
+            "addressCountry": "IN",
+            "addressLocality": "Chennai"
+          },
+          "@context": "https://schema.org",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919884044470",
+            "areaServed": [
+              "IN",
+              "GB",
+              "US",
+              "DE",
+              "CZ"
+            ],
+            "contactType": "sales",
+            "availableLanguage": [
+              "en",
+              "German"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "item": "https://lmnas.com",
+              "name": "Home",
+              "@type": "ListItem",
+              "position": 1
+            },
+            {
+              "item": "https://lmnas.com/about",
+              "name": "About Us",
+              "@type": "ListItem",
+              "position": 2
+            },
+            {
+              "item": "https://lmnas.com/career",
+              "name": "Careers",
+              "@type": "ListItem",
+              "position": 3
+            },
+            {
+              "item": "https://lmnas.com/contact",
+              "name": "Contact",
+              "@type": "ListItem",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@context": "https://schema.org",
+          "provider": {
+            "name": "LMNAs Cloud Solutions",
+            "@type": "Organization"
+          },
+          "serviceType": "Enterprise Cloud ERP, CRM, and Analytics",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://lmnas.com/contact"
+          }
+        }
+      ],
+      "__typename": "ComponentSharedPageMetadata"
+    },
+    "__typename": "Home"
+  }
+}
+{
+  "home": {
+    "heroSection": {
+      "heading": {
+        "title": "The AI-Native Cloud Platform for",
+        "subtitle": "LensCloud is opening early access soon. Secure your place and be among the first to explore an AI-native platform built for modern enterprises.",
+        "highlight": " Enterprise Software",
+        "badge": "Launching Soon",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": null,
+      "buttons": [
+        {
+          "label": "Start For Free",
+          "href": "/pricing",
+          "icon": "ArrowRight",
+          "formMode": null,
+          "variant": "default",
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": "Explore LensCloud",
+          "href": "/lenscloud",
+          "icon": "Cloud",
+          "formMode": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "image": {
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/lenscloud-launch-home-hero.png",
+        "alternate": "lenscloud-launch-home-image",
+        "__typename": "ComponentCoreImage"
+      },
+      "__typename": "ComponentSharedHero"
+    },
+    "problemSection": [
+      {
+        "highlight": [
+          {
+            "label": "Is inefficiency slowing you down?",
+            "description": "Our solutions streamline your processes boosting productivity across your organization.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Are disjointed systems holding your teams back?",
+            "description": "We integrate your systems ensuring seamless communication and collaboration.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Do you need real-time insights to make smarter decisions?",
+            "description": "Our analytics tools provide actionable insights empowering you to make data-driven decisions.\n",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Looking for a trusted partner in your digital transformation?",
+            "description": "With decades of experience we're committed to your success every step of the way.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "See How We Can Help You",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Why Choose LMNAs?",
+          "subtitle": null,
+          "highlight": "We solve problems that matter.",
+          "badge": null,
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Tailored Solutions",
+            "description": "We customize our ERP and solutions to fit your specific industry needs.",
+            "icon": "Sliders",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "End-to-End Expertise",
+            "description": "From CRM and CPQ to Analytics and HRMS, we integrate and streamline your enterprise processes.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Proven Results",
+            "description": "Decades of experience helping businesses reduce inefficiencies, improve profitability, and scale effortlessly.\n",
+            "icon": "TrendingUp",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Trusted Advisors",
+            "description": "LMNAs consultants partner with you every step of the way to ensure success.",
+            "icon": "HeadphonesIcon",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "Why Businesses Trust LMNAs",
+          "subtitle": "We don't just provide solutions—we help you solve problems that matter.",
+          "highlight": null,
+          "badge": "Why Choose Us",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "LENS ERP Suite",
+            "description": "The heart of your enterprise operations—integrated, efficient, and built to grow with you.",
+            "icon": "Database",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "CRM & CPQ",
+            "description": "Drive revenue with better customer management and streamlined pricing.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Analytics Cloud",
+            "description": "Actionable insights, whenever and wherever you need them.",
+            "icon": "BarChart3",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "HRMS Cloud",
+            "description": "Empower your workforce with seamless employee management.",
+            "icon": "UserCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "AI-Powered Tools",
+            "description": "From chatbots to predictive analytics, we deliver cutting-edge technology to your business.",
+            "icon": "Bot",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Explore Our Solutions",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Powerful Solutions Tailored to Your Needs",
+          "subtitle": "From ERP to AI-powered analytics, we offer a comprehensive suite of solutions to drive your business forward.",
+          "highlight": null,
+          "badge": "Solutions",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Discovery Session",
+            "description": "Understand your pain points and goals.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Customized Roadmap",
+            "description": "Tailored solutions designed for your business.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Implementation",
+            "description": "Seamless integration of LMNAs tools into your workflows.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Continuous Support",
+            "description": "Ongoing training, optimization, and enhancements.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "What to Expect When You Work with LMNAs",
+          "subtitle": "Our proven process ensures a smooth transition and maximizes the value of your investment.",
+          "highlight": null,
+          "badge": "Customer Journey",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      }
+    ],
+    "faqSection": {
+      "title": "Got Questions? We've Got Answers!",
+      "list": [
+        {
+          "label": "Can LMNAs work with my existing systems?",
+          "description": "Yes, LMNAs is designed to integrate seamlessly with a wide range of existing systems. Our team of experts will work closely with you to ensure a smooth integration process, minimizing disruption to your current operations.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How fast can I see results?",
+          "description": "Many of our clients start seeing improvements within weeks of implementation. However, the full benefits of LMNAs solutions typically become apparent within 3-6 months as your team becomes more familiar with the system and you start leveraging its full capabilities.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "What industries do you specialize in?",
+          "description": "LMNAs has extensive experience across various industries, including manufacturing, retail, healthcare, and logistics. Our solutions are highly customizable to meet the specific needs of your industry and business.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How do you ensure data security?",
+          "description": "At LMNAs, we take data security very seriously. We employ industry-leading security measures, including end-to-end encryption, regular security audits, and compliance with international data protection standards to ensure your data is always safe and secure.\n",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "calloutSection": [
+      {
+        "header": {
+          "title": "Does This Sound Like Your Business?",
+          "subtitle": "If so you're in the right place.\n",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Start Solving Your Problems Today",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": "We understand the challenges you face:",
+        "subtitle": "We get it. And we're here to fix it—for good.\n",
+        "list": [
+          {
+            "label": "Your Sales Manager struggles with manual pricing and lost leads.",
+            "icon": "Sales Department",
+            "description": "85% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Procurement team misses deadlines due to poor coordination.",
+            "icon": "Procurement Department",
+            "description": "78% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Operations Manager is tired of firefighting inefficiencies.",
+            "icon": "Operations Department",
+            "description": "92% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Finance Manager can't trust the numbers during quarterly reviews.",
+            "icon": "Finance Department",
+            "description": "70% Severity",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Transformation begins here. ",
+          "subtitle": "Solve your enterprise problems—just one conversation away.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book a Free Consultation Now",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Talk to an Expert",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Ready to solve your enterprise challenges? ",
+          "subtitle": "Let’s start with a conversation and build a better future for your business—every day.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book Your Free Consultation",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Contact Us Now",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      }
+    ],
+    "socialSection": {
+      "heading": {
+        "title": "Testimonials",
+        "subtitle": "Trusted by Leading Businesses Across Industries",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      "highlight": [
+        {
+          "label": "Efficiency Increase",
+          "description": "40%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Cost Reduction",
+          "description": "25%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Revenue Growth",
+          "description": "30%",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Read Our Case Studies",
+          "href": "/solutions",
+          "icon": "ArrowRight",
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedHero"
+    },
+    "trendingNowSection": {
+      "header": {
+        "title": "Smart Moves. Real Impact.",
+        "subtitle": "Here’s What Modern Businesses Are Prioritizing—Are You?",
+        "__typename": "ComponentCoreHeader"
+      },
+      "title": "You’ve seen what we offer.",
+      "subtitle": "Now take a look at how businesses like yours are already making bold moves—with results. Get inspired by real stories, forward-thinking innovations, and what’s trending right now inside the LMNAs ecosystem.",
+      "buttons": [
+        {
+          "label": "View Trending Now",
+          "href": "/trending-now",
+          "description": null,
+          "icon": "ArrowRight",
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": null,
+          "href": null,
+          "description": null,
+          "icon": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "testimonials": [
+      {
+        "header": {
+          "title": "Industry Leadership",
+          "subtitle": "Finally LENS AI Revenue Platform helped us to Quote in a single day. The impact on our manufacturing lead times has been transformative for our European operations.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "sgbcz",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgb2.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Daniel Polasek",
+          "description": "CEO, SGB Czech Trafo",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": null,
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      },
+      {
+        "header": {
+          "title": null,
+          "subtitle": "LENS gave us a unified view across US and India operations—streamlining finance, HR, and sales.\nEverything just works. Now I can focus on growing the business, not fixing processes.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "bluemaple_india",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaplein.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Swamy Chellappan",
+          "description": "CEO, BluemapleIT",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": "MessageSquare",
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      }
+    ],
+    "successClients": [
+      {
+        "svg": "SGBCzexhTrafoLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbcz-greyscale.png",
+        "alternate": "sgbcz",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "BluemapleLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaple-greyscale.png",
+        "alternate": "bluemaple",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "MindfreshLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/mindfresh-greyscale.png",
+        "alternate": "mindfresh",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "SGBIndiaLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbindia-greyscale.png",
+        "alternate": "sgbin",
+        "__typename": "ComponentCoreImage"
+      }
+    ],
+    "metaData": {
+      "title": "LMNAs Cloud Solutions | Cloud ERP for End-to-End Business Transformation.",
+      "description": "Unlock seamless operations and actionable insights with LMNAs. Empowering businesses across industries to overcome challenges and achieve transformational growth.",
+      "keywords": [
+        {
+          "description": "business transformation",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "cloud ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "enterprise solutions",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "operations optimization",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "data insights",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "LMNAs",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "industry growth",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "manufacturing ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "education ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "distribution solutions",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "canonical": "https://lmnas.com/en",
+      "ogTitle": "Reimagine Your Business | LMNAs",
+      "ogDescription": "Empowering businesses to overcome challenges and unlock extraordinary growth with LMNAs.",
+      "ogUrl": "https://lmnas.com/en",
+      "ogType": "website",
+      "ogSiteName": "LMNAs Cloud Solutions",
+      "ogLocale": "en_IN",
+      "ogImages": [
+        {
+          "url": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "LMNAs Hero Banner",
+          "__typename": "ComponentCoreSeoIcons"
+        }
+      ],
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Reimagine Your Business | LMNAs",
+      "twitterDescription": "Achieve seamless operations and data-driven growth with LMNAs. Discover how industry leaders succeed.",
+      "twitterImage": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+      "twitterCreator": "@lmnaslimited",
+      "category": "Business",
+      "schemaData": [
+        {
+          "url": "https://lmnas.com",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "WebSite",
+          "@context": "https://schema.org",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lmnas.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "url": "https://lmnas.com",
+          "logo": "https://lmnas.com/icon.png",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "Organization",
+          "sameAs": [
+            "https://in.linkedin.com/company/lmnaslimited",
+            "https://www.youtube.com/@lmnascloudsolutions.4549",
+            "https://twitter.com/lmnaslimited"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "postalCode": "600056",
+            "addressRegion": "Tamil Nadu",
+            "streetAddress": "#B206, Radiance Royal, Poonthamallee",
+            "addressCountry": "IN",
+            "addressLocality": "Chennai"
+          },
+          "@context": "https://schema.org",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919884044470",
+            "areaServed": [
+              "IN",
+              "GB",
+              "US",
+              "DE",
+              "CZ"
+            ],
+            "contactType": "sales",
+            "availableLanguage": [
+              "en",
+              "German"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "item": "https://lmnas.com",
+              "name": "Home",
+              "@type": "ListItem",
+              "position": 1
+            },
+            {
+              "item": "https://lmnas.com/about",
+              "name": "About Us",
+              "@type": "ListItem",
+              "position": 2
+            },
+            {
+              "item": "https://lmnas.com/career",
+              "name": "Careers",
+              "@type": "ListItem",
+              "position": 3
+            },
+            {
+              "item": "https://lmnas.com/contact",
+              "name": "Contact",
+              "@type": "ListItem",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@context": "https://schema.org",
+          "provider": {
+            "name": "LMNAs Cloud Solutions",
+            "@type": "Organization"
+          },
+          "serviceType": "Enterprise Cloud ERP, CRM, and Analytics",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://lmnas.com/contact"
+          }
+        }
+      ],
+      "__typename": "ComponentSharedPageMetadata"
+    },
+    "__typename": "Home"
+  }
+}
+{
+  "home": {
+    "heroSection": {
+      "heading": {
+        "title": "The AI-Native Cloud Platform for",
+        "subtitle": "LensCloud is opening early access soon. Secure your place and be among the first to explore an AI-native platform built for modern enterprises.",
+        "highlight": " Enterprise Software",
+        "badge": "Launching Soon",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": null,
+      "buttons": [
+        {
+          "label": "Start For Free",
+          "href": "/pricing",
+          "icon": "ArrowRight",
+          "formMode": null,
+          "variant": "default",
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": "Explore LensCloud",
+          "href": "/lenscloud",
+          "icon": "Cloud",
+          "formMode": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "image": {
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/lenscloud-launch-home-hero.png",
+        "alternate": "lenscloud-launch-home-image",
+        "__typename": "ComponentCoreImage"
+      },
+      "__typename": "ComponentSharedHero"
+    },
+    "problemSection": [
+      {
+        "highlight": [
+          {
+            "label": "Is inefficiency slowing you down?",
+            "description": "Our solutions streamline your processes boosting productivity across your organization.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Are disjointed systems holding your teams back?",
+            "description": "We integrate your systems ensuring seamless communication and collaboration.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Do you need real-time insights to make smarter decisions?",
+            "description": "Our analytics tools provide actionable insights empowering you to make data-driven decisions.\n",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Looking for a trusted partner in your digital transformation?",
+            "description": "With decades of experience we're committed to your success every step of the way.",
+            "icon": null,
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "See How We Can Help You",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Why Choose LMNAs?",
+          "subtitle": null,
+          "highlight": "We solve problems that matter.",
+          "badge": null,
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Tailored Solutions",
+            "description": "We customize our ERP and solutions to fit your specific industry needs.",
+            "icon": "Sliders",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "End-to-End Expertise",
+            "description": "From CRM and CPQ to Analytics and HRMS, we integrate and streamline your enterprise processes.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Proven Results",
+            "description": "Decades of experience helping businesses reduce inefficiencies, improve profitability, and scale effortlessly.\n",
+            "icon": "TrendingUp",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Trusted Advisors",
+            "description": "LMNAs consultants partner with you every step of the way to ensure success.",
+            "icon": "HeadphonesIcon",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "Why Businesses Trust LMNAs",
+          "subtitle": "We don't just provide solutions—we help you solve problems that matter.",
+          "highlight": null,
+          "badge": "Why Choose Us",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "LENS ERP Suite",
+            "description": "The heart of your enterprise operations—integrated, efficient, and built to grow with you.",
+            "icon": "Database",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "CRM & CPQ",
+            "description": "Drive revenue with better customer management and streamlined pricing.\n",
+            "icon": "Users",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Analytics Cloud",
+            "description": "Actionable insights, whenever and wherever you need them.",
+            "icon": "BarChart3",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "HRMS Cloud",
+            "description": "Empower your workforce with seamless employee management.",
+            "icon": "UserCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "AI-Powered Tools",
+            "description": "From chatbots to predictive analytics, we deliver cutting-edge technology to your business.",
+            "icon": "Bot",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [
+          {
+            "label": "Explore Our Solutions",
+            "href": "/solutions",
+            "icon": "ArrowRight",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "heading": {
+          "title": "Powerful Solutions Tailored to Your Needs",
+          "subtitle": "From ERP to AI-powered analytics, we offer a comprehensive suite of solutions to drive your business forward.",
+          "highlight": null,
+          "badge": "Solutions",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      },
+      {
+        "highlight": [
+          {
+            "label": "Discovery Session",
+            "description": "Understand your pain points and goals.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Customized Roadmap",
+            "description": "Tailored solutions designed for your business.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Implementation",
+            "description": "Seamless integration of LMNAs tools into your workflows.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Continuous Support",
+            "description": "Ongoing training, optimization, and enhancements.",
+            "icon": "CheckCircle",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "buttons": [],
+        "heading": {
+          "title": "What to Expect When You Work with LMNAs",
+          "subtitle": "Our proven process ensures a smooth transition and maximizes the value of your investment.",
+          "highlight": null,
+          "badge": "Customer Journey",
+          "__typename": "ComponentCoreHeader"
+        },
+        "__typename": "ComponentSharedHero"
+      }
+    ],
+    "faqSection": {
+      "title": "Got Questions? We've Got Answers!",
+      "list": [
+        {
+          "label": "Can LMNAs work with my existing systems?",
+          "description": "Yes, LMNAs is designed to integrate seamlessly with a wide range of existing systems. Our team of experts will work closely with you to ensure a smooth integration process, minimizing disruption to your current operations.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How fast can I see results?",
+          "description": "Many of our clients start seeing improvements within weeks of implementation. However, the full benefits of LMNAs solutions typically become apparent within 3-6 months as your team becomes more familiar with the system and you start leveraging its full capabilities.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "What industries do you specialize in?",
+          "description": "LMNAs has extensive experience across various industries, including manufacturing, retail, healthcare, and logistics. Our solutions are highly customizable to meet the specific needs of your industry and business.\n",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "How do you ensure data security?",
+          "description": "At LMNAs, we take data security very seriously. We employ industry-leading security measures, including end-to-end encryption, regular security audits, and compliance with international data protection standards to ensure your data is always safe and secure.\n",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "calloutSection": [
+      {
+        "header": {
+          "title": "Does This Sound Like Your Business?",
+          "subtitle": "If so you're in the right place.\n",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Start Solving Your Problems Today",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": "We understand the challenges you face:",
+        "subtitle": "We get it. And we're here to fix it—for good.\n",
+        "list": [
+          {
+            "label": "Your Sales Manager struggles with manual pricing and lost leads.",
+            "icon": "Sales Department",
+            "description": "85% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Procurement team misses deadlines due to poor coordination.",
+            "icon": "Procurement Department",
+            "description": "78% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Operations Manager is tired of firefighting inefficiencies.",
+            "icon": "Operations Department",
+            "description": "92% Severity",
+            "__typename": "ComponentCoreHighlight"
+          },
+          {
+            "label": "Your Finance Manager can't trust the numbers during quarterly reviews.",
+            "icon": "Finance Department",
+            "description": "70% Severity",
+            "__typename": "ComponentCoreHighlight"
+          }
+        ],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Transformation begins here. ",
+          "subtitle": "Solve your enterprise problems—just one conversation away.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book a Free Consultation Now",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Talk to an Expert",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      },
+      {
+        "header": {
+          "title": "Ready to solve your enterprise challenges? ",
+          "subtitle": "Let’s start with a conversation and build a better future for your business—every day.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "buttons": [
+          {
+            "label": "Book Your Free Consultation",
+            "formMode": "booking",
+            "variant": "default",
+            "icon": "Calendar",
+            "__typename": "ComponentCoreButton"
+          },
+          {
+            "label": "Contact Us Now",
+            "formMode": "contact",
+            "variant": "outline",
+            "icon": "MessageSquare",
+            "__typename": "ComponentCoreButton"
+          }
+        ],
+        "title": null,
+        "subtitle": null,
+        "list": [],
+        "__typename": "ComponentSharedCallout"
+      }
+    ],
+    "socialSection": {
+      "heading": {
+        "title": "Testimonials",
+        "subtitle": "Trusted by Leading Businesses Across Industries",
+        "__typename": "ComponentCoreHeader"
+      },
+      "description": "Our clients have experienced remarkable transformations. Here are some key metrics:",
+      "highlight": [
+        {
+          "label": "Efficiency Increase",
+          "description": "40%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Cost Reduction",
+          "description": "25%",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "label": "Revenue Growth",
+          "description": "30%",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "buttons": [
+        {
+          "label": "Read Our Case Studies",
+          "href": "/solutions",
+          "icon": "ArrowRight",
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedHero"
+    },
+    "trendingNowSection": {
+      "header": {
+        "title": "Smart Moves. Real Impact.",
+        "subtitle": "Here’s What Modern Businesses Are Prioritizing—Are You?",
+        "__typename": "ComponentCoreHeader"
+      },
+      "title": "You’ve seen what we offer.",
+      "subtitle": "Now take a look at how businesses like yours are already making bold moves—with results. Get inspired by real stories, forward-thinking innovations, and what’s trending right now inside the LMNAs ecosystem.",
+      "buttons": [
+        {
+          "label": "View Trending Now",
+          "href": "/trending-now",
+          "description": null,
+          "icon": "ArrowRight",
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        },
+        {
+          "label": null,
+          "href": null,
+          "description": null,
+          "icon": null,
+          "variant": null,
+          "__typename": "ComponentCoreButton"
+        }
+      ],
+      "__typename": "ComponentSharedCallout"
+    },
+    "testimonials": [
+      {
+        "header": {
+          "title": "Industry Leadership",
+          "subtitle": "Finally LENS AI Revenue Platform helped us to Quote in a single day. The impact on our manufacturing lead times has been transformative for our European operations.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "sgbcz",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgb2.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Daniel Polasek",
+          "description": "CEO, SGB Czech Trafo",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": null,
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      },
+      {
+        "header": {
+          "title": null,
+          "subtitle": "LENS gave us a unified view across US and India operations—streamlining finance, HR, and sales.\nEverything just works. Now I can focus on growing the business, not fixing processes.",
+          "__typename": "ComponentCoreHeader"
+        },
+        "avatar": {
+          "svg": null,
+          "alternate": "bluemaple_india",
+          "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaplein.png",
+          "__typename": "ComponentCoreImage"
+        },
+        "avatarDetails": {
+          "icon": null,
+          "label": "Swamy Chellappan",
+          "description": "CEO, BluemapleIT",
+          "__typename": "ComponentCoreHighlight"
+        },
+        "image": {
+          "svg": "MessageSquare",
+          "alternate": "MessageSquare",
+          "source": null,
+          "__typename": "ComponentCoreImage"
+        },
+        "__typename": "ComponentSharedCard"
+      }
+    ],
+    "successClients": [
+      {
+        "svg": "SGBCzexhTrafoLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbcz-greyscale.png",
+        "alternate": "sgbcz",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "BluemapleLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/bluemaple-greyscale.png",
+        "alternate": "bluemaple",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "MindfreshLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/mindfresh-greyscale.png",
+        "alternate": "mindfresh",
+        "__typename": "ComponentCoreImage"
+      },
+      {
+        "svg": "SGBIndiaLogo",
+        "source": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Logo/sgbindia-greyscale.png",
+        "alternate": "sgbin",
+        "__typename": "ComponentCoreImage"
+      }
+    ],
+    "metaData": {
+      "title": "LMNAs Cloud Solutions | Cloud ERP for End-to-End Business Transformation.",
+      "description": "Unlock seamless operations and actionable insights with LMNAs. Empowering businesses across industries to overcome challenges and achieve transformational growth.",
+      "keywords": [
+        {
+          "description": "business transformation",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "cloud ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "enterprise solutions",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "operations optimization",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "data insights",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "LMNAs",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "industry growth",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "manufacturing ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "education ERP",
+          "__typename": "ComponentCoreHighlight"
+        },
+        {
+          "description": "distribution solutions",
+          "__typename": "ComponentCoreHighlight"
+        }
+      ],
+      "canonical": "https://lmnas.com/en",
+      "ogTitle": "Reimagine Your Business | LMNAs",
+      "ogDescription": "Empowering businesses to overcome challenges and unlock extraordinary growth with LMNAs.",
+      "ogUrl": "https://lmnas.com/en",
+      "ogType": "website",
+      "ogSiteName": "LMNAs Cloud Solutions",
+      "ogLocale": "en_IN",
+      "ogImages": [
+        {
+          "url": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+          "width": 1200,
+          "height": 630,
+          "alt": "LMNAs Hero Banner",
+          "__typename": "ComponentCoreSeoIcons"
+        }
+      ],
+      "twitterCard": "summary_large_image",
+      "twitterTitle": "Reimagine Your Business | LMNAs",
+      "twitterDescription": "Achieve seamless operations and data-driven growth with LMNAs. Discover how industry leaders succeed.",
+      "twitterImage": "https://raw.githubusercontent.com/lmnaslimited/lmnas-website-images/refs/heads/main/Home/Home%20Image.png",
+      "twitterCreator": "@lmnaslimited",
+      "category": "Business",
+      "schemaData": [
+        {
+          "url": "https://lmnas.com",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "WebSite",
+          "@context": "https://schema.org",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://lmnas.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "url": "https://lmnas.com",
+          "logo": "https://lmnas.com/icon.png",
+          "name": "LMNAs Cloud Solutions",
+          "@type": "Organization",
+          "sameAs": [
+            "https://in.linkedin.com/company/lmnaslimited",
+            "https://www.youtube.com/@lmnascloudsolutions.4549",
+            "https://twitter.com/lmnaslimited"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "postalCode": "600056",
+            "addressRegion": "Tamil Nadu",
+            "streetAddress": "#B206, Radiance Royal, Poonthamallee",
+            "addressCountry": "IN",
+            "addressLocality": "Chennai"
+          },
+          "@context": "https://schema.org",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+919884044470",
+            "areaServed": [
+              "IN",
+              "GB",
+              "US",
+              "DE",
+              "CZ"
+            ],
+            "contactType": "sales",
+            "availableLanguage": [
+              "en",
+              "German"
+            ]
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@context": "https://schema.org",
+          "itemListElement": [
+            {
+              "item": "https://lmnas.com",
+              "name": "Home",
+              "@type": "ListItem",
+              "position": 1
+            },
+            {
+              "item": "https://lmnas.com/about",
+              "name": "About Us",
+              "@type": "ListItem",
+              "position": 2
+            },
+            {
+              "item": "https://lmnas.com/career",
+              "name": "Careers",
+              "@type": "ListItem",
+              "position": 3
+            },
+            {
+              "item": "https://lmnas.com/contact",
+              "name": "Contact",
+              "@type": "ListItem",
+              "position": 4
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@context": "https://schema.org",
+          "provider": {
+            "name": "LMNAs Cloud Solutions",
+            "@type": "Organization"
+          },
+          "serviceType": "Enterprise Cloud ERP, CRM, and Analytics",
+          "availableChannel": {
+            "@type": "ServiceChannel",
+            "serviceUrl": "https://lmnas.com/contact"
+          }
+        }
+      ],
+      "__typename": "ComponentSharedPageMetadata"
+    },
+    "__typename": "Home"
+  }
+}
