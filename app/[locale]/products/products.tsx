@@ -19,6 +19,8 @@ import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
 import { Tbutton, TformMode, TheroSection, Tproducts } from "@repo/middleware/types";
 import VideoPlayer from "@repo/ui/components/video-player";
+import YoutubePlayer from "@repo/ui/components/youtube-player";
+
 
 const renderIcon = (icon: Tbutton["icon"], className?: string) => {
   const iconName = typeof icon === "string" ? icon : "HelpCircle";
@@ -347,6 +349,24 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           {fnRenderFormBelowSection("containerThree")}
         </div>
       </section>
+
+      {/* Youtube Video Section */}
+      {idProduct?.youtubeVideoHeader && idProduct?.youtubeVideoSection && (
+        <section id="youtubeVideoSection" className="py-16 md:py-24 lg:py-24 bg-accent">
+        <TitleSubtitle
+          idTitle={{
+            ...idProduct?.youtubeVideoHeader,
+            className:
+              "mx-auto max-w-[58rem] items-center justify-center gap-4 text-center",
+            headingClass: "md:text-5xl",
+          }}
+        />
+        <YoutubePlayer
+          url={idProduct.youtubeVideoSection.source}
+          title={idProduct.youtubeVideoHeader?.title || "Product demonstration"}        />
+          </section>
+
+      )}
 
       {/* Success Stories Section */}
       <section ref={LdSectionRefs("containerFour")} id="successStoriesSection">
