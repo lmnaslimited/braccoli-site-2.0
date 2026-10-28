@@ -362,10 +362,9 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
           }}
         />
         <YoutubePlayer
-          url={idProduct.youtubeVideoSection.source}
-          title={idProduct.youtubeVideoHeader?.title || "Product demonstration"}        />
+          iUrl={idProduct.youtubeVideoSection.source}
+          iTitle={idProduct.youtubeVideoHeader?.title || "Product demonstration"}        />
           </section>
-
       )}
 
       {/* Success Stories Section */}
