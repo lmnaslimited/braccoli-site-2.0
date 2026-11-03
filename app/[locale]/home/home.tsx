@@ -10,16 +10,10 @@ import TitleSubtitle from "@repo/ui/components/title-subtitle";
 import { Button } from "@repo/ui/components/ui/button";
 import { useFormHandler } from "../../hooks/form-handler";
 import { getIconComponent } from "@repo/ui/lib/icon";
-import  TestimonialSlider from "@repo/ui/components/testimonials-slider";
-import { useState } from "react";
-import styles from "./Home.module.css";
+import TestimonialSlider from "@repo/ui/components/testimonials-slider";
+import ProblemSolution from "@repo/ui/components/problem-solution";
 
-import {
-  MessageSquare,
-  Users,
-  Lightbulb,
-  Globe,
-} from "lucide-react";
+import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -42,27 +36,13 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   ];
 
   // Painpoint Section Severities
-  const LaPainpointSeverities = [85, 78, 92, 70];
+  // const LaPainpointSeverities = [85, 78, 92, 70];
 
-  const renderIcon = (icon: Tbutton['icon']) => {
+  const renderIcon = (icon: Tbutton["icon"]) => {
     const iconName = typeof icon === "string" ? icon : "HelpCircle";
     const IconComponent = getIconComponent(iconName);
     return <IconComponent className="w-5 h-5" />;
   };
-  const [activeProblemIndex, setActiveProblemIndex] = useState(0);
-
-  const LaProblemSolutionItems =
-    idHome.home.problemSolutionSection ?? [];
-
-    console.log("LaProblemSolutionItems:", LaProblemSolutionItems);
-
-  const LdProblemSolutionHeader =
-    idHome.home.problemSolutionHeader;
-
-    console.log("LdProblemSolutionHeader:", LdProblemSolutionHeader);
-
-  const LdActiveProblem =
-    LaProblemSolutionItems[activeProblemIndex];
 
   return (
     <div>
@@ -79,7 +59,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TheroSection
           }
           onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerOne", formTitle)
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerOne",
+              formTitle,
+            )
           }
         />
         {fnRenderFormBelowSection("containerOne")}
@@ -87,183 +71,77 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
 
       {/* ======================================================================================================================================= */}
 
-        {/* Social Proof Section */}
-        <section className="py-24 bg-accent" id="socialProofSection">
-          <div className="container mx-auto px-6">
-            <div className="max-w-5xl mx-auto">
+      {/* Social Proof Section */}
+      <section className="py-24 bg-accent" id="socialProofSection">
+        <div className="container mx-auto px-6">
+          <div className="max-w-5xl mx-auto">
+            {/* Section Heading */}
+            <TitleSubtitle
+              idTitle={{
+                ...idHome.home.socialSection.heading,
+                className: "text-center items-center m-0",
+                headingClass:
+                  "text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
+                descripClass:
+                  "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full",
+              }}
+            />
 
-              {/* Section Heading */}
-              <TitleSubtitle
-                idTitle={{
-                  ...idHome.home.socialSection.heading,
-                  className: "text-center items-center m-0",
-                  headingClass:
-                    "text-base md:text-base text-muted-foreground font-semibold tracking-wide uppercase",
-                  descripClass:
-                    "text-3xl leading-8 font-extrabold tracking-tight text-primary md:text-4xl max-w-full",
-                }}
-              />
+            {/* Automatic Testimonial Slider */}
+            <TestimonialSlider testimonials={idHome.home.testimonials} />
 
-              {/* Automatic Testimonial Slider */}
-              <TestimonialSlider testimonials={idHome.home.testimonials} />
+            {/* Social Proof Metrics */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 mt-12">
+              {idHome.home.socialSection.highlight?.map((item, iIndex) => (
+                <div className="text-center" key={iIndex}>
+                  <p className="text-3xl font-light mb-2">{item.description}</p>
 
-              {/* Social Proof Metrics */}
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 mt-12">
-                {idHome.home.socialSection.highlight?.map((item, iIndex) => (
-                  <div className="text-center" key={iIndex}>
-                    <p className="text-3xl font-light mb-2">
-                      {item.description}
-                    </p>
+                  <div className="h-0.5 w-8 bg-primary mx-auto mb-2" />
 
-                    <div className="h-0.5 w-8 bg-primary mx-auto mb-2" />
-
-                    <p className="text-sm text-primary">
-                      {item.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Existing CTA */}
-              <div className="mt-8 text-center">
-                {idHome.home.socialSection.buttons[0]?.href && (
-                  <Link href={idHome.home.socialSection.buttons[0].href}>
-                    <Button size="lg">
-                      {idHome.home.socialSection.buttons[0].label}{" "}
-                      {renderIcon(idHome.home.socialSection.buttons[0].icon)}
-                    </Button>
-                  </Link>
-                )}
-              </div>
-
+                  <p className="text-sm text-primary">{item.label}</p>
+                </div>
+              ))}
             </div>
-          </div>
-        </section>
-        {/* ========================================================================================== */}
-        {/* Problem & Solution Section */}
-        <section
-          className="py-24 bg-background"
-          id="problemSolutionSection"
-        >
-          <div className="container mx-auto px-6">
-            <div className="max-w-7xl mx-auto">
 
-              {/* Problem & Solution Header */}
-              <TitleSubtitle
-                idTitle={{
-                  ...LdProblemSolutionHeader,
-                  className: "max-w-5xl",
-                  headingClass:
-                    "text-4xl md:text-5xl font-bold tracking-tight text-primary",
-                  descripClass:
-                    "max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg",
-                }}
-              />
-
-              {/* Problem & Solution Items */}
-              {LdActiveProblem && (
-                <section
-                  className="mt-10"
-                  id="problemSolutionItems"
-                >
-                  {/* Selectors */}
-                  <div
-                    className="flex gap-3 overflow-x-auto pb-4 mb-3"
-                    role="tablist"
-                    aria-label="Choose a business need"
-                  >
-                    {LaProblemSolutionItems.map((item, index) => (
-                      <button
-                        key={index}
-                        type="button"
-                        role="tab"
-                        aria-selected={activeProblemIndex === index}
-                        onClick={() => setActiveProblemIndex(index)}
-                        className={`shrink-0 rounded-full border px-5 py-3 text-sm font-medium transition-colors ${
-                          activeProblemIndex === index
-                            ? "bg-primary text-primary-foreground border-primary"
-                            : "bg-background text-primary border-border hover:border-primary"
-                        }`}
-                      >
-                        {item.label}
-                      </button>
-                    ))}
-                  </div>
-
-                  {/* Problem & Solution Card */}
-                  <div className={styles.problemSolutionCard}>
-
-                    {/* Left: Image */}
-                    <div className={styles.problemSolutionImage}>
-                      {LdActiveProblem.solutionImage?.source ? (
-                        <img
-                          src={LdActiveProblem.solutionImage.source}
-                          alt={
-                            LdActiveProblem.solutionImage.alternate ??
-                            LdActiveProblem.label
-                          }
-                          className="h-full w-full object-cover"
-                        />
-                      ) : (
-                        <div className="flex h-full min-h-[280px] items-center justify-center bg-accent">
-                          <p className="text-sm text-muted-foreground">
-                            Add an image in Strapi
-                          </p>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Right: Problem, Solution and CTA */}
-                    <div className={styles.problemSolutionContent}>
-                      {LdActiveProblem.category && (
-                        <p className="mb-5 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-                          {LdActiveProblem.category}
-                        </p>
-                      )}
-
-                      <h3 className="text-3xl font-bold leading-tight tracking-tight text-primary md:text-4xl lg:text-5xl">
-                        {LdActiveProblem.problemTitle}
-                      </h3>
-
-                      <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
-                        {LdActiveProblem.solutionDescription}
-                      </p>
-
-                      {/* Product Page CTA */}
-                      {LdActiveProblem.button?.href &&
-                        LdActiveProblem.button?.label && (
-                          <div className="mt-8">
-                            <Button
-                              size={LdActiveProblem.button.size || "lg"}
-                              variant={LdActiveProblem.button.variant || "default"}
-                              className={cn(
-                                "gap-2",
-                                LdActiveProblem.button.className
-                              )}
-                              asChild
-                            >
-                              <Link href={LdActiveProblem.button.href}>
-                                <span className="flex items-center justify-center gap-2">
-                                  {LdActiveProblem.button.iconPosition === "before" &&
-                                    renderIcon(LdActiveProblem.button.icon)}
-
-                                  <span>{LdActiveProblem.button.label}</span>
-
-                                  {LdActiveProblem.button.iconPosition !== "before" &&
-                                    LdActiveProblem.button.icon &&
-                                    renderIcon(LdActiveProblem.button.icon)}
-                                </span>
-                              </Link>
-                            </Button>
-                          </div>
-                        )}
-                    </div>
-                  </div>
-                </section>
+            {/* Existing CTA */}
+            <div className="mt-8 text-center">
+              {idHome.home.socialSection.buttons[0]?.href && (
+                <Link href={idHome.home.socialSection.buttons[0].href}>
+                  <Button size="lg">
+                    {idHome.home.socialSection.buttons[0].label}{" "}
+                    {renderIcon(idHome.home.socialSection.buttons[0].icon)}
+                  </Button>
+                </Link>
               )}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
+      {/* ========================================================================================== */}
+            <section className="py-24" id="socialProofSection">
+
+      {/* Problem & Solution Section */}
+      <div className="container mx-auto px-4">
+        <TitleSubtitle
+          idTitle={{
+            ...idHome.home.problemSolutionHeader,
+            className: "text-center items-center m-0",
+            headingClass: "text-3xl sm:text-4xl tracking-normal",
+            descripClass: "max-w-lg mx-auto",
+          }}
+        />
+      </div>
+
+
+      <ProblemSolution
+        data={idHome.home.problemSolutionSection}
+        onFormButtonClick={(mode, label) =>
+          fnHandleFormButtonClick(mode, "containerTwo", label)
+        }
+      />
+
+      {fnRenderFormBelowSection("containerTwo")}
+      </section>
       {/* Problem Section
       <section className="bg-grayBackground" id="problemsSection">
         <Feature
@@ -426,7 +304,11 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
             } as TcalloutProps
           }
           onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(mode as TformMode, "containerFour", formTitle)
+            fnHandleFormButtonClick(
+              mode as TformMode,
+              "containerFour",
+              formTitle,
+            )
           }
         />
         {fnRenderFormBelowSection("containerFour")}
