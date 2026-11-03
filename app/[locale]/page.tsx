@@ -14,6 +14,7 @@ async function getHomePageData(params: { locale: string }) {
     context,
     clTransformerFactory.createTransformer('home')
   )
+  console.log('pageData', pageData)
   return pageData
 }
 
