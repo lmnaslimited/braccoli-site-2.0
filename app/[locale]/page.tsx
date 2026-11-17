@@ -14,8 +14,7 @@ async function getHomePageData(params: { locale: string }) {
     context,
     clTransformerFactory.createTransformer('home')
   )
-  console.log('pageData', pageData)
-  return pageData
+console.log("Page Content:", JSON.stringify(pageData.home, null, 2));  return pageData
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {

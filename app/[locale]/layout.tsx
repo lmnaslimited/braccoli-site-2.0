@@ -126,7 +126,7 @@ export default async function RootLayout({
         <ApprovalProvider loginSettings={LdLoginSettings} iStatus={LStatus}>
           {/* navbar and banner will stickto the top */}
         <div className="sticky top-0 z-50">
-          <Banner idBanner={LdBannerSettings}/>
+          {/* <Banner idBanner={LdBannerSettings}/> */}
           <Navbar idNavbar={LdNavbarData} />
         </div>
           <main className="">
