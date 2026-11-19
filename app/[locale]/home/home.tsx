@@ -16,7 +16,6 @@ import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
-  TfeatureProps,
   TformMode,
   TheroSection,
   ThomePageTarget,
@@ -127,10 +126,8 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
           }}
         />
       </div>
-
-
       <ProblemSolution
-        data={idHome.home.problemSolutionSection}
+        iData={idHome.home.problemSolutionSection}
         onFormButtonClick={(mode, label) =>
           fnHandleFormButtonClick(mode, "containerTwo", label)
         }
@@ -139,23 +136,36 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
       {fnRenderFormBelowSection("containerTwo")}
       </section>
 
-      <section className="bg-accent py-20" id="productArchitectureSection">
-        <div className="container mx-auto px-4">
+{/* Products Architecture Section */}
+<section
+  className="bg-accent py-20"
+  id="productArchitectureSection"
+  ref={LdSectionRefs("containerThree")}
+>
+<div className="container mx-auto px-4">
           <div className="mb-12">
             <TitleSubtitle
               idTitle={{
                 ...idHome.home.productArchitectureHeader,
-                className: "text-center items-center m-0",
+                className: "text-center text-justify items-center m-0",
                 headingClass: "text-3xl sm:text-4xl tracking-normal",
-                descripClass: "max-w-2xl mx-auto",
+                descripClass: "max-w-4xl mx-auto",
               }}
             />
           </div>
-          <ProductArchitecture
-            data={idHome.home.productArchitectureSection}
-          />
-        </div>
-      </section>
+          </div>
+
+  <ProductArchitecture
+    data={idHome.home.productArchitectureSection}
+    onFormButtonClick={(mode, label) =>
+      fnHandleFormButtonClick(mode, "containerThree", label)
+    }
+  />
+
+
+</section>
+  {fnRenderFormBelowSection("containerThree")}
+
 
       {/* FAQ Section */}
       <section className="bg-grayBackground" id="faqSection">
