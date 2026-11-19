@@ -22,8 +22,13 @@ import {
 } from "@repo/middleware/types";
 
 export default function Home({ idHome }: { idHome: ThomePageTarget }) {
-  const { fnHandleFormButtonClick, fnRenderFormBelowSection, LdSectionRefs } =
-    useFormHandler();
+const {
+  fnHandleFormButtonClick,
+  fnRenderFormBelowSection,
+  LdSectionRefs,
+  ActiveSection,
+  fnCloseForm,
+} = useFormHandler();
 
   // Trending Now Section Icons
   const LaTrendingNowIcons = [
@@ -142,29 +147,34 @@ export default function Home({ idHome }: { idHome: ThomePageTarget }) {
   id="productArchitectureSection"
   ref={LdSectionRefs("containerThree")}
 >
-<div className="container mx-auto px-4">
-          <div className="mb-12">
-            <TitleSubtitle
-              idTitle={{
-                ...idHome.home.productArchitectureHeader,
-                className: "text-center text-justify items-center m-0",
-                headingClass: "text-3xl sm:text-4xl tracking-normal",
-                descripClass: "max-w-4xl mx-auto",
-              }}
-            />
-          </div>
-          </div>
+  <div className="container mx-auto px-4">
+    <div className="mb-12">
+      <TitleSubtitle
+        idTitle={{
+          ...idHome.home.productArchitectureHeader,
+          className: "text-center text-justify items-center m-0",
+          headingClass: "text-3xl sm:text-4xl tracking-normal",
+          descripClass: "max-w-4xl mx-auto",
+        }}
+      />
+    </div>
+  </div>
 
   <ProductArchitecture
     data={idHome.home.productArchitectureSection}
-    onFormButtonClick={(mode, label) =>
-      fnHandleFormButtonClick(mode, "containerThree", label)
+    activeFormSection={ActiveSection}
+    onFormButtonClick={(mode, sectionId, label) =>
+      fnHandleFormButtonClick(mode, sectionId, label)
     }
+renderFormBelowSection={(sectionId) =>
+    fnRenderFormBelowSection(sectionId, {
+        wrapperClassName: "w-full bg-transparent py-0",
+        containerClassName: "w-full px-0",
+    })
+}
+    onFormClose={fnCloseForm}
   />
-
-
 </section>
-  {fnRenderFormBelowSection("containerThree")}
 
 
       {/* FAQ Section */}
