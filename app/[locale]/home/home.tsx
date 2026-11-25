@@ -12,7 +12,7 @@ import { getIconComponent } from "@repo/ui/lib/icon";
 import TestimonialSlider from "@repo/ui/components/testimonials-slider";
 import ProblemSolution from "@repo/ui/components/problem-solution";
 
-import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
+// import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -31,12 +31,12 @@ const {
 } = useFormHandler();
 
   // Trending Now Section Icons
-  const LaTrendingNowIcons = [
-    <MessageSquare key="message" className="h-10 w-10 text-primary" />,
-    <Users key="users" className="h-10 w-10 text-primary" />,
-    <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
-    <Globe key="globe" className="h-10 w-10 text-primary" />,
-  ];
+  // const LaTrendingNowIcons = [
+  //   <MessageSquare key="message" className="h-10 w-10 text-primary" />,
+  //   <Users key="users" className="h-10 w-10 text-primary" />,
+  //   <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
+  //   <Globe key="globe" className="h-10 w-10 text-primary" />,
+  // ];
 
   // Painpoint Section Severities
   // const LaPainpointSeverities = [85, 78, 92, 70];
@@ -194,7 +194,7 @@ renderFormBelowSection={(sectionId) =>
         <Callout
           idCallout={
             {
-              ...idHome.home.calloutSection[2],
+              ...idHome.home.calloutSection[0],
               layout: "simple",
             } as TcalloutProps
           }
