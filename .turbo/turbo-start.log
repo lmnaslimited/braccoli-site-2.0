@@ -1,0 +1,14 @@
+
+> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
+> next start
+
+   [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.62:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 362ms
+Failed to proxy https://eu-assets.i.posthog.com/static/exception-autocapture.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu-assets.i.posthog.com/static/posthog-recorder.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }

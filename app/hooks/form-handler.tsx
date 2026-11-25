@@ -15,6 +15,8 @@ import { identifyPostHogFormSubmitter } from "../lib/posthog-identify"
 type OptionalRenderParams = {
     idData?: TtrendCardProps;
     idPdfData?: TcaseStudies;
+    wrapperClassName?: string;
+    containerClassName?: string;
 };
 
 export const useFormHandler = () => {
@@ -138,6 +140,13 @@ export const useFormHandler = () => {
         }
     }
 
+    const fnCloseForm = () => {
+    fnSetActiveSection(null);
+    fnSetFormMode(null);
+    fnSetFormTitle(null);
+    fnSetSuccessMessage(null);
+};
+
     /**
      * Handles successful form submissions.
      * This function displays a success message in place of the form
@@ -171,7 +180,12 @@ export const useFormHandler = () => {
      * based on the current state and section ID.
      */
     const fnRenderFormBelowSection = (iSectionId: string, idOptions: OptionalRenderParams = {}): ReactNode => {
-        const { idData, idPdfData } = idOptions;
+        const {
+    idData,
+    idPdfData,
+    wrapperClassName = "w-full bg-background py-8",
+    containerClassName = "container mx-auto px-4",
+} = idOptions;
         const shouldShowForm = ActiveSection === iSectionId && FormMode !== null
         const shouldShowSuccess = SuccessMessage?.section === iSectionId
 
@@ -193,8 +207,8 @@ export const useFormHandler = () => {
             }
 
         return (
-          <div className="w-full bg-background py-8" ref={FormRef}>
-            <div className="container mx-auto px-4">
+<div className={wrapperClassName} ref={FormRef}>
+    <div className={containerClassName}>
               {shouldShowSuccess ? (
                 <div className="max-w-lg mx-auto bg-background rounded-lg shadow-md p-4 text-center">
                   <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-2" />
@@ -250,5 +264,6 @@ export const useFormHandler = () => {
         );
     }
 
-    return { fnHandleFormButtonClick, fnHandleFormSuccess, fnRenderFormBelowSection, LdSectionRefs, FormRef }
+    return { fnHandleFormButtonClick, fnHandleFormSuccess, fnRenderFormBelowSection, LdSectionRefs, FormRef, ActiveSection,
+    fnCloseForm }
 }
