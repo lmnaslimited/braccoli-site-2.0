@@ -78,7 +78,7 @@ const {
             />
 
             {/* Automatic Testimonial Slider */}
-            <TestimonialSlider testimonials={idHome.home.testimonials} />
+            <TestimonialSlider idTestimonials={idHome.home.testimonials} />
 
             {/* Social Proof Metrics */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 mt-12">
