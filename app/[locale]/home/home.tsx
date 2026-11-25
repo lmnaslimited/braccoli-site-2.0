@@ -194,7 +194,7 @@ renderFormBelowSection={(sectionId) =>
         <Callout
           idCallout={
             {
-              ...idHome.home.calloutSection[2],
+              ...idHome.home.calloutSection[0],
               layout: "simple",
             } as TcalloutProps
           }
