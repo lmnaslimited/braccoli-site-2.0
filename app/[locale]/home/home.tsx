@@ -12,7 +12,6 @@ import { getIconComponent } from "@repo/ui/lib/icon";
 import TestimonialSlider from "@repo/ui/components/testimonials-slider";
 import ProblemSolution from "@repo/ui/components/problem-solution";
 
-import { MessageSquare, Users, Lightbulb, Globe } from "lucide-react";
 import {
   Tbutton,
   TcalloutProps,
@@ -30,21 +29,11 @@ const {
   fnCloseForm,
 } = useFormHandler();
 
-  // Trending Now Section Icons
-  const LaTrendingNowIcons = [
-    <MessageSquare key="message" className="h-10 w-10 text-primary" />,
-    <Users key="users" className="h-10 w-10 text-primary" />,
-    <Lightbulb key="lightbulb" className="h-10 w-10 text-primary" />,
-    <Globe key="globe" className="h-10 w-10 text-primary" />,
-  ];
-
-  // Painpoint Section Severities
-  // const LaPainpointSeverities = [85, 78, 92, 70];
 
   const renderIcon = (icon: Tbutton["icon"]) => {
-    const iconName = typeof icon === "string" ? icon : "HelpCircle";
-    const IconComponent = getIconComponent(iconName);
-    return <IconComponent className="w-5 h-5" />;
+    const LIconName = typeof icon === "string" ? icon : "HelpCircle";
+    const LIconComponent = getIconComponent(LIconName);
+    return <LIconComponent className="w-5 h-5" />;
   };
 
   return (
@@ -104,7 +93,7 @@ const {
               ))}
             </div>
 
-            {/* Existing CTA */}
+            {/* call to action */}
             <div className="mt-8 text-center">
               {idHome.home.socialSection.buttons[0]?.href && (
                 <Link href={idHome.home.socialSection.buttons[0].href}>
@@ -118,64 +107,62 @@ const {
           </div>
         </div>
       </section>
-      
-      <section className="py-24" id="problemSolutionSection">
-      {/* Problem & Solution Section */}
-      <div className="container mx-auto px-4">
-        <TitleSubtitle
-          idTitle={{
-            ...idHome.home.problemSolutionHeader,
-            className: "text-center items-center m-0",
-            headingClass: "text-3xl sm:text-4xl tracking-normal",
-            descripClass: "max-w-lg mx-auto",
-          }}
-        />
-      </div>
-      <ProblemSolution
-        iData={idHome.home.problemSolutionSection}
-        onFormButtonClick={(mode, label) =>
-          fnHandleFormButtonClick(mode, "containerTwo", label)
-        }
-      />
 
-      {fnRenderFormBelowSection("containerTwo")}
+      {/* Problem-Solution Section */}        
+      <section className="py-24" id="problemSolutionSection">
+        <div className="container mx-auto px-4">
+          <TitleSubtitle
+            idTitle={{
+              ...idHome.home.problemSolutionHeader,
+              className: "text-center items-center m-0",
+              headingClass: "text-3xl sm:text-4xl tracking-normal",
+              descripClass: "max-w-lg mx-auto",
+            }}
+          />
+        </div>
+        <ProblemSolution
+          idData={idHome.home.problemSolutionSection}
+          onFormButtonClick={(mode, label) =>
+            fnHandleFormButtonClick(mode, "containerTwo", label)
+          }
+        />
+
+        {fnRenderFormBelowSection("containerTwo")}
       </section>
 
-{/* Products Architecture Section */}
-<section
-  className="bg-accent py-20"
-  id="productArchitectureSection"
-  ref={LdSectionRefs("containerThree")}
->
-  <div className="container mx-auto px-4">
-    <div className="mb-12">
-      <TitleSubtitle
-        idTitle={{
-          ...idHome.home.productArchitectureHeader,
-          className: "text-center text-justify items-center m-0",
-          headingClass: "text-3xl sm:text-4xl tracking-normal",
-          descripClass: "max-w-4xl mx-auto",
-        }}
-      />
-    </div>
-  </div>
+      {/* Products Architecture Section */}
+      <section
+        className="bg-accent py-20" id="productArchitectureSection"
+        ref={LdSectionRefs("containerThree")}
+        >
+        <div className="container mx-auto px-4">
+          <div className="mb-12">
+            <TitleSubtitle
+              idTitle={{
+                ...idHome.home.productArchitectureHeader,
+                className: "text-center text-justify items-center m-0",
+                headingClass: "text-3xl sm:text-4xl tracking-normal",
+                descripClass: "max-w-4xl mx-auto",
+              }}
+            />
+          </div>
+        </div>
 
-  <ProductArchitecture
-    data={idHome.home.productArchitectureSection}
-    activeFormSection={ActiveSection}
-    onFormButtonClick={(mode, sectionId, label) =>
-      fnHandleFormButtonClick(mode, sectionId, label)
-    }
-renderFormBelowSection={(sectionId) =>
-    fnRenderFormBelowSection(sectionId, {
-        wrapperClassName: "w-full bg-transparent py-0",
-        containerClassName: "w-full px-0",
-    })
-}
-    onFormClose={fnCloseForm}
-  />
-</section>
-
+        <ProductArchitecture
+          idData={idHome.home.productArchitectureSection}
+          activeFormSection={ActiveSection}
+          onFormButtonClick={(mode, sectionId, label) =>
+            fnHandleFormButtonClick(mode, sectionId, label)
+          }
+          renderFormBelowSection={(sectionId) =>
+            fnRenderFormBelowSection(sectionId, {
+              wrapperClassName: "w-full bg-transparent py-0",
+              containerClassName: "w-full px-0",
+            })
+          }
+          onFormClose={fnCloseForm}
+        />
+      </section>
 
       {/* FAQ Section */}
       <section className="bg-grayBackground" id="faqSection">

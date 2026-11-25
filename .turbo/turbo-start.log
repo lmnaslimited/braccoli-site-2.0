@@ -4,37 +4,7 @@
 
    [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
    - Local:        http://localhost:3000
-   - Network:      http://10.111.248.80:3000
+   - Network:      http://192.168.1.62:3000
 
  [32m[1m✓[22m[39m Starting...
- [32m[1m✓[22m[39m Ready in 1088ms
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at p (.next/server/app/[locale]/products/[slug]/page.js:1:24093) {
-  digest: [32m'3785110094'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
-    at Module.u (.next/server/app/[locale]/products/[slug]/page.js:1:23864) {
-  digest: [32m'192058144'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at p (.next/server/app/[locale]/products/[slug]/page.js:1:24093) {
-  digest: [32m'3785110094'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at p (.next/server/app/[locale]/products/[slug]/page.js:1:24093) {
-  digest: [32m'1606863672'[39m
-}
- [31m[1m⨯[22m[39m Error: Meta data not found for product slug: planning-cloud
-    at Module.u (.next/server/app/[locale]/products/[slug]/page.js:1:23864) {
-  digest: [32m'3092445590'[39m
-}
- [31m[1m⨯[22m[39m TypeError: Cannot read properties of null (reading 'schemaData')
-    at p (.next/server/app/[locale]/products/[slug]/page.js:1:24093) {
-  digest: [32m'1606863672'[39m
-}
-Failed to proxy https://eu.i.posthog.com/s?ip=0&_=1795589516595&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-Failed to proxy https://eu.i.posthog.com/s?ip=0&_=1795590103434&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-Failed to proxy https://eu.i.posthog.com/s?ip=0&_=1795590267443&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
-[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+ [32m[1m✓[22m[39m Ready in 332ms

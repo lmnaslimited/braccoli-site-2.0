@@ -13,7 +13,7 @@ import { Tcontext, TfooterTarget, TglobalMetaTarget, TnavbarTarget, TseoIcons } 
 import AppRecaptchaProvider from "@repo/ui/components/recaptcha-provider"
 import { AuthProvider } from "@repo/ui/components/auth/authContext"
 import { fnGetStatus } from "../utils/strapi/get-status"
-import Banner from "@repo/ui/components/banner"
+// import Banner from "@repo/ui/components/banner"
 import { ApprovalProvider } from "@repo/ui/components/auth/approvalContext"
 
 export const viewport: Viewport = {
@@ -106,10 +106,10 @@ export default async function RootLayout({
   )
 
   // Get the Banner details from strapi
-  const LdBannerSettings = await fnGetCacheData(
-    LdContext, 
-    clTransformerFactory.createTransformer("bannerSetting")
-  )
+  // const LdBannerSettings = await fnGetCacheData(
+  //   LdContext, 
+  //   clTransformerFactory.createTransformer("bannerSetting")
+  // )
 
   // Get the login and env details from strapi
   const LdLoginSettings = await fnGetCacheData(
