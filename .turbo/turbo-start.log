@@ -1,0 +1,102 @@
+
+> braccoli@0.1.0 start /home/yuvaraj/Desktop/lmnas-turbo/apps/braccoli-site-2.0
+> next start
+
+   [1m[38;2;173;127;168m▲ Next.js 15.1.11[39m[22m
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.1.62:3000
+
+ [32m[1m✓[22m[39m Starting...
+ [32m[1m✓[22m[39m Ready in 430ms
+idHero sector label Choose Your Domain
+currentSector: generic
+sectorDropdown: [
+  {
+    label: [32m'Generic'[39m,
+    href: [32m'/en/products/cpq-cloud'[39m,
+    sector: [32m'generic'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  },
+  {
+    label: [32m'Transformers'[39m,
+    href: [32m'/en/products/transformers/transformer-cpq-cloud'[39m,
+    sector: [32m'transformers'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  }
+]
+selectedSector: {
+  label: [32m'Generic'[39m,
+  href: [32m'/en/products/cpq-cloud'[39m,
+  sector: [32m'generic'[39m,
+  __typename: [32m'ComponentSharedSectorOption'[39m
+}
+Failed to proxy https://eu.i.posthog.com/i/v0/e?retry_count=4&ip=0&_=1795780531955&ver=1.372.10&compression=gzip-js&beacon=1 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/flags?v=2&ip=0&_=1795780532182&ver=1.372.10&compression=base64 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/e?ip=0&_=1795780532186&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/e?ip=0&_=1795780533659&ver=1.372.10&compression=gzip-js&beacon=1 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/i/v0/e?ip=0&_=1795780533662&ver=1.372.10&compression=gzip-js&beacon=1 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/s?ip=0&_=1795780533664&ver=1.372.10&compression=gzip-js&beacon=1 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+idHero sector label Choose Your Domain
+currentSector: generic
+sectorDropdown: [
+  {
+    label: [32m'Generic'[39m,
+    href: [32m'/en/products/cpq-cloud'[39m,
+    sector: [32m'generic'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  },
+  {
+    label: [32m'Transformers'[39m,
+    href: [32m'/en/products/transformers/transformer-cpq-cloud'[39m,
+    sector: [32m'transformers'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  }
+]
+selectedSector: {
+  label: [32m'Generic'[39m,
+  href: [32m'/en/products/cpq-cloud'[39m,
+  sector: [32m'generic'[39m,
+  __typename: [32m'ComponentSharedSectorOption'[39m
+}
+Failed to proxy https://eu-assets.i.posthog.com/static/web-vitals.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu-assets.i.posthog.com/static/posthog-recorder.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+idHero sector label Choose Your Domain
+currentSector: generic
+sectorDropdown: [
+  {
+    label: [32m'Generic'[39m,
+    href: [32m'/en/products/cpq-cloud'[39m,
+    sector: [32m'generic'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  },
+  {
+    label: [32m'Transformers'[39m,
+    href: [32m'/en/products/transformers/transformer-cpq-cloud'[39m,
+    sector: [32m'transformers'[39m,
+    __typename: [32m'ComponentSharedSectorOption'[39m
+  }
+]
+selectedSector: {
+  label: [32m'Generic'[39m,
+  href: [32m'/en/products/cpq-cloud'[39m,
+  sector: [32m'generic'[39m,
+  __typename: [32m'ComponentSharedSectorOption'[39m
+}
+Failed to proxy https://eu.i.posthog.com/e?ip=0&_=1795780572550&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/flags?v=2&ip=0&_=1795780597738&ver=1.372.10&compression=base64 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu.i.posthog.com/e?ip=0&_=1795780597746&ver=1.372.10&compression=gzip-js [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu-assets.i.posthog.com/static/posthog-recorder.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+Failed to proxy https://eu-assets.i.posthog.com/static/dead-clicks-autocapture.js?v=1.372.10 [AggregateError: ] { code: [32m'ETIMEDOUT'[39m }
+[AggregateError: ] { code: [32m'ETIMEDOUT'[39m }

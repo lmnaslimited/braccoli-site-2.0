@@ -35,25 +35,24 @@ export default function ProductsComp({ idProduct }: { idProduct: Tproducts }) {
     <>
       {/* Hero Section */}
       <section ref={LdSectionRefs("containerOne")} id="heroSection">
-        <Hero
-          idHero={
-            {
-              ...idProduct?.heroSection,
-              buttons: idProduct?.heroSection.buttons.map((idButton) => ({
-                ...idButton,
-                iconPosition: "after",
-                size: "lg",
-              })),
-            } as TheroSection
-          }
-          onButtonClick={(mode, formTitle) =>
-            fnHandleFormButtonClick(
-              mode as TformMode,
-              "containerOne",
-              formTitle
-            )
-          }
-        />
+      <Hero
+        idHero={{
+          ...idProduct?.heroSection,
+          buttons: idProduct?.heroSection.buttons.map((idButton) => ({
+            ...idButton,
+            iconPosition: "after",
+            size: "lg",
+          })),
+        } as TheroSection}
+        currentSector={idProduct.sector}
+        onButtonClick={(mode, formTitle) =>
+          fnHandleFormButtonClick(
+            mode as TformMode,
+            "containerOne",
+            formTitle
+          )
+        }
+      />
         {fnRenderFormBelowSection("containerOne")}
       </section>
 
